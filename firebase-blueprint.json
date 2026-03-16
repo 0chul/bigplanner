@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project showcasing architectural or development work.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the project." },
+        "category": { "type": "string", "description": "The category of the project (e.g., Commercial, Residential)." },
+        "year": { "type": "string", "description": "The year the project was completed." },
+        "location": { "type": "string", "description": "The location of the project." },
+        "client": { "type": "string", "description": "The client for the project." },
+        "role": { "type": "string", "description": "The role of the company in the project." },
+        "image": { "type": "string", "description": "The main image URL of the project." },
+        "gallery": { "type": "array", "items": { "type": "string" }, "description": "An array of additional image URLs." },
+        "description": { "type": "string", "description": "A detailed description of the project." },
+        "challenge": { "type": "string", "description": "The challenge faced during the project." },
+        "solution": { "type": "string", "description": "The solution implemented." },
+        "createdAt": { "type": "timestamp", "description": "The time the project was created." }
+      },
+      "required": ["title", "category", "year", "image", "createdAt"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "A customer inquiry submitted through the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The name of the person inquiring." },
+        "email": { "type": "string", "description": "The email address of the person inquiring." },
+        "phone": { "type": "string", "description": "The phone number of the person inquiring." },
+        "company": { "type": "string", "description": "The company of the person inquiring." },
+        "message": { "type": "string", "description": "The message submitted." },
+        "status": { "type": "string", "enum": ["new", "in-progress", "completed"], "description": "The status of the inquiry." },
+        "createdAt": { "type": "timestamp", "description": "The time the inquiry was submitted." }
+      },
+      "required": ["name", "email", "message", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "projects": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Stores all portfolio projects."
+    },
+    "inquiries": {
+      "schema": { "$ref": "#/entities/Inquiry" },
+      "description": "Stores all customer inquiries."
+    }
+  }
+}

@@ -1,0 +1,95 @@
+import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { supabase } from '../supabase';
+
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+}
+
+export default function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('projects')
+          .select('id, title, category, image')
+          .order('created_at', { ascending: false })
+          .limit(4);
+          
+        if (error) throw error;
+        setProjects(data as Project[]);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <h2 className="text-sm font-bold tracking-widest text-gray-600 uppercase mb-2">Portfolio</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900">OUR BIG WINs</h3>
+          </div>
+          <Link to="/projects" className="hidden md:inline-flex items-center text-sm font-bold text-gray-900 hover:text-gray-600 transition-colors group">
+            VIEW ALL PROJECTS
+            <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        {loading ? (
+          <div className="text-center py-12 text-gray-500">프로젝트를 불러오는 중입니다...</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group relative"
+              >
+                <Link to={`/projects/${project.id}`} className="block">
+                  <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[4/3]">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+                  </div>
+                  <p className="text-sm font-medium text-gray-600 mb-1">{project.category}</p>
+                  <h4 className="text-xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">
+                    {project.title}
+                  </h4>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        )}
+        
+        <div className="mt-8 text-center md:hidden">
+          <Link to="/projects" className="inline-flex items-center text-sm font-bold text-gray-900 hover:text-gray-600 transition-colors group">
+            VIEW ALL PROJECTS
+            <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
