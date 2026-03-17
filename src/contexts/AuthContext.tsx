@@ -27,6 +27,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (data) {
       setRole(data.role);
     }
+    setLoading(false); // 로딩 종료
   };
 
   useEffect(() => {
@@ -36,8 +37,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(currentUser);
       if (currentUser) {
         fetchProfile(currentUser.id);
+      } else {
+        setLoading(false); // 유저가 없으면 바로 로딩 종료
       }
-      setLoading(false);
     });
 
     // Listen for auth changes
@@ -48,8 +50,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         fetchProfile(currentUser.id);
       } else {
         setRole(null);
+        setLoading(false); // 유저가 없으면 바로 로딩 종료
       }
-      setLoading(false);
     });
 
     return () => subscription.unsubscribe();
