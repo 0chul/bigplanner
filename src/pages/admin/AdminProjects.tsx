@@ -2,22 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../supabase';
 import { Plus, Edit2, Trash2, X, Upload, Image as ImageIcon } from 'lucide-react';
-
-interface Project {
-  id: string;
-  title: string;
-  category: string;
-  year: string;
-  location?: string;
-  client?: string;
-  role?: string;
-  image: string;
-  gallery?: string[];
-  description?: string;
-  challenge?: string;
-  solution?: string;
-  created_at: any;
-}
+import { Project } from '../Projects';
 
 export default function AdminProjects() {
   const { isAdmin, loading } = useAuth();
@@ -34,9 +19,11 @@ export default function AdminProjects() {
 
   // Form State
   const [formData, setFormData] = useState({
-    title: '', category: 'Commercial', year: new Date().getFullYear().toString(),
+    title: '', category: '상업', subcategory: '', year: new Date().getFullYear().toString(),
     location: '', client: '', role: '', image: '', gallery: '',
-    description: '', challenge: '', solution: ''
+    description: '', challenge: '', solution: '',
+    zoning: '', land_area: '', building_area: '', total_floor_area: '',
+    scale: '', far: '', bcr: '', notes: ''
   });
 
   useEffect(() => {
@@ -77,22 +64,33 @@ export default function AdminProjects() {
       setFormData({
         title: project.title,
         category: project.category,
-        year: project.year,
+        subcategory: project.subcategory || '',
+        year: project.year || '',
         location: project.location || '',
         client: project.client || '',
         role: project.role || '',
-        image: project.image,
+        image: project.image || '',
         gallery: project.gallery?.join('\n') || '',
         description: project.description || '',
         challenge: project.challenge || '',
-        solution: project.solution || ''
+        solution: project.solution || '',
+        zoning: project.zoning || '',
+        land_area: project.land_area || '',
+        building_area: project.building_area || '',
+        total_floor_area: project.total_floor_area || '',
+        scale: project.scale || '',
+        far: project.far || '',
+        bcr: project.bcr || '',
+        notes: project.notes || ''
       });
     } else {
       setEditingProject(null);
       setFormData({
-        title: '', category: 'Commercial', year: new Date().getFullYear().toString(),
+        title: '', category: '상업', subcategory: '', year: new Date().getFullYear().toString(),
         location: '', client: '', role: '', image: '', gallery: '',
-        description: '', challenge: '', solution: ''
+        description: '', challenge: '', solution: '',
+        zoning: '', land_area: '', building_area: '', total_floor_area: '',
+        scale: '', far: '', bcr: '', notes: ''
       });
     }
     setIsModalOpen(true);
@@ -170,6 +168,7 @@ export default function AdminProjects() {
     const projectData = {
       title: formData.title,
       category: formData.category,
+      subcategory: formData.subcategory,
       year: formData.year,
       location: formData.location,
       client: formData.client,
@@ -179,6 +178,14 @@ export default function AdminProjects() {
       description: formData.description,
       challenge: formData.challenge,
       solution: formData.solution,
+      zoning: formData.zoning,
+      land_area: formData.land_area,
+      building_area: formData.building_area,
+      total_floor_area: formData.total_floor_area,
+      scale: formData.scale,
+      far: formData.far,
+      bcr: formData.bcr,
+      notes: formData.notes
     };
 
     try {
@@ -272,22 +279,53 @@ export default function AdminProjects() {
                   <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">카테고리 *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">카테고리 (대분류) *</label>
                   <select value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black">
-                    <option value="Commercial">Commercial (상업시설)</option>
-                    <option value="Residential">Residential (주거시설)</option>
-                    <option value="Office">Office (업무시설)</option>
-                    <option value="Culture">Culture (문화시설)</option>
-                    <option value="Interior">Interior (인테리어)</option>
+                    <option value="상업">상업</option>
+                    <option value="주거">주거</option>
+                    <option value="복합개발">복합개발</option>
+                    <option value="근생">근생</option>
                   </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">중분류</label>
+                  <input type="text" value={formData.subcategory} onChange={e => setFormData({...formData, subcategory: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">연도 *</label>
                   <input required type="text" value={formData.year} onChange={e => setFormData({...formData, year: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">위치</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">지역 (위치)</label>
                   <input type="text" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">용도관련 원문 (Zoning)</label>
+                  <input type="text" value={formData.zoning} onChange={e => setFormData({...formData, zoning: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">대지면적 (㎡)</label>
+                  <input type="text" value={formData.land_area} onChange={e => setFormData({...formData, land_area: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">건축면적 (㎡)</label>
+                  <input type="text" value={formData.building_area} onChange={e => setFormData({...formData, building_area: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">연면적 (㎡)</label>
+                  <input type="text" value={formData.total_floor_area} onChange={e => setFormData({...formData, total_floor_area: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">규모</label>
+                  <input type="text" value={formData.scale} onChange={e => setFormData({...formData, scale: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">용적률 (%)</label>
+                  <input type="text" value={formData.far} onChange={e => setFormData({...formData, far: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">건폐율 (%)</label>
+                  <input type="text" value={formData.bcr} onChange={e => setFormData({...formData, bcr: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">클라이언트</label>
@@ -296,6 +334,10 @@ export default function AdminProjects() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">역할 (Role)</label>
                   <input type="text" value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">비고</label>
+                  <input type="text" value={formData.notes} onChange={e => setFormData({...formData, notes: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
                 </div>
               </div>
 

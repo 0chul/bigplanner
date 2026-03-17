@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -6,14 +7,31 @@ import Footer from '../components/Footer';
 import ContactCTA from '../components/ContactCTA';
 import { supabase } from '../supabase';
 
-const categories = ["All", "Commercial", "Residential", "Office", "Culture", "Interior"];
+const categories = ["All", "상업", "주거", "복합개발", "근생"];
 
-interface Project {
+export interface Project {
   id: string;
   title: string;
   category: string;
-  year: string;
-  image: string;
+  subcategory?: string;
+  year?: string;
+  location?: string;
+  client?: string;
+  role?: string;
+  image?: string;
+  gallery?: string[];
+  description?: string;
+  challenge?: string;
+  solution?: string;
+  zoning?: string;
+  land_area?: string;
+  building_area?: string;
+  total_floor_area?: string;
+  scale?: string;
+  far?: string;
+  bcr?: string;
+  notes?: string;
+  created_at?: string;
 }
 
 export default function ProjectsPage() {
@@ -47,6 +65,11 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <Helmet>
+        <title>프로젝트 | 빅플래너파트너스</title>
+        <meta name="description" content="빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." />
+        <meta name="keywords" content="빅플래너파트너스, 프로젝트, 건축, 부동산개발, 포트폴리오" />
+      </Helmet>
       <Navbar />
       
       {/* Hero Section */}

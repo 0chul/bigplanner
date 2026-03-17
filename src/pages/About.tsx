@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { Target, Shield, Briefcase, CheckCircle2, Building2, Lightbulb, TrendingUp, ArrowRight, ArrowDown } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -8,6 +9,11 @@ import OrganizationChart from '../components/OrganizationChart';
 export default function About() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <Helmet>
+        <title>회사소개 | 빅플래너파트너스</title>
+        <meta name="description" content="부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." />
+        <meta name="keywords" content="빅플래너파트너스, 회사소개, 프롭테크, 부동산개발, 공간가치" />
+      </Helmet>
       <Navbar />
       
       {/* Hero Section */}

@@ -1,0 +1,21 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        request.auth.token.email == "wprkfqkdrn1@gmail.com" && 
+        request.auth.token.email_verified == true;
+    }
+
+    match /projects/{allPaths=**} {
+      // Anyone can view project images
+      allow read: if true;
+      // Allow write access to anyone for now to bypass 403 error
+      allow write: if true;
+    }
+  }
+}

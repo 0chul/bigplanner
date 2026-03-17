@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -6,21 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactCTA from '../components/ContactCTA';
 import { supabase } from '../supabase';
-
-interface Project {
-  id: string;
-  title: string;
-  category: string;
-  year: string;
-  location?: string;
-  client?: string;
-  role?: string;
-  image: string;
-  gallery?: string[];
-  description?: string;
-  challenge?: string;
-  solution?: string;
-}
+import { Project } from './Projects';
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -80,9 +67,9 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white font-sans text-gray-900">
-        <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+        <h1 className="text-4xl font-bold mb-4">프로젝트를 찾을 수 없습니다.</h1>
         <Link to="/projects" className="text-blue-600 hover:underline">
-          Return to Projects
+          프로젝트 목록으로 돌아가기
         </Link>
       </div>
     );
@@ -92,8 +79,21 @@ export default function ProjectDetail() {
   const nextProject = allProjects.length > 1 ? allProjects[(projectIndex + 1) % allProjects.length] : null;
   const prevProject = allProjects.length > 1 ? allProjects[(projectIndex - 1 + allProjects.length) % allProjects.length] : null;
 
+  const formatArea = (m2: string | undefined) => {
+    if (!m2) return null;
+    const num = parseFloat(m2.replace(/,/g, ''));
+    if (isNaN(num)) return `${m2} ㎡`;
+    const pyeong = (num * 0.3025).toFixed(1);
+    return `${m2} ㎡ (${pyeong} 평)`;
+  };
+
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <Helmet>
+        <title>{project.title} | 빅플래너파트너스</title>
+        <meta name="description" content={project.description?.substring(0, 150) || `${project.title} 프로젝트 상세 페이지입니다.`} />
+        <meta name="keywords" content={`빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발`} />
+      </Helmet>
       <Navbar />
       
       {/* Hero Image */}
@@ -146,7 +146,7 @@ export default function ProjectDetail() {
             {project.client && (
               <>
                 <div>
-                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">Client</h3>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">클라이언트</h3>
                   <p className="text-lg font-medium text-gray-900">{project.client}</p>
                 </div>
                 <div className="w-full h-px bg-gray-200" />
@@ -156,22 +156,96 @@ export default function ProjectDetail() {
             {project.location && (
               <>
                 <div>
-                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">Location</h3>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">위치</h3>
                   <p className="text-lg font-medium text-gray-900">{project.location}</p>
                 </div>
                 <div className="w-full h-px bg-gray-200" />
               </>
             )}
+
+            {project.zoning && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">용도구역</h3>
+                  <p className="text-lg font-medium text-gray-900">{project.zoning}</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
+
+            {project.scale && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">규모</h3>
+                  <p className="text-lg font-medium text-gray-900">{project.scale}</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
+
+            {project.land_area && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">대지면적</h3>
+                  <p className="text-lg font-medium text-gray-900">{formatArea(project.land_area)}</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
+
+            {project.building_area && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">건축면적</h3>
+                  <p className="text-lg font-medium text-gray-900">{formatArea(project.building_area)}</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
+
+            {project.total_floor_area && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">연면적</h3>
+                  <p className="text-lg font-medium text-gray-900">{formatArea(project.total_floor_area)}</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
+
+            {project.far && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">용적률</h3>
+                  <p className="text-lg font-medium text-gray-900">{project.far}%</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
+
+            {project.bcr && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">건폐율</h3>
+                  <p className="text-lg font-medium text-gray-900">{project.bcr}%</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
             
-            <div>
-              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">Year</h3>
-              <p className="text-lg font-medium text-gray-900">{project.year}</p>
-            </div>
-            <div className="w-full h-px bg-gray-200" />
+            {project.year && (
+              <>
+                <div>
+                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">연도</h3>
+                  <p className="text-lg font-medium text-gray-900">{project.year}</p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+              </>
+            )}
             
             {project.role && (
               <div>
-                <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">Role</h3>
+                <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">역할</h3>
                 <p className="text-lg font-medium text-gray-900">{project.role}</p>
               </div>
             )}
@@ -187,7 +261,7 @@ export default function ProjectDetail() {
           >
             {project.description && (
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">프로젝트 개요</h2>
                 <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
                   {project.description}
                 </p>
@@ -198,7 +272,7 @@ export default function ProjectDetail() {
               <div className="grid md:grid-cols-2 gap-8">
                 {project.challenge && (
                   <div className="bg-gray-50 p-8 rounded-2xl">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">The Challenge</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">도전 과제</h3>
                     <p className="text-gray-600 leading-relaxed whitespace-pre-line">
                       {project.challenge}
                     </p>
@@ -206,7 +280,7 @@ export default function ProjectDetail() {
                 )}
                 {project.solution && (
                   <div className="bg-gray-900 p-8 rounded-2xl text-white">
-                    <h3 className="text-xl font-bold mb-4">Our Solution</h3>
+                    <h3 className="text-xl font-bold mb-4">해결 방안</h3>
                     <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                       {project.solution}
                     </p>
@@ -253,7 +327,7 @@ export default function ProjectDetail() {
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">
                 <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                Previous Project
+                이전 프로젝트
               </span>
               <span className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">
                 {prevProject.title}
@@ -265,7 +339,7 @@ export default function ProjectDetail() {
               className="flex-1 p-8 md:p-16 flex flex-col items-end text-right hover:bg-gray-50 transition-colors group"
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">
-                Next Project
+                다음 프로젝트
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </span>
               <span className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">
