@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Building2, Lightbulb, TrendingUp, ShieldCheck, 
@@ -22,6 +23,25 @@ export default function Service() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
+      <Helmet>
+        <title>서비스 | 빅플래너파트너스</title>
+        <meta name="description" content="빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." />
+        <meta name="keywords" content="빅플래너파트너스, 서비스, 부동산컨설팅, PM, 프로젝트관리, 부동산금융" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "빅플래너파트너스 서비스",
+              "provider": {
+                "@type": "Organization",
+                "name": "빅플래너파트너스"
+              },
+              "description": "부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 제공합니다."
+            }
+          `}
+        </script>
+      </Helmet>
       <Navbar />
       <div className="pt-24">
       {/* Header */}

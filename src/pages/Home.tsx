@@ -14,6 +14,17 @@ export default function Home() {
         <title>홈 | 빅플래너파트너스</title>
         <meta name="description" content="부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스입니다." />
         <meta name="keywords" content="빅플래너파트너스, 프롭테크, 부동산, 공간 가치" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "빅플래너파트너스",
+              "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app",
+              "description": "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스입니다."
+            }
+          `}
+        </script>
       </Helmet>
       <Navbar />
       <main>

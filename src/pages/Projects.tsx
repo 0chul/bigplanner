@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -36,19 +36,24 @@ export interface Project {
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
+  const [displayedProjects, setDisplayedProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchProjects = async () => {
       try {
         const { data, error } = await supabase
           .from('projects')
-          .select('*')
-          .order('created_at', { ascending: false });
+          .select('*');
           
         if (error) throw error;
-        setProjects(data as Project[]);
+        // Shuffle the array randomly
+        const shuffledData = (data as Project[]).sort(() => Math.random() - 0.5);
+        setAllProjects(shuffledData);
       } catch (error) {
         console.error("Error fetching projects:", error);
       } finally {
@@ -59,9 +64,45 @@ export default function ProjectsPage() {
     fetchProjects();
   }, []);
 
-  const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+  useEffect(() => {
+    const filtered = activeCategory === "All" 
+      ? allProjects 
+      : allProjects.filter(project => project.category === activeCategory);
+    setDisplayedProjects(filtered.slice(0, visibleCount));
+  }, [allProjects, activeCategory, visibleCount]);
+
+  useEffect(() => {
+    // Reset visible count when category changes
+    setVisibleCount(6);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const filtered = activeCategory === "All" 
+      ? allProjects 
+      : allProjects.filter(project => project.category === activeCategory);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          // Only load more if we haven't displayed all filtered projects
+          if (displayedProjects.length < filtered.length) {
+            setVisibleCount(prev => prev + 6);
+          }
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current);
+    }
+
+    return () => {
+      if (sentinelRef.current) {
+        observer.unobserve(sentinelRef.current);
+      }
+    };
+  }, [displayedProjects, activeCategory, allProjects]);
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -69,6 +110,16 @@ export default function ProjectsPage() {
         <title>프로젝트 | 빅플래너파트너스</title>
         <meta name="description" content="빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." />
         <meta name="keywords" content="빅플래너파트너스, 프로젝트, 건축, 부동산개발, 포트폴리오" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              "name": "프로젝트 목록",
+              "description": "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다."
+            }
+          `}
+        </script>
       </Helmet>
       <Navbar />
       
@@ -123,7 +174,7 @@ export default function ProjectsPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence>
-              {filteredProjects.map((project) => (
+              {displayedProjects.map((project) => (
                 <motion.div
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -168,8 +219,9 @@ export default function ProjectsPage() {
             </AnimatePresence>
           </motion.div>
         )}
+        <div ref={sentinelRef} className="h-10" />
 
-        {!loading && filteredProjects.length === 0 && (
+        {!loading && displayedProjects.length === 0 && (
           <div className="text-center py-20 text-gray-500">
             해당 카테고리의 프로젝트가 없습니다.
           </div>

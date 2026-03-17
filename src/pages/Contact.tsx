@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Phone, Mail, Clock, Train, Bus } from 'lucide-react';
 import { supabase } from '../supabase';
 
 export default function Contact() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,8 +30,7 @@ export default function Contact() {
         email: formData.email,
         phone: formData.phone,
         company: formData.company,
-        message: formData.message,
-        status: 'new'
+        message: formData.message
       }]);
 
       if (error) throw error;
@@ -44,6 +48,11 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <Helmet>
+        <title>오시는 길 & 문의 | 빅플래너파트너스</title>
+        <meta name="description" content="빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." />
+        <meta name="keywords" content="빅플래너파트너스, 오시는길, 문의, 프롭테크, 부동산개발" />
+      </Helmet>
       <Navbar />
       
       {/* Hero Section */}

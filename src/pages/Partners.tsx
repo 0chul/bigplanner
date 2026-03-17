@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Paperclip, Send } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -13,8 +14,17 @@ export default function Partners() {
   const [activeCategory, setActiveCategory] = useState('architecture');
   const [agreed, setAgreed] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <Helmet>
+        <title>파트너스 | 빅플래너파트너스</title>
+        <meta name="description" content="빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." />
+        <meta name="keywords" content="빅플래너파트너스, 파트너스, 건축제휴, 업무제휴, 프롭테크" />
+      </Helmet>
       <Navbar />
       
       {/* Header */}

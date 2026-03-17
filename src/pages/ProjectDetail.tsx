@@ -93,6 +93,16 @@ export default function ProjectDetail() {
         <title>{project.title} | 빅플래너파트너스</title>
         <meta name="description" content={project.description?.substring(0, 150) || `${project.title} 프로젝트 상세 페이지입니다.`} />
         <meta name="keywords" content={`빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발`} />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "CreativeWork",
+              "name": "${project.title}",
+              "description": "${project.description?.substring(0, 150) || ''}"
+            }
+          `}
+        </script>
       </Helmet>
       <Navbar />
       
