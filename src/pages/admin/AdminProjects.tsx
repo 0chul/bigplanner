@@ -263,16 +263,16 @@ export default function AdminProjects() {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white rounded-2xl w-full max-w-3xl my-8">
-            <div className="flex justify-between items-center p-6 border-b border-gray-100">
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
+            <div className="flex justify-between items-center p-6 border-b border-gray-100 flex-shrink-0">
               <h2 className="text-2xl font-bold">{editingProject ? '프로젝트 수정' : '새 프로젝트 추가'}</h2>
               <button onClick={() => setIsModalOpen(false)} className="text-gray-500 hover:text-gray-900">
                 <X size={24} />
               </button>
             </div>
             
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+            <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">프로젝트명 *</label>
