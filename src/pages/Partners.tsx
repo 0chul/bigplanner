@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Paperclip, Send } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const categories = [
   { id: 'architecture', label: '건축제휴' },
@@ -13,6 +14,55 @@ const categories = [
 export default function Partners() {
   const [activeCategory, setActiveCategory] = useState('architecture');
   const [agreed, setAgreed] = useState(false);
+  const { language } = useLanguage();
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    title: '',
+    message: ''
+  });
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^0-9]/g, '');
+    let formattedValue = '';
+    
+    if (value.length < 4) {
+      formattedValue = value;
+    } else if (value.length < 7 && value.startsWith('02')) {
+      formattedValue = `${value.slice(0, 2)}-${value.slice(2)}`;
+    } else if (value.length < 8) {
+      formattedValue = `${value.slice(0, 3)}-${value.slice(3)}`;
+    } else if (value.length < 10 && value.startsWith('02')) {
+      formattedValue = `${value.slice(0, 2)}-${value.slice(2, 5)}-${value.slice(5)}`;
+    } else if (value.length < 11 && value.startsWith('02')) {
+      formattedValue = `${value.slice(0, 2)}-${value.slice(2, 6)}-${value.slice(6)}`;
+    } else if (value.length < 11) {
+      formattedValue = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6)}`;
+    } else if (value.length < 12) {
+      formattedValue = `${value.slice(0, 3)}-${value.slice(3, 7)}-${value.slice(7, 11)}`;
+    } else {
+      formattedValue = `${value.slice(0, 4)}-${value.slice(4, 8)}-${value.slice(8, 12)}`;
+    }
+    
+    setFormData({...formData, phone: formattedValue});
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const phoneRegex = /^(0[0-9]{1,3})-?[0-9]{3,4}-?[0-9]{4}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      alert(language === 'ko' ? "올바른 전화번호 형식을 입력해주세요. (예: 010-1234-5678)" : "Please enter a valid phone number format. (e.g. 010-1234-5678)");
+      return;
+    }
+
+    // TODO: Implement actual submission logic
+    alert(language === 'ko' ? "문의가 접수되었습니다." : "Your inquiry has been submitted.");
+    setFormData({ name: '', phone: '', email: '', title: '', message: '' });
+    setAgreed(false);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,9 +71,48 @@ export default function Partners() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
       <Helmet>
-        <title>파트너스 | 빅플래너파트너스</title>
-        <meta name="description" content="빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." />
-        <meta name="keywords" content="빅플래너파트너스, 파트너스, 건축제휴, 업무제휴, 프롭테크" />
+        <title>{language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'}</title>
+        <meta name="description" content={language === 'ko' ? "빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." : "We are looking for architecture and business partners to join BIGPLANNER PARTNERS. Please leave a partnership inquiry."} />
+        <meta name="keywords" content="빅플래너파트너스, 파트너스, 건축제휴, 업무제휴, 프롭테크, BIGPLANNER PARTNERS, Partners, Architecture Partnership, Business Partnership, Proptech" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/partners" />
+        <meta property="og:title" content={language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'} />
+        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." : "We are looking for architecture and business partners to join BIGPLANNER PARTNERS. Please leave a partnership inquiry."} />
+        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
+
+        <script type="application/ld+json">
+          {`
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "${language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'}",
+                "description": "${language === 'ko' ? '빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다.' : 'We are looking for architecture and business partners to join BIGPLANNER PARTNERS.'}",
+                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/partners"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "${language === 'ko' ? '홈' : 'Home'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "${language === 'ko' ? '파트너스' : 'Partners'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/partners"
+                  }
+                ]
+              }
+            ]
+          `}
+        </script>
       </Helmet>
       <Navbar />
       
@@ -36,7 +125,7 @@ export default function Partners() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Partners</h1>
-            <p className="text-lg text-gray-500">파트너스</p>
+            <p className="text-lg text-gray-500">{language === 'ko' ? '파트너스' : 'Partners'}</p>
           </motion.div>
         </div>
       </section>
@@ -77,12 +166,15 @@ export default function Partners() {
               <p className="text-gray-500">문의를 남겨주시면 신속하게 답변드리겠습니다.</p>
             </div>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">성함 / 회사명</label>
                   <input 
                     type="text" 
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                     placeholder="성함 또는 회사명을 입력해주세요"
                   />
@@ -91,6 +183,9 @@ export default function Partners() {
                   <label className="block text-sm font-bold text-gray-700 mb-2">연락처</label>
                   <input 
                     type="tel" 
+                    required
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                     placeholder="연락처를 입력해주세요"
                   />
@@ -101,6 +196,8 @@ export default function Partners() {
                 <label className="block text-sm font-bold text-gray-700 mb-2">이메일</label>
                 <input 
                   type="email" 
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                   placeholder="이메일 주소를 입력해주세요"
                 />
@@ -110,6 +207,8 @@ export default function Partners() {
                 <label className="block text-sm font-bold text-gray-700 mb-2">제목</label>
                 <input 
                   type="text" 
+                  value={formData.title}
+                  onChange={(e) => setFormData({...formData, title: e.target.value})}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                   placeholder="제목을 입력해주세요"
                 />
@@ -119,6 +218,8 @@ export default function Partners() {
                 <label className="block text-sm font-bold text-gray-700 mb-2">내용</label>
                 <textarea 
                   rows={6}
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="문의 내용을 상세히 입력해주세요"
                 ></textarea>

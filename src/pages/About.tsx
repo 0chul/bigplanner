@@ -6,8 +6,11 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactCTA from '../components/ContactCTA';
 import OrganizationChart from '../components/OrganizationChart';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function About() {
+  const { language } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -15,17 +18,46 @@ export default function About() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
       <Helmet>
-        <title>회사소개 | 빅플래너파트너스</title>
-        <meta name="description" content="부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." />
-        <meta name="keywords" content="빅플래너파트너스, 회사소개, 프롭테크, 부동산개발, 공간가치" />
+        <title>{language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'}</title>
+        <meta name="description" content={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." : "Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."} />
+        <meta name="keywords" content="빅플래너파트너스, 회사소개, 프롭테크, 부동산개발, 공간가치, BIGPLANNER PARTNERS, About Us, Proptech, Real Estate Development, Space Value" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/about" />
+        <meta property="og:title" content={language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'} />
+        <meta property="og:description" content={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." : "Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."} />
+        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
+
         <script type="application/ld+json">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "빅플래너파트너스",
-              "description": "부동산과 공간 가치를 높이는 프롭테크 기업"
-            }
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "AboutPage",
+                "name": "${language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'}",
+                "description": "${language === 'ko' ? '부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다.' : 'Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value.'}",
+                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/about"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "${language === 'ko' ? '홈' : 'Home'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "${language === 'ko' ? '회사소개' : 'About Us'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/about"
+                  }
+                ]
+              }
+            ]
           `}
         </script>
       </Helmet>
@@ -49,10 +81,16 @@ export default function About() {
           >
             <h1 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-4">About Us</h1>
             <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              부동산과 공간 가치를 높이는<br />프롭테크 기업
+              {language === 'ko' ? (
+                <>부동산과 공간 가치를 높이는<br />프롭테크 기업</>
+              ) : (
+                <>A Proptech Company Enhancing<br />Real Estate and Space Value</>
+              )}
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-              고객의 부동산과 공간가치를 높이기 위해 BIGPLANNER PARTNERS만의 투자분석과 PM시스템으로 중소형 신축 및 부동산 개발의 불확실함, 불편함, 불안함을 해소합니다.
+              {language === 'ko' 
+                ? "고객의 부동산과 공간가치를 높이기 위해 BIGPLANNER PARTNERS만의 투자분석과 PM시스템으로 중소형 신축 및 부동산 개발의 불확실함, 불편함, 불안함을 해소합니다."
+                : "To enhance the value of our clients' real estate and space, BIGPLANNER PARTNERS resolves the uncertainty, inconvenience, and anxiety of small and medium-sized new construction and real estate development with our unique investment analysis and PM system."}
             </p>
           </motion.div>
         </div>
@@ -70,10 +108,16 @@ export default function About() {
             >
               <h2 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Philosophy</h2>
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
-                부동산과 공간가치 창출을 위해<br />고객의 PAIN POINT를 해결합니다.
+                {language === 'ko' ? (
+                  <>부동산과 공간가치 창출을 위해<br />고객의 PAIN POINT를 해결합니다.</>
+                ) : (
+                  <>We solve clients' PAIN POINTS<br />to create real estate and space value.</>
+                )}
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                고객의 부동산과 공간가치를 높이기 위해 BIGPLANNER PARTNERS만의 투자분석과 PM시스템으로 중소형 신축 및 부동산 개발의 불확실함, 불편함, 불안함을 해소합니다.
+                {language === 'ko'
+                  ? "고객의 부동산과 공간가치를 높이기 위해 BIGPLANNER PARTNERS만의 투자분석과 PM시스템으로 중소형 신축 및 부동산 개발의 불확실함, 불편함, 불안함을 해소합니다."
+                  : "To enhance the value of our clients' real estate and space, BIGPLANNER PARTNERS resolves the uncertainty, inconvenience, and anxiety of small and medium-sized new construction and real estate development with our unique investment analysis and PM system."}
               </p>
             </motion.div>
             <motion.div
@@ -101,7 +145,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Vision</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900">우리의 비전과 가치</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900">{language === 'ko' ? '우리의 비전과 가치' : 'Our Vision and Values'}</h3>
           </div>
 
           <div className="space-y-32">
@@ -119,7 +163,9 @@ export default function About() {
                 </div>
                 <h4 className="text-3xl font-bold text-gray-900 mb-4">01. Our Mission</h4>
                 <p className="text-xl font-medium text-gray-600 text-center max-w-2xl">
-                  빅플래너파트너스는 부동산과 공간 가치를 높이는 프롭테크 기업입니다.
+                  {language === 'ko'
+                    ? "빅플래너파트너스는 부동산과 공간 가치를 높이는 프롭테크 기업입니다."
+                    : "BIGPLANNER PARTNERS is a proptech company that enhances real estate and space value."}
                 </p>
               </div>
 
@@ -138,25 +184,51 @@ export default function About() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-32 relative z-10">
                   <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 flex flex-col items-center text-center transform md:-translate-y-8 hover:-translate-y-10 transition-transform">
                     <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-900"><TrendingUp size={24} /></div>
-                    <p className="font-bold text-gray-900">중소형 부동산의 투자수익 극대화<br/>사업개발 및 안정적인 사업운영 지원</p>
+                    <p className="font-bold text-gray-900">
+                      {language === 'ko' ? (
+                        <>중소형 부동산의 투자수익 극대화<br/>사업개발 및 안정적인 사업운영 지원</>
+                      ) : (
+                        <>Maximizing investment returns for small/medium real estate<br/>Supporting business development and stable operations</>
+                      )}
+                    </p>
                   </div>
                   <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 flex flex-col items-center text-center transform md:-translate-y-8 hover:-translate-y-10 transition-transform">
                     <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-900"><Building2 size={24} /></div>
-                    <p className="font-bold text-gray-900">최적의 사업수지를 확보할 수 있는<br/>공간기획 제안</p>
+                    <p className="font-bold text-gray-900">
+                      {language === 'ko' ? (
+                        <>최적의 사업수지를 확보할 수 있는<br/>공간기획 제안</>
+                      ) : (
+                        <>Proposing space planning that secures<br/>optimal business feasibility</>
+                      )}
+                    </p>
                   </div>
                   <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 flex flex-col items-center text-center transform md:translate-y-8 hover:translate-y-6 transition-transform">
                     <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-900"><Target size={24} /></div>
-                    <p className="font-bold text-gray-900">각 분야 전문가들의 네트워크를<br/>기반으로 사업 완수</p>
+                    <p className="font-bold text-gray-900">
+                      {language === 'ko' ? (
+                        <>각 분야 전문가들의 네트워크를<br/>기반으로 사업 완수</>
+                      ) : (
+                        <>Completing projects based on<br/>a network of experts in each field</>
+                      )}
+                    </p>
                   </div>
                   <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 flex flex-col items-center text-center transform md:translate-y-8 hover:translate-y-6 transition-transform">
                     <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4 text-gray-900"><Lightbulb size={24} /></div>
-                    <p className="font-bold text-gray-900">고객의 선택이 최고의 결과를<br/>만들 수 있는 솔루션 제공</p>
+                    <p className="font-bold text-gray-900">
+                      {language === 'ko' ? (
+                        <>고객의 선택이 최고의 결과를<br/>만들 수 있는 솔루션 제공</>
+                      ) : (
+                        <>Providing solutions where clients' choices<br/>create the best results</>
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="mt-16 max-w-3xl mx-auto text-center">
                 <p className="text-gray-600 leading-relaxed bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  부동산과 공간의 개발 및 운영에 있어서 신뢰할 수 있는 업무파트너를 만나는 것은 중요합니다. 고객의 Needs에 부합하는 부동산 및 공간 가치창출 서비스를 제공하여 자산가치 극대화를 추구합니다. 고객이 보유 또는 사용하고 있는 모든 유형의 토지, 건축물과 공간에 대해 기획, 건축, 금융 전문가들이 최적의 의사결정을 지원합니다. 빅플래너파트너스를 통해 고객은 업무효율성과 사업수익성을 향상시킬 수 있습니다.
+                  {language === 'ko'
+                    ? "부동산과 공간의 개발 및 운영에 있어서 신뢰할 수 있는 업무파트너를 만나는 것은 중요합니다. 고객의 Needs에 부합하는 부동산 및 공간 가치창출 서비스를 제공하여 자산가치 극대화를 추구합니다. 고객이 보유 또는 사용하고 있는 모든 유형의 토지, 건축물과 공간에 대해 기획, 건축, 금융 전문가들이 최적의 의사결정을 지원합니다. 빅플래너파트너스를 통해 고객은 업무효율성과 사업수익성을 향상시킬 수 있습니다."
+                    : "Meeting a reliable business partner is important in the development and operation of real estate and space. We pursue the maximization of asset value by providing real estate and space value creation services that meet clients' needs. Planning, architecture, and finance experts support optimal decision-making for all types of land, buildings, and spaces owned or used by clients. Through BIGPLANNER PARTNERS, clients can improve work efficiency and business profitability."}
                 </p>
               </div>
             </motion.div>
@@ -174,7 +246,9 @@ export default function About() {
                 </div>
                 <h4 className="text-3xl font-bold text-gray-900 mb-4">02. Our Values</h4>
                 <p className="text-xl font-medium text-gray-600 text-center max-w-2xl">
-                  빅플래너파트너스는 신축 및 부동산 개발의 BIG Risk 세 가지를 해소합니다.
+                  {language === 'ko'
+                    ? "빅플래너파트너스는 신축 및 부동산 개발의 BIG Risk 세 가지를 해소합니다."
+                    : "BIGPLANNER PARTNERS resolves the three BIG Risks of new construction and real estate development."}
                 </p>
               </div>
 
@@ -186,14 +260,20 @@ export default function About() {
                   <div className="flex-1 flex flex-col items-center group">
                     <div className="w-full bg-gray-100 p-6 rounded-t-2xl border-b-4 border-gray-300 text-center transition-colors group-hover:bg-gray-200">
                       <h5 className="font-bold text-gray-500 mb-1">BIG RISK 1</h5>
-                      <h6 className="text-2xl font-black text-gray-900">불확실함</h6>
+                      <h6 className="text-2xl font-black text-gray-900">{language === 'ko' ? '불확실함' : 'Uncertainty'}</h6>
                     </div>
                     <div className="py-4 text-gray-400">
                       <ArrowDown size={24} className="md:hidden" />
                       <ArrowDown size={24} className="hidden md:block" />
                     </div>
                     <div className="w-full bg-white p-6 rounded-b-2xl shadow-md border border-gray-100 text-center flex-1 flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                      <p className="text-gray-700 font-medium">철저한 기획과 계획을 통해<br/>안정적으로 사업을 추진</p>
+                      <p className="text-gray-700 font-medium">
+                        {language === 'ko' ? (
+                          <>철저한 기획과 계획을 통해<br/>안정적으로 사업을 추진</>
+                        ) : (
+                          <>Stable project execution through<br/>thorough planning and design</>
+                        )}
+                      </p>
                     </div>
                   </div>
 
@@ -201,14 +281,20 @@ export default function About() {
                   <div className="flex-1 flex flex-col items-center group">
                     <div className="w-full bg-gray-100 p-6 rounded-t-2xl border-b-4 border-gray-300 text-center transition-colors group-hover:bg-gray-200">
                       <h5 className="font-bold text-gray-500 mb-1">BIG RISK 2</h5>
-                      <h6 className="text-2xl font-black text-gray-900">불편함</h6>
+                      <h6 className="text-2xl font-black text-gray-900">{language === 'ko' ? '불편함' : 'Inconvenience'}</h6>
                     </div>
                     <div className="py-4 text-gray-400">
                       <ArrowDown size={24} className="md:hidden" />
                       <ArrowDown size={24} className="hidden md:block" />
                     </div>
                     <div className="w-full bg-white p-6 rounded-b-2xl shadow-md border border-gray-100 text-center flex-1 flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                      <p className="text-gray-700 font-medium">공사과정의 다양한 시공관리 업무를<br/>체계적으로 대행</p>
+                      <p className="text-gray-700 font-medium">
+                        {language === 'ko' ? (
+                          <>공사과정의 다양한 시공관리 업무를<br/>체계적으로 대행</>
+                        ) : (
+                          <>Systematically acting as an agent for<br/>various construction management tasks</>
+                        )}
+                      </p>
                     </div>
                   </div>
 
@@ -216,14 +302,20 @@ export default function About() {
                   <div className="flex-1 flex flex-col items-center group">
                     <div className="w-full bg-gray-100 p-6 rounded-t-2xl border-b-4 border-gray-300 text-center transition-colors group-hover:bg-gray-200">
                       <h5 className="font-bold text-gray-500 mb-1">BIG RISK 3</h5>
-                      <h6 className="text-2xl font-black text-gray-900">불안함</h6>
+                      <h6 className="text-2xl font-black text-gray-900">{language === 'ko' ? '불안함' : 'Anxiety'}</h6>
                     </div>
                     <div className="py-4 text-gray-400">
                       <ArrowDown size={24} className="md:hidden" />
                       <ArrowDown size={24} className="hidden md:block" />
                     </div>
                     <div className="w-full bg-white p-6 rounded-b-2xl shadow-md border border-gray-100 text-center flex-1 flex items-center justify-center group-hover:shadow-lg transition-shadow">
-                      <p className="text-gray-700 font-medium">성공적인 사업완수를 위한<br/>TOTAL SERVICE를 제공</p>
+                      <p className="text-gray-700 font-medium">
+                        {language === 'ko' ? (
+                          <>성공적인 사업완수를 위한<br/>TOTAL SERVICE를 제공</>
+                        ) : (
+                          <>Providing TOTAL SERVICE for<br/>successful project completion</>
+                        )}
+                      </p>
                     </div>
                   </div>
 
@@ -231,10 +323,12 @@ export default function About() {
                 
                 <div className="mt-12 text-center">
                   <div className="inline-block bg-gray-900 text-white px-8 py-4 rounded-full shadow-xl font-bold text-lg">
-                    상호간의 동반성장 추구
+                    {language === 'ko' ? '상호간의 동반성장 추구' : 'Pursuing Mutual Growth'}
                   </div>
                   <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
-                    빅플래너파트너스는 고객을 단순한 사업의 대상이 아닌 파트너십을 통하여 상호간의 동반성장을 추구합니다.
+                    {language === 'ko'
+                      ? "빅플래너파트너스는 고객을 단순한 사업의 대상이 아닌 파트너십을 통하여 상호간의 동반성장을 추구합니다."
+                      : "BIGPLANNER PARTNERS pursues mutual growth through partnership, not just treating clients as business targets."}
                   </p>
                 </div>
               </div>
@@ -253,7 +347,9 @@ export default function About() {
                 </div>
                 <h4 className="text-3xl font-bold text-gray-900 mb-4">03. Our Service</h4>
                 <p className="text-xl font-medium text-gray-600 text-center max-w-2xl">
-                  빅플래너파트너스는 고객의 BIG PLAN을 체계적으로 수행하여 완수합니다.
+                  {language === 'ko'
+                    ? "빅플래너파트너스는 고객의 BIG PLAN을 체계적으로 수행하여 완수합니다."
+                    : "BIGPLANNER PARTNERS systematically executes and completes clients' BIG PLANs."}
                 </p>
               </div>
 
@@ -262,7 +358,9 @@ export default function About() {
                 {/* Roof */}
                 <div className="bg-gray-900 text-white p-6 rounded-t-3xl text-center shadow-lg relative z-10 mx-4 md:mx-0">
                   <h5 className="text-2xl font-bold tracking-widest">BIG PLAN</h5>
-                  <p className="text-gray-300 text-sm mt-1">고객의 성공적인 부동산 개발 및 운영</p>
+                  <p className="text-gray-300 text-sm mt-1">
+                    {language === 'ko' ? '고객의 성공적인 부동산 개발 및 운영' : 'Successful Real Estate Development and Operation for Clients'}
+                  </p>
                 </div>
                 
                 {/* Pillars */}
@@ -275,15 +373,21 @@ export default function About() {
                     <ul className="space-y-4 flex-1">
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">안정성과 고수익을 목표로 다양한 기업과 연계한 고객 권익 극대화</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '안정성과 고수익을 목표로 다양한 기업과 연계한 고객 권익 극대화' : 'Maximizing client rights and interests in connection with various companies aiming for stability and high returns'}
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">고객에게 필요한 자금에 맞춰진 체계적인 금융기획</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '고객에게 필요한 자금에 맞춰진 체계적인 금융기획' : 'Systematic financial planning tailored to the funds needed by clients'}
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">분양과 임차를 빠르고 정확하게 연결해 주는 입체적인 마케팅</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '분양과 임차를 빠르고 정확하게 연결해 주는 입체적인 마케팅' : 'Three-dimensional marketing that quickly and accurately connects sales and leases'}
+                        </span>
                       </li>
                     </ul>
                   </div>
@@ -296,19 +400,27 @@ export default function About() {
                     <ul className="space-y-4 flex-1">
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">완벽한 기획을 바탕으로 디자인부터 시공까지 효율적이고 효과적인 개발운영</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '완벽한 기획을 바탕으로 디자인부터 시공까지 효율적이고 효과적인 개발운영' : 'Efficient and effective development operation from design to construction based on perfect planning'}
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">체계적이고 꼼꼼한 시공관리용 '건축비서APP' 기반으로 건축주의 권익 보호</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? "체계적이고 꼼꼼한 시공관리용 '건축비서APP' 기반으로 건축주의 권익 보호" : "Protecting the rights and interests of the client based on the 'Architecture Secretary APP' for systematic and meticulous construction management"}
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">PM 서비스 특장점: 체계적인 분석과 사업 수익성을 확보할 수 있는 Total Construction Service</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? 'PM 서비스 특장점: 체계적인 분석과 사업 수익성을 확보할 수 있는 Total Construction Service' : 'PM Service Advantages: Total Construction Service that secures systematic analysis and business profitability'}
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">건축비서 APP 특장점: 빅플래너파트너스의 시공관리는 ‘건축비서 app’을 통해 편하게 관리 가능</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '건축비서 APP 특장점: 빅플래너파트너스의 시공관리는 ‘건축비서 app’을 통해 편하게 관리 가능' : "Architecture Secretary APP Advantages: BIGPLANNER PARTNERS' construction management can be easily managed through the 'Architecture Secretary app'"}
+                        </span>
                       </li>
                     </ul>
                   </div>
@@ -321,15 +433,21 @@ export default function About() {
                     <ul className="space-y-4 flex-1">
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">우량 시공사 및 하도급 업체 Pool을 기반으로 최적의 시공업체 선정</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '우량 시공사 및 하도급 업체 Pool을 기반으로 최적의 시공업체 선정' : 'Selecting the optimal construction company based on a pool of excellent construction companies and subcontractors'}
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">시공과정에서 발생 가능한 Risk를 사전에 예방할 수 있는 안전장치 체결</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '시공과정에서 발생 가능한 Risk를 사전에 예방할 수 있는 안전장치 체결' : 'Signing safety devices to prevent risks that may occur during the construction process in advance'}
+                        </span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="text-gray-400 mt-1 mr-2 flex-shrink-0" size={16} />
-                        <span className="text-gray-600 text-sm">에스크로 방식을 통한 투명한 대금결제 운영</span>
+                        <span className="text-gray-600 text-sm">
+                          {language === 'ko' ? '에스크로 방식을 통한 투명한 대금결제 운영' : 'Transparent payment operation through escrow method'}
+                        </span>
                       </li>
                     </ul>
                   </div>

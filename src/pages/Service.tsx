@@ -11,6 +11,7 @@ import ContactCTA from '../components/ContactCTA';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PMTasks from '../components/PMTasks';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const tabs = [
   { id: 'consulting', label: 'BIG Consulting' },
@@ -20,25 +21,55 @@ const tabs = [
 
 export default function Service() {
   const [activeTab, setActiveTab] = useState('consulting');
+  const { language } = useLanguage();
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
       <Helmet>
-        <title>서비스 | 빅플래너파트너스</title>
-        <meta name="description" content="빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." />
-        <meta name="keywords" content="빅플래너파트너스, 서비스, 부동산컨설팅, PM, 프로젝트관리, 부동산금융" />
+        <title>{language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'}</title>
+        <meta name="description" content={language === 'ko' ? "빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." : "Check out BIGPLANNER PARTNERS' real estate consulting, PM (Project Management), and financial solutions. We provide professional services that maximize space value."} />
+        <meta name="keywords" content="빅플래너파트너스, 서비스, 부동산컨설팅, PM, 프로젝트관리, 부동산금융, BIGPLANNER PARTNERS, Services, Real Estate Consulting, PM, Project Management, Real Estate Finance" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/service" />
+        <meta property="og:title" content={language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'} />
+        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." : "Check out BIGPLANNER PARTNERS' real estate consulting, PM (Project Management), and financial solutions. We provide professional services that maximize space value."} />
+        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
+
         <script type="application/ld+json">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "빅플래너파트너스 서비스",
-              "provider": {
-                "@type": "Organization",
-                "name": "빅플래너파트너스"
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                "name": "${language === 'ko' ? '빅플래너파트너스 서비스' : 'BIGPLANNER PARTNERS Services'}",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}"
+                },
+                "description": "${language === 'ko' ? '부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 제공합니다.' : 'We provide real estate consulting, PM, and financial solutions.'}",
+                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/service"
               },
-              "description": "부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 제공합니다."
-            }
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "${language === 'ko' ? '홈' : 'Home'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "${language === 'ko' ? '서비스' : 'Services'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/service"
+                  }
+                ]
+              }
+            ]
           `}
         </script>
       </Helmet>
@@ -48,7 +79,9 @@ export default function Service() {
       <div className="bg-white py-16 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Service</h1>
-          <p className="text-lg text-gray-600">부동산과 공간 가치를 높이는 빅플래너파트너스의 서비스</p>
+          <p className="text-lg text-gray-600">
+            {language === 'ko' ? '부동산과 공간 가치를 높이는 빅플래너파트너스의 서비스' : "BIGPLANNER PARTNERS' services that enhance real estate and space value"}
+          </p>
         </div>
       </div>
 
@@ -86,9 +119,11 @@ export default function Service() {
               {/* 01. Value Chain Diagram */}
               <div className="py-12">
                 <div className="text-center mb-20">
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">밸류 체인</h3>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">{language === 'ko' ? '밸류 체인' : 'Value Chain'}</h3>
                   <p className="text-gray-900 leading-relaxed max-w-3xl mx-auto text-sm md:text-base font-medium">
-                    새로운 공간창조(Buildup), 공간경험개선(Insight), 이익확보(Gains)라는 가치창출을 부동산 및 공간 생애주기(Life Cycle)에 맞춰 ‘BIG 컨설팅 솔루션’을 통해 제공합니다.
+                    {language === 'ko'
+                      ? "새로운 공간창조(Buildup), 공간경험개선(Insight), 이익확보(Gains)라는 가치창출을 부동산 및 공간 생애주기(Life Cycle)에 맞춰 ‘BIG 컨설팅 솔루션’을 통해 제공합니다."
+                      : "We provide value creation of new space creation (Buildup), space experience improvement (Insight), and profit securing (Gains) through the 'BIG Consulting Solution' tailored to the real estate and space life cycle."}
                   </p>
                 </div>
                 
@@ -125,9 +160,19 @@ export default function Service() {
                           <span className="text-sm font-bold text-gray-900">Buildup</span>
                         </div>
                         <div className="text-[13px] text-gray-500 space-y-1.5 font-medium">
-                          <p>· 건축투자 컨설팅</p>
-                          <p>· 신축개발 컨설팅</p>
-                          <p>· 자산운영 컨설팅</p>
+                          {language === 'ko' ? (
+                            <>
+                              <p>· 건축투자 컨설팅</p>
+                              <p>· 신축개발 컨설팅</p>
+                              <p>· 자산운영 컨설팅</p>
+                            </>
+                          ) : (
+                            <>
+                              <p>· Architecture Investment Consulting</p>
+                              <p>· New Construction Development Consulting</p>
+                              <p>· Asset Management Consulting</p>
+                            </>
+                          )}
                         </div>
                       </div>
 
@@ -138,10 +183,21 @@ export default function Service() {
                           <span className="text-sm font-bold text-gray-900">Insight</span>
                         </div>
                         <div className="text-[13px] text-gray-500 space-y-1.5 font-medium">
-                          <p>· 고객경험관리(CEM) 컨설팅</p>
-                          <p>· 공간개념정립(Scape Identity) 컨설팅</p>
-                          <p>· 서비스디자인(Service Design) 컨설팅</p>
-                          <p>· 넛지서비스(NUDGE SERVICE) 컨설팅</p>
+                          {language === 'ko' ? (
+                            <>
+                              <p>· 고객경험관리(CEM) 컨설팅</p>
+                              <p>· 공간개념정립(Scape Identity) 컨설팅</p>
+                              <p>· 서비스디자인(Service Design) 컨설팅</p>
+                              <p>· 넛지서비스(NUDGE SERVICE) 컨설팅</p>
+                            </>
+                          ) : (
+                            <>
+                              <p>· Customer Experience Management (CEM) Consulting</p>
+                              <p>· Scape Identity Consulting</p>
+                              <p>· Service Design Consulting</p>
+                              <p>· NUDGE SERVICE Consulting</p>
+                            </>
+                          )}
                         </div>
                       </div>
 
@@ -152,8 +208,17 @@ export default function Service() {
                           <span className="text-sm font-bold text-gray-900">Gains</span>
                         </div>
                         <div className="text-[13px] text-gray-500 space-y-1.5 font-medium">
-                          <p>· 매입 자문(개발기획)</p>
-                          <p>· 매각 자문(투자유치)</p>
+                          {language === 'ko' ? (
+                            <>
+                              <p>· 매입 자문(개발기획)</p>
+                              <p>· 매각 자문(투자유치)</p>
+                            </>
+                          ) : (
+                            <>
+                              <p>· Purchase Advisory (Development Planning)</p>
+                              <p>· Sale Advisory (Investment Attraction)</p>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -165,10 +230,19 @@ export default function Service() {
               <div className="py-20 bg-white rounded-[3rem]">
                 <div className="text-center mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">02. Frame</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">프레임 (Frame)</h4>
+                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '프레임 (Frame)' : 'Frame'}</h4>
                   <p className="text-gray-600 leading-relaxed max-w-xl mx-auto text-sm md:text-base">
-                    부동산 및 공간에 관련된 모든 문제에 대한 전문적인 자문 및<br />
-                    이해관계에 얽매이지 않는 편견없는 조언을 드립니다.
+                    {language === 'ko' ? (
+                      <>
+                        부동산 및 공간에 관련된 모든 문제에 대한 전문적인 자문 및<br />
+                        이해관계에 얽매이지 않는 편견없는 조언을 드립니다.
+                      </>
+                    ) : (
+                      <>
+                        We provide professional advice on all issues related to real estate and space and<br />
+                        unbiased advice that is not bound by interests.
+                      </>
+                    )}
                   </p>
                 </div>
                 
@@ -178,27 +252,32 @@ export default function Service() {
                     
                     {/* Labels inside dashed container */}
                     <div className="absolute top-8 left-1/2 -translate-x-1/2 text-gray-900 font-bold text-sm">
-                      컨설팅의뢰
+                      {language === 'ko' ? '컨설팅의뢰' : 'Consulting Request'}
                     </div>
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-900 font-bold text-sm">
-                      보고서 작성 및 제출
+                      {language === 'ko' ? '보고서 작성 및 제출' : 'Report Preparation and Submission'}
                     </div>
 
                     {/* Customer */}
                     <div className="w-40 h-40 rounded-full border border-gray-300 flex items-center justify-center font-bold text-gray-900 shadow-sm bg-white z-10">
-                      고객
+                      {language === 'ko' ? '고객' : 'Client'}
                     </div>
 
                     {/* Central Grid */}
                     <div className="flex-1 flex flex-col gap-4">
                       {/* Top Row (Dark Circles) */}
                       <div className="grid grid-cols-4 gap-2">
-                        {[
+                        {(language === 'ko' ? [
                           "부동산 최유효 이용방안 도출",
                           "입지분석 및 사업타당성 검토",
                           "부동산 투자 및 개발에 대한 자문",
                           "부동산 관련 각종 법적사항 및 세무자문"
-                        ].map((text, i) => (
+                        ] : [
+                          "Derive optimal real estate usage",
+                          "Location analysis & feasibility study",
+                          "Advisory on real estate investment & development",
+                          "Legal & tax advisory related to real estate"
+                        ]).map((text, i) => (
                           <div key={i} className="aspect-square rounded-full bg-gray-800 text-white flex items-center justify-center text-[9px] md:text-[11px] font-medium text-center p-1 leading-tight shadow-lg">
                             {text}
                           </div>
@@ -221,7 +300,11 @@ export default function Service() {
 
                     {/* BigPlanner */}
                     <div className="w-40 h-40 rounded-full border border-gray-300 flex flex-col items-center justify-center font-bold text-gray-900 shadow-sm bg-white z-10 text-center p-4">
-                      빅플래너<br/>파트너스
+                      {language === 'ko' ? (
+                        <>빅플래너<br/>파트너스</>
+                      ) : (
+                        <>BIGPLANNER<br/>PARTNERS</>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -231,11 +314,11 @@ export default function Service() {
               <div>
                 <div className="text-center mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">03. Process</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">프로세스 (Process)</h4>
+                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '프로세스 (Process)' : 'Process'}</h4>
                 </div>
                 
                 <div className="space-y-24 max-w-5xl mx-auto">
-                  {[
+                  {(language === 'ko' ? [
                     {
                       title: "Buildup",
                       subtitle: "건축투자 / 신축개발 / 자산운영",
@@ -269,7 +352,41 @@ export default function Service() {
                         { name: "Action", detail: "조건협의 지원,\n양해각서(MOU)\n계약체결 지원, 사후 관리" }
                       ]
                     }
-                  ].map((process, idx) => (
+                  ] : [
+                    {
+                      title: "Buildup",
+                      subtitle: "Architecture Investment / New Development / Asset Management",
+                      desc: "We pursue profit maximization of real estate investment projects through integrated project management from the planning stage by providing rational consulting based on expertise and know-how in architecture investment or new development.",
+                      steps: [
+                        { name: "Research", detail: "Identify Client NEEDS,\nSet Investment Scale" },
+                        { name: "Analysis", detail: "Environment Analysis, Case Review,\nBenchmarking Analysis,\nCASH FLOW Analysis" },
+                        { name: "Strategy", detail: "Feasibility Analysis, Cost Estimation,\nStrategy Formulation,\nFinancing Plan" },
+                        { name: "Action", detail: "Permit Management, Project Management,\nCost Management, Contract Management,\nEXIT Strategy Formulation" }
+                      ]
+                    },
+                    {
+                      title: "Insight",
+                      subtitle: "Customer Experience / Space Value / Service Design",
+                      desc: "We provide solutions that can maximize the customer's space value through systematic consulting on improvement plans for human, physical, and systemic elements experienced through space.",
+                      steps: [
+                        { name: "Research", detail: "Receive Request, Identify Client NEEDS\nUser Survey,\n(SURVEY, FGI, IDI)" },
+                        { name: "Analysis", detail: "SERVICE BLUEPRINT Analysis,\nVOC Analysis,\nCRITICAL MOT Analysis" },
+                        { name: "Strategy", detail: "Establish User Quality Requirements,\nEstablish SCAPE IDENTITY,\nDerive User Journey Map" },
+                        { name: "Action", detail: "Establish User Quality Requirements,\nEstablish SCAPE IDENTITY,\nDerive User Journey Map" }
+                      ]
+                    },
+                    {
+                      title: "Gains",
+                      subtitle: "Purchase / Sale Advisory",
+                      desc: "We proceed with the optimized real estate asset purchase and sale process by systematically grasping requirements such as the customer's investment propensity, thorough analysis and evaluation of assets, usage preferences, and prices.",
+                      steps: [
+                        { name: "Research", detail: "Receive Request,\nIdentify NEEDS,\nListen to Purchase/Sale Conditions" },
+                        { name: "Analysis", detail: "(Purchase) Source Prime Properties,\nAsset Due Diligence,\n(Sale) Calculate Appropriate Sale Price" },
+                        { name: "Strategy", detail: "(Purchase) Establish Purchase Plan,\nCalculate Appropriate Purchase Price,\n(Sale) Prepare IM & TEASER" },
+                        { name: "Action", detail: "Support Condition Negotiation,\nMOU\nSupport Contract Signing, Post-Management" }
+                      ]
+                    }
+                  ]).map((process, idx) => (
                     <div key={idx} className="space-y-8">
                       {/* Process Header */}
                       <div className="flex items-end gap-4">
@@ -322,8 +439,14 @@ export default function Service() {
               <div className="py-12">
                 <div className="text-center mb-20">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">BIG Management</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">PM 서비스 특장점</h4>
-                  <p className="text-lg text-gray-500">체계적인 분석과 사업 수익성을 확보할 수 있는<br/>TOTAL CONSTRUCTION SERVICE</p>
+                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? 'PM 서비스 특장점' : 'PM Service Features'}</h4>
+                  <p className="text-lg text-gray-500">
+                    {language === 'ko' ? (
+                      <>체계적인 분석과 사업 수익성을 확보할 수 있는<br/>TOTAL CONSTRUCTION SERVICE</>
+                    ) : (
+                      <>TOTAL CONSTRUCTION SERVICE that secures<br/>systematic analysis and business profitability</>
+                    )}
+                  </p>
                 </div>
                 
                 <div className="max-w-5xl mx-auto">
@@ -334,10 +457,14 @@ export default function Service() {
                       <div className="flex flex-col items-center flex-1">
                         <div className="w-40 h-40 rounded-full border-2 border-dashed border-gray-300 flex flex-col items-center justify-center mb-8 bg-white shadow-sm">
                           <Users size={40} className="text-gray-900 mb-2" />
-                          <span className="font-bold text-lg">전문가</span>
+                          <span className="font-bold text-lg">{language === 'ko' ? '전문가' : 'Expert'}</span>
                         </div>
                         <p className="text-sm text-gray-500 text-center leading-relaxed max-w-[200px]">
-                          빅플래너파트너스는<br/>신축개발사업에 필요한 전체 공정을<br/>건축주 입장에서 업무를 대행합니다.
+                          {language === 'ko' ? (
+                            <>빅플래너파트너스는<br/>신축개발사업에 필요한 전체 공정을<br/>건축주 입장에서 업무를 대행합니다.</>
+                          ) : (
+                            <>BIGPLANNER PARTNERS acts on behalf of the client for the entire process required for new development projects.</>
+                          )}
                         </p>
                       </div>
 
@@ -347,10 +474,14 @@ export default function Service() {
                       <div className="flex flex-col items-center flex-1">
                         <div className="w-40 h-40 rounded-full border-2 border-dashed border-gray-300 flex flex-col items-center justify-center mb-8 bg-white shadow-sm">
                           <Briefcase size={40} className="text-gray-900 mb-2" />
-                          <span className="font-bold text-lg">파트너</span>
+                          <span className="font-bold text-lg">{language === 'ko' ? '파트너' : 'Partner'}</span>
                         </div>
                         <p className="text-sm text-gray-500 text-center leading-relaxed max-w-[200px]">
-                          설계, 시공, 분양으로 구분되는<br/>서비스가 아닌 기획부터 사업종료시점까지<br/>함께하는 파트너입니다.
+                          {language === 'ko' ? (
+                            <>설계, 시공, 분양으로 구분되는<br/>서비스가 아닌 기획부터 사업종료시점까지<br/>함께하는 파트너입니다.</>
+                          ) : (
+                            <>We are a partner who is with you from planning to the end of the project, not a service divided into design, construction, and sales.</>
+                          )}
                         </p>
                       </div>
 
@@ -360,10 +491,14 @@ export default function Service() {
                       <div className="flex flex-col items-center flex-1">
                         <div className="w-40 h-40 rounded-full border-2 border-dashed border-gray-300 flex flex-col items-center justify-center mb-8 bg-white shadow-sm">
                           <ShieldCheck size={40} className="text-gray-900 mb-2" />
-                          <span className="font-bold text-lg">투명한</span>
+                          <span className="font-bold text-lg">{language === 'ko' ? '투명한' : 'Transparent'}</span>
                         </div>
                         <p className="text-sm text-gray-500 text-center leading-relaxed max-w-[200px]">
-                          모든 공정에 있어서 기획, 건설,<br/>금융 전문가들의 밀착자문과<br/>투명한 공정관리로 신뢰할 수 있습니다.
+                          {language === 'ko' ? (
+                            <>모든 공정에 있어서 기획, 건설,<br/>금융 전문가들의 밀착자문과<br/>투명한 공정관리로 신뢰할 수 있습니다.</>
+                          ) : (
+                            <>You can trust us with close advice from planning, construction, and financial experts and transparent process management in all processes.</>
+                          )}
                         </p>
                       </div>
                     </div>
@@ -377,9 +512,9 @@ export default function Service() {
               <div className="bg-white py-24 rounded-[4rem] shadow-sm border border-gray-100 overflow-hidden">
                 <div className="text-center mb-20">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">02. App Solution</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">건축비서 APP 특장점</h4>
+                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '건축비서 APP 특장점' : 'Architecture Secretary APP Features'}</h4>
                   <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                    빅플래너파트너스의 시공관리는 ‘건축비서 app’을 통해 실시간으로 투명하게 관리하실 수 있습니다.
+                    {language === 'ko' ? '빅플래너파트너스의 시공관리는 ‘건축비서 app’을 통해 실시간으로 투명하게 관리하실 수 있습니다.' : "BIGPLANNER PARTNERS' construction management can be managed transparently in real-time through the 'Architecture Secretary app'."}
                   </p>
                 </div>
 
@@ -388,8 +523,8 @@ export default function Service() {
                   <div className="flex-1 space-y-12 w-full order-2 lg:order-1">
                     <div className="flex items-start text-right justify-end group">
                       <div className="mr-8">
-                        <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">실시간 현장 모니터링</h5>
-                        <p className="text-gray-500 text-sm leading-relaxed">언제 어디서나 스마트폰으로 현장 상황을 실시간으로 확인하고 관리할 수 있습니다.</p>
+                        <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">{language === 'ko' ? '실시간 현장 모니터링' : 'Real-time Site Monitoring'}</h5>
+                        <p className="text-gray-500 text-sm leading-relaxed">{language === 'ko' ? '언제 어디서나 스마트폰으로 현장 상황을 실시간으로 확인하고 관리할 수 있습니다.' : 'You can check and manage the site situation in real time with your smartphone anytime, anywhere.'}</p>
                       </div>
                       <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-gray-900 group-hover:text-white transition-all shadow-sm">
                         <Smartphone size={28} />
@@ -397,8 +532,8 @@ export default function Service() {
                     </div>
                     <div className="flex items-start text-right justify-end group">
                       <div className="mr-8">
-                        <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">투명한 공정 관리</h5>
-                        <p className="text-gray-500 text-sm leading-relaxed">공정률, 자재 투입 현황, 노무 현황 등 모든 데이터를 투명하게 공개하여 신뢰를 높입니다.</p>
+                        <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">{language === 'ko' ? '투명한 공정 관리' : 'Transparent Process Management'}</h5>
+                        <p className="text-gray-500 text-sm leading-relaxed">{language === 'ko' ? '공정률, 자재 투입 현황, 노무 현황 등 모든 데이터를 투명하게 공개하여 신뢰를 높입니다.' : 'We increase trust by transparently disclosing all data such as process rate, material input status, and labor status.'}</p>
                       </div>
                       <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-gray-900 group-hover:text-white transition-all shadow-sm">
                         <CheckSquare size={28} />
@@ -406,8 +541,8 @@ export default function Service() {
                     </div>
                     <div className="flex items-start text-right justify-end group">
                       <div className="mr-8">
-                        <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">빠른 의사소통 및 피드백</h5>
-                        <p className="text-gray-500 text-sm leading-relaxed">현장 소장 및 담당자와 앱 내에서 즉각적으로 소통하고 신속한 의사결정을 지원합니다.</p>
+                        <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">{language === 'ko' ? '빠른 의사소통 및 피드백' : 'Fast Communication and Feedback'}</h5>
+                        <p className="text-gray-500 text-sm leading-relaxed">{language === 'ko' ? '현장 소장 및 담당자와 앱 내에서 즉각적으로 소통하고 신속한 의사결정을 지원합니다.' : 'We support quick decision-making by communicating instantly with the site manager and person in charge within the app.'}</p>
                       </div>
                       <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-gray-900 group-hover:text-white transition-all shadow-sm">
                         <Users size={28} />
@@ -433,15 +568,15 @@ export default function Service() {
                             <X size={16} />
                           </div>
                         </div>
-                        <h6 className="text-lg font-bold mb-1">현장 리포트</h6>
-                        <p className="text-white/50 text-[10px]">2024.03.16 실시간 현황</p>
+                        <h6 className="text-lg font-bold mb-1">{language === 'ko' ? '현장 리포트' : 'Site Report'}</h6>
+                        <p className="text-white/50 text-[10px]">{language === 'ko' ? '2024.03.16 실시간 현황' : '2024.03.16 Real-time Status'}</p>
                       </div>
                       
                       {/* App Body */}
                       <div className="flex-1 p-5 space-y-4 bg-gray-50 overflow-y-auto">
                         <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                           <div className="flex justify-between items-center mb-3">
-                            <span className="text-[10px] font-bold text-gray-400">전체 공정률</span>
+                            <span className="text-[10px] font-bold text-gray-400">{language === 'ko' ? '전체 공정률' : 'Total Process Rate'}</span>
                             <span className="text-xs font-bold text-gray-900">78%</span>
                           </div>
                           <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
@@ -454,20 +589,20 @@ export default function Service() {
                             <div className="w-6 h-6 bg-gray-50 rounded-lg flex items-center justify-center mb-2">
                               <Users size={12} className="text-gray-400" />
                             </div>
-                            <span className="block text-[8px] text-gray-400">오늘의 인력</span>
-                            <span className="text-xs font-bold">12명</span>
+                            <span className="block text-[8px] text-gray-400">{language === 'ko' ? '오늘의 인력' : "Today's Manpower"}</span>
+                            <span className="text-xs font-bold">{language === 'ko' ? '12명' : '12 People'}</span>
                           </div>
                           <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                             <div className="w-6 h-6 bg-gray-50 rounded-lg flex items-center justify-center mb-2">
                               <AlertCircle size={12} className="text-gray-400" />
                             </div>
-                            <span className="block text-[8px] text-gray-400">특이사항</span>
-                            <span className="text-xs font-bold">0건</span>
+                            <span className="block text-[8px] text-gray-400">{language === 'ko' ? '특이사항' : 'Special Notes'}</span>
+                            <span className="text-xs font-bold">{language === 'ko' ? '0건' : '0 Cases'}</span>
                           </div>
                         </div>
                         
                         <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-                          <span className="block text-[10px] font-bold text-gray-400 mb-3">현장 사진</span>
+                          <span className="block text-[10px] font-bold text-gray-400 mb-3">{language === 'ko' ? '현장 사진' : 'Site Photos'}</span>
                           <div className="grid grid-cols-2 gap-2">
                             <div className="aspect-square bg-gray-100 rounded-lg"></div>
                             <div className="aspect-square bg-gray-100 rounded-lg"></div>
@@ -497,9 +632,9 @@ export default function Service() {
               <div>
                 <div className="text-center mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">01. Safety Contract</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">안전계약</h4>
+                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '안전계약' : 'Safety Contract'}</h4>
                   <p className="text-gray-600 max-w-3xl mx-auto">
-                    빅플래너파트너스는 건축주(시행사)에게 필요한 특약사항을 모두 고려한 표준계약서를 기준으로 전자계약방식으로 착공 전 시공사 및 하청업체와 발생가능한 분쟁을 대비합니다.
+                    {language === 'ko' ? '빅플래너파트너스는 건축주(시행사)에게 필요한 특약사항을 모두 고려한 표준계약서를 기준으로 전자계약방식으로 착공 전 시공사 및 하청업체와 발생가능한 분쟁을 대비합니다.' : 'BIGPLANNER PARTNERS prepares for possible disputes with construction companies and subcontractors before construction begins through an electronic contract method based on a standard contract that considers all special conditions necessary for the client (developer).'}
                   </p>
                 </div>
 
@@ -512,16 +647,21 @@ export default function Service() {
                     </div>
                     <h5 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
                       <span className="w-2 h-8 bg-gray-300 mr-4 rounded-full"></span>
-                      일반적인 시공계약구조
+                      {language === 'ko' ? '일반적인 시공계약구조' : 'General Construction Contract Structure'}
                     </h5>
                     
                     <div className="space-y-6">
-                      {[
+                      {(language === 'ko' ? [
                         "건축주는 시공사(건설사)와 도급계약을 체결함",
                         "도급공사비의 상당부분 공종별 하도급 업체에 지불, 건축주는 하도급 계약 관여 불가",
                         "시공사가 하도급 공사비 지연 및 미지급하는 경우, 유치권 행사, 준공지연 등 문제 발생",
                         "하도급 업체의 공사거부, 공사비 증액요구 등 피해가 건축주에게 발생"
-                      ].map((text, i) => (
+                      ] : [
+                        "The client signs a contract with the construction company",
+                        "A significant portion of the contract cost is paid to subcontractors by trade, and the client cannot be involved in subcontracting",
+                        "If the construction company delays or fails to pay subcontracting costs, problems such as exercise of lien and delay in completion occur",
+                        "Damages such as refusal of construction and request for an increase in construction cost by subcontractors occur to the client"
+                      ]).map((text, i) => (
                         <div key={i} className="flex gap-4 items-start">
                           <div className="mt-1 text-gray-300"><X size={18} /></div>
                           <p className="text-gray-500 text-sm leading-relaxed">{text}</p>
@@ -537,17 +677,23 @@ export default function Service() {
                     </div>
                     <h5 className="text-2xl font-bold text-white mb-8 flex items-center">
                       <span className="w-2 h-8 bg-white mr-4 rounded-full"></span>
-                      빅플래너파트너스 시공계약구조
+                      {language === 'ko' ? '빅플래너파트너스 시공계약구조' : 'BIGPLANNER PARTNERS Construction Contract Structure'}
                     </h5>
                     
                     <div className="space-y-6">
-                      {[
+                      {(language === 'ko' ? [
                         "빅플래너파트너스와 계약을 기반으로 신축공사에 필요한 모든 계약을 일원화",
                         "하도급 업체에 하도급비용을 직접 지불하는 에스크로(Escrow) 방식으로 투명하게 운영",
                         "1군 시공사들의 책임준공에 준하는 계약체계를 시공사와 하청업체까지 구축",
                         "우량한 적합업체 Pool을 선정하고 해당 Pool 내에서 입찰로 업체 선정",
                         "건설과정에서 발생할 수 있는 유치권에 대한 Risk를 해소할 수 있는 계약체계"
-                      ].map((text, i) => (
+                      ] : [
+                        "Unify all contracts necessary for new construction based on the contract with BIGPLANNER PARTNERS",
+                        "Operate transparently with an Escrow method that pays subcontracting costs directly to subcontractors",
+                        "Establish a contract system equivalent to the responsible completion of tier 1 construction companies up to construction companies and subcontractors",
+                        "Select an excellent suitable company pool and select a company through bidding within the pool",
+                        "A contract system that can resolve the risk of lien that may occur during the construction process"
+                      ]).map((text, i) => (
                         <div key={i} className="flex gap-4 items-start">
                           <div className="mt-1 text-white/40"><CheckCircle2 size={18} /></div>
                           <p className="text-gray-400 text-sm leading-relaxed">{text}</p>
@@ -560,12 +706,12 @@ export default function Service() {
                 {/* Safety Devices Grid */}
                 <div className="bg-white p-16 rounded-[4rem] shadow-sm border border-gray-100 max-w-6xl mx-auto">
                   <div className="text-center mb-12">
-                    <h4 className="text-2xl font-bold text-gray-900 mb-3">빅플래너파트너스 안전장치</h4>
-                    <p className="text-gray-500">모든 계약은 철저한 8대 안전장치를 통해 보호받습니다.</p>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-3">{language === 'ko' ? '빅플래너파트너스 안전장치' : 'BIGPLANNER PARTNERS Safety Devices'}</h4>
+                    <p className="text-gray-500">{language === 'ko' ? '모든 계약은 철저한 8대 안전장치를 통해 보호받습니다.' : 'All contracts are protected through 8 thorough safety devices.'}</p>
                   </div>
                   
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    {[
+                    {(language === 'ko' ? [
                       { title: 'NICE다큐 전자계약', desc: '모든 계약은 안전하게 전자계약으로 체결', icon: <FileSignature /> },
                       { title: '계약이행 보증증권', desc: '계약 미이행 시 보증', icon: <ShieldCheck /> },
                       { title: '선급금 보증증권', desc: '선급금 유용 시 손해보상', icon: <Banknote /> },
@@ -574,7 +720,16 @@ export default function Service() {
                       { title: '지체보상금', desc: '준공일자 지연 시 보상', icon: <AlertCircle /> },
                       { title: '유치권 포기각서', desc: '유치권 행사 불가 확약', icon: <FileText /> },
                       { title: '시공대표자 연대보증', desc: '책임의무 강제화', icon: <Users /> }
-                    ].map((item, i) => (
+                    ] : [
+                      { title: 'NICE Docu Electronic Contract', desc: 'All contracts are safely signed electronically', icon: <FileSignature /> },
+                      { title: 'Contract Performance Guarantee Insurance', desc: 'Guarantee in case of non-performance of contract', icon: <ShieldCheck /> },
+                      { title: 'Advance Payment Guarantee Insurance', desc: 'Compensation for damages in case of misappropriation of advance payment', icon: <Banknote /> },
+                      { title: 'Defect Performance Guarantee Insurance', desc: 'Responsibility for defect guarantee period after completion', icon: <CheckSquare /> },
+                      { title: 'Completion Repair Deposit', desc: 'Preparation for defect occurrence and processing delay', icon: <Wallet /> },
+                      { title: 'Delay Compensation', desc: 'Compensation for delay in completion date', icon: <AlertCircle /> },
+                      { title: 'Memorandum of Renunciation of Lien', desc: 'Commitment not to exercise lien', icon: <FileText /> },
+                      { title: 'Joint Guarantee by Construction Representative', desc: 'Enforcement of responsibility obligation', icon: <Users /> }
+                    ]).map((item, i) => (
                       <div key={i} className="bg-gray-50 p-8 rounded-3xl text-center hover:bg-gray-900 hover:text-white transition-all duration-500 group border border-gray-100">
                         <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-gray-400 group-hover:text-white group-hover:bg-white/10 shadow-sm transition-all">
                           {item.icon}
@@ -591,9 +746,9 @@ export default function Service() {
               <div className="pt-12 border-t border-gray-100">
                 <div className="text-center mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">02. Payment Management</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">대금관리 프로세스</h4>
+                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '대금관리 프로세스' : 'Payment Management Process'}</h4>
                   <p className="text-gray-600 max-w-2xl mx-auto">
-                    NICE D&R 노무비닷컴과 업무제휴하여 에스크로 방식으로 공사대금을 안전하게 관리합니다.
+                    {language === 'ko' ? 'NICE D&R 노무비닷컴과 업무제휴하여 에스크로 방식으로 공사대금을 안전하게 관리합니다.' : 'We safely manage construction costs in an escrow method through business alliance with NICE D&R Nomubi.com.'}
                   </p>
                 </div>
 
@@ -607,8 +762,14 @@ export default function Service() {
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 text-white rounded-full text-[10px] font-bold flex items-center justify-center group-hover:bg-white group-hover:text-gray-900 transition-colors">1</div>
                       </div>
                       <div className="text-center">
-                        <h6 className="text-sm font-bold text-gray-900 mb-1">회원가입 및 계좌개설</h6>
-                        <p className="text-[10px] text-gray-500">건설사/하도급업체 가입<br/>건축주 전용계좌 개설</p>
+                        <h6 className="text-sm font-bold text-gray-900 mb-1">{language === 'ko' ? '회원가입 및 계좌개설' : 'Sign Up & Open Account'}</h6>
+                        <p className="text-[10px] text-gray-500">
+                          {language === 'ko' ? (
+                            <>건설사/하도급업체 가입<br/>건축주 전용계좌 개설</>
+                          ) : (
+                            <>Construction/Subcontractor Sign Up<br/>Open Client Dedicated Account</>
+                          )}
+                        </p>
                       </div>
                     </div>
 
@@ -624,8 +785,14 @@ export default function Service() {
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 text-white rounded-full text-[10px] font-bold flex items-center justify-center group-hover:bg-white group-hover:text-gray-900 transition-colors">2</div>
                       </div>
                       <div className="text-center">
-                        <h6 className="text-sm font-bold text-gray-900 mb-1">청구내역서 작성</h6>
-                        <p className="text-[10px] text-gray-500">노무비닷컴 시스템에<br/>기성 청구내역서 작성</p>
+                        <h6 className="text-sm font-bold text-gray-900 mb-1">{language === 'ko' ? '청구내역서 작성' : 'Create Billing Statement'}</h6>
+                        <p className="text-[10px] text-gray-500">
+                          {language === 'ko' ? (
+                            <>노무비닷컴 시스템에<br/>기성 청구내역서 작성</>
+                          ) : (
+                            <>Create progress billing statement<br/>in Nomubi.com system</>
+                          )}
+                        </p>
                       </div>
                     </div>
 
@@ -641,8 +808,14 @@ export default function Service() {
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 text-white rounded-full text-[10px] font-bold flex items-center justify-center group-hover:bg-white group-hover:text-gray-900 transition-colors">3</div>
                       </div>
                       <div className="text-center">
-                        <h6 className="text-sm font-bold text-gray-900 mb-1">검토 및 승인</h6>
-                        <p className="text-[10px] text-gray-500">건축주 청구내역서 검토 후<br/>승인 또는 반려</p>
+                        <h6 className="text-sm font-bold text-gray-900 mb-1">{language === 'ko' ? '검토 및 승인' : 'Review & Approve'}</h6>
+                        <p className="text-[10px] text-gray-500">
+                          {language === 'ko' ? (
+                            <>건축주 청구내역서 검토 후<br/>승인 또는 반려</>
+                          ) : (
+                            <>Approve or reject after<br/>reviewing client billing statement</>
+                          )}
+                        </p>
                       </div>
                     </div>
 
@@ -658,8 +831,14 @@ export default function Service() {
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 text-white rounded-full text-[10px] font-bold flex items-center justify-center group-hover:bg-white group-hover:text-gray-900 transition-colors">4</div>
                       </div>
                       <div className="text-center">
-                        <h6 className="text-sm font-bold text-gray-900 mb-1">기성대금 지급</h6>
-                        <p className="text-[10px] text-gray-500">승인된 금액을 전용계좌에<br/>기성대금 지급(현금이체)</p>
+                        <h6 className="text-sm font-bold text-gray-900 mb-1">{language === 'ko' ? '기성대금 지급' : 'Pay Progress Payment'}</h6>
+                        <p className="text-[10px] text-gray-500">
+                          {language === 'ko' ? (
+                            <>승인된 금액을 전용계좌에<br/>기성대금 지급(현금이체)</>
+                          ) : (
+                            <>Pay progress payment (cash transfer)<br/>of approved amount to dedicated account</>
+                          )}
+                        </p>
                       </div>
                     </div>
 
@@ -675,8 +854,14 @@ export default function Service() {
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 text-white rounded-full text-[10px] font-bold flex items-center justify-center group-hover:bg-white group-hover:text-gray-900 transition-colors">5</div>
                       </div>
                       <div className="text-center">
-                        <h6 className="text-sm font-bold text-gray-900 mb-1">하도급대금 이체실행</h6>
-                        <p className="text-[10px] text-gray-500">입금된 기성대금을<br/>하도급대금으로 이체</p>
+                        <h6 className="text-sm font-bold text-gray-900 mb-1">{language === 'ko' ? '하도급대금 이체실행' : 'Execute Subcontract Payment Transfer'}</h6>
+                        <p className="text-[10px] text-gray-500">
+                          {language === 'ko' ? (
+                            <>입금된 기성대금을<br/>하도급대금으로 이체</>
+                          ) : (
+                            <>Transfer deposited progress payment<br/>to subcontract payment</>
+                          )}
+                        </p>
                       </div>
                     </div>
 
@@ -692,16 +877,31 @@ export default function Service() {
                         <div className="absolute -top-2 -right-2 w-6 h-6 bg-white text-gray-900 rounded-full text-[10px] font-bold flex items-center justify-center border border-gray-900">6</div>
                       </div>
                       <div className="text-center">
-                        <h6 className="text-sm font-bold text-gray-900 mb-1">지급내역 확인</h6>
-                        <p className="text-[10px] text-gray-500">지급된 내역 실시간 확인<br/><span className="text-gray-900 font-bold">임의해지 및 인출 제한</span></p>
+                        <h6 className="text-sm font-bold text-gray-900 mb-1">{language === 'ko' ? '지급내역 확인' : 'Check Payment Details'}</h6>
+                        <p className="text-[10px] text-gray-500">
+                          {language === 'ko' ? (
+                            <>지급된 내역 실시간 확인<br/><span className="text-gray-900 font-bold">임의해지 및 인출 제한</span></>
+                          ) : (
+                            <>Real-time check of paid details<br/><span className="text-gray-900 font-bold">Restriction on arbitrary termination and withdrawal</span></>
+                          )}
+                        </p>
                       </div>
                     </div>
                   </div>
                   
                   <div className="mt-16 bg-gray-50 p-8 rounded-3xl border border-gray-200 text-center">
                     <p className="text-sm text-gray-500 leading-relaxed">
-                      모든 대금은 <strong className="text-gray-900">NICE D&R 노무비닷컴</strong>의 에스크로 시스템을 통해 투명하게 관리되며,<br/>
-                      시공사의 임의 인출이 불가능하여 하도급 업체와 노무비의 안전한 지급을 보장합니다.
+                      {language === 'ko' ? (
+                        <>
+                          모든 대금은 <strong className="text-gray-900">NICE D&R 노무비닷컴</strong>의 에스크로 시스템을 통해 투명하게 관리되며,<br/>
+                          시공사의 임의 인출이 불가능하여 하도급 업체와 노무비의 안전한 지급을 보장합니다.
+                        </>
+                      ) : (
+                        <>
+                          All payments are transparently managed through the escrow system of <strong className="text-gray-900">NICE D&R Nomubi.com</strong>, and<br/>
+                          arbitrary withdrawal by the construction company is impossible, ensuring safe payment of subcontractors and labor costs.
+                        </>
+                      )}
                     </p>
                   </div>
                 </div>

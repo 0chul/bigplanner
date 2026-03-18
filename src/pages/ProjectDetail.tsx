@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import ContactCTA from '../components/ContactCTA';
 import { supabase } from '../supabase';
 import { Project } from './Projects';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const SpecItem = ({ label, value }: { label: string, value: React.ReactNode }) => {
   if (!value) return null;
@@ -24,6 +25,7 @@ export default function ProjectDetail() {
   const [project, setProject] = useState<Project | null>(null);
   const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const fetchProjectAndAll = async () => {
@@ -69,7 +71,7 @@ export default function ProjectDetail() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white font-sans text-gray-900">
-        <div className="text-xl text-gray-500">프로젝트 정보를 불러오는 중입니다...</div>
+        <div className="text-xl text-gray-500">{language === 'ko' ? '프로젝트 정보를 불러오는 중입니다...' : 'Loading project information...'}</div>
       </div>
     );
   }
@@ -77,9 +79,9 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white font-sans text-gray-900">
-        <h1 className="text-4xl font-bold mb-4">프로젝트를 찾을 수 없습니다.</h1>
+        <h1 className="text-4xl font-bold mb-4">{language === 'ko' ? '프로젝트를 찾을 수 없습니다.' : 'Project not found.'}</h1>
         <Link to="/projects" className="text-blue-600 hover:underline">
-          프로젝트 목록으로 돌아가기
+          {language === 'ko' ? '프로젝트 목록으로 돌아가기' : 'Back to projects list'}
         </Link>
       </div>
     );
@@ -94,23 +96,59 @@ export default function ProjectDetail() {
     const num = parseFloat(m2.replace(/,/g, ''));
     if (isNaN(num)) return `${m2} ㎡`;
     const pyeong = (num * 0.3025).toFixed(1);
-    return `${m2} ㎡ (${pyeong} 평)`;
+    return `${m2} ㎡ (${pyeong} ${language === 'ko' ? '평' : 'pyeong'})`;
   };
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
       <Helmet>
-        <title>{project.title} | 빅플래너파트너스</title>
-        <meta name="description" content={project.description?.substring(0, 150) || `${project.title} 프로젝트 상세 페이지입니다.`} />
-        <meta name="keywords" content={`빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발`} />
+        <title>{project.title} | {language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}</title>
+        <meta name="description" content={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)} />
+        <meta name="keywords" content={language === 'ko' ? `빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발` : `BIGPLANNER PARTNERS, ${project.title}, ${project.category}, Architecture, Real Estate Development`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects/${project.id}`} />
+        <meta property="og:title" content={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`} />
+        <meta property="og:description" content={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)} />
+        <meta property="og:image" content={project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"} />
+
         <script type="application/ld+json">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "CreativeWork",
-              "name": "${project.title}",
-              "description": "${project.description?.substring(0, 150) || ''}"
-            }
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "CreativeWork",
+                "name": "${project.title}",
+                "description": "${project.description?.substring(0, 150) || ''}",
+                "image": "${project.image || ''}",
+                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects/${project.id}"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "${language === 'ko' ? '홈' : 'Home'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "${language === 'ko' ? '프로젝트' : 'Projects'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "${project.title}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects/${project.id}"
+                  }
+                ]
+              }
+            ]
           `}
         </script>
       </Helmet>
@@ -183,17 +221,17 @@ export default function ProjectDetail() {
                 Project Facts
               </h3>
               <div className="space-y-1">
-                <SpecItem label="클라이언트" value={project.client} />
-                <SpecItem label="위치" value={project.location} />
-                <SpecItem label="용도구역" value={project.zoning} />
-                <SpecItem label="규모" value={project.scale} />
-                <SpecItem label="대지면적" value={formatArea(project.land_area)} />
-                <SpecItem label="건축면적" value={formatArea(project.building_area)} />
-                <SpecItem label="연면적" value={formatArea(project.total_floor_area)} />
-                <SpecItem label="용적률" value={project.far ? `${project.far}%` : null} />
-                <SpecItem label="건폐율" value={project.bcr ? `${project.bcr}%` : null} />
-                <SpecItem label="연도" value={project.year} />
-                <SpecItem label="역할" value={project.role} />
+                <SpecItem label={language === 'ko' ? '클라이언트' : 'Client'} value={project.client} />
+                <SpecItem label={language === 'ko' ? '위치' : 'Location'} value={project.location} />
+                <SpecItem label={language === 'ko' ? '용도구역' : 'Zoning'} value={project.zoning} />
+                <SpecItem label={language === 'ko' ? '규모' : 'Scale'} value={project.scale} />
+                <SpecItem label={language === 'ko' ? '대지면적' : 'Land Area'} value={formatArea(project.land_area)} />
+                <SpecItem label={language === 'ko' ? '건축면적' : 'Building Area'} value={formatArea(project.building_area)} />
+                <SpecItem label={language === 'ko' ? '연면적' : 'Total Floor Area'} value={formatArea(project.total_floor_area)} />
+                <SpecItem label={language === 'ko' ? '용적률' : 'FAR'} value={project.far ? `${project.far}%` : null} />
+                <SpecItem label={language === 'ko' ? '건폐율' : 'BCR'} value={project.bcr ? `${project.bcr}%` : null} />
+                <SpecItem label={language === 'ko' ? '연도' : 'Year'} value={project.year} />
+                <SpecItem label={language === 'ko' ? '역할' : 'Role'} value={project.role} />
               </div>
             </div>
           </motion.div>
@@ -222,7 +260,7 @@ export default function ProjectDetail() {
 
             {project.description && (
               <div className="prose prose-lg max-w-none">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">프로젝트 개요</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{language === 'ko' ? '프로젝트 개요' : 'Project Overview'}</h2>
                 <p className="text-xl text-gray-600 leading-relaxed font-light whitespace-pre-line">
                   {project.description}
                 </p>
@@ -236,7 +274,7 @@ export default function ProjectDetail() {
                     <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-6">
                       <Target className="text-indigo-600" size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">도전 과제</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{language === 'ko' ? '도전 과제' : 'Challenge'}</h3>
                     <p className="text-gray-600 leading-relaxed whitespace-pre-line">
                       {project.challenge}
                     </p>
@@ -247,7 +285,7 @@ export default function ProjectDetail() {
                     <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mb-6">
                       <Lightbulb className="text-yellow-400" size={24} />
                     </div>
-                    <h3 className="text-xl font-bold mb-4">해결 방안</h3>
+                    <h3 className="text-xl font-bold mb-4">{language === 'ko' ? '해결 방안' : 'Solution'}</h3>
                     <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                       {project.solution}
                     </p>
@@ -306,7 +344,7 @@ export default function ProjectDetail() {
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">
                 <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                이전 프로젝트
+                {language === 'ko' ? '이전 프로젝트' : 'Previous Project'}
               </span>
               <span className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">
                 {prevProject.title}
@@ -318,7 +356,7 @@ export default function ProjectDetail() {
               className="flex-1 p-8 md:p-16 flex flex-col items-end text-right hover:bg-gray-50 transition-colors group"
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">
-                다음 프로젝트
+                {language === 'ko' ? '다음 프로젝트' : 'Next Project'}
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </span>
               <span className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">

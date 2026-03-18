@@ -6,8 +6,10 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactCTA from '../components/ContactCTA';
 import { supabase } from '../supabase';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const categories = ["All", "상업", "주거", "복합개발", "근생"];
+const categoriesEn = ["All", "Commercial", "Residential", "Mixed-Use", "Neighborhood"];
 
 export interface Project {
   id: string;
@@ -41,6 +43,7 @@ export default function ProjectsPage() {
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(6);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -107,17 +110,46 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
       <Helmet>
-        <title>프로젝트 | 빅플래너파트너스</title>
-        <meta name="description" content="빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." />
-        <meta name="keywords" content="빅플래너파트너스, 프로젝트, 건축, 부동산개발, 포트폴리오" />
+        <title>{language === 'ko' ? '프로젝트 | 빅플래너파트너스' : 'Projects | BIGPLANNER PARTNERS'}</title>
+        <meta name="description" content={language === 'ko' ? "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." : "Introducing various architecture and development projects completed by BIGPLANNER PARTNERS. Check out our results that maximize the value of space."} />
+        <meta name="keywords" content="빅플래너파트너스, 프로젝트, 건축, 부동산개발, 포트폴리오, BIGPLANNER PARTNERS, Projects, Architecture, Real Estate Development, Portfolio" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects" />
+        <meta property="og:title" content={language === 'ko' ? '프로젝트 | 빅플래너파트너스' : 'Projects | BIGPLANNER PARTNERS'} />
+        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." : "Introducing various architecture and development projects completed by BIGPLANNER PARTNERS. Check out our results that maximize the value of space."} />
+        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
+
         <script type="application/ld+json">
           {`
-            {
-              "@context": "https://schema.org",
-              "@type": "CollectionPage",
-              "name": "프로젝트 목록",
-              "description": "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다."
-            }
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "name": "${language === 'ko' ? '프로젝트 목록' : 'Projects List'}",
+                "description": "${language === 'ko' ? '빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다.' : 'Introducing various architecture and development projects completed by BIGPLANNER PARTNERS.'}",
+                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "${language === 'ko' ? '홈' : 'Home'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "${language === 'ko' ? '프로젝트' : 'Projects'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects"
+                  }
+                ]
+              }
+            ]
           `}
         </script>
       </Helmet>
@@ -139,8 +171,11 @@ export default function ProjectsPage() {
             transition={{ delay: 0.1 }}
             className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
           >
-            빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다.
-            공간의 가치를 극대화하는 우리의 결과물을 확인해보세요.
+            {language === 'ko' ? (
+              <>빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다.<br />공간의 가치를 극대화하는 우리의 결과물을 확인해보세요.</>
+            ) : (
+              <>Introducing various architecture and development projects completed by BIGPLANNER PARTNERS.<br />Check out our results that maximize the value of space.</>
+            )}
           </motion.p>
         </div>
       </div>
@@ -150,12 +185,12 @@ export default function ProjectsPage() {
         
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {categories.map((category) => (
+          {(language === 'ko' ? categories : categoriesEn).map((category, index) => (
             <button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory(categories[index])}
               className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
-                activeCategory === category 
+                activeCategory === categories[index] 
                   ? "bg-gray-900 text-white shadow-md" 
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
@@ -167,7 +202,7 @@ export default function ProjectsPage() {
 
         {/* Projects Grid */}
         {loading ? (
-          <div className="text-center py-20 text-gray-500">프로젝트를 불러오는 중입니다...</div>
+          <div className="text-center py-20 text-gray-500">{language === 'ko' ? '프로젝트를 불러오는 중입니다...' : 'Loading projects...'}</div>
         ) : (
           <motion.div 
             layout
@@ -201,7 +236,7 @@ export default function ProjectsPage() {
                   <div className="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <div className="flex justify-between items-end mb-2">
                       <span className="text-white/80 text-sm font-bold uppercase tracking-wider">
-                        {project.category}
+                        {language === 'ko' ? project.category : categoriesEn[categories.indexOf(project.category)]}
                       </span>
                       <span className="text-white/60 text-sm font-medium">
                         {project.year}
@@ -223,7 +258,7 @@ export default function ProjectsPage() {
 
         {!loading && displayedProjects.length === 0 && (
           <div className="text-center py-20 text-gray-500">
-            해당 카테고리의 프로젝트가 없습니다.
+            {language === 'ko' ? '해당 카테고리의 프로젝트가 없습니다.' : 'No projects found in this category.'}
           </div>
         )}
       </div>

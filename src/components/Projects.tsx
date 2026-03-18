@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabase';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Project {
   id: string;
@@ -14,6 +15,7 @@ interface Project {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -45,13 +47,13 @@ export default function Projects() {
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900">OUR BIG WINs</h3>
           </div>
           <Link to="/projects" className="hidden md:inline-flex items-center text-sm font-bold text-gray-900 hover:text-gray-600 transition-colors group">
-            VIEW ALL PROJECTS
+            {language === 'ko' ? '모든 프로젝트 보기' : 'VIEW ALL PROJECTS'}
             <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
         {loading ? (
-          <div className="text-center py-12 text-gray-500">프로젝트를 불러오는 중입니다...</div>
+          <div className="text-center py-12 text-gray-500">{language === 'ko' ? '프로젝트를 불러오는 중입니다...' : 'Loading projects...'}</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
@@ -73,7 +75,14 @@ export default function Projects() {
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
                   </div>
-                  <p className="text-sm font-medium text-gray-600 mb-1">{project.category}</p>
+                  <p className="text-sm font-medium text-gray-600 mb-1">
+                    {language === 'ko' ? project.category : (
+                      project.category === '상업' ? 'Commercial' :
+                      project.category === '주거' ? 'Residential' :
+                      project.category === '복합개발' ? 'Mixed-Use' :
+                      project.category === '근생' ? 'Neighborhood' : project.category
+                    )}
+                  </p>
                   <h4 className="text-xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">
                     {project.title}
                   </h4>
@@ -85,7 +94,7 @@ export default function Projects() {
         
         <div className="mt-8 text-center md:hidden">
           <Link to="/projects" className="inline-flex items-center text-sm font-bold text-gray-900 hover:text-gray-600 transition-colors group">
-            VIEW ALL PROJECTS
+            {language === 'ko' ? '모든 프로젝트 보기' : 'VIEW ALL PROJECTS'}
             <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

@@ -4,8 +4,11 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Phone, Mail, Clock, Train, Bus } from 'lucide-react';
 import { supabase } from '../supabase';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Contact() {
+  const { language } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -20,8 +23,40 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^0-9]/g, '');
+    let formattedValue = '';
+    
+    if (value.length < 4) {
+      formattedValue = value;
+    } else if (value.length < 7 && value.startsWith('02')) {
+      formattedValue = `${value.slice(0, 2)}-${value.slice(2)}`;
+    } else if (value.length < 8) {
+      formattedValue = `${value.slice(0, 3)}-${value.slice(3)}`;
+    } else if (value.length < 10 && value.startsWith('02')) {
+      formattedValue = `${value.slice(0, 2)}-${value.slice(2, 5)}-${value.slice(5)}`;
+    } else if (value.length < 11 && value.startsWith('02')) {
+      formattedValue = `${value.slice(0, 2)}-${value.slice(2, 6)}-${value.slice(6)}`;
+    } else if (value.length < 11) {
+      formattedValue = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6)}`;
+    } else if (value.length < 12) {
+      formattedValue = `${value.slice(0, 3)}-${value.slice(3, 7)}-${value.slice(7, 11)}`;
+    } else {
+      formattedValue = `${value.slice(0, 4)}-${value.slice(4, 8)}-${value.slice(8, 12)}`;
+    }
+    
+    setFormData({...formData, phone: formattedValue});
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    const phoneRegex = /^(0[0-9]{1,3})-?[0-9]{3,4}-?[0-9]{4}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      alert(language === 'ko' ? "올바른 전화번호 형식을 입력해주세요. (예: 010-1234-5678)" : "Please enter a valid phone number format. (e.g. 010-1234-5678)");
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -49,9 +84,48 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
       <Helmet>
-        <title>오시는 길 & 문의 | 빅플래너파트너스</title>
-        <meta name="description" content="빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." />
-        <meta name="keywords" content="빅플래너파트너스, 오시는길, 문의, 프롭테크, 부동산개발" />
+        <title>{language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'}</title>
+        <meta name="description" content={language === 'ko' ? "빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." : "Check the location and contact information of BIGPLANNER PARTNERS. If you have any questions about the proptech company BIGPLANNER PARTNERS, please feel free to contact us."} />
+        <meta name="keywords" content="빅플래너파트너스, 오시는길, 문의, 프롭테크, 부동산개발, BIGPLANNER PARTNERS, Contact Us, Inquiry, Proptech, Real Estate Development" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/contact" />
+        <meta property="og:title" content={language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'} />
+        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." : "Check the location and contact information of BIGPLANNER PARTNERS. If you have any questions about the proptech company BIGPLANNER PARTNERS, please feel free to contact us."} />
+        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
+
+        <script type="application/ld+json">
+          {`
+            [
+              {
+                "@context": "https://schema.org",
+                "@type": "ContactPage",
+                "name": "${language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'}",
+                "description": "${language === 'ko' ? '빅플래너파트너스의 위치와 문의처를 확인하세요.' : 'Check the location and contact information of BIGPLANNER PARTNERS.'}",
+                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/contact"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "${language === 'ko' ? '홈' : 'Home'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "${language === 'ko' ? '오시는 길 & 문의' : 'Contact Us'}",
+                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/contact"
+                  }
+                ]
+              }
+            ]
+          `}
+        </script>
       </Helmet>
       <Navbar />
       
@@ -205,7 +279,7 @@ export default function Contact() {
                       id="phone" 
                       required
                       value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      onChange={handlePhoneChange}
                       className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent transition-shadow"
                       placeholder="010-0000-0000"
                     />
