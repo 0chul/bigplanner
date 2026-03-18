@@ -108,7 +108,7 @@ export default function ProjectDetail() {
 
         {/* Open Graph */}
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects/${project.id}`} />
+        <meta property="og:url" content={`https://bigplanner.co.kr/projects/${project.id}`} />
         <meta property="og:title" content={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`} />
         <meta property="og:description" content={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)} />
         <meta property="og:image" content={project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"} />
@@ -122,7 +122,7 @@ export default function ProjectDetail() {
                 "name": "${project.title}",
                 "description": "${project.description?.substring(0, 150) || ''}",
                 "image": "${project.image || ''}",
-                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects/${project.id}"
+                "url": "https://bigplanner.co.kr/projects/${project.id}"
               },
               {
                 "@context": "https://schema.org",
@@ -132,19 +132,19 @@ export default function ProjectDetail() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "${language === 'ko' ? '홈' : 'Home'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                    "item": "https://bigplanner.co.kr/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "${language === 'ko' ? '프로젝트' : 'Projects'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects"
+                    "item": "https://bigplanner.co.kr/projects"
                   },
                   {
                     "@type": "ListItem",
                     "position": 3,
                     "name": "${project.title}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects/${project.id}"
+                    "item": "https://bigplanner.co.kr/projects/${project.id}"
                   }
                 ]
               }

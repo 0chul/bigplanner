@@ -24,7 +24,7 @@ export default function About() {
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/about" />
+        <meta property="og:url" content="https://bigplanner.co.kr/about" />
         <meta property="og:title" content={language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'} />
         <meta property="og:description" content={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." : "Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."} />
         <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
@@ -37,7 +37,7 @@ export default function About() {
                 "@type": "AboutPage",
                 "name": "${language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'}",
                 "description": "${language === 'ko' ? '부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다.' : 'Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value.'}",
-                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/about"
+                "url": "https://bigplanner.co.kr/about"
               },
               {
                 "@context": "https://schema.org",
@@ -47,13 +47,13 @@ export default function About() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "${language === 'ko' ? '홈' : 'Home'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                    "item": "https://bigplanner.co.kr/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "${language === 'ko' ? '회사소개' : 'About Us'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/about"
+                    "item": "https://bigplanner.co.kr/about"
                   }
                 ]
               }

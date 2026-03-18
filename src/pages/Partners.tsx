@@ -77,7 +77,7 @@ export default function Partners() {
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/partners" />
+        <meta property="og:url" content="https://bigplanner.co.kr/partners" />
         <meta property="og:title" content={language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'} />
         <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." : "We are looking for architecture and business partners to join BIGPLANNER PARTNERS. Please leave a partnership inquiry."} />
         <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
@@ -90,7 +90,7 @@ export default function Partners() {
                 "@type": "WebPage",
                 "name": "${language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'}",
                 "description": "${language === 'ko' ? '빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다.' : 'We are looking for architecture and business partners to join BIGPLANNER PARTNERS.'}",
-                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/partners"
+                "url": "https://bigplanner.co.kr/partners"
               },
               {
                 "@context": "https://schema.org",
@@ -100,13 +100,13 @@ export default function Partners() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "${language === 'ko' ? '홈' : 'Home'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                    "item": "https://bigplanner.co.kr/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "${language === 'ko' ? '파트너스' : 'Partners'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/partners"
+                    "item": "https://bigplanner.co.kr/partners"
                   }
                 ]
               }

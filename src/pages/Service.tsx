@@ -32,7 +32,7 @@ export default function Service() {
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/service" />
+        <meta property="og:url" content="https://bigplanner.co.kr/service" />
         <meta property="og:title" content={language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'} />
         <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." : "Check out BIGPLANNER PARTNERS' real estate consulting, PM (Project Management), and financial solutions. We provide professional services that maximize space value."} />
         <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
@@ -49,7 +49,7 @@ export default function Service() {
                   "name": "${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}"
                 },
                 "description": "${language === 'ko' ? '부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 제공합니다.' : 'We provide real estate consulting, PM, and financial solutions.'}",
-                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/service"
+                "url": "https://bigplanner.co.kr/service"
               },
               {
                 "@context": "https://schema.org",
@@ -59,13 +59,13 @@ export default function Service() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "${language === 'ko' ? '홈' : 'Home'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                    "item": "https://bigplanner.co.kr/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "${language === 'ko' ? '서비스' : 'Services'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/service"
+                    "item": "https://bigplanner.co.kr/service"
                   }
                 ]
               }

@@ -116,7 +116,7 @@ export default function ProjectsPage() {
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects" />
+        <meta property="og:url" content="https://bigplanner.co.kr/projects" />
         <meta property="og:title" content={language === 'ko' ? '프로젝트 | 빅플래너파트너스' : 'Projects | BIGPLANNER PARTNERS'} />
         <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." : "Introducing various architecture and development projects completed by BIGPLANNER PARTNERS. Check out our results that maximize the value of space."} />
         <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
@@ -129,7 +129,7 @@ export default function ProjectsPage() {
                 "@type": "CollectionPage",
                 "name": "${language === 'ko' ? '프로젝트 목록' : 'Projects List'}",
                 "description": "${language === 'ko' ? '빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다.' : 'Introducing various architecture and development projects completed by BIGPLANNER PARTNERS.'}",
-                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects"
+                "url": "https://bigplanner.co.kr/projects"
               },
               {
                 "@context": "https://schema.org",
@@ -139,13 +139,13 @@ export default function ProjectsPage() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "${language === 'ko' ? '홈' : 'Home'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                    "item": "https://bigplanner.co.kr/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "${language === 'ko' ? '프로젝트' : 'Projects'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/projects"
+                    "item": "https://bigplanner.co.kr/projects"
                   }
                 ]
               }

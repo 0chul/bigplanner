@@ -90,7 +90,7 @@ export default function Contact() {
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/contact" />
+        <meta property="og:url" content="https://bigplanner.co.kr/contact" />
         <meta property="og:title" content={language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'} />
         <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." : "Check the location and contact information of BIGPLANNER PARTNERS. If you have any questions about the proptech company BIGPLANNER PARTNERS, please feel free to contact us."} />
         <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
@@ -103,7 +103,7 @@ export default function Contact() {
                 "@type": "ContactPage",
                 "name": "${language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'}",
                 "description": "${language === 'ko' ? '빅플래너파트너스의 위치와 문의처를 확인하세요.' : 'Check the location and contact information of BIGPLANNER PARTNERS.'}",
-                "url": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/contact"
+                "url": "https://bigplanner.co.kr/contact"
               },
               {
                 "@context": "https://schema.org",
@@ -113,13 +113,13 @@ export default function Contact() {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "${language === 'ko' ? '홈' : 'Home'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/"
+                    "item": "https://bigplanner.co.kr/"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "${language === 'ko' ? '오시는 길 & 문의' : 'Contact Us'}",
-                    "item": "https://ais-dev-nhshxvw3fmlb4tdm2md6nw-12693135445.asia-northeast1.run.app/contact"
+                    "item": "https://bigplanner.co.kr/contact"
                   }
                 ]
               }
