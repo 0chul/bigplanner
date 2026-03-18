@@ -9,6 +9,7 @@ import ContactCTA from '../components/ContactCTA';
 import { supabase } from '../supabase';
 import { Project } from './Projects';
 import { useLanguage } from '../contexts/LanguageContext';
+import { generateSlug } from '../utils/slugify';
 
 const SpecItem = ({ label, value }: { label: string, value: React.ReactNode }) => {
   if (!value) return null;
@@ -108,7 +109,7 @@ export default function ProjectDetail() {
 
         {/* Open Graph */}
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://bigplanner.co.kr/projects/${project.id}`} />
+        <meta property="og:url" content={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`} />
         <meta property="og:title" content={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`} />
         <meta property="og:description" content={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)} />
         <meta property="og:image" content={project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"} />
@@ -122,7 +123,7 @@ export default function ProjectDetail() {
                 "name": "${project.title}",
                 "description": "${project.description?.substring(0, 150) || ''}",
                 "image": "${project.image || ''}",
-                "url": "https://bigplanner.co.kr/projects/${project.id}"
+                "url": "https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}"
               },
               {
                 "@context": "https://schema.org",
@@ -144,7 +145,7 @@ export default function ProjectDetail() {
                     "@type": "ListItem",
                     "position": 3,
                     "name": "${project.title}",
-                    "item": "https://bigplanner.co.kr/projects/${project.id}"
+                    "item": "https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}"
                   }
                 ]
               }
@@ -339,7 +340,7 @@ export default function ProjectDetail() {
         <div className="border-t border-gray-200">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row">
             <Link 
-              to={`/projects/${prevProject.id}`}
+              to={`/projects/${prevProject.id}/${generateSlug(prevProject.title)}`}
               className="flex-1 p-8 md:p-16 flex flex-col items-start hover:bg-gray-50 transition-colors border-b md:border-b-0 md:border-r border-gray-200 group"
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">
@@ -352,7 +353,7 @@ export default function ProjectDetail() {
             </Link>
             
             <Link 
-              to={`/projects/${nextProject.id}`}
+              to={`/projects/${nextProject.id}/${generateSlug(nextProject.title)}`}
               className="flex-1 p-8 md:p-16 flex flex-col items-end text-right hover:bg-gray-50 transition-colors group"
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">

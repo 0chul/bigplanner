@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import ContactCTA from '../components/ContactCTA';
 import { supabase } from '../supabase';
 import { useLanguage } from '../contexts/LanguageContext';
+import { generateSlug } from '../utils/slugify';
 
 const categories = ["All", "상업", "주거", "복합개발", "근생"];
 const categoriesEn = ["All", "Commercial", "Residential", "Mixed-Use", "Neighborhood"];
@@ -219,7 +220,7 @@ export default function ProjectsPage() {
                   key={project.id}
                   className="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-sm hover:shadow-xl transition-shadow duration-500"
                 >
-                  <Link to={`/projects/${project.id}`} className="absolute inset-0 z-10">
+                  <Link to={`/projects/${project.id}/${generateSlug(project.title)}`} className="absolute inset-0 z-10">
                     <span className="sr-only">View {project.title}</span>
                   </Link>
                   <img 

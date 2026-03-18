@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useLanguage } from '../contexts/LanguageContext';
+import { generateSlug } from '../utils/slugify';
 
 interface Project {
   id: string;
@@ -65,7 +66,7 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group relative"
               >
-                <Link to={`/projects/${project.id}`} className="block">
+                <Link to={`/projects/${project.id}/${generateSlug(project.title)}`} className="block">
                   <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[4/3]">
                     <img 
                       src={project.image} 

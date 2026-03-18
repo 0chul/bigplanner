@@ -33,6 +33,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
+            <Route path="/projects/:id/:slug" element={<ProjectDetail />} />
             
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminLayout />}>
