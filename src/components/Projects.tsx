@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabase';
@@ -17,8 +17,12 @@ export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const { language } = useLanguage();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "200px 0px" });
 
   useEffect(() => {
+    if (!isInView) return;
+
     const fetchProjects = async () => {
       try {
         const { data, error } = await supabase
@@ -37,10 +41,10 @@ export default function Projects() {
     };
 
     fetchProjects();
-  }, []);
+  }, [isInView]);
 
   return (
-    <section className="py-24 bg-white">
+    <section ref={ref} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-12">
           <div>
