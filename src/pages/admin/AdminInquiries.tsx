@@ -67,16 +67,21 @@ export default function AdminInquiries() {
 
   const updateStatus = async (id: string, newStatus: 'new' | 'in-progress' | 'completed') => {
     try {
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('inquiries')
         .update({ status: newStatus })
-        .eq('id', id);
+        .eq('id', id)
+        .select();
         
       if (error) {
         if (error.code === 'PGRST204' || error.message.includes('status') || error.code === '42703') {
           throw new Error('status 컬럼이 없거나 타입이 일치하지 않습니다. Supabase에서 inquiries 테이블에 status 컬럼(text 타입, 기본값 \'new\')을 확인해주세요.');
         }
         throw error;
+      }
+      
+      if (!data || data.length === 0) {
+        throw new Error("업데이트 권한이 없습니다. Supabase에서 inquiries 테이블의 UPDATE RLS 정책을 추가해주세요.");
       }
       
       // 상태 업데이트 성공 시 로컬 상태도 즉시 반영
@@ -90,18 +95,23 @@ export default function AdminInquiries() {
   const handleDelete = async (id: string) => {
     if (window.confirm("정말로 이 문의를 삭제하시겠습니까?")) {
       try {
-        const { error } = await supabase
+        const { data, error } = await supabase
           .from('inquiries')
           .delete()
-          .eq('id', id);
+          .eq('id', id)
+          .select();
           
         if (error) throw error;
         
+        if (!data || data.length === 0) {
+          throw new Error("삭제 권한이 없습니다. Supabase에서 inquiries 테이블의 DELETE RLS 정책을 추가해주세요.");
+        }
+        
         // 삭제 성공 시 로컬 상태도 즉시 반영
         setInquiries(prev => prev.filter(inq => inq.id !== id));
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error deleting inquiry:", error);
-        alert("삭제에 실패했습니다.");
+        alert(error.message || "삭제에 실패했습니다.");
       }
     }
   };
