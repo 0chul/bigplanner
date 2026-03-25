@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../supabase';
-import { Trash2, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
+import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X } from 'lucide-react';
 
 interface Inquiry {
   id: string;
@@ -30,6 +30,8 @@ export default function AdminInquiries() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [memos, setMemos] = useState<Record<string, Memo[]>>({});
   const [newMemo, setNewMemo] = useState('');
+  const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
+  const [editingMemoContent, setEditingMemoContent] = useState('');
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -117,7 +119,11 @@ export default function AdminInquiries() {
     if (!error && data) {
       setMemos(prev => ({ ...prev, [inquiryId]: data as Memo[] }));
     } else if (error) {
-      console.error("Error fetching memos:", error);
+      if (error.code === 'PGRST205') {
+        console.warn("inquiry_memos 테이블이 존재하지 않습니다. Supabase SQL Editor에서 테이블을 생성해주세요.");
+      } else {
+        console.error("Error fetching memos:", error);
+      }
     }
   };
 
@@ -138,6 +144,56 @@ export default function AdminInquiries() {
     } else {
       console.error("Error adding memo:", error);
       alert('메모 추가에 실패했습니다. (테이블이 생성되었는지 확인해주세요)');
+    }
+  };
+
+  const startEditingMemo = (memo: Memo) => {
+    setEditingMemoId(memo.id);
+    setEditingMemoContent(memo.content);
+  };
+
+  const cancelEditingMemo = () => {
+    setEditingMemoId(null);
+    setEditingMemoContent('');
+  };
+
+  const handleUpdateMemo = async (inquiryId: string, memoId: string) => {
+    if (!editingMemoContent.trim()) return;
+    
+    const { error } = await supabase
+      .from('inquiry_memos')
+      .update({ content: editingMemoContent.trim() })
+      .eq('id', memoId);
+      
+    if (!error) {
+      setMemos(prev => ({
+        ...prev,
+        [inquiryId]: prev[inquiryId].map(m => m.id === memoId ? { ...m, content: editingMemoContent.trim() } : m)
+      }));
+      setEditingMemoId(null);
+      setEditingMemoContent('');
+    } else {
+      console.error("Error updating memo:", error);
+      alert('메모 수정에 실패했습니다.');
+    }
+  };
+
+  const handleDeleteMemo = async (inquiryId: string, memoId: string) => {
+    if (!window.confirm("이 메모를 정말 삭제하시겠습니까?")) return;
+    
+    const { error } = await supabase
+      .from('inquiry_memos')
+      .delete()
+      .eq('id', memoId);
+      
+    if (!error) {
+      setMemos(prev => ({
+        ...prev,
+        [inquiryId]: prev[inquiryId].filter(m => m.id !== memoId)
+      }));
+    } else {
+      console.error("Error deleting memo:", error);
+      alert('메모 삭제에 실패했습니다.');
     }
   };
 
@@ -251,14 +307,46 @@ export default function AdminInquiries() {
                             {memos[inquiry.id]?.map(memo => (
                               <div key={memo.id} className="relative pl-6">
                                 <div className="absolute left-[-21px] top-1.5 w-2.5 h-2.5 bg-indigo-500 rounded-full border-2 border-white shadow-sm"></div>
-                                <div className="text-xs text-gray-500 mb-1.5 font-medium">
-                                  {new Date(memo.created_at).toLocaleString('ko-KR', { 
-                                    year: 'numeric', month: 'long', day: 'numeric', 
-                                    hour: '2-digit', minute: '2-digit' 
-                                  })}
+                                <div className="flex items-center justify-between mb-1.5">
+                                  <div className="text-xs text-gray-500 font-medium">
+                                    {new Date(memo.created_at).toLocaleString('ko-KR', { 
+                                      year: 'numeric', month: 'long', day: 'numeric', 
+                                      hour: '2-digit', minute: '2-digit' 
+                                    })}
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    {editingMemoId === memo.id ? (
+                                      <>
+                                        <button onClick={() => handleUpdateMemo(inquiry.id, memo.id)} className="text-green-600 hover:text-green-700 p-1 rounded-md hover:bg-green-50 transition-colors" title="저장">
+                                          <Check size={14} />
+                                        </button>
+                                        <button onClick={cancelEditingMemo} className="text-gray-400 hover:text-gray-600 p-1 rounded-md hover:bg-gray-100 transition-colors" title="취소">
+                                          <X size={14} />
+                                        </button>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <button onClick={() => startEditingMemo(memo)} className="text-gray-400 hover:text-indigo-600 p-1 rounded-md hover:bg-indigo-50 transition-colors" title="수정">
+                                          <Edit2 size={14} />
+                                        </button>
+                                        <button onClick={() => handleDeleteMemo(inquiry.id, memo.id)} className="text-gray-400 hover:text-red-600 p-1 rounded-md hover:bg-red-50 transition-colors" title="삭제">
+                                          <Trash2 size={14} />
+                                        </button>
+                                      </>
+                                    )}
+                                  </div>
                                 </div>
                                 <div className="text-sm text-gray-800 bg-white p-3.5 rounded-lg shadow-sm border border-gray-100">
-                                  {memo.content}
+                                  {editingMemoId === memo.id ? (
+                                    <textarea
+                                      value={editingMemoContent}
+                                      onChange={(e) => setEditingMemoContent(e.target.value)}
+                                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border min-h-[80px]"
+                                      autoFocus
+                                    />
+                                  ) : (
+                                    <div className="whitespace-pre-wrap">{memo.content}</div>
+                                  )}
                                 </div>
                               </div>
                             ))}
