@@ -252,6 +252,7 @@ export default function ProjectDetail() {
                   alt={`${project.title} 대표 이미지`} 
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
                 <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 pt-12 text-white/90 text-sm font-medium">
                   {project.title} - Overview
@@ -327,6 +328,7 @@ export default function ProjectDetail() {
                     alt={`${project.title} gallery ${idx + 1}`} 
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </motion.div>
               ))}

@@ -15,6 +15,7 @@ export default function Footer() {
               alt="BIGPLANNER PARTNERS" 
               className="object-contain opacity-90 hover:opacity-100 transition-opacity"
               referrerPolicy="no-referrer"
+              loading="lazy"
             />
           </div>
           

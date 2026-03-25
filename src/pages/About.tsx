@@ -133,6 +133,7 @@ export default function About() {
                   alt="Architecture" 
                   className="object-cover rounded-2xl shadow-2xl grayscale"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
             </motion.div>

@@ -48,6 +48,7 @@ export default function Philosophy() {
                 alt="Architecture" 
                 className="object-cover rounded-2xl shadow-2xl"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
             </div>
             <div className="absolute -bottom-8 -left-8 bg-gray-900 text-white p-8 rounded-2xl shadow-xl hidden md:block">
