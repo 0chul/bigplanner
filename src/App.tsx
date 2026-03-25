@@ -3,21 +3,31 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { lazy, Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
-import About from './pages/About';
-import Service from './pages/Service';
-import Partners from './pages/Partners';
-import Contact from './pages/Contact';
-import Projects from './pages/Projects';
-import ProjectDetail from './pages/ProjectDetail';
 import { AuthProvider } from './contexts/AuthContext';
 import { LanguageProvider } from './contexts/LanguageContext';
-import AdminLayout from './pages/admin/AdminLayout';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import AdminProjects from './pages/admin/AdminProjects';
-import AdminInquiries from './pages/admin/AdminInquiries';
+
+// Lazy load routes for PRPL pattern (Lazy-load remaining routes)
+const About = lazy(() => import('./pages/About'));
+const Service = lazy(() => import('./pages/Service'));
+const Partners = lazy(() => import('./pages/Partners'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Projects = lazy(() => import('./pages/Projects'));
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
+const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
+const AdminProjects = lazy(() => import('./pages/admin/AdminProjects'));
+const AdminInquiries = lazy(() => import('./pages/admin/AdminInquiries'));
+
+// Loading fallback component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="w-8 h-8 border-4 border-gray-200 border-t-gray-900 rounded-full animate-spin"></div>
+  </div>
+);
 
 export default function App() {
   return (
@@ -25,26 +35,28 @@ export default function App() {
       <LanguageProvider>
         <Router>
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/service" element={<Service />} />
-            <Route path="/partners" element={<Partners />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
-            <Route path="/projects/:id/:slug" element={<ProjectDetail />} />
-            
-            {/* Admin Routes */}
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="projects" element={<AdminProjects />} />
-              <Route path="inquiries" element={<AdminInquiries />} />
-            </Route>
-            
-            {/* Catch-all route for Supabase Auth redirects */}
-            <Route path="*" element={<Home />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/partners" element={<Partners />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="/projects/:id/:slug" element={<ProjectDetail />} />
+              
+              {/* Admin Routes */}
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="projects" element={<AdminProjects />} />
+                <Route path="inquiries" element={<AdminInquiries />} />
+              </Route>
+              
+              {/* Catch-all route for Supabase Auth redirects */}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </Suspense>
         </Router>
       </LanguageProvider>
     </AuthProvider>
