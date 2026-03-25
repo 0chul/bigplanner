@@ -70,10 +70,15 @@ export default function AdminInquiries() {
         .update({ status: newStatus })
         .eq('id', id);
         
-      if (error) throw error;
-    } catch (error) {
+      if (error) {
+        if (error.code === 'PGRST204' || error.message.includes('status') || error.code === '42703') {
+          throw new Error('status 컬럼이 없거나 타입이 일치하지 않습니다. Supabase에서 inquiries 테이블에 status 컬럼(text 타입, 기본값 \'new\')을 확인해주세요.');
+        }
+        throw error;
+      }
+    } catch (error: any) {
       console.error("Error updating status:", error);
-      alert("상태 업데이트에 실패했습니다.");
+      alert(error.message || "상태 업데이트에 실패했습니다.");
     }
   };
 

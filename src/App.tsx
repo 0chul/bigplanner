@@ -41,6 +41,9 @@ export default function App() {
               <Route path="projects" element={<AdminProjects />} />
               <Route path="inquiries" element={<AdminInquiries />} />
             </Route>
+            
+            {/* Catch-all route for Supabase Auth redirects */}
+            <Route path="*" element={<Home />} />
           </Routes>
         </Router>
       </LanguageProvider>
