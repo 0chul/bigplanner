@@ -78,6 +78,9 @@ export default function AdminInquiries() {
         }
         throw error;
       }
+      
+      // 상태 업데이트 성공 시 로컬 상태도 즉시 반영
+      setInquiries(prev => prev.map(inq => inq.id === id ? { ...inq, status: newStatus } : inq));
     } catch (error: any) {
       console.error("Error updating status:", error);
       alert(error.message || "상태 업데이트에 실패했습니다.");
@@ -93,6 +96,9 @@ export default function AdminInquiries() {
           .eq('id', id);
           
         if (error) throw error;
+        
+        // 삭제 성공 시 로컬 상태도 즉시 반영
+        setInquiries(prev => prev.filter(inq => inq.id !== id));
       } catch (error) {
         console.error("Error deleting inquiry:", error);
         alert("삭제에 실패했습니다.");
