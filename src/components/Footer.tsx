@@ -31,14 +31,14 @@ export default function Footer() {
           </div>
 
           {/* Info */}
-          <div className="text-xs text-gray-500 space-y-1">
+          <div className="text-sm text-gray-300 space-y-2">
             <p>{language === 'ko' ? '서울특별시 용산구 회나무로 13가길 16 어반메시남산 C동102호' : '102, Building C, Urban Mesh Namsan, 16, Hoenamu-ro 13ga-gil, Yongsan-gu, Seoul'}</p>
             <p>{language === 'ko' ? '전화/팩스: 02-790-0799 | 이메일: bigplanner0799@gmail.com' : 'Tel/Fax: +82-2-790-0799 | Email: bigplanner0799@gmail.com'}</p>
             <p>{language === 'ko' ? '개인정보보호책임자: 박준호 | 사업자등록번호: 265-87-02571' : 'Privacy Officer: Junho Park | Business Registration No: 265-87-02571'}</p>
           </div>
 
           {/* Copyright */}
-          <div className="text-xs text-gray-600">
+          <div className="text-sm text-gray-400">
             © 2026 BIGPLANNERPARTNERS. ALL RIGHTS RESERVED.
           </div>
         </div>

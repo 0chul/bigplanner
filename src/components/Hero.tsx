@@ -98,7 +98,7 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-10 left-0 right-0 z-30 flex justify-center space-x-4">
-        <button onClick={prevSlide} className="p-2 rounded-full border border-white/30 text-white hover:bg-white/20 transition-colors">
+        <button onClick={prevSlide} className="p-2 rounded-full border border-white/30 text-white hover:bg-white/20 transition-colors" aria-label="Previous slide">
           <ChevronLeft size={24} />
         </button>
         <div className="flex items-center space-x-2">
@@ -109,7 +109,7 @@ export default function Hero() {
             />
           ))}
         </div>
-        <button onClick={nextSlide} className="p-2 rounded-full border border-white/30 text-white hover:bg-white/20 transition-colors">
+        <button onClick={nextSlide} className="p-2 rounded-full border border-white/30 text-white hover:bg-white/20 transition-colors" aria-label="Next slide">
           <ChevronRight size={24} />
         </button>
       </div>
