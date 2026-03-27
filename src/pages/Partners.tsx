@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Paperclip, Send } from 'lucide-react';
@@ -76,6 +76,7 @@ export default function Partners() {
         <meta name="keywords" content="빅플래너파트너스, 파트너스, 건축제휴, 업무제휴, 프롭테크, BIGPLANNER PARTNERS, Partners, Architecture Partnership, Business Partnership, Proptech" />
 
         {/* Open Graph */}
+        <link rel="canonical" href="https://bigplanner.co.kr/partners" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bigplanner.co.kr/partners" />
         <meta property="og:title" content={language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'} />
@@ -117,14 +118,14 @@ export default function Partners() {
       <Navbar />
       
       {/* Header */}
-      <section className="pt-32 pb-16 bg-gray-50 border-b border-gray-100">
+      <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Partners</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Partners</h1>
             <p className="text-lg text-gray-500">{language === 'ko' ? '파트너스' : 'Partners'}</p>
           </motion.div>
         </div>
@@ -132,12 +133,12 @@ export default function Partners() {
 
       {/* Tabs */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
-        <div className="bg-white rounded-2xl shadow-sm p-2 flex justify-center space-x-4 border border-gray-100">
+        <div className="bg-white rounded-2xl shadow-sm p-2 flex justify-center space-x-2 md:space-x-4 border border-gray-100">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`flex-1 px-8 py-4 rounded-xl font-bold text-sm transition-all ${
+              className={`flex-1 px-4 py-3 md:px-8 md:py-4 rounded-xl font-bold text-sm transition-all ${
                 activeCategory === cat.id
                   ? 'bg-gray-900 text-white shadow-md'
                   : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
@@ -150,17 +151,17 @@ export default function Partners() {
       </div>
 
       {/* Form Section */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             key={activeCategory}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
-            className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm"
+            className="bg-white p-6 md:p-12 rounded-2xl md:rounded-3xl border border-gray-100 shadow-sm"
           >
-            <div className="mb-10">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            <div className="mb-8 md:mb-10">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                 {activeCategory === 'architecture' ? '건축제휴 문의' : '업무제휴 문의'}
               </h3>
               <p className="text-gray-500">문의를 남겨주시면 신속하게 답변드리겠습니다.</p>

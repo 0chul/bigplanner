@@ -7,9 +7,9 @@ export default function Philosophy() {
   const { language } = useLanguage();
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -17,14 +17,14 @@ export default function Philosophy() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-sm font-bold tracking-widest text-gray-600 uppercase mb-4">Our Philosophy</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+            <h3 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 md:mb-6">
               {language === 'ko' ? (
                 <>부동산과 공간 가치를 높이는<br />프롭테크 기업</>
               ) : (
                 <>A Proptech Company Enhancing<br />Real Estate & Space Value</>
               )}
             </h3>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6 md:mb-8">
               {language === 'ko' ? 
                 "고객의 부동산과 공간가치를 높이기 위해 BIGPLANNER PARTNERS만의 투자분석과 PM시스템으로 중소형 신축 및 부동산 개발의 불확실함, 불편함, 불안함을 해소합니다." :
                 "To enhance our clients' real estate and space value, BIGPLANNER PARTNERS eliminates the uncertainty, inconvenience, and anxiety of small-to-medium new construction and real estate development through our unique investment analysis and PM system."

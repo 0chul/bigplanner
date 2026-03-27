@@ -4,7 +4,7 @@
  */
 
 import { lazy, Suspense } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import { AuthProvider } from './contexts/AuthContext';
@@ -21,6 +21,7 @@ const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const AdminProjects = lazy(() => import('./pages/admin/AdminProjects'));
 const AdminInquiries = lazy(() => import('./pages/admin/AdminInquiries'));
+const AdminLeads = lazy(() => import('./pages/admin/AdminLeads'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -51,6 +52,7 @@ export default function App() {
                 <Route index element={<AdminDashboard />} />
                 <Route path="projects" element={<AdminProjects />} />
                 <Route path="inquiries" element={<AdminInquiries />} />
+                <Route path="leads" element={<AdminLeads />} />
               </Route>
               
               {/* Catch-all route for Supabase Auth redirects */}

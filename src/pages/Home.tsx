@@ -19,6 +19,7 @@ export default function Home() {
         <meta name="keywords" content={language === 'ko' ? "빅플래너파트너스, 프롭테크, 부동산, 공간 가치" : "BIGPLANNER PARTNERS, Proptech, Real Estate, Space Value"} />
         
         {/* Open Graph */}
+        <link rel="canonical" href="https://bigplanner.co.kr/" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bigplanner.co.kr/" />
         <meta property="og:title" content={language === 'ko' ? '홈 | 빅플래너파트너스' : 'Home | BIGPLANNER PARTNERS'} />

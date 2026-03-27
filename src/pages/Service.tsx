@@ -31,6 +31,7 @@ export default function Service() {
         <meta name="keywords" content="빅플래너파트너스, 서비스, 부동산컨설팅, PM, 프로젝트관리, 부동산금융, BIGPLANNER PARTNERS, Services, Real Estate Consulting, PM, Project Management, Real Estate Finance" />
 
         {/* Open Graph */}
+        <link rel="canonical" href="https://bigplanner.co.kr/service" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bigplanner.co.kr/service" />
         <meta property="og:title" content={language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'} />
@@ -76,36 +77,41 @@ export default function Service() {
       <Navbar />
       <div className="pt-24">
       {/* Header */}
-      <div className="bg-white py-16 border-b border-gray-100">
+      <div className="bg-white py-12 md:py-16 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Service</h1>
-          <p className="text-lg text-gray-600">
-            {language === 'ko' ? '부동산과 공간 가치를 높이는 빅플래너파트너스의 서비스' : "BIGPLANNER PARTNERS' services that enhance real estate and space value"}
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Service</h1>
+          <p className="text-base md:text-lg text-gray-600 break-keep">
+            {language === 'ko' ? (
+              <>부동산과 공간 가치를 높이는<br className="block sm:hidden" />빅플래너파트너스의 서비스</>
+            ) : (
+              "BIGPLANNER PARTNERS' services that enhance real estate and space value"
+            )}
           </p>
         </div>
       </div>
 
       {/* Tabs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
-        <div className="bg-white rounded-2xl shadow-sm p-2 flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+        <div className="bg-white rounded-2xl shadow-sm p-1.5 sm:p-2 flex justify-center space-x-1 sm:space-x-2 md:space-x-4 border border-gray-100">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-8 py-4 rounded-xl font-bold text-sm sm:text-base transition-all ${
+              className={`flex-1 px-1 py-3 md:px-8 md:py-4 rounded-xl font-bold text-[11px] sm:text-sm md:text-base transition-all break-keep ${
                 activeTab === tab.id
                   ? 'bg-gray-900 text-white shadow-md'
-                  : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'
+                  : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >
-              {tab.label}
+              <span className="md:hidden whitespace-pre-line leading-tight block">{tab.label.replace(' ', '\n')}</span>
+              <span className="hidden md:inline">{tab.label}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* Content Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <AnimatePresence mode="wait">
           {activeTab === 'consulting' && (
             <motion.div
@@ -114,16 +120,18 @@ export default function Service() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="space-y-24"
+              className="space-y-16 md:space-y-24"
             >
               {/* 01. Value Chain Diagram */}
               <div className="py-12">
-                <div className="text-center mb-20">
-                  <h3 className="text-3xl font-bold text-gray-900 mb-6">{language === 'ko' ? '밸류 체인' : 'Value Chain'}</h3>
-                  <p className="text-gray-900 leading-relaxed max-w-3xl mx-auto text-sm md:text-base font-medium">
-                    {language === 'ko'
-                      ? "새로운 공간창조(Buildup), 공간경험개선(Insight), 이익확보(Gains)라는 가치창출을 부동산 및 공간 생애주기(Life Cycle)에 맞춰 ‘BIG 컨설팅 솔루션’을 통해 제공합니다."
-                      : "We provide value creation of new space creation (Buildup), space experience improvement (Insight), and profit securing (Gains) through the 'BIG Consulting Solution' tailored to the real estate and space life cycle."}
+                <div className="text-center mb-12 md:mb-20">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{language === 'ko' ? '밸류 체인' : 'Value Chain'}</h3>
+                  <p className="text-gray-900 leading-relaxed max-w-3xl mx-auto text-sm md:text-base font-medium break-keep">
+                    {language === 'ko' ? (
+                      <>새로운 공간창조(Buildup), 공간경험개선(Insight), 이익확보(Gains)라는 가치창출을<br className="hidden md:block" />부동산 및 공간 생애주기(Life Cycle)에 맞춰 ‘BIG 컨설팅 솔루션’을 통해 제공합니다.</>
+                    ) : (
+                      "We provide value creation of new space creation (Buildup), space experience improvement (Insight), and profit securing (Gains) through the 'BIG Consulting Solution' tailored to the real estate and space life cycle."
+                    )}
                   </p>
                 </div>
                 
@@ -134,13 +142,13 @@ export default function Service() {
                   <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 relative z-10">
                     {/* Left: Value Chain Circle */}
                     <div className="flex-shrink-0">
-                      <div className="w-64 h-64 bg-black rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
-                        <span className="text-white font-bold text-2xl tracking-tight">VALUE CHAIN</span>
+                      <div className="w-40 h-40 md:w-64 md:h-64 bg-black rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+                        <span className="text-white font-bold text-lg md:text-2xl tracking-tight text-center leading-tight">VALUE<br className="md:hidden" /> CHAIN</span>
                       </div>
                     </div>
 
                     {/* Right: BIG Stack */}
-                    <div className="relative flex flex-col items-start">
+                    <div className="relative flex flex-col items-start w-full max-w-sm md:max-w-none mx-auto md:mx-0">
                       {/* Curved Dashed Line */}
                       <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-24 h-[80%] pointer-events-none hidden md:block">
                         <svg width="100%" height="100%" viewBox="0 0 100 200" fill="none" preserveAspectRatio="none">
@@ -154,12 +162,12 @@ export default function Service() {
                       </div>
 
                       {/* B - Buildup */}
-                      <div className="flex items-center gap-10 py-2">
-                        <div className="w-44 h-44 rounded-full border border-gray-300 bg-white flex flex-col items-center justify-center shadow-sm z-10">
-                          <span className="text-4xl font-bold text-gray-900 mb-1">B</span>
-                          <span className="text-sm font-bold text-gray-900">Buildup</span>
+                      <div className="flex items-center gap-6 md:gap-10 py-2 w-full">
+                        <div className="w-24 h-24 md:w-44 md:h-44 rounded-full border border-gray-300 bg-white flex flex-col items-center justify-center shadow-sm z-10 flex-shrink-0">
+                          <span className="text-2xl md:text-4xl font-bold text-gray-900 mb-1">B</span>
+                          <span className="text-[10px] md:text-sm font-bold text-gray-900">Buildup</span>
                         </div>
-                        <div className="text-[13px] text-gray-500 space-y-1.5 font-medium">
+                        <div className="text-[11px] md:text-[13px] text-gray-500 space-y-1.5 font-medium">
                           {language === 'ko' ? (
                             <>
                               <p>· 건축투자 컨설팅</p>
@@ -177,12 +185,12 @@ export default function Service() {
                       </div>
 
                       {/* I - Insight */}
-                      <div className="flex items-center gap-10 -mt-6 py-2">
-                        <div className="w-44 h-44 rounded-full border border-gray-300 bg-white flex flex-col items-center justify-center shadow-sm z-10">
-                          <span className="text-4xl font-bold text-gray-900 mb-1">I</span>
-                          <span className="text-sm font-bold text-gray-900">Insight</span>
+                      <div className="flex items-center gap-6 md:gap-10 -mt-2 md:-mt-6 py-2 w-full">
+                        <div className="w-24 h-24 md:w-44 md:h-44 rounded-full border border-gray-300 bg-white flex flex-col items-center justify-center shadow-sm z-10 flex-shrink-0">
+                          <span className="text-2xl md:text-4xl font-bold text-gray-900 mb-1">I</span>
+                          <span className="text-[10px] md:text-sm font-bold text-gray-900">Insight</span>
                         </div>
-                        <div className="text-[13px] text-gray-500 space-y-1.5 font-medium">
+                        <div className="text-[11px] md:text-[13px] text-gray-500 space-y-1.5 font-medium">
                           {language === 'ko' ? (
                             <>
                               <p>· 고객경험관리(CEM) 컨설팅</p>
@@ -202,12 +210,12 @@ export default function Service() {
                       </div>
 
                       {/* G - Gains */}
-                      <div className="flex items-center gap-10 -mt-6 py-2">
-                        <div className="w-44 h-44 rounded-full border border-gray-300 bg-white flex flex-col items-center justify-center shadow-sm z-10">
-                          <span className="text-4xl font-bold text-gray-900 mb-1">G</span>
-                          <span className="text-sm font-bold text-gray-900">Gains</span>
+                      <div className="flex items-center gap-6 md:gap-10 -mt-2 md:-mt-6 py-2 w-full">
+                        <div className="w-24 h-24 md:w-44 md:h-44 rounded-full border border-gray-300 bg-white flex flex-col items-center justify-center shadow-sm z-10 flex-shrink-0">
+                          <span className="text-2xl md:text-4xl font-bold text-gray-900 mb-1">G</span>
+                          <span className="text-[10px] md:text-sm font-bold text-gray-900">Gains</span>
                         </div>
-                        <div className="text-[13px] text-gray-500 space-y-1.5 font-medium">
+                        <div className="text-[11px] md:text-[13px] text-gray-500 space-y-1.5 font-medium">
                           {language === 'ko' ? (
                             <>
                               <p>· 매입 자문(개발기획)</p>
@@ -227,46 +235,44 @@ export default function Service() {
               </div>
 
               {/* 02. Frame Diagram */}
-              <div className="py-20 bg-white rounded-[3rem]">
-                <div className="text-center mb-16">
+              <div className="py-12 md:py-20 bg-white rounded-[3rem]">
+                <div className="text-center mb-10 md:mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">02. Frame</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '프레임 (Frame)' : 'Frame'}</h4>
-                  <p className="text-gray-600 leading-relaxed max-w-xl mx-auto text-sm md:text-base">
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '프레임 (Frame)' : 'Frame'}</h4>
+                  <p className="text-gray-600 leading-relaxed max-w-xl mx-auto text-sm md:text-base px-4">
                     {language === 'ko' ? (
                       <>
-                        부동산 및 공간에 관련된 모든 문제에 대한 전문적인 자문 및<br />
-                        이해관계에 얽매이지 않는 편견없는 조언을 드립니다.
+                        부동산 및 공간에 관련된 모든 문제에 대한 전문적인 자문 및<br className="hidden md:block" />이해관계에 얽매이지 않는 편견없는 조언을 드립니다.
                       </>
                     ) : (
                       <>
-                        We provide professional advice on all issues related to real estate and space and<br />
-                        unbiased advice that is not bound by interests.
+                        We provide professional advice on all issues related to real estate and space and<br className="hidden md:block" />unbiased advice that is not bound by interests.
                       </>
                     )}
                   </p>
                 </div>
                 
-                <div className="relative max-w-5xl mx-auto px-4 py-16">
+                <div className="relative max-w-5xl mx-auto px-4 py-10 md:py-16">
                   {/* Dashed Ellipse Container */}
-                  <div className="border-2 border-dashed border-gray-200 rounded-full p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 relative">
+                  <div className="border-2 border-dashed border-gray-200 rounded-[2rem] md:rounded-full p-6 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 relative mt-6 md:mt-0">
                     
                     {/* Labels inside dashed container */}
-                    <div className="absolute top-8 left-1/2 -translate-x-1/2 text-gray-900 font-bold text-sm">
+                    <div className="absolute -top-3 md:top-8 left-1/2 -translate-x-1/2 bg-white px-4 text-gray-900 font-bold text-sm whitespace-nowrap">
                       {language === 'ko' ? '컨설팅의뢰' : 'Consulting Request'}
                     </div>
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-900 font-bold text-sm">
+                    <div className="absolute -bottom-3 md:bottom-8 left-1/2 -translate-x-1/2 bg-white px-4 text-gray-900 font-bold text-sm whitespace-nowrap">
                       {language === 'ko' ? '보고서 작성 및 제출' : 'Report Preparation and Submission'}
                     </div>
 
                     {/* Customer */}
-                    <div className="w-40 h-40 rounded-full border border-gray-300 flex items-center justify-center font-bold text-gray-900 shadow-sm bg-white z-10">
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border border-gray-300 flex items-center justify-center font-bold text-gray-900 shadow-sm bg-white z-10">
                       {language === 'ko' ? '고객' : 'Client'}
                     </div>
 
                     {/* Central Grid */}
-                    <div className="flex-1 flex flex-col gap-4">
+                    <div className="flex-1 flex flex-col gap-4 w-full">
                       {/* Top Row (Dark Circles) */}
-                      <div className="grid grid-cols-4 gap-2">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-2">
                         {(language === 'ko' ? [
                           "부동산 최유효 이용방안 도출",
                           "입지분석 및 사업타당성 검토",
@@ -278,20 +284,20 @@ export default function Service() {
                           "Advisory on real estate investment & development",
                           "Legal & tax advisory related to real estate"
                         ]).map((text, i) => (
-                          <div key={i} className="aspect-square rounded-full bg-gray-800 text-white flex items-center justify-center text-[9px] md:text-[11px] font-medium text-center p-1 leading-tight shadow-lg">
+                          <div key={i} className="aspect-square rounded-full bg-gray-800 text-white flex items-center justify-center text-[11px] font-medium text-center p-3 leading-tight shadow-lg">
                             {text}
                           </div>
                         ))}
                       </div>
                       {/* Bottom Row (Blue Circles) */}
-                      <div className="grid grid-cols-4 gap-2">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-2">
                         {[
                           "Customer Experience Management",
                           "Scape(Space) Identity Strategy",
                           "Service Design & Customer Journey Map",
                           "Nudge Service Solution"
                         ].map((text, i) => (
-                          <div key={i} className="aspect-square rounded-full bg-blue-700 text-white flex items-center justify-center text-[9px] md:text-[11px] font-medium text-center p-1 leading-tight shadow-lg">
+                          <div key={i} className="aspect-square rounded-full bg-blue-700 text-white flex items-center justify-center text-[11px] font-medium text-center p-3 leading-tight shadow-lg">
                             {text}
                           </div>
                         ))}
@@ -299,7 +305,7 @@ export default function Service() {
                     </div>
 
                     {/* BigPlanner */}
-                    <div className="w-40 h-40 rounded-full border border-gray-300 flex flex-col items-center justify-center font-bold text-gray-900 shadow-sm bg-white z-10 text-center p-4">
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border border-gray-300 flex flex-col items-center justify-center font-bold text-gray-900 shadow-sm bg-white z-10 text-center p-4">
                       {language === 'ko' ? (
                         <>빅플래너<br/>파트너스</>
                       ) : (
@@ -312,12 +318,12 @@ export default function Service() {
 
               {/* 03. Process Detailed Chart */}
               <div>
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">03. Process</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '프로세스 (Process)' : 'Process'}</h4>
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '프로세스 (Process)' : 'Process'}</h4>
                 </div>
                 
-                <div className="space-y-24 max-w-5xl mx-auto">
+                <div className="space-y-16 md:space-y-24 max-w-5xl mx-auto">
                   {(language === 'ko' ? [
                     {
                       title: "Buildup",
@@ -390,26 +396,30 @@ export default function Service() {
                     <div key={idx} className="space-y-8">
                       {/* Process Header */}
                       <div className="flex items-end gap-4">
-                        <h5 className="text-3xl font-bold text-gray-900">{process.title}</h5>
+                        <h5 className="text-2xl md:text-3xl font-bold text-gray-900">{process.title}</h5>
                         <p className="text-gray-500 font-medium pb-1">{process.subtitle}</p>
                       </div>
                       
                       {/* Process Diagram */}
                       <div className="relative">
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
                           {process.steps.map((step, sIdx) => (
-                            <div key={sIdx} className="flex flex-col items-center w-1/4">
-                              <div className={`w-40 h-40 rounded-full flex flex-col items-center justify-center text-white text-center p-4 shadow-lg z-10 ${
+                            <div key={sIdx} className="flex flex-col items-center w-full md:w-1/4">
+                              <div className={`w-32 h-32 md:w-40 md:h-40 rounded-full flex flex-col items-center justify-center text-white text-center p-4 shadow-lg z-10 ${
                                 sIdx === 0 ? 'bg-gray-900' : 
                                 sIdx === 1 ? 'bg-gray-700' : 
                                 sIdx === 2 ? 'bg-gray-600' : 'bg-gray-500'
                               }`}>
-                                <span className="font-bold text-lg mb-2">{step.name}</span>
-                                <span className="text-[10px] whitespace-pre-line opacity-90">{step.detail}</span>
+                                <span className="font-bold text-base md:text-lg mb-1 md:mb-2">{step.name}</span>
+                                <span className="text-[10px] whitespace-pre-line opacity-90 leading-tight">{step.detail}</span>
                               </div>
-                              {/* Connecting Line */}
+                              {/* Connecting Line (Desktop) */}
                               {sIdx < 3 && (
-                                <div className="absolute top-20 left-[12.5%] right-[12.5%] h-px bg-gray-200 -z-0"></div>
+                                <div className="hidden md:block absolute top-20 left-[12.5%] right-[12.5%] h-px bg-gray-200 -z-0"></div>
+                              )}
+                              {/* Connecting Line (Mobile) */}
+                              {sIdx < 3 && (
+                                <div className="md:hidden w-px h-6 bg-gray-200 mt-6"></div>
                               )}
                             </div>
                           ))}
@@ -433,13 +443,13 @@ export default function Service() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="space-y-24"
+              className="space-y-16 md:space-y-24"
             >
               {/* PM Service Features Diagram */}
               <div className="py-12">
-                <div className="text-center mb-20">
+                <div className="text-center mb-12 md:mb-20">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">BIG Management</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? 'PM 서비스 특장점' : 'PM Service Features'}</h4>
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? 'PM 서비스 특장점' : 'PM Service Features'}</h4>
                   <p className="text-lg text-gray-500">
                     {language === 'ko' ? (
                       <>체계적인 분석과 사업 수익성을 확보할 수 있는<br/>TOTAL CONSTRUCTION SERVICE</>
@@ -451,7 +461,7 @@ export default function Service() {
                 
                 <div className="max-w-5xl mx-auto">
                   {/* Main Container */}
-                  <div className="border border-gray-200 rounded-[5rem] p-12 md:p-20 relative">
+                  <div className="border border-gray-200 rounded-[3rem] md:rounded-[5rem] p-8 md:p-20 relative">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                       {/* Expert */}
                       <div className="flex flex-col items-center flex-1">
@@ -509,12 +519,16 @@ export default function Service() {
               <PMTasks />
 
               {/* 02. App Features Diagram */}
-              <div className="bg-white py-24 rounded-[4rem] shadow-sm border border-gray-100 overflow-hidden">
-                <div className="text-center mb-20">
+              <div className="bg-white py-16 md:py-24 rounded-[2rem] md:rounded-[4rem] shadow-sm border border-gray-100 overflow-hidden">
+                <div className="text-center mb-12 md:mb-20">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">02. App Solution</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '건축비서 APP 특장점' : 'Architecture Secretary APP Features'}</h4>
-                  <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                    {language === 'ko' ? '빅플래너파트너스의 시공관리는 ‘건축비서 app’을 통해 실시간으로 투명하게 관리하실 수 있습니다.' : "BIGPLANNER PARTNERS' construction management can be managed transparently in real-time through the 'Architecture Secretary app'."}
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '건축비서 APP 특장점' : 'Architecture Secretary APP Features'}</h4>
+                  <p className="text-lg text-gray-500 max-w-2xl mx-auto break-keep px-4">
+                    {language === 'ko' ? (
+                      <>빅플래너파트너스의 시공관리는 ‘건축비서 app’을 통해<br className="hidden md:block" />실시간으로 투명하게 관리하실 수 있습니다.</>
+                    ) : (
+                      <>BIGPLANNER PARTNERS' construction management can be managed transparently<br className="hidden md:block" />in real-time through the 'Architecture Secretary app'.</>
+                    )}
                   </p>
                 </div>
 
@@ -524,7 +538,7 @@ export default function Service() {
                     <div className="flex items-start text-right justify-end group">
                       <div className="mr-8">
                         <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">{language === 'ko' ? '실시간 현장 모니터링' : 'Real-time Site Monitoring'}</h5>
-                        <p className="text-gray-500 text-sm leading-relaxed">{language === 'ko' ? '언제 어디서나 스마트폰으로 현장 상황을 실시간으로 확인하고 관리할 수 있습니다.' : 'You can check and manage the site situation in real time with your smartphone anytime, anywhere.'}</p>
+                        <p className="text-gray-500 text-sm leading-relaxed break-keep">{language === 'ko' ? '언제 어디서나 스마트폰으로 현장 상황을 실시간으로 확인하고 관리할 수 있습니다.' : 'You can check and manage the site situation in real time with your smartphone anytime, anywhere.'}</p>
                       </div>
                       <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-gray-900 group-hover:text-white transition-all shadow-sm">
                         <Smartphone size={28} />
@@ -626,22 +640,26 @@ export default function Service() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="space-y-24"
+              className="space-y-16 md:space-y-24"
             >
               {/* 01. 안전계약 Section */}
               <div>
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">01. Safety Contract</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '안전계약' : 'Safety Contract'}</h4>
-                  <p className="text-gray-600 max-w-3xl mx-auto">
-                    {language === 'ko' ? '빅플래너파트너스는 건축주(시행사)에게 필요한 특약사항을 모두 고려한 표준계약서를 기준으로 전자계약방식으로 착공 전 시공사 및 하청업체와 발생가능한 분쟁을 대비합니다.' : 'BIGPLANNER PARTNERS prepares for possible disputes with construction companies and subcontractors before construction begins through an electronic contract method based on a standard contract that considers all special conditions necessary for the client (developer).'}
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '안전계약' : 'Safety Contract'}</h4>
+                  <p className="text-gray-600 max-w-3xl mx-auto break-keep px-4">
+                    {language === 'ko' ? (
+                      <>빅플래너파트너스는 건축주(시행사)에게 필요한 특약사항을 모두 고려한 표준계약서를 기준으로<br />전자계약방식으로 착공 전 시공사 및 하청업체와 발생가능한 분쟁을 대비합니다.</>
+                    ) : (
+                      <>BIGPLANNER PARTNERS prepares for possible disputes with construction companies and subcontractors before construction begins<br className="hidden md:block" />through an electronic contract method based on a standard contract that considers all special conditions necessary for the client (developer).</>
+                    )}
                   </p>
                 </div>
 
                 {/* Comparison Chart */}
-                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-20">
+                <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12 md:mb-20">
                   {/* Left: Problem */}
-                  <div className="bg-white p-12 rounded-[3rem] shadow-sm border border-gray-100 relative overflow-hidden group">
+                  <div className="bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-sm border border-gray-100 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-bl-[5rem] -mr-8 -mt-8 flex items-center justify-center pt-4 pl-4">
                       <AlertCircle className="text-gray-200" size={48} />
                     </div>
@@ -664,14 +682,14 @@ export default function Service() {
                       ]).map((text, i) => (
                         <div key={i} className="flex gap-4 items-start">
                           <div className="mt-1 text-gray-300"><X size={18} /></div>
-                          <p className="text-gray-500 text-sm leading-relaxed">{text}</p>
+                          <p className="text-gray-500 text-sm leading-relaxed break-keep">{text}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Right: Solution */}
-                  <div className="bg-gray-900 p-12 rounded-[3rem] shadow-2xl relative overflow-hidden text-white group">
+                  <div className="bg-gray-900 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-2xl relative overflow-hidden text-white group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-[5rem] -mr-8 -mt-8 flex items-center justify-center pt-4 pl-4">
                       <ShieldCheck className="text-white/10" size={48} />
                     </div>
@@ -696,7 +714,7 @@ export default function Service() {
                       ]).map((text, i) => (
                         <div key={i} className="flex gap-4 items-start">
                           <div className="mt-1 text-white/40"><CheckCircle2 size={18} /></div>
-                          <p className="text-gray-400 text-sm leading-relaxed">{text}</p>
+                          <p className="text-gray-400 text-sm leading-relaxed break-keep">{text}</p>
                         </div>
                       ))}
                     </div>
@@ -704,7 +722,7 @@ export default function Service() {
                 </div>
 
                 {/* Safety Devices Grid */}
-                <div className="bg-white p-16 rounded-[4rem] shadow-sm border border-gray-100 max-w-6xl mx-auto">
+                <div className="bg-white p-8 md:p-16 rounded-[2rem] md:rounded-[4rem] shadow-sm border border-gray-100 max-w-6xl mx-auto">
                   <div className="text-center mb-12">
                     <h4 className="text-2xl font-bold text-gray-900 mb-3">{language === 'ko' ? '빅플래너파트너스 안전장치' : 'BIGPLANNER PARTNERS Safety Devices'}</h4>
                     <p className="text-gray-500">{language === 'ko' ? '모든 계약은 철저한 8대 안전장치를 통해 보호받습니다.' : 'All contracts are protected through 8 thorough safety devices.'}</p>
@@ -744,11 +762,15 @@ export default function Service() {
 
               {/* 02. 대금관리 Section */}
               <div className="pt-12 border-t border-gray-100">
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                   <h3 className="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">02. Payment Management</h3>
-                  <h4 className="text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '대금관리 프로세스' : 'Payment Management Process'}</h4>
-                  <p className="text-gray-600 max-w-2xl mx-auto">
-                    {language === 'ko' ? 'NICE D&R 노무비닷컴과 업무제휴하여 에스크로 방식으로 공사대금을 안전하게 관리합니다.' : 'We safely manage construction costs in an escrow method through business alliance with NICE D&R Nomubi.com.'}
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{language === 'ko' ? '대금관리 프로세스' : 'Payment Management Process'}</h4>
+                  <p className="text-gray-600 max-w-2xl mx-auto break-keep px-4">
+                    {language === 'ko' ? (
+                      <>NICE D&R 노무비닷컴과 업무제휴하여<br className="hidden md:block" />에스크로 방식으로 공사대금을 안전하게 관리합니다.</>
+                    ) : (
+                      <>We safely manage construction costs in an escrow method<br className="hidden md:block" />through business alliance with NICE D&R Nomubi.com.</>
+                    )}
                   </p>
                 </div>
 

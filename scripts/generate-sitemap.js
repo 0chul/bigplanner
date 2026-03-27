@@ -23,7 +23,7 @@ async function generateSitemap() {
   try {
     const { data: projects, error } = await supabase
       .from('projects')
-      .select('id, title, updated_at');
+      .select('id, title, created_at');
 
     if (error) throw error;
 
@@ -45,7 +45,7 @@ async function generateSitemap() {
     // Add core routes
     for (const route of routes) {
       sitemap += `  <url>\n`;
-      sitemap += `    <loc>${baseUrl}/#${route.path}</loc>\n`;
+      sitemap += `    <loc>${baseUrl}${route.path}</loc>\n`;
       sitemap += `    <changefreq>${route.changefreq}</changefreq>\n`;
       sitemap += `    <priority>${route.priority}</priority>\n`;
       sitemap += `  </url>\n`;
@@ -55,10 +55,10 @@ async function generateSitemap() {
     if (projects) {
       for (const project of projects) {
         const slug = generateSlug(project.title);
-        const date = project.updated_at ? project.updated_at.split('T')[0] : new Date().toISOString().split('T')[0];
+        const date = project.created_at ? project.created_at.split('T')[0] : new Date().toISOString().split('T')[0];
         
         sitemap += `  <url>\n`;
-        sitemap += `    <loc>${baseUrl}/#/projects/${project.id}/${slug}</loc>\n`;
+        sitemap += `    <loc>${baseUrl}/projects/${project.id}/${slug}</loc>\n`;
         sitemap += `    <lastmod>${date}</lastmod>\n`;
         sitemap += `    <changefreq>monthly</changefreq>\n`;
         sitemap += `    <priority>0.8</priority>\n`;

@@ -1,6 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FolderKanban, MessageSquare, LogOut } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut } from 'lucide-react';
 
 export default function AdminLayout() {
   const { user, isAdmin, login, logout, loading } = useAuth();
@@ -48,6 +48,7 @@ export default function AdminLayout() {
     { path: '/admin', label: '대시보드', icon: <LayoutDashboard size={20} /> },
     { path: '/admin/projects', label: '프로젝트 관리', icon: <FolderKanban size={20} /> },
     { path: '/admin/inquiries', label: '고객 문의 관리', icon: <MessageSquare size={20} /> },
+    { path: '/admin/leads', label: '리드 관리', icon: <UserPlus size={20} /> },
   ];
 
   return (

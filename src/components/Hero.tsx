@@ -86,7 +86,7 @@ export default function Hero() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h1 className="text-[66px] font-bold text-white whitespace-pre-line leading-tight mb-6">
+              <h1 className="text-3xl md:text-5xl lg:text-[66px] font-bold text-white whitespace-pre-line leading-tight mb-4 md:mb-6">
                 {currentSlides[current].title}
               </h1>
               <p className="text-base md:text-lg text-gray-200 font-light tracking-wide">

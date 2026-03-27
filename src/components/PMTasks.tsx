@@ -23,10 +23,10 @@ export default function PMTasks() {
   ];
 
   return (
-    <div className="py-16 bg-gray-50 rounded-3xl my-12">
-      <div className="max-w-4xl mx-auto px-8">
-        <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">{language === 'ko' ? 'PM 업무 내용' : 'PM Task Details'}</h3>
-        <div className="space-y-8">
+    <div className="py-10 md:py-16 bg-gray-50 rounded-2xl md:rounded-3xl my-8 md:my-12">
+      <div className="max-w-4xl mx-auto px-4 md:px-8">
+        <h3 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10 md:mb-12">{language === 'ko' ? 'PM 업무 내용' : 'PM Task Details'}</h3>
+        <div className="space-y-4 md:space-y-8">
           {tasks.map((task, idx) => (
             <motion.div 
               key={idx}
@@ -34,12 +34,19 @@ export default function PMTasks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8"
+              className="bg-white md:bg-transparent rounded-2xl md:rounded-none p-5 md:p-0 shadow-sm md:shadow-none border border-gray-100 md:border-none flex flex-col md:flex-row md:items-center gap-3 md:gap-8 relative overflow-hidden group"
             >
-              <div className="w-full md:w-48 bg-gray-900 text-white py-4 px-6 rounded-2xl text-center font-bold flex-shrink-0 shadow-md">
-                {task.title}
+              {/* Mobile background step number */}
+              <div className="absolute -right-4 -top-4 text-8xl font-black text-gray-100 select-none md:hidden pointer-events-none transition-transform group-hover:scale-110">
+                {idx + 1}
               </div>
-              <div className="flex-1 text-gray-800 text-base md:text-lg leading-relaxed font-medium">
+              
+              <div className="w-fit md:w-48 bg-gray-900 text-white py-2 px-4 md:py-4 md:px-6 rounded-lg md:rounded-2xl text-center font-bold flex-shrink-0 shadow-sm relative z-10 flex items-center gap-2">
+                <span className="md:hidden text-gray-400 text-xs font-normal">STEP {idx + 1}</span>
+                <span>{task.title}</span>
+              </div>
+              
+              <div className="flex-1 text-gray-600 md:text-gray-800 text-sm md:text-lg leading-relaxed font-medium break-keep relative z-10 mt-2 md:mt-0 pl-1 md:pl-0">
                 {task.desc}
               </div>
             </motion.div>

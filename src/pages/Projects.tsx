@@ -116,6 +116,7 @@ export default function ProjectsPage() {
         <meta name="keywords" content="빅플래너파트너스, 프로젝트, 건축, 부동산개발, 포트폴리오, BIGPLANNER PARTNERS, Projects, Architecture, Real Estate Development, Portfolio" />
 
         {/* Open Graph */}
+        <link rel="canonical" href="https://bigplanner.co.kr/projects" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bigplanner.co.kr/projects" />
         <meta property="og:title" content={language === 'ko' ? '프로젝트 | 빅플래너파트너스' : 'Projects | BIGPLANNER PARTNERS'} />
@@ -157,12 +158,12 @@ export default function ProjectsPage() {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="pt-32 pb-16 bg-gray-50">
+      <div className="pt-24 pb-12 md:pt-32 md:pb-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 tracking-tight"
           >
             Our Portfolio
           </motion.h1>
@@ -170,7 +171,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto"
           >
             {language === 'ko' ? (
               <>빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다.<br />공간의 가치를 극대화하는 우리의 결과물을 확인해보세요.</>
@@ -182,10 +183,10 @@ export default function ProjectsPage() {
       </div>
 
       {/* Filter & Grid Section */}
-      <div className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-16">
           {(language === 'ko' ? categories : categoriesEn).map((category, index) => (
             <button
               key={category}

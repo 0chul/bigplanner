@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
@@ -108,6 +108,7 @@ export default function ProjectDetail() {
         <meta name="keywords" content={language === 'ko' ? `빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발` : `BIGPLANNER PARTNERS, ${project.title}, ${project.category}, Architecture, Real Estate Development`} />
 
         {/* Open Graph */}
+        <link rel="canonical" href={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`} />
         <meta property="og:title" content={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`} />
@@ -156,7 +157,7 @@ export default function ProjectDetail() {
       <Navbar />
       
       {/* Hero Image */}
-      <div className="relative h-[70vh] md:h-[85vh] w-full">
+      <div className="relative h-[60vh] md:h-[85vh] w-full">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -190,11 +191,11 @@ export default function ProjectDetail() {
                   </span>
                 )}
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-6">
+              <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
                 {project.title}
               </h1>
               {project.location && (
-                <p className="text-lg md:text-xl text-white/80 font-light flex items-center gap-2">
+                <p className="text-base md:text-xl text-white/80 font-light flex items-center gap-2">
                   <MapPin size={20} />
                   {project.location}
                 </p>
@@ -205,8 +206,8 @@ export default function ProjectDetail() {
       </div>
 
       {/* Content Section */}
-      <div className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16">
           
           {/* Left Column: Metadata */}
           <motion.div 
@@ -243,7 +244,7 @@ export default function ProjectDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-8 space-y-16"
+            className="lg:col-span-8 space-y-12 md:space-y-16"
           >
             {project.image && (
               <figure className="relative rounded-3xl overflow-hidden shadow-md group">
@@ -262,17 +263,17 @@ export default function ProjectDetail() {
 
             {project.description && (
               <div className="prose prose-lg max-w-none">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">{language === 'ko' ? '프로젝트 개요' : 'Project Overview'}</h2>
-                <p className="text-xl text-gray-600 leading-relaxed font-light whitespace-pre-line">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 tracking-tight">{language === 'ko' ? '프로젝트 개요' : 'Project Overview'}</h2>
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-light whitespace-pre-line">
                   {project.description}
                 </p>
               </div>
             )}
             
             {(project.challenge || project.solution) && (
-              <div className="grid md:grid-cols-2 gap-6 mt-12">
+              <div className="grid md:grid-cols-2 gap-6 mt-10 md:mt-12">
                 {project.challenge && (
-                  <div className="bg-gray-50 p-10 rounded-3xl border border-gray-100 hover:shadow-md transition-shadow">
+                  <div className="bg-gray-50 p-8 md:p-10 rounded-2xl md:rounded-3xl border border-gray-100 hover:shadow-md transition-shadow">
                     <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-6">
                       <Target className="text-indigo-600" size={24} />
                     </div>
@@ -283,7 +284,7 @@ export default function ProjectDetail() {
                   </div>
                 )}
                 {project.solution && (
-                  <div className="bg-gray-900 p-10 rounded-3xl text-white shadow-xl hover:shadow-2xl transition-shadow">
+                  <div className="bg-gray-900 p-8 md:p-10 rounded-2xl md:rounded-3xl text-white shadow-xl hover:shadow-2xl transition-shadow">
                     <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mb-6">
                       <Lightbulb className="text-yellow-400" size={24} />
                     </div>
@@ -301,7 +302,7 @@ export default function ProjectDetail() {
 
       {/* Gallery Section */}
       {project.gallery && project.gallery.length > 0 && (
-        <div className="py-24 bg-gray-50 border-t border-gray-100">
+        <div className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

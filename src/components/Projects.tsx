@@ -44,12 +44,12 @@ export default function Projects() {
   }, [isInView]);
 
   return (
-    <section ref={ref} className="py-24 bg-white">
+    <section ref={ref} className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-end mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4">
           <div>
             <h2 className="text-sm font-bold tracking-widest text-gray-600 uppercase mb-2">Portfolio</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900">OUR BIG WINs</h3>
+            <h3 className="text-2xl md:text-4xl font-bold text-gray-900">OUR BIG WINs</h3>
           </div>
           <Link to="/projects" className="hidden md:inline-flex items-center text-sm font-bold text-gray-900 hover:text-gray-600 transition-colors group">
             {language === 'ko' ? '모든 프로젝트 보기' : 'VIEW ALL PROJECTS'}
@@ -60,7 +60,7 @@ export default function Projects() {
         {loading ? (
           <div className="text-center py-12 text-gray-500">{language === 'ko' ? '프로젝트를 불러오는 중입니다...' : 'Loading projects...'}</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {projects.map((project, idx) => (
               <motion.div
                 key={project.id}

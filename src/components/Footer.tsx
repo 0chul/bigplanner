@@ -13,7 +13,7 @@ export default function Footer() {
             <img 
               src="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" 
               alt="BIGPLANNER PARTNERS" 
-              className="object-contain opacity-90 hover:opacity-100 transition-opacity"
+              className="h-8 md:h-10 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
               referrerPolicy="no-referrer"
               loading="lazy"
             />

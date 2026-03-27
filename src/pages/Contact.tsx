@@ -89,6 +89,7 @@ export default function Contact() {
         <meta name="keywords" content="빅플래너파트너스, 오시는길, 문의, 프롭테크, 부동산개발, BIGPLANNER PARTNERS, Contact Us, Inquiry, Proptech, Real Estate Development" />
 
         {/* Open Graph */}
+        <link rel="canonical" href="https://bigplanner.co.kr/contact" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://bigplanner.co.kr/contact" />
         <meta property="og:title" content={language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'} />
@@ -130,11 +131,11 @@ export default function Contact() {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="pt-32 pb-20 bg-gray-50">
+      <div className="pt-24 pb-12 md:pt-32 md:pb-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">오시는 길 & 문의</h1>
-            <p className="text-xl text-gray-600">
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6">오시는 길 & 문의</h1>
+            <p className="text-lg md:text-xl text-gray-600">
               빅플래너파트너스와 함께 새로운 가치를 만들어갈 준비가 되셨나요?
             </p>
           </div>
@@ -142,13 +143,13 @@ export default function Contact() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
           
           {/* Contact Info & Map */}
           <div className="space-y-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">Contact Information</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center flex-shrink-0">
@@ -194,7 +195,7 @@ export default function Contact() {
 
             {/* Map */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Location</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Location</h2>
               <div className="w-full h-[400px] bg-gray-200 rounded-2xl overflow-hidden">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d197.72587742125762!2d126.99047294866499!3d37.54059453332746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca24e8d851f85%3A0x6e761d7fc7cd897f!2z7ISc7Jq47Yq567OE7IucIOyaqeyCsOq1rCDtmozrgpjrrLTroZwxM-qwgOq4uCAxNg!5e0!3m2!1sko!2skr!4v1678085365896!5m2!1sko!2skr" 
@@ -235,8 +236,8 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-gray-100 h-fit">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">프로젝트 문의하기</h2>
+          <div className="bg-white p-6 md:p-12 rounded-2xl md:rounded-3xl shadow-lg border border-gray-100 h-fit">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">프로젝트 문의하기</h2>
             
             {submitSuccess ? (
               <div className="bg-green-50 text-green-800 p-6 rounded-2xl text-center">

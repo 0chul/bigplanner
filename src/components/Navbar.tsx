@@ -26,7 +26,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 bg-black shadow-md py-4`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black shadow-md py-4`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0">
@@ -34,7 +34,7 @@ export default function Navbar() {
               <img 
                 src="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" 
                 alt="BIGPLANNER PARTNERS" 
-                className="object-contain"
+                className="h-8 md:h-10 w-auto object-contain"
                 referrerPolicy="no-referrer"
               />
             </Link>
@@ -64,21 +64,6 @@ export default function Navbar() {
           </div>
 
           <div className="md:hidden flex items-center gap-4">
-            <div className="flex space-x-2 text-sm font-medium text-white">
-              <button 
-                onClick={() => setLanguage('ko')} 
-                className={`hover:text-gray-300 transition-opacity ${language === 'ko' ? 'opacity-100' : 'opacity-50'}`}
-              >
-                KOR
-              </button>
-              <span>|</span>
-              <button 
-                onClick={() => setLanguage('en')} 
-                className={`hover:text-gray-300 transition-opacity ${language === 'en' ? 'opacity-100' : 'opacity-50'}`}
-              >
-                ENG
-              </button>
-            </div>
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white" aria-label="Toggle mobile menu">
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -104,6 +89,21 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <div className="px-3 py-4 border-t border-gray-100 flex space-x-4 text-sm font-medium text-gray-900">
+              <button 
+                onClick={() => { setLanguage('ko'); setIsMobileMenuOpen(false); }} 
+                className={`transition-opacity ${language === 'ko' ? 'opacity-100 font-bold' : 'opacity-50'}`}
+              >
+                KOR
+              </button>
+              <span className="text-gray-300">|</span>
+              <button 
+                onClick={() => { setLanguage('en'); setIsMobileMenuOpen(false); }} 
+                className={`transition-opacity ${language === 'en' ? 'opacity-100 font-bold' : 'opacity-50'}`}
+              >
+                ENG
+              </button>
+            </div>
           </div>
         </motion.div>
       )}

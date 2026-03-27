@@ -6,7 +6,7 @@ export default function ContactCTA() {
   const { language } = useLanguage();
 
   return (
-    <section className="py-24 bg-gray-900 relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gray-900 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -25,10 +25,10 @@ export default function ContactCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-[47px] font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-[47px] font-bold text-white mb-4 md:mb-6">
             {language === 'ko' ? '저희에게 궁금하신 부분이 있으신가요?' : 'Do you have any questions for us?'}
           </h2>
-          <p className="text-xl text-gray-300 mb-10">
+          <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-10">
             {language === 'ko' ? (
               <>궁금하신 점은 언제든 빅플래너파트너스에 문의주세요.<br className="hidden md:block" />신속하고 친절하게 답변해 드리겠습니다.</>
             ) : (

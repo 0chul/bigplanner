@@ -50,16 +50,16 @@ export default function CoreValues() {
   const currentValues = values[language];
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-12 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Core Values</h2>
-          <p className="text-lg text-gray-600">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Core Values</h2>
+          <p className="text-base md:text-lg text-gray-600">
             {language === 'ko' ? '빅플래너파트너스가 추구하는 핵심 가치입니다.' : 'The core values pursued by BIGPLANNER PARTNERS.'}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {currentValues.map((value, idx) => (
             <motion.div
               key={idx}
@@ -67,7 +67,7 @@ export default function CoreValues() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.2 }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+              className="bg-white p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
             >
               <div className="w-16 h-16 bg-gray-100 text-gray-900 rounded-xl flex items-center justify-center mb-6">
                 {value.icon}
