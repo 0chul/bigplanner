@@ -20,30 +20,15 @@ export default function AdminLeads() {
   }, []);
 
   async function fetchLeads() {
-    // 1단계에서 복사한 CSV URL을 여기에 넣으세요
-    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTTjlm7X-HKW_EcDa-zEWWjT-AajR9Ouz7ppvXrQdD8OY_K4mbErwxBtUcimWeql42V2BgDzZV1SV5N/pub?gid=0&single=true&output=csv';
+    const { data, error } = await supabase
+      .from('leads')
+      .select('*')
+      .order('created_at', { ascending: false });
     
-    try {
-      const response = await fetch(CSV_URL);
-      const data = await response.text();
-      
-      // CSV 파싱 (탭으로 구분된 데이터 처리)
-      const rows = data.split('\n').slice(1); // 헤더 제외
-      const parsedLeads = rows.map((row) => {
-        const columns = row.split('\t');
-        return {
-          id: columns[0] || '',
-          name: columns[13] || 'Unknown',
-          email: '', // CSV에 이메일 필드가 없음
-          phone: columns[14] || '',
-          source: columns[11] || 'Meta Lead Ads',
-          status: columns[16] || 'new',
-          created_at: columns[1] || new Date().toISOString()
-        };
-      });
-      setLeads(parsedLeads);
-    } catch (error) {
+    if (error) {
       console.error('Error fetching leads:', error);
+    } else {
+      setLeads(data || []);
     }
   }
 
