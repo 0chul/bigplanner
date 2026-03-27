@@ -46,6 +46,7 @@ export default function AdminLeads() {
               <th className="px-6 py-4 font-bold text-gray-900">소스</th>
               <th className="px-6 py-4 font-bold text-gray-900">상태</th>
               <th className="px-6 py-4 font-bold text-gray-900">접수일</th>
+              <th className="px-6 py-4 font-bold text-gray-900">작업</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -66,6 +67,14 @@ export default function AdminLeads() {
                   </span>
                 </td>
                 <td className="px-6 py-4">{new Date(lead.created_at).toLocaleDateString()}</td>
+                <td className="px-6 py-4">
+                  <button 
+                    onClick={() => moveToInquiries(lead)}
+                    className="text-xs bg-black text-white px-3 py-1 rounded-lg hover:bg-gray-800"
+                  >
+                    문의로 이동
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -73,4 +82,40 @@ export default function AdminLeads() {
       </div>
     </div>
   );
+}
+
+async function moveToInquiries(lead: Lead) {
+  if (!confirm('이 리드를 고객 문의 관리로 이동하시겠습니까?')) return;
+
+  // 1. inquiries 테이블에 추가
+  const { error: insertError } = await supabase
+    .from('inquiries')
+    .insert([{
+      name: lead.name,
+      email: lead.email || '',
+      phone: lead.phone,
+      company: '', // inquiries 테이블 구조에 맞춰 추가
+      message: `[META 리드 이동] 소스: ${lead.source}`
+    }]);
+
+  if (insertError) {
+    console.error('Error moving lead:', insertError);
+    alert('이동 중 오류가 발생했습니다.');
+    return;
+  }
+
+  // 2. leads 테이블에서 상태 업데이트 (또는 삭제)
+  const { error: updateError } = await supabase
+    .from('leads')
+    .update({ status: 'moved' })
+    .eq('id', lead.id);
+
+  if (updateError) {
+    console.error('Error updating lead status:', updateError);
+    alert('이동은 완료되었으나 상태 업데이트에 실패했습니다.');
+  } else {
+    alert('문의 관리로 이동되었습니다.');
+    // 리스트 새로고침
+    window.location.reload();
+  }
 }
