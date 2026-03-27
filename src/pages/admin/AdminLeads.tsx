@@ -27,18 +27,18 @@ export default function AdminLeads() {
       const response = await fetch(CSV_URL);
       const data = await response.text();
       
-      // CSV 파싱 (간단한 구현)
+      // CSV 파싱 (탭으로 구분된 데이터 처리)
       const rows = data.split('\n').slice(1); // 헤더 제외
-      const parsedLeads = rows.map((row, index) => {
-        const [timestamp, name, email, phone] = row.split(',');
+      const parsedLeads = rows.map((row) => {
+        const columns = row.split('\t');
         return {
-          id: index.toString(),
-          name,
-          email,
-          phone,
-          source: 'Google Sheet',
-          status: 'new',
-          created_at: timestamp
+          id: columns[0] || '',
+          name: columns[13] || 'Unknown',
+          email: '', // CSV에 이메일 필드가 없음
+          phone: columns[14] || '',
+          source: columns[11] || 'Meta Lead Ads',
+          status: columns[16] || 'new',
+          created_at: columns[1] || new Date().toISOString()
         };
       });
       setLeads(parsedLeads);
