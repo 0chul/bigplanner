@@ -21,7 +21,7 @@ export default function AdminLeads() {
 
   async function fetchLeads() {
     // 1단계에서 복사한 CSV URL을 여기에 넣으세요
-    const CSV_URL = 'Yhttps://docs.google.com/spreadsheets/d/1_W9XKypSmqZt-FKxbMXehGiEpPzwwxXs7slO6B9uiU4/edit?usp=sharing';
+    const CSV_URL = 'https://script.google.com/macros/s/AKfycby00RuZDGprKaHPSjtgMzaa_N3FUdThH4dcFTT7k7xuuQ6riBipMnmyMzB6QoIvdN4u/exec';
     
     try {
       const response = await fetch(CSV_URL);
