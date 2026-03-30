@@ -97,7 +97,6 @@ export default function AdminInquiries() {
       supabase.removeChannel(channel);
     };
     */
-  }, [isAdmin]);
 
   const updateStatus = async (id: string, newStatus: 'new' | 'in-progress' | 'completed') => {
     try {
