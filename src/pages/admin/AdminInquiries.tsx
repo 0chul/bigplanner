@@ -38,16 +38,18 @@ export default function AdminInquiries() {
 
     const fetchInquiries = async () => {
       console.log("Fetching inquiries...");
-      const { data, error } = await supabase
-        .from('inquiries')
-        .select('*')
-        .order('created_at', { ascending: false });
       
-      if (error) {
-        console.error("Error fetching inquiries:", error);
+      const response = await supabase
+        .from('inquiries')
+        .select('*');
+      
+      console.log("Supabase Response:", response);
+      
+      if (response.error) {
+        console.error("Error fetching inquiries:", response.error);
       } else {
-        console.log("Fetched inquiries data:", data);
-        setInquiries(data as Inquiry[]);
+        console.log("Fetched inquiries data:", response.data);
+        setInquiries(response.data as Inquiry[]);
       }
       setFetching(false);
     };
