@@ -29,6 +29,19 @@ export default function AdminLeads() {
 
   useEffect(() => {
     fetchLeads();
+
+    // 실시간 구독 추가
+    const channel = supabase
+      .channel('leads_changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'leads' }, () => {
+        console.log("Leads changed, re-fetching...");
+        fetchLeads();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   async function fetchLeads() {
