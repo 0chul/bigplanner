@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../../supabase';
+import { supabase, supabaseUrl } from '../../supabase';
 import { UserPlus, X, Edit2, Trash2, ArrowRight } from 'lucide-react';
 
 interface Lead {
@@ -103,16 +103,19 @@ export default function AdminLeads() {
         console.log('onConfirm called for deleteLead with id:', id);
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
         
-        const { error } = await supabase
+        const { error, count } = await supabase
           .from('leads')
-          .delete()
+          .delete({ count: 'exact' })
           .eq('id', id);
 
         if (error) {
           console.error('Error deleting lead:', error);
           setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'}`);
+        } else if (count === 0) {
+          console.warn('Delete operation returned 0 count. RLS might be blocking it.');
+          setErrorMsg('삭제 실패: Supabase에서 데이터가 삭제되지 않았습니다. (RLS 권한 문제일 확률이 99%입니다. SQL Editor에서 권한을 확인해주세요.)');
         } else {
-          console.log('Lead deleted successfully');
+          console.log(`Lead deleted successfully. Count: ${count}`);
           // 즉각적인 UI 업데이트를 위해 로컬 상태에서 직접 제거
           setLeads(prevLeads => prevLeads.filter(lead => lead.id !== id));
           // 서버 데이터 동기화를 위해 fetchLeads 호출 (백그라운드)
@@ -157,7 +160,12 @@ export default function AdminLeads() {
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8">META 리드 관리</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold">META 리드 관리</h1>
+        <div className="text-xs text-gray-400">
+          Connected DB: {supabaseUrl}
+        </div>
+      </div>
       
       {errorMsg && (
         <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl flex items-center justify-between">
