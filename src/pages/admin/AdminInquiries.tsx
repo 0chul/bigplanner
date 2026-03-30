@@ -41,7 +41,8 @@ export default function AdminInquiries() {
       
       const response = await supabase
         .from('inquiries')
-        .select('*');
+        .select('id:id::text, name, email, phone, company, message, status, created_at')
+        .order('created_at', { ascending: false });
       
       console.log("🔍 [DEBUG] Supabase Response:", response);
       
@@ -103,15 +104,19 @@ export default function AdminInquiries() {
       try {
         console.log("Deleting inquiry with id:", id);
         
-        // 캐시를 완전히 우회하는 헤더 추가
-        const { error } = await supabase
+        const { error, count } = await supabase
           .from('inquiries')
-          .delete()
+          .delete({ count: 'exact' })
           .eq('id', id);
           
         if (error) throw error;
         
-        console.log("Delete successful");
+        if (count === 0) {
+          console.warn('Delete operation returned 0 count. ID:', id);
+          alert('해당 데이터가 DB에 존재하지 않거나 삭제 권한이 없습니다. (이미 삭제된 유령 데이터일 수 있습니다)');
+        } else {
+          console.log("Delete successful. Count:", count);
+        }
         
         // 로컬 상태에서 즉시 제거하여 UI 동기화
         setInquiries(prev => prev.filter(inq => inq.id !== id));
