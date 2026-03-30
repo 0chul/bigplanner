@@ -37,7 +37,9 @@ export default function AdminLeads() {
     const { data, error } = await supabase
       .from('leads')
       .select('*')
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
+      .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+      .setHeader('Pragma', 'no-cache');
     
     if (error) {
       console.error('Error fetching leads:', error);
@@ -118,7 +120,9 @@ export default function AdminLeads() {
         const { error, count } = await supabase
           .from('leads')
           .delete({ count: 'exact' })
-          .eq('id', id);
+          .eq('id', id)
+          .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+          .setHeader('Pragma', 'no-cache');
 
         if (error) {
           console.error('Error deleting lead (Detailed):', JSON.stringify(error, null, 2));
@@ -159,7 +163,9 @@ export default function AdminLeads() {
         status: editForm.status,
       })
       .eq('id', editingLead.id)
-      .select();
+      .select()
+      .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+      .setHeader('Pragma', 'no-cache');
 
     if (error) {
       console.error('Error updating lead:', error);
