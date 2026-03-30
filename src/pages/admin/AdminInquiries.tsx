@@ -99,16 +99,20 @@ export default function AdminInquiries() {
   const handleDelete = async (id: string) => {
     if (window.confirm("정말로 이 문의를 삭제하시겠습니까?")) {
       try {
+        console.log("Deleting inquiry with id:", id);
         const { data, error } = await supabase
           .from('inquiries')
           .delete()
           .eq('id', id)
           .select();
           
+        console.log("Delete response:", { data, error });
+            
         if (error) throw error;
         
         if (!data || data.length === 0) {
-          throw new Error("삭제 권한이 없습니다. Supabase에서 inquiries 테이블의 DELETE RLS 정책을 추가해주세요.");
+          console.warn("No data returned from delete. ID might not exist.");
+          throw new Error("삭제할 데이터를 찾을 수 없습니다.");
         }
         
         // 삭제 성공 시 로컬 상태도 즉시 반영
@@ -224,17 +228,17 @@ export default function AdminInquiries() {
     <div className="p-8 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">고객 문의 관리</h1>
       
-      <div className="bg-white rounded-xl shadow overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-50 border-b border-gray-100">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-10"></th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">상태</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">날짜</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">이름/회사</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">연락처</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">문의 내용</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">관리</th>
+              <th className="px-6 py-4 font-bold text-gray-900 w-10"></th>
+              <th className="px-6 py-4 font-bold text-gray-900">상태</th>
+              <th className="px-6 py-4 font-bold text-gray-900">날짜</th>
+              <th className="px-6 py-4 font-bold text-gray-900">이름/회사</th>
+              <th className="px-6 py-4 font-bold text-gray-900">연락처</th>
+              <th className="px-6 py-4 font-bold text-gray-900">문의 내용</th>
+              <th className="px-6 py-4 font-bold text-gray-900 text-right">관리</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
