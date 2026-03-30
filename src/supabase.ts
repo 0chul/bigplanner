@@ -6,12 +6,7 @@ const supabaseAnonKey = (import.meta as any).env?.VITE_SUPABASE_ANON_KEY || 'eyJ
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   global: {
     fetch: (url, options) => {
-      const newUrl = new URL(url);
-      // GET 요청에만 타임스탬프를 붙여서 브라우저/CDN 캐시를 완벽하게 무력화합니다.
-      if (!options?.method || options.method.toUpperCase() === 'GET') {
-        newUrl.searchParams.set('t', Date.now().toString());
-      }
-      return fetch(newUrl.toString(), { 
+      return fetch(url, { 
         ...options, 
         cache: 'no-store',
         headers: {
