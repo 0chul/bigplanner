@@ -5,18 +5,15 @@ const supabaseAnonKey = (import.meta as any).env?.VITE_SUPABASE_ANON_KEY || 'eyJ
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   global: {
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+    },
     fetch: (url, options) => {
-      // Supabase 클라이언트가 헤더를 처리할 수 있도록 options를 그대로 전달하되
-      // 필요한 캐시 방지 헤더만 추가합니다.
-      const headers = new Headers(options?.headers);
-      headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-      headers.set('Pragma', 'no-cache');
-      headers.set('Expires', '0');
-
       return fetch(url, { 
         ...options, 
         cache: 'no-store',
-        headers
       });
     },
   },

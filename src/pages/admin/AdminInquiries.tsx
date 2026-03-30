@@ -42,9 +42,7 @@ export default function AdminInquiries() {
       // 캐시를 무시하도록 헤더를 추가하여 요청
       const response = await supabase
         .from('inquiries')
-        .select('*')
-        .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
-        .setHeader('Pragma', 'no-cache');
+        .select('*');
       
       console.log("Supabase Response:", response);
       
@@ -108,9 +106,7 @@ export default function AdminInquiries() {
         const { error } = await supabase
           .from('inquiries')
           .delete()
-          .eq('id', id)
-          .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
-          .setHeader('Pragma', 'no-cache');
+          .eq('id', id);
           
         if (error) throw error;
         
