@@ -113,6 +113,9 @@ export default function AdminLeads() {
           setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'}`);
         } else {
           console.log('Lead deleted successfully');
+          // 즉각적인 UI 업데이트를 위해 로컬 상태에서 직접 제거
+          setLeads(prevLeads => prevLeads.filter(lead => lead.id !== id));
+          // 서버 데이터 동기화를 위해 fetchLeads 호출 (백그라운드)
           fetchLeads();
         }
       }
