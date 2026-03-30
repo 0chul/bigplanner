@@ -25,6 +25,7 @@ export default function AdminInquiries() {
   const { isAdmin, loading } = useAuth();
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [fetching, setFetching] = useState(true);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   
   // Memo state
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -38,6 +39,7 @@ export default function AdminInquiries() {
 
     const fetchInquiries = async () => {
       console.log("🔍 [DEBUG] Fetching inquiries...");
+      setErrorMsg(null);
       
       const response = await supabase
         .from('inquiries')
@@ -48,6 +50,7 @@ export default function AdminInquiries() {
       
       if (response.error) {
         console.error("❌ [DEBUG] Error fetching inquiries:", response.error);
+        setErrorMsg(`데이터를 불러오는 중 오류가 발생했습니다: ${response.error.message}`);
       } else {
         console.log("✅ [DEBUG] Fetched inquiries data:", response.data);
         setInquiries(response.data as Inquiry[]);
@@ -56,6 +59,30 @@ export default function AdminInquiries() {
     };
 
     fetchInquiries();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAdmin]);
+
+  const addTestInquiry = async () => {
+    const { error } = await supabase.from('inquiries').insert([{
+      name: '테스트 문의 ' + new Date().toLocaleTimeString(),
+      email: 'test@example.com',
+      phone: '', // 연락처 비어있음
+      company: '테스트 컴퍼니',
+      message: '연락처가 없는 테스트 문의입니다.',
+      status: 'new'
+    }]);
+
+    if (error) {
+      alert('테스트 데이터 추가 실패: ' + error.message);
+    } else {
+      alert('테스트 데이터가 추가되었습니다! 화면을 확인해주세요.');
+      // 강제 새로고침 효과를 위해 상태 변경
+      setFetching(true);
+      const response = await supabase.from('inquiries').select('*').order('created_at', { ascending: false });
+      if (response.data) setInquiries(response.data as Inquiry[]);
+      setFetching(false);
+    }
+  };
 
     // 실시간 구독으로 인한 데이터 꼬임 방지를 위해 잠시 비활성화
     /*
@@ -234,8 +261,25 @@ export default function AdminInquiries() {
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8">고객 문의 관리</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold">고객 문의 관리</h1>
+        <button
+          onClick={addTestInquiry}
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors"
+        >
+          + 테스트 문의 추가 (연락처 없음)
+        </button>
+      </div>
       
+      {errorMsg && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl flex items-center justify-between">
+          <p>{errorMsg}</p>
+          <button onClick={() => setErrorMsg(null)} className="text-red-400 hover:text-red-600">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      )}
+
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50 border-b border-gray-100">

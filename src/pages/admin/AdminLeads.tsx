@@ -49,7 +49,7 @@ export default function AdminLeads() {
     
     const { data, error } = await supabase
       .from('leads')
-      .select('id:id::text, *')
+      .select('*')
       .order('created_at', { ascending: false });
     
     if (error) {
@@ -64,7 +64,7 @@ export default function AdminLeads() {
   }
 
   async function debugLead(id: string) {
-    const { data, error } = await supabase.from('leads').select('id:id::text, *').eq('id', id);
+    const { data, error } = await supabase.from('leads').select('*').eq('id', id);
     console.log(`Debug Lead ${id}:`, { data, error });
     if (data && data.length === 0) {
       // Try fetching without eq to see all IDs
@@ -119,6 +119,29 @@ export default function AdminLeads() {
     });
   }
 
+  async function forceDeleteLead(lead: Lead) {
+    if (window.confirm(`[강제 삭제] 정말로 '${lead.name}' 리드를 삭제하시겠습니까?\n(이 기능은 ID 매칭이 실패할 때 이름과 이메일을 기준으로 삭제합니다)`)) {
+      try {
+        const { error, count } = await supabase
+          .from('leads')
+          .delete({ count: 'exact' })
+          .eq('name', lead.name)
+          .eq('email', lead.email);
+
+        if (error) {
+          setErrorMsg(`강제 삭제 실패: ${error.message}`);
+        } else if (count === 0) {
+          alert('이름과 이메일이 일치하는 데이터를 DB에서 찾을 수 없습니다.');
+        } else {
+          alert(`강제 삭제 성공 (${count}개 삭제됨)`);
+          fetchLeads();
+        }
+      } catch (err: any) {
+        setErrorMsg(`강제 삭제 중 오류 발생: ${err.message}`);
+      }
+    }
+  }
+
   function deleteLead(id: string) {
     console.log('deleteLead called with id:', id, 'Type:', typeof id);
     setConfirmModal({
@@ -129,7 +152,7 @@ export default function AdminLeads() {
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
         
         // 삭제 전 데이터 확인
-        const { data: checkData } = await supabase.from('leads').select('id:id::text').eq('id', id);
+        const { data: checkData } = await supabase.from('leads').select('id').eq('id', id);
         console.log('삭제 전 DB에서 찾은 데이터:', checkData);
         
         const { error, count } = await supabase
@@ -289,6 +312,13 @@ export default function AdminLeads() {
                     >
                       <Trash2 className="w-3 h-3" />
                       삭제
+                    </button>
+                    <button 
+                      onClick={() => forceDeleteLead(lead)}
+                      className="flex items-center gap-1 text-xs bg-red-600 text-white px-3 py-1.5 rounded-lg hover:bg-red-700 transition-colors font-medium"
+                      title="강제 삭제 (ID 무시)"
+                    >
+                      강제삭제
                     </button>
                     <button 
                       onClick={() => debugLead(lead.id)}
