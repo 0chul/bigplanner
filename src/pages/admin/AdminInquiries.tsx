@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../supabase';
+import { supabase, supabaseUrl } from '../../supabase';
 import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X } from 'lucide-react';
 
 interface Inquiry {
@@ -63,19 +63,23 @@ export default function AdminInquiries() {
   }, [isAdmin]);
 
   const addTestInquiry = async () => {
-    const { error } = await supabase.from('inquiries').insert([{
+    const { data, error } = await supabase.from('inquiries').insert([{
       name: '테스트 문의 ' + new Date().toLocaleTimeString(),
       email: 'test@example.com',
       phone: '', // 연락처 비어있음
       company: '테스트 컴퍼니',
       message: '연락처가 없는 테스트 문의입니다.',
       status: 'new'
-    }]);
+    }]).select();
 
     if (error) {
       alert('테스트 데이터 추가 실패: ' + error.message);
     } else {
-      alert('테스트 데이터가 추가되었습니다! 화면을 확인해주세요.');
+      if (!data || data.length === 0) {
+        alert('🚨 [중요] 데이터 추가는 성공했지만, 다시 읽어오지 못했습니다!\n이것은 100% RLS(보안 정책)가 켜져 있어서 SELECT를 막고 있다는 증거입니다.\nSupabase 대시보드에서 inquiries 테이블의 RLS가 정말 꺼져있는지 다시 한번 확인해주세요.');
+      } else {
+        alert('테스트 데이터가 추가되고 정상적으로 읽어왔습니다!');
+      }
       // 강제 새로고침 효과를 위해 상태 변경
       setFetching(true);
       const response = await supabase.from('inquiries').select('*').order('created_at', { ascending: false });
@@ -262,12 +266,17 @@ export default function AdminInquiries() {
     <div className="p-8 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">고객 문의 관리</h1>
-        <button
-          onClick={addTestInquiry}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors"
-        >
-          + 테스트 문의 추가 (연락처 없음)
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={addTestInquiry}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors"
+          >
+            + 테스트 문의 추가 (연락처 없음)
+          </button>
+          <div className="text-xs text-gray-400">
+            Connected DB: {supabaseUrl}
+          </div>
+        </div>
       </div>
       
       {errorMsg && (

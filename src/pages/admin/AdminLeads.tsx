@@ -49,7 +49,7 @@ export default function AdminLeads() {
     
     const { data, error } = await supabase
       .from('leads')
-      .select('id:id::text, *')
+      .select('id:id::text, name, email, phone, source, status, created_at')
       .order('created_at', { ascending: false });
     
     if (error) {
@@ -64,7 +64,7 @@ export default function AdminLeads() {
   }
 
   async function debugLead(id: string) {
-    const { data, error } = await supabase.from('leads').select('*').eq('id', id);
+    const { data, error } = await supabase.from('leads').select('id:id::text, name, email, phone, source, status, created_at').eq('id', id);
     console.log(`Debug Lead ${id}:`, { data, error });
     if (data && data.length === 0) {
       // Try fetching without eq to see all IDs
