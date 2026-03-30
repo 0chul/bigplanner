@@ -107,7 +107,12 @@ export default function AdminInquiries() {
           
         if (error) throw error;
         
-        console.log("Delete successful");
+        console.log("Delete successful, re-fetching...");
+        
+        // 삭제 직후 전체 데이터를 다시 가져와서 DB 상태를 확인합니다.
+        const { data: remainingData } = await supabase.from('inquiries').select('*');
+        console.log("Remaining data in DB:", remainingData);
+        
         // 삭제 성공 시 로컬 상태도 즉시 반영
         setInquiries(prev => prev.filter(inq => inq.id !== id));
       } catch (error: any) {
