@@ -92,7 +92,7 @@ export default function AdminLeads() {
             email: lead.email || '',
             phone: lead.phone || '',
             company: '',
-            message: `[META 리드 이동] 소스: ${lead.source || '알 수 없음'}`,
+            message: `[리드 이동] 소스: ${lead.source || '알 수 없음'}`,
             status: 'new',
             created_at: new Date().toISOString()
           }]);
@@ -120,14 +120,17 @@ export default function AdminLeads() {
   }
 
   function deleteLead(id: string) {
-    console.log('deleteLead called with id:', id);
+    console.log('deleteLead called with id:', id, 'Type:', typeof id);
     setConfirmModal({
       isOpen: true,
       title: '리드 삭제',
-      message: '정말로 이 리드를 삭제하시겠습니까? 삭제된 데이터는 복구할 수 없습니다.',
+      message: '정말로 이 리드를 삭제하시겠습니까?',
       onConfirm: async () => {
-        console.log('onConfirm called for deleteLead with id:', id);
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
+        
+        // 삭제 전 데이터 확인
+        const { data: checkData } = await supabase.from('leads').select('id').eq('id', id);
+        console.log('삭제 전 DB에서 찾은 데이터:', checkData);
         
         const { error, count } = await supabase
           .from('leads')
@@ -135,23 +138,18 @@ export default function AdminLeads() {
           .eq('id', id);
 
         if (error) {
-          console.error('Error deleting lead (Detailed):', JSON.stringify(error, null, 2));
-          setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'} (코드: ${error.code}, 힌트: ${error.hint})`);
+          console.error('Error deleting lead:', error);
+          setErrorMsg(`삭제 실패: ${error.message}`);
         } else if (count === 0) {
-          console.warn('Delete operation returned 0 count. RLS might be blocking it or ID not found.');
-          // DB에 이미 없는 경우일 확률이 높으므로 UI에서 제거해줍니다.
-          setLeads(prevLeads => prevLeads.filter(lead => lead.id !== id));
-          alert('해당 데이터가 이미 DB에서 삭제되어 화면에서 정리했습니다.');
+          console.warn('Delete operation returned 0 count. ID:', id);
+          alert('해당 ID를 찾을 수 없습니다. 콘솔의 "삭제 전 DB에서 찾은 데이터"를 확인해주세요.');
         } else {
-          console.log(`Lead deleted successfully. Count: ${count}`);
-          // 즉각적인 UI 업데이트를 위해 로컬 상태에서 직접 제거
+          console.log(`Lead deleted successfully.`);
           setLeads(prevLeads => prevLeads.filter(lead => lead.id !== id));
-          // 서버 데이터 동기화를 위해 fetchLeads 호출 (백그라운드)
           fetchLeads();
         }
       }
     });
-    console.log('setConfirmModal called');
   }
 
   function openEditModal(lead: Lead) {
