@@ -38,7 +38,6 @@ export default function AdminInquiries() {
 
     const fetchInquiries = async () => {
       console.log("🔍 [DEBUG] Fetching inquiries...");
-      console.log("🔍 [DEBUG] Supabase URL:", supabaseUrl);
       
       const response = await supabase
         .from('inquiries')
