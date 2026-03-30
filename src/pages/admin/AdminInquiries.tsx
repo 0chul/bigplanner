@@ -41,7 +41,7 @@ export default function AdminInquiries() {
       
       const response = await supabase
         .from('inquiries')
-        .select('id:id::text, name, email, phone, company, message, status, created_at')
+        .select('*')
         .order('created_at', { ascending: false });
       
       console.log("🔍 [DEBUG] Supabase Response:", response);
@@ -104,6 +104,10 @@ export default function AdminInquiries() {
       try {
         console.log("Deleting inquiry with id:", id);
         
+        // 삭제 전 데이터 확인
+        const { data: checkData } = await supabase.from('inquiries').select('id').eq('id', id);
+        console.log('삭제 전 DB에서 찾은 데이터:', checkData);
+
         const { error, count } = await supabase
           .from('inquiries')
           .delete({ count: 'exact' })
