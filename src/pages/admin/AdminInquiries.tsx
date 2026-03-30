@@ -37,6 +37,7 @@ export default function AdminInquiries() {
     if (!isAdmin) return;
 
     const fetchInquiries = async () => {
+      console.log("Fetching inquiries...");
       const { data, error } = await supabase
         .from('inquiries')
         .select('*')
@@ -45,6 +46,7 @@ export default function AdminInquiries() {
       if (error) {
         console.error("Error fetching inquiries:", error);
       } else {
+        console.log("Fetched inquiries data:", data);
         setInquiries(data as Inquiry[]);
       }
       setFetching(false);

@@ -32,11 +32,12 @@ export default function AdminLeads() {
   }, []);
 
   async function fetchLeads() {
-    console.log("Fetching ALL leads from:", supabaseUrl);
+    console.log("Fetching leads from:", supabaseUrl);
     
     const { data, error } = await supabase
       .from('leads')
-      .select('*');
+      .select('*')
+      .order('created_at', { ascending: false });
     
     if (error) {
       console.error('Error fetching leads:', error);
@@ -76,7 +77,7 @@ export default function AdminLeads() {
             name: lead.name || '이름 없음',
             email: lead.email || '',
             phone: lead.phone || '',
-            company: '', // inquiries 테이블 구조에 맞춰 추가
+            company: '',
             message: `[META 리드 이동] 소스: ${lead.source || '알 수 없음'}`,
             status: 'new',
             created_at: new Date().toISOString()
@@ -88,18 +89,15 @@ export default function AdminLeads() {
           return;
         }
 
-        // 2. leads 테이블에서 상태 업데이트
-        const { data: updateData, error: updateError } = await supabase
+        // 2. leads 테이블에서 삭제
+        const { error: deleteError } = await supabase
           .from('leads')
-          .update({ status: 'moved' })
-          .eq('id', lead.id)
-          .select();
+          .delete()
+          .eq('id', lead.id);
 
-        if (updateError) {
-          console.error('Error updating lead status:', updateError);
-          setErrorMsg(`이동 실패 (leads 업데이트): ${updateError.message || '알 수 없는 오류'}`);
-        } else if (!updateData || updateData.length === 0) {
-          setErrorMsg('이동은 완료되었으나 leads 테이블 상태 업데이트 권한이 없습니다. UPDATE RLS 정책을 확인해주세요.');
+        if (deleteError) {
+          console.error('Error deleting lead after move:', deleteError);
+          setErrorMsg(`이동 실패 (leads 삭제): ${deleteError.message || '알 수 없는 오류'}`);
         } else {
           fetchLeads();
         }
