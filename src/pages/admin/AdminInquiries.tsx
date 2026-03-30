@@ -100,6 +100,9 @@ export default function AdminInquiries() {
     if (window.confirm("정말로 이 문의를 삭제하시겠습니까?")) {
       try {
         console.log("Deleting inquiry with id:", id);
+        
+        // 1. 실시간 구독 잠시 멈춤 (선택사항이지만 안전을 위해)
+        // 2. 삭제 요청
         const { error } = await supabase
           .from('inquiries')
           .delete()
@@ -107,14 +110,11 @@ export default function AdminInquiries() {
           
         if (error) throw error;
         
-        console.log("Delete successful, re-fetching...");
+        console.log("Delete successful");
         
-        // 삭제 직후 전체 데이터를 다시 가져와서 DB 상태를 확인합니다.
-        const { data: remainingData } = await supabase.from('inquiries').select('*');
-        console.log("Remaining data in DB:", remainingData);
-        
-        // 삭제 성공 시 로컬 상태도 즉시 반영
+        // 3. 로컬 상태에서 즉시 제거하여 UI 동기화
         setInquiries(prev => prev.filter(inq => inq.id !== id));
+        
       } catch (error: any) {
         console.error("Error deleting inquiry:", error);
         alert(error.message || "삭제에 실패했습니다.");
