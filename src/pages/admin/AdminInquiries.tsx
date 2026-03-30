@@ -37,11 +37,14 @@ export default function AdminInquiries() {
     if (!isAdmin) return;
 
     const fetchInquiries = async () => {
-      console.log("Fetching inquiries...");
+      console.log("Fetching inquiries (cache ignored)...");
       
+      // 캐시를 무시하도록 헤더를 추가하여 요청
       const response = await supabase
         .from('inquiries')
-        .select('*');
+        .select('*')
+        .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+        .setHeader('Pragma', 'no-cache');
       
       console.log("Supabase Response:", response);
       
@@ -101,18 +104,19 @@ export default function AdminInquiries() {
       try {
         console.log("Deleting inquiry with id:", id);
         
-        // 1. 실시간 구독 잠시 멈춤 (선택사항이지만 안전을 위해)
-        // 2. 삭제 요청
+        // 캐시를 완전히 우회하는 헤더 추가
         const { error } = await supabase
           .from('inquiries')
           .delete()
-          .eq('id', id);
+          .eq('id', id)
+          .setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+          .setHeader('Pragma', 'no-cache');
           
         if (error) throw error;
         
         console.log("Delete successful");
         
-        // 3. 로컬 상태에서 즉시 제거하여 UI 동기화
+        // 로컬 상태에서 즉시 제거하여 UI 동기화
         setInquiries(prev => prev.filter(inq => inq.id !== id));
         
       } catch (error: any) {
