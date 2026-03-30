@@ -89,11 +89,13 @@ export default function AdminLeads() {
   }
 
   function deleteLead(id: string) {
+    console.log('deleteLead called with id:', id);
     setConfirmModal({
       isOpen: true,
       title: '리드 삭제',
       message: '정말로 이 리드를 삭제하시겠습니까? 삭제된 데이터는 복구할 수 없습니다.',
       onConfirm: async () => {
+        console.log('onConfirm called for deleteLead with id:', id);
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
         
         const { error } = await supabase
@@ -105,10 +107,12 @@ export default function AdminLeads() {
           console.error('Error deleting lead:', error);
           setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'}`);
         } else {
+          console.log('Lead deleted successfully');
           fetchLeads();
         }
       }
     });
+    console.log('setConfirmModal called');
   }
 
   function openEditModal(lead: Lead) {
