@@ -32,7 +32,7 @@ export default function AdminLeads() {
   }, []);
 
   async function fetchLeads() {
-    console.log("Fetching leads from:", supabaseUrl);
+    console.log("Fetching leads...");
     
     const { data, error } = await supabase
       .from('leads')
@@ -40,8 +40,9 @@ export default function AdminLeads() {
       .order('created_at', { ascending: false });
     
     if (error) {
-      console.error('Error fetching leads:', error);
-      setErrorMsg('리드 목록을 불러오는 중 오류가 발생했습니다.');
+      // 에러 상세 내용을 콘솔에 출력
+      console.error('Error fetching leads (Detailed):', JSON.stringify(error, null, 2));
+      setErrorMsg(`리드 목록을 불러오는 중 오류가 발생했습니다: ${error.message}`);
     } else {
       console.log('DB에서 가져온 전체 데이터:', data);
       setLeads(data || []);
