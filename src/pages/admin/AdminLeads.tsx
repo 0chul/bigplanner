@@ -16,25 +16,19 @@ export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
+  
+  // Custom Modal States
+  const [confirmModal, setConfirmModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    onConfirm: () => void;
+  }>({ isOpen: false, title: '', message: '', onConfirm: () => {} });
+  
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     fetchLeads();
-
-    // Supabase 실시간 데이터 구독 (새 리드가 들어오면 자동 새로고침)
-    const subscription = supabase
-      .channel('leads_channel')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'leads' },
-        () => {
-          fetchLeads();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(subscription);
-    };
   }, []);
 
   async function fetchLeads() {
@@ -46,60 +40,75 @@ export default function AdminLeads() {
     
     if (error) {
       console.error('Error fetching leads:', error);
+      setErrorMsg('리드 목록을 불러오는 중 오류가 발생했습니다.');
     } else {
       setLeads(data || []);
+      setErrorMsg(null);
     }
   }
 
-  async function moveToInquiries(lead: Lead) {
-    if (!confirm('이 리드를 고객 문의 관리로 이동하시겠습니까?')) return;
+  function moveToInquiries(lead: Lead) {
+    setConfirmModal({
+      isOpen: true,
+      title: '문의로 이동',
+      message: '이 리드를 고객 문의 관리로 이동하시겠습니까?',
+      onConfirm: async () => {
+        setConfirmModal(prev => ({ ...prev, isOpen: false }));
+        
+        // 1. inquiries 테이블에 추가
+        const { error: insertError } = await supabase
+          .from('inquiries')
+          .insert([{
+            name: lead.name,
+            email: lead.email || '',
+            phone: lead.phone,
+            company: '', // inquiries 테이블 구조에 맞춰 추가
+            message: `[META 리드 이동] 소스: ${lead.source}`
+          }]);
 
-    // 1. inquiries 테이블에 추가
-    const { error: insertError } = await supabase
-      .from('inquiries')
-      .insert([{
-        name: lead.name,
-        email: lead.email || '',
-        phone: lead.phone,
-        company: '', // inquiries 테이블 구조에 맞춰 추가
-        message: `[META 리드 이동] 소스: ${lead.source}`
-      }]);
+        if (insertError) {
+          console.error('Error moving lead:', insertError);
+          setErrorMsg('이동 중 오류가 발생했습니다.');
+          return;
+        }
 
-    if (insertError) {
-      console.error('Error moving lead:', insertError);
-      alert('이동 중 오류가 발생했습니다.');
-      return;
-    }
+        // 2. leads 테이블에서 상태 업데이트
+        const { error: updateError } = await supabase
+          .from('leads')
+          .update({ status: 'moved' })
+          .eq('id', lead.id);
 
-    // 2. leads 테이블에서 상태 업데이트
-    const { error: updateError } = await supabase
-      .from('leads')
-      .update({ status: 'moved' })
-      .eq('id', lead.id);
-
-    if (updateError) {
-      console.error('Error updating lead status:', updateError);
-      alert('이동은 완료되었으나 상태 업데이트에 실패했습니다.');
-    } else {
-      alert('문의 관리로 이동되었습니다.');
-      fetchLeads();
-    }
+        if (updateError) {
+          console.error('Error updating lead status:', updateError);
+          setErrorMsg('이동은 완료되었으나 상태 업데이트에 실패했습니다.');
+        } else {
+          fetchLeads();
+        }
+      }
+    });
   }
 
-  async function deleteLead(id: string) {
-    if (!confirm('정말로 이 리드를 삭제하시겠습니까? 삭제된 데이터는 복구할 수 없습니다.')) return;
+  function deleteLead(id: string) {
+    setConfirmModal({
+      isOpen: true,
+      title: '리드 삭제',
+      message: '정말로 이 리드를 삭제하시겠습니까? 삭제된 데이터는 복구할 수 없습니다.',
+      onConfirm: async () => {
+        setConfirmModal(prev => ({ ...prev, isOpen: false }));
+        
+        const { error } = await supabase
+          .from('leads')
+          .delete()
+          .eq('id', id);
 
-    const { error } = await supabase
-      .from('leads')
-      .delete()
-      .eq('id', id);
-
-    if (error) {
-      console.error('Error deleting lead:', error);
-      alert('삭제 중 오류가 발생했습니다.');
-    } else {
-      fetchLeads();
-    }
+        if (error) {
+          console.error('Error deleting lead:', error);
+          setErrorMsg('삭제 중 오류가 발생했습니다. 권한 설정을 확인해주세요.');
+        } else {
+          fetchLeads();
+        }
+      }
+    });
   }
 
   function openEditModal(lead: Lead) {
@@ -124,7 +133,7 @@ export default function AdminLeads() {
 
     if (error) {
       console.error('Error updating lead:', error);
-      alert('수정 중 오류가 발생했습니다.');
+      setErrorMsg('수정 중 오류가 발생했습니다. 권한 설정을 확인해주세요.');
     } else {
       setEditingLead(null);
       fetchLeads();
@@ -135,6 +144,15 @@ export default function AdminLeads() {
     <div className="p-8 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">META 리드 관리</h1>
       
+      {errorMsg && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl flex items-center justify-between">
+          <p>{errorMsg}</p>
+          <button onClick={() => setErrorMsg(null)} className="text-red-400 hover:text-red-600">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      )}
+
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="w-full text-left">
           <thead className="bg-gray-50 border-b border-gray-100">
@@ -279,6 +297,30 @@ export default function AdminLeads() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* 확인 모달 */}
+      {confirmModal.isOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl text-center">
+            <h2 className="text-xl font-bold mb-2">{confirmModal.title}</h2>
+            <p className="text-gray-600 mb-6">{confirmModal.message}</p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setConfirmModal(prev => ({ ...prev, isOpen: false }))}
+                className="flex-1 px-4 py-2 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 font-medium transition-colors"
+              >
+                취소
+              </button>
+              <button
+                onClick={confirmModal.onConfirm}
+                className="flex-1 px-4 py-2 bg-black text-white rounded-xl hover:bg-gray-800 font-medium transition-colors"
+              >
+                확인
+              </button>
+            </div>
           </div>
         </div>
       )}
