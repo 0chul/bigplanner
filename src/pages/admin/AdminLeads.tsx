@@ -68,7 +68,7 @@ export default function AdminLeads() {
 
         if (insertError) {
           console.error('Error moving lead:', insertError);
-          setErrorMsg('이동 중 오류가 발생했습니다.');
+          setErrorMsg(`이동 실패 (inquiries 추가): ${insertError.message || '알 수 없는 오류'}`);
           return;
         }
 
@@ -80,7 +80,7 @@ export default function AdminLeads() {
 
         if (updateError) {
           console.error('Error updating lead status:', updateError);
-          setErrorMsg('이동은 완료되었으나 상태 업데이트에 실패했습니다.');
+          setErrorMsg(`이동 실패 (leads 업데이트): ${updateError.message || '알 수 없는 오류'}`);
         } else {
           fetchLeads();
         }
@@ -103,7 +103,7 @@ export default function AdminLeads() {
 
         if (error) {
           console.error('Error deleting lead:', error);
-          setErrorMsg('삭제 중 오류가 발생했습니다. 권한 설정을 확인해주세요.');
+          setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'}`);
         } else {
           fetchLeads();
         }
@@ -133,7 +133,7 @@ export default function AdminLeads() {
 
     if (error) {
       console.error('Error updating lead:', error);
-      setErrorMsg('수정 중 오류가 발생했습니다. 권한 설정을 확인해주세요.');
+      setErrorMsg(`수정 실패: ${error.message || '알 수 없는 오류'}`);
     } else {
       setEditingLead(null);
       fetchLeads();
