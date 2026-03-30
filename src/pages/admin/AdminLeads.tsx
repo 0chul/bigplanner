@@ -49,7 +49,7 @@ export default function AdminLeads() {
     
     const { data, error } = await supabase
       .from('leads')
-      .select('*')
+      .select('id:id::text, name, email, phone, source, status, created_at')
       .order('created_at', { ascending: false });
     
     if (error) {
@@ -64,11 +64,11 @@ export default function AdminLeads() {
   }
 
   async function debugLead(id: string) {
-    const { data, error } = await supabase.from('leads').select('*').eq('id', id);
+    const { data, error } = await supabase.from('leads').select('id:id::text, name, email, phone, source, status, created_at').eq('id', id);
     console.log(`Debug Lead ${id}:`, { data, error });
     if (data && data.length === 0) {
       // Try fetching without eq to see all IDs
-      const { data: allData } = await supabase.from('leads').select('id').limit(5);
+      const { data: allData } = await supabase.from('leads').select('id:id::text').limit(5);
       console.log('Sample IDs in DB:', allData);
       alert(`DB에서 해당 ID(${id})를 찾을 수 없습니다. 콘솔을 확인해주세요.`);
     } else {
@@ -129,7 +129,7 @@ export default function AdminLeads() {
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
         
         // 삭제 전 데이터 확인
-        const { data: checkData } = await supabase.from('leads').select('id').eq('id', id);
+        const { data: checkData } = await supabase.from('leads').select('id:id::text').eq('id', id);
         console.log('삭제 전 DB에서 찾은 데이터:', checkData);
         
         const { error, count } = await supabase
