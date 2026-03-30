@@ -103,17 +103,14 @@ export default function AdminLeads() {
         console.log('onConfirm called for deleteLead with id:', id);
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
         
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from('leads')
           .delete()
-          .eq('id', id)
-          .select();
+          .eq('id', id);
 
         if (error) {
           console.error('Error deleting lead:', error);
           setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'}`);
-        } else if (!data || data.length === 0) {
-          setErrorMsg('삭제 권한이 없습니다. Supabase에서 leads 테이블의 DELETE RLS 정책을 확인해주세요.');
         } else {
           console.log('Lead deleted successfully');
           fetchLeads();
