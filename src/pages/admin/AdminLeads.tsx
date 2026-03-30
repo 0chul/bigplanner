@@ -109,11 +109,11 @@ export default function AdminLeads() {
           .eq('id', id);
 
         if (error) {
-          console.error('Error deleting lead:', error);
-          setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'}`);
+          console.error('Error deleting lead (Detailed):', JSON.stringify(error, null, 2));
+          setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'} (코드: ${error.code}, 힌트: ${error.hint})`);
         } else if (count === 0) {
-          console.warn('Delete operation returned 0 count. RLS might be blocking it.');
-          setErrorMsg('삭제 실패: Supabase에서 데이터가 삭제되지 않았습니다. (RLS 권한 문제일 확률이 99%입니다. SQL Editor에서 권한을 확인해주세요.)');
+          console.warn('Delete operation returned 0 count. RLS might be blocking it or ID not found.');
+          setErrorMsg(`삭제 실패: Supabase에서 데이터가 삭제되지 않았습니다. (요청된 ID: ${id})`);
         } else {
           console.log(`Lead deleted successfully. Count: ${count}`);
           // 즉각적인 UI 업데이트를 위해 로컬 상태에서 직접 제거
