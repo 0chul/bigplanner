@@ -59,11 +59,13 @@ export default function AdminLeads() {
         const { error: insertError } = await supabase
           .from('inquiries')
           .insert([{
-            name: lead.name,
+            name: lead.name || '이름 없음',
             email: lead.email || '',
-            phone: lead.phone,
+            phone: lead.phone || '',
             company: '', // inquiries 테이블 구조에 맞춰 추가
-            message: `[META 리드 이동] 소스: ${lead.source}`
+            message: `[META 리드 이동] 소스: ${lead.source || '알 수 없음'}`,
+            status: 'new',
+            created_at: new Date().toISOString()
           }]);
 
         if (insertError) {
@@ -73,14 +75,17 @@ export default function AdminLeads() {
         }
 
         // 2. leads 테이블에서 상태 업데이트
-        const { error: updateError } = await supabase
+        const { data: updateData, error: updateError } = await supabase
           .from('leads')
           .update({ status: 'moved' })
-          .eq('id', lead.id);
+          .eq('id', lead.id)
+          .select();
 
         if (updateError) {
           console.error('Error updating lead status:', updateError);
           setErrorMsg(`이동 실패 (leads 업데이트): ${updateError.message || '알 수 없는 오류'}`);
+        } else if (!updateData || updateData.length === 0) {
+          setErrorMsg('이동은 완료되었으나 leads 테이블 상태 업데이트 권한이 없습니다. UPDATE RLS 정책을 확인해주세요.');
         } else {
           fetchLeads();
         }
@@ -98,14 +103,17 @@ export default function AdminLeads() {
         console.log('onConfirm called for deleteLead with id:', id);
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
         
-        const { error } = await supabase
+        const { data, error } = await supabase
           .from('leads')
           .delete()
-          .eq('id', id);
+          .eq('id', id)
+          .select();
 
         if (error) {
           console.error('Error deleting lead:', error);
           setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'}`);
+        } else if (!data || data.length === 0) {
+          setErrorMsg('삭제 권한이 없습니다. Supabase에서 leads 테이블의 DELETE RLS 정책을 확인해주세요.');
         } else {
           console.log('Lead deleted successfully');
           fetchLeads();
@@ -124,7 +132,7 @@ export default function AdminLeads() {
     e.preventDefault();
     if (!editingLead) return;
 
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('leads')
       .update({
         name: editForm.name,
@@ -133,11 +141,14 @@ export default function AdminLeads() {
         source: editForm.source,
         status: editForm.status,
       })
-      .eq('id', editingLead.id);
+      .eq('id', editingLead.id)
+      .select();
 
     if (error) {
       console.error('Error updating lead:', error);
       setErrorMsg(`수정 실패: ${error.message || '알 수 없는 오류'}`);
+    } else if (!data || data.length === 0) {
+      setErrorMsg('수정 권한이 없습니다. Supabase에서 leads 테이블의 UPDATE RLS 정책을 확인해주세요.');
     } else {
       setEditingLead(null);
       fetchLeads();
