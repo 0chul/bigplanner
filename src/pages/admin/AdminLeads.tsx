@@ -23,6 +23,7 @@ export default function AdminLeads() {
     const { data, error } = await supabase
       .from('leads')
       .select('*')
+      .neq('status', 'moved') // 'moved' 상태인 리드는 제외
       .order('created_at', { ascending: false });
     
     if (error) {
@@ -34,7 +35,7 @@ export default function AdminLeads() {
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8">리드 관리</h1>
+      <h1 className="text-3xl font-bold mb-8">META 리드 관리</h1>
       
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="w-full text-left">
