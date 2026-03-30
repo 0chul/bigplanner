@@ -57,7 +57,8 @@ export default function AdminInquiries() {
 
     fetchInquiries();
 
-    // Set up real-time subscription
+    // 실시간 구독으로 인한 데이터 꼬임 방지를 위해 잠시 비활성화
+    /*
     const channel = supabase
       .channel('inquiries_changes')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'inquiries' }, () => {
@@ -68,6 +69,7 @@ export default function AdminInquiries() {
     return () => {
       supabase.removeChannel(channel);
     };
+    */
   }, [isAdmin]);
 
   const updateStatus = async (id: string, newStatus: 'new' | 'in-progress' | 'completed') => {
