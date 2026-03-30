@@ -100,21 +100,14 @@ export default function AdminInquiries() {
     if (window.confirm("정말로 이 문의를 삭제하시겠습니까?")) {
       try {
         console.log("Deleting inquiry with id:", id);
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from('inquiries')
           .delete()
-          .eq('id', id)
-          .select();
+          .eq('id', id);
           
-        console.log("Delete response:", { data, error });
-            
         if (error) throw error;
         
-        if (!data || data.length === 0) {
-          console.warn("No data returned from delete. ID might not exist.");
-          throw new Error("삭제할 데이터를 찾을 수 없습니다.");
-        }
-        
+        console.log("Delete successful");
         // 삭제 성공 시 로컬 상태도 즉시 반영
         setInquiries(prev => prev.filter(inq => inq.id !== id));
       } catch (error: any) {
