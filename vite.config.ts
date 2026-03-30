@@ -18,7 +18,8 @@ export default defineConfig(({mode}) => {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
           runtimeCaching: [
             {
-              urlPattern: /^https:\/\/injrbniytgtubemniaps\.supabase\.co\/.*/i,
+              // Storage(이미지 등) 요청만 캐싱하도록 정규식 수정 (REST API는 캐싱 제외)
+              urlPattern: /^https:\/\/injrbniytgtubemniaps\.supabase\.co\/storage\/v1\/object\/public\/.*/i,
               handler: 'CacheFirst',
               options: {
                 cacheName: 'supabase-images',
