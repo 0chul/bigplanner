@@ -42,8 +42,22 @@ export default function AdminLeads() {
       console.error('Error fetching leads:', error);
       setErrorMsg('리드 목록을 불러오는 중 오류가 발생했습니다.');
     } else {
+      console.log('Fetched leads raw data:', data);
       setLeads(data || []);
       setErrorMsg(null);
+    }
+  }
+
+  async function debugLead(id: string) {
+    const { data, error } = await supabase.from('leads').select('*').eq('id', id);
+    console.log(`Debug Lead ${id}:`, { data, error });
+    if (data && data.length === 0) {
+      // Try fetching without eq to see all IDs
+      const { data: allData } = await supabase.from('leads').select('id').limit(5);
+      console.log('Sample IDs in DB:', allData);
+      alert(`DB에서 해당 ID(${id})를 찾을 수 없습니다. 콘솔을 확인해주세요.`);
+    } else {
+      alert(`DB에 해당 ID가 존재합니다. 콘솔을 확인해주세요.`);
     }
   }
 
@@ -232,6 +246,13 @@ export default function AdminLeads() {
                     >
                       <Trash2 className="w-3 h-3" />
                       삭제
+                    </button>
+                    <button 
+                      onClick={() => debugLead(lead.id)}
+                      className="flex items-center gap-1 text-xs bg-gray-50 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+                      title="디버그"
+                    >
+                      디버그
                     </button>
                   </div>
                 </td>
