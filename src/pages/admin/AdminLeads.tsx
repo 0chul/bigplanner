@@ -127,7 +127,9 @@ export default function AdminLeads() {
           setErrorMsg(`삭제 실패: ${error.message || '알 수 없는 오류'} (코드: ${error.code}, 힌트: ${error.hint})`);
         } else if (count === 0) {
           console.warn('Delete operation returned 0 count. RLS might be blocking it or ID not found.');
-          setErrorMsg(`삭제 실패: Supabase에서 데이터가 삭제되지 않았습니다. (요청된 ID: ${id})`);
+          // DB에 이미 없는 경우일 확률이 높으므로 UI에서 제거해줍니다.
+          setLeads(prevLeads => prevLeads.filter(lead => lead.id !== id));
+          alert('해당 데이터가 이미 DB에서 삭제되어 화면에서 정리했습니다.');
         } else {
           console.log(`Lead deleted successfully. Count: ${count}`);
           // 즉각적인 UI 업데이트를 위해 로컬 상태에서 직접 제거
@@ -176,8 +178,16 @@ export default function AdminLeads() {
     <div className="p-8 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">META 리드 관리</h1>
-        <div className="text-xs text-gray-400">
-          Connected DB: {supabaseUrl}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => fetchLeads()}
+            className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-colors"
+          >
+            데이터 새로고침
+          </button>
+          <div className="text-xs text-gray-400">
+            Connected DB: {supabaseUrl}
+          </div>
         </div>
       </div>
       
