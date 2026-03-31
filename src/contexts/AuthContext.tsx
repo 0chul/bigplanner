@@ -62,7 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'https://0chul.github.io/bigplanner'
+          redirectTo: `${window.location.origin}/admin`
         }
       });
       if (error) throw error;

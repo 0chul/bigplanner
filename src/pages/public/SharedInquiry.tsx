@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../supabase';
 import { MessageSquare, Clock } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
+import { formatPhoneNumber } from '../../utils/phoneUtils';
 
 interface Inquiry {
   id: string;
@@ -83,7 +84,7 @@ export default function SharedInquiry() {
         <div className="mb-8 p-6 bg-gray-50 rounded-xl">
           <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-gray-600">
             <p><span className="font-semibold text-gray-800">고객명:</span> {inquiry.name}</p>
-            <p><span className="font-semibold text-gray-800">연락처:</span> {inquiry.phone}</p>
+            <p><span className="font-semibold text-gray-800">연락처:</span> {formatPhoneNumber(inquiry.phone)}</p>
             <p className="col-span-2"><span className="font-semibold text-gray-800">주소:</span> {inquiry.address || '-'}</p>
             <p className="col-span-2"><span className="font-semibold text-gray-800">신청날짜:</span> {getRelativeTime(inquiry.created_at)}</p>
           </div>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase, supabaseUrl } from '../../supabase';
-import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X, Share2 } from 'lucide-react';
+import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X, Share2, Send } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
+import { formatPhoneNumber } from '../../utils/phoneUtils';
+import SMSModal from '../../components/SMSModal';
 
 interface Inquiry {
   id: string;
@@ -31,6 +33,7 @@ export default function AdminInquiries() {
   
   // Memo state
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [selectedSMS, setSelectedSMS] = useState<{ name: string; phone: string } | null>(null);
   const [memos, setMemos] = useState<Record<string, Memo[]>>({});
   const [newMemo, setNewMemo] = useState('');
   const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
@@ -437,7 +440,16 @@ export default function AdminInquiries() {
                     <div className="text-sm text-gray-500">{inquiry.address || '-'}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
-                    <div className="text-sm text-gray-900">{inquiry.phone || '-'}</div>
+                    <div className="flex items-center gap-2">
+                      <div className="text-sm text-gray-900">{formatPhoneNumber(inquiry.phone)}</div>
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); setSelectedSMS({ name: inquiry.name, phone: inquiry.phone }); }}
+                        className="text-gray-400 hover:text-black"
+                        title="문자 보내기"
+                      >
+                        <Send size={14} />
+                      </button>
+                    </div>
                     <div className="text-sm text-gray-500">{inquiry.email}</div>
                   </td>
                   <td className="px-6 py-4 cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
@@ -592,6 +604,13 @@ export default function AdminInquiries() {
             </form>
           </div>
         </div>
+      )}
+      {selectedSMS && (
+        <SMSModal 
+          name={selectedSMS.name} 
+          phone={selectedSMS.phone} 
+          onClose={() => setSelectedSMS(null)} 
+        />
       )}
     </div>
   );

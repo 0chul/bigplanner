@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { supabase, supabaseUrl } from '../../supabase';
-import { UserPlus, X, Edit2, Trash2, ArrowRight } from 'lucide-react';
+import { UserPlus, X, Edit2, Trash2, ArrowRight, Send } from 'lucide-react';
+import { formatPhoneNumber } from '../../utils/phoneUtils';
+import SMSModal from '../../components/SMSModal';
 
 interface Lead {
   id: string;
@@ -15,6 +17,7 @@ interface Lead {
 export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
+  const [selectedSMS, setSelectedSMS] = useState<{ name: string; phone: string } | null>(null);
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
   const [showLost, setShowLost] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Lead | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
@@ -274,7 +277,18 @@ export default function AdminLeads() {
                 <tr key={lead.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">{lead.name}</td>
                   <td className="px-6 py-4">{lead.email}</td>
-                  <td className="px-6 py-4">{lead.phone}</td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      {formatPhoneNumber(lead.phone)}
+                      <button 
+                        onClick={() => setSelectedSMS({ name: lead.name, phone: lead.phone })}
+                        className="text-gray-400 hover:text-black"
+                        title="문자 보내기"
+                      >
+                        <Send size={14} />
+                      </button>
+                    </div>
+                  </td>
                   <td className="px-6 py-4">{lead.source}</td>
                   <td className="px-6 py-4">
                     <select
@@ -432,6 +446,13 @@ export default function AdminLeads() {
             </div>
           </div>
         </div>
+      )}
+      {selectedSMS && (
+        <SMSModal 
+          name={selectedSMS.name} 
+          phone={selectedSMS.phone} 
+          onClose={() => setSelectedSMS(null)} 
+        />
       )}
     </div>
   );
