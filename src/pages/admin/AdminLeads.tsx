@@ -171,6 +171,22 @@ export default function AdminLeads() {
     }
   }
 
+  async function handleStatusChange(leadId: string, newStatus: string) {
+    // UI 즉각 업데이트 (Optimistic Update)
+    setLeads(prev => prev.map(l => l.id === leadId ? { ...l, status: newStatus } : l));
+    
+    const { error } = await supabase
+      .from('leads')
+      .update({ status: newStatus })
+      .eq('id', leadId);
+
+    if (error) {
+      console.error('Error updating status:', error);
+      setErrorMsg(`상태 변경 실패: ${error.message}`);
+      fetchLeads(); // 에러 시 원래 데이터로 복구
+    }
+  }
+
   async function addTestData() {
     const { error } = await supabase.from('leads').insert([{
       name: '연동 테스트 ' + new Date().toLocaleTimeString(),
@@ -248,14 +264,23 @@ export default function AdminLeads() {
                   <td className="px-6 py-4">{lead.phone}</td>
                   <td className="px-6 py-4">{lead.source}</td>
                   <td className="px-6 py-4">
-                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${
-                      lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
-                      lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
-                      lead.status === 'qualified' ? 'bg-green-100 text-green-700' :
-                      'bg-gray-100 text-gray-700'
-                    }`}>
-                      {lead.status}
-                    </span>
+                    <select
+                      value={lead.status}
+                      onChange={(e) => handleStatusChange(lead.id, e.target.value)}
+                      className={`px-2 py-1 rounded-full text-xs font-bold outline-none cursor-pointer ${
+                        lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
+                        lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
+                        lead.status === 'missed' ? 'bg-red-100 text-red-700' :
+                        lead.status === 'qualified' ? 'bg-green-100 text-green-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}
+                    >
+                      <option value="new" className="bg-white text-gray-900">신규</option>
+                      <option value="contacted" className="bg-white text-gray-900">연락완료</option>
+                      <option value="missed" className="bg-white text-gray-900">부재중</option>
+                      <option value="qualified" className="bg-white text-gray-900">유효함</option>
+                      <option value="moved" className="bg-white text-gray-900">이동됨</option>
+                    </select>
                   </td>
                   <td className="px-6 py-4">{new Date(lead.created_at).toLocaleDateString()}</td>
                   <td className="px-6 py-4">
@@ -349,10 +374,11 @@ export default function AdminLeads() {
                   onChange={(e) => setEditForm({ ...editForm, status: e.target.value })}
                   className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none"
                 >
-                  <option value="new">new</option>
-                  <option value="contacted">contacted</option>
-                  <option value="qualified">qualified</option>
-                  <option value="moved">moved</option>
+                  <option value="new">신규</option>
+                  <option value="contacted">연락완료</option>
+                  <option value="missed">부재중</option>
+                  <option value="qualified">유효함</option>
+                  <option value="moved">이동됨</option>
                 </select>
               </div>
               
