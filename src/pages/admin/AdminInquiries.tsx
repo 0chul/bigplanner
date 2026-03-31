@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase, supabaseUrl } from '../../supabase';
 import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X, Share2 } from 'lucide-react';
+import { getRelativeTime } from '../../utils/dateUtils';
 
 interface Inquiry {
   id: string;
@@ -429,7 +430,7 @@ export default function AdminInquiries() {
                     </select>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
-                    {inquiry.created_at ? new Date(inquiry.created_at).toLocaleDateString() : 'N/A'}
+                    {inquiry.created_at ? getRelativeTime(inquiry.created_at) : 'N/A'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
                     <div className="text-sm font-medium text-gray-900">{inquiry.name}</div>
@@ -500,10 +501,7 @@ export default function AdminInquiries() {
                                 <div className="absolute left-[-21px] top-1.5 w-2.5 h-2.5 bg-indigo-500 rounded-full border-2 border-white shadow-sm"></div>
                                 <div className="flex items-center justify-between mb-1.5">
                                   <div className="text-xs text-gray-500 font-medium">
-                                    {new Date(memo.created_at).toLocaleString('ko-KR', { 
-                                      year: 'numeric', month: 'long', day: 'numeric', 
-                                      hour: '2-digit', minute: '2-digit' 
-                                    })}
+                                    {getRelativeTime(memo.created_at)}
                                   </div>
                                   <div className="flex items-center gap-1">
                                     {editingMemoId === memo.id ? (

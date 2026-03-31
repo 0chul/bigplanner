@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../../supabase';
 import { MessageSquare, Clock } from 'lucide-react';
+import { getRelativeTime } from '../../utils/dateUtils';
 
 interface Inquiry {
   id: string;
   name: string;
   message: string;
+  phone: string;
   created_at: string;
 }
 
@@ -30,7 +32,7 @@ export default function SharedInquiry() {
       // 1. 문의 정보 가져오기
       const { data: inqData, error: inqError } = await supabase
         .from('inquiries')
-        .select('id, name, message, created_at')
+        .select('id, name, message, phone, created_at')
         .eq('share_token', token)
         .single();
 
@@ -67,7 +69,11 @@ export default function SharedInquiry() {
         <h1 className="text-2xl font-bold mb-6">문의 내용 공유</h1>
         
         <div className="mb-8 p-6 bg-gray-50 rounded-xl">
-          <p className="text-sm text-gray-500 mb-2">작성자: {inquiry.name}</p>
+          <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-gray-600">
+            <p><span className="font-semibold text-gray-800">고객명:</span> {inquiry.name}</p>
+            <p><span className="font-semibold text-gray-800">연락처:</span> {inquiry.phone}</p>
+            <p className="col-span-2"><span className="font-semibold text-gray-800">신청날짜:</span> {getRelativeTime(inquiry.created_at)}</p>
+          </div>
           <p className="text-gray-800 whitespace-pre-wrap">{inquiry.message}</p>
         </div>
 
@@ -79,7 +85,7 @@ export default function SharedInquiry() {
             <div key={memo.id} className="p-4 border border-gray-100 rounded-lg">
               <p className="text-sm text-gray-800 mb-2">{memo.content}</p>
               <p className="text-xs text-gray-400 flex items-center gap-1">
-                <Clock size={12} /> {new Date(memo.created_at).toLocaleString()}
+                <Clock size={12} /> {getRelativeTime(memo.created_at)}
               </p>
             </div>
           ))}
