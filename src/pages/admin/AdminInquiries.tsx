@@ -37,6 +37,10 @@ export default function AdminInquiries() {
   const [newInquiry, setNewInquiry] = useState({ name: '', email: '', phone: '', address: '', message: '' });
   const [showFailedInquiries, setShowFailedInquiries] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Inquiry | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
+  
+  // Edit Modal States
+  const [editingInquiry, setEditingInquiry] = useState<Inquiry | null>(null);
+  const [editForm, setEditForm] = useState<Partial<Inquiry>>({});
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -277,6 +281,37 @@ export default function AdminInquiries() {
     }
   };
 
+  const openEditModal = (inquiry: Inquiry) => {
+    setEditingInquiry(inquiry);
+    setEditForm(inquiry);
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingInquiry) return;
+
+    const { error } = await supabase
+      .from('inquiries')
+      .update({
+        name: editForm.name,
+        email: editForm.email,
+        phone: editForm.phone,
+        address: editForm.address,
+        message: editForm.message,
+        status: editForm.status,
+      })
+      .eq('id', editingInquiry.id);
+
+    if (error) {
+      console.error('Error updating inquiry:', error);
+      setErrorMsg(`수정 실패: ${error.message}`);
+    } else {
+      setInquiries(prev => prev.map(inq => inq.id === editingInquiry.id ? { ...inq, ...editForm } as Inquiry : inq));
+      setEditingInquiry(null);
+      setEditForm({});
+    }
+  };
+
   if (loading || fetching) return <div className="p-8">Loading...</div>;
   if (!isAdmin) return <div className="p-8">접근 권한이 없습니다.</div>;
 
@@ -412,7 +447,10 @@ export default function AdminInquiries() {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <button onClick={() => handleDelete(inquiry.id)} className="text-red-600 hover:text-red-900 p-2 rounded-full hover:bg-red-50 transition-colors">
+                    <button onClick={() => openEditModal(inquiry)} className="text-indigo-600 hover:text-indigo-900 p-2 rounded-full hover:bg-indigo-50 transition-colors mr-2" title="수정">
+                      <Edit2 size={18} />
+                    </button>
+                    <button onClick={() => handleDelete(inquiry.id)} className="text-red-600 hover:text-red-900 p-2 rounded-full hover:bg-red-50 transition-colors" title="삭제">
                       <Trash2 size={18} />
                     </button>
                   </td>
@@ -526,6 +564,36 @@ export default function AdminInquiries() {
           </tbody>
         </table>
       </div>
+      {/* Edit Modal */}
+      {editingInquiry && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white p-8 rounded-2xl w-full max-w-md shadow-xl">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-bold">문의 수정</h2>
+              <button onClick={() => setEditingInquiry(null)} className="text-gray-400 hover:text-gray-600">
+                <X size={24} />
+              </button>
+            </div>
+            <form onSubmit={handleEditSubmit} className="space-y-4">
+              <input type="text" placeholder="이름" value={editForm.name || ''} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full p-2 border rounded" required />
+              <input type="email" placeholder="이메일" value={editForm.email || ''} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full p-2 border rounded" />
+              <input type="tel" placeholder="연락처" value={editForm.phone || ''} onChange={e => setEditForm({...editForm, phone: e.target.value})} className="w-full p-2 border rounded" />
+              <input type="text" placeholder="주소" value={editForm.address || ''} onChange={e => setEditForm({...editForm, address: e.target.value})} className="w-full p-2 border rounded" />
+              <textarea placeholder="문의 내용" value={editForm.message || ''} onChange={e => setEditForm({...editForm, message: e.target.value})} className="w-full p-2 border rounded" rows={4} />
+              <select value={editForm.status || 'new'} onChange={e => setEditForm({...editForm, status: e.target.value as any})} className="w-full p-2 border rounded">
+                <option value="new">신규</option>
+                <option value="in-progress">진행중</option>
+                <option value="completed">완료</option>
+                <option value="failed">실패</option>
+              </select>
+              <div className="flex justify-end gap-2 pt-4">
+                <button type="button" onClick={() => setEditingInquiry(null)} className="px-4 py-2 text-gray-600">취소</button>
+                <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-lg">저장</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
