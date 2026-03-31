@@ -67,6 +67,7 @@ export default function SharedInquiry() {
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <Helmet>
         <title>문의 내용 공유 | {inquiry.name}</title>
+        <meta name="robots" content="noindex, nofollow" />
         <meta property="og:title" content={`문의 내용 공유 - ${inquiry.name}`} />
         <meta property="og:description" content={inquiry.message.substring(0, 100) + '...'} />
         <meta property="og:type" content="website" />
