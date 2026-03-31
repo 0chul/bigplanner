@@ -17,7 +17,7 @@ interface Lead {
 export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
-  const [selectedSMS, setSelectedSMS] = useState<{ name: string; phone: string } | null>(null);
+  const [selectedSMS, setSelectedSMS] = useState<{ id: string; name: string; phone: string } | null>(null);
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
   const [showLost, setShowLost] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Lead | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
@@ -281,7 +281,7 @@ export default function AdminLeads() {
                     <div className="flex items-center gap-2">
                       {formatPhoneNumber(lead.phone)}
                       <button 
-                        onClick={() => setSelectedSMS({ name: lead.name, phone: lead.phone })}
+                        onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}
                         className="text-gray-400 hover:text-black"
                         title="문자 보내기"
                       >
@@ -451,7 +451,18 @@ export default function AdminLeads() {
         <SMSModal 
           name={selectedSMS.name} 
           phone={selectedSMS.phone} 
-          onClose={() => setSelectedSMS(null)} 
+          onClose={async (success) => {
+            if (success) {
+              // 성공 시 상태 업데이트
+              const { error } = await supabase
+                .from('leads')
+                .update({ status: 'contacted' })
+                .eq('id', selectedSMS.id);
+              if (error) console.error('Error updating status:', error);
+              else fetchLeads();
+            }
+            setSelectedSMS(null);
+          }} 
         />
       )}
     </div>

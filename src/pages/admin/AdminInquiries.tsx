@@ -33,7 +33,7 @@ export default function AdminInquiries() {
   
   // Memo state
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [selectedSMS, setSelectedSMS] = useState<{ name: string; phone: string } | null>(null);
+  const [selectedSMS, setSelectedSMS] = useState<{ id: string; name: string; phone: string } | null>(null);
   const [memos, setMemos] = useState<Record<string, Memo[]>>({});
   const [newMemo, setNewMemo] = useState('');
   const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
@@ -443,7 +443,7 @@ export default function AdminInquiries() {
                     <div className="flex items-center gap-2">
                       <div className="text-sm text-gray-900">{formatPhoneNumber(inquiry.phone)}</div>
                       <button 
-                        onClick={(e) => { e.stopPropagation(); setSelectedSMS({ name: inquiry.name, phone: inquiry.phone }); }}
+                        onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
                         className="text-gray-400 hover:text-black"
                         title="문자 보내기"
                       >
@@ -609,7 +609,22 @@ export default function AdminInquiries() {
         <SMSModal 
           name={selectedSMS.name} 
           phone={selectedSMS.phone} 
-          onClose={() => setSelectedSMS(null)} 
+          onClose={async (success) => {
+            if (success) {
+              // 성공 시 상태 업데이트
+              const { error } = await supabase
+                .from('inquiries')
+                .update({ status: 'completed' })
+                .eq('id', selectedSMS.id);
+              if (error) console.error('Error updating status:', error);
+              else {
+                // 목록 새로고침
+                const { data } = await supabase.from('inquiries').select('*');
+                setInquiries(data || []);
+              }
+            }
+            setSelectedSMS(null);
+          }} 
         />
       )}
     </div>

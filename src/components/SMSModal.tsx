@@ -4,11 +4,12 @@ import { X, Send } from 'lucide-react';
 interface SMSModalProps {
   name: string;
   phone: string;
-  onClose: () => void;
+  onClose: (success?: boolean) => void;
 }
 
 export default function SMSModal({ name, phone, onClose }: SMSModalProps) {
-  const [message, setMessage] = useState(`안녕하세요 ${name}님, 빅플래너파트너스입니다.`);
+  const [message, setMessage] = useState(`안녕하세요 ${name}님, 건축 상담 문의 남겨주셔서 연락드렸습니다.
+www.bigplanner.co.kr`);
   const [sending, setSending] = useState(false);
 
   const handleSend = async () => {
@@ -20,15 +21,20 @@ export default function SMSModal({ name, phone, onClose }: SMSModalProps) {
         body: JSON.stringify({ receiver: phone.replace(/-/g, ''), msg: message, name }),
       });
       const data = await response.json();
+      
+      // 알리고 API 응답 처리 (result_code가 1이면 성공)
       if (data.result_code === '1') {
         alert('문자가 성공적으로 전송되었습니다.');
-        onClose();
+        onClose(true); // 성공 시 true 전달
       } else {
+        // result_code가 0보다 작거나 1이 아닌 경우 실패
         alert(`전송 실패: ${data.message || '알 수 없는 오류'}`);
+        onClose(false); // 실패 시 false 전달
       }
     } catch (error) {
       console.error('SMS error:', error);
       alert('문자 전송 중 오류가 발생했습니다.');
+      onClose(false);
     } finally {
       setSending(false);
     }
