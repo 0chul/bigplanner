@@ -22,6 +22,7 @@ const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const AdminProjects = lazy(() => import('./pages/admin/AdminProjects'));
 const AdminInquiries = lazy(() => import('./pages/admin/AdminInquiries'));
 const AdminLeads = lazy(() => import('./pages/admin/AdminLeads'));
+const SharedInquiry = lazy(() => import('./pages/public/SharedInquiry'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -46,6 +47,7 @@ export default function App() {
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/projects/:id/:slug" element={<ProjectDetail />} />
+              <Route path="/share/inquiry/:token" element={<SharedInquiry />} />
               
               {/* Admin Routes */}
               <Route path="/admin" element={<AdminLayout />}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase, supabaseUrl } from '../../supabase';
-import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X } from 'lucide-react';
+import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X, Share2 } from 'lucide-react';
 
 interface Inquiry {
   id: string;
@@ -12,6 +12,7 @@ interface Inquiry {
   message: string;
   status: 'new' | 'in-progress' | 'completed' | 'failed';
   created_at: any;
+  share_token?: string;
 }
 
 interface Memo {
@@ -142,6 +143,27 @@ export default function AdminInquiries() {
         alert(error.message || "삭제에 실패했습니다.");
       }
     }
+  };
+
+  const handleShare = async (inquiry: Inquiry) => {
+    let token = inquiry.share_token;
+    if (!token) {
+      token = crypto.randomUUID();
+      const { error } = await supabase
+        .from('inquiries')
+        .update({ share_token: token })
+        .eq('id', inquiry.id);
+      
+      if (error) {
+        alert('공유 링크 생성 실패: ' + error.message);
+        return;
+      }
+      setInquiries(prev => prev.map(inq => inq.id === inquiry.id ? { ...inq, share_token: token } : inq));
+    }
+    
+    const shareUrl = `${window.location.origin}/share/inquiry/${token}`;
+    navigator.clipboard.writeText(shareUrl);
+    alert('공유 링크가 복사되었습니다: ' + shareUrl);
   };
 
   const toggleExpand = (id: string) => {
@@ -425,6 +447,9 @@ export default function AdminInquiries() {
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <button onClick={() => openEditModal(inquiry)} className="text-indigo-600 hover:text-indigo-900 p-2 rounded-full hover:bg-indigo-50 transition-colors mr-2" title="수정">
                       <Edit2 size={18} />
+                    </button>
+                    <button onClick={() => handleShare(inquiry)} className="text-green-600 hover:text-green-900 p-2 rounded-full hover:bg-green-50 transition-colors mr-2" title="공유">
+                      <Share2 size={18} />
                     </button>
                     <button onClick={() => handleDelete(inquiry.id)} className="text-red-600 hover:text-red-900 p-2 rounded-full hover:bg-red-50 transition-colors" title="삭제">
                       <Trash2 size={18} />
