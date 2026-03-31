@@ -8,7 +8,7 @@ interface Inquiry {
   name: string;
   email: string;
   phone: string;
-  company: string;
+  address: string;
   message: string;
   status: 'new' | 'in-progress' | 'completed';
   created_at: any;
@@ -67,7 +67,7 @@ export default function AdminInquiries() {
       name: '테스트 문의 ' + new Date().toLocaleTimeString(),
       email: 'test@example.com',
       phone: '', // 연락처 비어있음
-      company: '테스트 컴퍼니',
+      address: '서울특별시 용산구',
       message: '연락처가 없는 테스트 문의입니다.',
       status: 'new'
     }]).select();
@@ -295,7 +295,7 @@ export default function AdminInquiries() {
               <th className="px-6 py-4 font-bold text-gray-900 w-10"></th>
               <th className="px-6 py-4 font-bold text-gray-900">상태</th>
               <th className="px-6 py-4 font-bold text-gray-900">날짜</th>
-              <th className="px-6 py-4 font-bold text-gray-900">이름/회사</th>
+              <th className="px-6 py-4 font-bold text-gray-900">이름/주소</th>
               <th className="px-6 py-4 font-bold text-gray-900">연락처</th>
               <th className="px-6 py-4 font-bold text-gray-900">문의 내용</th>
               <th className="px-6 py-4 font-bold text-gray-900 text-right">관리</th>
@@ -332,7 +332,7 @@ export default function AdminInquiries() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
                     <div className="text-sm font-medium text-gray-900">{inquiry.name}</div>
-                    <div className="text-sm text-gray-500">{inquiry.company || '-'}</div>
+                    <div className="text-sm text-gray-500">{inquiry.address || '-'}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
                     <div className="text-sm text-gray-900">{inquiry.phone || '-'}</div>

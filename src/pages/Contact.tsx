@@ -17,7 +17,7 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    company: '',
+    address: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,14 +64,14 @@ export default function Contact() {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        company: formData.company,
+        address: formData.address,
         message: formData.message
       }]);
 
       if (error) throw error;
       
       setSubmitSuccess(true);
-      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', address: '', message: '' });
       setTimeout(() => setSubmitSuccess(false), 5000);
     } catch (error) {
       console.error("Error submitting inquiry:", error);
@@ -260,14 +260,14 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">회사명</label>
+                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">주소</label>
                     <input 
                       type="text" 
-                      id="company" 
-                      value={formData.company}
-                      onChange={(e) => setFormData({...formData, company: e.target.value})}
+                      id="address" 
+                      value={formData.address}
+                      onChange={(e) => setFormData({...formData, address: e.target.value})}
                       className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent transition-shadow"
-                      placeholder="(주)빅플래너"
+                      placeholder="서울특별시 용산구..."
                     />
                   </div>
                 </div>

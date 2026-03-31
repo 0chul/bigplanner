@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase, supabaseUrl } from '../../supabase';
 import { UserPlus, X, Edit2, Trash2, ArrowRight } from 'lucide-react';
 
@@ -16,6 +16,7 @@ export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
+  const [showLost, setShowLost] = useState(false);
   
   // Custom Modal States
   const [confirmModal, setConfirmModal] = useState<{
@@ -78,7 +79,7 @@ export default function AdminLeads() {
             name: lead.name || '이름 없음',
             email: lead.email || '',
             phone: lead.phone || '',
-            company: '',
+            address: '',
             message: `[리드 이동] 소스: ${lead.source || '알 수 없음'}`,
             status: 'new',
             created_at: new Date().toISOString()
@@ -204,6 +205,8 @@ export default function AdminLeads() {
     }
   }
 
+  const filteredLeads = showLost ? leads : leads.filter(lead => lead.status !== 'lost');
+
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-8">
@@ -220,6 +223,14 @@ export default function AdminLeads() {
             className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-colors"
           >
             데이터 새로고침
+          </button>
+          <button
+            onClick={() => setShowLost(!showLost)}
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+              showLost ? 'bg-gray-800 text-white hover:bg-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            {showLost ? '실패 항목 숨기기' : '실패 항목 보기'}
           </button>
           <div className="text-xs text-gray-400">
             Connected DB: {supabaseUrl}
@@ -250,14 +261,14 @@ export default function AdminLeads() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {leads.length === 0 ? (
+            {filteredLeads.length === 0 ? (
               <tr>
                 <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
                   접수된 문의가 없습니다.
                 </td>
               </tr>
             ) : (
-              leads.map((lead) => (
+              filteredLeads.map((lead) => (
                 <tr key={lead.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">{lead.name}</td>
                   <td className="px-6 py-4">{lead.email}</td>
@@ -270,16 +281,15 @@ export default function AdminLeads() {
                       className={`px-2 py-1 rounded-full text-xs font-bold outline-none cursor-pointer ${
                         lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
                         lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
-                        lead.status === 'missed' ? 'bg-red-100 text-red-700' :
                         lead.status === 'qualified' ? 'bg-green-100 text-green-700' :
+                        lead.status === 'lost' ? 'bg-red-100 text-red-700' :
                         'bg-gray-100 text-gray-700'
                       }`}
                     >
                       <option value="new" className="bg-white text-gray-900">신규</option>
-                      <option value="contacted" className="bg-white text-gray-900">연락완료</option>
-                      <option value="missed" className="bg-white text-gray-900">부재중</option>
-                      <option value="qualified" className="bg-white text-gray-900">유효함</option>
-                      <option value="moved" className="bg-white text-gray-900">이동됨</option>
+                      <option value="contacted" className="bg-white text-gray-900">연락됨</option>
+                      <option value="qualified" className="bg-white text-gray-900">유효</option>
+                      <option value="lost" className="bg-white text-gray-900">실패</option>
                     </select>
                   </td>
                   <td className="px-6 py-4">{new Date(lead.created_at).toLocaleDateString()}</td>
@@ -375,10 +385,9 @@ export default function AdminLeads() {
                   className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none"
                 >
                   <option value="new">신규</option>
-                  <option value="contacted">연락완료</option>
-                  <option value="missed">부재중</option>
-                  <option value="qualified">유효함</option>
-                  <option value="moved">이동됨</option>
+                  <option value="contacted">연락됨</option>
+                  <option value="qualified">유효</option>
+                  <option value="lost">실패</option>
                 </select>
               </div>
               
