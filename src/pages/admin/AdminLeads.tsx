@@ -281,14 +281,12 @@ export default function AdminLeads() {
                       className={`px-2 py-1 rounded-full text-xs font-bold outline-none cursor-pointer ${
                         lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
                         lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
-                        lead.status === 'qualified' ? 'bg-green-100 text-green-700' :
                         lead.status === 'lost' ? 'bg-red-100 text-red-700' :
                         'bg-gray-100 text-gray-700'
                       }`}
                     >
                       <option value="new" className="bg-white text-gray-900">신규</option>
-                      <option value="contacted" className="bg-white text-gray-900">연락됨</option>
-                      <option value="qualified" className="bg-white text-gray-900">유효</option>
+                      <option value="contacted" className="bg-white text-gray-900">부재중</option>
                       <option value="lost" className="bg-white text-gray-900">실패</option>
                     </select>
                   </td>
@@ -385,8 +383,7 @@ export default function AdminLeads() {
                   className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none"
                 >
                   <option value="new">신규</option>
-                  <option value="contacted">연락됨</option>
-                  <option value="qualified">유효</option>
+                  <option value="contacted">부재중</option>
                   <option value="lost">실패</option>
                 </select>
               </div>
