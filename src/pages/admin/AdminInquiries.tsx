@@ -69,32 +69,6 @@ export default function AdminInquiries() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAdmin]);
 
-  const addTestInquiry = async () => {
-    const { data, error } = await supabase.from('inquiries').insert([{
-      name: '테스트 문의 ' + new Date().toLocaleTimeString(),
-      email: 'test@example.com',
-      phone: '', // 연락처 비어있음
-      address: '서울특별시 용산구',
-      message: '연락처가 없는 테스트 문의입니다.',
-      status: 'new'
-    }]).select();
-
-    if (error) {
-      alert('테스트 데이터 추가 실패: ' + error.message);
-    } else {
-      if (!data || data.length === 0) {
-        alert('🚨 [중요] 데이터 추가는 성공했지만, 다시 읽어오지 못했습니다!\n이것은 100% RLS(보안 정책)가 켜져 있어서 SELECT를 막고 있다는 증거입니다.\nSupabase 대시보드에서 inquiries 테이블의 RLS가 정말 꺼져있는지 다시 한번 확인해주세요.');
-      } else {
-        alert('테스트 데이터가 추가되고 정상적으로 읽어왔습니다!');
-      }
-      // 강제 새로고침 효과를 위해 상태 변경
-      setFetching(true);
-      const response = await supabase.from('inquiries').select('*').order('created_at', { ascending: false });
-      if (response.data) setInquiries(response.data as Inquiry[]);
-      setFetching(false);
-    }
-  };
-
     // 실시간 구독으로 인한 데이터 꼬임 방지를 위해 잠시 비활성화
     /*
     const channel = supabase
@@ -365,12 +339,6 @@ export default function AdminInquiries() {
             className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors"
           >
             + 문의 직접 작성
-          </button>
-          <button
-            onClick={addTestInquiry}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors"
-          >
-            + 테스트 문의 추가 (연락처 없음)
           </button>
           <div className="text-xs text-gray-400">
             Connected DB: {supabaseUrl}

@@ -189,23 +189,6 @@ export default function AdminLeads() {
     }
   }
 
-  async function addTestData() {
-    const { error } = await supabase.from('leads').insert([{
-      name: '연동 테스트 ' + new Date().toLocaleTimeString(),
-      email: 'test@example.com',
-      phone: '010-1234-5678',
-      source: 'System Test',
-      status: 'new'
-    }]);
-
-    if (error) {
-      alert('테스트 데이터 추가 실패 (RLS 권한 문제일 수 있습니다):\n' + error.message);
-    } else {
-      alert('테스트 데이터가 성공적으로 추가되었습니다!\n지금 바로 Supabase 대시보드의 leads 테이블을 확인해보세요. 이 데이터가 보이지 않는다면 다른 DB를 보고 계신 것입니다.');
-      fetchLeads();
-    }
-  }
-
   const handleSort = (key: keyof Lead) => {
     setSortConfig(prev => ({
       key,
@@ -229,12 +212,6 @@ export default function AdminLeads() {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">META 리드 관리</h1>
         <div className="flex items-center gap-4">
-          <button
-            onClick={addTestData}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors"
-          >
-            + 연동 테스트 데이터 추가
-          </button>
           <button
             onClick={() => fetchLeads()}
             className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-colors"
