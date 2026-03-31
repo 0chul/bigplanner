@@ -10,7 +10,7 @@ interface Inquiry {
   phone: string;
   address: string;
   message: string;
-  status: 'new' | 'in-progress' | 'completed';
+  status: 'new' | 'in-progress' | 'completed' | 'failed';
   created_at: any;
 }
 
@@ -35,6 +35,7 @@ export default function AdminInquiries() {
   const [editingMemoContent, setEditingMemoContent] = useState('');
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [newInquiry, setNewInquiry] = useState({ name: '', email: '', phone: '', address: '', message: '' });
+  const [showFailedInquiries, setShowFailedInquiries] = useState(false);
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -104,7 +105,7 @@ export default function AdminInquiries() {
     };
     */
 
-  const updateStatus = async (id: string, newStatus: 'new' | 'in-progress' | 'completed') => {
+  const updateStatus = async (id: string, newStatus: 'new' | 'in-progress' | 'completed' | 'failed') => {
     try {
       const { data, error } = await supabase
         .from('inquiries')
@@ -301,6 +302,14 @@ export default function AdminInquiries() {
         <h1 className="text-3xl font-bold">고객 문의 관리</h1>
         <div className="flex items-center gap-4">
           <button
+            onClick={() => setShowFailedInquiries(!showFailedInquiries)}
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+              showFailedInquiries ? 'bg-gray-600 text-white' : 'bg-gray-200 text-gray-700'
+            }`}
+          >
+            {showFailedInquiries ? '실패 항목 숨기기' : '실패 항목 보기'}
+          </button>
+          <button
             onClick={() => setIsCreateModalOpen(true)}
             className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors"
           >
@@ -341,7 +350,9 @@ export default function AdminInquiries() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {inquiries.map((inquiry) => (
+            {inquiries
+              .filter(inq => showFailedInquiries || inq.status !== 'failed')
+              .map((inquiry) => (
               <React.Fragment key={inquiry.id}>
                 <tr className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
@@ -358,12 +369,14 @@ export default function AdminInquiries() {
                       className={`text-sm rounded-full px-3 py-1 font-semibold border-0 ${
                         inquiry.status === 'new' ? 'bg-red-100 text-red-800' :
                         inquiry.status === 'in-progress' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-green-100 text-green-800'
+                        inquiry.status === 'completed' ? 'bg-green-100 text-green-800' :
+                        'bg-gray-100 text-gray-800'
                       }`}
                     >
                       <option value="new">신규</option>
                       <option value="in-progress">진행중</option>
                       <option value="completed">완료</option>
+                      <option value="failed">실패</option>
                     </select>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
