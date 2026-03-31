@@ -10,6 +10,7 @@ interface Inquiry {
   name: string;
   message: string;
   phone: string;
+  address: string;
   created_at: string;
 }
 
@@ -33,7 +34,7 @@ export default function SharedInquiry() {
       // 1. 문의 정보 가져오기
       const { data: inqData, error: inqError } = await supabase
         .from('inquiries')
-        .select('id, name, message, phone, created_at')
+        .select('id, name, message, phone, address, created_at')
         .eq('share_token', token)
         .single();
 
@@ -83,6 +84,7 @@ export default function SharedInquiry() {
           <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-gray-600">
             <p><span className="font-semibold text-gray-800">고객명:</span> {inquiry.name}</p>
             <p><span className="font-semibold text-gray-800">연락처:</span> {inquiry.phone}</p>
+            <p className="col-span-2"><span className="font-semibold text-gray-800">주소:</span> {inquiry.address || '-'}</p>
             <p className="col-span-2"><span className="font-semibold text-gray-800">신청날짜:</span> {getRelativeTime(inquiry.created_at)}</p>
           </div>
           <p className="text-gray-800 whitespace-pre-wrap">{inquiry.message}</p>
