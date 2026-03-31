@@ -33,6 +33,8 @@ export default function AdminInquiries() {
   const [newMemo, setNewMemo] = useState('');
   const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
   const [editingMemoContent, setEditingMemoContent] = useState('');
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [newInquiry, setNewInquiry] = useState({ name: '', email: '', phone: '', address: '', message: '' });
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -259,14 +261,51 @@ export default function AdminInquiries() {
     }
   };
 
+  const handleAddInquiry = async () => {
+    const { data, error } = await supabase.from('inquiries').insert([{
+      ...newInquiry,
+      status: 'new'
+    }]).select();
+
+    if (error) {
+      alert('문의 추가 실패: ' + error.message);
+    } else {
+      setInquiries([data[0] as Inquiry, ...inquiries]);
+      setIsCreateModalOpen(false);
+      setNewInquiry({ name: '', email: '', phone: '', address: '', message: '' });
+    }
+  };
+
   if (loading || fetching) return <div className="p-8">Loading...</div>;
   if (!isAdmin) return <div className="p-8">접근 권한이 없습니다.</div>;
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
+      {isCreateModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-2xl w-full max-w-md">
+            <h2 className="text-xl font-bold mb-4">문의 직접 작성</h2>
+            <input type="text" placeholder="이름" value={newInquiry.name} onChange={e => setNewInquiry({...newInquiry, name: e.target.value})} className="w-full mb-2 p-2 border rounded" />
+            <input type="email" placeholder="이메일" value={newInquiry.email} onChange={e => setNewInquiry({...newInquiry, email: e.target.value})} className="w-full mb-2 p-2 border rounded" />
+            <input type="tel" placeholder="연락처" value={newInquiry.phone} onChange={e => setNewInquiry({...newInquiry, phone: e.target.value})} className="w-full mb-2 p-2 border rounded" />
+            <input type="text" placeholder="주소" value={newInquiry.address} onChange={e => setNewInquiry({...newInquiry, address: e.target.value})} className="w-full mb-2 p-2 border rounded" />
+            <textarea placeholder="문의 내용" value={newInquiry.message} onChange={e => setNewInquiry({...newInquiry, message: e.target.value})} className="w-full mb-4 p-2 border rounded" />
+            <div className="flex justify-end gap-2">
+              <button onClick={() => setIsCreateModalOpen(false)} className="px-4 py-2 text-gray-600">취소</button>
+              <button onClick={handleAddInquiry} className="px-4 py-2 bg-indigo-600 text-white rounded-lg">작성 완료</button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">고객 문의 관리</h1>
         <div className="flex items-center gap-4">
+          <button
+            onClick={() => setIsCreateModalOpen(true)}
+            className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors"
+          >
+            + 문의 직접 작성
+          </button>
           <button
             onClick={addTestInquiry}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-medium transition-colors"
