@@ -234,53 +234,61 @@ export default function AdminLeads() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {leads.map((lead) => (
-              <tr key={lead.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4">{lead.name}</td>
-                <td className="px-6 py-4">{lead.email}</td>
-                <td className="px-6 py-4">{lead.phone}</td>
-                <td className="px-6 py-4">{lead.source}</td>
-                <td className="px-6 py-4">
-                  <span className={`px-2 py-1 rounded-full text-xs font-bold ${
-                    lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
-                    lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
-                    lead.status === 'qualified' ? 'bg-green-100 text-green-700' :
-                    'bg-gray-100 text-gray-700'
-                  }`}>
-                    {lead.status}
-                  </span>
-                </td>
-                <td className="px-6 py-4">{new Date(lead.created_at).toLocaleDateString()}</td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-2">
-                    <button 
-                      onClick={() => moveToInquiries(lead)}
-                      className="flex items-center gap-1 text-xs bg-black text-white px-3 py-1.5 rounded-lg hover:bg-gray-800 transition-colors"
-                      title="문의로 이동"
-                    >
-                      <ArrowRight className="w-3 h-3" />
-                      이동
-                    </button>
-                    <button 
-                      onClick={() => openEditModal(lead)}
-                      className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors font-medium"
-                      title="수정"
-                    >
-                      <Edit2 className="w-3 h-3" />
-                      수정
-                    </button>
-                    <button 
-                      onClick={() => deleteLead(lead.id)}
-                      className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-100 transition-colors font-medium"
-                      title="삭제"
-                    >
-                      <Trash2 className="w-3 h-3" />
-                      삭제
-                    </button>
-                  </div>
+            {leads.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
+                  접수된 문의가 없습니다.
                 </td>
               </tr>
-            ))}
+            ) : (
+              leads.map((lead) => (
+                <tr key={lead.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4">{lead.name}</td>
+                  <td className="px-6 py-4">{lead.email}</td>
+                  <td className="px-6 py-4">{lead.phone}</td>
+                  <td className="px-6 py-4">{lead.source}</td>
+                  <td className="px-6 py-4">
+                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${
+                      lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
+                      lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
+                      lead.status === 'qualified' ? 'bg-green-100 text-green-700' :
+                      'bg-gray-100 text-gray-700'
+                    }`}>
+                      {lead.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">{new Date(lead.created_at).toLocaleDateString()}</td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      <button 
+                        onClick={() => moveToInquiries(lead)}
+                        className="flex items-center gap-1 text-xs bg-black text-white px-3 py-1.5 rounded-lg hover:bg-gray-800 transition-colors"
+                        title="문의로 이동"
+                      >
+                        <ArrowRight className="w-3 h-3" />
+                        이동
+                      </button>
+                      <button 
+                        onClick={() => openEditModal(lead)}
+                        className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors font-medium"
+                        title="수정"
+                      >
+                        <Edit2 className="w-3 h-3" />
+                        수정
+                      </button>
+                      <button 
+                        onClick={() => deleteLead(lead.id)}
+                        className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-100 transition-colors font-medium"
+                        title="삭제"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                        삭제
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
