@@ -1,10 +1,27 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../../supabase';
 
 export default function AdminLayout() {
   const { user, isAdmin, login, logout, loading } = useAuth();
   const location = useLocation();
+  const [inquiries, setInquiries] = useState<any[]>([]);
+  const [leads, setLeads] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    const fetchData = async () => {
+      const { data: inqData } = await supabase.from('inquiries').select('id, status');
+      const { data: leadData } = await supabase.from('leads').select('id, status');
+      setInquiries(inqData || []);
+      setLeads(leadData || []);
+    };
+    fetchData();
+    const channel = supabase.channel('admin_nav').on('postgres_changes', { event: '*', schema: 'public' }, fetchData).subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [isAdmin]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center bg-gray-50">Loading...</div>;
@@ -47,8 +64,8 @@ export default function AdminLayout() {
   const navItems = [
     { path: '/admin', label: '대시보드', icon: <LayoutDashboard size={20} /> },
     { path: '/admin/projects', label: '프로젝트 관리', icon: <FolderKanban size={20} /> },
-    { path: '/admin/inquiries', label: '고객 문의 관리', icon: <MessageSquare size={20} /> },
-    { path: '/admin/leads', label: 'META 리드 관리', icon: <UserPlus size={20} /> },
+    { path: '/admin/inquiries', label: '고객 문의 관리', icon: <MessageSquare size={20} />, count: inquiries.filter(i => i.status === 'new').length },
+    { path: '/admin/leads', label: 'META 리드 관리', icon: <UserPlus size={20} />, count: leads.filter(l => l.status === 'new').length },
   ];
 
   return (
@@ -68,12 +85,19 @@ export default function AdminLayout() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+                className={`flex items-center justify-between px-4 py-3 rounded-xl transition-colors ${
                   isActive ? 'bg-white/10 text-white font-bold' : 'text-gray-400 hover:bg-white/5 hover:text-white'
                 }`}
               >
-                {item.icon}
-                {item.label}
+                <div className="flex items-center gap-3">
+                  {item.icon}
+                  {item.label}
+                </div>
+                {item.count && item.count > 0 && (
+                  <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                    {item.count}
+                  </span>
+                )}
               </Link>
             );
           })}

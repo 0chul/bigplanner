@@ -38,6 +38,7 @@ export default function AdminInquiries() {
   const [showFailedInquiries, setShowFailedInquiries] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Inquiry | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
   
+  const newInquiriesCount = inquiries.filter(inq => inq.status === 'new').length;
   // Edit Modal States
   const [editingInquiry, setEditingInquiry] = useState<Inquiry | null>(null);
   const [editForm, setEditForm] = useState<Partial<Inquiry>>({});
@@ -324,7 +325,14 @@ export default function AdminInquiries() {
         </div>
       )}
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">고객 문의 관리</h1>
+        <h1 className="text-3xl font-bold">
+          고객 문의 관리
+          {newInquiriesCount > 0 && (
+            <span className="ml-3 inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-500 text-white">
+              신규 {newInquiriesCount}
+            </span>
+          )}
+        </h1>
         <div className="flex items-center gap-4">
           <button
             onClick={() => setShowFailedInquiries(!showFailedInquiries)}

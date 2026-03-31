@@ -19,6 +19,7 @@ export default function AdminLeads() {
   const [showLost, setShowLost] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Lead | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
   
+  const newLeadsCount = leads.filter(lead => lead.status === 'new').length;
   // Custom Modal States
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
@@ -210,7 +211,14 @@ export default function AdminLeads() {
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">META 리드 관리</h1>
+        <h1 className="text-3xl font-bold">
+          META 리드 관리
+          {newLeadsCount > 0 && (
+            <span className="ml-3 inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-500 text-white">
+              신규 {newLeadsCount}
+            </span>
+          )}
+        </h1>
         <div className="flex items-center gap-4">
           <button
             onClick={() => fetchLeads()}
