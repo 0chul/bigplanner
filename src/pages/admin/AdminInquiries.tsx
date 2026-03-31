@@ -34,6 +34,7 @@ export default function AdminInquiries() {
   // Memo state
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [selectedSMS, setSelectedSMS] = useState<{ id: string; name: string; phone: string } | null>(null);
+  const [smsStatuses, setSmsStatuses] = useState<Record<string, { status: 'success' | 'failure' | 'idle', error?: string }>>({});
   const [memos, setMemos] = useState<Record<string, Memo[]>>({});
   const [newMemo, setNewMemo] = useState('');
   const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
@@ -442,13 +443,25 @@ export default function AdminInquiries() {
                   <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
                     <div className="flex items-center gap-2">
                       <div className="text-sm text-gray-900">{formatPhoneNumber(inquiry.phone)}</div>
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
-                        className="text-gray-400 hover:text-black"
-                        title="문자 보내기"
-                      >
-                        <Send size={14} />
-                      </button>
+                      {smsStatuses[inquiry.id]?.status === 'success' ? (
+                        <Check size={14} className="text-green-500" />
+                      ) : smsStatuses[inquiry.id]?.status === 'failure' ? (
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); alert(smsStatuses[inquiry.id].error); }}
+                          className="text-red-500 hover:text-red-700"
+                          title={`실패 사유: ${smsStatuses[inquiry.id].error}`}
+                        >
+                          <X size={14} />
+                        </button>
+                      ) : (
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
+                          className="text-gray-400 hover:text-black"
+                          title="문자 보내기"
+                        >
+                          <Send size={14} />
+                        </button>
+                      )}
                     </div>
                     <div className="text-sm text-gray-500">{inquiry.email}</div>
                   </td>
@@ -609,19 +622,11 @@ export default function AdminInquiries() {
         <SMSModal 
           name={selectedSMS.name} 
           phone={selectedSMS.phone} 
-          onClose={async (success) => {
+          onClose={(success, errorMessage) => {
             if (success) {
-              // 성공 시 상태 업데이트
-              const { error } = await supabase
-                .from('inquiries')
-                .update({ status: 'completed' })
-                .eq('id', selectedSMS.id);
-              if (error) console.error('Error updating status:', error);
-              else {
-                // 목록 새로고침
-                const { data } = await supabase.from('inquiries').select('*');
-                setInquiries(data || []);
-              }
+              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'success' } }));
+            } else {
+              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'failure', error: errorMessage } }));
             }
             setSelectedSMS(null);
           }} 

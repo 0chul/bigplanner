@@ -18,6 +18,7 @@ export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
   const [selectedSMS, setSelectedSMS] = useState<{ id: string; name: string; phone: string } | null>(null);
+  const [smsStatuses, setSmsStatuses] = useState<Record<string, { status: 'success' | 'failure' | 'idle', error?: string }>>({});
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
   const [showLost, setShowLost] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Lead | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
@@ -280,13 +281,25 @@ export default function AdminLeads() {
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       {formatPhoneNumber(lead.phone)}
-                      <button 
-                        onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}
-                        className="text-gray-400 hover:text-black"
-                        title="문자 보내기"
-                      >
-                        <Send size={14} />
-                      </button>
+                      {smsStatuses[lead.id]?.status === 'success' ? (
+                        <Check size={14} className="text-green-500" />
+                      ) : smsStatuses[lead.id]?.status === 'failure' ? (
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); alert(smsStatuses[lead.id].error); }}
+                          className="text-red-500 hover:text-red-700"
+                          title={`실패 사유: ${smsStatuses[lead.id].error}`}
+                        >
+                          <X size={14} />
+                        </button>
+                      ) : (
+                        <button 
+                          onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}
+                          className="text-gray-400 hover:text-black"
+                          title="문자 보내기"
+                        >
+                          <Send size={14} />
+                        </button>
+                      )}
                     </div>
                   </td>
                   <td className="px-6 py-4">{lead.source}</td>
@@ -451,15 +464,11 @@ export default function AdminLeads() {
         <SMSModal 
           name={selectedSMS.name} 
           phone={selectedSMS.phone} 
-          onClose={async (success) => {
+          onClose={(success, errorMessage) => {
             if (success) {
-              // 성공 시 상태 업데이트
-              const { error } = await supabase
-                .from('leads')
-                .update({ status: 'contacted' })
-                .eq('id', selectedSMS.id);
-              if (error) console.error('Error updating status:', error);
-              else fetchLeads();
+              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'success' } }));
+            } else {
+              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'failure', error: errorMessage } }));
             }
             setSelectedSMS(null);
           }} 

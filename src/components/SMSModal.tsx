@@ -4,7 +4,7 @@ import { X, Send } from 'lucide-react';
 interface SMSModalProps {
   name: string;
   phone: string;
-  onClose: (success?: boolean) => void;
+  onClose: (success: boolean, errorMessage?: string) => void;
 }
 
 export default function SMSModal({ name, phone, onClose }: SMSModalProps) {
@@ -28,13 +28,14 @@ www.bigplanner.co.kr`);
         onClose(true); // 성공 시 true 전달
       } else {
         // result_code가 0보다 작거나 1이 아닌 경우 실패
-        alert(`전송 실패: ${data.message || '알 수 없는 오류'}`);
-        onClose(false); // 실패 시 false 전달
+        const errorMsg = data.message || '알 수 없는 오류';
+        alert(`전송 실패: ${errorMsg}`);
+        onClose(false, errorMsg); // 실패 시 false와 에러 메시지 전달
       }
     } catch (error) {
       console.error('SMS error:', error);
       alert('문자 전송 중 오류가 발생했습니다.');
-      onClose(false);
+      onClose(false, '문자 전송 중 오류가 발생했습니다.');
     } finally {
       setSending(false);
     }
