@@ -93,7 +93,7 @@ export default function AdminLayout() {
                   {item.icon}
                   {item.label}
                 </div>
-                {item.count && item.count > 0 && (
+                {item.count > 0 && (
                   <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                     {item.count}
                   </span>
