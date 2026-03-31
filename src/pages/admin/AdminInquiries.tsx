@@ -36,6 +36,7 @@ export default function AdminInquiries() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [newInquiry, setNewInquiry] = useState({ name: '', email: '', phone: '', address: '', message: '' });
   const [showFailedInquiries, setShowFailedInquiries] = useState(false);
+  const [sortConfig, setSortConfig] = useState<{ key: keyof Inquiry | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -46,8 +47,7 @@ export default function AdminInquiries() {
       
       const response = await supabase
         .from('inquiries')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .select('*');
       
       console.log("🔍 [DEBUG] Supabase Response:", response);
       
@@ -280,6 +280,22 @@ export default function AdminInquiries() {
   if (loading || fetching) return <div className="p-8">Loading...</div>;
   if (!isAdmin) return <div className="p-8">접근 권한이 없습니다.</div>;
 
+  const handleSort = (key: keyof Inquiry) => {
+    setSortConfig(prev => ({
+      key,
+      direction: prev.key === key && prev.direction === 'desc' ? 'asc' : 'desc'
+    }));
+  };
+
+  const sortedInquiries = [...inquiries].sort((a, b) => {
+    if (!sortConfig.key) return 0;
+    const aVal = a[sortConfig.key] || '';
+    const bVal = b[sortConfig.key] || '';
+    if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
+    if (aVal > bVal) return sortConfig.direction === 'asc' ? 1 : -1;
+    return 0;
+  });
+
   return (
     <div className="p-8 max-w-7xl mx-auto">
       {isCreateModalOpen && (
@@ -341,16 +357,16 @@ export default function AdminInquiries() {
           <thead className="bg-gray-50 border-b border-gray-100">
             <tr>
               <th className="px-6 py-4 font-bold text-gray-900 w-10"></th>
-              <th className="px-6 py-4 font-bold text-gray-900">상태</th>
-              <th className="px-6 py-4 font-bold text-gray-900">날짜</th>
-              <th className="px-6 py-4 font-bold text-gray-900">이름/주소</th>
-              <th className="px-6 py-4 font-bold text-gray-900">연락처</th>
-              <th className="px-6 py-4 font-bold text-gray-900">문의 내용</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('created_at')}>날짜 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('name')}>이름/주소 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('phone')}>연락처 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('message')}>문의 내용 {sortConfig.key === 'message' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
               <th className="px-6 py-4 font-bold text-gray-900 text-right">관리</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {inquiries
+            {sortedInquiries
               .filter(inq => showFailedInquiries || inq.status !== 'failed')
               .map((inquiry) => (
               <React.Fragment key={inquiry.id}>

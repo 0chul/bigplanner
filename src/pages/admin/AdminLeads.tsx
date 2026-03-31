@@ -17,6 +17,7 @@ export default function AdminLeads() {
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
   const [showLost, setShowLost] = useState(false);
+  const [sortConfig, setSortConfig] = useState<{ key: keyof Lead | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
   
   // Custom Modal States
   const [confirmModal, setConfirmModal] = useState<{
@@ -205,7 +206,23 @@ export default function AdminLeads() {
     }
   }
 
-  const filteredLeads = showLost ? leads : leads.filter(lead => lead.status !== 'lost');
+  const handleSort = (key: keyof Lead) => {
+    setSortConfig(prev => ({
+      key,
+      direction: prev.key === key && prev.direction === 'desc' ? 'asc' : 'desc'
+    }));
+  };
+
+  const sortedLeads = [...leads].sort((a, b) => {
+    if (!sortConfig.key) return 0;
+    const aVal = a[sortConfig.key] || '';
+    const bVal = b[sortConfig.key] || '';
+    if (aVal < bVal) return sortConfig.direction === 'asc' ? -1 : 1;
+    if (aVal > bVal) return sortConfig.direction === 'asc' ? 1 : -1;
+    return 0;
+  });
+
+  const filteredLeads = showLost ? sortedLeads : sortedLeads.filter(lead => lead.status !== 'lost');
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
@@ -251,12 +268,12 @@ export default function AdminLeads() {
         <table className="w-full text-left">
           <thead className="bg-gray-50 border-b border-gray-100">
             <tr>
-              <th className="px-6 py-4 font-bold text-gray-900">이름</th>
-              <th className="px-6 py-4 font-bold text-gray-900">이메일</th>
-              <th className="px-6 py-4 font-bold text-gray-900">전화번호</th>
-              <th className="px-6 py-4 font-bold text-gray-900">소스</th>
-              <th className="px-6 py-4 font-bold text-gray-900">상태</th>
-              <th className="px-6 py-4 font-bold text-gray-900">접수일</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('name')}>이름 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('email')}>이메일 {sortConfig.key === 'email' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('phone')}>전화번호 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('source')}>소스 {sortConfig.key === 'source' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('created_at')}>접수일 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
               <th className="px-6 py-4 font-bold text-gray-900">작업</th>
             </tr>
           </thead>
