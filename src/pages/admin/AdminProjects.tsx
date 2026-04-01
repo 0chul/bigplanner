@@ -223,16 +223,16 @@ export default function AdminProjects() {
     }
   };
 
-  if (loading || fetching) return <div className="p-8">Loading...</div>;
-  if (!isAdmin) return <div className="p-8">접근 권한이 없습니다.</div>;
+  if (loading || fetching) return <div className="p-4 md:p-8">Loading...</div>;
+  if (!isAdmin) return <div className="p-4 md:p-8">접근 권한이 없습니다.</div>;
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">포트폴리오 관리</h1>
+    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold">포트폴리오 관리</h1>
         <button 
           onClick={() => handleOpenModal()}
-          className="bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800"
+          className="bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800 w-full sm:w-auto justify-center"
         >
           <Plus size={20} /> 새 프로젝트 추가
         </button>

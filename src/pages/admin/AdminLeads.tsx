@@ -214,9 +214,9 @@ export default function AdminLeads() {
   const filteredLeads = showLost ? sortedLeads : sortedLeads.filter(lead => lead.status !== 'lost');
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold">
           META 리드 관리
           {newLeadsCount > 0 && (
             <span className="ml-3 inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-500 text-white">
@@ -224,22 +224,22 @@ export default function AdminLeads() {
             </span>
           )}
         </h1>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4 w-full md:w-auto">
           <button
             onClick={() => fetchLeads()}
-            className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-colors"
+            className="px-3 py-2 md:px-4 md:py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-xs md:text-sm font-medium transition-colors"
           >
             데이터 새로고침
           </button>
           <button
             onClick={() => setShowLost(!showLost)}
-            className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+            className={`px-3 py-2 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-medium transition-colors ${
               showLost ? 'bg-gray-800 text-white hover:bg-gray-900' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
             {showLost ? '실패 항목 숨기기' : '실패 항목 보기'}
           </button>
-          <div className="text-xs text-gray-400">
+          <div className="text-[10px] md:text-xs text-gray-400 w-full md:w-auto mt-2 md:mt-0">
             Connected DB: {supabaseUrl}
           </div>
         </div>
@@ -255,114 +255,116 @@ export default function AdminLeads() {
       )}
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <table className="w-full text-left">
-          <thead className="bg-gray-50 border-b border-gray-100">
-            <tr>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('name')}>이름 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('email')}>이메일 {sortConfig.key === 'email' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('phone')}>전화번호 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('source')}>소스 {sortConfig.key === 'source' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('created_at')}>접수일 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900">작업</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {filteredLeads.length === 0 ? (
+        <div className="overflow-x-auto">
+          <table className="w-full text-left min-w-[800px]">
+            <thead className="bg-gray-50 border-b border-gray-100">
               <tr>
-                <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
-                  접수된 문의가 없습니다.
-                </td>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('name')}>이름 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('email')}>이메일 {sortConfig.key === 'email' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('phone')}>전화번호 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('source')}>소스 {sortConfig.key === 'source' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('created_at')}>접수일 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 whitespace-nowrap">작업</th>
               </tr>
-            ) : (
-              filteredLeads.map((lead) => (
-                <tr key={lead.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">{lead.name}</td>
-                  <td className="px-6 py-4">{lead.email}</td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-2">
-                      {formatPhoneNumber(lead.phone)}
-                      {lead.sms_status === 'success' ? (
-                        <Check size={14} className="text-green-500" />
-                      ) : lead.sms_status === 'failure' ? (
-                        <div className="flex items-center gap-2">
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {filteredLeads.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="px-4 md:px-6 py-12 text-center text-gray-500">
+                    접수된 문의가 없습니다.
+                  </td>
+                </tr>
+              ) : (
+                filteredLeads.map((lead) => (
+                  <tr key={lead.id} className="hover:bg-gray-50">
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{lead.name}</td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{lead.email}</td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">
+                      <div className="flex items-center gap-2">
+                        {formatPhoneNumber(lead.phone)}
+                        {lead.sms_status === 'success' ? (
+                          <Check size={14} className="text-green-500" />
+                        ) : lead.sms_status === 'failure' ? (
+                          <div className="flex items-center gap-2">
+                            <button 
+                              onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
+                              className="text-red-500 hover:text-red-700"
+                              title={`실패 사유: ${lead.sms_error}`}
+                            >
+                              <X size={14} />
+                            </button>
+                            <button 
+                              onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone }); }}
+                              className="text-gray-400 hover:text-blue-500"
+                              title="문자 다시 보내기"
+                            >
+                              <Send size={14} />
+                            </button>
+                          </div>
+                        ) : (
                           <button 
-                            onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
-                            className="text-red-500 hover:text-red-700"
-                            title={`실패 사유: ${lead.sms_error}`}
-                          >
-                            <X size={14} />
-                          </button>
-                          <button 
-                            onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone }); }}
+                            onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}
                             className="text-gray-400 hover:text-black"
-                            title="문자 다시 보내기"
+                            title="문자 보내기"
                           >
                             <Send size={14} />
                           </button>
-                        </div>
-                      ) : (
+                        )}
+                      </div>
+                    </td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{lead.source}</td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap">
+                      <select
+                        value={lead.status}
+                        onChange={(e) => handleStatusChange(lead.id, e.target.value)}
+                        className={`px-2 py-1 rounded-full text-xs font-bold outline-none cursor-pointer ${
+                          lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
+                          lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
+                          lead.status === 'lost' ? 'bg-red-100 text-red-700' :
+                          'bg-gray-100 text-gray-700'
+                        }`}
+                      >
+                        <option value="new" className="bg-white text-gray-900">신규</option>
+                        <option value="contacted" className="bg-white text-gray-900">부재중</option>
+                        <option value="lost" className="bg-white text-gray-900">실패</option>
+                      </select>
+                    </td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{new Date(lead.created_at).toLocaleDateString()}</td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center gap-2">
                         <button 
-                          onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}
-                          className="text-gray-400 hover:text-black"
-                          title="문자 보내기"
+                          onClick={() => moveToInquiries(lead)}
+                          className="flex items-center gap-1 text-xs bg-black text-white px-2 py-1.5 md:px-3 rounded-lg hover:bg-gray-800 transition-colors"
+                          title="문의로 이동"
                         >
-                          <Send size={14} />
+                          <ArrowRight className="w-3 h-3" />
+                          <span className="hidden sm:inline">이동</span>
                         </button>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">{lead.source}</td>
-                  <td className="px-6 py-4">
-                    <select
-                      value={lead.status}
-                      onChange={(e) => handleStatusChange(lead.id, e.target.value)}
-                      className={`px-2 py-1 rounded-full text-xs font-bold outline-none cursor-pointer ${
-                        lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
-                        lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
-                        lead.status === 'lost' ? 'bg-red-100 text-red-700' :
-                        'bg-gray-100 text-gray-700'
-                      }`}
-                    >
-                      <option value="new" className="bg-white text-gray-900">신규</option>
-                      <option value="contacted" className="bg-white text-gray-900">부재중</option>
-                      <option value="lost" className="bg-white text-gray-900">실패</option>
-                    </select>
-                  </td>
-                  <td className="px-6 py-4">{new Date(lead.created_at).toLocaleDateString()}</td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-2">
-                      <button 
-                        onClick={() => moveToInquiries(lead)}
-                        className="flex items-center gap-1 text-xs bg-black text-white px-3 py-1.5 rounded-lg hover:bg-gray-800 transition-colors"
-                        title="문의로 이동"
-                      >
-                        <ArrowRight className="w-3 h-3" />
-                        이동
-                      </button>
-                      <button 
-                        onClick={() => openEditModal(lead)}
-                        className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors font-medium"
-                        title="수정"
-                      >
-                        <Edit2 className="w-3 h-3" />
-                        수정
-                      </button>
-                      <button 
-                        onClick={() => deleteLead(lead.id)}
-                        className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-100 transition-colors font-medium"
-                        title="삭제"
-                      >
-                        <Trash2 className="w-3 h-3" />
-                        삭제
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+                        <button 
+                          onClick={() => openEditModal(lead)}
+                          className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-2 py-1.5 md:px-3 rounded-lg hover:bg-blue-100 transition-colors font-medium"
+                          title="수정"
+                        >
+                          <Edit2 className="w-3 h-3" />
+                          <span className="hidden sm:inline">수정</span>
+                        </button>
+                        <button 
+                          onClick={() => deleteLead(lead.id)}
+                          className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-2 py-1.5 md:px-3 rounded-lg hover:bg-red-100 transition-colors font-medium"
+                          title="삭제"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                          <span className="hidden sm:inline">삭제</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* 수정 모달 */}

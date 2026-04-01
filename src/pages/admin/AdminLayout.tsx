@@ -1,6 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut, Menu, X } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../supabase';
 
@@ -9,6 +9,7 @@ export default function AdminLayout() {
   const location = useLocation();
   const [inquiries, setInquiries] = useState<any[]>([]);
   const [leads, setLeads] = useState<any[]>([]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -69,22 +70,45 @@ export default function AdminLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
+      {/* Mobile Header */}
+      <div className="md:hidden bg-black text-white p-4 flex justify-between items-center sticky top-0 z-20">
+        <Link to="/" className="text-xl font-bold tracking-tighter">
+          BIGPLANNER<span className="text-gray-500">.</span> ADMIN
+        </Link>
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2">
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 bg-black text-white flex flex-col">
-        <div className="p-6">
+      <aside className={`
+        fixed md:sticky top-0 left-0 h-full md:h-screen z-40
+        w-64 bg-black text-white flex flex-col transition-transform duration-300 ease-in-out
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      `}>
+        <div className="p-6 hidden md:block">
           <Link to="/" className="text-xl font-bold tracking-tighter">
             BIGPLANNER<span className="text-gray-500">.</span> ADMIN
           </Link>
         </div>
         
-        <nav className="flex-1 px-4 py-6 space-y-2">
+        <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
             return (
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center justify-between px-4 py-3 rounded-xl transition-colors ${
                   isActive ? 'bg-white/10 text-white font-bold' : 'text-gray-400 hover:bg-white/5 hover:text-white'
                 }`}
@@ -124,7 +148,7 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-auto w-full">
         <Outlet />
       </main>
     </div>

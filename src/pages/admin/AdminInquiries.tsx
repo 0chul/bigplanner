@@ -335,10 +335,10 @@ export default function AdminInquiries() {
   });
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto">
       {isCreateModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-2xl w-full max-w-md">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white p-6 md:p-8 rounded-2xl w-full max-w-md">
             <h2 className="text-xl font-bold mb-4">문의 직접 작성</h2>
             <input type="text" placeholder="이름" value={newInquiry.name} onChange={e => setNewInquiry({...newInquiry, name: e.target.value})} className="w-full mb-2 p-2 border rounded" />
             <input type="email" placeholder="이메일" value={newInquiry.email} onChange={e => setNewInquiry({...newInquiry, email: e.target.value})} className="w-full mb-2 p-2 border rounded" />
@@ -352,8 +352,8 @@ export default function AdminInquiries() {
           </div>
         </div>
       )}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold">
           고객 문의 관리
           {newInquiriesCount > 0 && (
             <span className="ml-3 inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-500 text-white">
@@ -361,10 +361,10 @@ export default function AdminInquiries() {
             </span>
           )}
         </h1>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4 w-full md:w-auto">
           <button
             onClick={() => setShowFailedInquiries(!showFailedInquiries)}
-            className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+            className={`px-3 py-2 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-medium transition-colors ${
               showFailedInquiries ? 'bg-gray-600 text-white' : 'bg-gray-200 text-gray-700'
             }`}
           >
@@ -372,11 +372,11 @@ export default function AdminInquiries() {
           </button>
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-medium transition-colors"
+            className="px-3 py-2 md:px-4 md:py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-xs md:text-sm font-medium transition-colors"
           >
             + 문의 직접 작성
           </button>
-          <div className="text-xs text-gray-400">
+          <div className="text-[10px] md:text-xs text-gray-400 w-full md:w-auto mt-2 md:mt-0">
             Connected DB: {supabaseUrl}
           </div>
         </div>
@@ -392,113 +392,114 @@ export default function AdminInquiries() {
       )}
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50 border-b border-gray-100">
-            <tr>
-              <th className="px-6 py-4 font-bold text-gray-900 w-10"></th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('created_at')}>날짜 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('name')}>이름/주소 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('phone')}>연락처 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer" onClick={() => handleSort('message')}>문의 내용 {sortConfig.key === 'message' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-              <th className="px-6 py-4 font-bold text-gray-900 text-right">관리</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {sortedInquiries
-              .filter(inq => showFailedInquiries || inq.status !== 'failed')
-              .map((inquiry) => (
-              <React.Fragment key={inquiry.id}>
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
-                    {expandedId === inquiry.id ? (
-                      <ChevronUp size={20} className="text-gray-400" />
-                    ) : (
-                      <ChevronDown size={20} className="text-gray-400" />
-                    )}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <select
-                      value={inquiry.status}
-                      onChange={(e) => updateStatus(inquiry.id, e.target.value as any)}
-                      className={`text-sm rounded-full px-3 py-1 font-semibold border-0 ${
-                        inquiry.status === 'new' ? 'bg-red-100 text-red-800' :
-                        inquiry.status === 'in-progress' ? 'bg-yellow-100 text-yellow-800' :
-                        inquiry.status === 'completed' ? 'bg-green-100 text-green-800' :
-                        'bg-gray-100 text-gray-800'
-                      }`}
-                    >
-                      <option value="new">신규</option>
-                      <option value="in-progress">진행중</option>
-                      <option value="completed">완료</option>
-                      <option value="failed">실패</option>
-                    </select>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
-                    {inquiry.created_at ? getRelativeTime(inquiry.created_at) : 'N/A'}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
-                    <div className="text-sm font-medium text-gray-900">{inquiry.name}</div>
-                    <div className="text-sm text-gray-500">{inquiry.address || '-'}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
-                    <div className="flex items-center gap-2">
-                      <div className="text-sm text-gray-900">{formatPhoneNumber(inquiry.phone)}</div>
-                      {inquiry.sms_status === 'success' ? (
-                        <Check size={14} className="text-green-500" />
-                      ) : inquiry.sms_status === 'failure' ? (
-                        <div className="flex items-center gap-2">
-                          <button 
-                            onClick={(e) => { e.stopPropagation(); alert(inquiry.sms_error); }}
-                            className="text-red-500 hover:text-red-700"
-                            title={`실패 사유: ${inquiry.sms_error}`}
-                          >
-                            <X size={14} />
-                          </button>
+        <div className="overflow-x-auto">
+          <table className="min-w-[800px] divide-y divide-gray-200">
+            <thead className="bg-gray-50 border-b border-gray-100">
+              <tr>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 w-10 whitespace-nowrap"></th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('created_at')}>날짜 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('name')}>이름/주소 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('phone')}>연락처 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('message')}>문의 내용 {sortConfig.key === 'message' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 text-right whitespace-nowrap">관리</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {sortedInquiries
+                .filter(inq => showFailedInquiries || inq.status !== 'failed')
+                .map((inquiry) => (
+                <React.Fragment key={inquiry.id}>
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
+                      {expandedId === inquiry.id ? (
+                        <ChevronUp size={20} className="text-gray-400" />
+                      ) : (
+                        <ChevronDown size={20} className="text-gray-400" />
+                      )}
+                    </td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap">
+                      <select
+                        value={inquiry.status}
+                        onChange={(e) => updateStatus(inquiry.id, e.target.value as any)}
+                        className={`text-xs md:text-sm rounded-full px-2 md:px-3 py-1 font-semibold border-0 ${
+                          inquiry.status === 'new' ? 'bg-red-100 text-red-800' :
+                          inquiry.status === 'in-progress' ? 'bg-yellow-100 text-yellow-800' :
+                          inquiry.status === 'completed' ? 'bg-green-100 text-green-800' :
+                          'bg-gray-100 text-gray-800'
+                        }`}
+                      >
+                        <option value="new">신규</option>
+                        <option value="in-progress">진행중</option>
+                        <option value="completed">완료</option>
+                        <option value="failed">실패</option>
+                      </select>
+                    </td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
+                      {inquiry.created_at ? getRelativeTime(inquiry.created_at) : 'N/A'}
+                    </td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
+                      <div className="text-xs md:text-sm font-medium text-gray-900">{inquiry.name}</div>
+                      <div className="text-xs md:text-sm text-gray-500">{inquiry.address || '-'}</div>
+                    </td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
+                      <div className="flex items-center gap-2">
+                        <div className="text-xs md:text-sm text-gray-900">{formatPhoneNumber(inquiry.phone)}</div>
+                        {inquiry.sms_status === 'success' ? (
+                          <Check size={14} className="text-green-500" />
+                        ) : inquiry.sms_status === 'failure' ? (
+                          <div className="flex items-center gap-2">
+                            <button 
+                              onClick={(e) => { e.stopPropagation(); alert(inquiry.sms_error); }}
+                              className="text-red-500 hover:text-red-700"
+                              title={`실패 사유: ${inquiry.sms_error}`}
+                            >
+                              <X size={14} />
+                            </button>
+                            <button 
+                              onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
+                              className="text-gray-400 hover:text-blue-500"
+                              title="문자 다시 보내기"
+                            >
+                              <Send size={14} />
+                            </button>
+                          </div>
+                        ) : (
                           <button 
                             onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
-                            className="text-gray-400 hover:text-blue-500"
-                            title="문자 다시 보내기"
+                            className="text-gray-400 hover:text-black"
+                            title="문자 보내기"
                           >
                             <Send size={14} />
                           </button>
-                        </div>
-                      ) : (
-                        <button 
-                          onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
-                          className="text-gray-400 hover:text-black"
-                          title="문자 보내기"
-                        >
-                          <Send size={14} />
-                        </button>
-                      )}
-                    </div>
-                    <div className="text-sm text-gray-500">{inquiry.email}</div>
-                  </td>
-                  <td className="px-6 py-4 cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
-                    <div className="text-sm text-gray-900 max-w-xs truncate" title={inquiry.message}>
-                      {inquiry.message}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <button onClick={() => openEditModal(inquiry)} className="text-indigo-600 hover:text-indigo-900 p-2 rounded-full hover:bg-indigo-50 transition-colors mr-2" title="수정">
-                      <Edit2 size={18} />
-                    </button>
-                    <button onClick={() => handleShare(inquiry)} className="text-green-600 hover:text-green-900 p-2 rounded-full hover:bg-green-50 transition-colors mr-2" title="공유">
-                      <Share2 size={18} />
-                    </button>
-                    <button onClick={() => handleDelete(inquiry.id)} className="text-red-600 hover:text-red-900 p-2 rounded-full hover:bg-red-50 transition-colors" title="삭제">
-                      <Trash2 size={18} />
-                    </button>
-                  </td>
-                </tr>
+                        )}
+                      </div>
+                      <div className="text-xs md:text-sm text-gray-500">{inquiry.email}</div>
+                    </td>
+                    <td className="px-4 md:px-6 py-4 cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
+                      <div className="text-xs md:text-sm text-gray-900 max-w-[150px] md:max-w-xs truncate" title={inquiry.message}>
+                        {inquiry.message}
+                      </div>
+                    </td>
+                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-right text-xs md:text-sm font-medium">
+                      <button onClick={() => openEditModal(inquiry)} className="text-indigo-600 hover:text-indigo-900 p-1.5 md:p-2 rounded-full hover:bg-indigo-50 transition-colors mr-1 md:mr-2" title="수정">
+                        <Edit2 size={16} className="md:w-[18px] md:h-[18px]" />
+                      </button>
+                      <button onClick={() => handleShare(inquiry)} className="text-green-600 hover:text-green-900 p-1.5 md:p-2 rounded-full hover:bg-green-50 transition-colors mr-1 md:mr-2" title="공유">
+                        <Share2 size={16} className="md:w-[18px] md:h-[18px]" />
+                      </button>
+                      <button onClick={() => handleDelete(inquiry.id)} className="text-red-600 hover:text-red-900 p-1.5 md:p-2 rounded-full hover:bg-red-50 transition-colors" title="삭제">
+                        <Trash2 size={16} className="md:w-[18px] md:h-[18px]" />
+                      </button>
+                    </td>
+                  </tr>
                 
                 {/* Expanded Timeline Section */}
                 {expandedId === inquiry.id && (
                   <tr>
                     <td colSpan={7} className="px-0 py-0 bg-gray-50 border-b border-gray-200">
-                      <div className="p-6 md:pl-24">
-                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
+                      <div className="p-4 md:p-6 md:pl-24">
+                        <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
                           <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center gap-2">
                             <MessageSquare size={16} className="text-indigo-500" />
                             상세 문의 내용
@@ -512,18 +513,18 @@ export default function AdminInquiries() {
                           <h4 className="text-sm font-semibold text-gray-900 mb-4">진행 타임라인</h4>
                           
                           {/* Add Memo Input */}
-                          <div className="flex gap-2 mb-6">
+                          <div className="flex flex-col sm:flex-row gap-2 mb-6">
                             <input 
                               type="text" 
                               value={newMemo}
                               onChange={e => setNewMemo(e.target.value)}
-                              placeholder="새로운 메모를 입력하세요 (예: 고객과 통화 완료, 견적서 발송 등)" 
+                              placeholder="새로운 메모를 입력하세요" 
                               className="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2.5 border"
                               onKeyDown={e => e.key === 'Enter' && handleAddMemo(inquiry.id)}
                             />
                             <button 
                               onClick={() => handleAddMemo(inquiry.id)}
-                              className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm"
+                              className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm whitespace-nowrap"
                             >
                               등록
                             </button>
@@ -597,6 +598,7 @@ export default function AdminInquiries() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
       {/* Edit Modal */}
       {editingInquiry && (
