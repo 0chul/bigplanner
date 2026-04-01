@@ -20,6 +20,18 @@ www.bigplanner.co.kr`);
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ receiver: phone.replace(/-/g, ''), msg: message, name }),
       });
+      
+      if (!response.ok) {
+        let errorMsg = `서버 오류 (${response.status})`;
+        try {
+          const errorData = await response.json();
+          errorMsg = errorData.details?.message || errorData.details || errorData.error || errorData.message || errorMsg;
+        } catch (e) {
+          // Ignore JSON parse error
+        }
+        throw new Error(errorMsg);
+      }
+
       const data = await response.json();
       
       // 알리고 API 응답 처리 (result_code가 1이면 성공)
@@ -28,14 +40,15 @@ www.bigplanner.co.kr`);
         onClose(true); // 성공 시 true 전달
       } else {
         // result_code가 0보다 작거나 1이 아닌 경우 실패
-        const errorMsg = data.message || '알 수 없는 오류';
+        const errorMsg = data.message || data.error || '알 수 없는 오류';
         alert(`전송 실패: ${errorMsg}`);
         onClose(false, errorMsg); // 실패 시 false와 에러 메시지 전달
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('SMS error:', error);
-      alert('문자 전송 중 오류가 발생했습니다.');
-      onClose(false, '문자 전송 중 오류가 발생했습니다.');
+      const errorMsg = error.message || '문자 전송 중 오류가 발생했습니다.';
+      alert(`오류 발생: ${errorMsg}`);
+      onClose(false, errorMsg);
     } finally {
       setSending(false);
     }

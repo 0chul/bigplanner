@@ -34,9 +34,12 @@ async function startServer() {
 
       const response = await axios.post('https://apis.aligo.in/send/', params);
       res.json(response.data);
-    } catch (error) {
-      console.error('SMS sending error:', error);
-      res.status(500).json({ error: 'Failed to send SMS' });
+    } catch (error: any) {
+      console.error('SMS sending error:', error.response?.data || error.message);
+      res.status(500).json({ 
+        error: 'Failed to send SMS', 
+        details: error.response?.data || error.message 
+      });
     }
   });
 
