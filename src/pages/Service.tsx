@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -25,19 +26,15 @@ export default function Service() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
+      <SEO 
+        title={language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'}
+        description={language === 'ko' ? "빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." : "Check out BIGPLANNER PARTNERS' real estate consulting, PM (Project Management), and financial solutions. We provide professional services that maximize space value."}
+        url="https://bigplanner.co.kr/service"
+        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+      />
       <Helmet>
-        <title>{language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'}</title>
-        <meta name="description" content={language === 'ko' ? "빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." : "Check out BIGPLANNER PARTNERS' real estate consulting, PM (Project Management), and financial solutions. We provide professional services that maximize space value."} />
         <meta name="keywords" content="빅플래너파트너스, 서비스, 부동산컨설팅, PM, 프로젝트관리, 부동산금융, BIGPLANNER PARTNERS, Services, Real Estate Consulting, PM, Project Management, Real Estate Finance" />
-
-        {/* Open Graph */}
         <link rel="canonical" href="https://bigplanner.co.kr/service" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bigplanner.co.kr/service" />
-        <meta property="og:title" content={language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'} />
-        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." : "Check out BIGPLANNER PARTNERS' real estate consulting, PM (Project Management), and financial solutions. We provide professional services that maximize space value."} />
-        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
-
         <script type="application/ld+json">
           {`
             [

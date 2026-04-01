@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase, supabaseUrl } from '../../supabase';
-import { UserPlus, X, Edit2, Trash2, ArrowRight, Send } from 'lucide-react';
+import { UserPlus, X, Edit2, Trash2, ArrowRight, Send, Check } from 'lucide-react';
 import { formatPhoneNumber } from '../../utils/phoneUtils';
 import SMSModal from '../../components/SMSModal';
 
@@ -12,13 +12,14 @@ interface Lead {
   source: string;
   status: string;
   created_at: string;
+  sms_status?: 'success' | 'failure';
+  sms_error?: string;
 }
 
 export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
   const [selectedSMS, setSelectedSMS] = useState<{ id: string; name: string; phone: string } | null>(null);
-  const [smsStatuses, setSmsStatuses] = useState<Record<string, { status: 'success' | 'failure' | 'idle', error?: string }>>({});
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
   const [showLost, setShowLost] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Lead | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
@@ -56,7 +57,7 @@ export default function AdminLeads() {
     
     const { data, error } = await supabase
       .from('leads')
-      .select('id:id::text, name, email, phone, source, status, created_at')
+      .select('id:id::text, name, email, phone, source, status, created_at, sms_status, sms_error')
       .order('created_at', { ascending: false });
     
     if (error) {
@@ -281,13 +282,13 @@ export default function AdminLeads() {
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       {formatPhoneNumber(lead.phone)}
-                      {smsStatuses[lead.id]?.status === 'success' ? (
+                      {lead.sms_status === 'success' ? (
                         <Check size={14} className="text-green-500" />
-                      ) : smsStatuses[lead.id]?.status === 'failure' ? (
+                      ) : lead.sms_status === 'failure' ? (
                         <button 
-                          onClick={(e) => { e.stopPropagation(); alert(smsStatuses[lead.id].error); }}
+                          onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
                           className="text-red-500 hover:text-red-700"
-                          title={`실패 사유: ${smsStatuses[lead.id].error}`}
+                          title={`실패 사유: ${lead.sms_error}`}
                         >
                           <X size={14} />
                         </button>
@@ -464,11 +465,28 @@ export default function AdminLeads() {
         <SMSModal 
           name={selectedSMS.name} 
           phone={selectedSMS.phone} 
-          onClose={(success, errorMessage) => {
-            if (success) {
-              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'success' } }));
+          onClose={async (success, errorMessage) => {
+            const newStatus = success ? 'success' : 'failure';
+            
+            // 1. Supabase 업데이트
+            const { error } = await supabase
+              .from('leads')
+              .update({ 
+                sms_status: newStatus,
+                sms_error: errorMessage || null
+              })
+              .eq('id', selectedSMS.id);
+
+            if (error) {
+              console.error('Error updating SMS status:', error);
+              setErrorMsg('SMS 상태 저장 실패');
             } else {
-              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'failure', error: errorMessage } }));
+              // 2. 로컬 상태 업데이트
+              setLeads(prev => prev.map(lead => 
+                lead.id === selectedSMS.id 
+                  ? { ...lead, sms_status: newStatus, sms_error: errorMessage || undefined } 
+                  : lead
+              ));
             }
             setSelectedSMS(null);
           }} 

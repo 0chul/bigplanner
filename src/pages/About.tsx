@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { Target, Shield, Briefcase, CheckCircle2, Building2, Lightbulb, TrendingUp, ArrowRight, ArrowDown } from 'lucide-react';
@@ -17,19 +18,15 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <SEO 
+        title={language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'}
+        description={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." : "Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."}
+        url="https://bigplanner.co.kr/about"
+        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+      />
       <Helmet>
-        <title>{language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'}</title>
-        <meta name="description" content={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." : "Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."} />
         <meta name="keywords" content="빅플래너파트너스, 회사소개, 프롭테크, 부동산개발, 공간가치, BIGPLANNER PARTNERS, About Us, Proptech, Real Estate Development, Space Value" />
-        
-        {/* Open Graph */}
         <link rel="canonical" href="https://bigplanner.co.kr/about" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bigplanner.co.kr/about" />
-        <meta property="og:title" content={language === 'ko' ? '회사소개 | 빅플래너파트너스' : 'About Us | BIGPLANNER PARTNERS'} />
-        <meta property="og:description" content={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스의 철학과 비전을 소개합니다." : "Introducing the philosophy and vision of BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."} />
-        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
-
         <script type="application/ld+json">
           {`
             [

@@ -14,6 +14,8 @@ interface Inquiry {
   address: string;
   message: string;
   status: 'new' | 'in-progress' | 'completed' | 'failed';
+  sms_status?: 'success' | 'failure';
+  sms_error?: string;
   created_at: any;
   share_token?: string;
 }
@@ -34,7 +36,6 @@ export default function AdminInquiries() {
   // Memo state
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [selectedSMS, setSelectedSMS] = useState<{ id: string; name: string; phone: string } | null>(null);
-  const [smsStatuses, setSmsStatuses] = useState<Record<string, { status: 'success' | 'failure' | 'idle', error?: string }>>({});
   const [memos, setMemos] = useState<Record<string, Memo[]>>({});
   const [newMemo, setNewMemo] = useState('');
   const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
@@ -443,13 +444,13 @@ export default function AdminInquiries() {
                   <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(inquiry.id)}>
                     <div className="flex items-center gap-2">
                       <div className="text-sm text-gray-900">{formatPhoneNumber(inquiry.phone)}</div>
-                      {smsStatuses[inquiry.id]?.status === 'success' ? (
+                      {inquiry.sms_status === 'success' ? (
                         <Check size={14} className="text-green-500" />
-                      ) : smsStatuses[inquiry.id]?.status === 'failure' ? (
+                      ) : inquiry.sms_status === 'failure' ? (
                         <button 
-                          onClick={(e) => { e.stopPropagation(); alert(smsStatuses[inquiry.id].error); }}
+                          onClick={(e) => { e.stopPropagation(); alert(inquiry.sms_error); }}
                           className="text-red-500 hover:text-red-700"
-                          title={`실패 사유: ${smsStatuses[inquiry.id].error}`}
+                          title={`실패 사유: ${inquiry.sms_error}`}
                         >
                           <X size={14} />
                         </button>
@@ -622,11 +623,25 @@ export default function AdminInquiries() {
         <SMSModal 
           name={selectedSMS.name} 
           phone={selectedSMS.phone} 
-          onClose={(success, errorMessage) => {
+          onClose={async (success, errorMessage) => {
             if (success) {
-              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'success' } }));
+              const { error } = await supabase
+                .from('inquiries')
+                .update({ sms_status: 'success', sms_error: null })
+                .eq('id', selectedSMS.id);
+              if (error) console.error('Error updating sms status:', error);
+              else {
+                setInquiries(prev => prev.map(inq => inq.id === selectedSMS.id ? { ...inq, sms_status: 'success', sms_error: null } : inq));
+              }
             } else {
-              setSmsStatuses(prev => ({ ...prev, [selectedSMS.id]: { status: 'failure', error: errorMessage } }));
+              const { error } = await supabase
+                .from('inquiries')
+                .update({ sms_status: 'failure', sms_error: errorMessage })
+                .eq('id', selectedSMS.id);
+              if (error) console.error('Error updating sms status:', error);
+              else {
+                setInquiries(prev => prev.map(inq => inq.id === selectedSMS.id ? { ...inq, sms_status: 'failure', sms_error: errorMessage } : inq));
+              }
             }
             setSelectedSMS(null);
           }} 

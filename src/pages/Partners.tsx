@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Paperclip, Send } from 'lucide-react';
@@ -70,19 +71,15 @@ export default function Partners() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <SEO 
+        title={language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'}
+        description={language === 'ko' ? "빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." : "We are looking for architecture and business partners to join BIGPLANNER PARTNERS. Please leave a partnership inquiry."}
+        url="https://bigplanner.co.kr/partners"
+        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+      />
       <Helmet>
-        <title>{language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'}</title>
-        <meta name="description" content={language === 'ko' ? "빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." : "We are looking for architecture and business partners to join BIGPLANNER PARTNERS. Please leave a partnership inquiry."} />
         <meta name="keywords" content="빅플래너파트너스, 파트너스, 건축제휴, 업무제휴, 프롭테크, BIGPLANNER PARTNERS, Partners, Architecture Partnership, Business Partnership, Proptech" />
-
-        {/* Open Graph */}
         <link rel="canonical" href="https://bigplanner.co.kr/partners" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bigplanner.co.kr/partners" />
-        <meta property="og:title" content={language === 'ko' ? '파트너스 | 빅플래너파트너스' : 'Partners | BIGPLANNER PARTNERS'} />
-        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스와 함께할 건축 및 업무 파트너를 모집합니다. 제휴 문의를 남겨주세요." : "We are looking for architecture and business partners to join BIGPLANNER PARTNERS. Please leave a partnership inquiry."} />
-        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
-
         <script type="application/ld+json">
           {`
             [

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -83,19 +84,15 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <SEO 
+        title={language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'}
+        description={language === 'ko' ? "빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." : "Check the location and contact information of BIGPLANNER PARTNERS. If you have any questions about the proptech company BIGPLANNER PARTNERS, please feel free to contact us."}
+        url="https://bigplanner.co.kr/contact"
+        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+      />
       <Helmet>
-        <title>{language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'}</title>
-        <meta name="description" content={language === 'ko' ? "빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." : "Check the location and contact information of BIGPLANNER PARTNERS. If you have any questions about the proptech company BIGPLANNER PARTNERS, please feel free to contact us."} />
         <meta name="keywords" content="빅플래너파트너스, 오시는길, 문의, 프롭테크, 부동산개발, BIGPLANNER PARTNERS, Contact Us, Inquiry, Proptech, Real Estate Development" />
-
-        {/* Open Graph */}
         <link rel="canonical" href="https://bigplanner.co.kr/contact" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bigplanner.co.kr/contact" />
-        <meta property="og:title" content={language === 'ko' ? '오시는 길 & 문의 | 빅플래너파트너스' : 'Contact Us | BIGPLANNER PARTNERS'} />
-        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스의 위치와 문의처를 확인하세요. 프롭테크 기업 빅플래너파트너스에 궁금한 점이 있다면 언제든 문의주세요." : "Check the location and contact information of BIGPLANNER PARTNERS. If you have any questions about the proptech company BIGPLANNER PARTNERS, please feel free to contact us."} />
-        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
-
         <script type="application/ld+json">
           {`
             [

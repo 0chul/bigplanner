@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -110,19 +111,15 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <SEO 
+        title={language === 'ko' ? '프로젝트 | 빅플래너파트너스' : 'Projects | BIGPLANNER PARTNERS'}
+        description={language === 'ko' ? "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." : "Introducing various architecture and development projects completed by BIGPLANNER PARTNERS. Check out our results that maximize the value of space."}
+        url="https://bigplanner.co.kr/projects"
+        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+      />
       <Helmet>
-        <title>{language === 'ko' ? '프로젝트 | 빅플래너파트너스' : 'Projects | BIGPLANNER PARTNERS'}</title>
-        <meta name="description" content={language === 'ko' ? "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." : "Introducing various architecture and development projects completed by BIGPLANNER PARTNERS. Check out our results that maximize the value of space."} />
         <meta name="keywords" content="빅플래너파트너스, 프로젝트, 건축, 부동산개발, 포트폴리오, BIGPLANNER PARTNERS, Projects, Architecture, Real Estate Development, Portfolio" />
-
-        {/* Open Graph */}
         <link rel="canonical" href="https://bigplanner.co.kr/projects" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bigplanner.co.kr/projects" />
-        <meta property="og:title" content={language === 'ko' ? '프로젝트 | 빅플래너파트너스' : 'Projects | BIGPLANNER PARTNERS'} />
-        <meta property="og:description" content={language === 'ko' ? "빅플래너파트너스가 완성한 다양한 건축 및 개발 프로젝트를 소개합니다. 공간의 가치를 극대화하는 우리의 결과물을 확인해보세요." : "Introducing various architecture and development projects completed by BIGPLANNER PARTNERS. Check out our results that maximize the value of space."} />
-        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
-
         <script type="application/ld+json">
           {`
             [

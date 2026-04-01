@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
@@ -102,19 +103,15 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <SEO 
+        title={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`}
+        description={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)}
+        url={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`}
+        image={project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"}
+      />
       <Helmet>
-        <title>{project.title} | {language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}</title>
-        <meta name="description" content={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)} />
         <meta name="keywords" content={language === 'ko' ? `빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발` : `BIGPLANNER PARTNERS, ${project.title}, ${project.category}, Architecture, Real Estate Development`} />
-
-        {/* Open Graph */}
         <link rel="canonical" href={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`} />
-        <meta property="og:title" content={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`} />
-        <meta property="og:description" content={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)} />
-        <meta property="og:image" content={project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"} />
-
         <script type="application/ld+json">
           {`
             [

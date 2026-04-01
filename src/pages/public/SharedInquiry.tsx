@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import SEO from '../../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../supabase';
 import { MessageSquare, Clock } from 'lucide-react';
@@ -67,16 +68,13 @@ export default function SharedInquiry() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <SEO 
+        title={`문의 내용 공유 | ${inquiry.name}`}
+        description={inquiry.message.substring(0, 100) + '...'}
+        url={window.location.href}
+      />
       <Helmet>
-        <title>문의 내용 공유 | {inquiry.name}</title>
         <meta name="robots" content="noindex, nofollow" />
-        <meta property="og:title" content={`문의 내용 공유 - ${inquiry.name}`} />
-        <meta property="og:description" content={inquiry.message.substring(0, 100) + '...'} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={`문의 내용 공유 - ${inquiry.name}`} />
-        <meta name="twitter:description" content={inquiry.message.substring(0, 100) + '...'} />
       </Helmet>
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
         <h1 className="text-2xl font-bold mb-6">문의 내용 공유</h1>

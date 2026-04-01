@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -14,19 +15,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
+      <SEO 
+        title={language === 'ko' ? '홈 | 빅플래너파트너스' : 'Home | BIGPLANNER PARTNERS'}
+        description={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스입니다." : "BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."}
+        url="https://bigplanner.co.kr/"
+        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+      />
       <Helmet>
-        <title>{language === 'ko' ? '홈 | 빅플래너파트너스' : 'Home | BIGPLANNER PARTNERS'}</title>
-        <meta name="description" content={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스입니다." : "BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."} />
         <meta name="keywords" content={language === 'ko' ? "빅플래너파트너스, 프롭테크, 부동산, 공간 가치" : "BIGPLANNER PARTNERS, Proptech, Real Estate, Space Value"} />
-        
-        {/* Open Graph */}
         <link rel="canonical" href="https://bigplanner.co.kr/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bigplanner.co.kr/" />
-        <meta property="og:title" content={language === 'ko' ? '홈 | 빅플래너파트너스' : 'Home | BIGPLANNER PARTNERS'} />
-        <meta property="og:description" content={language === 'ko' ? "부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스입니다." : "BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value."} />
-        <meta property="og:image" content="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" />
-
         <script type="application/ld+json">
           {`
             [
