@@ -285,13 +285,22 @@ export default function AdminLeads() {
                       {lead.sms_status === 'success' ? (
                         <Check size={14} className="text-green-500" />
                       ) : lead.sms_status === 'failure' ? (
-                        <button 
-                          onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
-                          className="text-red-500 hover:text-red-700"
-                          title={`실패 사유: ${lead.sms_error}`}
-                        >
-                          <X size={14} />
-                        </button>
+                        <div className="flex items-center gap-2">
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
+                            className="text-red-500 hover:text-red-700"
+                            title={`실패 사유: ${lead.sms_error}`}
+                          >
+                            <X size={14} />
+                          </button>
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone }); }}
+                            className="text-gray-400 hover:text-black"
+                            title="문자 다시 보내기"
+                          >
+                            <Send size={14} />
+                          </button>
+                        </div>
                       ) : (
                         <button 
                           onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}

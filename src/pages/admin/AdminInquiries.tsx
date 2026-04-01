@@ -447,13 +447,22 @@ export default function AdminInquiries() {
                       {inquiry.sms_status === 'success' ? (
                         <Check size={14} className="text-green-500" />
                       ) : inquiry.sms_status === 'failure' ? (
-                        <button 
-                          onClick={(e) => { e.stopPropagation(); alert(inquiry.sms_error); }}
-                          className="text-red-500 hover:text-red-700"
-                          title={`실패 사유: ${inquiry.sms_error}`}
-                        >
-                          <X size={14} />
-                        </button>
+                        <div className="flex items-center gap-2">
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); alert(inquiry.sms_error); }}
+                            className="text-red-500 hover:text-red-700"
+                            title={`실패 사유: ${inquiry.sms_error}`}
+                          >
+                            <X size={14} />
+                          </button>
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
+                            className="text-gray-400 hover:text-blue-500"
+                            title="문자 다시 보내기"
+                          >
+                            <Send size={14} />
+                          </button>
+                        </div>
                       ) : (
                         <button 
                           onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: inquiry.id, name: inquiry.name, phone: inquiry.phone }); }}
