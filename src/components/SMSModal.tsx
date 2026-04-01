@@ -28,13 +28,12 @@ www.bigplanner.co.kr`);
         throw new Error(data.error);
       }
       
-      // 알리고 API 응답 처리 (result_code가 1이면 성공)
-      if (data?.result_code === '1') {
+      // Solapi API 응답 처리 (statusCode가 '2000'이면 성공)
+      if (data?.statusCode === '2000' || data?.messageId) {
         alert('문자가 성공적으로 전송되었습니다.');
         onClose(true); // 성공 시 true 전달
       } else {
-        // result_code가 0보다 작거나 1이 아닌 경우 실패
-        const errorMsg = data?.message || data?.error || '알 수 없는 오류';
+        const errorMsg = data?.errorMessage || data?.error || '알 수 없는 오류';
         alert(`전송 실패: ${errorMsg}`);
         onClose(false, errorMsg); // 실패 시 false와 에러 메시지 전달
       }
