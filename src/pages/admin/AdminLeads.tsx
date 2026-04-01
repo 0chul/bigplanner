@@ -255,32 +255,33 @@ export default function AdminLeads() {
       )}
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left min-w-[800px]">
             <thead className="bg-gray-50 border-b border-gray-100">
               <tr>
-                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('name')}>이름 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('email')}>이메일 {sortConfig.key === 'email' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('phone')}>전화번호 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('source')}>소스 {sortConfig.key === 'source' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('created_at')}>접수일 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
-                <th className="px-4 md:px-6 py-4 font-bold text-gray-900 whitespace-nowrap">작업</th>
+                <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('name')}>이름 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('email')}>이메일 {sortConfig.key === 'email' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('phone')}>전화번호 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('source')}>소스 {sortConfig.key === 'source' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('status')}>상태 {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('created_at')}>접수일 {sortConfig.key === 'created_at' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
+                <th className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap">작업</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {filteredLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-4 md:px-6 py-12 text-center text-gray-500">
+                  <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
                     접수된 문의가 없습니다.
                   </td>
                 </tr>
               ) : (
                 filteredLeads.map((lead) => (
                   <tr key={lead.id} className="hover:bg-gray-50">
-                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{lead.name}</td>
-                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{lead.email}</td>
-                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.email}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <div className="flex items-center gap-2">
                         {formatPhoneNumber(lead.phone)}
                         {lead.sms_status === 'success' ? (
@@ -313,8 +314,8 @@ export default function AdminLeads() {
                         )}
                       </div>
                     </td>
-                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{lead.source}</td>
-                    <td className="px-4 md:px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.source}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
                       <select
                         value={lead.status}
                         onChange={(e) => handleStatusChange(lead.id, e.target.value)}
@@ -330,12 +331,12 @@ export default function AdminLeads() {
                         <option value="lost" className="bg-white text-gray-900">실패</option>
                       </select>
                     </td>
-                    <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm">{new Date(lead.created_at).toLocaleDateString()}</td>
-                    <td className="px-4 md:px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">{new Date(lead.created_at).toLocaleDateString()}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <button 
                           onClick={() => moveToInquiries(lead)}
-                          className="flex items-center gap-1 text-xs bg-black text-white px-2 py-1.5 md:px-3 rounded-lg hover:bg-gray-800 transition-colors"
+                          className="flex items-center gap-1 text-xs bg-black text-white px-3 rounded-lg hover:bg-gray-800 transition-colors"
                           title="문의로 이동"
                         >
                           <ArrowRight className="w-3 h-3" />
@@ -343,7 +344,7 @@ export default function AdminLeads() {
                         </button>
                         <button 
                           onClick={() => openEditModal(lead)}
-                          className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-2 py-1.5 md:px-3 rounded-lg hover:bg-blue-100 transition-colors font-medium"
+                          className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-3 rounded-lg hover:bg-blue-100 transition-colors font-medium"
                           title="수정"
                         >
                           <Edit2 className="w-3 h-3" />
@@ -351,7 +352,7 @@ export default function AdminLeads() {
                         </button>
                         <button 
                           onClick={() => deleteLead(lead.id)}
-                          className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-2 py-1.5 md:px-3 rounded-lg hover:bg-red-100 transition-colors font-medium"
+                          className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-3 rounded-lg hover:bg-red-100 transition-colors font-medium"
                           title="삭제"
                         >
                           <Trash2 className="w-3 h-3" />
@@ -364,6 +365,37 @@ export default function AdminLeads() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden divide-y divide-gray-100">
+          {filteredLeads.length === 0 ? (
+            <div className="p-6 text-center text-gray-500">접수된 문의가 없습니다.</div>
+          ) : (
+            filteredLeads.map((lead) => (
+              <div key={lead.id} className="p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className={`text-xs px-2 py-1 rounded-full font-semibold ${
+                    lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
+                    lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
+                    lead.status === 'lost' ? 'bg-red-100 text-red-700' :
+                    'bg-gray-100 text-gray-700'
+                  }`}>
+                    {lead.status === 'new' ? '신규' : lead.status === 'contacted' ? '부재중' : '실패'}
+                  </span>
+                  <span className="text-xs text-gray-500">{new Date(lead.created_at).toLocaleDateString()}</span>
+                </div>
+                <div className="font-bold text-gray-900">{lead.name}</div>
+                <div className="text-sm text-gray-600">{lead.phone} / {lead.email}</div>
+                <div className="text-sm text-gray-500">소스: {lead.source}</div>
+                <div className="flex justify-end gap-2">
+                  <button onClick={() => moveToInquiries(lead)} className="p-2 text-black bg-gray-100 rounded-lg"><ArrowRight size={16}/></button>
+                  <button onClick={() => openEditModal(lead)} className="p-2 text-blue-600 bg-blue-50 rounded-lg"><Edit2 size={16}/></button>
+                  <button onClick={() => deleteLead(lead.id)} className="p-2 text-red-600 bg-red-50 rounded-lg"><Trash2 size={16}/></button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
 
