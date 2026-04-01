@@ -14,6 +14,10 @@ async function startServer() {
   app.use(express.json());
 
   // API routes
+  app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', message: 'Backend is running' });
+  });
+
   app.post('/api/send-sms', async (req, res) => {
     const { receiver, msg, name } = req.body;
     const { ALIGO_API_KEY, ALIGO_USER_ID, ALIGO_SENDER } = process.env;

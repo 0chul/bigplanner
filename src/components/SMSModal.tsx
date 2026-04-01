@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Send } from 'lucide-react';
+import { supabase } from '../supabase';
 
 interface SMSModalProps {
   name: string;
@@ -15,32 +16,25 @@ www.bigplanner.co.kr`);
   const handleSend = async () => {
     setSending(true);
     try {
-      const response = await fetch('/api/send-sms', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ receiver: phone.replace(/-/g, ''), msg: message, name }),
+      const { data, error } = await supabase.functions.invoke('send-sms', {
+        body: { receiver: phone.replace(/-/g, ''), msg: message, name },
       });
       
-      if (!response.ok) {
-        let errorMsg = `서버 오류 (${response.status})`;
-        try {
-          const errorData = await response.json();
-          errorMsg = errorData.details?.message || errorData.details || errorData.error || errorData.message || errorMsg;
-        } catch (e) {
-          // Ignore JSON parse error
-        }
-        throw new Error(errorMsg);
+      if (error) {
+        throw new Error(error.message || 'Supabase Function 호출 실패');
       }
 
-      const data = await response.json();
+      if (data?.error) {
+        throw new Error(data.error);
+      }
       
       // 알리고 API 응답 처리 (result_code가 1이면 성공)
-      if (data.result_code === '1') {
+      if (data?.result_code === '1') {
         alert('문자가 성공적으로 전송되었습니다.');
         onClose(true); // 성공 시 true 전달
       } else {
         // result_code가 0보다 작거나 1이 아닌 경우 실패
-        const errorMsg = data.message || data.error || '알 수 없는 오류';
+        const errorMsg = data?.message || data?.error || '알 수 없는 오류';
         alert(`전송 실패: ${errorMsg}`);
         onClose(false, errorMsg); // 실패 시 false와 에러 메시지 전달
       }
