@@ -8,21 +8,21 @@ export default function Services() {
 
   const services = [
     {
-      icon: <Building2 className="w-8 h-8 text-indigo-600" />,
+      icon: <Building2 className="w-8 h-8 text-black" />,
       title: language === 'ko' ? '부동산 개발' : 'Real Estate Development',
       description: language === 'ko' 
         ? '최적의 입지 분석을 통해 부동산의 가치를 극대화하는 개발 솔루션을 제공합니다.'
         : 'Providing development solutions that maximize real estate value through optimal site analysis.',
     },
     {
-      icon: <Search className="w-8 h-8 text-indigo-600" />,
+      icon: <Search className="w-8 h-8 text-black" />,
       title: language === 'ko' ? '입지 분석' : 'Site Analysis',
       description: language === 'ko'
         ? '데이터 기반의 정밀한 입지 분석으로 성공적인 프로젝트의 기반을 마련합니다.'
         : 'Laying the foundation for successful projects with data-driven precise site analysis.',
     },
     {
-      icon: <Target className="w-8 h-8 text-indigo-600" />,
+      icon: <Target className="w-8 h-8 text-black" />,
       title: language === 'ko' ? '컨설팅' : 'Consulting',
       description: language === 'ko'
         ? '부동산 프로젝트의 기획부터 실행까지 전문적인 컨설팅을 지원합니다.'
@@ -58,7 +58,7 @@ export default function Services() {
               <p className="text-gray-600 mb-6">{service.description}</p>
               <Link 
                 to="/service" 
-                className="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-700 transition-colors"
+                className="inline-flex items-center text-black font-medium hover:text-gray-700 transition-colors"
               >
                 {language === 'ko' ? '더보기' : 'Read More'} <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
