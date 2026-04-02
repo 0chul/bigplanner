@@ -619,7 +619,10 @@ export default function AdminInquiries() {
                   <span className="text-xs text-gray-500">{inquiry.created_at ? getRelativeTime(inquiry.created_at) : 'N/A'}</span>
                 </div>
                 <div className="font-bold text-gray-900">{inquiry.name}</div>
-                <div className="text-sm text-gray-600">{inquiry.phone} / {inquiry.email}</div>
+                <div className="text-sm text-gray-600 flex items-center gap-2">
+                  {formatPhoneNumber(inquiry.phone)} / {inquiry.email}
+                  {inquiry.sms_status === 'success' && <Check size={14} className="text-green-500" />}
+                </div>
                 <div className="text-sm text-gray-700 bg-gray-50 p-2 rounded-lg">{inquiry.message}</div>
                 <div className="flex justify-end gap-2">
                   <button onClick={() => openEditModal(inquiry)} className="p-2 text-indigo-600 bg-indigo-50 rounded-lg"><Edit2 size={16}/></button>

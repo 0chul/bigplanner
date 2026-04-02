@@ -386,7 +386,10 @@ export default function AdminLeads() {
                   <span className="text-xs text-gray-500">{new Date(lead.created_at).toLocaleDateString()}</span>
                 </div>
                 <div className="font-bold text-gray-900">{lead.name}</div>
-                <div className="text-sm text-gray-600">{lead.phone} / {lead.email}</div>
+                <div className="text-sm text-gray-600 flex items-center gap-2">
+                  {formatPhoneNumber(lead.phone)} / {lead.email}
+                  {lead.sms_status === 'success' && <Check size={14} className="text-green-500" />}
+                </div>
                 <div className="text-sm text-gray-500">소스: {lead.source}</div>
                 <div className="flex justify-end gap-2">
                   <button onClick={() => moveToInquiries(lead)} className="p-2 text-black bg-gray-100 rounded-lg"><ArrowRight size={16}/></button>
