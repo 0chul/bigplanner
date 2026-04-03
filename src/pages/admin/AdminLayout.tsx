@@ -16,6 +16,14 @@ export default function AdminLayout() {
     const fetchData = async () => {
       const { data: inqData } = await supabase.from('inquiries').select('id, status');
       const { data: leadData } = await supabase.from('leads').select('id, status');
+      
+      // Check for new inquiries
+      const newInquiries = inqData?.filter(i => i.status === 'new') || [];
+      const prevNewInquiries = inquiries.filter(i => i.status === 'new');
+      if (newInquiries.length > prevNewInquiries.length) {
+        alert('새로운 문의가 접수되었습니다!');
+      }
+
       setInquiries(inqData || []);
       setLeads(leadData || []);
     };
