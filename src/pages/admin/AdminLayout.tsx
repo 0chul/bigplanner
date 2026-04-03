@@ -12,6 +12,13 @@ export default function AdminLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Request notification permission on mount
+    if ('Notification' in window && Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+  }, []);
+
+  useEffect(() => {
     if (!isAdmin) return;
     const fetchData = async () => {
       const { data: inqData } = await supabase.from('inquiries').select('id, status');
@@ -20,8 +27,15 @@ export default function AdminLayout() {
       // Check for new inquiries
       const newInquiries = inqData?.filter(i => i.status === 'new') || [];
       const prevNewInquiries = inquiries.filter(i => i.status === 'new');
+      
       if (newInquiries.length > prevNewInquiries.length) {
-        alert('새로운 문의가 접수되었습니다!');
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('새로운 문의가 접수되었습니다!', {
+            body: '관리자 페이지에서 확인해주세요.',
+          });
+        } else {
+          alert('새로운 문의가 접수되었습니다!');
+        }
       }
 
       setInquiries(inqData || []);
@@ -30,7 +44,7 @@ export default function AdminLayout() {
     fetchData();
     const channel = supabase.channel('admin_nav').on('postgres_changes', { event: '*', schema: 'public' }, fetchData).subscribe();
     return () => { supabase.removeChannel(channel); };
-  }, [isAdmin]);
+  }, [isAdmin, inquiries]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center bg-gray-50">Loading...</div>;
