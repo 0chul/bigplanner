@@ -109,12 +109,13 @@ export default function AdminLeads() {
     }
   };
 
-  const handleAddMemo = async (leadId: string) => {
-    if (!newMemo.trim()) return;
+  const handleAddMemo = async (leadId: string, content?: string) => {
+    const memoContent = content || newMemo.trim();
+    if (!memoContent) return;
     
     const { data, error } = await supabase
       .from('lead_memos')
-      .insert([{ lead_id: leadId, content: newMemo.trim() }])
+      .insert([{ lead_id: leadId, content: memoContent }])
       .select();
       
     if (!error && data) {
@@ -122,7 +123,7 @@ export default function AdminLeads() {
         ...prev,
         [leadId]: [data[0] as Memo, ...(prev[leadId] || [])]
       }));
-      setNewMemo('');
+      if (!content) setNewMemo('');
     } else {
       console.error("Error adding memo:", error);
       alert('메모 추가에 실패했습니다.');
@@ -489,7 +490,7 @@ export default function AdminLeads() {
                                   {['부재중', '나중에 연락'].map(text => (
                                     <button
                                       key={text}
-                                      onClick={() => setNewMemo(prev => prev + (prev ? ' ' : '') + text)}
+                                      onClick={() => handleAddMemo(lead.id, text)}
                                       className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-medium transition-colors"
                                     >
                                       {text}

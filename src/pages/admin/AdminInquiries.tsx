@@ -199,12 +199,13 @@ export default function AdminInquiries() {
     }
   };
 
-  const handleAddMemo = async (inquiryId: string) => {
-    if (!newMemo.trim()) return;
+  const handleAddMemo = async (inquiryId: string, content?: string) => {
+    const memoContent = content || newMemo.trim();
+    if (!memoContent) return;
     
     const { data, error } = await supabase
       .from('inquiry_memos')
-      .insert([{ inquiry_id: inquiryId, content: newMemo.trim() }])
+      .insert([{ inquiry_id: inquiryId, content: memoContent }])
       .select();
       
     if (!error && data) {
@@ -212,7 +213,7 @@ export default function AdminInquiries() {
         ...prev,
         [inquiryId]: [data[0] as Memo, ...(prev[inquiryId] || [])]
       }));
-      setNewMemo('');
+      if (!content) setNewMemo('');
     } else {
       console.error("Error adding memo:", error);
       alert('메모 추가에 실패했습니다. (테이블이 생성되었는지 확인해주세요)');
@@ -519,7 +520,7 @@ export default function AdminInquiries() {
                               {['부재중', '나중에 연락'].map(text => (
                                 <button
                                   key={text}
-                                  onClick={() => setNewMemo(prev => prev + (prev ? ' ' : '') + text)}
+                                  onClick={() => handleAddMemo(inquiry.id, text)}
                                   className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-medium transition-colors"
                                 >
                                   {text}
