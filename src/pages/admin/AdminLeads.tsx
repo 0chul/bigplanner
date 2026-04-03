@@ -596,8 +596,34 @@ export default function AdminLeads() {
                 </div>
                 <div className="font-bold text-gray-900">{lead.name}</div>
                 <div className="text-sm text-gray-600 flex items-center gap-2">
-                  {formatPhoneNumber(lead.phone)} / {lead.email}
-                  {lead.sms_status === 'success' && <Check size={14} className="text-green-500" />}
+                  {formatPhoneNumber(lead.phone)}
+                  {lead.sms_status === 'success' ? (
+                    <Check size={14} className="text-green-500" />
+                  ) : lead.sms_status === 'failure' ? (
+                    <div className="flex items-center gap-2">
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
+                        className="text-red-500"
+                      >
+                        <X size={14} />
+                      </button>
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone }); }}
+                        className="text-blue-500"
+                      >
+                        <Send size={14} />
+                      </button>
+                    </div>
+                  ) : (
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone }); }}
+                      className="text-gray-400"
+                    >
+                      <Send size={14} />
+                    </button>
+                  )}
+                  {lead.email && <span className="text-gray-300 mx-1">|</span>}
+                  {lead.email && <span className="truncate">{lead.email}</span>}
                 </div>
                 <div className="text-sm text-gray-500">소스: {lead.source}</div>
                 <div className="flex justify-end gap-2">
