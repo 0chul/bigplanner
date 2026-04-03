@@ -514,21 +514,34 @@ export default function AdminInquiries() {
                           <h4 className="text-sm font-semibold text-gray-900 mb-4">진행 타임라인</h4>
                           
                           {/* Add Memo Input */}
-                          <div className="flex gap-2 mb-6">
-                            <input 
-                              type="text" 
-                              value={newMemo}
-                              onChange={e => setNewMemo(e.target.value)}
-                              placeholder="새로운 메모를 입력하세요" 
-                              className="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2.5 border"
-                              onKeyDown={e => e.key === 'Enter' && handleAddMemo(inquiry.id)}
-                            />
-                            <button 
-                              onClick={() => handleAddMemo(inquiry.id)}
-                              className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm whitespace-nowrap"
-                            >
-                              등록
-                            </button>
+                          <div className="flex flex-col gap-2 mb-6">
+                            <div className="flex gap-2">
+                              {['부재중', '나중에 연락'].map(text => (
+                                <button
+                                  key={text}
+                                  onClick={() => setNewMemo(prev => prev + (prev ? ' ' : '') + text)}
+                                  className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-medium transition-colors"
+                                >
+                                  {text}
+                                </button>
+                              ))}
+                            </div>
+                            <div className="flex gap-2">
+                              <input 
+                                type="text" 
+                                value={newMemo}
+                                onChange={e => setNewMemo(e.target.value)}
+                                placeholder="새로운 메모를 입력하세요" 
+                                className="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2.5 border"
+                                onKeyDown={e => e.key === 'Enter' && handleAddMemo(inquiry.id)}
+                              />
+                              <button 
+                                onClick={() => handleAddMemo(inquiry.id)}
+                                className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm whitespace-nowrap"
+                              >
+                                등록
+                              </button>
+                            </div>
                           </div>
 
                           {/* Timeline */}

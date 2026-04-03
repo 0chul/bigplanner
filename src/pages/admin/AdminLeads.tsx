@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { supabase, supabaseUrl } from '../../supabase';
-import { UserPlus, X, Edit2, Trash2, ArrowRight, Send, Check } from 'lucide-react';
+import { UserPlus, X, Edit2, Trash2, ArrowRight, Send, Check, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
 import { formatPhoneNumber } from '../../utils/phoneUtils';
 import SMSModal from '../../components/SMSModal';
+import { getRelativeTime } from '../../utils/dateUtils';
 
 interface Lead {
   id: string;
@@ -16,6 +17,13 @@ interface Lead {
   sms_error?: string;
 }
 
+interface Memo {
+  id: string;
+  lead_id: string;
+  content: string;
+  created_at: string;
+}
+
 export default function AdminLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
@@ -24,6 +32,13 @@ export default function AdminLeads() {
   const [showLost, setShowLost] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Lead | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
   
+  // Memo state
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [memos, setMemos] = useState<Record<string, Memo[]>>({});
+  const [newMemo, setNewMemo] = useState('');
+  const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
+  const [editingMemoContent, setEditingMemoContent] = useState('');
+
   const newLeadsCount = leads.filter(lead => lead.status === 'new').length;
   // Custom Modal States
   const [confirmModal, setConfirmModal] = useState<{
@@ -70,6 +85,99 @@ export default function AdminLeads() {
       setErrorMsg(null);
     }
   }
+
+  const toggleExpand = (id: string) => {
+    if (expandedId === id) {
+      setExpandedId(null);
+    } else {
+      setExpandedId(id);
+      fetchMemos(id);
+    }
+  };
+
+  const fetchMemos = async (leadId: string) => {
+    const { data, error } = await supabase
+      .from('lead_memos')
+      .select('*')
+      .eq('lead_id', leadId)
+      .order('created_at', { ascending: false });
+      
+    if (!error && data) {
+      setMemos(prev => ({ ...prev, [leadId]: data as Memo[] }));
+    } else if (error) {
+      console.error("Error fetching memos:", error);
+    }
+  };
+
+  const handleAddMemo = async (leadId: string) => {
+    if (!newMemo.trim()) return;
+    
+    const { data, error } = await supabase
+      .from('lead_memos')
+      .insert([{ lead_id: leadId, content: newMemo.trim() }])
+      .select();
+      
+    if (!error && data) {
+      setMemos(prev => ({
+        ...prev,
+        [leadId]: [data[0] as Memo, ...(prev[leadId] || [])]
+      }));
+      setNewMemo('');
+    } else {
+      console.error("Error adding memo:", error);
+      alert('메모 추가에 실패했습니다.');
+    }
+  };
+
+  const startEditingMemo = (memo: Memo) => {
+    setEditingMemoId(memo.id);
+    setEditingMemoContent(memo.content);
+  };
+
+  const cancelEditingMemo = () => {
+    setEditingMemoId(null);
+    setEditingMemoContent('');
+  };
+
+  const handleUpdateMemo = async (leadId: string, memoId: string) => {
+    if (!editingMemoContent.trim()) return;
+    
+    const { error } = await supabase
+      .from('lead_memos')
+      .update({ content: editingMemoContent.trim() })
+      .eq('id', memoId);
+      
+    if (!error) {
+      setMemos(prev => ({
+        ...prev,
+        [leadId]: prev[leadId].map(m => m.id === memoId ? { ...m, content: editingMemoContent.trim() } : m)
+      }));
+      setEditingMemoId(null);
+      setEditingMemoContent('');
+    } else {
+      console.error("Error updating memo:", error);
+      alert('메모 수정에 실패했습니다.');
+    }
+  };
+
+  const handleDeleteMemo = async (leadId: string, memoId: string) => {
+    if (!window.confirm("이 메모를 정말 삭제하시겠습니까?")) return;
+    
+    const { error } = await supabase
+      .from('lead_memos')
+      .delete()
+      .eq('id', memoId);
+      
+    if (!error) {
+      setMemos(prev => ({
+        ...prev,
+        [leadId]: prev[leadId].filter(m => m.id !== memoId)
+      }));
+    } else {
+      console.error("Error deleting memo:", error);
+      alert('메모 삭제에 실패했습니다.');
+    }
+  };
 
   function moveToInquiries(lead: Lead) {
     setConfirmModal({
@@ -260,6 +368,7 @@ export default function AdminLeads() {
           <table className="w-full text-left min-w-[800px]">
             <thead className="bg-gray-50 border-b border-gray-100">
               <tr>
+                <th className="px-6 py-4 font-bold text-gray-900 w-10 whitespace-nowrap"></th>
                 <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('name')}>이름 {sortConfig.key === 'name' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
                 <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('email')}>이메일 {sortConfig.key === 'email' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
                 <th className="px-6 py-4 font-bold text-gray-900 cursor-pointer whitespace-nowrap" onClick={() => handleSort('phone')}>전화번호 {sortConfig.key === 'phone' && (sortConfig.direction === 'asc' ? '▲' : '▼')}</th>
@@ -272,95 +381,194 @@ export default function AdminLeads() {
             <tbody className="divide-y divide-gray-100">
               {filteredLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
+                  <td colSpan={8} className="px-6 py-12 text-center text-gray-500">
                     접수된 문의가 없습니다.
                   </td>
                 </tr>
               ) : (
                 filteredLeads.map((lead) => (
-                  <tr key={lead.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <div className="flex items-center gap-2">
-                        {formatPhoneNumber(lead.phone)}
-                        {lead.sms_status === 'success' ? (
-                          <Check size={14} className="text-green-500" />
-                        ) : lead.sms_status === 'failure' ? (
-                          <div className="flex items-center gap-2">
+                  <React.Fragment key={lead.id}>
+                    <tr className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap cursor-pointer" onClick={() => toggleExpand(lead.id)}>
+                        {expandedId === lead.id ? (
+                          <ChevronUp size={20} className="text-gray-400" />
+                        ) : (
+                          <ChevronDown size={20} className="text-gray-400" />
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.email}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <div className="flex items-center gap-2">
+                          {formatPhoneNumber(lead.phone)}
+                          {lead.sms_status === 'success' ? (
+                            <Check size={14} className="text-green-500" />
+                          ) : lead.sms_status === 'failure' ? (
+                            <div className="flex items-center gap-2">
+                              <button 
+                                onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
+                                className="text-red-500 hover:text-red-700"
+                                title={`실패 사유: ${lead.sms_error}`}
+                              >
+                                <X size={14} />
+                              </button>
+                              <button 
+                                onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone }); }}
+                                className="text-gray-400 hover:text-blue-500"
+                                title="문자 다시 보내기"
+                              >
+                                <Send size={14} />
+                              </button>
+                            </div>
+                          ) : (
                             <button 
-                              onClick={(e) => { e.stopPropagation(); alert(lead.sms_error); }}
-                              className="text-red-500 hover:text-red-700"
-                              title={`실패 사유: ${lead.sms_error}`}
-                            >
-                              <X size={14} />
-                            </button>
-                            <button 
-                              onClick={(e) => { e.stopPropagation(); setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone }); }}
-                              className="text-gray-400 hover:text-blue-500"
-                              title="문자 다시 보내기"
+                              onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}
+                              className="text-gray-400 hover:text-black"
+                              title="문자 보내기"
                             >
                               <Send size={14} />
                             </button>
-                          </div>
-                        ) : (
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.source}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <select
+                          value={lead.status}
+                          onChange={(e) => handleStatusChange(lead.id, e.target.value)}
+                          className={`px-2 py-1 rounded-full text-xs font-bold outline-none cursor-pointer ${
+                            lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
+                            lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
+                            lead.status === 'lost' ? 'bg-red-100 text-red-700' :
+                            'bg-gray-100 text-gray-700'
+                          }`}
+                        >
+                          <option value="new" className="bg-white text-gray-900">신규</option>
+                          <option value="contacted" className="bg-white text-gray-900">부재중</option>
+                          <option value="lost" className="bg-white text-gray-900">실패</option>
+                        </select>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">{new Date(lead.created_at).toLocaleDateString()}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center gap-2">
                           <button 
-                            onClick={() => setSelectedSMS({ id: lead.id, name: lead.name, phone: lead.phone })}
-                            className="text-gray-400 hover:text-black"
-                            title="문자 보내기"
+                            onClick={() => moveToInquiries(lead)}
+                            className="flex items-center gap-1 text-xs bg-black text-white px-3 rounded-lg hover:bg-gray-800 transition-colors"
+                            title="문의로 이동"
                           >
-                            <Send size={14} />
+                            <ArrowRight className="w-3 h-3" />
+                            <span className="hidden sm:inline">이동</span>
                           </button>
-                        )}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">{lead.source}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <select
-                        value={lead.status}
-                        onChange={(e) => handleStatusChange(lead.id, e.target.value)}
-                        className={`px-2 py-1 rounded-full text-xs font-bold outline-none cursor-pointer ${
-                          lead.status === 'new' ? 'bg-blue-100 text-blue-700' :
-                          lead.status === 'contacted' ? 'bg-yellow-100 text-yellow-700' :
-                          lead.status === 'lost' ? 'bg-red-100 text-red-700' :
-                          'bg-gray-100 text-gray-700'
-                        }`}
-                      >
-                        <option value="new" className="bg-white text-gray-900">신규</option>
-                        <option value="contacted" className="bg-white text-gray-900">부재중</option>
-                        <option value="lost" className="bg-white text-gray-900">실패</option>
-                      </select>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">{new Date(lead.created_at).toLocaleDateString()}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center gap-2">
-                        <button 
-                          onClick={() => moveToInquiries(lead)}
-                          className="flex items-center gap-1 text-xs bg-black text-white px-3 rounded-lg hover:bg-gray-800 transition-colors"
-                          title="문의로 이동"
-                        >
-                          <ArrowRight className="w-3 h-3" />
-                          <span className="hidden sm:inline">이동</span>
-                        </button>
-                        <button 
-                          onClick={() => openEditModal(lead)}
-                          className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-3 rounded-lg hover:bg-blue-100 transition-colors font-medium"
-                          title="수정"
-                        >
-                          <Edit2 className="w-3 h-3" />
-                          <span className="hidden sm:inline">수정</span>
-                        </button>
-                        <button 
-                          onClick={() => deleteLead(lead.id)}
-                          className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-3 rounded-lg hover:bg-red-100 transition-colors font-medium"
-                          title="삭제"
-                        >
-                          <Trash2 className="w-3 h-3" />
-                          <span className="hidden sm:inline">삭제</span>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                          <button 
+                            onClick={() => openEditModal(lead)}
+                            className="flex items-center gap-1 text-xs bg-blue-50 text-blue-600 px-3 rounded-lg hover:bg-blue-100 transition-colors font-medium"
+                            title="수정"
+                          >
+                            <Edit2 className="w-3 h-3" />
+                            <span className="hidden sm:inline">수정</span>
+                          </button>
+                          <button 
+                            onClick={() => deleteLead(lead.id)}
+                            className="flex items-center gap-1 text-xs bg-red-50 text-red-600 px-3 rounded-lg hover:bg-red-100 transition-colors font-medium"
+                            title="삭제"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                            <span className="hidden sm:inline">삭제</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    {expandedId === lead.id && (
+                      <tr>
+                        <td colSpan={8} className="px-0 py-0 bg-gray-50 border-b border-gray-200">
+                          <div className="p-6 pl-24">
+                            <div className="mb-4">
+                              <h4 className="text-sm font-semibold text-gray-900 mb-4">진행 타임라인</h4>
+                              <div className="flex flex-col gap-2 mb-6">
+                                <div className="flex gap-2">
+                                  {['부재중', '나중에 연락'].map(text => (
+                                    <button
+                                      key={text}
+                                      onClick={() => setNewMemo(prev => prev + (prev ? ' ' : '') + text)}
+                                      className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-medium transition-colors"
+                                    >
+                                      {text}
+                                    </button>
+                                  ))}
+                                </div>
+                                <div className="flex gap-2">
+                                  <input 
+                                    type="text" 
+                                    value={newMemo}
+                                    onChange={e => setNewMemo(e.target.value)}
+                                    placeholder="새로운 메모를 입력하세요" 
+                                    className="flex-1 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2.5 border"
+                                    onKeyDown={e => e.key === 'Enter' && handleAddMemo(lead.id)}
+                                  />
+                                  <button 
+                                    onClick={() => handleAddMemo(lead.id)}
+                                    className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm whitespace-nowrap"
+                                  >
+                                    등록
+                                  </button>
+                                </div>
+                              </div>
+                              <div className="relative pl-4 border-l-2 border-indigo-100 space-y-6">
+                                {memos[lead.id]?.map(memo => (
+                                  <div key={memo.id} className="relative pl-6">
+                                    <div className="absolute left-[-21px] top-1.5 w-2.5 h-2.5 bg-indigo-500 rounded-full border-2 border-white shadow-sm"></div>
+                                    <div className="flex items-center justify-between mb-1.5">
+                                      <div className="text-xs text-gray-500 font-medium">
+                                        {getRelativeTime(memo.created_at)}
+                                      </div>
+                                      <div className="flex items-center gap-1">
+                                        {editingMemoId === memo.id ? (
+                                          <>
+                                            <button onClick={() => handleUpdateMemo(lead.id, memo.id)} className="text-green-600 hover:text-green-700 p-1 rounded-md hover:bg-green-50 transition-colors" title="저장">
+                                              <Check size={14} />
+                                            </button>
+                                            <button onClick={cancelEditingMemo} className="text-gray-400 hover:text-gray-600 p-1 rounded-md hover:bg-gray-100 transition-colors" title="취소">
+                                              <X size={14} />
+                                            </button>
+                                          </>
+                                        ) : (
+                                          <>
+                                            <button onClick={() => startEditingMemo(memo)} className="text-gray-400 hover:text-indigo-600 p-1 rounded-md hover:bg-indigo-50 transition-colors" title="수정">
+                                              <Edit2 size={14} />
+                                            </button>
+                                            <button onClick={() => handleDeleteMemo(lead.id, memo.id)} className="text-gray-400 hover:text-red-600 p-1 rounded-md hover:bg-red-50 transition-colors" title="삭제">
+                                              <Trash2 size={14} />
+                                            </button>
+                                          </>
+                                        )}
+                                      </div>
+                                    </div>
+                                    <div className="text-sm text-gray-800 bg-white p-3.5 rounded-lg shadow-sm border border-gray-100">
+                                      {editingMemoId === memo.id ? (
+                                        <textarea
+                                          value={editingMemoContent}
+                                          onChange={(e) => setEditingMemoContent(e.target.value)}
+                                          className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border min-h-[80px]"
+                                          autoFocus
+                                        />
+                                      ) : (
+                                        <div className="whitespace-pre-wrap">{memo.content}</div>
+                                      )}
+                                    </div>
+                                  </div>
+                                ))}
+                                {(!memos[lead.id] || memos[lead.id].length === 0) && (
+                                  <div className="text-sm text-gray-500 italic pl-2 py-2">
+                                    아직 등록된 메모가 없습니다.
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
                 ))
               )}
             </tbody>
