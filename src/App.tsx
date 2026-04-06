@@ -22,6 +22,7 @@ const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const AdminProjects = lazy(() => import('./pages/admin/AdminProjects'));
 const AdminInquiries = lazy(() => import('./pages/admin/AdminInquiries'));
 const AdminLeads = lazy(() => import('./pages/admin/AdminLeads'));
+const AdminPartnerships = lazy(() => import('./pages/admin/AdminPartnerships'));
 const SharedInquiry = lazy(() => import('./pages/public/SharedInquiry'));
 
 // Loading fallback component
@@ -54,6 +55,7 @@ export default function App() {
                 <Route path="projects" element={<AdminProjects />} />
                 <Route path="inquiries" element={<AdminInquiries />} />
                 <Route path="leads" element={<AdminLeads />} />
+                <Route path="partnerships" element={<AdminPartnerships />} />
               </Route>
               
               {/* Catch-all route for Supabase Auth redirects */}

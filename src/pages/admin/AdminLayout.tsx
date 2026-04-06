@@ -1,6 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut, Menu, X } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut, Menu, X, Handshake } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../supabase';
 
@@ -89,6 +89,7 @@ export default function AdminLayout() {
     { path: '/admin/projects', label: '프로젝트 관리', icon: <FolderKanban size={20} /> },
     { path: '/admin/inquiries', label: '고객 문의 관리', icon: <MessageSquare size={20} />, count: inquiries.filter(i => i.status === 'new').length },
     { path: '/admin/leads', label: 'META 리드 관리', icon: <UserPlus size={20} />, count: leads.filter(l => l.status === 'new').length },
+    { path: '/admin/partnerships', label: '제휴 신청 관리', icon: <Handshake size={20} /> },
   ];
 
   return (
