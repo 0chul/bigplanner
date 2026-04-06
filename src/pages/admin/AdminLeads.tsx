@@ -56,8 +56,15 @@ export default function AdminLeads() {
     // 실시간 구독 추가
     const channel = supabase
       .channel('leads_changes')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'leads' }, () => {
-        console.log("Leads changed, re-fetching...");
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'leads' }, (payload) => {
+        console.log("New lead detected, attempting auto-SMS:", payload.new);
+        handleAutoSMS(payload.new as Lead);
+        fetchLeads();
+      })
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'leads' }, () => {
+        fetchLeads();
+      })
+      .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'leads' }, () => {
         fetchLeads();
       })
       .subscribe();
@@ -66,6 +73,44 @@ export default function AdminLeads() {
       supabase.removeChannel(channel);
     };
   }, []);
+
+  async function handleAutoSMS(lead: Lead) {
+    if (!lead.phone) return;
+    
+    const message = `안녕하세요 ${lead.name}님, 건축 상담 문의 남겨주셔서 연락드렸습니다.
+www.bigplanner.co.kr`;
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-sms', {
+        body: { receiver: lead.phone.replace(/-/g, ''), msg: message, name: lead.name },
+      });
+      
+      let sms_status: 'success' | 'failure' = 'failure';
+      let sms_error: string | undefined = undefined;
+
+      if (error) {
+        sms_error = error.message || 'Supabase Function 호출 실패';
+      } else if (data?.error) {
+        sms_error = data.error;
+      } else if (data?.statusCode === '2000' || data?.messageId) {
+        sms_status = 'success';
+      } else {
+        sms_error = data?.errorMessage || data?.error || '알 수 없는 오류';
+      }
+
+      await supabase
+        .from('leads')
+        .update({ sms_status, sms_error })
+        .eq('id', lead.id);
+
+    } catch (error: any) {
+      console.error('Auto SMS error:', error);
+      await supabase
+        .from('leads')
+        .update({ sms_status: 'failure', sms_error: error.message || '오류 발생' })
+        .eq('id', lead.id);
+    }
+  }
 
   async function fetchLeads() {
     console.log("Fetching leads...");
