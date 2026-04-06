@@ -1,2 +1,0 @@
-const o=t=>{const n=new Date(t),e=Math.floor((new Date().getTime()-n.getTime())/1e3);return e<60?"방금 전":e<3600?`${Math.floor(e/60)}분 전`:e<86400?`${Math.floor(e/3600)}시간 전`:e<2592e3?`${Math.floor(e/86400)}일 전`:n.toLocaleDateString("ko-KR",{year:"numeric",month:"long",day:"numeric"})},a=t=>{if(!t)return"-";const r=(""+t).replace(/\D/g,"").match(/^(\d{3})(\d{3,4})(\d{4})$/);return r?`${r[1]}-${r[2]}-${r[3]}`:t};export{a as f,o as g};
-//# sourceMappingURL=phoneUtils-CrKQTyQT.js.map
