@@ -45,8 +45,7 @@ export default function App() {
               <Route path="/partners" element={<Partners />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/:id" element={<ProjectDetail />} />
-              <Route path="/projects/:id/:slug" element={<ProjectDetail />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
               <Route path="/share/inquiry/:token" element={<SharedInquiry />} />
               
               {/* Admin Routes */}

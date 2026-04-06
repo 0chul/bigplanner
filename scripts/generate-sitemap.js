@@ -58,7 +58,7 @@ async function generateSitemap() {
         const date = project.created_at ? project.created_at.split('T')[0] : new Date().toISOString().split('T')[0];
         
         sitemap += `  <url>\n`;
-        sitemap += `    <loc>${baseUrl}/projects/${project.id}/${slug}</loc>\n`;
+        sitemap += `    <loc>${baseUrl}/projects/${slug}</loc>\n`;
         sitemap += `    <lastmod>${date}</lastmod>\n`;
         sitemap += `    <changefreq>monthly</changefreq>\n`;
         sitemap += `    <priority>0.8</priority>\n`;

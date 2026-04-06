@@ -218,7 +218,7 @@ export default function ProjectsPage() {
                   key={project.id}
                   className="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-sm hover:shadow-xl transition-shadow duration-500"
                 >
-                  <Link to={`/projects/${project.id}/${generateSlug(project.title)}`} className="absolute inset-0 z-10">
+                  <Link to={`/projects/${generateSlug(project.title)}`} className="absolute inset-0 z-10">
                     <span className="sr-only">View {project.title}</span>
                   </Link>
                   <img 

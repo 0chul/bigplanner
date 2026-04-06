@@ -23,32 +23,17 @@ const SpecItem = ({ label, value }: { label: string, value: React.ReactNode }) =
 };
 
 export default function ProjectDetail() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [project, setProject] = useState<Project | null>(null);
   const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const { language } = useLanguage();
 
   useEffect(() => {
-    const fetchProjectAndAll = async () => {
-      if (!id) return;
+    const fetchAllProjects = async () => {
       setLoading(true);
       try {
-        // Fetch current project
-        const { data: projectData, error: projectError } = await supabase
-          .from('projects')
-          .select('*')
-          .eq('id', id)
-          .single();
-        
-        if (projectError) {
-          console.error("Error fetching project:", projectError);
-          setProject(null);
-        } else {
-          setProject(projectData as Project);
-        }
-
-        // Fetch all projects for navigation
+        // Fetch all projects
         const { data: allProjectsData, error: allProjectsError } = await supabase
           .from('projects')
           .select('*')
@@ -58,8 +43,9 @@ export default function ProjectDetail() {
           console.error("Error fetching all projects:", allProjectsError);
         } else {
           setAllProjects(allProjectsData as Project[]);
+          const foundProject = (allProjectsData as Project[]).find(p => generateSlug(p.title) === slug);
+          setProject(foundProject || null);
         }
-
       } catch (error) {
         console.error("Error fetching project details:", error);
       } finally {
@@ -67,8 +53,8 @@ export default function ProjectDetail() {
       }
     };
 
-    fetchProjectAndAll();
-  }, [id]);
+    fetchAllProjects();
+  }, [slug]);
 
   if (loading) {
     return (
@@ -106,12 +92,12 @@ export default function ProjectDetail() {
       <SEO 
         title={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`}
         description={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)}
-        url={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`}
+        url={`https://bigplanner.co.kr/projects/${generateSlug(project.title)}`}
         image={project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"}
       />
       <Helmet>
         <meta name="keywords" content={language === 'ko' ? `빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발` : `BIGPLANNER PARTNERS, ${project.title}, ${project.category}, Architecture, Real Estate Development`} />
-        <link rel="canonical" href={`https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}`} />
+        <link rel="canonical" href={`https://bigplanner.co.kr/projects/${generateSlug(project.title)}`} />
         <script type="application/ld+json">
           {`
             [
@@ -121,7 +107,7 @@ export default function ProjectDetail() {
                 "name": "${project.title}",
                 "description": "${project.description?.substring(0, 150) || ''}",
                 "image": "${project.image || ''}",
-                "url": "https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}"
+                "url": "https://bigplanner.co.kr/projects/${generateSlug(project.title)}"
               },
               {
                 "@context": "https://schema.org",
@@ -143,7 +129,7 @@ export default function ProjectDetail() {
                     "@type": "ListItem",
                     "position": 3,
                     "name": "${project.title}",
-                    "item": "https://bigplanner.co.kr/projects/${project.id}/${generateSlug(project.title)}"
+                    "item": "https://bigplanner.co.kr/projects/${generateSlug(project.title)}"
                   }
                 ]
               }
@@ -340,7 +326,7 @@ export default function ProjectDetail() {
         <div className="border-t border-gray-200">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row">
             <Link 
-              to={`/projects/${prevProject.id}/${generateSlug(prevProject.title)}`}
+              to={`/projects/${generateSlug(prevProject.title)}`}
               className="flex-1 p-8 md:p-16 flex flex-col items-start hover:bg-gray-50 transition-colors border-b md:border-b-0 md:border-r border-gray-200 group"
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">
@@ -353,7 +339,7 @@ export default function ProjectDetail() {
             </Link>
             
             <Link 
-              to={`/projects/${nextProject.id}/${generateSlug(nextProject.title)}`}
+              to={`/projects/${generateSlug(nextProject.title)}`}
               className="flex-1 p-8 md:p-16 flex flex-col items-end text-right hover:bg-gray-50 transition-colors group"
             >
               <span className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center">
@@ -367,6 +353,20 @@ export default function ProjectDetail() {
           </div>
         </div>
       )}
+
+      {/* Share Section */}
+      <div className="py-12 bg-white border-t border-gray-100 text-center">
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+            alert(language === 'ko' ? '링크가 복사되었습니다.' : 'Link copied to clipboard.');
+          }}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-sm font-bold"
+        >
+          <Share2 size={18} />
+          {language === 'ko' ? '프로젝트 공유하기' : 'Share Project'}
+        </button>
+      </div>
 
       <ContactCTA />
       <Footer />
