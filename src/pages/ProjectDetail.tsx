@@ -75,7 +75,7 @@ export default function ProjectDetail() {
     );
   }
 
-  const projectIndex = allProjects.findIndex(p => p.id === id);
+  const projectIndex = allProjects.findIndex(p => p.id === project?.id);
   const nextProject = allProjects.length > 1 ? allProjects[(projectIndex + 1) % allProjects.length] : null;
   const prevProject = allProjects.length > 1 ? allProjects[(projectIndex - 1 + allProjects.length) % allProjects.length] : null;
 
