@@ -61,26 +61,25 @@ export default function AdminInquiries() {
         .from('inquiries')
         .select('*');
       
-      console.log("🔍 [DEBUG] Supabase Response:", response);
-      
       if (response.error) {
         console.error("❌ [DEBUG] Error fetching inquiries:", response.error);
         setErrorMsg(`데이터를 불러오는 중 오류가 발생했습니다: ${response.error.message}`);
       } else {
-        console.log("✅ [DEBUG] Fetched inquiries data:", response.data);
         setInquiries(response.data as Inquiry[]);
       }
       setFetching(false);
     };
 
     fetchInquiries();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAdmin]);
 
-    // 실시간 구독으로 인한 데이터 꼬임 방지를 위해 잠시 비활성화
-    /*
+    // 실시간 구독 추가
     const channel = supabase
       .channel('inquiries_changes')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'inquiries' }, (payload) => {
+        console.log("New inquiry detected, attempting auto-SMS:", payload.new);
+        handleAutoSMS(payload.new as Inquiry);
+        fetchInquiries();
+      })
       .on('postgres_changes', { event: '*', schema: 'public', table: 'inquiries' }, () => {
         fetchInquiries();
       })
@@ -89,7 +88,45 @@ export default function AdminInquiries() {
     return () => {
       supabase.removeChannel(channel);
     };
-    */
+  }, [isAdmin]);
+
+  async function handleAutoSMS(inquiry: Inquiry) {
+    if (!inquiry.phone) return;
+    
+    const message = `안녕하세요 ${inquiry.name}님, 건축 상담 문의 남겨주셔서 연락드렸습니다.
+www.bigplanner.co.kr`;
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-sms', {
+        body: { receiver: inquiry.phone.replace(/-/g, ''), msg: message, name: inquiry.name },
+      });
+      
+      let sms_status: 'success' | 'failure' = 'failure';
+      let sms_error: string | undefined = undefined;
+
+      if (error) {
+        sms_error = error.message || 'Supabase Function 호출 실패';
+      } else if (data?.error) {
+        sms_error = data.error;
+      } else if (data?.statusCode === '2000' || data?.messageId) {
+        sms_status = 'success';
+      } else {
+        sms_error = data?.errorMessage || data?.error || '알 수 없는 오류';
+      }
+
+      await supabase
+        .from('inquiries')
+        .update({ sms_status, sms_error })
+        .eq('id', inquiry.id);
+
+    } catch (error: any) {
+      console.error('Auto SMS error:', error);
+      await supabase
+        .from('inquiries')
+        .update({ sms_status: 'failure', sms_error: error.message || '오류 발생' })
+        .eq('id', inquiry.id);
+    }
+  }
 
   const updateStatus = async (id: string, newStatus: 'new' | 'in-progress' | 'completed' | 'failed') => {
     try {
