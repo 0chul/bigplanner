@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, Paperclip, Send } from 'lucide-react';
+import { CheckCircle2, Send } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
+import { supabase } from '../supabase';
 
 const categories = [
   { id: 'architecture', label: '건축제휴' },
@@ -15,6 +16,7 @@ const categories = [
 export default function Partners() {
   const [activeCategory, setActiveCategory] = useState('architecture');
   const [agreed, setAgreed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { language } = useLanguage();
   
   const [formData, setFormData] = useState({
@@ -50,7 +52,7 @@ export default function Partners() {
     setFormData({...formData, phone: formattedValue});
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     const phoneRegex = /^(0[0-9]{1,3})-?[0-9]{3,4}-?[0-9]{4}$/;
@@ -59,10 +61,31 @@ export default function Partners() {
       return;
     }
 
-    // TODO: Implement actual submission logic
-    alert(language === 'ko' ? "문의가 접수되었습니다." : "Your inquiry has been submitted.");
-    setFormData({ name: '', phone: '', email: '', title: '', message: '' });
-    setAgreed(false);
+    setIsSubmitting(true);
+    
+    const { error } = await supabase
+      .from('partnerships')
+      .insert([
+        {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          message: `${formData.title}\n\n${formData.message}`,
+          type: activeCategory === 'architecture' ? 'architectural' : 'business',
+          status: 'new'
+        }
+      ]);
+
+    setIsSubmitting(false);
+
+    if (error) {
+      console.error('Submission error:', error);
+      alert(language === 'ko' ? "문의 접수 중 오류가 발생했습니다. 다시 시도해주세요." : "An error occurred while submitting your inquiry. Please try again.");
+    } else {
+      alert(language === 'ko' ? "문의가 접수되었습니다." : "Your inquiry has been submitted.");
+      setFormData({ name: '', phone: '', email: '', title: '', message: '' });
+      setAgreed(false);
+    }
   };
 
   useEffect(() => {
@@ -221,24 +244,6 @@ export default function Partners() {
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="문의 내용을 상세히 입력해주세요"
                 ></textarea>
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">파일첨부</label>
-                <div className="relative">
-                  <input 
-                    type="file" 
-                    className="hidden" 
-                    id="file-upload"
-                  />
-                  <label 
-                    htmlFor="file-upload"
-                    className="flex items-center justify-center w-full px-4 py-4 border-2 border-dashed border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors group"
-                  >
-                    <Paperclip size={20} className="text-gray-400 mr-2 group-hover:text-gray-600" />
-                    <span className="text-gray-500 group-hover:text-gray-700">파일을 선택하거나 드래그하여 업로드하세요</span>
-                  </label>
-                </div>
               </div>
 
               <div className="pt-6 border-t border-gray-100">
