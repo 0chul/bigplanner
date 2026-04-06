@@ -3,7 +3,7 @@ import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, ArrowRight, Target, Lightbulb, Building2, MapPin } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Target, Lightbulb, Building2, MapPin, Share2 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactCTA from '../components/ContactCTA';
