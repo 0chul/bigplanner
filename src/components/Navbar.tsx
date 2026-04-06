@@ -34,7 +34,7 @@ export default function Navbar() {
               <img 
                 src="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png" 
                 alt="BIGPLANNER PARTNERS" 
-                className="h-8 md:h-10 w-auto object-contain"
+                className="max-h-10 md:max-h-12 w-auto"
                 referrerPolicy="no-referrer"
               />
             </Link>
