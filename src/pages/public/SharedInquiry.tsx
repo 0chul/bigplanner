@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../supabase';
-import { MessageSquare, Clock, MapPin } from 'lucide-react';
+import { MessageSquare, Clock, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
 import { formatPhoneNumber } from '../../utils/phoneUtils';
 
@@ -35,6 +35,14 @@ export default function SharedInquiry() {
   const [memos, setMemos] = useState<Memo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [expandedProjects, setExpandedProjects] = useState<Record<string, boolean>>({});
+
+  const toggleProject = (projectId: string) => {
+    setExpandedProjects(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
 
   useEffect(() => {
     const fetchSharedData = async () => {
@@ -103,21 +111,35 @@ export default function SharedInquiry() {
               프로젝트 및 필지(주소) 정보
             </h4>
             <div className="space-y-4">
-              {inquiry.projects_data.map(project => (
-                <div key={project.id} className="border border-gray-200 rounded-lg p-4 bg-gray-50/50">
-                  <div className="font-bold text-gray-900 mb-3">{project.name}</div>
-                  <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
-                    {project.addresses.map((address, idx) => (
-                      <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
-                        {address || <span className="text-gray-400 italic">주소 미입력</span>}
+              {inquiry.projects_data.map(project => {
+                const isExpanded = expandedProjects[project.id];
+                return (
+                  <div key={project.id} className="border border-gray-200 rounded-lg bg-gray-50/50 overflow-hidden">
+                    <button
+                      onClick={() => toggleProject(project.id)}
+                      className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-100/50 transition-colors"
+                    >
+                      <div className="font-bold text-gray-900">
+                        {project.name}
+                        <span className="text-xs font-normal text-gray-500 ml-2">({project.addresses.length}개 주소)</span>
                       </div>
-                    ))}
-                    {project.addresses.length === 0 && (
-                      <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                      {isExpanded ? <ChevronUp size={18} className="text-gray-500" /> : <ChevronDown size={18} className="text-gray-500" />}
+                    </button>
+                    {isExpanded && (
+                      <div className="p-4 pt-0 space-y-2 pl-4 border-l-2 border-indigo-100 ml-4 mb-4">
+                        {project.addresses.map((address, idx) => (
+                          <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
+                            {address || <span className="text-gray-400 italic">주소 미입력</span>}
+                          </div>
+                        ))}
+                        {project.addresses.length === 0 && (
+                          <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                        )}
+                      </div>
                     )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
