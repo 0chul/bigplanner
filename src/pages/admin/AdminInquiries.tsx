@@ -10,6 +10,7 @@ interface ProjectData {
   id: string;
   name: string;
   addresses: string[];
+  memo?: string;
 }
 
 interface Inquiry {
@@ -238,6 +239,16 @@ export default function AdminInquiries() {
     
     const newProjectsData = (inquiry.projects_data || []).map(p => 
       p.id === projectId ? { ...p, name: newName } : p
+    );
+    updateProjectsData(inquiryId, newProjectsData);
+  };
+
+  const handleUpdateProjectMemo = (inquiryId: string, projectId: string, newMemo: string) => {
+    const inquiry = inquiries.find(i => i.id === inquiryId);
+    if (!inquiry) return;
+    
+    const newProjectsData = (inquiry.projects_data || []).map(p => 
+      p.id === projectId ? { ...p, memo: newMemo } : p
     );
     updateProjectsData(inquiryId, newProjectsData);
   };
@@ -664,6 +675,17 @@ export default function AdminInquiries() {
                                   {project.addresses.length === 0 && (
                                     <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
                                   )}
+                                </div>
+
+                                <div className="mt-4 pt-3 border-t border-gray-200/60">
+                                  <label className="block text-xs font-medium text-gray-500 mb-1">프로젝트 메모</label>
+                                  <textarea
+                                    value={project.memo || ''}
+                                    onChange={(e) => handleUpdateProjectMemo(inquiry.id, project.id, e.target.value)}
+                                    placeholder="이 프로젝트에 대한 메모를 입력하세요..."
+                                    className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm resize-y"
+                                    rows={2}
+                                  />
                                 </div>
                               </div>
                             ))}

@@ -126,14 +126,23 @@ export default function SharedInquiry() {
                       {isExpanded ? <ChevronUp size={18} className="text-gray-500" /> : <ChevronDown size={18} className="text-gray-500" />}
                     </button>
                     {isExpanded && (
-                      <div className="p-4 pt-0 space-y-2 pl-4 border-l-2 border-indigo-100 ml-4 mb-4">
-                        {project.addresses.map((address, idx) => (
-                          <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
-                            {address || <span className="text-gray-400 italic">주소 미입력</span>}
+                      <div className="p-4 pt-0 space-y-4">
+                        <div className="space-y-2 pl-4 border-l-2 border-indigo-100 ml-4">
+                          {project.addresses.map((address, idx) => (
+                            <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
+                              {address || <span className="text-gray-400 italic">주소 미입력</span>}
+                            </div>
+                          ))}
+                          {project.addresses.length === 0 && (
+                            <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                          )}
+                        </div>
+                        
+                        {project.memo && (
+                          <div className="ml-4 mt-2 p-3 bg-yellow-50/80 rounded-md border border-yellow-100/50">
+                            <p className="text-xs font-semibold text-yellow-800 mb-1">프로젝트 메모</p>
+                            <p className="text-sm text-gray-700 whitespace-pre-wrap">{project.memo}</p>
                           </div>
-                        ))}
-                        {project.addresses.length === 0 && (
-                          <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
                         )}
                       </div>
                     )}
