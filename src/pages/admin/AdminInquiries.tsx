@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase, supabaseUrl } from '../../supabase';
-import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X, Share2, Send } from 'lucide-react';
+import { Trash2, ChevronDown, ChevronUp, MessageSquare, Edit2, Check, X, Share2, Send, MapPin } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
 import { formatPhoneNumber } from '../../utils/phoneUtils';
 import SMSModal from '../../components/SMSModal';
+
+interface ProjectData {
+  id: string;
+  name: string;
+  addresses: string[];
+}
 
 interface Inquiry {
   id: string;
@@ -18,6 +24,7 @@ interface Inquiry {
   sms_error?: string;
   created_at: any;
   share_token?: string;
+  projects_data?: ProjectData[];
 }
 
 interface Memo {
@@ -75,9 +82,7 @@ export default function AdminInquiries() {
     // 실시간 구독 추가
     const channel = supabase
       .channel('inquiries_changes')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'inquiries' }, (payload) => {
-        console.log("New inquiry detected, attempting auto-SMS:", payload.new);
-        handleAutoSMS(payload.new as Inquiry);
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'inquiries' }, () => {
         fetchInquiries();
       })
       .on('postgres_changes', { event: '*', schema: 'public', table: 'inquiries' }, () => {
@@ -89,44 +94,6 @@ export default function AdminInquiries() {
       supabase.removeChannel(channel);
     };
   }, [isAdmin]);
-
-  async function handleAutoSMS(inquiry: Inquiry) {
-    if (!inquiry.phone) return;
-    
-    const message = `안녕하세요 ${inquiry.name}님, 건축 상담 문의 남겨주셔서 연락드렸습니다.
-www.bigplanner.co.kr`;
-
-    try {
-      const { data, error } = await supabase.functions.invoke('send-sms', {
-        body: { receiver: inquiry.phone.replace(/-/g, ''), msg: message, name: inquiry.name },
-      });
-      
-      let sms_status: 'success' | 'failure' = 'failure';
-      let sms_error: string | undefined = undefined;
-
-      if (error) {
-        sms_error = error.message || 'Supabase Function 호출 실패';
-      } else if (data?.error) {
-        sms_error = data.error;
-      } else if (data?.statusCode === '2000' || data?.messageId) {
-        sms_status = 'success';
-      } else {
-        sms_error = data?.errorMessage || data?.error || '알 수 없는 오류';
-      }
-
-      await supabase
-        .from('inquiries')
-        .update({ sms_status, sms_error })
-        .eq('id', inquiry.id);
-
-    } catch (error: any) {
-      console.error('Auto SMS error:', error);
-      await supabase
-        .from('inquiries')
-        .update({ sms_status: 'failure', sms_error: error.message || '오류 발생' })
-        .eq('id', inquiry.id);
-    }
-  }
 
   const updateStatus = async (id: string, newStatus: 'new' | 'in-progress' | 'completed' | 'failed') => {
     try {
@@ -234,6 +201,93 @@ www.bigplanner.co.kr`;
         console.error("Error fetching memos:", error);
       }
     }
+  };
+
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const updateProjectsData = (inquiryId: string, newProjectsData: ProjectData[]) => {
+    setInquiries(prev => prev.map(inq => inq.id === inquiryId ? { ...inq, projects_data: newProjectsData } : inq));
+    
+    if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    saveTimeoutRef.current = setTimeout(async () => {
+      const { error } = await supabase
+        .from('inquiries')
+        .update({ projects_data: newProjectsData })
+        .eq('id', inquiryId);
+      if (error) console.error("Error saving projects_data:", error);
+    }, 1000);
+  };
+
+  const handleAddProject = (inquiryId: string) => {
+    const inquiry = inquiries.find(i => i.id === inquiryId);
+    if (!inquiry) return;
+    
+    const newProject: ProjectData = {
+      id: crypto.randomUUID(),
+      name: '새 프로젝트',
+      addresses: []
+    };
+    
+    const newProjectsData = [...(inquiry.projects_data || []), newProject];
+    updateProjectsData(inquiryId, newProjectsData);
+  };
+
+  const handleUpdateProjectName = (inquiryId: string, projectId: string, newName: string) => {
+    const inquiry = inquiries.find(i => i.id === inquiryId);
+    if (!inquiry) return;
+    
+    const newProjectsData = (inquiry.projects_data || []).map(p => 
+      p.id === projectId ? { ...p, name: newName } : p
+    );
+    updateProjectsData(inquiryId, newProjectsData);
+  };
+
+  const handleDeleteProject = (inquiryId: string, projectId: string) => {
+    if (!window.confirm("이 프로젝트를 삭제하시겠습니까?")) return;
+    const inquiry = inquiries.find(i => i.id === inquiryId);
+    if (!inquiry) return;
+    
+    const newProjectsData = (inquiry.projects_data || []).filter(p => p.id !== projectId);
+    updateProjectsData(inquiryId, newProjectsData);
+  };
+
+  const handleAddAddress = (inquiryId: string, projectId: string) => {
+    const inquiry = inquiries.find(i => i.id === inquiryId);
+    if (!inquiry) return;
+    
+    const newProjectsData = (inquiry.projects_data || []).map(p => 
+      p.id === projectId ? { ...p, addresses: [...p.addresses, ''] } : p
+    );
+    updateProjectsData(inquiryId, newProjectsData);
+  };
+
+  const handleUpdateAddress = (inquiryId: string, projectId: string, addressIndex: number, newAddress: string) => {
+    const inquiry = inquiries.find(i => i.id === inquiryId);
+    if (!inquiry) return;
+    
+    const newProjectsData = (inquiry.projects_data || []).map(p => {
+      if (p.id === projectId) {
+        const newAddresses = [...p.addresses];
+        newAddresses[addressIndex] = newAddress;
+        return { ...p, addresses: newAddresses };
+      }
+      return p;
+    });
+    updateProjectsData(inquiryId, newProjectsData);
+  };
+
+  const handleDeleteAddress = (inquiryId: string, projectId: string, addressIndex: number) => {
+    const inquiry = inquiries.find(i => i.id === inquiryId);
+    if (!inquiry) return;
+    
+    const newProjectsData = (inquiry.projects_data || []).map(p => {
+      if (p.id === projectId) {
+        const newAddresses = p.addresses.filter((_, idx) => idx !== addressIndex);
+        return { ...p, addresses: newAddresses };
+      }
+      return p;
+    });
+    updateProjectsData(inquiryId, newProjectsData);
   };
 
   const handleAddMemo = async (inquiryId: string, content?: string) => {
@@ -546,6 +600,79 @@ www.bigplanner.co.kr`;
                           <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
                             {inquiry.message}
                           </p>
+                        </div>
+
+                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
+                          <div className="flex justify-between items-center mb-4">
+                            <h4 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                              <MapPin size={16} className="text-indigo-500" />
+                              프로젝트 및 필지(주소) 관리
+                            </h4>
+                            <button 
+                              onClick={() => handleAddProject(inquiry.id)}
+                              className="text-xs bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-lg hover:bg-indigo-100 font-medium transition-colors"
+                            >
+                              + 프로젝트 추가
+                            </button>
+                          </div>
+                          
+                          <div className="space-y-4">
+                            {(inquiry.projects_data || []).map(project => (
+                              <div key={project.id} className="border border-gray-200 rounded-lg p-4 bg-gray-50/50">
+                                <div className="flex justify-between items-center mb-3">
+                                  <input 
+                                    type="text" 
+                                    value={project.name}
+                                    onChange={(e) => handleUpdateProjectName(inquiry.id, project.id, e.target.value)}
+                                    placeholder="프로젝트 이름"
+                                    className="font-bold text-gray-900 bg-transparent border-b border-transparent hover:border-gray-300 focus:border-indigo-500 focus:ring-0 px-1 py-0.5 w-1/2"
+                                  />
+                                  <div className="flex gap-2">
+                                    <button 
+                                      onClick={() => handleAddAddress(inquiry.id, project.id)}
+                                      className="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
+                                    >
+                                      + 주소 추가
+                                    </button>
+                                    <button 
+                                      onClick={() => handleDeleteProject(inquiry.id, project.id)}
+                                      className="text-xs text-red-400 hover:text-red-600"
+                                    >
+                                      삭제
+                                    </button>
+                                  </div>
+                                </div>
+                                
+                                <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
+                                  {project.addresses.map((address, idx) => (
+                                    <div key={idx} className="flex items-center gap-2">
+                                      <input 
+                                        type="text"
+                                        value={address}
+                                        onChange={(e) => handleUpdateAddress(inquiry.id, project.id, idx, e.target.value)}
+                                        placeholder="주소 입력"
+                                        className="flex-1 text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
+                                      />
+                                      <button 
+                                        onClick={() => handleDeleteAddress(inquiry.id, project.id, idx)}
+                                        className="text-gray-400 hover:text-red-500 p-1"
+                                      >
+                                        <X size={16} />
+                                      </button>
+                                    </div>
+                                  ))}
+                                  {project.addresses.length === 0 && (
+                                    <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                            {(!inquiry.projects_data || inquiry.projects_data.length === 0) && (
+                              <div className="text-sm text-gray-500 text-center py-6 bg-gray-50 rounded-lg border border-dashed border-gray-200">
+                                등록된 프로젝트가 없습니다. 우측 상단의 버튼을 눌러 추가해주세요.
+                              </div>
+                            )}
+                          </div>
                         </div>
 
                         <div className="mb-4">
