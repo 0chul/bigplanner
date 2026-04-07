@@ -467,7 +467,7 @@ export default function AdminInquiries() {
   });
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 w-full">
       {isCreateModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white p-6 md:p-8 rounded-2xl w-full max-w-md">

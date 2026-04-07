@@ -328,7 +328,7 @@ export default function AdminLeads() {
   const filteredLeads = showLost ? sortedLeads : sortedLeads.filter(lead => lead.status !== 'lost');
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 w-full">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
         <h1 className="text-2xl md:text-3xl font-bold">
           META 리드 관리

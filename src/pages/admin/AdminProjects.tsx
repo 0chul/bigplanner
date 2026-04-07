@@ -227,7 +227,7 @@ export default function AdminProjects() {
   if (!isAdmin) return <div className="p-4 md:p-8">접근 권한이 없습니다.</div>;
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 w-full">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
         <h1 className="text-2xl md:text-3xl font-bold">포트폴리오 관리</h1>
         <button 

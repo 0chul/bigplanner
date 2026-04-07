@@ -73,7 +73,7 @@ export default function AdminPartnerships() {
   if (!isAdmin) return <div className="p-8">접근 권한이 없습니다.</div>;
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 w-full">
       <h1 className="text-2xl md:text-3xl font-bold mb-8">건축/업무 제휴 관리</h1>
       
       {errorMsg && (

@@ -86,7 +86,7 @@ export default function AdminLayout() {
 
   const navItems = [
     { path: '/admin', label: '대시보드', icon: <LayoutDashboard size={20} /> },
-    { path: '/admin/projects', label: '프로젝트 관리', icon: <FolderKanban size={20} /> },
+    { path: '/admin/projects', label: '포트폴리오 관리', icon: <FolderKanban size={20} /> },
     { path: '/admin/inquiries', label: '고객 문의 관리', icon: <MessageSquare size={20} />, count: inquiries.filter(i => i.status === 'new').length },
     { path: '/admin/leads', label: 'META 리드 관리', icon: <UserPlus size={20} />, count: leads.filter(l => l.status === 'new').length },
     { path: '/admin/partnerships', label: '제휴 신청 관리', icon: <Handshake size={20} /> },
