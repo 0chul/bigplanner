@@ -630,7 +630,7 @@ export default function AdminInquiries() {
                 {/* Expanded Timeline Section */}
                 {expandedId === inquiry.id && (
                   <tr>
-                    <td colSpan={7} className="px-0 py-0 bg-gray-50 border-b border-gray-200">
+                    <td colSpan={6} className="px-0 py-0 bg-gray-50 border-b border-gray-200">
                       <div className="p-6 pl-24">
                         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
                           <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center gap-2">
