@@ -11,6 +11,7 @@ interface ProjectData {
   id: string;
   name: string;
   addresses: string[];
+  memo?: string;
 }
 
 interface Inquiry {
@@ -127,6 +128,13 @@ export default function SharedInquiry() {
                     </button>
                     {isExpanded && (
                       <div className="p-4 pt-0 space-y-4">
+                        {project.memo && (
+                          <div className="ml-4 mt-2 p-3 bg-yellow-50/80 rounded-md border border-yellow-100/50">
+                            <p className="text-xs font-semibold text-yellow-800 mb-1">프로젝트 메모</p>
+                            <p className="text-sm text-gray-700 whitespace-pre-wrap">{project.memo}</p>
+                          </div>
+                        )}
+
                         <div className="space-y-2 pl-4 border-l-2 border-indigo-100 ml-4">
                           {project.addresses.map((address, idx) => (
                             <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
@@ -137,13 +145,6 @@ export default function SharedInquiry() {
                             <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
                           )}
                         </div>
-                        
-                        {project.memo && (
-                          <div className="ml-4 mt-2 p-3 bg-yellow-50/80 rounded-md border border-yellow-100/50">
-                            <p className="text-xs font-semibold text-yellow-800 mb-1">프로젝트 메모</p>
-                            <p className="text-sm text-gray-700 whitespace-pre-wrap">{project.memo}</p>
-                          </div>
-                        )}
                       </div>
                     )}
                   </div>

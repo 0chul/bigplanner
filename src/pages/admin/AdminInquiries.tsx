@@ -696,6 +696,17 @@ export default function AdminInquiries() {
                                   
                                   {isExpanded && (
                                     <div className="p-4 pt-2">
+                                      <div className="mb-4 pb-3 border-b border-gray-200/60">
+                                        <label className="block text-xs font-medium text-gray-500 mb-1">프로젝트 메모</label>
+                                        <textarea
+                                          value={project.memo || ''}
+                                          onChange={(e) => handleUpdateProjectMemo(inquiry.id, project.id, e.target.value)}
+                                          placeholder="이 프로젝트에 대한 메모를 입력하세요..."
+                                          className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm resize-y"
+                                          rows={2}
+                                        />
+                                      </div>
+
                                       <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
                                         {project.addresses.map((address, idx) => (
                                           <div key={idx} className="flex items-center gap-2">
@@ -717,17 +728,6 @@ export default function AdminInquiries() {
                                         {project.addresses.length === 0 && (
                                           <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
                                         )}
-                                      </div>
-
-                                      <div className="mt-4 pt-3 border-t border-gray-200/60">
-                                        <label className="block text-xs font-medium text-gray-500 mb-1">프로젝트 메모</label>
-                                        <textarea
-                                          value={project.memo || ''}
-                                          onChange={(e) => handleUpdateProjectMemo(inquiry.id, project.id, e.target.value)}
-                                          placeholder="이 프로젝트에 대한 메모를 입력하세요..."
-                                          className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm resize-y"
-                                          rows={2}
-                                        />
                                       </div>
                                     </div>
                                   )}
