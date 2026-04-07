@@ -52,6 +52,22 @@ export default function AdminInquiries() {
   const [newInquiry, setNewInquiry] = useState({ name: '', email: '', phone: '', address: '', message: '' });
   const [showFailedInquiries, setShowFailedInquiries] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Inquiry | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
+  const [expandedProjectIds, setExpandedProjectIds] = useState<Record<string, boolean>>({});
+  const [expandedTimelineIds, setExpandedTimelineIds] = useState<Record<string, boolean>>({});
+
+  const toggleProjectExpand = (projectId: string) => {
+    setExpandedProjectIds(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
+
+  const toggleTimelineExpand = (inquiryId: string) => {
+    setExpandedTimelineIds(prev => ({
+      ...prev,
+      [inquiryId]: !prev[inquiryId]
+    }));
+  };
   
   const newInquiriesCount = inquiries.filter(inq => inq.status === 'new').length;
   // Edit Modal States
@@ -223,14 +239,21 @@ export default function AdminInquiries() {
     const inquiry = inquiries.find(i => i.id === inquiryId);
     if (!inquiry) return;
     
+    const newProjectId = crypto.randomUUID();
     const newProject: ProjectData = {
-      id: crypto.randomUUID(),
+      id: newProjectId,
       name: '새 프로젝트',
       addresses: []
     };
     
     const newProjectsData = [...(inquiry.projects_data || []), newProject];
     updateProjectsData(inquiryId, newProjectsData);
+
+    // Auto-expand the new project
+    setExpandedProjectIds(prev => ({
+      ...prev,
+      [newProjectId]: true
+    }));
   };
 
   const handleUpdateProjectName = (inquiryId: string, projectId: string, newName: string) => {
@@ -270,6 +293,12 @@ export default function AdminInquiries() {
       p.id === projectId ? { ...p, addresses: [...p.addresses, ''] } : p
     );
     updateProjectsData(inquiryId, newProjectsData);
+
+    // Ensure project is expanded when adding an address
+    setExpandedProjectIds(prev => ({
+      ...prev,
+      [projectId]: true
+    }));
   };
 
   const handleUpdateAddress = (inquiryId: string, projectId: string, addressIndex: number, newAddress: string) => {
@@ -628,67 +657,83 @@ export default function AdminInquiries() {
                           </div>
                           
                           <div className="space-y-4">
-                            {(inquiry.projects_data || []).map(project => (
-                              <div key={project.id} className="border border-gray-200 rounded-lg p-4 bg-gray-50/50">
-                                <div className="flex justify-between items-center mb-3">
-                                  <input 
-                                    type="text" 
-                                    value={project.name}
-                                    onChange={(e) => handleUpdateProjectName(inquiry.id, project.id, e.target.value)}
-                                    placeholder="프로젝트 이름"
-                                    className="font-bold text-gray-900 bg-transparent border-b border-transparent hover:border-gray-300 focus:border-indigo-500 focus:ring-0 px-1 py-0.5 w-1/2"
-                                  />
-                                  <div className="flex gap-2">
-                                    <button 
-                                      onClick={() => handleAddAddress(inquiry.id, project.id)}
-                                      className="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
-                                    >
-                                      + 주소 추가
-                                    </button>
-                                    <button 
-                                      onClick={() => handleDeleteProject(inquiry.id, project.id)}
-                                      className="text-xs text-red-400 hover:text-red-600"
-                                    >
-                                      삭제
-                                    </button>
-                                  </div>
-                                </div>
-                                
-                                <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
-                                  {project.addresses.map((address, idx) => (
-                                    <div key={idx} className="flex items-center gap-2">
-                                      <input 
-                                        type="text"
-                                        value={address}
-                                        onChange={(e) => handleUpdateAddress(inquiry.id, project.id, idx, e.target.value)}
-                                        placeholder="주소 입력"
-                                        className="flex-1 text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
-                                      />
+                            {(inquiry.projects_data || []).map(project => {
+                              const isExpanded = expandedProjectIds[project.id];
+                              return (
+                                <div key={project.id} className="border border-gray-200 rounded-lg bg-gray-50/50 overflow-hidden">
+                                  <div className="flex justify-between items-center p-4 bg-white border-b border-gray-100">
+                                    <div className="flex items-center gap-3 flex-1">
                                       <button 
-                                        onClick={() => handleDeleteAddress(inquiry.id, project.id, idx)}
-                                        className="text-gray-400 hover:text-red-500 p-1"
+                                        onClick={() => toggleProjectExpand(project.id)}
+                                        className="p-1 hover:bg-gray-100 rounded transition-colors"
                                       >
-                                        <X size={16} />
+                                        {isExpanded ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
+                                      </button>
+                                      <input 
+                                        type="text" 
+                                        value={project.name}
+                                        onChange={(e) => handleUpdateProjectName(inquiry.id, project.id, e.target.value)}
+                                        placeholder="프로젝트 이름"
+                                        className="font-bold text-gray-900 bg-transparent border-b border-transparent hover:border-gray-300 focus:border-indigo-500 focus:ring-0 px-1 py-0.5 w-1/2"
+                                      />
+                                      <span className="text-xs text-gray-400">({project.addresses.length}개 주소)</span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                      <button 
+                                        onClick={() => handleAddAddress(inquiry.id, project.id)}
+                                        className="text-xs text-indigo-600 hover:text-indigo-800 font-medium px-2 py-1 rounded hover:bg-indigo-50"
+                                      >
+                                        + 주소 추가
+                                      </button>
+                                      <button 
+                                        onClick={() => handleDeleteProject(inquiry.id, project.id)}
+                                        className="text-xs text-red-400 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50"
+                                      >
+                                        삭제
                                       </button>
                                     </div>
-                                  ))}
-                                  {project.addresses.length === 0 && (
-                                    <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                                  </div>
+                                  
+                                  {isExpanded && (
+                                    <div className="p-4 pt-2">
+                                      <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
+                                        {project.addresses.map((address, idx) => (
+                                          <div key={idx} className="flex items-center gap-2">
+                                            <input 
+                                              type="text"
+                                              value={address}
+                                              onChange={(e) => handleUpdateAddress(inquiry.id, project.id, idx, e.target.value)}
+                                              placeholder="주소 입력"
+                                              className="flex-1 text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
+                                            />
+                                            <button 
+                                              onClick={() => handleDeleteAddress(inquiry.id, project.id, idx)}
+                                              className="text-gray-400 hover:text-red-500 p-1"
+                                            >
+                                              <X size={16} />
+                                            </button>
+                                          </div>
+                                        ))}
+                                        {project.addresses.length === 0 && (
+                                          <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                                        )}
+                                      </div>
+
+                                      <div className="mt-4 pt-3 border-t border-gray-200/60">
+                                        <label className="block text-xs font-medium text-gray-500 mb-1">프로젝트 메모</label>
+                                        <textarea
+                                          value={project.memo || ''}
+                                          onChange={(e) => handleUpdateProjectMemo(inquiry.id, project.id, e.target.value)}
+                                          placeholder="이 프로젝트에 대한 메모를 입력하세요..."
+                                          className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm resize-y"
+                                          rows={2}
+                                        />
+                                      </div>
+                                    </div>
                                   )}
                                 </div>
-
-                                <div className="mt-4 pt-3 border-t border-gray-200/60">
-                                  <label className="block text-xs font-medium text-gray-500 mb-1">프로젝트 메모</label>
-                                  <textarea
-                                    value={project.memo || ''}
-                                    onChange={(e) => handleUpdateProjectMemo(inquiry.id, project.id, e.target.value)}
-                                    placeholder="이 프로젝트에 대한 메모를 입력하세요..."
-                                    className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm resize-y"
-                                    rows={2}
-                                  />
-                                </div>
-                              </div>
-                            ))}
+                              );
+                            })}
                             {(!inquiry.projects_data || inquiry.projects_data.length === 0) && (
                               <div className="text-sm text-gray-500 text-center py-6 bg-gray-50 rounded-lg border border-dashed border-gray-200">
                                 등록된 프로젝트가 없습니다. 우측 상단의 버튼을 눌러 추가해주세요.
@@ -733,55 +778,78 @@ export default function AdminInquiries() {
 
                           {/* Timeline */}
                           <div className="relative pl-4 border-l-2 border-indigo-100 space-y-6">
-                            {memos[inquiry.id]?.map(memo => (
-                              <div key={memo.id} className="relative pl-6">
-                                <div className="absolute left-[-21px] top-1.5 w-2.5 h-2.5 bg-indigo-500 rounded-full border-2 border-white shadow-sm"></div>
-                                <div className="flex items-center justify-between mb-1.5">
-                                  <div className="text-xs text-gray-500 font-medium">
-                                    {getRelativeTime(memo.created_at)}
-                                  </div>
-                                  <div className="flex items-center gap-1">
-                                    {editingMemoId === memo.id ? (
-                                      <>
-                                        <button onClick={() => handleUpdateMemo(inquiry.id, memo.id)} className="text-green-600 hover:text-green-700 p-1 rounded-md hover:bg-green-50 transition-colors" title="저장">
-                                          <Check size={14} />
-                                        </button>
-                                        <button onClick={cancelEditingMemo} className="text-gray-400 hover:text-gray-600 p-1 rounded-md hover:bg-gray-100 transition-colors" title="취소">
-                                          <X size={14} />
-                                        </button>
-                                      </>
-                                    ) : (
-                                      <>
-                                        <button onClick={() => startEditingMemo(memo)} className="text-gray-400 hover:text-indigo-600 p-1 rounded-md hover:bg-indigo-50 transition-colors" title="수정">
-                                          <Edit2 size={14} />
-                                        </button>
-                                        <button onClick={() => handleDeleteMemo(inquiry.id, memo.id)} className="text-gray-400 hover:text-red-600 p-1 rounded-md hover:bg-red-50 transition-colors" title="삭제">
-                                          <Trash2 size={14} />
-                                        </button>
-                                      </>
-                                    )}
-                                  </div>
-                                </div>
-                                <div className="text-sm text-gray-800 bg-white p-3.5 rounded-lg shadow-sm border border-gray-100">
-                                  {editingMemoId === memo.id ? (
-                                    <textarea
-                                      value={editingMemoContent}
-                                      onChange={(e) => setEditingMemoContent(e.target.value)}
-                                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border min-h-[80px]"
-                                      autoFocus
-                                    />
-                                  ) : (
-                                    <div className="whitespace-pre-wrap">{memo.content}</div>
+                            {(() => {
+                              const inquiryMemos = memos[inquiry.id] || [];
+                              const isExpanded = expandedTimelineIds[inquiry.id];
+                              const displayMemos = isExpanded ? inquiryMemos : inquiryMemos.slice(0, 3);
+                              
+                              return (
+                                <>
+                                  {displayMemos.map(memo => (
+                                    <div key={memo.id} className="relative pl-6">
+                                      <div className="absolute left-[-21px] top-1.5 w-2.5 h-2.5 bg-indigo-500 rounded-full border-2 border-white shadow-sm"></div>
+                                      <div className="flex items-center justify-between mb-1.5">
+                                        <div className="text-xs text-gray-500 font-medium">
+                                          {getRelativeTime(memo.created_at)}
+                                        </div>
+                                        <div className="flex items-center gap-1">
+                                          {editingMemoId === memo.id ? (
+                                            <>
+                                              <button onClick={() => handleUpdateMemo(inquiry.id, memo.id)} className="text-green-600 hover:text-green-700 p-1 rounded-md hover:bg-green-50 transition-colors" title="저장">
+                                                <Check size={14} />
+                                              </button>
+                                              <button onClick={cancelEditingMemo} className="text-gray-400 hover:text-gray-600 p-1 rounded-md hover:bg-gray-100 transition-colors" title="취소">
+                                                <X size={14} />
+                                              </button>
+                                            </>
+                                          ) : (
+                                            <>
+                                              <button onClick={() => startEditingMemo(memo)} className="text-gray-400 hover:text-indigo-600 p-1 rounded-md hover:bg-indigo-50 transition-colors" title="수정">
+                                                <Edit2 size={14} />
+                                              </button>
+                                              <button onClick={() => handleDeleteMemo(inquiry.id, memo.id)} className="text-gray-400 hover:text-red-600 p-1 rounded-md hover:bg-red-50 transition-colors" title="삭제">
+                                                <Trash2 size={14} />
+                                              </button>
+                                            </>
+                                          )}
+                                        </div>
+                                      </div>
+                                      <div className="text-sm text-gray-800 bg-white p-3.5 rounded-lg shadow-sm border border-gray-100">
+                                        {editingMemoId === memo.id ? (
+                                          <textarea
+                                            value={editingMemoContent}
+                                            onChange={(e) => setEditingMemoContent(e.target.value)}
+                                            className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border min-h-[80px]"
+                                            autoFocus
+                                          />
+                                        ) : (
+                                          <div className="whitespace-pre-wrap">{memo.content}</div>
+                                        )}
+                                      </div>
+                                    </div>
+                                  ))}
+                                  
+                                  {inquiryMemos.length > 3 && (
+                                    <button
+                                      onClick={() => toggleTimelineExpand(inquiry.id)}
+                                      className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1 mt-2 transition-colors"
+                                    >
+                                      {isExpanded ? (
+                                        <>접기 <ChevronUp size={14} /></>
+                                      ) : (
+                                        <>이전 메모 {inquiryMemos.length - 3}개 더 보기 <ChevronDown size={14} /></>
+                                      )}
+                                    </button>
                                   )}
-                                </div>
-                              </div>
-                            ))}
-                            
-                            {(!memos[inquiry.id] || memos[inquiry.id].length === 0) && (
-                              <div className="text-sm text-gray-500 italic pl-2 py-2">
-                                아직 등록된 메모가 없습니다.
-                              </div>
-                            )}
+                                  
+                                  {inquiryMemos.length === 0 && (
+                                    <div className="text-sm text-gray-500 italic pl-2 py-2">
+                                      아직 등록된 메모가 없습니다.
+                                    </div>
+                                  )}
+                                </>
+                              );
+                            })()}
                           </div>
                         </div>
                       </div>
