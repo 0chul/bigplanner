@@ -3,9 +3,15 @@ import { useParams } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../supabase';
-import { MessageSquare, Clock } from 'lucide-react';
+import { MessageSquare, Clock, MapPin } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
 import { formatPhoneNumber } from '../../utils/phoneUtils';
+
+interface ProjectData {
+  id: string;
+  name: string;
+  addresses: string[];
+}
 
 interface Inquiry {
   id: string;
@@ -14,6 +20,7 @@ interface Inquiry {
   phone: string;
   address: string;
   created_at: string;
+  projects_data?: ProjectData[];
 }
 
 interface Memo {
@@ -36,7 +43,7 @@ export default function SharedInquiry() {
       // 1. 문의 정보 가져오기
       const { data: inqData, error: inqError } = await supabase
         .from('inquiries')
-        .select('id, name, message, phone, address, created_at')
+        .select('id, name, message, phone, address, created_at, projects_data')
         .eq('share_token', token)
         .single();
 
@@ -88,6 +95,32 @@ export default function SharedInquiry() {
           </div>
           <p className="text-gray-800 whitespace-pre-wrap">{inquiry.message}</p>
         </div>
+
+        {inquiry.projects_data && inquiry.projects_data.length > 0 && (
+          <div className="mb-8 p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+            <h4 className="text-sm font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <MapPin size={16} className="text-indigo-500" />
+              프로젝트 및 필지(주소) 정보
+            </h4>
+            <div className="space-y-4">
+              {inquiry.projects_data.map(project => (
+                <div key={project.id} className="border border-gray-200 rounded-lg p-4 bg-gray-50/50">
+                  <div className="font-bold text-gray-900 mb-3">{project.name}</div>
+                  <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
+                    {project.addresses.map((address, idx) => (
+                      <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
+                        {address || <span className="text-gray-400 italic">주소 미입력</span>}
+                      </div>
+                    ))}
+                    {project.addresses.length === 0 && (
+                      <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
           <MessageSquare size={20} /> 진행 타임라인
