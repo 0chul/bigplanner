@@ -21,6 +21,7 @@ export default function Navbar() {
     { name: language === 'ko' ? '회사소개' : 'About', href: '/about' },
     { name: language === 'ko' ? '서비스' : 'Service', href: '/service' },
     { name: language === 'ko' ? '프로젝트' : 'Projects', href: '/projects' },
+    { name: language === 'ko' ? '인테리어' : 'Interior', href: '/interior' },
     { name: language === 'ko' ? '파트너스' : 'Partners', href: '/partners' },
     { name: language === 'ko' ? '오시는길' : 'Contact', href: '/contact' },
   ];

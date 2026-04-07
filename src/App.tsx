@@ -16,10 +16,12 @@ const Service = lazy(() => import('./pages/Service'));
 const Partners = lazy(() => import('./pages/Partners'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Projects = lazy(() => import('./pages/Projects'));
+const Interior = lazy(() => import('./pages/Interior'));
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const AdminProjects = lazy(() => import('./pages/admin/AdminProjects'));
+const AdminInterior = lazy(() => import('./pages/admin/AdminInterior'));
 const AdminInquiries = lazy(() => import('./pages/admin/AdminInquiries'));
 const AdminLeads = lazy(() => import('./pages/admin/AdminLeads'));
 const AdminPartnerships = lazy(() => import('./pages/admin/AdminPartnerships'));
@@ -46,6 +48,7 @@ export default function App() {
               <Route path="/partners" element={<Partners />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/interior" element={<Interior />} />
               <Route path="/projects/:slug" element={<ProjectDetail />} />
               <Route path="/share/inquiry/:token" element={<SharedInquiry />} />
               
@@ -53,6 +56,7 @@ export default function App() {
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminDashboard />} />
                 <Route path="projects" element={<AdminProjects />} />
+                <Route path="interior" element={<AdminInterior />} />
                 <Route path="inquiries" element={<AdminInquiries />} />
                 <Route path="leads" element={<AdminLeads />} />
                 <Route path="partnerships" element={<AdminPartnerships />} />
