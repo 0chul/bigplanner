@@ -155,12 +155,15 @@ export default function SharedInquiry() {
                           {project.representativeAddress && <p className="col-span-2"><span className="font-semibold">대표주소:</span> {project.representativeAddress}</p>}
                         </div>
 
-                        {project.mapTimestamp && project.mapKey && (
+import KakaoMapByAddress from '../../components/KakaoMapByAddress';
+
+// ... (기존 코드)
+
+                        {project.representativeAddress && (
                           <div className="ml-4 mt-3 w-full rounded-lg overflow-hidden shadow-sm border border-gray-200">
-                            <KakaoMap 
-                              mapId={`map-${project.id}`}
-                              timestamp={project.mapTimestamp}
-                              mapKey={project.mapKey}
+                            <KakaoMapByAddress 
+                              address={project.representativeAddress}
+                              apiKey={import.meta.env.VITE_KAKAO_MAP_JS_KEY || ''}
                             />
                           </div>
                         )}
