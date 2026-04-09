@@ -12,6 +12,12 @@ interface ProjectData {
   name: string;
   addresses: string[];
   memo?: string;
+  landArea?: string;
+  zoning?: string;
+  landType?: string;
+  far?: string;
+  bcr?: string;
+  heightLimit?: string;
 }
 
 interface Inquiry {
@@ -135,7 +141,16 @@ export default function SharedInquiry() {
                           </div>
                         )}
 
-                        <div className="space-y-2 pl-4 border-l-2 border-indigo-100 ml-4">
+                        <div className="ml-4 mt-3 grid grid-cols-2 gap-2 text-xs text-gray-600 bg-gray-50 p-3 rounded-md">
+                          {project.landArea && <p><span className="font-semibold">면적:</span> {project.landArea}</p>}
+                          {project.zoning && <p><span className="font-semibold">용도지역:</span> {project.zoning}</p>}
+                          {project.landType && <p><span className="font-semibold">지목:</span> {project.landType}</p>}
+                          {project.far && <p><span className="font-semibold">용적률:</span> {project.far}</p>}
+                          {project.bcr && <p><span className="font-semibold">건폐율:</span> {project.bcr}</p>}
+                          {project.heightLimit && <p><span className="font-semibold">높이제한:</span> {project.heightLimit}</p>}
+                        </div>
+
+                        <div className="space-y-2 pl-4 border-l-2 border-indigo-100 ml-4 mt-4">
                           {project.addresses.map((address, idx) => (
                             <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
                               {address || <span className="text-gray-400 italic">주소 미입력</span>}

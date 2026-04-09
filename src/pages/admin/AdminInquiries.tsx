@@ -11,6 +11,12 @@ interface ProjectData {
   name: string;
   addresses: string[];
   memo?: string;
+  landArea?: string;
+  zoning?: string;
+  landType?: string;
+  far?: string;
+  bcr?: string;
+  heightLimit?: string;
 }
 
 interface Inquiry {
@@ -705,6 +711,32 @@ export default function AdminInquiries() {
                                           className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm resize-y"
                                           rows={2}
                                         />
+                                      </div>
+
+                                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+                                        {[
+                                          { label: '면적', key: 'landArea' },
+                                          { label: '용도지역', key: 'zoning' },
+                                          { label: '지목', key: 'landType' },
+                                          { label: '용적률', key: 'far' },
+                                          { label: '건폐율', key: 'bcr' },
+                                          { label: '높이제한', key: 'heightLimit' },
+                                        ].map(field => (
+                                          <div key={field.key}>
+                                            <label className="block text-[10px] font-medium text-gray-500 mb-0.5">{field.label}</label>
+                                            <input
+                                              type="text"
+                                              value={project[field.key as keyof ProjectData] || ''}
+                                              onChange={(e) => {
+                                                const newProjectsData = (inquiry.projects_data || []).map(p => 
+                                                  p.id === project.id ? { ...p, [field.key]: e.target.value } : p
+                                                );
+                                                updateProjectsData(inquiry.id, newProjectsData);
+                                              }}
+                                              className="w-full text-xs border-gray-200 rounded-md p-1.5 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
+                                            />
+                                          </div>
+                                        ))}
                                       </div>
 
                                       <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
