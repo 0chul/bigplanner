@@ -102,7 +102,7 @@ export default function SharedInquiry() {
       <Helmet>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+      <div className="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-2xl shadow-sm border border-gray-100">
         <h1 className="text-2xl font-bold mb-6">문의 내용 공유</h1>
         
         <div className="mb-8 p-6 bg-gray-50 rounded-xl">

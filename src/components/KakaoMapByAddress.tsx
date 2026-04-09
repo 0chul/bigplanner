@@ -75,13 +75,13 @@ export default function KakaoMapByAddress({ address, apiKey }: KakaoMapByAddress
 
   if (errorMsg) {
     return (
-      <div className="w-full h-64 rounded-lg overflow-hidden shadow-sm border border-gray-200 flex items-center justify-center bg-gray-50 p-4 text-center">
+      <div className="w-full h-96 rounded-lg overflow-hidden shadow-sm border border-gray-200 flex items-center justify-center bg-gray-50 p-4 text-center">
         <p className="text-sm text-red-500 font-medium">{errorMsg}</p>
       </div>
     );
   }
 
-  return <div ref={mapRef} className="w-full h-64 rounded-lg overflow-hidden shadow-sm border border-gray-200" />;
+  return <div ref={mapRef} className="w-full h-96 rounded-lg overflow-hidden shadow-sm border border-gray-200" />;
 }
 
 declare global {
