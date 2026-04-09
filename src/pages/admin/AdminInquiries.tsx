@@ -758,17 +758,32 @@ export default function AdminInquiries() {
                                           />
                                         </div>
                                         <div>
-                                          <label className="block text-xs font-medium text-gray-500 mb-1">카카오 지도 임베드 URL</label>
+                                          <label className="block text-xs font-medium text-gray-500 mb-1">카카오 지도 Timestamp</label>
                                           <input
                                             type="text"
-                                            value={project.mapUrl || ''}
+                                            value={project.mapTimestamp || ''}
                                             onChange={(e) => {
                                               const newProjectsData = (inquiry.projects_data || []).map(p => 
-                                                p.id === project.id ? { ...p, mapUrl: e.target.value } : p
+                                                p.id === project.id ? { ...p, mapTimestamp: e.target.value } : p
                                               );
                                               updateProjectsData(inquiry.id, newProjectsData);
                                             }}
-                                            placeholder="카카오 지도 임베드 iframe 소스 URL"
+                                            placeholder="예: 1775725492525"
+                                            className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
+                                          />
+                                        </div>
+                                        <div>
+                                          <label className="block text-xs font-medium text-gray-500 mb-1">카카오 지도 Key</label>
+                                          <input
+                                            type="text"
+                                            value={project.mapKey || ''}
+                                            onChange={(e) => {
+                                              const newProjectsData = (inquiry.projects_data || []).map(p => 
+                                                p.id === project.id ? { ...p, mapKey: e.target.value } : p
+                                              );
+                                              updateProjectsData(inquiry.id, newProjectsData);
+                                            }}
+                                            placeholder="예: ksds96zsm6g"
                                             className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
                                           />
                                         </div>
