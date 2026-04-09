@@ -6,7 +6,7 @@ import { supabase } from '../../supabase';
 import { MessageSquare, Clock, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
 import { formatPhoneNumber } from '../../utils/phoneUtils';
-import KakaoMap from '../../components/KakaoMap';
+import KakaoMapByAddress from '../../components/KakaoMapByAddress';
 
 interface ProjectData {
   id: string;
@@ -154,10 +154,6 @@ export default function SharedInquiry() {
                           {project.heightLimit && <p><span className="font-semibold">높이제한:</span> {project.heightLimit}</p>}
                           {project.representativeAddress && <p className="col-span-2"><span className="font-semibold">대표주소:</span> {project.representativeAddress}</p>}
                         </div>
-
-import KakaoMapByAddress from '../../components/KakaoMapByAddress';
-
-// ... (기존 코드)
 
                         {project.representativeAddress && (
                           <div className="ml-4 mt-3 w-full rounded-lg overflow-hidden shadow-sm border border-gray-200">
