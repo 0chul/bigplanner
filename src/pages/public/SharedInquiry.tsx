@@ -148,7 +148,20 @@ export default function SharedInquiry() {
                           {project.far && <p><span className="font-semibold">용적률:</span> {project.far}</p>}
                           {project.bcr && <p><span className="font-semibold">건폐율:</span> {project.bcr}</p>}
                           {project.heightLimit && <p><span className="font-semibold">높이제한:</span> {project.heightLimit}</p>}
+                          {project.representativeAddress && <p className="col-span-2"><span className="font-semibold">대표주소:</span> {project.representativeAddress}</p>}
                         </div>
+
+                        {project.mapUrl && (
+                          <div className="ml-4 mt-3 w-full h-64 rounded-lg overflow-hidden shadow-sm border border-gray-200">
+                            <iframe 
+                              src={project.mapUrl} 
+                              className="w-full h-full"
+                              title="카카오 지도"
+                              frameBorder="0"
+                              allowFullScreen
+                            />
+                          </div>
+                        )}
 
                         <div className="space-y-2 pl-4 border-l-2 border-indigo-100 ml-4 mt-4">
                           {project.addresses.map((address, idx) => (

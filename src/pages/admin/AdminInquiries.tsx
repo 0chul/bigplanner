@@ -17,6 +17,8 @@ interface ProjectData {
   far?: string;
   bcr?: string;
   heightLimit?: string;
+  representativeAddress?: string;
+  mapUrl?: string;
 }
 
 interface Inquiry {
@@ -737,6 +739,39 @@ export default function AdminInquiries() {
                                             />
                                           </div>
                                         ))}
+                                      </div>
+                                      
+                                      <div className="mb-4 space-y-2">
+                                        <div>
+                                          <label className="block text-xs font-medium text-gray-500 mb-1">대표 주소 (지도용)</label>
+                                          <input
+                                            type="text"
+                                            value={project.representativeAddress || ''}
+                                            onChange={(e) => {
+                                              const newProjectsData = (inquiry.projects_data || []).map(p => 
+                                                p.id === project.id ? { ...p, representativeAddress: e.target.value } : p
+                                              );
+                                              updateProjectsData(inquiry.id, newProjectsData);
+                                            }}
+                                            placeholder="예: 서울특별시 강남구..."
+                                            className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
+                                          />
+                                        </div>
+                                        <div>
+                                          <label className="block text-xs font-medium text-gray-500 mb-1">카카오 지도 임베드 URL</label>
+                                          <input
+                                            type="text"
+                                            value={project.mapUrl || ''}
+                                            onChange={(e) => {
+                                              const newProjectsData = (inquiry.projects_data || []).map(p => 
+                                                p.id === project.id ? { ...p, mapUrl: e.target.value } : p
+                                              );
+                                              updateProjectsData(inquiry.id, newProjectsData);
+                                            }}
+                                            placeholder="카카오 지도 임베드 iframe 소스 URL"
+                                            className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm"
+                                          />
+                                        </div>
                                       </div>
 
                                       <div className="space-y-2 pl-2 border-l-2 border-indigo-100">
