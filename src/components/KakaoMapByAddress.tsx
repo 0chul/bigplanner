@@ -11,7 +11,7 @@ export default function KakaoMapByAddress({ address, apiKey }: KakaoMapByAddress
   useEffect(() => {
     if (!address || !apiKey) return;
 
-    // 카카오 지도 스크립트 로드
+    // 카카오 지도 스크립트 로드 
     const script = document.createElement('script');
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&libraries=services&autoload=false`;
     script.async = true;
