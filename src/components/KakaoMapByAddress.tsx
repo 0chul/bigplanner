@@ -21,7 +21,9 @@ export default function KakaoMapByAddress({ address, apiKey }: KakaoMapByAddress
       window.kakao.maps.load(() => {
         const geocoder = new window.kakao.maps.services.Geocoder();
         
+        console.log("Searching address:", address);
         geocoder.addressSearch(address, (result: any, status: any) => {
+          console.log("Search status:", status, "Result:", result);
           if (status === window.kakao.maps.services.Status.OK && mapRef.current) {
             const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
             
@@ -34,6 +36,8 @@ export default function KakaoMapByAddress({ address, apiKey }: KakaoMapByAddress
               map: map,
               position: coords
             });
+          } else {
+            console.error("Kakao Map search failed or mapRef is null");
           }
         });
       });
