@@ -47,9 +47,17 @@ export default function SharedInquiry() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [expandedProjects, setExpandedProjects] = useState<Record<string, boolean>>({});
+  const [expandedAddresses, setExpandedAddresses] = useState<Record<string, boolean>>({});
 
   const toggleProject = (projectId: string) => {
     setExpandedProjects(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
+
+  const toggleAddresses = (projectId: string) => {
+    setExpandedAddresses(prev => ({
       ...prev,
       [projectId]: !prev[projectId]
     }));
@@ -165,13 +173,24 @@ export default function SharedInquiry() {
                         )}
 
                         <div className="space-y-2 pl-4 border-l-2 border-indigo-100 ml-4 mt-4">
-                          {project.addresses.map((address, idx) => (
-                            <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
-                              {address || <span className="text-gray-400 italic">주소 미입력</span>}
-                            </div>
-                          ))}
-                          {project.addresses.length === 0 && (
-                            <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                          <button
+                            onClick={() => toggleAddresses(project.id)}
+                            className="flex items-center gap-1 text-xs font-medium text-indigo-600 hover:text-indigo-800 mb-2"
+                          >
+                            {expandedAddresses[project.id] ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                            {expandedAddresses[project.id] ? '주소 목록 접기' : '주소 목록 보기'}
+                          </button>
+                          {expandedAddresses[project.id] && (
+                            <>
+                              {project.addresses.map((address, idx) => (
+                                <div key={idx} className="text-sm text-gray-700 bg-white p-2 rounded-md shadow-sm border border-gray-100">
+                                  {address || <span className="text-gray-400 italic">주소 미입력</span>}
+                                </div>
+                              ))}
+                              {project.addresses.length === 0 && (
+                                <div className="text-xs text-gray-400 italic py-1">등록된 주소가 없습니다.</div>
+                              )}
+                            </>
                           )}
                         </div>
                       </div>
