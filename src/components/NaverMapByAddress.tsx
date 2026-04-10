@@ -38,13 +38,16 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
       }
 
       // Geocoding 호출
+      console.log("Geocoding address:", address);
       window.naver.maps.Service.geocode({ query: address }, (status: any, response: any) => {
+        console.log("Geocoding status:", status, "Response:", response);
         if (status !== window.naver.maps.Service.Status.OK) {
           setErrorMsg("주소를 지도에서 찾을 수 없습니다.");
           return;
         }
 
         const result = response.v2.addresses[0];
+        console.log("Geocoding result:", result);
         const lat = parseFloat(result.y);
         const lng = parseFloat(result.x);
         
