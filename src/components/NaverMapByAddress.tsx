@@ -19,25 +19,25 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
       return;
     }
 
-    // 이미 스크립트가 로드되어 있는지 확인
-    const existingScript = document.getElementById('naver-map-script');
-    
+    // 네이버 지도 API 로드
+    const loadScript = () => {
+      const script = document.createElement('script');
+      script.id = 'naver-map-script';
+      // submodules=geocoder를 명시적으로 추가
+      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&submodules=geocoder`;
+      script.async = true;
+      script.onload = initMap;
+      script.onerror = () => setErrorMsg("네이버맵 스크립트를 불러오는데 실패했습니다.");
+      document.head.appendChild(script);
+    };
+
     const initMap = () => {
       if (!window.naver || !window.naver.maps) {
         setErrorMsg("네이버맵 API를 불러오는데 실패했습니다.");
         return;
       }
 
-      // 네이버 지도 API v3에서 geocode는 window.naver.maps.Service.geocode 대신
-      // window.naver.maps.Service.geocode를 사용하거나 
-      // submodules=geocoder를 로드한 후 window.naver.maps.Service.geocode를 사용합니다.
-      // 에러 메시지를 보니 window.naver.maps.Service가 undefined일 가능성이 있습니다.
-      
-      if (!window.naver.maps.Service) {
-         setErrorMsg("Geocoding 서비스를 사용할 수 없습니다.");
-         return;
-      }
-
+      // Geocoding 호출
       window.naver.maps.Service.geocode({ query: address }, (status: any, response: any) => {
         if (status !== window.naver.maps.Service.Status.OK) {
           setErrorMsg("주소를 지도에서 찾을 수 없습니다.");
@@ -45,39 +45,28 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
         }
 
         const result = response.v2.addresses[0];
+        const lat = parseFloat(result.y);
+        const lng = parseFloat(result.x);
         
         if (mapRef.current) {
           const map = new window.naver.maps.Map(mapRef.current, {
-            center: new window.naver.maps.LatLng(result.y, result.x),
-            zoom: 15
+            center: new window.naver.maps.LatLng(lat, lng),
+            zoom: 17
           });
           
           new window.naver.maps.Marker({
             map: map,
-            position: new window.naver.maps.LatLng(result.y, result.x)
+            position: new window.naver.maps.LatLng(lat, lng)
           });
           setErrorMsg(null);
         }
       });
     };
 
-    if (existingScript) {
-      if (window.naver && window.naver.maps) {
-        initMap();
-      } else {
-        existingScript.addEventListener('load', initMap);
-      }
+    if (window.naver && window.naver.maps) {
+      initMap();
     } else {
-      const script = document.createElement('script');
-      script.id = 'naver-map-script';
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&submodules=geocoder`;
-      script.async = true;
-      document.head.appendChild(script);
-      script.onload = initMap;
-      
-      script.onerror = () => {
-        setErrorMsg("네이버맵 스크립트를 불러오는데 실패했습니다.");
-      };
+      loadScript();
     }
 
   }, [address, clientId]);
