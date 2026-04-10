@@ -28,6 +28,16 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
         return;
       }
 
+      // 네이버 지도 API v3에서 geocode는 window.naver.maps.Service.geocode 대신
+      // window.naver.maps.Service.geocode를 사용하거나 
+      // submodules=geocoder를 로드한 후 window.naver.maps.Service.geocode를 사용합니다.
+      // 에러 메시지를 보니 window.naver.maps.Service가 undefined일 가능성이 있습니다.
+      
+      if (!window.naver.maps.Service) {
+         setErrorMsg("Geocoding 서비스를 사용할 수 없습니다.");
+         return;
+      }
+
       window.naver.maps.Service.geocode({ query: address }, (status: any, response: any) => {
         if (status !== window.naver.maps.Service.Status.OK) {
           setErrorMsg("주소를 지도에서 찾을 수 없습니다.");
@@ -35,7 +45,6 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
         }
 
         const result = response.v2.addresses[0];
-        const point = new window.naver.maps.Point(result.x, result.y);
         
         if (mapRef.current) {
           const map = new window.naver.maps.Map(mapRef.current, {
