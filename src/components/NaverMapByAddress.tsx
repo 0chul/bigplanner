@@ -61,7 +61,7 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
     } else {
       const script = document.createElement('script');
       script.id = 'naver-map-script';
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}`;
+      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&submodules=geocoder`;
       script.async = true;
       document.head.appendChild(script);
       script.onload = initMap;
