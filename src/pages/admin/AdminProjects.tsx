@@ -14,6 +14,7 @@ export default function AdminProjects() {
   // File Upload State
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
+  const [isFetchingInfo, setIsFetchingInfo] = useState(false);
   const mainImageInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
 
@@ -162,6 +163,82 @@ export default function AdminProjects() {
     }
   };
 
+  const handleFetchPropertyInfo = async () => {
+    if (!formData.location) {
+      alert("지역(위치)에 주소를 먼저 입력해주세요. (예: 경기도 용인시 수지구 풍덕천동 977)");
+      return;
+    }
+
+    setIsFetchingInfo(true);
+    const vworldKey = '25317F3E-9FD7-3AC3-AEB5-8120BAC49500';
+    const domain = window.location.hostname;
+
+    try {
+      // 1. 주소 검색 (Vworld Search API)
+      let searchUrl = `https://api.vworld.kr/req/search?service=search&request=search&version=2.0&crs=EPSG:4326&size=1&page=1&query=${encodeURIComponent(formData.location)}&type=address&category=parcel&format=json&errorformat=json&key=${vworldKey}`;
+      
+      let searchRes = await fetch(searchUrl);
+      let searchData = await searchRes.json();
+
+      // 지번 검색 실패 시 도로명 검색 시도
+      if (searchData.response?.status !== 'OK') {
+        searchUrl = `https://api.vworld.kr/req/search?service=search&request=search&version=2.0&crs=EPSG:4326&size=1&page=1&query=${encodeURIComponent(formData.location)}&type=address&category=road&format=json&errorformat=json&key=${vworldKey}`;
+        searchRes = await fetch(searchUrl);
+        searchData = await searchRes.json();
+      }
+
+      if (searchData.response?.status !== 'OK') {
+        alert("주소를 찾을 수 없습니다. 정확한 지번 또는 도로명 주소를 입력해주세요.");
+        setIsFetchingInfo(false);
+        return;
+      }
+
+      const item = searchData.response.result.items[0];
+      const x = item.point.x;
+      const y = item.point.y;
+
+      // 2. 지적도 정보 조회 (면적, 지목) - LP_PA_CBND_BUBUN
+      const cadastralUrl = `https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LP_PA_CBND_BUBUN&key=${vworldKey}&domain=${domain}&geomFilter=POINT(${x} ${y})&format=json`;
+      const cadastralRes = await fetch(cadastralUrl);
+      const cadastralData = await cadastralRes.json();
+
+      let landArea = '';
+      let jimok = '';
+
+      if (cadastralData.response?.status === 'OK' && cadastralData.response.result?.featureCollection?.features?.length > 0) {
+        const feature = cadastralData.response.result.featureCollection.features[0];
+        landArea = feature.properties.area || '';
+        jimok = feature.properties.jimok || '';
+      }
+
+      // 3. 용도지역 정보 조회 - LT_C_UQ111
+      const zoningUrl = `https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_UQ111&key=${vworldKey}&domain=${domain}&geomFilter=POINT(${x} ${y})&format=json`;
+      const zoningRes = await fetch(zoningUrl);
+      const zoningData = await zoningRes.json();
+
+      let zoningName = '';
+      if (zoningData.response?.status === 'OK' && zoningData.response.result?.featureCollection?.features?.length > 0) {
+        const feature = zoningData.response.result.featureCollection.features[0];
+        zoningName = feature.properties.mnm || '';
+      }
+
+      // Update form data
+      setFormData(prev => ({
+        ...prev,
+        land_area: landArea ? `${landArea}` : prev.land_area,
+        zoning: zoningName ? `${zoningName} ${jimok ? `(지목: ${jimok})` : ''}` : prev.zoning,
+      }));
+
+      alert(`정보를 성공적으로 불러왔습니다!\n면적: ${landArea}㎡\n용도지역: ${zoningName}\n지목: ${jimok}`);
+
+    } catch (error) {
+      console.error("Vworld API Error:", error);
+      alert("정보를 불러오는 중 오류가 발생했습니다. 브이월드 API 도메인 설정이나 일일 호출 한도를 확인해주세요.");
+    } finally {
+      setIsFetchingInfo(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -297,7 +374,17 @@ export default function AdminProjects() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">지역 (위치)</label>
-                  <input type="text" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                  <div className="flex gap-2">
+                    <input type="text" value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} placeholder="예: 경기도 용인시 수지구 풍덕천동 977" className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                    <button 
+                      type="button" 
+                      onClick={handleFetchPropertyInfo}
+                      disabled={isFetchingInfo}
+                      className="bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-indigo-700 whitespace-nowrap disabled:bg-indigo-400 transition-colors"
+                    >
+                      {isFetchingInfo ? '불러오는 중...' : '정보 자동입력'}
+                    </button>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">용도관련 원문 (Zoning)</label>

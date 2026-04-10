@@ -274,14 +274,31 @@ export default function AdminInquiries() {
     updateProjectsData(inquiryId, newProjectsData);
   };
 
+  const saveToDB = async (inquiryId: string, projectsData: ProjectData[]) => {
+    const { error } = await supabase
+      .from('inquiries')
+      .update({ projects_data: projectsData })
+      .eq('id', inquiryId);
+    if (error) {
+      console.error("Error saving projects_data:", error);
+      alert("저장에 실패했습니다.");
+    } else {
+      alert("저장되었습니다.");
+    }
+  };
+
   const handleUpdateProjectMemo = (inquiryId: string, projectId: string, newMemo: string) => {
-    const inquiry = inquiries.find(i => i.id === inquiryId);
-    if (!inquiry) return;
-    
-    const newProjectsData = (inquiry.projects_data || []).map(p => 
-      p.id === projectId ? { ...p, memo: newMemo } : p
-    );
-    updateProjectsData(inquiryId, newProjectsData);
+    setInquiries(prev => prev.map(inq => {
+      if (inq.id === inquiryId) {
+        return {
+          ...inq,
+          projects_data: (inq.projects_data || []).map(p => 
+            p.id === projectId ? { ...p, memo: newMemo } : p
+          )
+        };
+      }
+      return inq;
+    }));
   };
 
   const handleDeleteProject = (inquiryId: string, projectId: string) => {
@@ -713,6 +730,12 @@ export default function AdminInquiries() {
                                           className="w-full text-sm border-gray-200 rounded-md p-2 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm resize-y"
                                           rows={2}
                                         />
+                                        <button 
+                                          onClick={() => saveToDB(inquiry.id, inquiry.projects_data || [])}
+                                          className="mt-2 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors"
+                                        >
+                                          메모 저장
+                                        </button>
                                       </div>
 
                                       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
