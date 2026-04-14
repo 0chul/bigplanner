@@ -56,6 +56,8 @@ export default function AdminInquiries() {
   const [newMemo, setNewMemo] = useState('');
   const [editingMemoId, setEditingMemoId] = useState<string | null>(null);
   const [editingMemoContent, setEditingMemoContent] = useState('');
+  const [editingMessageId, setEditingMessageId] = useState<string | null>(null);
+  const [editingMessageContent, setEditingMessageContent] = useState('');
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [newInquiry, setNewInquiry] = useState({ name: '', email: '', phone: '', address: '', message: '' });
   const [showFailedInquiries, setShowFailedInquiries] = useState(false);
@@ -407,6 +409,21 @@ export default function AdminInquiries() {
     }
   };
 
+  const handleUpdateMessage = async (inquiryId: string) => {
+    const { error } = await supabase
+      .from('inquiries')
+      .update({ message: editingMessageContent })
+      .eq('id', inquiryId);
+      
+    if (!error) {
+      setInquiries(prev => prev.map(inq => inq.id === inquiryId ? { ...inq, message: editingMessageContent } : inq));
+      setEditingMessageId(null);
+    } else {
+      console.error("Error updating message:", error);
+      alert('내용 수정에 실패했습니다.');
+    }
+  };
+
   const handleDeleteMemo = async (inquiryId: string, memoId: string) => {
     if (!window.confirm("이 메모를 정말 삭제하시겠습니까?")) return;
     
@@ -658,13 +675,50 @@ export default function AdminInquiries() {
                     <td colSpan={6} className="px-0 py-0 bg-gray-50 border-b border-gray-200">
                       <div className="p-6 pl-24">
                         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
-                          <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                            <MessageSquare size={16} className="text-indigo-500" />
-                            상세 문의 내용
-                          </h4>
-                          <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-                            {inquiry.message}
-                          </p>
+                          <div className="flex justify-between items-center mb-4">
+                            <h4 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                              <MessageSquare size={16} className="text-indigo-500" />
+                              상세 문의 내용
+                            </h4>
+                            {editingMessageId === inquiry.id ? (
+                              <div className="flex gap-2">
+                                <button 
+                                  onClick={() => handleUpdateMessage(inquiry.id)}
+                                  className="text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 font-medium transition-colors"
+                                >
+                                  저장
+                                </button>
+                                <button 
+                                  onClick={() => setEditingMessageId(null)}
+                                  className="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-200 font-medium transition-colors"
+                                >
+                                  취소
+                                </button>
+                              </div>
+                            ) : (
+                              <button 
+                                onClick={() => {
+                                  setEditingMessageId(inquiry.id);
+                                  setEditingMessageContent(inquiry.message || '');
+                                }}
+                                className="text-xs bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-lg hover:bg-indigo-100 font-medium transition-colors"
+                              >
+                                내용 수정
+                              </button>
+                            )}
+                          </div>
+                          {editingMessageId === inquiry.id ? (
+                            <textarea
+                              value={editingMessageContent}
+                              onChange={(e) => setEditingMessageContent(e.target.value)}
+                              className="w-full text-sm border-gray-200 rounded-md p-3 focus:border-indigo-500 focus:ring-indigo-500 bg-white shadow-sm min-h-[120px]"
+                              autoFocus
+                            />
+                          ) : (
+                            <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
+                              {inquiry.message}
+                            </p>
+                          )}
                         </div>
 
                         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
