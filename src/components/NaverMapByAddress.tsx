@@ -37,17 +37,32 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
         return;
       }
 
+      const cleanAddress = address.trim();
+      if (!cleanAddress) {
+        setErrorMsg("유효하지 않은 주소입니다.");
+        return;
+      }
+
       // Geocoding 호출
-      console.log("Geocoding address:", address);
-      window.naver.maps.Service.geocode({ query: address }, (status: any, response: any) => {
-        console.log("Geocoding status:", status, "Response:", response);
+      window.naver.maps.Service.geocode({ query: cleanAddress }, (status: any, response: any) => {
         if (status !== window.naver.maps.Service.Status.OK) {
-          setErrorMsg("주소를 지도에서 찾을 수 없습니다.");
+          console.error("Naver Geocoding failed with status:", status);
+          if (status === 'UNAUTHORIZED') {
+            setErrorMsg("네이버 지도 API 인증에 실패했습니다. (도메인 등록 확인 필요)");
+          } else if (status === 'INVALID_REQUEST') {
+            setErrorMsg("잘못된 주소 요청입니다.");
+          } else {
+            setErrorMsg(`주소를 지도에서 찾을 수 없습니다. (상태: ${status})`);
+          }
+          return;
+        }
+
+        if (!response.v2.addresses || response.v2.addresses.length === 0) {
+          setErrorMsg("검색 결과가 없습니다.");
           return;
         }
 
         const result = response.v2.addresses[0];
-        console.log("Geocoding result:", result);
         const lat = parseFloat(result.y);
         const lng = parseFloat(result.x);
         
