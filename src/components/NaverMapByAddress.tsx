@@ -19,17 +19,11 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
       return;
     }
 
-    // 네이버 지도 API 로드
-    const loadScript = () => {
-      const script = document.createElement('script');
-      script.id = 'naver-map-script';
-      // submodules=geocoder를 명시적으로 추가
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&submodules=geocoder`;
-      script.async = true;
-      script.onload = initMap;
-      script.onerror = () => setErrorMsg("네이버맵 스크립트를 불러오는데 실패했습니다.");
-      document.head.appendChild(script);
-    };
+    const cleanAddress = address.trim();
+    if (!cleanAddress) {
+      setErrorMsg("유효하지 않은 주소입니다.");
+      return;
+    }
 
     const initMap = () => {
       if (!window.naver || !window.naver.maps) {
@@ -37,9 +31,9 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
         return;
       }
 
-      const cleanAddress = address.trim();
-      if (!cleanAddress) {
-        setErrorMsg("유효하지 않은 주소입니다.");
+      if (!window.naver.maps.Service) {
+        console.error("naver.maps.Service is undefined. Geocoder submodule failed to load.");
+        setErrorMsg("Geocoding 모듈이 로드되지 않았습니다. API 권한을 확인해주세요.");
         return;
       }
 
@@ -81,11 +75,32 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
       });
     };
 
-    if (window.naver && window.naver.maps) {
+    const scriptId = 'naver-map-script';
+    const existingScript = document.getElementById(scriptId);
+
+    if (window.naver && window.naver.maps && window.naver.maps.Service) {
+      // 이미 로드 완료된 상태
       initMap();
+    } else if (existingScript) {
+      // 다른 컴포넌트에 의해 스크립트가 로드 중인 상태
+      existingScript.addEventListener('load', initMap);
+      existingScript.addEventListener('error', () => setErrorMsg("네이버맵 스크립트를 불러오는데 실패했습니다."));
     } else {
-      loadScript();
+      // 스크립트 최초 로드
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&submodules=geocoder`;
+      script.async = true;
+      script.onload = initMap;
+      script.onerror = () => setErrorMsg("네이버맵 스크립트를 불러오는데 실패했습니다.");
+      document.head.appendChild(script);
     }
+
+    return () => {
+      if (existingScript) {
+        existingScript.removeEventListener('load', initMap);
+      }
+    };
 
   }, [address, clientId]);
 
