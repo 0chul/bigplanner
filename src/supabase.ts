@@ -7,12 +7,4 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     persistSession: true,
   },
-  global: {
-    // 모든 요청에 대해 캐시를 무조건 무시하도록 헤더를 강제합니다.
-    headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Pragma': 'no-cache',
-      'Expires': '0',
-    },
-  },
 });
