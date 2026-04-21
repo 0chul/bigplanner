@@ -6,7 +6,7 @@ import { supabase } from '../../supabase';
 import { MessageSquare, Clock, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
 import { formatPhoneNumber } from '../../utils/phoneUtils';
-import NaverMapByAddress from '../../components/NaverMapByAddress';
+import KakaoMapByAddress from '../../components/KakaoMapByAddress';
 
 interface ProjectData {
   id: string;
@@ -165,9 +165,9 @@ export default function SharedInquiry() {
 
                         {project.representativeAddress && (
                           <div className="ml-4 mt-3 w-full rounded-lg overflow-hidden shadow-sm border border-gray-200">
-                            <NaverMapByAddress 
+                            <KakaoMapByAddress 
                               address={project.representativeAddress}
-                              clientId={import.meta.env.VITE_NAVER_MAP_CLIENT_ID || ''}
+                              apiKey={import.meta.env.VITE_KAKAO_MAP_JS_KEY || ''}
                             />
                           </div>
                         )}
