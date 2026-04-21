@@ -88,6 +88,26 @@ export default function KakaoMapByAddress({ address, apiKey }: KakaoMapByAddress
     }
   }, [address, apiKey]);
 
+  const openNaverMap = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const encodedQuery = encodeURIComponent(address.trim());
+    const userAgent = navigator.userAgent;
+    const isAndroid = /Android/i.test(userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+
+    if (isAndroid) {
+      window.location.href = `intent://search?query=${encodedQuery}&appname=bigplanner.co.kr#Intent;scheme=nmap;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.nhn.android.nmap;end`;
+    } else if (isIOS) {
+      window.location.href = `nmap://search?query=${encodedQuery}&appname=bigplanner.co.kr`;
+      setTimeout(() => {
+        // If the app is not installed, fallback to web after 1.5s
+        window.location.href = `https://map.naver.com/p/search/${encodedQuery}`;
+      }, 1500);
+    } else {
+      window.open(`https://map.naver.com/p/search/${encodedQuery}`, '_blank');
+    }
+  };
+
   if (errorMsg) {
     return (
       <div className="w-full rounded-xl overflow-hidden shadow-sm border border-gray-200 bg-white flex flex-col">
@@ -97,15 +117,13 @@ export default function KakaoMapByAddress({ address, apiKey }: KakaoMapByAddress
             </div>
             <h3 className="text-sm font-bold text-gray-900 mb-2">{address}</h3>
             <p className="text-xs text-gray-500 mb-6 max-w-xs">{errorMsg}</p>
-            <a 
-              href={`https://map.kakao.com/link/search/${encodeURIComponent(address.trim())}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex justify-center items-center gap-2 px-5 py-2.5 bg-[#FEE500] hover:bg-[#FADA0A] text-[#000000] text-sm font-bold rounded-lg transition-colors shadow-sm whitespace-nowrap"
+            <button 
+              onClick={openNaverMap}
+              className="inline-flex justify-center items-center gap-2 px-5 py-2.5 bg-[#03C75A] hover:bg-[#02b351] text-white text-sm font-bold rounded-lg transition-colors shadow-sm whitespace-nowrap"
             >
-              카카오맵으로 보기
+              네이버 지도로 보기
               <ExternalLink size={16} />
-            </a>
+            </button>
         </div>
       </div>
     );
@@ -116,23 +134,21 @@ export default function KakaoMapByAddress({ address, apiKey }: KakaoMapByAddress
       <div ref={mapRef} className="w-full h-[300px] md:h-96" />
       <div className="p-4 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-left">
-          <div className="p-2 bg-yellow-50 rounded-full">
-            <MapPin size={16} className="text-[#E5C500]" />
+          <div className="p-2 bg-indigo-50 rounded-full">
+            <MapPin size={16} className="text-indigo-500" />
           </div>
           <div>
             <p className="text-sm font-bold text-gray-900">{address}</p>
-            <p className="text-xs text-gray-500 mt-0.5">카카오맵에서 경로와 상세 정보를 확인하세요.</p>
+            <p className="text-xs text-gray-500 mt-0.5">네이버 지도로 열면 더 정확한 위치를 볼 수 있습니다.</p>
           </div>
         </div>
-        <a 
-          href={`https://map.kakao.com/link/search/${encodeURIComponent(address.trim())}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 bg-[#FEE500] hover:bg-[#FADA0A] text-[#000000] text-sm font-bold rounded-lg transition-colors shadow-sm whitespace-nowrap"
+        <button 
+          onClick={openNaverMap}
+          className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 bg-[#03C75A] hover:bg-[#02b351] text-white text-sm font-bold rounded-lg transition-colors shadow-sm whitespace-nowrap"
         >
-          카카오맵으로 보기
+          네이버 지도로 보기
           <ExternalLink size={16} />
-        </a>
+        </button>
       </div>
     </div>
   );
