@@ -108,6 +108,26 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
 
   // API의 CORS(401) 또는 500 에러 발생 시 부드러운 우회(Fallback) UI 표출
   if (isFallback) {
+    const openNaverMap = (e: React.MouseEvent) => {
+      e.preventDefault();
+      const encodedQuery = encodeURIComponent(address.trim());
+      const userAgent = navigator.userAgent;
+      const isAndroid = /Android/i.test(userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+
+      if (isAndroid) {
+        window.location.href = `intent://search?query=${encodedQuery}&appname=bigplanner.co.kr#Intent;scheme=nmap;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.nhn.android.nmap;end`;
+      } else if (isIOS) {
+        window.location.href = `nmap://search?query=${encodedQuery}&appname=bigplanner.co.kr`;
+        setTimeout(() => {
+          // If the app is not installed, fallback to web after 1.5s
+          window.location.href = `https://map.naver.com/p/search/${encodedQuery}`;
+        }, 1500);
+      } else {
+        window.open(`https://map.naver.com/p/search/${encodedQuery}`, '_blank');
+      }
+    };
+
     return (
       <div className="w-full h-[300px] md:h-96 rounded-xl overflow-hidden shadow-sm border border-gray-200 flex flex-col items-center justify-center bg-gray-50 p-6 text-center">
         <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-4">
@@ -117,15 +137,13 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
         <p className="text-xs text-gray-500 mb-6 max-w-xs">
           현재 지도 API 환경 설정에 의해 미리보기가 일시적으로 제한되었습니다.
         </p>
-        <a 
-          href={`https://map.naver.com/v5/search/${encodeURIComponent(address.trim())}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button 
+          onClick={openNaverMap}
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white text-sm font-bold rounded-lg transition-colors shadow-sm"
         >
           네이버 지도로 보기
           <ExternalLink size={16} />
-        </a>
+        </button>
       </div>
     );
   }
