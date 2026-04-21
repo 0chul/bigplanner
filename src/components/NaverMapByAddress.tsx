@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { MapPin, ExternalLink } from 'lucide-react';
 
 interface NaverMapByAddressProps {
   address: string;
@@ -8,6 +9,7 @@ interface NaverMapByAddressProps {
 export default function NaverMapByAddress({ address, clientId }: NaverMapByAddressProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isFallback, setIsFallback] = useState(false);
 
   useEffect(() => {
     if (!address) {
@@ -15,7 +17,7 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
       return;
     }
     if (!clientId) {
-      setErrorMsg("네이버맵 Client ID가 설정되지 않았습니다.");
+      setIsFallback(true);
       return;
     }
 
@@ -27,32 +29,25 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
 
     const initMap = () => {
       if (!window.naver || !window.naver.maps) {
-        setErrorMsg("네이버맵 API를 불러오는데 실패했습니다.");
+        setIsFallback(true);
         return;
       }
 
       if (!window.naver.maps.Service) {
-        console.error("naver.maps.Service is undefined. Geocoder submodule failed to load.");
-        setErrorMsg("Geocoding 모듈이 로드되지 않았습니다. API 권한을 확인해주세요.");
+        setIsFallback(true);
         return;
       }
 
-      // Geocoding 호출
+      // Geocoding 호출 (query 속성 사용)
       window.naver.maps.Service.geocode({ query: cleanAddress }, (status: any, response: any) => {
         if (status !== window.naver.maps.Service.Status.OK) {
           console.error("Naver Geocoding failed with status:", status);
-          if (status === 'UNAUTHORIZED') {
-            setErrorMsg("네이버 지도 API 인증에 실패했습니다. (도메인 등록 확인 필요)");
-          } else if (status === 'INVALID_REQUEST') {
-            setErrorMsg("잘못된 주소 요청입니다.");
-          } else {
-            setErrorMsg(`주소를 지도에서 찾을 수 없습니다. (상태: ${status})`);
-          }
+          setIsFallback(true);
           return;
         }
 
         if (!response.v2.addresses || response.v2.addresses.length === 0) {
-          setErrorMsg("검색 결과가 없습니다.");
+          setErrorMsg("검색된 주소의 좌표가 없습니다.");
           return;
         }
 
@@ -71,6 +66,7 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
             position: new window.naver.maps.LatLng(lat, lng)
           });
           setErrorMsg(null);
+          setIsFallback(false);
         }
       });
     };
@@ -79,20 +75,18 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
     const existingScript = document.getElementById(scriptId);
 
     if (window.naver && window.naver.maps && window.naver.maps.Service) {
-      // 이미 로드 완료된 상태
       initMap();
     } else if (existingScript) {
-      // 다른 컴포넌트에 의해 스크립트가 로드 중인 상태
       existingScript.addEventListener('load', initMap);
-      existingScript.addEventListener('error', () => setErrorMsg("네이버맵 스크립트를 불러오는데 실패했습니다."));
+      existingScript.addEventListener('error', () => setIsFallback(true));
     } else {
-      // 스크립트 최초 로드
       const script = document.createElement('script');
       script.id = scriptId;
+      // 최신 API 호출 규격에 맞춰 &submodules=geocoder 파라미터 유지
       script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&submodules=geocoder`;
       script.async = true;
       script.onload = initMap;
-      script.onerror = () => setErrorMsg("네이버맵 스크립트를 불러오는데 실패했습니다.");
+      script.onerror = () => setIsFallback(true);
       document.head.appendChild(script);
     }
 
@@ -104,15 +98,39 @@ export default function NaverMapByAddress({ address, clientId }: NaverMapByAddre
 
   }, [address, clientId]);
 
-  if (errorMsg) {
+  if (errorMsg && !isFallback) {
     return (
-      <div className="w-full h-96 rounded-lg overflow-hidden shadow-sm border border-gray-200 flex items-center justify-center bg-gray-50 p-4 text-center">
+      <div className="w-full h-[300px] md:h-96 rounded-xl overflow-hidden shadow-sm border border-gray-200 flex items-center justify-center bg-gray-50 p-4 text-center">
         <p className="text-sm text-red-500 font-medium">{errorMsg}</p>
       </div>
     );
   }
 
-  return <div ref={mapRef} className="w-full h-96 rounded-lg overflow-hidden shadow-sm border border-gray-200" />;
+  // API의 CORS(401) 또는 500 에러 발생 시 부드러운 우회(Fallback) UI 표출
+  if (isFallback) {
+    return (
+      <div className="w-full h-[300px] md:h-96 rounded-xl overflow-hidden shadow-sm border border-gray-200 flex flex-col items-center justify-center bg-gray-50 p-6 text-center">
+        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-4">
+          <MapPin size={24} className="text-indigo-500" />
+        </div>
+        <h3 className="text-sm font-bold text-gray-900 mb-2">{address}</h3>
+        <p className="text-xs text-gray-500 mb-6 max-w-xs">
+          현재 지도 API 환경 설정에 의해 미리보기가 일시적으로 제한되었습니다.
+        </p>
+        <a 
+          href={`https://map.naver.com/v5/search/${encodeURIComponent(address.trim())}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white text-sm font-bold rounded-lg transition-colors shadow-sm"
+        >
+          네이버 지도로 보기
+          <ExternalLink size={16} />
+        </a>
+      </div>
+    );
+  }
+
+  return <div ref={mapRef} className="w-full h-[300px] md:h-96 rounded-xl overflow-hidden shadow-sm border border-gray-200" />;
 }
 
 declare global {
