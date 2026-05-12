@@ -28,6 +28,7 @@ export default function Projects() {
         const { data, error } = await supabase
           .from('projects')
           .select('id, title, category, image')
+          .neq('category', '인테리어')
           .order('created_at', { ascending: false })
           .limit(4);
           

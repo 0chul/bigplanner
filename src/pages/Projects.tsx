@@ -53,7 +53,8 @@ export default function ProjectsPage() {
       try {
         const { data, error } = await supabase
           .from('projects')
-          .select('*');
+          .select('*')
+          .neq('category', '인테리어');
           
         if (error) throw error;
         // Shuffle the array randomly

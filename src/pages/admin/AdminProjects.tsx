@@ -34,6 +34,7 @@ export default function AdminProjects() {
       const { data, error } = await supabase
         .from('projects')
         .select('*')
+        .neq('category', '인테리어')
         .order('created_at', { ascending: false });
         
       if (error) {
