@@ -311,6 +311,29 @@ export default function AdminInterior() {
               </div>
 
               <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">갤러리 이미지 (선택)</label>
+                <div className="space-y-2">
+                  <textarea value={formData.gallery} onChange={e => setFormData({...formData, gallery: e.target.value})} rows={3} placeholder="https://...&#10;https://..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    multiple
+                    className="hidden" 
+                    ref={galleryInputRef}
+                    onChange={handleGalleryUpload}
+                  />
+                  <button 
+                    type="button"
+                    onClick={() => galleryInputRef.current?.click()}
+                    disabled={uploadingGallery}
+                    className="flex items-center gap-2 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors"
+                  >
+                    {uploadingGallery ? '업로드 중...' : <><ImageIcon size={16} /> 여러 파일 업로드</>}
+                  </button>
+                </div>
+              </div>
+
+              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">프로젝트 개요</label>
                 <textarea value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
               </div>
