@@ -189,40 +189,100 @@ export default function AdminLeads() {
     setConfirmModal({
       isOpen: true,
       title: '문의로 이동',
-      message: '이 리드를 고객 문의 관리로 이동하시겠습니까?',
+      message: '이 리드를 고객 문의 관리로 이동하시겠습니까? (작성된 타임라인 메모도 함께 이동됩니다)',
       onConfirm: async () => {
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
         
-        // 1. inquiries 테이블에 추가
-        const { error: insertError } = await supabase
-          .from('inquiries')
-          .insert([{
-            name: lead.name || '이름 없음',
-            email: lead.email || '',
-            phone: lead.phone || '',
-            address: '',
-            message: `[리드 이동] 소스: ${lead.source || '알 수 없음'}`,
-            status: 'new',
-            created_at: new Date().toISOString()
-          }]);
+        try {
+          // 0. 기존 리드 메모 가져오기 
+          // (db 직접 조회 + 로컬 캐시 전부 사용)
+          let dbMemos: any[] = [];
+          const { data: fetchMemos, error: fetchMemosError } = await supabase
+            .from('lead_memos')
+            .select('*')
+            .eq('lead_id', lead.id);
 
-        if (insertError) {
-          console.error('Error moving lead:', insertError);
-          setErrorMsg(`이동 실패 (inquiries 추가): ${insertError.message || '알 수 없는 오류'}`);
-          return;
-        }
+          if (fetchMemosError) {
+             console.error("Error fetching lead memos before move:", fetchMemosError);
+          } else if (fetchMemos) {
+             dbMemos = fetchMemos;
+          }
+          
+          const localMemos = memos[lead.id] || [];
+          const allMemos = [...dbMemos, ...localMemos];
+          // 중복 필터링
+          const uniqueMemosMap = new Map();
+          allMemos.forEach(m => { if (m?.id) uniqueMemosMap.set(m.id, m); });
+          const memosToTransfer = Array.from(uniqueMemosMap.values());
 
-        // 2. leads 테이블에서 삭제
-        const { error: deleteError } = await supabase
-          .from('leads')
-          .delete()
-          .eq('id', lead.id);
+          // 1. inquiries 테이블에 명시적인 ID를 생성하여 추가
+          const generateUUID = () => {
+            if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+              return crypto.randomUUID();
+            }
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              const r = Math.random() * 16 | 0, v = c === 'x' ? r : ((r & 0x3) | 0x8);
+              return v.toString(16);
+            });
+          };
+          const newInquiryId = generateUUID();
 
-        if (deleteError) {
-          console.error('Error deleting lead after move:', deleteError);
-          setErrorMsg(`이동 실패 (leads 삭제): ${deleteError.message || '알 수 없는 오류'}`);
-        } else {
-          fetchLeads();
+          const { error: insertError } = await supabase
+            .from('inquiries')
+            .insert([{
+              id: newInquiryId,
+              name: lead.name || '이름 없음',
+              email: lead.email || '',
+              phone: lead.phone || '',
+              address: '',
+              message: `[META 리드 폼 접수에서 이동됨]\n\n리드 소스: ${lead.source || '알 수 없음'}`,
+              status: 'new',
+              created_at: new Date().toISOString()
+            }]);
+
+          if (insertError) {
+            console.error('Error moving lead:', insertError);
+            setErrorMsg(`이동 실패 (inquiries 추가): ${insertError.message || '알 수 없는 오류'}`);
+            return;
+          }
+
+          // 1.5. 타임라인 메모 데이터(inquiry_memos) 복사
+          if (memosToTransfer.length > 0) {
+            const mappedMemos = memosToTransfer.map((memo: any) => ({
+              inquiry_id: newInquiryId,
+              content: memo.content,
+              // created_at을 명시적으로 넣지만, 실패할 가능성을 대비해 제외하고 넘기거나 원본 유지
+              created_at: memo.created_at || new Date().toISOString()
+            }));
+
+            // 혹시 순서가 꼬일 수 있으니 created_at으로 오름차순 삽입 시도 (DB 정렬을 위해)
+            mappedMemos.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+
+            const { error: insertMemosError } = await supabase
+              .from('inquiry_memos')
+              .insert(mappedMemos);
+              
+            if (insertMemosError) {
+              console.error("Error copying memos:", insertMemosError);
+              alert(`문의 내역으로 이동되었으나, 타임라인 메모를 옮기는 중 문제가 발생했습니다: ${insertMemosError.message}`);
+            }
+          }
+
+          // 2. leads 테이블에서 삭제 (리드 이동 시)
+          const { error: deleteError } = await supabase
+            .from('leads')
+            .delete()
+            .eq('id', lead.id);
+
+          if (deleteError) {
+            console.error('Error deleting lead after move:', deleteError);
+            setErrorMsg(`이동 실패 (leads 삭제): ${deleteError.message || '알 수 없는 오류'}`);
+          } else {
+            fetchLeads();
+          }
+        } catch (e: any) {
+             console.error("Unexpected error moving lead:", e);
+             setErrorMsg(`처리 중 오류 발생: ${e.message}`);
         }
       }
     });
