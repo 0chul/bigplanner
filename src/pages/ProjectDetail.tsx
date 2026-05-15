@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
@@ -29,6 +29,11 @@ export default function ProjectDetail() {
   const [loading, setLoading] = useState(true);
   const { language } = useLanguage();
 
+  // For gallery lazy pagination
+  const [galleryPage, setGalleryPage] = useState(1);
+  const GALLERY_PAGE_SIZE = 6;
+  const loadMoreGalleryRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const fetchAllProjects = async () => {
       setLoading(true);
@@ -45,6 +50,7 @@ export default function ProjectDetail() {
           setAllProjects(allProjectsData as Project[]);
           const foundProject = (allProjectsData as Project[]).find(p => generateSlug(p.title) === slug);
           setProject(foundProject || null);
+          setGalleryPage(1); // reset gallery page
         }
       } catch (error) {
         console.error("Error fetching project details:", error);
@@ -55,6 +61,24 @@ export default function ProjectDetail() {
 
     fetchAllProjects();
   }, [slug]);
+
+  useEffect(() => {
+    if (!project?.gallery || project.gallery.length === 0) return;
+    
+    const maxDisplayed = galleryPage * GALLERY_PAGE_SIZE;
+    if (maxDisplayed >= project.gallery.length) return; // No more gallery items
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setGalleryPage(prev => prev + 1);
+      }
+    }, { rootMargin: '100px', threshold: 0.1 });
+
+    if (loadMoreGalleryRef.current) {
+      observer.observe(loadMoreGalleryRef.current);
+    }
+    return () => observer.disconnect();
+  }, [galleryPage, project]);
 
   if (loading) {
     return (
@@ -86,6 +110,8 @@ export default function ProjectDetail() {
     const pyeong = (num * 0.3025).toFixed(1);
     return `${m2} ㎡ (${pyeong} ${language === 'ko' ? '평' : 'pyeong'})`;
   };
+
+  const displayedGallery = project?.gallery ? project.gallery.slice(0, galleryPage * GALLERY_PAGE_SIZE) : [];
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -297,26 +323,27 @@ export default function ProjectDetail() {
               <div className="w-12 h-1 bg-indigo-600 mt-4 rounded-full"></div>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {project.gallery.map((img, idx) => (
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
+              {displayedGallery.map((img, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className={`rounded-2xl overflow-hidden shadow-sm group ${idx % 3 === 0 ? 'md:col-span-2 aspect-[21/9]' : 'aspect-[4/3]'}`}
+                  viewport={{ once: true, margin: "50px" }}
+                  transition={{ duration: 0.5, delay: (idx % GALLERY_PAGE_SIZE) * 0.1 }}
+                  className="rounded-2xl overflow-hidden shadow-sm group break-inside-avoid relative"
                 >
                   <img 
                     src={img} 
                     alt={`${project.title} gallery ${idx + 1}`} 
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
                 </motion.div>
               ))}
             </div>
+            <div ref={loadMoreGalleryRef} className="h-8"></div>
           </div>
         </div>
       )}

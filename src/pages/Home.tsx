@@ -6,6 +6,7 @@ import Philosophy from '../components/Philosophy';
 import CoreValues from '../components/CoreValues';
 import Services from '../components/Services';
 import Projects from '../components/Projects';
+import InteriorSection from '../components/InteriorSection';
 import ContactCTA from '../components/ContactCTA';
 import Footer from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -52,6 +53,7 @@ export default function Home() {
         <CoreValues />
         <Services />
         <Projects />
+        <InteriorSection />
         <ContactCTA />
       </main>
       <Footer />
