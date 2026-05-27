@@ -27,23 +27,23 @@ export default function AdminProjects() {
     scale: '', far: '', bcr: '', notes: ''
   });
 
+  const fetchProjects = async () => {
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .neq('category', '인테리어')
+      .order('created_at', { ascending: false });
+      
+    if (error) {
+      console.error("Error fetching projects:", error);
+    } else {
+      setProjects(data as Project[]);
+    }
+    setFetching(false);
+  };
+
   useEffect(() => {
     if (!isAdmin) return;
-
-    const fetchProjects = async () => {
-      const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .neq('category', '인테리어')
-        .order('created_at', { ascending: false });
-        
-      if (error) {
-        console.error("Error fetching projects:", error);
-      } else {
-        setProjects(data as Project[]);
-      }
-      setFetching(false);
-    };
 
     fetchProjects();
 
@@ -279,6 +279,7 @@ export default function AdminProjects() {
           .insert([projectData]);
         if (error) throw error;
       }
+      await fetchProjects();
       setIsModalOpen(false);
     } catch (error) {
       console.error("Error saving project:", error);
@@ -294,6 +295,7 @@ export default function AdminProjects() {
           .delete()
           .eq('id', id);
         if (error) throw error;
+        await fetchProjects();
       } catch (error) {
         console.error("Error deleting project:", error);
         alert("삭제에 실패했습니다.");
