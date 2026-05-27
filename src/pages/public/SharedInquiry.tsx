@@ -82,6 +82,13 @@ export default function SharedInquiry() {
 
       setInquiry(inqData);
 
+      // 기본적으로 첫 번째 프로젝트 카드는 열어두도록 설정
+      if (inqData.projects_data && inqData.projects_data.length > 0) {
+        setExpandedProjects({
+          [inqData.projects_data[0].id]: true
+        });
+      }
+
       // 2. 메모 가져오기
       const { data: memoData } = await supabase
         .from('inquiry_memos')
