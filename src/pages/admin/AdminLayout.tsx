@@ -1,7 +1,7 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut, Menu, X, Handshake } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../../supabase';
 
 export default function AdminLayout() {
@@ -18,6 +18,8 @@ export default function AdminLayout() {
     }
   }, []);
 
+  const prevNewCount = useRef<number | null>(null);
+
   useEffect(() => {
     if (!isAdmin) return;
     const fetchData = async () => {
@@ -26,9 +28,8 @@ export default function AdminLayout() {
       
       // Check for new inquiries
       const newInquiries = inqData?.filter(i => i.status === 'new') || [];
-      const prevNewInquiries = inquiries.filter(i => i.status === 'new');
       
-      if (newInquiries.length > prevNewInquiries.length) {
+      if (prevNewCount.current !== null && newInquiries.length > prevNewCount.current) {
         if ('Notification' in window && Notification.permission === 'granted') {
           new Notification('새로운 문의가 접수되었습니다!', {
             body: '관리자 페이지에서 확인해주세요.',
@@ -37,6 +38,7 @@ export default function AdminLayout() {
           alert('새로운 문의가 접수되었습니다!');
         }
       }
+      prevNewCount.current = newInquiries.length;
 
       setInquiries(inqData || []);
       setLeads(leadData || []);
@@ -44,7 +46,7 @@ export default function AdminLayout() {
     fetchData();
     const channel = supabase.channel('admin_nav').on('postgres_changes', { event: '*', schema: 'public' }, fetchData).subscribe();
     return () => { supabase.removeChannel(channel); };
-  }, [isAdmin, inquiries]);
+  }, [isAdmin]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center bg-gray-50">Loading...</div>;
