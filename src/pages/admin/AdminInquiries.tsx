@@ -63,6 +63,19 @@ export default function AdminInquiries() {
   const [showFailedInquiries, setShowFailedInquiries] = useState(false);
   const [sortConfig, setSortConfig] = useState<{ key: keyof Inquiry | null; direction: 'asc' | 'desc' }>({ key: 'created_at', direction: 'desc' });
   const [expandedProjectIds, setExpandedProjectIds] = useState<Record<string, boolean>>({});
+
+  // Auto-expand the first project of the first inquiry (if any) when inquiries load
+  useEffect(() => {
+    if (inquiries.length > 0 && Object.keys(expandedProjectIds).length === 0) {
+      const firstInquiryWithProject = inquiries.find(inq => inq.projects_data && inq.projects_data.length > 0);
+      if (firstInquiryWithProject && firstInquiryWithProject.projects_data) {
+        setExpandedProjectIds({
+          [firstInquiryWithProject.projects_data[0].id]: true
+        });
+      }
+    }
+  }, [inquiries]);
+
   const [expandedTimelineIds, setExpandedTimelineIds] = useState<Record<string, boolean>>({});
 
   const toggleProjectExpand = (projectId: string) => {
@@ -1064,23 +1077,33 @@ export default function AdminInquiries() {
           name={selectedSMS.name} 
           phone={selectedSMS.phone} 
           onClose={async (success, errorMessage) => {
-            if (success) {
-              const { error } = await supabase
-                .from('inquiries')
-                .update({ sms_status: 'success', sms_error: null })
-                .eq('id', selectedSMS.id);
-              if (error) console.error('Error updating sms status:', error);
-              else {
-                setInquiries(prev => prev.map(inq => inq.id === selectedSMS.id ? { ...inq, sms_status: 'success', sms_error: null } : inq));
-              }
+            const newStatus = success ? 'success' : 'failure';
+            const errorVal = success ? null : errorMessage;
+
+            const { error } = await supabase
+              .from('inquiries')
+              .update({ sms_status: newStatus, sms_error: errorVal })
+              .eq('id', selectedSMS.id);
+
+            if (error) {
+              console.error('Error updating sms status:', error);
             } else {
-              const { error } = await supabase
-                .from('inquiries')
-                .update({ sms_status: 'failure', sms_error: errorMessage })
-                .eq('id', selectedSMS.id);
-              if (error) console.error('Error updating sms status:', error);
-              else {
-                setInquiries(prev => prev.map(inq => inq.id === selectedSMS.id ? { ...inq, sms_status: 'failure', sms_error: errorMessage } : inq));
+              setInquiries(prev => prev.map(inq => inq.id === selectedSMS.id ? { ...inq, sms_status: newStatus, sms_error: errorVal } : inq));
+
+              // META 리드(leads) 테이블에도 기 발송 처리된 상태로 연동 처리 (동일한 휴대폰 번호 매칭)
+              try {
+                const cleanedPhone = selectedSMS.phone.replace(/\D/g, '');
+                const formattedPhone = formatPhoneNumber(selectedSMS.phone);
+                
+                await supabase
+                  .from('leads')
+                  .update({
+                    sms_status: newStatus,
+                    sms_error: errorVal
+                  })
+                  .or(`phone.eq."${selectedSMS.phone}",phone.eq."${cleanedPhone}",phone.eq."${formattedPhone}"`);
+              } catch (leadError) {
+                console.error('Error updating matching leads SMS status:', leadError);
               }
             }
             setSelectedSMS(null);

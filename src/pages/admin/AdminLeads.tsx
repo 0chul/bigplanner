@@ -833,6 +833,22 @@ export default function AdminLeads() {
                   ? { ...lead, sms_status: newStatus, sms_error: errorMessage || undefined } 
                   : lead
               ));
+
+              // 3. 고객 문의 관리(inquiries) 테이블에도 기 발송 처리된 상태로 연동 처리 (동일한 휴대폰 번호 매칭)
+              try {
+                const cleanedPhone = selectedSMS.phone.replace(/\D/g, '');
+                const formattedPhone = formatPhoneNumber(selectedSMS.phone);
+                
+                await supabase
+                  .from('inquiries')
+                  .update({
+                    sms_status: newStatus,
+                    sms_error: errorMessage || null
+                  })
+                  .or(`phone.eq."${selectedSMS.phone}",phone.eq."${cleanedPhone}",phone.eq."${formattedPhone}"`);
+              } catch (inqError) {
+                console.error('Error updating matching inquiries SMS status:', inqError);
+              }
             }
             setSelectedSMS(null);
           }} 

@@ -314,8 +314,15 @@ export default function AdminInterior() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">갤러리 이미지 (선택)</label>
-                <div className="space-y-2">
-                  <textarea value={formData.gallery} onChange={e => setFormData({...formData, gallery: e.target.value})} rows={3} placeholder="https://...&#10;https://..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
+                <div className="space-y-4">
+                  <div className="text-xs text-gray-500 mb-2">
+                    매거진 형식으로 사진과 함께 소제목, 내용을 입력할 수 있습니다. 각 항목은 <b>[이미지URL] | [소제목] | [내용]</b> 형식으로 입력해주세요.<br/>
+                    예시:<br/>
+                    https://example.com/img1.jpg | 거실 디자인 | 자연광이 들어오는 따뜻한 분위기<br/>
+                    https://example.com/img2.jpg<br/>
+                    https://example.com/img3.jpg | | 텍스트만 있는 경우
+                  </div>
+                  <textarea value={formData.gallery} onChange={e => setFormData({...formData, gallery: e.target.value})} rows={5} placeholder="https://... | 소제목 | 내용&#10;https://..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
                   <input 
                     type="file" 
                     accept="image/*" 

@@ -28,6 +28,8 @@ export default function InteriorPage() {
   const { language } = useLanguage();
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
+
   const fetchProjects = async (pageIndex: number, resetList = false) => {
     try {
       if (pageIndex === 0) setLoading(true);
@@ -36,31 +38,38 @@ export default function InteriorPage() {
       const start = pageIndex * PAGE_SIZE;
       const end = start + PAGE_SIZE - 1;
 
-      let query = supabase
-        .from('projects')
-        .select('*')
-        .eq('category', '인테리어')
-        .order('created_at', { ascending: false });
+      if (pageIndex === 0 || resetList) {
+        let query = supabase
+          .from('projects')
+          .select('*')
+          .eq('category', '인테리어')
+          .order('created_at', { ascending: false });
 
-      if (activeSubcategory !== 'All') {
-        query = query.eq('subcategory', activeSubcategory);
-      }
-
-      const { data, error } = await query.range(start, end);
-        
-      if (error) throw error;
-      
-      if (data) {
-        if (pageIndex === 0 || resetList) {
-          setProjects(data as Project[]);
-        } else {
-          setProjects(prev => {
-            const newProjects = data as Project[];
-            const uniqueProjects = newProjects.filter(np => !prev.some(p => p.id === np.id));
-            return [...prev, ...uniqueProjects];
-          });
+        if (activeSubcategory !== 'All') {
+          query = query.eq('subcategory', activeSubcategory);
         }
-        setHasMore(data.length === PAGE_SIZE);
+
+        const { data, error } = await query;
+          
+        if (error) throw error;
+        
+        if (data) {
+          // Randomize the order of projects across all pages for the magazine look
+          const randomizedData = [...data].sort(() => Math.random() - 0.5);
+          setAllProjects(randomizedData as Project[]);
+          
+          const paginatedData = randomizedData.slice(start, end + 1);
+          setProjects(paginatedData as Project[]);
+          setHasMore(paginatedData.length === PAGE_SIZE && end < data.length - 1);
+        }
+      } else {
+        const paginatedData = allProjects.slice(start, end + 1);
+        setProjects(prev => {
+          const newProjects = paginatedData as Project[];
+          const uniqueProjects = newProjects.filter(np => !prev.some(p => p.id === np.id));
+          return [...prev, ...uniqueProjects];
+        });
+        setHasMore(paginatedData.length === PAGE_SIZE && end < allProjects.length - 1);
       }
     } catch (error) {
       console.error("Error fetching interior projects:", error);

@@ -312,36 +312,53 @@ export default function ProjectDetail() {
       {/* Gallery Section */}
       {project.gallery && project.gallery.length > 0 && (
         <div className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-12"
+              className="mb-12 text-center"
             >
-              <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Project Gallery</h2>
-              <div className="w-12 h-1 bg-indigo-600 mt-4 rounded-full"></div>
+              <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Project Details</h2>
+              <div className="w-12 h-1 bg-indigo-600 mt-4 rounded-full mx-auto"></div>
             </motion.div>
             
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
-              {displayedGallery.map((img, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "50px" }}
-                  transition={{ duration: 0.5, delay: (idx % GALLERY_PAGE_SIZE) * 0.1 }}
-                  className="rounded-2xl overflow-hidden shadow-sm group break-inside-avoid relative"
-                >
-                  <img 
-                    src={img} 
-                    alt={`${project.title} gallery ${idx + 1}`} 
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                </motion.div>
-              ))}
+            <div className="space-y-16 md:space-y-24">
+              {displayedGallery.map((item, idx) => {
+                const parts = item.split('|').map(s => s.trim());
+                const imgUrl = parts[0];
+                const subtitle = parts.length > 1 ? parts[1] : null;
+                const text = parts.length > 2 ? parts[2] : null;
+
+                return (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "50px" }}
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col gap-6"
+                  >
+                    {imgUrl && (
+                      <div className="rounded-xl overflow-hidden shadow-sm bg-white">
+                        <img 
+                          src={imgUrl} 
+                          alt={`${project.title} detail ${idx + 1}`} 
+                          className="w-full h-auto object-cover"
+                          referrerPolicy="no-referrer"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                    {(subtitle || text) && (
+                      <div className="px-2 md:px-8 space-y-4 text-center md:text-left">
+                        {subtitle && <h4 className="text-xl md:text-2xl font-bold text-gray-900">{subtitle}</h4>}
+                        {text && <p className="text-base md:text-lg text-gray-600 font-light leading-relaxed whitespace-pre-line">{text}</p>}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
             <div ref={loadMoreGalleryRef} className="h-8"></div>
           </div>
