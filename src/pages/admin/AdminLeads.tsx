@@ -129,6 +129,11 @@ export default function AdminLeads() {
         [leadId]: [data[0] as Memo, ...(prev[leadId] || [])]
       }));
       if (!content) setNewMemo('');
+      
+      // '부재중' 타임라인 기록 시 상태도 '부재중'(contacted)으로 자동 변경
+      if (memoContent === '부재중') {
+        await handleStatusChange(leadId, 'contacted');
+      }
     } else {
       console.error("Error adding memo:", error);
       alert('메모 추가에 실패했습니다.');

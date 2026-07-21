@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../supabase';
-import { Plus, Edit2, Trash2, X, Upload, Image as ImageIcon } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Upload, Image as ImageIcon, ArrowUp, ArrowDown } from 'lucide-react';
 import { Project } from '../Projects';
+
+interface GalleryItem {
+  id: string;
+  imgUrl: string;
+  subtitle: string;
+  text: string;
+}
 
 export default function AdminInterior() {
   const { isAdmin, loading } = useAuth();
@@ -15,6 +22,9 @@ export default function AdminInterior() {
   const [uploadingGallery, setUploadingGallery] = useState(false);
   const mainImageInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
+
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
+  const [uploadingItemIds, setUploadingItemIds] = useState<Record<string, boolean>>({});
 
   const [formData, setFormData] = useState({
     title: '', category: '인테리어', subcategory: '', year: new Date().getFullYear().toString(),
@@ -56,6 +66,93 @@ export default function AdminInterior() {
     };
   }, [isAdmin]);
 
+  const parseGalleryToItems = (galleryArray: string[] | undefined): GalleryItem[] => {
+    if (!galleryArray) return [];
+    return galleryArray.map((item, idx) => {
+      const parts = item.split('|').map(s => s.trim());
+      return {
+        id: `${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 7)}`,
+        imgUrl: parts[0] || '',
+        subtitle: parts.length > 1 ? parts[1] : '',
+        text: parts.length > 2 ? parts[2] : ''
+      };
+    });
+  };
+
+  const serializeItemsToGallery = (items: GalleryItem[]): string[] => {
+    return items
+      .map(item => {
+        if (!item.subtitle && !item.text) {
+          return item.imgUrl;
+        }
+        const parts = [item.imgUrl, item.subtitle || '', item.text || ''];
+        while (parts.length > 1 && parts[parts.length - 1] === '') {
+          parts.pop();
+        }
+        return parts.join(' | ');
+      })
+      .filter(str => str.trim() !== '');
+  };
+
+  const moveGalleryItem = (index: number, direction: 'up' | 'down') => {
+    if (direction === 'up' && index === 0) return;
+    if (direction === 'down' && index === galleryItems.length - 1) return;
+
+    const newItems = [...galleryItems];
+    const targetIndex = direction === 'up' ? index - 1 : index + 1;
+    
+    const temp = newItems[index];
+    newItems[index] = newItems[targetIndex];
+    newItems[targetIndex] = temp;
+    
+    setGalleryItems(newItems);
+  };
+
+  const addGalleryItem = () => {
+    const newItem: GalleryItem = {
+      id: `${Date.now()}_${Math.random().toString(36).substring(7)}`,
+      imgUrl: '',
+      subtitle: '',
+      text: ''
+    };
+    setGalleryItems([...galleryItems, newItem]);
+  };
+
+  const removeGalleryItem = (id: string) => {
+    setGalleryItems(galleryItems.filter(item => item.id !== id));
+  };
+
+  const updateGalleryItem = (id: string, updates: Partial<Omit<GalleryItem, 'id'>>) => {
+    setGalleryItems(galleryItems.map(item => item.id === id ? { ...item, ...updates } : item));
+  };
+
+  const handleSingleImageUpload = async (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingItemIds(prev => ({ ...prev, [id]: true }));
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+      const filePath = `gallery/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('projects')
+        .upload(filePath, file, { cacheControl: '31536000', upsert: false });
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage.from('projects').getPublicUrl(filePath);
+      
+      updateGalleryItem(id, { imgUrl: data.publicUrl });
+    } catch (error) {
+      console.error("Single gallery upload error:", error);
+      alert("이미지 업로드에 실패했습니다.");
+    } finally {
+      setUploadingItemIds(prev => ({ ...prev, [id]: false }));
+    }
+  };
+
   const handleOpenModal = (project?: Project) => {
     if (project) {
       setEditingProject(project);
@@ -68,7 +165,7 @@ export default function AdminInterior() {
         client: project.client || '',
         role: project.role || '',
         image: project.image || '',
-        gallery: project.gallery?.join('\n') || '',
+        gallery: '',
         description: project.description || '',
         challenge: project.challenge || '',
         solution: project.solution || '',
@@ -81,6 +178,7 @@ export default function AdminInterior() {
         bcr: project.bcr || '',
         notes: project.notes || ''
       });
+      setGalleryItems(parseGalleryToItems(project.gallery));
     } else {
       setEditingProject(null);
       setFormData({
@@ -90,6 +188,7 @@ export default function AdminInterior() {
         zoning: '', land_area: '', building_area: '', total_floor_area: '',
         scale: '', far: '', bcr: '', notes: ''
       });
+      setGalleryItems([]);
     }
     setIsModalOpen(true);
   };
@@ -126,7 +225,7 @@ export default function AdminInterior() {
     if (files.length === 0) return;
 
     setUploadingGallery(true);
-    const newUrls: string[] = [];
+    const newItems: GalleryItem[] = [];
 
     try {
       for (const file of files) {
@@ -141,16 +240,15 @@ export default function AdminInterior() {
         if (uploadError) throw uploadError;
 
         const { data } = supabase.storage.from('projects').getPublicUrl(filePath);
-        newUrls.push(data.publicUrl);
+        newItems.push({
+          id: `${Date.now()}_${Math.random().toString(36).substring(7)}`,
+          imgUrl: data.publicUrl,
+          subtitle: '',
+          text: ''
+        });
       }
       
-      setFormData(prev => {
-        const currentGallery = prev.gallery ? prev.gallery.split('\n').filter(url => url.trim() !== '') : [];
-        return {
-          ...prev,
-          gallery: [...currentGallery, ...newUrls].join('\n')
-        };
-      });
+      setGalleryItems(prev => [...prev, ...newItems]);
     } catch (error) {
       console.error("Gallery upload error:", error);
       alert("갤러리 이미지 업로드에 실패했습니다.");
@@ -163,6 +261,8 @@ export default function AdminInterior() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
+    const serializedGallery = serializeItemsToGallery(galleryItems);
+    
     const projectData = {
       title: formData.title,
       category: '인테리어',
@@ -172,7 +272,7 @@ export default function AdminInterior() {
       client: formData.client,
       role: formData.role,
       image: formData.image,
-      gallery: formData.gallery.split('\n').filter(url => url.trim() !== ''),
+      gallery: serializedGallery,
       description: formData.description,
       challenge: formData.challenge,
       solution: formData.solution,
@@ -313,32 +413,154 @@ export default function AdminInterior() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">갤러리 이미지 (선택)</label>
-                <div className="space-y-4">
-                  <div className="text-xs text-gray-500 mb-2">
-                    매거진 형식으로 사진과 함께 소제목, 내용을 입력할 수 있습니다. 각 항목은 <b>[이미지URL] | [소제목] | [내용]</b> 형식으로 입력해주세요.<br/>
-                    예시:<br/>
-                    https://example.com/img1.jpg | 거실 디자인 | 자연광이 들어오는 따뜻한 분위기<br/>
-                    https://example.com/img2.jpg<br/>
-                    https://example.com/img3.jpg | | 텍스트만 있는 경우
+                <div className="flex justify-between items-center mb-3">
+                  <div>
+                    <label className="block text-sm font-bold text-gray-800">갤러리 디테일 블록 (매거진 형식)</label>
+                    <p className="text-xs text-gray-500">각 블록에 사진, 소제목, 상세 내용을 입력하여 매거진 스타일로 배치할 수 있습니다.</p>
                   </div>
-                  <textarea value={formData.gallery} onChange={e => setFormData({...formData, gallery: e.target.value})} rows={5} placeholder="https://... | 소제목 | 내용&#10;https://..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black" />
-                  <input 
-                    type="file" 
-                    accept="image/*" 
-                    multiple
-                    className="hidden" 
-                    ref={galleryInputRef}
-                    onChange={handleGalleryUpload}
-                  />
-                  <button 
-                    type="button"
-                    onClick={() => galleryInputRef.current?.click()}
-                    disabled={uploadingGallery}
-                    className="flex items-center gap-2 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors"
-                  >
-                    {uploadingGallery ? '업로드 중...' : <><ImageIcon size={16} /> 여러 파일 업로드</>}
-                  </button>
+                  <div className="flex gap-2">
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      multiple
+                      className="hidden" 
+                      ref={galleryInputRef}
+                      onChange={handleGalleryUpload}
+                    />
+                    <button 
+                      type="button"
+                      onClick={() => galleryInputRef.current?.click()}
+                      disabled={uploadingGallery}
+                      className="flex items-center gap-1.5 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg transition-colors border border-gray-200"
+                    >
+                      {uploadingGallery ? '업로드 중...' : <><ImageIcon size={14} /> 일괄 업로드</>}
+                    </button>
+                    <button 
+                      type="button"
+                      onClick={addGalleryItem}
+                      className="flex items-center gap-1.5 text-xs font-semibold text-white bg-black hover:bg-gray-800 px-3 py-1.5 rounded-lg transition-colors"
+                    >
+                      <Plus size={14} /> 블록 추가
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-4 max-h-[480px] overflow-y-auto p-1 bg-gray-50 rounded-xl border border-gray-200">
+                  {galleryItems.length === 0 ? (
+                    <div className="text-center py-10 rounded-lg">
+                      <ImageIcon className="mx-auto text-gray-300 mb-2" size={32} />
+                      <p className="text-xs text-gray-500 font-medium">추가된 디테일 블록이 없습니다.</p>
+                      <p className="text-[11px] text-gray-400 mt-0.5">상단의 '블록 추가' 또는 '일괄 업로드' 버튼을 이용해 보세요.</p>
+                    </div>
+                  ) : (
+                    galleryItems.map((item, idx) => (
+                      <div key={item.id} className="p-3 border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow transition-shadow relative">
+                        <div className="flex justify-between items-center mb-2 pb-1.5 border-b border-gray-100">
+                          <span className="text-xs font-bold text-gray-400"># {idx + 1}번 블록</span>
+                          <div className="flex items-center gap-1">
+                            <button
+                              type="button"
+                              onClick={() => moveGalleryItem(idx, 'up')}
+                              disabled={idx === 0}
+                              className="p-1 text-gray-500 hover:text-black hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent"
+                              title="위로 이동"
+                            >
+                              <ArrowUp size={14} />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => moveGalleryItem(idx, 'down')}
+                              disabled={idx === galleryItems.length - 1}
+                              className="p-1 text-gray-500 hover:text-black hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent"
+                              title="아래로 이동"
+                            >
+                              <ArrowDown size={14} />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => removeGalleryItem(item.id)}
+                              className="p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded ml-1"
+                              title="블록 삭제"
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+                          {/* Image field */}
+                          <div className="md:col-span-4 space-y-2">
+                            <div className="aspect-[4/3] bg-gray-50 rounded border border-gray-200 relative flex items-center justify-center overflow-hidden">
+                              {item.imgUrl ? (
+                                <>
+                                  <img src={item.imgUrl} alt={`Block ${idx + 1}`} className="w-full h-full object-cover" />
+                                  <button
+                                    type="button"
+                                    onClick={() => updateGalleryItem(item.id, { imgUrl: '' })}
+                                    className="absolute top-1 right-1 p-1 bg-black/60 text-white rounded-full hover:bg-black/80 transition-colors"
+                                  >
+                                    <X size={10} />
+                                  </button>
+                                </>
+                              ) : (
+                                <div className="text-center p-2">
+                                  <ImageIcon className="mx-auto text-gray-300 mb-0.5" size={20} />
+                                  <span className="text-[10px] text-gray-400 block">사진 없음</span>
+                                </div>
+                              )}
+                            </div>
+                            
+                            <div>
+                              <input 
+                                type="file" 
+                                accept="image/*" 
+                                className="hidden" 
+                                id={`file-upload-${item.id}`}
+                                onChange={(e) => handleSingleImageUpload(item.id, e)}
+                              />
+                              <label
+                                htmlFor={`file-upload-${item.id}`}
+                                className="w-full text-center cursor-pointer text-[10px] font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 py-1 px-2 rounded block transition-colors border border-gray-200"
+                              >
+                                {uploadingItemIds[item.id] ? '업로드 중...' : '이미지 업로드'}
+                              </label>
+                            </div>
+                          </div>
+
+                          {/* Text/Subtitle fields */}
+                          <div className="md:col-span-8 space-y-2">
+                            <div>
+                              <input
+                                type="text"
+                                value={item.imgUrl}
+                                onChange={e => updateGalleryItem(item.id, { imgUrl: e.target.value })}
+                                placeholder="이미지 URL (직접 입력 또는 업로드)"
+                                className="w-full text-xs px-2.5 py-1.5 border border-gray-300 rounded focus:ring-1 focus:ring-black outline-none"
+                              />
+                            </div>
+                            <div>
+                              <input
+                                type="text"
+                                value={item.subtitle}
+                                onChange={e => updateGalleryItem(item.id, { subtitle: e.target.value })}
+                                placeholder="소제목 (예: 침실의 아늑함, 조명 포인트)"
+                                className="w-full text-xs font-semibold px-2.5 py-1.5 border border-gray-300 rounded focus:ring-1 focus:ring-black outline-none"
+                              />
+                            </div>
+                            <div>
+                              <textarea
+                                value={item.text}
+                                onChange={e => updateGalleryItem(item.id, { text: e.target.value })}
+                                placeholder="상세 내용을 설명해 주세요."
+                                rows={2}
+                                className="w-full text-xs px-2.5 py-1.5 border border-gray-300 rounded focus:ring-1 focus:ring-black outline-none resize-y"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
 
