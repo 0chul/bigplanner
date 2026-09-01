@@ -128,18 +128,67 @@ export default function InteriorPage() {
     return () => observer.disconnect();
   }, [hasMore, loading, fetchingMore, activeSubcategory]);
 
+  const interiorKeywords = language === 'ko'
+    ? '빅플래너파트너스, N도씨, 인테리어디자인, 하이엔드인테리어, 주거인테리어, 상업공간인테리어, 리모델링, 공간디자인, 아키텍처, 인테리어포트폴리오'
+    : 'BIGPLANNER PARTNERS, N-Degree, Interior Design, High-end Interior, Residential Interior, Commercial Interior, Space Design';
+
+  const interiorStructuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": "https://bigplanner.co.kr/interior#collection",
+      "name": language === 'ko' ? '인테리어 디자인 아카이브 매거진' : 'Interior Design Archive Magazine',
+      "description": language === 'ko' ? "N도씨 디자인의 감성적이고 감각적인 하이엔드 인테리어 포트폴리오 매거진." : "High-end interior design portfolio magazine of N-Degree Design.",
+      "url": "https://bigplanner.co.kr/interior",
+      "publisher": {
+        "@type": "Organization",
+        "name": "빅플래너파트너스",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": language === 'ko' ? "홈" : "Home",
+          "item": "https://bigplanner.co.kr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": language === 'ko' ? "인테리어 아카이브" : "Interior Archive",
+          "item": "https://bigplanner.co.kr/interior"
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#FCFBFA] font-sans text-gray-900 pb-12">
       <SEO 
-        title={language === 'ko' ? '인테리어 아카이브 | 빅플래너파트너스' : 'Interior Archive | BIGPLANNER PARTNERS'}
-        description={language === 'ko' ? "N도씨 디자인의 감성적이고 감각적인 하이엔드 인테리어 포트폴리오 매거진." : "Highend interior design portfolio magazine of N-Degree Design."}
+        title={language === 'ko' ? '인테리어 아카이브 & 포트폴리오 | 빅플래너파트너스' : 'Interior Archive & Portfolio | BIGPLANNER PARTNERS'}
+        description={language === 'ko' ? "N도씨 디자인과 함께하는 감성적이고 감각적인 하이엔드 주거 및 상업공간 인테리어 아카이브 매거진." : "High-end residential and commercial interior design portfolio magazine of N-Degree Design."}
         url="https://bigplanner.co.kr/interior"
-        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+        image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1773793805092.webp"
+        keywords={interiorKeywords}
       />
+      <Helmet>
+        <meta property="og:type" content="magazine" />
+        <meta property="og:image:alt" content="빅플래너파트너스 인테리어 아카이브 매거진" />
+        <script type="application/ld+json">
+          {JSON.stringify(interiorStructuredData)}
+        </script>
+      </Helmet>
       <Navbar />
       
       {/* Magazine Editorial Masthead */}
-      <div className="pt-28 pb-16 md:pt-40 md:pb-24 border-b border-gray-200/50">
+      <header className="pt-28 pb-16 md:pt-40 md:pb-24 border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
             <div>
@@ -186,9 +235,9 @@ export default function InteriorPage() {
             <span>SEOUL, KOREA</span>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         
         {/* Magazine Subcategory Filters */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-200/80 pb-6 mb-12 gap-4">
@@ -247,10 +296,11 @@ export default function InteriorPage() {
                           <Link to={`/projects/${generateSlug(project.title)}`} className="absolute inset-0 z-20" />
                           <img 
                             src={project.image} 
-                            alt={project.title} 
+                            alt={`${project.title} - ${project.subcategory || '인테리어'} 디자인 화보`} 
                             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                             referrerPolicy="no-referrer"
                             loading="lazy"
+                            decoding="async"
                           />
                           <div className="absolute top-4 left-4 bg-gray-900/90 text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full z-10 backdrop-blur-sm">
                             FEATURED LOOK
@@ -319,10 +369,11 @@ export default function InteriorPage() {
                         <Link to={`/projects/${generateSlug(project.title)}`} className="absolute inset-0 z-10" />
                         <img 
                           src={project.image} 
-                          alt={project.title} 
+                          alt={`${project.title} - ${project.subcategory || '인테리어 디자인'} 공간 사진`} 
                           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                           referrerPolicy="no-referrer"
                           loading="lazy"
+                          decoding="async"
                         />
                         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/20 to-transparent h-1/3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
@@ -375,7 +426,7 @@ export default function InteriorPage() {
             </div>
           </>
         )}
-      </div>
+      </main>
       <ContactCTA />
       <Footer />
     </div>
