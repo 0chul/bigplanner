@@ -1,5 +1,19 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /admin/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+
+User-agent: Yeti
+Allow: /
+Disallow: /admin
+
+User-agent: Daumoa
+Allow: /
+Disallow: /admin
 
 Sitemap: https://bigplanner.co.kr/sitemap.xml
+
