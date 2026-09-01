@@ -16,8 +16,8 @@ const SpecItem = ({ label, value }: { label: string, value: React.ReactNode }) =
   if (!value) return null;
   return (
     <div className="py-3 flex justify-between items-start gap-4 border-b border-gray-200/60 last:border-0">
-      <span className="text-xs font-bold text-gray-500 uppercase tracking-wider shrink-0 mt-0.5">{label}</span>
-      <span className="text-sm font-medium text-gray-900 text-right break-keep">{value}</span>
+      <dt className="text-xs font-bold text-gray-500 uppercase tracking-wider shrink-0 mt-0.5">{label}</dt>
+      <dd className="text-sm font-medium text-gray-900 text-right break-keep">{value}</dd>
     </div>
   );
 };
@@ -113,60 +113,117 @@ export default function ProjectDetail() {
 
   const displayedGallery = project?.gallery ? project.gallery.slice(0, galleryPage * GALLERY_PAGE_SIZE) : [];
 
+  const slugStr = generateSlug(project.title);
+  const projectUrl = `https://bigplanner.co.kr/projects/${slugStr}`;
+  const projectImage = project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1773793805092.webp";
+  
+  const cleanDesc = project.description ? project.description.replace(/\s+/g, ' ').trim() : '';
+  const projectTitle = `${project.title} - ${project.category} 건축 사례 | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`;
+  const projectDescription = cleanDesc.length > 0
+    ? `${project.title} (${project.location || '대한민국'}) ${project.category} 건축 프로젝트. ${project.role ? `[역할: ${project.role}] ` : ''}${cleanDesc.substring(0, 140)}...`
+    : (language === 'ko'
+        ? `빅플래너파트너스의 ${project.category} 건축 프로젝트 [${project.title}] 상세 사례입니다. 위치: ${project.location || '전국'}, 규모: ${project.scale || '맞춤설계'}, 역할: ${project.role || '건축기획 및 PM'}.`
+        : `${project.title} architecture project by BIGPLANNER PARTNERS. Location: ${project.location || 'Korea'}, Category: ${project.category}.`);
+
+  const projectKeywords = language === 'ko'
+    ? `빅플래너파트너스, ${project.title}, ${project.category}, ${project.location ? `${project.location} 건축, ` : ''}${project.role ? `${project.role}, ` : ''}${project.client ? `${project.client}, ` : ''}건축기획, 건축PM, 부동산개발, 신축설계, 건축사례, 시공관리, 프롭테크`
+    : `BIGPLANNER PARTNERS, ${project.title}, ${project.category}, Architecture Case Study, Real Estate Development, Project Management`;
+
+  const galleryImages = [
+    project.image,
+    ...(project.gallery?.map(g => g.split('|')[0].trim()).filter(Boolean) || [])
+  ].filter(Boolean);
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": `${projectUrl}#article`,
+      "isPartOf": {
+        "@type": "WebPage",
+        "@id": projectUrl
+      },
+      "headline": `${project.title} - ${project.category} 건축 프로젝트`,
+      "description": projectDescription,
+      "image": galleryImages.length > 0 ? galleryImages : [projectImage],
+      "datePublished": project.created_at || (project.year ? `${project.year}-01-01T00:00:00+09:00` : "2024-01-01T00:00:00+09:00"),
+      "dateModified": project.updated_at || project.created_at || new Date().toISOString(),
+      "mainEntityOfPage": projectUrl,
+      "author": {
+        "@type": "Organization",
+        "name": "빅플래너파트너스",
+        "url": "https://bigplanner.co.kr"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "빅플래너파트너스",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+        }
+      },
+      "articleSection": project.category || "Architecture",
+      "keywords": projectKeywords,
+      "about": {
+        "@type": "Place",
+        "name": project.title,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": project.location || "대한민국",
+          "addressCountry": "KR"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": language === 'ko' ? "홈" : "Home",
+          "item": "https://bigplanner.co.kr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": language === 'ko' ? "건축 프로젝트" : "Projects",
+          "item": "https://bigplanner.co.kr/projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": project.title,
+          "item": projectUrl
+        }
+      ]
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900">
+    <article className="min-h-screen bg-white font-sans text-gray-900" itemScope itemType="https://schema.org/Article">
       <SEO 
-        title={`${project.title} | ${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}`}
-        description={project.description?.substring(0, 150) || (language === 'ko' ? `${project.title} 프로젝트 상세 페이지입니다.` : `${project.title} project detail page.`)}
-        url={`https://bigplanner.co.kr/projects/${generateSlug(project.title)}`}
-        image={project.image || "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"}
+        title={projectTitle}
+        description={projectDescription}
+        url={projectUrl}
+        image={projectImage}
+        keywords={projectKeywords}
+        type="article"
       />
       <Helmet>
-        <meta name="keywords" content={language === 'ko' ? `빅플래너파트너스, ${project.title}, ${project.category}, 건축, 부동산개발` : `BIGPLANNER PARTNERS, ${project.title}, ${project.category}, Architecture, Real Estate Development`} />
-        <link rel="canonical" href={`https://bigplanner.co.kr/projects/${generateSlug(project.title)}`} />
+        <meta property="article:section" content={project.category} />
+        <meta property="article:tag" content={project.category} />
+        <meta property="article:published_time" content={project.created_at || (project.year ? `${project.year}-01-01T00:00:00+09:00` : "2024-01-01T00:00:00+09:00")} />
+        {project.updated_at && <meta property="article:modified_time" content={project.updated_at} />}
+        <meta property="og:image:alt" content={`${project.title} 건축 프로젝트 대표 이미지`} />
         <script type="application/ld+json">
-          {`
-            [
-              {
-                "@context": "https://schema.org",
-                "@type": "CreativeWork",
-                "name": "${project.title}",
-                "description": "${project.description?.substring(0, 150) || ''}",
-                "image": "${project.image || ''}",
-                "url": "https://bigplanner.co.kr/projects/${generateSlug(project.title)}"
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "${language === 'ko' ? '홈' : 'Home'}",
-                    "item": "https://bigplanner.co.kr/"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "${language === 'ko' ? '프로젝트' : 'Projects'}",
-                    "item": "https://bigplanner.co.kr/projects"
-                  },
-                  {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": "${project.title}",
-                    "item": "https://bigplanner.co.kr/projects/${generateSlug(project.title)}"
-                  }
-                ]
-              }
-            ]
-          `}
+          {JSON.stringify(structuredData)}
         </script>
       </Helmet>
       <Navbar />
       
       {/* Hero Image */}
-      <div className="relative h-[60vh] md:h-[85vh] w-full">
+      <header className="relative h-[60vh] md:h-[85vh] w-full">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -175,9 +232,10 @@ export default function ProjectDetail() {
         >
           <img 
             src={project.image} 
-            alt={project.title} 
+            alt={`${project.title} - ${project.category} 건축 프로젝트 메인 전경`} 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/80" />
         </motion.div>
@@ -200,22 +258,22 @@ export default function ProjectDetail() {
                   </span>
                 )}
               </div>
-              <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
+              <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-4 md:mb-6" itemProp="headline">
                 {project.title}
               </h1>
               {project.location && (
                 <p className="text-base md:text-xl text-white/80 font-light flex items-center gap-2">
                   <MapPin size={20} />
-                  {project.location}
+                  <span>{project.location}</span>
                 </p>
               )}
             </motion.div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Content Section */}
-      <div className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16">
           
           {/* Left Column: Metadata */}
@@ -231,7 +289,7 @@ export default function ProjectDetail() {
                 <Building2 size={20} className="text-indigo-600" />
                 Project Facts
               </h3>
-              <div className="space-y-1">
+              <dl className="space-y-1">
                 <SpecItem label={language === 'ko' ? '클라이언트' : 'Client'} value={project.client} />
                 <SpecItem label={language === 'ko' ? '위치' : 'Location'} value={project.location} />
                 <SpecItem label={language === 'ko' ? '용도구역' : 'Zoning'} value={project.zoning} />
@@ -243,7 +301,7 @@ export default function ProjectDetail() {
                 <SpecItem label={language === 'ko' ? '건폐율' : 'BCR'} value={project.bcr ? `${project.bcr}%` : null} />
                 <SpecItem label={language === 'ko' ? '연도' : 'Year'} value={project.year} />
                 <SpecItem label={language === 'ko' ? '역할' : 'Role'} value={project.role} />
-              </div>
+              </dl>
             </div>
           </motion.div>
 
@@ -259,19 +317,20 @@ export default function ProjectDetail() {
               <figure className="relative rounded-3xl overflow-hidden shadow-md group">
                 <img 
                   src={project.image} 
-                  alt={`${project.title} 대표 이미지`} 
+                  alt={`${project.title} - ${project.category} 건축 조감도 및 외관`} 
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                   loading="lazy"
+                  decoding="async"
                 />
                 <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 pt-12 text-white/90 text-sm font-medium">
-                  {project.title} - Overview
+                  {project.title} - {project.location || (language === 'ko' ? '건축 개요' : 'Overview')}
                 </figcaption>
               </figure>
             )}
 
             {project.description && (
-              <div className="prose prose-lg max-w-none">
+              <div className="prose prose-lg max-w-none" itemProp="articleBody">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 tracking-tight">{language === 'ko' ? '프로젝트 개요' : 'Project Overview'}</h2>
                 <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-light whitespace-pre-line">
                   {project.description}
@@ -307,11 +366,11 @@ export default function ProjectDetail() {
             )}
           </motion.div>
         </div>
-      </div>
+      </main>
 
       {/* Gallery Section */}
       {project.gallery && project.gallery.length > 0 && (
-        <div className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
+        <section className="py-16 md:py-24 bg-gray-50 border-t border-gray-100" aria-label="프로젝트 시공 갤러리">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -343,10 +402,11 @@ export default function ProjectDetail() {
                       <div className="rounded-xl overflow-hidden shadow-sm bg-white">
                         <img 
                           src={imgUrl} 
-                          alt={`${project.title} detail ${idx + 1}`} 
+                          alt={`${project.title} - ${subtitle || (language === 'ko' ? `건축 시공 상세 사진 ${idx + 1}` : `Architecture detail photo ${idx + 1}`)}`} 
                           className="w-full h-auto object-cover"
                           referrerPolicy="no-referrer"
                           loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     )}
@@ -362,12 +422,12 @@ export default function ProjectDetail() {
             </div>
             <div ref={loadMoreGalleryRef} className="h-8"></div>
           </div>
-        </div>
+        </section>
       )}
 
       {/* Project Navigation */}
       {allProjects.length > 1 && prevProject && nextProject && (
-        <div className="border-t border-gray-200">
+        <nav className="border-t border-gray-200" aria-label="프로젝트 둘러보기">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row">
             <Link 
               to={`/projects/${generateSlug(prevProject.title)}`}
@@ -395,7 +455,7 @@ export default function ProjectDetail() {
               </span>
             </Link>
           </div>
-        </div>
+        </nav>
       )}
 
       {/* Share Section */}
@@ -414,6 +474,6 @@ export default function ProjectDetail() {
 
       <ContactCTA />
       <Footer />
-    </div>
+    </article>
   );
 }
