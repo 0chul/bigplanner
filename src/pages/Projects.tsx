@@ -9,6 +9,7 @@ import ContactCTA from '../components/ContactCTA';
 import { supabase } from '../supabase';
 import { useLanguage } from '../contexts/LanguageContext';
 import { generateSlug } from '../utils/slugify';
+import { mergeWithDocumentProjects, documentProjects } from '../data/portfolioData';
 
 const categories = ["All", "상업", "주거", "복합개발", "근생"];
 const categoriesEn = ["All", "Commercial", "Residential", "Mixed-Use", "Neighborhood"];
@@ -36,6 +37,10 @@ export interface Project {
   bcr?: string;
   notes?: string;
   created_at?: string;
+  units?: string;
+  parking?: string;
+  contractor?: string;
+  period?: string;
 }
 
 export default function ProjectsPage() {
@@ -56,12 +61,16 @@ export default function ProjectsPage() {
           .select('*')
           .neq('category', '인테리어');
           
-        if (error) throw error;
-        // Shuffle the array randomly
-        const shuffledData = (data as Project[]).sort(() => Math.random() - 0.5);
-        setAllProjects(shuffledData);
+        if (error) {
+          console.error("Error fetching projects from DB:", error);
+          setAllProjects(documentProjects);
+        } else {
+          const merged = mergeWithDocumentProjects((data as Project[]) || []);
+          setAllProjects(merged);
+        }
       } catch (error) {
         console.error("Error fetching projects:", error);
+        setAllProjects(documentProjects);
       } finally {
         setLoading(false);
       }

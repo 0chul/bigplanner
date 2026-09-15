@@ -11,6 +11,7 @@ import { supabase } from '../supabase';
 import { Project } from './Projects';
 import { useLanguage } from '../contexts/LanguageContext';
 import { generateSlug } from '../utils/slugify';
+import { mergeWithDocumentProjects, documentProjects } from '../data/portfolioData';
 
 const SpecItem = ({ label, value }: { label: string, value: React.ReactNode }) => {
   if (!value) return null;
@@ -46,9 +47,14 @@ export default function ProjectDetail() {
           
         if (allProjectsError) {
           console.error("Error fetching all projects:", allProjectsError);
+          setAllProjects(documentProjects);
+          const foundProject = documentProjects.find(p => generateSlug(p.title) === slug || p.id === slug);
+          setProject(foundProject || null);
+          setGalleryPage(1);
         } else {
-          setAllProjects(allProjectsData as Project[]);
-          const foundProject = (allProjectsData as Project[]).find(p => generateSlug(p.title) === slug);
+          const merged = mergeWithDocumentProjects((allProjectsData as Project[]) || []);
+          setAllProjects(merged);
+          const foundProject = merged.find(p => generateSlug(p.title) === slug || p.id === slug);
           setProject(foundProject || null);
           setGalleryPage(1); // reset gallery page
         }
@@ -299,8 +305,13 @@ export default function ProjectDetail() {
                 <SpecItem label={language === 'ko' ? '연면적' : 'Total Floor Area'} value={formatArea(project.total_floor_area)} />
                 <SpecItem label={language === 'ko' ? '용적률' : 'FAR'} value={project.far ? `${project.far}%` : null} />
                 <SpecItem label={language === 'ko' ? '건폐율' : 'BCR'} value={project.bcr ? `${project.bcr}%` : null} />
+                <SpecItem label={language === 'ko' ? '세대수' : 'Units'} value={project.units} />
+                <SpecItem label={language === 'ko' ? '주차대수' : 'Parking'} value={project.parking} />
+                <SpecItem label={language === 'ko' ? '시공사' : 'Contractor'} value={project.contractor} />
+                <SpecItem label={language === 'ko' ? '공사기간' : 'Period'} value={project.period} />
                 <SpecItem label={language === 'ko' ? '연도' : 'Year'} value={project.year} />
                 <SpecItem label={language === 'ko' ? '역할' : 'Role'} value={project.role} />
+                <SpecItem label={language === 'ko' ? '비고' : 'Notes'} value={project.notes} />
               </dl>
             </div>
           </motion.div>

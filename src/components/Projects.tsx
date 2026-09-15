@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../supabase';
 import { useLanguage } from '../contexts/LanguageContext';
 import { generateSlug } from '../utils/slugify';
+import { documentProjects } from '../data/portfolioData';
 
 interface Project {
   id: string;
@@ -30,13 +31,29 @@ export default function Projects() {
           .select('id, title, category, image')
           .neq('category', '인테리어');
           
-        if (error) throw error;
+        const fetchedList = (!error && data) ? (data as Project[]) : [];
+        const existingTitles = new Set(fetchedList.map(p => p.title.trim()));
+        const missingDoc = documentProjects
+          .filter(dp => !existingTitles.has(dp.title.trim()))
+          .map(dp => ({
+            id: dp.id,
+            title: dp.title,
+            category: dp.category,
+            image: dp.image || ''
+          }));
+        const combined = [...missingDoc, ...fetchedList];
         
-        // 랜덤으로 섞은 후 4개만 선택
-        const shuffled = (data as Project[]).sort(() => 0.5 - Math.random()).slice(0, 4);
+        // 랜덤으로 섞은 후 4개만 선택 (문서 프로젝트 포함)
+        const shuffled = combined.sort(() => 0.5 - Math.random()).slice(0, 4);
         setProjects(shuffled);
       } catch (error) {
         console.error("Error fetching projects:", error);
+        setProjects(documentProjects.slice(0, 4).map(dp => ({
+          id: dp.id,
+          title: dp.title,
+          category: dp.category,
+          image: dp.image || ''
+        })));
       } finally {
         setLoading(false);
       }

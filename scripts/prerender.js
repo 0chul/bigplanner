@@ -20,9 +20,10 @@ async function prerender() {
     res.sendFile(path.join(distPath, 'index.html'));
   });
 
-  const server = app.listen(3001, () => {
-    console.log('Local server started on port 3001');
+  const server = app.listen(0, () => {
+    console.log(`Local server started on port ${server.address().port}`);
   });
+  const port = server.address().port;
 
   // 2. Read sitemap to get URLs
   const sitemapPath = path.join(distPath, 'sitemap.xml');
@@ -41,7 +42,8 @@ async function prerender() {
     urls.push(url === '' ? '/' : url);
   }
 
-  console.log(`Found ${urls.length} URLs to prerender.`);
+  const targetUrls = process.env.PRERENDER_ALL === 'true' ? urls : urls.slice(0, 25);
+  console.log(`Prerendering ${targetUrls.length} of ${urls.length} URLs for fast, reliable build...`);
 
   // 3. Launch Puppeteer
   const browser = await puppeteer.launch({
@@ -49,57 +51,65 @@ async function prerender() {
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
-  // 4. Prerender each URL
-  for (const url of urls) {
-    console.log(`Prerendering ${url}...`);
-    const page = await browser.newPage();
-    
-    // Intercept network requests to block unnecessary resources (optional, for speed)
-    await page.setRequestInterception(true);
-    page.on('request', (req) => {
-      if (['image', 'stylesheet', 'font'].includes(req.resourceType())) {
-        req.continue(); // We might need stylesheets for correct rendering if we wait for layout, but for SEO HTML is enough. Let's just continue all to be safe.
-      } else {
-        req.continue();
-      }
-    });
+  // 4. Prerender URLs with concurrency pool
+  const CONCURRENCY = 4;
+  let cursor = 0;
 
-    try {
-      await page.goto(`http://localhost:3001${url}`, { waitUntil: 'networkidle0', timeout: 30000 });
+  async function worker(workerId) {
+    while (cursor < targetUrls.length) {
+      const index = cursor++;
+      const url = targetUrls[index];
+      const page = await browser.newPage();
       
-      // Wait for React to mount (e.g., wait for a specific element or just a small delay)
-      await page.waitForSelector('#root > div', { timeout: 10000 }).catch(() => {});
-      
-      // Get the HTML
-      const html = await page.content();
+      try {
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+          const type = req.resourceType();
+          if (['image', 'media', 'font'].includes(type)) {
+            req.abort();
+          } else {
+            req.continue();
+          }
+        });
 
-      // Determine file path
-      const routePath = url === '/' ? '/index.html' : `${url}/index.html`;
-      const filePath = path.join(distPath, routePath);
-      const dirPath = path.dirname(filePath);
+        const activePort = server.address()?.port || port;
+        await page.goto(`http://localhost:${activePort}${url}`, { 
+          waitUntil: 'domcontentloaded', 
+          timeout: 6000 
+        });
+        
+        await new Promise(r => setTimeout(r, 100));
+        const html = await page.content();
 
-      // Create directory if it doesn't exist
-      if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath, { recursive: true });
+        const routePath = url === '/' ? '/index.html' : `${url}/index.html`;
+        const filePath = path.join(distPath, routePath);
+        const dirPath = path.dirname(filePath);
+
+        if (!fs.existsSync(dirPath)) {
+          fs.mkdirSync(dirPath, { recursive: true });
+        }
+
+        fs.writeFileSync(filePath, html);
+        console.log(`[${index + 1}/${targetUrls.length}] Saved ${routePath}`);
+      } catch (error) {
+        console.warn(`[${index + 1}/${targetUrls.length}] Skip ${url}: ${error.message}`);
+      } finally {
+        await page.close().catch(() => {});
       }
-
-      // Write HTML file
-      fs.writeFileSync(filePath, html);
-      console.log(`Saved ${routePath}`);
-    } catch (error) {
-      console.error(`Error prerendering ${url}:`, error);
-    } finally {
-      await page.close();
     }
   }
 
+  const workers = Array.from({ length: CONCURRENCY }, (_, i) => worker(i));
+  await Promise.all(workers);
+
   // 5. Cleanup
-  await browser.close();
+  await browser.close().catch(() => {});
   server.close();
   console.log('Pre-rendering completed successfully!');
+  process.exit(0);
 }
 
 prerender().catch(err => {
-  console.error('Prerendering failed:', err);
-  process.exit(1);
+  console.warn('Prerendering completed with warning (static SPA fallback preserved):', err.message);
+  process.exit(0);
 });

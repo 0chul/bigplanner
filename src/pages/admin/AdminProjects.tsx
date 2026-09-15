@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../supabase';
-import { Plus, Edit2, Trash2, X, Upload, Image as ImageIcon } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Upload, Image as ImageIcon, RefreshCw } from 'lucide-react';
 import { Project } from '../Projects';
+import { documentProjects } from '../../data/portfolioData';
 
 export default function AdminProjects() {
   const { isAdmin, loading } = useAuth();
@@ -303,6 +304,49 @@ export default function AdminProjects() {
     }
   };
 
+  const [syncing, setSyncing] = useState(false);
+  const handleSyncDocumentProjects = async () => {
+    setSyncing(true);
+    try {
+      let added = 0;
+      for (const doc of documentProjects) {
+        const exists = projects.some(p => p.title.trim() === doc.title.trim());
+        if (!exists) {
+          const { error } = await supabase.from('projects').insert([{
+            title: doc.title,
+            category: doc.category,
+            subcategory: doc.subcategory,
+            year: doc.year,
+            location: doc.location,
+            client: doc.client,
+            role: doc.role,
+            image: doc.image,
+            gallery: doc.gallery,
+            description: doc.description,
+            challenge: doc.challenge,
+            solution: doc.solution,
+            zoning: doc.zoning,
+            land_area: doc.land_area,
+            building_area: doc.building_area,
+            total_floor_area: doc.total_floor_area,
+            scale: doc.scale,
+            far: doc.far,
+            bcr: doc.bcr,
+            notes: doc.notes
+          }]);
+          if (!error) added++;
+        }
+      }
+      await fetchProjects();
+      alert(`문서 포트폴리오 동기화 완료: ${added}건 신규 등록되었습니다.`);
+    } catch (err) {
+      console.error("Sync error:", err);
+      alert("동기화 중 오류가 발생했습니다.");
+    } finally {
+      setSyncing(false);
+    }
+  };
+
   if (loading || fetching) return <div className="p-4 md:p-8">Loading...</div>;
   if (!isAdmin) return <div className="p-4 md:p-8">접근 권한이 없습니다.</div>;
 
@@ -310,12 +354,22 @@ export default function AdminProjects() {
     <div className="p-4 md:p-8 w-full">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
         <h1 className="text-2xl md:text-3xl font-bold">포트폴리오 관리</h1>
-        <button 
-          onClick={() => handleOpenModal()}
-          className="bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800 w-full sm:w-auto justify-center"
-        >
-          <Plus size={20} /> 새 프로젝트 추가
-        </button>
+        <div className="flex flex-wrap gap-3 w-full sm:w-auto">
+          <button
+            onClick={handleSyncDocumentProjects}
+            disabled={syncing}
+            className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-indigo-700 transition-colors disabled:opacity-50 text-sm font-medium"
+          >
+            <RefreshCw size={18} className={syncing ? 'animate-spin' : ''} />
+            {syncing ? '동기화 중...' : '문서 포트폴리오(5건) DB 동기화'}
+          </button>
+          <button 
+            onClick={() => handleOpenModal()}
+            className="bg-black text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-800 w-full sm:w-auto justify-center text-sm font-medium"
+          >
+            <Plus size={20} /> 새 프로젝트 추가
+          </button>
+        </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
