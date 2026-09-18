@@ -643,6 +643,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/projects/양평-스마트팜-웰니스파크</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/projects/양평동-동보아파트</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -673,8 +679,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/projects/이수역-래지던스호텔-주상복합-개발사업</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/projects/심플함과-미니멀함으로-새로-태어난-30평-빌라-리모델링-비포-애프터</loc>
     <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/projects/신림-메디컬레지던스-개발사업</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -693,6 +711,18 @@
   <url>
     <loc>https://bigplanner.co.kr/projects/세종특별시-세종시-연서면-신대리-고복저수지에-위치한-힐링카페-루하임-인테리어</loc>
     <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/projects/방배동-장기전세주택건립사업</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/projects/안양-메디컬웰니스개발사업</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
