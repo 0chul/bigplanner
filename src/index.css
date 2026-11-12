@@ -1,6 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Pretendard", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html, body {
+    font-family: var(--font-sans);
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    color: #111827;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+    word-break: keep-all;
+  }
+
+  p, span, a, button, input, textarea, dt, dd {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    letter-spacing: -0.015em;
+  }
 }

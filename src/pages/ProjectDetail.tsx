@@ -16,11 +16,44 @@ import { mergeWithDocumentProjects, documentProjects } from '../data/portfolioDa
 const SpecItem = ({ label, value }: { label: string, value: React.ReactNode }) => {
   if (!value) return null;
   return (
-    <div className="py-3 flex justify-between items-start gap-4 border-b border-gray-200/60 last:border-0">
-      <dt className="text-xs font-bold text-gray-500 uppercase tracking-wider shrink-0 mt-0.5">{label}</dt>
-      <dd className="text-sm font-medium text-gray-900 text-right break-keep">{value}</dd>
+    <div className="py-3.5 flex justify-between items-start gap-4 border-b border-gray-200/70 last:border-0">
+      <dt className="text-sm font-medium text-gray-500 shrink-0 tracking-tight">{label}</dt>
+      <dd className="text-sm font-semibold text-gray-900 text-right break-keep tracking-tight leading-relaxed">{value}</dd>
     </div>
   );
+};
+
+const cleanClientNotes = (rawNotes?: string | null): string | null => {
+  if (!rawNotes || typeof rawNotes !== 'string') return null;
+  const trimmed = rawNotes.trim();
+  if (!trimmed) return null;
+
+  // Filter out internal data review notes completely
+  const internalKeywords = [
+    '재확인 필요',
+    '재검증 권장',
+    '원문 재검증',
+    '미확보',
+    '등록 예정',
+    '혼합표기',
+    '분리 저장 권장',
+    '미입력',
+    '가능성 높음',
+    '구역 성격',
+    '권장',
+    '미상'
+  ];
+  if (internalKeywords.some(keyword => trimmed.includes(keyword))) {
+    return null;
+  }
+
+  // Filter out prompt description artifacts like "건축 조감도: ... | " or standalone prompt text
+  const cleaned = trimmed
+    .replace(/건축\s*조감도\s*:\s*[^|]+\s*(\|\s*)?/gi, '')
+    .replace(/^\|\s*|\s*\|$/g, '')
+    .trim();
+
+  return cleaned || null;
 };
 
 export default function ProjectDetail() {
@@ -268,7 +301,7 @@ export default function ProjectDetail() {
                 {project.title}
               </h1>
               {project.location && (
-                <p className="text-base md:text-xl text-white/80 font-light flex items-center gap-2">
+                <p className="text-base md:text-xl text-white/90 font-medium flex items-center gap-2 tracking-tight">
                   <MapPin size={20} />
                   <span>{project.location}</span>
                 </p>
@@ -311,7 +344,7 @@ export default function ProjectDetail() {
                 <SpecItem label={language === 'ko' ? '공사기간' : 'Period'} value={project.period} />
                 <SpecItem label={language === 'ko' ? '연도' : 'Year'} value={project.year} />
                 <SpecItem label={language === 'ko' ? '역할' : 'Role'} value={project.role} />
-                <SpecItem label={language === 'ko' ? '비고' : 'Notes'} value={project.notes} />
+                <SpecItem label={language === 'ko' ? '비고' : 'Notes'} value={cleanClientNotes(project.notes)} />
               </dl>
             </div>
           </motion.div>
@@ -333,6 +366,13 @@ export default function ProjectDetail() {
                   referrerPolicy="no-referrer"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    const fallback = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop";
+                    if (target.src !== fallback) {
+                      target.src = fallback;
+                    }
+                  }}
                 />
                 <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 pt-12 text-white/90 text-sm font-medium">
                   {project.title} - {project.location || (language === 'ko' ? '건축 개요' : 'Overview')}
@@ -341,9 +381,9 @@ export default function ProjectDetail() {
             )}
 
             {project.description && (
-              <div className="prose prose-lg max-w-none" itemProp="articleBody">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 tracking-tight">{language === 'ko' ? '프로젝트 개요' : 'Project Overview'}</h2>
-                <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-light whitespace-pre-line">
+              <div className="space-y-4" itemProp="articleBody">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">{language === 'ko' ? '프로젝트 개요' : 'Project Overview'}</h2>
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed font-normal whitespace-pre-line break-keep tracking-[-0.015em]">
                   {project.description}
                 </p>
               </div>
@@ -356,8 +396,8 @@ export default function ProjectDetail() {
                     <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-6">
                       <Target className="text-indigo-600" size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{language === 'ko' ? '도전 과제' : 'Challenge'}</h3>
-                    <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 tracking-tight">{language === 'ko' ? '도전 과제' : 'Challenge'}</h3>
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed font-normal whitespace-pre-line break-keep tracking-[-0.015em]">
                       {project.challenge}
                     </p>
                   </div>
@@ -367,8 +407,8 @@ export default function ProjectDetail() {
                     <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mb-6">
                       <Lightbulb className="text-yellow-400" size={24} />
                     </div>
-                    <h3 className="text-xl font-bold mb-4">{language === 'ko' ? '해결 방안' : 'Solution'}</h3>
-                    <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                    <h3 className="text-xl font-bold mb-4 tracking-tight">{language === 'ko' ? '해결 방안' : 'Solution'}</h3>
+                    <p className="text-sm md:text-base text-gray-200 leading-relaxed font-normal whitespace-pre-line break-keep tracking-[-0.015em]">
                       {project.solution}
                     </p>
                   </div>
@@ -418,13 +458,20 @@ export default function ProjectDetail() {
                           referrerPolicy="no-referrer"
                           loading="lazy"
                           decoding="async"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            const fallback = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop";
+                            if (target.src !== fallback) {
+                              target.src = fallback;
+                            }
+                          }}
                         />
                       </div>
                     )}
                     {(subtitle || text) && (
                       <div className="px-2 md:px-8 space-y-4 text-center md:text-left">
-                        {subtitle && <h4 className="text-xl md:text-2xl font-bold text-gray-900">{subtitle}</h4>}
-                        {text && <p className="text-base md:text-lg text-gray-600 font-light leading-relaxed whitespace-pre-line">{text}</p>}
+                        {subtitle && <h4 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">{subtitle}</h4>}
+                        {text && <p className="text-base md:text-lg text-gray-700 font-normal leading-relaxed whitespace-pre-line break-keep tracking-[-0.015em]">{text}</p>}
                       </div>
                     )}
                   </motion.div>

@@ -89,7 +89,7 @@ export default function Hero() {
               <h1 className="text-3xl md:text-5xl lg:text-[66px] font-bold text-white whitespace-pre-line leading-tight mb-4 md:mb-6">
                 {currentSlides[current].title}
               </h1>
-              <p className="text-base md:text-lg text-gray-200 font-light tracking-wide">
+              <p className="text-base md:text-lg text-gray-200 font-normal tracking-tight break-keep">
                 {currentSlides[current].subtitle}
               </p>
             </motion.div>

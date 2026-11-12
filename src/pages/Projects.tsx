@@ -232,11 +232,18 @@ export default function ProjectsPage() {
                     <span className="sr-only">View {project.title}</span>
                   </Link>
                   <img 
-                    src={project.image} 
+                    src={project.image || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"} 
                     alt={project.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                     loading="lazy"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      const fallback = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop";
+                      if (target.src !== fallback) {
+                        target.src = fallback;
+                      }
+                    }}
                   />
                   
                   {/* Gradient Overlay */}
@@ -244,12 +251,9 @@ export default function ProjectsPage() {
                   
                   {/* Content Overlay */}
                   <div className="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <div className="flex justify-between items-end mb-2">
+                    <div className="mb-2">
                       <span className="text-white/80 text-sm font-bold uppercase tracking-wider">
                         {language === 'ko' ? project.category : categoriesEn[categories.indexOf(project.category)]}
-                      </span>
-                      <span className="text-white/60 text-sm font-medium">
-                        {project.year}
                       </span>
                     </div>
                     <h3 className="text-2xl font-bold text-white leading-tight">

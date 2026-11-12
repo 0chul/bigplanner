@@ -295,12 +295,19 @@ export default function InteriorPage() {
                         <div className="w-full md:w-3/5 overflow-hidden rounded-2xl relative aspect-[4/3] bg-gray-50 flex-shrink-0">
                           <Link to={`/projects/${generateSlug(project.title)}`} className="absolute inset-0 z-20" />
                           <img 
-                            src={project.image} 
+                            src={project.image || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"} 
                             alt={`${project.title} - ${project.subcategory || '인테리어'} 디자인 화보`} 
                             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                             referrerPolicy="no-referrer"
                             loading="lazy"
                             decoding="async"
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              const fallback = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop";
+                              if (target.src !== fallback) {
+                                target.src = fallback;
+                              }
+                            }}
                           />
                           <div className="absolute top-4 left-4 bg-gray-900/90 text-white font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full z-10 backdrop-blur-sm">
                             FEATURED LOOK
@@ -329,14 +336,14 @@ export default function InteriorPage() {
                           </div>
 
                           <div className="mt-6 pt-4 border-t border-gray-100/50 space-y-3">
-                            <div className="grid grid-cols-2 gap-4 text-[11px] font-mono text-gray-500">
+                            <div className="grid grid-cols-2 gap-4 text-xs font-mono text-gray-600">
                               <div>
-                                <span className="block text-[9px] text-gray-400">LOCATION</span>
-                                <span className="text-gray-900 font-medium truncate block">{project.location || 'Seoul, Korea'}</span>
+                                <span className="block text-xs text-gray-500 font-semibold uppercase">LOCATION</span>
+                                <span className="text-gray-900 font-semibold truncate block mt-0.5">{project.location || 'Seoul, Korea'}</span>
                               </div>
                               <div>
-                                <span className="block text-[9px] text-gray-400">PROJECT YEAR</span>
-                                <span className="text-gray-900 font-medium block">{project.year || '2025'}</span>
+                                <span className="block text-xs text-gray-500 font-semibold uppercase">PROJECT YEAR</span>
+                                <span className="text-gray-900 font-semibold block mt-0.5">{project.year || '2025'}</span>
                               </div>
                             </div>
 
@@ -368,12 +375,19 @@ export default function InteriorPage() {
                       <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-50 mb-5">
                         <Link to={`/projects/${generateSlug(project.title)}`} className="absolute inset-0 z-10" />
                         <img 
-                          src={project.image} 
+                          src={project.image || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"} 
                           alt={`${project.title} - ${project.subcategory || '인테리어 디자인'} 공간 사진`} 
                           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                           referrerPolicy="no-referrer"
                           loading="lazy"
                           decoding="async"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            const fallback = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop";
+                            if (target.src !== fallback) {
+                              target.src = fallback;
+                            }
+                          }}
                         />
                         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/20 to-transparent h-1/3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
@@ -381,7 +395,7 @@ export default function InteriorPage() {
                       {/* Info details under image */}
                       <div className="flex flex-col justify-between flex-grow">
                         <div className="space-y-2.5">
-                          <div className="flex justify-between items-center text-[11px] font-mono text-gray-400">
+                          <div className="flex justify-between items-center text-xs font-mono text-gray-500 font-medium">
                             <span>LOOK NO. {padNum}</span>
                             <span>{project.subcategory || 'Interior Layout'}</span>
                           </div>
@@ -392,12 +406,12 @@ export default function InteriorPage() {
                             </Link>
                           </h3>
                           
-                          <p className="text-[11px] text-gray-500 font-light line-clamp-2 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 leading-relaxed">
                             {project.description || (language === 'ko' ? 'N도씨만의 섬세한 선의 비례와 차분한 톤온톤 구성이 돋보이는 작품입니다.' : 'A narrative structure showcasing soft color tones and warm atmosphere.')}
                           </p>
                         </div>
 
-                        <div className="mt-5 pt-3 border-t border-gray-50 flex items-center justify-between text-[11px] font-mono text-gray-500">
+                        <div className="mt-5 pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-mono text-gray-600 font-medium">
                           <span>{project.location || 'Seoul'}</span>
                           <span>•</span>
                           <span>{project.year || '2025'}</span>

@@ -10,9 +10,9 @@ export const documentProjects: Project[] = [
     location: '서초구 방배동 911-11번지 일원',
     client: '공공/민간 개발사업',
     role: 'PM : 진행중인 사업',
-    image: '/images/projects/bangbae-housing.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440976411.png',
     gallery: [
-      '/images/projects/bangbae-housing.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440976411.png'
     ],
     description: '서초구 방배동 911-11번지 일원에 추진 중인 장기전세주택 건립사업입니다. 지하 4층~지상 25층(최고높이 75.20m), 연면적 24,312.60㎡(지상 15,173.31㎡ / 지하 9,139.29㎡) 규모로 조성되며, 공동주택 총 140세대(분양 103세대 / 공공임대 37세대), 부대복리시설 및 공영주차장(195대)을 복합 구축합니다. 빅플래너파트너스가 종합 PM을 맡아 인허가 단계부터 개발기획 및 사업관리를 총괄 수행하고 있습니다.',
     challenge: '서초구 도심 주거 밀집지역 내에서 기준 200% 이하, 상한 500% 이하의 용적률 규제 속에 계획 용적률 476.41%를 효율적으로 확보하고, 공공임대 37세대와 일반분양 103세대의 품질 조화 및 법정 대수(182대)를 상회하는 195대의 주차 인프라를 지하 공간에 안전하게 배치해야 했습니다.',
@@ -38,9 +38,9 @@ export const documentProjects: Project[] = [
     location: '경기도 안양시 만안구 안양동 622-89외 3필지',
     client: '메디컬 웰니스 개발 컨소시엄',
     role: 'PM : 진행중인 사업',
-    image: '/images/projects/anyang-wellness.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440986135.png',
     gallery: [
-      '/images/projects/anyang-wellness.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440986135.png'
     ],
     description: '경기도 안양시 만안구 안양동 622-89외 3필지 일반상업지역에 건립되는 지하 5층~지상 49층 초대형 메디컬 웰니스 복합개발 프로젝트입니다. 전체 연면적 77,656.30㎡(23,491.03평, 지상 53,536.87㎡), 총 410세대의 주거 공간과 전문 의료 클리닉, 헬스케어 및 웰니스 복합시설이 집약된 안양 도심의 랜드마크 타워입니다.',
     challenge: '일반상업지역 내 816.73%에 달하는 초고용적률을 효율적으로 배분하고, 49층 초고층 구조의 안전성 확보와 함께 메디컬 내방객과 410세대 주거 입주민의 동선을 철저히 분리해야 하는 복합 설계 과제가 요구되었습니다.',
@@ -66,9 +66,9 @@ export const documentProjects: Project[] = [
     location: '경기도 양평군',
     client: '웰니스파크 개발단',
     role: 'PM : 진행중인 사업',
-    image: '/images/projects/yangpyeong-wellness.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440998735.png',
     gallery: [
-      '/images/projects/yangpyeong-wellness.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440998735.png'
     ],
     description: '경기도 양평군의 쾌적한 자연 경관 속에 대지면적 16,668.00㎡(5,042.05평), 연면적 17,283.60㎡(5,228.27평) 규모로 추진되는 친환경 스마트팜 웰니스파크 건립사업입니다. 주용도 노유자시설과 ICT 기반 첨단 스마트팜, 자연 힐링 산책로 및 치유 프로그램이 결합된 지속 가능한 에코 웰니스 복합 공간입니다.',
     challenge: '계획관리지역 및 보전관리지역의 환경 보존 지침을 충실히 반영하면서 대규모 대지 내 노유자 케어 시설과 스마트팜 체험 공간의 안전한 무장애(Barrier-Free) 유기적 연결 동선을 구현해야 했습니다.',
@@ -95,9 +95,9 @@ export const documentProjects: Project[] = [
     role: '개발기획 및 PM (검토중인 사업)',
     contractor: '㈜대우건설 (예정)',
     period: '약 50개월',
-    image: '/images/projects/isu-residence.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441008630.png',
     gallery: [
-      '/images/projects/isu-residence.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441008630.png'
     ],
     description: '서울 지하철 이수역 초역세권(이수3 특별계획구역) 중심에 계획된 지하 8층~지상 42층 규모의 하이엔드 복합 랜드마크 타워 \'LUMIÈRE Hotel & Residences\' 개발사업입니다. 총연면적 68,313㎡(20,665평) 규모로 저층부 아트리움 & 로비, 글로벌 수준의 부티크 호텔, 최고급 서비스드 레지던스, 루프탑 인피니티 풀 & 스카이 가든이 결합된 서울 서남권 최고급 주상복합입니다.',
     challenge: '이수3 특별계획구역 내 15개 필지 대규모 토지 매입 및 통합 인허가, 용적률 999.26%(최대 1,094% 가능)의 고밀도 입체 복합화, 지하 8층 대심도 굴착 공사에 따른 구조 안전성 확보가 주요 과제였습니다.',
@@ -110,7 +110,7 @@ export const documentProjects: Project[] = [
     far: '999.26',
     bcr: '58.45',
     parking: '442대 (법정 416.5대)',
-    notes: '계획안 : 검토중인 사업 | 건축 조감도: LUMIÈRE Hotel & Residences (저층부 아트리움 & 로비, 조감 전경-타워, 루프탑 풀 & 가든) | 매입면적: 4,789.3㎡ (1,449평) / 사업면적: 4,235.2㎡ (1,281평) | 공사기간: 약 50개월',
+    notes: '계획안 : 검토중인 사업 | 매입면적: 4,789.3㎡ (1,449평) / 사업면적: 4,235.2㎡ (1,281평) | 공사기간: 약 50개월',
     created_at: '2024-06-04T00:00:00+09:00'
   },
   {
@@ -122,9 +122,9 @@ export const documentProjects: Project[] = [
     location: '서울특별시 관악구 신림동 1433-1 외 15필지',
     client: '신림 복합개발 컨소시엄',
     role: '개발기획 및 PM (검토중인 사업)',
-    image: '/images/projects/sillim-medical.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441014586.png',
     gallery: [
-      '/images/projects/sillim-medical.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441014586.png'
     ],
     description: '서울특별시 관악구 신림동 1433-1 외 15필지 일반상업지역에 조성되는 지하 7층~지상 20층 규모의 메디컬 레지던스 복합 개발사업입니다. 대지면적 3,716.15㎡(1,124.14평, 제척부지 23.55㎡ 제외), 연면적 47,122.61㎡(14,279.58평, 지상 29,717.98㎡ / 지하 17,404.63㎡) 규모로 총 354세대의 주거 공간과 450대의 여유로운 주차 공간, 특화 메디컬 클리닉이 결합된 도심 복합 개발 프로젝트입니다.',
     challenge: '신림 역세권 상업밀집지 16개 필지 통합에 따른 제척부지 정리 및 정형화, 용적률 799.7% 및 건폐율 60.33%의 상한 적용, 지하 7층 대심도 시공에 따른 공기 단축과 안전성 관리가 핵심 과제였습니다.',
@@ -143,9 +143,68 @@ export const documentProjects: Project[] = [
   }
 ];
 
-export function mergeWithDocumentProjects(fetchedProjects: Project[]): Project[] {
-  const existingTitles = new Set(fetchedProjects.map(p => p.title.trim()));
-  const missingDocProjects = documentProjects.filter(dp => !existingTitles.has(dp.title.trim()));
-  // Put the 5 featured document projects at the front so they are immediately visible
-  return [...missingDocProjects, ...fetchedProjects];
+export function sanitizeProjectNotes(notes?: string | null): string {
+  if (!notes || typeof notes !== 'string') return '';
+  const trimmed = notes.trim();
+  if (!trimmed) return '';
+
+  // Internal review/developer notes that must never be visible to clients
+  const internalFlags = [
+    '재확인 필요',
+    '재검증 권장',
+    '원문 재검증',
+    '미확보',
+    '등록 예정',
+    '혼합표기',
+    '혼합 표기',
+    '분리 저장 권장',
+    '미입력',
+    '가능성 높음',
+    '구역 성격',
+    '권장',
+    '미상'
+  ];
+  if (internalFlags.some(flag => trimmed.includes(flag))) {
+    return '';
+  }
+
+  // Strip prompt artifacts like "건축 조감도: ... | "
+  return trimmed
+    .replace(/건축\s*조감도\s*:\s*[^|]+\s*(\|\s*)?/gi, '')
+    .replace(/^\|\s*|\s*\|$/g, '')
+    .trim();
 }
+
+export function mergeWithDocumentProjects(fetchedProjects: Project[]): Project[] {
+  // Map document projects by title for quick lookup & canonical data
+  const docProjectsByTitle = new Map(documentProjects.map(dp => [dp.title.trim(), dp]));
+
+  // Clean and merge fetched projects
+  const sanitizedFetched = fetchedProjects.map(p => {
+    const docMatch = docProjectsByTitle.get(p.title.trim());
+    if (docMatch) {
+      // Prioritize the curated document project specs (especially clean notes, units, parking)
+      return {
+        ...p,
+        ...docMatch,
+        id: p.id || docMatch.id,
+        notes: docMatch.notes
+      };
+    }
+    return {
+      ...p,
+      notes: sanitizeProjectNotes(p.notes)
+    };
+  });
+
+  // Ensure the 5 featured document projects are at the front
+  const featured = documentProjects.map(dp => {
+    const found = sanitizedFetched.find(p => p.title.trim() === dp.title.trim());
+    return found || dp;
+  });
+
+  const remaining = sanitizedFetched.filter(p => !docProjectsByTitle.has(p.title.trim()));
+
+  return [...featured, ...remaining];
+}
+

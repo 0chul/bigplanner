@@ -14,9 +14,9 @@ const newProjects = [
     location: '서초구 방배동 911-11번지 일원',
     client: '공공/민간 개발사업',
     role: 'PM (진행중인 사업)',
-    image: '/images/projects/bangbae-housing.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440976411.png',
     gallery: [
-      '/images/projects/bangbae-housing.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440976411.png'
     ],
     description: '서초구 방배동 911-11번지 일원에 추진 중인 방배동 장기전세주택 건립사업 프로젝트입니다. 지하 4층~지상 25층(최고높이 75.20m), 연면적 24,312.60㎡ 규모로 공동주택 총 140세대(분양 103세대 / 공공임대 37세대), 부대복리시설 및 공영주차장(195대)을 복합 조성하는 핵심 주거 프로젝트입니다. 빅플래너파트너스가 종합 PM을 맡아 인허가부터 개발 기획 및 사업 관리를 총괄 진행하고 있습니다.',
     challenge: '서초구 도심 주거 밀집 지역 내에서 공공임대와 일반분양 세대의 입체적 조화, 법정 대수를 상회하는 195대 주차 공간 및 공영주차장 복합화, 상한 용적률 476.41%를 효율적으로 적용해야 하는 복합적 인허가 과제가 있었습니다.',
@@ -38,9 +38,9 @@ const newProjects = [
     location: '경기도 안양시 만안구 안양동 622-89외 3필지',
     client: '메디컬 웰니스 개발 컨소시엄',
     role: 'PM (진행중인 사업)',
-    image: '/images/projects/anyang-wellness.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440986135.png',
     gallery: [
-      '/images/projects/anyang-wellness.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440986135.png'
     ],
     description: '경기도 안양시 만안구 안양동 622-89외 3필지 일반상업지역에 건립되는 지하 5층~지상 49층, 전체 연면적 77,656.30㎡(23,491.03평) 규모의 매머드급 메디컬 웰니스 복합개발 프로젝트입니다. 410세대의 주거 시설과 최첨단 메디컬 케어 및 웰니스 라이프케어 인프라가 융합된 안양 도심의 미래형 랜드마크 타워입니다.',
     challenge: '일반상업지역 내 816.73%의 초고밀도 용적률을 실현하면서 주거(410세대)의 정온한 생활 환경과 메디컬 웰니스 상업시설의 개방적 접근성을 분리·공존시키는 입체 동선 체계가 요구되었습니다.',
@@ -62,9 +62,9 @@ const newProjects = [
     location: '경기도 양평군',
     client: '웰니스파크 개발단',
     role: 'PM (진행중인 사업)',
-    image: '/images/projects/yangpyeong-wellness.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440998735.png',
     gallery: [
-      '/images/projects/yangpyeong-wellness.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789440998735.png'
     ],
     description: '경기도 양평군의 수려한 청정 자연환경 속에 대지면적 16,668.00㎡(5,042.05평), 연면적 17,283.60㎡(5,228.27평) 규모로 조성되는 친환경 스마트팜 웰니스파크 및 노유자시설 건립 사업입니다. 정보통신기술(ICT) 기반의 첨단 스마트팜과 자연 치유, 힐링 복지 시설이 결합된 수도권 대표 생태 웰니스 복합 거점입니다.',
     challenge: '계획관리지역 및 보전관리지역의 까다로운 환경·건축 규제를 준수하면서 대규모 스마트팜 시설과 노유자시설의 편리하고 안전한 무장애(Barrier-Free) 동선을 조성해야 했습니다.',
@@ -86,9 +86,9 @@ const newProjects = [
     location: '서울 동작구 사당동 136-1 외 14필지',
     client: '㈜대우건설 (시공 예정)',
     role: '개발기획 및 PM (검토중인 사업)',
-    image: '/images/projects/isu-residence.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441008630.png',
     gallery: [
-      '/images/projects/isu-residence.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441008630.png'
     ],
     description: '서울 서남권 교통 요지인 이수역 초역세권(이수3 특별계획구역)에 건립되는 42층 하이엔드 복합 건축물 \'LUMIÈRE Hotel & Residences\' 개발 프로젝트입니다. 지하 8층~지상 42층, 총연면적 68,313㎡(20,665평) 규모로 저층부 아트리움 & 로비, 프리미엄 부티크 호텔, 최고급 레지던스, 루프탑 인피니티 풀 & 스카이 가든을 아우르는 랜드마크 주상복합입니다.',
     challenge: '15개 필지에 달하는 대규모 토지 매입 및 통합, 일반상업지역 내 용적률 999.26%(최대 1,094% 검토) 고밀 복합 개발 계획 수립과 지하 8층 대심도 굴착을 위한 종합적 공정 및 안전 대책 마련이 필수적이었습니다.',
@@ -100,7 +100,7 @@ const newProjects = [
     scale: '지하 8층 ~ 지상 42층',
     far: '999.26',
     bcr: '58.45',
-    notes: '계획안 : 검토중인 사업 | 건축 조감도: LUMIÈRE Hotel & Residences | 매입면적 4,789.3㎡(1,449평), 사업면적 4,235.2㎡(1,281평) | 공사기간: 약 50개월 | 주차대수: 442대 (법정 416.5대) | 시공사: ㈜대우건설 (예정)'
+    notes: '계획안 : 검토중인 사업 | 매입면적: 4,789.3㎡ (1,449평) / 사업면적: 4,235.2㎡ (1,281평) | 공사기간: 약 50개월 | 주차대수: 442대 (법정 416.5대) | 시공사: ㈜대우건설 (예정)'
   },
   {
     title: '신림 메디컬레지던스 개발사업',
@@ -110,9 +110,9 @@ const newProjects = [
     location: '서울특별시 관악구 신림동 1433-1 외 15필지',
     client: '신림 복합개발 프로젝트',
     role: '개발기획 및 PM (검토중인 사업)',
-    image: '/images/projects/sillim-medical.jpg',
+    image: 'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441014586.png',
     gallery: [
-      '/images/projects/sillim-medical.jpg'
+      'https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/projects/main/1789441014586.png'
     ],
     description: '서울특별시 관악구 신림동 1433-1 외 15필지 일반상업지역 중심에 건립되는 지하 7층~지상 20층 규모의 메디컬 레지던스 개발사업입니다. 대지면적 3,716.15㎡(1,124.14평), 연면적 47,122.61㎡(14,279.58평)에 달하며 총 354세대의 주거 공간과 450대 규모의 여유로운 주차 공간, 전문 클리닉 시설을 통합한 도심형 메디컬 라이프스타일 랜드마크입니다.',
     challenge: '16개 필지 통합에 따른 제척부지(23.55㎡) 분리 및 부지 정형화, 용적률 799.7% 상한 적용과 지하 7층 대심도 굴착에 따른 도심지 시공성 확보가 주요 과제였습니다.',

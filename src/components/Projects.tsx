@@ -92,11 +92,18 @@ export default function Projects() {
                 <Link to={`/projects/${generateSlug(project.title)}`} className="block">
                   <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[4/3]">
                     <img 
-                      src={project.image} 
+                      src={project.image || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"} 
                       alt={project.title} 
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                       referrerPolicy="no-referrer"
                       loading="lazy"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        const fallback = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop";
+                        if (target.src !== fallback) {
+                          target.src = fallback;
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
                   </div>
