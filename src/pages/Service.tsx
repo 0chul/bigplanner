@@ -11,6 +11,7 @@ import {
 import ContactCTA from '../components/ContactCTA';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import FAQ from '../components/FAQ';
 import PMTasks from '../components/PMTasks';
 import ValueChainMotion from '../components/motion/ValueChainMotion';
 import FrameMotionDiagram from '../components/motion/FrameMotionDiagram';
@@ -276,6 +277,7 @@ export default function Service() {
       </div>
       </div>
       
+      <FAQ surface="white" />
       <ContactCTA />
       <Footer />
     </div>
