@@ -1,6 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import { FolderKanban, MessageSquare, UserPlus } from 'lucide-react';
+import { FolderKanban, MessageSquare, UserPlus, ShieldCheck } from 'lucide-react';
 
 export default function AdminDashboard() {
   const { isAdmin } = useAuth();
@@ -33,6 +33,14 @@ export default function AdminDashboard() {
           </div>
           <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2">META 리드 관리</h2>
           <p className="text-sm md:text-base text-gray-600">META 광고를 통해 접수된 리드 내역을 확인하고 관리합니다.</p>
+        </Link>
+
+        <Link to="/admin/fire-safety-leads" className="bg-white p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 group">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
+            <ShieldCheck size={24} className="w-5 h-5 md:w-6 md:h-6" />
+          </div>
+          <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2">AI 민원 리드 관리</h2>
+          <p className="text-sm md:text-base text-gray-600">방재실 AI 민원 도우미 데모 시연 신청 리드를 확인하고 시연 일정을 관리합니다.</p>
         </Link>
       </div>
     </div>

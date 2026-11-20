@@ -1,6 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut, Menu, X, Handshake } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut, Menu, X, Handshake, ShieldCheck } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../../supabase';
 
@@ -9,6 +9,7 @@ export default function AdminLayout() {
   const location = useLocation();
   const [inquiries, setInquiries] = useState<any[]>([]);
   const [leads, setLeads] = useState<any[]>([]);
+  const [fireSafetyLeads, setFireSafetyLeads] = useState<any[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -25,6 +26,9 @@ export default function AdminLayout() {
     const fetchData = async () => {
       const { data: inqData } = await supabase.from('inquiries').select('id, status');
       const { data: leadData } = await supabase.from('leads').select('id, status');
+      const { data: fireSafetyData, error: fireSafetyErr } = await supabase
+        .from('fire_safety_demo_requests')
+        .select('*');
       
       // Check for new inquiries
       const newInquiries = inqData?.filter(i => i.status === 'new') || [];
@@ -42,6 +46,9 @@ export default function AdminLayout() {
 
       setInquiries(inqData || []);
       setLeads(leadData || []);
+      if (!fireSafetyErr) {
+        setFireSafetyLeads(fireSafetyData || []);
+      }
     };
     fetchData();
     const channel = supabase.channel('admin_nav').on('postgres_changes', { event: '*', schema: 'public' }, fetchData).subscribe();
@@ -92,6 +99,7 @@ export default function AdminLayout() {
     { path: '/admin/interior', label: '인테리어 관리', icon: <FolderKanban size={20} /> },
     { path: '/admin/inquiries', label: '고객 문의 관리', icon: <MessageSquare size={20} />, count: inquiries.filter(i => i.status === 'new').length },
     { path: '/admin/leads', label: 'META 리드 관리', icon: <UserPlus size={20} />, count: leads.filter(l => l.status === 'new').length },
+    { path: '/admin/fire-safety-leads', label: 'AI 민원 리드 관리', icon: <ShieldCheck size={20} />, count: fireSafetyLeads.filter(l => (l.status || 'new') === 'new').length },
     { path: '/admin/partnerships', label: '제휴 신청 관리', icon: <Handshake size={20} /> },
   ];
 

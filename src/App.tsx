@@ -24,6 +24,7 @@ const AdminProjects = lazy(() => import('./pages/admin/AdminProjects'));
 const AdminInterior = lazy(() => import('./pages/admin/AdminInterior'));
 const AdminInquiries = lazy(() => import('./pages/admin/AdminInquiries'));
 const AdminLeads = lazy(() => import('./pages/admin/AdminLeads'));
+const AdminFireSafetyLeads = lazy(() => import('./pages/admin/AdminFireSafetyLeads'));
 const AdminPartnerships = lazy(() => import('./pages/admin/AdminPartnerships'));
 const SharedInquiry = lazy(() => import('./pages/public/SharedInquiry'));
 
@@ -59,6 +60,7 @@ export default function App() {
                 <Route path="interior" element={<AdminInterior />} />
                 <Route path="inquiries" element={<AdminInquiries />} />
                 <Route path="leads" element={<AdminLeads />} />
+                <Route path="fire-safety-leads" element={<AdminFireSafetyLeads />} />
                 <Route path="partnerships" element={<AdminPartnerships />} />
               </Route>
               
