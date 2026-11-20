@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
@@ -30,7 +30,8 @@ const tabs = [
 ];
 
 export default function Service() {
-  const [activeTab, setActiveTab] = useState('consulting');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTab = tabs.find(tab => tab.id === searchParams.get('tab'))?.id ?? 'consulting';
   const { language } = useLanguage();
 
   return (
@@ -102,7 +103,13 @@ export default function Service() {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              aria-pressed={activeTab === tab.id}
+              onClick={() => {
+                const next = new URLSearchParams(searchParams);
+                if (tab.id === 'consulting') next.delete('tab');
+                else next.set('tab', tab.id);
+                setSearchParams(next, { replace: true, preventScrollReset: true });
+              }}
               className={`flex-1 px-1 py-3 md:px-8 md:py-4 rounded-xl font-bold text-xs sm:text-sm md:text-base transition-all break-keep ${
                 activeTab === tab.id
                   ? 'bg-gray-900 text-white shadow-md'
@@ -213,6 +220,37 @@ export default function Service() {
                 {/* Interactive Dynamic PM Triad Motion Graphic */}
                 <PMTriadMotion />
               </div>
+
+              <section aria-labelledby="tenant-assistant-title" className="grid overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm md:grid-cols-[1.15fr_1fr]">
+                <div className="self-center p-6 sm:p-10 lg:p-14">
+                  <h3 id="tenant-assistant-title" className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
+                    {language === 'ko' ? '방재실 AI 민원 도우미' : 'AI Assistant for Building Operations'}
+                  </h3>
+                  <p className="mt-5 break-keep text-lg leading-relaxed text-gray-700">
+                    {language === 'ko'
+                      ? '주차 등록처럼 자주 묻는 질문은 AI가 건물 매뉴얼에 따라 답합니다. 냉난방 불편처럼 현장 확인이 필요한 민원은 위치와 연락처를 한 장의 접수 카드로 정리합니다.'
+                      : 'AI answers common questions about visitor parking and building services using your building’s manual. For issues that need a site visit, such as insufficient cooling, it brings the location and contact details together on one ticket.'}
+                  </p>
+                  <p className="mt-3 break-keep text-base leading-relaxed text-gray-600">
+                    {language === 'ko'
+                      ? '관리자가 같은 카드에서 담당자를 지정하고, 다음 근무자는 교대할 때 접수·전달 이력을 확인합니다.'
+                      : 'Managers use the same ticket to assign a team member. The next shift can see what was reported and who received it.'}
+                  </p>
+                  <a href="https://fire-safety-ai-bigplanner-20261117.esrak167.chatgpt.site/fire-safety-ai/"
+                    className="mt-7 inline-flex min-h-12 items-center rounded-full bg-gray-900 px-6 py-3 text-base font-bold text-white transition-colors hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-900">
+                    {language === 'ko' ? '서비스 소개 및 데모 보기' : 'Explore the service and demo (Korean)'}
+                  </a>
+                </div>
+                <figure className="relative isolate flex min-h-56 items-end overflow-hidden bg-slate-100 p-5 sm:p-8">
+                  <img src="/images/fire-safety-building.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"
+                    className="absolute inset-0 -z-10 h-full w-full object-cover object-right" />
+                  <figcaption className="rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-900 shadow-sm">
+                    <span className="block text-sm font-medium text-gray-600">{language === 'ko' ? '민원 예시' : 'Sample ticket'}</span>
+                    <strong className="mt-1 block text-lg">{language === 'ko' ? '5층 공용 회의실' : 'Shared meeting room, 5th floor'}</strong>
+                    <span className="mt-1 block text-base">{language === 'ko' ? '냉방 불편 · 현장 확인 요청' : 'Insufficient cooling · Site check requested'}</span>
+                  </figcaption>
+                </figure>
+              </section>
 
               {/* 7-Stage Integrated PM Tasks Roadmap */}
               <PMTasks />
