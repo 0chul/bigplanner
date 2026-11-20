@@ -53,7 +53,7 @@ export default function Home() {
         <CoreValues />
         <Services />
         <Projects />
-        <FAQ surface="gray" />
+        <FAQ surface="white" />
         <ContactCTA />
       </main>
       <Footer />

@@ -1,42 +1,53 @@
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { CtaHorizonMotion } from './motion/LandingMotionGraphics';
 
 export default function ContactCTA() {
   const { language } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="py-16 md:py-24 bg-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M0 40L40 0H20L0 20M40 40V20L20 40" stroke="currentColor" strokeWidth="2" fill="none" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-        </svg>
-      </div>
-      
+    <section className="py-20 md:py-28 bg-gray-950 relative overflow-hidden">
+      <CtaHorizonMotion />
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-2xl md:text-[47px] font-bold text-white mb-4 md:mb-6">
-            {language === 'ko' ? '저희에게 궁금하신 부분이 있으신가요?' : 'Do you have any questions for us?'}
+          <p className="text-xs font-semibold tracking-wider text-blue-400 uppercase mb-4">
+            Start Your Project
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 leading-tight text-balance">
+            {language === 'ko'
+              ? '저희에게 궁금하신 부분이 있으신가요?'
+              : 'Do you have any questions for us?'}
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-10">
+          <p className="text-base md:text-xl text-gray-300 mb-9 max-w-2xl mx-auto leading-relaxed">
             {language === 'ko' ? (
-              <>궁금하신 점은 언제든 빅플래너파트너스에 문의주세요.<br className="hidden md:block" />신속하고 친절하게 답변해 드리겠습니다.</>
+              <>
+                대상지 검토부터 개발 기획, PM 감리, AI 빌딩 운영까지
+                <br className="hidden md:block" />
+                빅플래너파트너스 전담 PM이 신속하게 안내해 드립니다.
+              </>
             ) : (
-              <>Please feel free to contact BIGPLANNER PARTNERS with any questions.<br className="hidden md:block" />We will answer you promptly and kindly.</>
+              <>
+                From parcel feasibility to architectural PM and AI building operations,
+                <br className="hidden md:block" />
+                our dedicated PM team will respond promptly.
+              </>
             )}
           </p>
-          <Link to="/contact" className="inline-block bg-white text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-50 hover:scale-105 transition-all shadow-lg hover:shadow-xl">
-            {language === 'ko' ? '문의하기' : 'Contact Us'}
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 bg-white text-gray-950 px-7 py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-gray-100 transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            <span>{language === 'ko' ? '문의하기' : 'Contact Us'}</span>
+            <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </motion.div>
       </div>
