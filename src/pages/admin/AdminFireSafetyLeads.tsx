@@ -21,6 +21,7 @@ import {
   Save,
 } from 'lucide-react';
 import { getRelativeTime } from '../../utils/dateUtils';
+import { fireSafetyLandingUrl } from '../../utils/fireSafetyLanding';
 import { useAuth } from '../../contexts/AuthContext';
 
 export type FireSafetyLeadStatus = 'new' | 'contacted' | 'scheduled' | 'completed' | 'lost';
@@ -39,6 +40,7 @@ export interface FireSafetyLead {
   source_path?: string | null;
   status?: FireSafetyLeadStatus | string | null;
   admin_memo?: string | null;
+  admin_note?: string | null;
   created_at?: string | null;
 }
 
@@ -59,34 +61,22 @@ const STATUS_META: Record<
   lost: { label: '보류/종료', badgeClass: 'bg-gray-100 text-gray-600 border-gray-200' },
 };
 
-const SQL_MIGRATION_SNIPPET = `-- 1) 관리용 컬럼(status, admin_memo, created_at) 추가 (없는 경우)
-ALTER TABLE public.fire_safety_demo_requests
-  ADD COLUMN IF NOT EXISTS status text DEFAULT 'new',
-  ADD COLUMN IF NOT EXISTS admin_memo text,
-  ADD COLUMN IF NOT EXISTS created_at timestamptz DEFAULT now();
+const statusChoices = Object.keys(STATUS_META) as FireSafetyLeadStatus[];
 
--- 2) 관리자 조회/수정/삭제 RLS 정책 허용
-ALTER TABLE public.fire_safety_demo_requests ENABLE ROW LEVEL SECURITY;
+function usesDemoPolicy(lead: FireSafetyLead) {
+  return 'admin_note' in lead;
+}
 
-DROP POLICY IF EXISTS "Admins can manage fire_safety_demo_requests" ON public.fire_safety_demo_requests;
-CREATE POLICY "Admins can manage fire_safety_demo_requests"
-  ON public.fire_safety_demo_requests
-  FOR ALL
-  TO authenticated
-  USING (
-    EXISTS (
-      SELECT 1 FROM public.profiles
-      WHERE profiles.id = auth.uid() AND profiles.role = 'admin'
-    )
-  )
-  WITH CHECK (
-    EXISTS (
-      SELECT 1 FROM public.profiles
-      WHERE profiles.id = auth.uid() AND profiles.role = 'admin'
-    )
-  );`;
+function getMemo(lead: FireSafetyLead) {
+  return (usesDemoPolicy(lead) ? lead.admin_note : lead.admin_memo) ?? '';
+}
+
+function statusChoicesFor(lead: FireSafetyLead) {
+  return usesDemoPolicy(lead) ? statusChoices.filter(status => status !== 'lost') : statusChoices;
+}
 
 function normalizeStatus(status?: string | null): FireSafetyLeadStatus {
+  if (status === 'demo-scheduled') return 'scheduled';
   if (
     status === 'new' ||
     status === 'contacted' ||
@@ -107,6 +97,7 @@ function getRoleLabel(role?: string | null): string {
 export default function AdminFireSafetyLeads() {
   const { isAdmin, loading: authLoading } = useAuth();
   const [leads, setLeads] = useState<FireSafetyLead[]>([]);
+  const [manualEntryAvailable, setManualEntryAvailable] = useState(false);
   const [fetching, setFetching] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -124,9 +115,9 @@ export default function AdminFireSafetyLeads() {
   const [memoDrafts, setMemoDrafts] = useState<Record<string, string>>({});
   const [savingMemoId, setSavingMemoId] = useState<string | null>(null);
 
-  // Feedback & SQL error helper
+  // Feedback & access guidance
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [showSqlHelper, setShowSqlHelper] = useState(false);
+  const [showAccessHelp, setShowAccessHelp] = useState(false);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -197,7 +188,7 @@ export default function AdminFireSafetyLeads() {
       msg.includes('permission denied') ||
       msg.includes('column')
     ) {
-      setShowSqlHelper(true);
+      setShowAccessHelp(true);
     }
     setErrorMsg(`${context}: ${msg}`);
   };
@@ -222,13 +213,21 @@ export default function AdminFireSafetyLeads() {
       handleDbError(error, 'AI 민원 도우미 리드를 불러오는 중 오류가 발생했습니다');
     } else {
       const rows = (data || []) as FireSafetyLead[];
+      if (rows.length) {
+        setManualEntryAvailable(!usesDemoPolicy(rows[0]));
+      } else {
+        // Check the column without reading applicant data, even on an empty table.
+        const { error: columnError } = await supabase.from('fire_safety_demo_requests')
+          .select('admin_note').limit(0);
+        setManualEntryAvailable(columnError?.code === '42703' || columnError?.code === 'PGRST204');
+      }
       setLeads(rows);
       setErrorMsg(null);
       setMemoDrafts((prev) => {
         const next = { ...prev };
         rows.forEach((row) => {
           if (next[row.id] === undefined) {
-            next[row.id] = row.admin_memo || '';
+            next[row.id] = getMemo(row);
           }
         });
         return next;
@@ -283,7 +282,7 @@ export default function AdminFireSafetyLeads() {
           lead.email,
           lead.interests,
           getRoleLabel(lead.role),
-          lead.admin_memo,
+          getMemo(lead),
         ]
           .filter(Boolean)
           .join(' ')
@@ -323,36 +322,33 @@ export default function AdminFireSafetyLeads() {
     }));
   };
 
-  const handleStatusChange = async (leadId: string, nextStatus: FireSafetyLeadStatus) => {
-    const prevLeads = leads;
-    setLeads((curr) =>
-      curr.map((l) => (l.id === leadId ? { ...l, status: nextStatus } : l))
-    );
-
+  const handleStatusChange = async (lead: FireSafetyLead, nextStatus: FireSafetyLeadStatus) => {
+    const status = usesDemoPolicy(lead) && nextStatus === 'scheduled' ? 'demo-scheduled' : nextStatus;
     const { data, error } = await supabase
       .from('fire_safety_demo_requests')
-      .update({ status: nextStatus })
-      .eq('id', leadId)
+      .update({ status })
+      .eq('id', lead.id)
       .select();
 
     if (error) {
-      setLeads(prevLeads);
       handleDbError(error, '상태 변경 실패');
     } else if (!data || data.length === 0) {
-      setLeads(prevLeads);
-      setShowSqlHelper(true);
+      setShowAccessHelp(true);
       setErrorMsg('수정 권한이 없습니다. Supabase RLS UPDATE 정책을 확인해 주세요.');
     } else {
+      setLeads(items => items.map(item => item.id === lead.id ? { ...item, status } : item));
       showToast(`상태가 '${STATUS_META[nextStatus].label}'(으)로 변경되었습니다.`);
     }
   };
 
-  const handleSaveMemo = async (leadId: string) => {
+  const handleSaveMemo = async (lead: FireSafetyLead) => {
+    const leadId = lead.id;
+    const column = usesDemoPolicy(lead) ? 'admin_note' : 'admin_memo';
     const memoText = memoDrafts[leadId] ?? '';
     setSavingMemoId(leadId);
     const { data, error } = await supabase
       .from('fire_safety_demo_requests')
-      .update({ admin_memo: memoText })
+      .update({ [column]: memoText })
       .eq('id', leadId)
       .select();
 
@@ -361,11 +357,11 @@ export default function AdminFireSafetyLeads() {
     if (error) {
       handleDbError(error, '메모 저장 실패');
     } else if (!data || data.length === 0) {
-      setShowSqlHelper(true);
+      setShowAccessHelp(true);
       setErrorMsg('메모 저장 권한이 없습니다. Supabase RLS UPDATE 정책을 확인해 주세요.');
     } else {
       setLeads((prev) =>
-        prev.map((l) => (l.id === leadId ? { ...l, admin_memo: memoText } : l))
+        prev.map((l) => (l.id === leadId ? { ...l, [column]: memoText } : l))
       );
       showToast('관리자 메모가 저장되었습니다.');
     }
@@ -381,7 +377,7 @@ export default function AdminFireSafetyLeads() {
       building_count: lead.building_count !== null && lead.building_count !== undefined ? String(lead.building_count) : '',
       interests: lead.interests || '',
       status: normalizeStatus(lead.status),
-      admin_memo: lead.admin_memo || '',
+      admin_memo: getMemo(lead),
     });
   };
 
@@ -422,7 +418,7 @@ export default function AdminFireSafetyLeads() {
       if (!retry.error) {
         data = retry.data;
         error = null;
-        setShowSqlHelper(true);
+        setShowAccessHelp(true);
       }
     }
 
@@ -431,7 +427,7 @@ export default function AdminFireSafetyLeads() {
     if (error) {
       handleDbError(error, '리드 수정 실패');
     } else if (!data || data.length === 0) {
-      setShowSqlHelper(true);
+      setShowAccessHelp(true);
       setErrorMsg('수정 권한이 없습니다. Supabase RLS UPDATE 정책을 확인해 주세요.');
     } else {
       setEditingLead(null);
@@ -478,7 +474,7 @@ export default function AdminFireSafetyLeads() {
       const { status: _s, admin_memo: _m, ...corePayload } = basePayload;
       const retry = await supabase.from('fire_safety_demo_requests').insert([corePayload]);
       error = retry.error;
-      if (!error) setShowSqlHelper(true);
+      if (!error) setShowAccessHelp(true);
     }
 
     setSubmittingForm(false);
@@ -545,11 +541,12 @@ export default function AdminFireSafetyLeads() {
           return;
         }
 
-        if (lead.admin_memo?.trim()) {
+        const memo = getMemo(lead).trim();
+        if (memo) {
           await supabase.from('inquiry_memos').insert([
             {
               inquiry_id: newInquiryId,
-              content: `[방재실 AI 민원 리드 메모]\n${lead.admin_memo.trim()}`,
+              content: `[방재실 AI 민원 리드 메모]\n${memo}`,
               created_at: new Date().toISOString(),
             },
           ]);
@@ -584,7 +581,7 @@ export default function AdminFireSafetyLeads() {
         if (error) {
           handleDbError(error, '리드 삭제 실패');
         } else if (count === 0) {
-          setShowSqlHelper(true);
+          setShowAccessHelp(true);
           setErrorMsg('삭제 권한이 없거나 이미 삭제된 항목입니다.');
         } else {
           setLeads((prev) => prev.filter((item) => item.id !== lead.id));
@@ -632,7 +629,7 @@ export default function AdminFireSafetyLeads() {
       l.building_count ?? '',
       l.interests ?? '',
       STATUS_META[normalizeStatus(l.status)].label,
-      l.admin_memo ?? '',
+      getMemo(l),
       l.source_path ?? '/fire-safety-ai',
       l.created_at ? new Date(l.created_at).toLocaleString('ko-KR') : '',
     ]);
@@ -692,13 +689,16 @@ export default function AdminFireSafetyLeads() {
           <p className="text-sm text-gray-500 mt-1 flex flex-wrap items-center gap-2">
             <span>방재실 AI 민원 도우미 랜딩페이지 데모 시연 신청 내역을 관리합니다.</span>
             <a
-              href="https://fire-safety-ai-bigplanner-20261117.esrak167.chatgpt.site/fire-safety-ai/"
+              href={fireSafetyLandingUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-gray-700 hover:text-black underline underline-offset-4 font-medium whitespace-nowrap"
             >
               <span>서비스 페이지</span>
               <ExternalLink size={13} />
+            </a>
+            <a href="/admin/fire-safety-demos" className="text-gray-700 underline underline-offset-4">
+              데모 일정 관리
             </a>
           </p>
         </div>
@@ -722,14 +722,16 @@ export default function AdminFireSafetyLeads() {
             <Download size={15} />
             <span>CSV 내보내기</span>
           </button>
-          <button
-            type="button"
-            onClick={() => setIsCreateModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-xl text-sm font-semibold transition-colors whitespace-nowrap shrink-0"
-          >
-            <Plus size={16} />
-            <span>리드 등록</span>
-          </button>
+          {manualEntryAvailable && (
+            <button
+              type="button"
+              onClick={() => setIsCreateModalOpen(true)}
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-xl text-sm font-semibold transition-colors whitespace-nowrap shrink-0"
+            >
+              <Plus size={16} />
+              <span>리드 등록</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -755,23 +757,12 @@ export default function AdminFireSafetyLeads() {
         </div>
       </div>
 
-      {/* Error & Conditional SQL Helper */}
+      {/* Error and access guidance */}
       {errorMsg && (
         <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-start justify-between gap-3">
           <div className="flex items-start gap-2.5 text-sm">
             <AlertCircle size={18} className="shrink-0 mt-0.5" />
-            <div>
-              <p className="font-medium">{errorMsg}</p>
-              {showSqlHelper && (
-                <button
-                  type="button"
-                  onClick={() => setShowSqlHelper(true)}
-                  className="text-xs underline mt-1 font-semibold"
-                >
-                  아래 Supabase 설정 가이드를 확인해 주세요
-                </button>
-              )}
-            </div>
+            <p className="font-medium">{errorMsg}</p>
           </div>
           <button
             type="button"
@@ -784,39 +775,16 @@ export default function AdminFireSafetyLeads() {
         </div>
       )}
 
-      {showSqlHelper && (
-        <div className="mb-6 bg-white border border-amber-200 rounded-xl p-5">
-          <div className="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <h2 className="text-sm font-bold text-gray-900">
-                Supabase 권한 또는 관리 컬럼 설정 필요
-              </h2>
-              <p className="text-xs text-gray-600 mt-1">
-                <code className="bg-gray-100 px-1.5 py-0.5 rounded">fire_safety_demo_requests</code> 테이블의 관리자 RLS 정책 또는 <code className="bg-gray-100 px-1.5 py-0.5 rounded">status</code> / <code className="bg-gray-100 px-1.5 py-0.5 rounded">admin_memo</code> 컬럼이 없을 경우 아래 SQL을 Supabase SQL Editor에서 실행해 주세요.
-              </p>
-            </div>
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                type="button"
-                onClick={() => handleCopy(SQL_MIGRATION_SNIPPET, 'sql-snippet', 'SQL이 복사되었습니다.')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg hover:bg-gray-800 whitespace-nowrap"
-              >
-                {copiedId === 'sql-snippet' ? <Check size={13} /> : <Copy size={13} />}
-                <span>SQL 복사</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowSqlHelper(false)}
-                className="text-gray-400 hover:text-gray-600 p-1"
-                aria-label="가이드 닫기"
-              >
-                <X size={16} />
-              </button>
-            </div>
+      {showAccessHelp && (
+        <div className="mb-6 flex items-start justify-between gap-3 rounded-xl border border-amber-200 bg-white p-5">
+          <div className="text-sm text-gray-700">
+            <h2 className="font-bold text-gray-900">데모 신청 관리 권한 확인</h2>
+            <p className="mt-1">프로젝트 관리자에게 계정의 <code>fire_safety_demo_admins</code> 등록 여부를 확인해 주세요.
+              신청 테이블의 컬럼과 권한 정의는 저장소의 <code>supabase/sql/fire_safety_demo_requests.sql</code>에서 확인할 수 있습니다.</p>
           </div>
-          <pre className="text-xs bg-gray-950 text-gray-100 p-3.5 rounded-lg overflow-x-auto leading-relaxed">
-            {SQL_MIGRATION_SNIPPET}
-          </pre>
+          <button type="button" onClick={() => setShowAccessHelp(false)} aria-label="안내 닫기">
+            <X size={16} />
+          </button>
         </div>
       )}
 
@@ -1032,11 +1000,11 @@ export default function AdminFireSafetyLeads() {
                             <select
                               value={status}
                               onChange={(e) =>
-                                handleStatusChange(lead.id, e.target.value as FireSafetyLeadStatus)
+                                handleStatusChange(lead, e.target.value as FireSafetyLeadStatus)
                               }
                               className={`px-2.5 py-1 rounded-full text-xs font-semibold border outline-none cursor-pointer ${STATUS_META[status].badgeClass}`}
                             >
-                              {(Object.keys(STATUS_META) as FireSafetyLeadStatus[]).map((key) => (
+                              {statusChoicesFor(lead).map((key) => (
                                 <option key={key} value={key} className="bg-white text-gray-900">
                                   {STATUS_META[key].label}
                                 </option>
@@ -1057,14 +1025,16 @@ export default function AdminFireSafetyLeads() {
                                 <ArrowRight size={13} />
                                 <span>문의 이관</span>
                               </button>
-                              <button
-                                type="button"
-                                onClick={() => openEditModal(lead)}
-                                className="p-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
-                                title="수정"
-                              >
-                                <Edit2 size={14} />
-                              </button>
+                              {!usesDemoPolicy(lead) && (
+                                <button
+                                  type="button"
+                                  onClick={() => openEditModal(lead)}
+                                  className="p-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
+                                  title="수정"
+                                >
+                                  <Edit2 size={14} />
+                                </button>
+                              )}
                               <button
                                 type="button"
                                 onClick={() => requestDeleteLead(lead)}
@@ -1118,7 +1088,8 @@ export default function AdminFireSafetyLeads() {
                                   <div className="space-y-2">
                                     <textarea
                                       rows={3}
-                                      value={memoDrafts[lead.id] ?? lead.admin_memo ?? ''}
+                                      value={memoDrafts[lead.id] ?? getMemo(lead)}
+                                      maxLength={usesDemoPolicy(lead) ? 2000 : undefined}
                                       onChange={(e) =>
                                         setMemoDrafts((prev) => ({
                                           ...prev,
@@ -1140,7 +1111,7 @@ export default function AdminFireSafetyLeads() {
                                       </a>
                                       <button
                                         type="button"
-                                        onClick={() => handleSaveMemo(lead.id)}
+                                        onClick={() => handleSaveMemo(lead)}
                                         disabled={savingMemoId === lead.id}
                                         className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold bg-gray-900 text-white hover:bg-black rounded-lg transition-colors whitespace-nowrap disabled:opacity-60"
                                       >
@@ -1172,11 +1143,11 @@ export default function AdminFireSafetyLeads() {
                       <select
                         value={status}
                         onChange={(e) =>
-                          handleStatusChange(lead.id, e.target.value as FireSafetyLeadStatus)
+                          handleStatusChange(lead, e.target.value as FireSafetyLeadStatus)
                         }
                         className={`px-2.5 py-1 rounded-full text-xs font-semibold border outline-none ${STATUS_META[status].badgeClass}`}
                       >
-                        {(Object.keys(STATUS_META) as FireSafetyLeadStatus[]).map((key) => (
+                        {statusChoicesFor(lead).map((key) => (
                           <option key={key} value={key} className="bg-white text-gray-900">
                             {STATUS_META[key].label}
                           </option>
@@ -1221,7 +1192,8 @@ export default function AdminFireSafetyLeads() {
                           <p className="text-xs font-semibold text-gray-500 mb-1">관리자 메모</p>
                           <textarea
                             rows={2}
-                            value={memoDrafts[lead.id] ?? lead.admin_memo ?? ''}
+                            value={memoDrafts[lead.id] ?? getMemo(lead)}
+                            maxLength={usesDemoPolicy(lead) ? 2000 : undefined}
                             onChange={(e) =>
                               setMemoDrafts((prev) => ({
                                 ...prev,
@@ -1233,7 +1205,7 @@ export default function AdminFireSafetyLeads() {
                           />
                           <button
                             type="button"
-                            onClick={() => handleSaveMemo(lead.id)}
+                            onClick={() => handleSaveMemo(lead)}
                             disabled={savingMemoId === lead.id}
                             className="mt-1.5 w-full py-1.5 bg-gray-900 text-white rounded-lg text-xs font-semibold"
                           >
@@ -1259,14 +1231,16 @@ export default function AdminFireSafetyLeads() {
                         <ArrowRight size={13} />
                         <span>이관</span>
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => openEditModal(lead)}
-                        className="p-2 text-blue-600 bg-blue-50 rounded-lg"
-                        title="수정"
-                      >
-                        <Edit2 size={15} />
-                      </button>
+                      {!usesDemoPolicy(lead) && (
+                        <button
+                          type="button"
+                          onClick={() => openEditModal(lead)}
+                          className="p-2 text-blue-600 bg-blue-50 rounded-lg"
+                          title="수정"
+                        >
+                          <Edit2 size={15} />
+                        </button>
+                      )}
                       <button
                         type="button"
                         onClick={() => requestDeleteLead(lead)}

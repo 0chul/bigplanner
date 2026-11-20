@@ -1,0 +1,52 @@
+.fire-ai .fa-story-art.fa-story-manual-art {
+  display:grid;
+  place-items:center;
+  container:manual-art / size;
+  background:radial-gradient(ellipse at 36% 0%,#fafafa 0%,#eaeaea 71%,#dfdfdf 100%);
+  color:#181818;
+}
+.fa-manual-sheet {
+  position:relative;
+  width:min(82%,440px);
+  padding:clamp(12px,7cqh,24px) clamp(16px,5cqw,36px);
+  border:1px solid #aaa;
+  border-inline-start:clamp(8px,2.3cqw,16px) solid #292929;
+  background:linear-gradient(90deg,#eaeaea,#fff 5%,#fff);
+  box-shadow:2px 2px #e6e6e6,3px 3px #a9a9a9,5px 5px #efefef,6px 6px #c1c1c1,0 12px 20px #0002;
+  transform:rotate(-1.3deg);
+}
+.fa-manual-sheet::after {
+  content:"";
+  position:absolute;
+  inset:0 7% auto auto;
+  width:clamp(12px,3.8cqw,23px);
+  height:clamp(16px,12cqh,36px);
+  background:#303030;
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);
+}
+.fa-manual-imprint { display:flex; align-items:center; gap:7px; font-size:clamp(14px,2.5cqw,16px); font-weight:550; line-height:1.35; color:#454545; }
+.fa-manual-heading { display:block; margin-block:clamp(7px,6cqh,19px) clamp(5px,4cqh,12px); font-size:clamp(21px,5.1cqw,34px); line-height:1.18; font-weight:750; letter-spacing:-.055em; }
+.fa-manual-clause { font-size:clamp(15px,3.1cqw,20px); line-height:1.5; font-weight:640; letter-spacing:-.035em; word-break:keep-all; }
+.fa-manual-clause span {
+  background:linear-gradient(#ddd,#ddd) no-repeat left 85% / 100% 65%;
+  animation:fa-manual-highlight .8s .12s cubic-bezier(.22,.65,.22,1) backwards;
+}
+.fa-manual-ruling { display:grid; gap:8px; margin-top:clamp(6px,6cqh,21px); }
+.fa-manual-ruling i { height:1px; width:90%; background:#c7c7c7; }
+.fa-manual-ruling i:last-child { width:56%; }
+@keyframes fa-manual-highlight { from { background-size:0% 65%; } to { background-size:100% 65%; } }
+@container manual-art (max-height:179px) {
+  .fa-manual-ruling { display:none; }
+}
+@container manual-art (max-height:125px) {
+  .fa-manual-sheet { width:78%; padding:5px 16px; transform:none; }
+  .fa-manual-heading { margin:3px 0; font-size:21px; }
+  .fa-manual-clause { font-size:16px; }
+}
+@container manual-art (max-width:340px) {
+  .fa-manual-sheet { width:88%; padding-inline:14px; }
+}
+.fa-scroll-story[data-reduced=true] .fa-manual-clause span { animation:none; }
+@media (prefers-reduced-motion:reduce), print {
+  .fa-manual-clause span { animation:none; }
+}

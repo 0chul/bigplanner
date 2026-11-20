@@ -22,6 +22,7 @@ import ContractStructureMotion from '../components/motion/ContractStructureMotio
 import SafetyDevicesMotion from '../components/motion/SafetyDevicesMotion';
 import EscrowFlowMotion from '../components/motion/EscrowFlowMotion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { fireSafetyLinkFromService } from '../utils/fireSafetyLanding';
 
 const tabs = [
   { id: 'consulting', label: 'BIG Consulting' },
@@ -236,7 +237,7 @@ export default function Service() {
                       ? '관리자가 같은 카드에서 담당자를 지정하고, 다음 근무자는 교대할 때 접수·전달 이력을 확인합니다.'
                       : 'Managers use the same ticket to assign a team member. The next shift can see what was reported and who received it.'}
                   </p>
-                  <a href="https://fire-safety-ai-bigplanner-20261117.esrak167.chatgpt.site/fire-safety-ai/"
+                  <a href={fireSafetyLinkFromService(searchParams)}
                     className="mt-7 inline-flex min-h-12 items-center rounded-full bg-gray-900 px-6 py-3 text-base font-bold text-white transition-colors hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-900">
                     {language === 'ko' ? '서비스 소개 및 데모 보기' : 'Explore the service and demo (Korean)'}
                   </a>

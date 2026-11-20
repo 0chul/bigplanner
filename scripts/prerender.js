@@ -7,6 +7,21 @@ import express from 'express';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
+const fireSafetyPath = '/fire-safety-ai/';
+
+async function verifyFireSafetyPage(page) {
+  await page.waitForSelector('#demo-request form button[type="submit"]');
+  await page.evaluate(() => {
+    const canonical = document.head.querySelectorAll('link[rel="canonical"]');
+    const ogUrl = document.head.querySelectorAll('meta[property="og:url"]');
+    const description = document.head.querySelectorAll('meta[name="description"]');
+    if (canonical.length !== 1 || ogUrl.length !== 1 || description.length !== 1 ||
+        ogUrl[0].content !== canonical[0].href || !description[0].content.includes('방재실') ||
+        !document.title.includes('방재실')) {
+      throw new Error('Invalid fire safety landing page metadata.');
+    }
+  });
+}
 
 async function prerender() {
   console.log('Starting pre-rendering process...');
@@ -43,11 +58,14 @@ async function prerender() {
   }
 
   const targetUrls = process.env.PRERENDER_ALL === 'true' ? urls : urls.slice(0, 25);
+  if (!targetUrls.includes(fireSafetyPath)) throw new Error('Missing fire safety landing page in sitemap.');
   console.log(`Prerendering ${targetUrls.length} of ${urls.length} URLs for fast, reliable build...`);
 
   // 3. Launch Puppeteer
   const browser = await puppeteer.launch({
     headless: 'new',
+    executablePath: process.env.CHROME_PATH || (process.platform === 'win32' && fs.existsSync('C:/Program Files/Google/Chrome/Application/chrome.exe')
+      ? 'C:/Program Files/Google/Chrome/Application/chrome.exe' : undefined),
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
@@ -62,10 +80,11 @@ async function prerender() {
       const page = await browser.newPage();
       
       try {
+        await page.setBypassServiceWorker(true);
         await page.setRequestInterception(true);
         page.on('request', (req) => {
           const type = req.resourceType();
-          if (['image', 'media', 'font'].includes(type)) {
+          if (['image', 'media', 'font'].includes(type) || /google-analytics\.com|googletagmanager\.com/.test(req.url())) {
             req.abort();
           } else {
             req.continue();
@@ -75,10 +94,11 @@ async function prerender() {
         const activePort = server.address()?.port || port;
         await page.goto(`http://localhost:${activePort}${url}`, { 
           waitUntil: 'domcontentloaded', 
-          timeout: 6000 
+          timeout: url === fireSafetyPath ? 30000 : 6000
         });
         
-        await new Promise(r => setTimeout(r, 100));
+        if (url === fireSafetyPath) await verifyFireSafetyPage(page);
+        else await new Promise(r => setTimeout(r, 100));
         const html = await page.content();
 
         const routePath = url === '/' ? '/index.html' : `${url}/index.html`;
@@ -92,6 +112,7 @@ async function prerender() {
         fs.writeFileSync(filePath, html);
         console.log(`[${index + 1}/${targetUrls.length}] Saved ${routePath}`);
       } catch (error) {
+        if (url === fireSafetyPath) throw error;
         console.warn(`[${index + 1}/${targetUrls.length}] Skip ${url}: ${error.message}`);
       } finally {
         await page.close().catch(() => {});
@@ -99,17 +120,19 @@ async function prerender() {
     }
   }
 
-  const workers = Array.from({ length: CONCURRENCY }, (_, i) => worker(i));
-  await Promise.all(workers);
-
-  // 5. Cleanup
-  await browser.close().catch(() => {});
-  server.close();
+  try {
+    const workers = Array.from({ length: CONCURRENCY }, (_, i) => worker(i));
+    await Promise.all(workers);
+    fs.copyFileSync(path.join(distPath, 'index.html'), path.join(distPath, '404.html'));
+  } finally {
+    await browser.close().catch(() => {});
+    server.close();
+  }
   console.log('Pre-rendering completed successfully!');
   process.exit(0);
 }
 
 prerender().catch(err => {
-  console.warn('Prerendering completed with warning (static SPA fallback preserved):', err.message);
-  process.exit(0);
+  console.error('Prerendering failed:', err.message);
+  process.exit(1);
 });

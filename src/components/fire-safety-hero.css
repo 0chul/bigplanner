@@ -1,0 +1,117 @@
+.fa-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--fa-surface);
+}
+.fa-intro-visual { position: absolute; inset: 0; z-index: -2; }
+.fa-intro-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
+.fa-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, #f9fafbfa 0%, #f9fafbf2 34%, #f9fafbb8 48%, transparent 68%);
+}
+.fa-intro-inner { position: relative; min-height: 760px; padding-top: 69px; padding-bottom: 92px; }
+.fa-intro-copy { position: relative; z-index: 2; width: min(790px, 68%); }
+.fa-intro-kicker { display: flex; gap: 10px; align-items: center; color: var(--fa-accent); font-size: 15px; font-weight: 720; line-height: 1.5; letter-spacing: -.15px; }
+.fa-intro-kicker > span { width: 7px; height: 7px; background: currentColor; border-radius: 50%; }
+.fa-intro-audience { color: var(--fa-muted); font-size: 16px; line-height: 1.8; font-weight: 500; margin-top: 15px !important; }
+.fa-intro h1 { font-size: clamp(56px, 5.2vw, 82px); font-weight: 760; letter-spacing: -.065em; line-height: 1.23; margin-top: 28px !important; white-space: nowrap; color: var(--fa-ink); }
+.fa-intro h1 > span { display: block; }
+.fa-intro-title-benefit { color: var(--fa-accent); }
+.fa-intro-title-mobile-break { display: none; }
+.fa-intro-description { font-size: 19px; line-height: 1.85; color: var(--fa-muted); margin-top: 27px !important; max-width: 510px; letter-spacing: -.35px; }
+.fa-intro-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 25px; margin-top: 31px; }
+.fa-intro-actions .fa-intro-button { min-height: 60px; padding-inline: 25px 21px; font-size: 18px; border-radius: 999px; gap: 25px; box-shadow: 0 9px 22px #0000001c; }
+.fa-intro-flow-link { display: inline-flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 600; color: var(--fa-ink); padding-block: 12px; }
+.fa-intro-flow-link svg { transition: transform .2s ease; }
+.fa-intro-flow-link:hover { color: var(--fa-accent); }
+.fa-intro-flow-link:hover svg { transform: translate(2px, 2px); }
+.fa-intro-support { display: flex; align-items: flex-start; gap: 6px; color: var(--fa-muted); font-size: 14px; line-height: 1.8; margin-top: 22px !important; }
+.fa-intro-support svg { flex-shrink: 0; margin-top: 4px; color: var(--fa-subtle); }
+.fa-intro-incident { position: absolute; z-index: 1; width: 316px; right: 0; bottom: 145px; padding: 20px 21px 0; border: 1px solid #ffffffb5; border-radius: 16px; background: #ffffffef; box-shadow: 0 16px 55px -16px #00000024, 0 1px 2px #0000000d; backdrop-filter: blur(15px); animation: fa-intro-card-enter .9s cubic-bezier(.2,.7,.2,1) both; }
+.fa-intro-incident-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.fa-intro-incident-id { font-size: 14px; color: var(--fa-accent); font-weight: 750; letter-spacing: .45px; font-variant-numeric: tabular-nums; }
+.fa-intro-example { font-size: 13px; color: var(--fa-muted); line-height: 1.5; background: var(--fa-tint); padding: 3px 7px; border-radius: 4px; }
+.fa-intro-incident-main { display: flex; align-items: center; gap: 12px; padding-block: 21px; }
+.fa-intro-incident-icon { display: grid; place-items: center; flex-shrink: 0; width: 47px; height: 47px; border-radius: 12px; background: var(--fa-tint); color: var(--fa-accent); }
+.fa-intro-incident-main p { font-size: 14px; color: var(--fa-muted); line-height: 1.7; }
+.fa-intro-incident-main strong { display: block; font-size: 21px; color: var(--fa-ink); font-weight: 680; letter-spacing: -.6px; line-height: 1.5; margin-top: 1px; }
+.fa-intro-incident-foot { display: flex; align-items: center; gap: 7px; border-top: 1px solid var(--fa-line); color: var(--fa-subtle); font-size: 13px; padding-block: 13px; line-height: 1.6; }
+.fa-intro-incident-foot > span { height: 5px; width: 5px; border-radius: 50%; background: var(--fa-accent); flex-shrink: 0; }
+.fa-intro-incident-foot > svg { margin-left: auto; flex-shrink: 0; color: var(--fa-subtle); }
+.fa-intro-bottom { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 75px; border-top: 1px solid #0000001a; color: var(--fa-muted); font-size: 14px; font-weight: 500; }
+.fa-intro-bottom > a { display: inline-flex; align-items: center; gap: 18px; color: var(--fa-ink); font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
+.fa-intro-bottom > a > svg { animation: fa-intro-scroll 2.4s ease-in-out infinite; }
+@keyframes fa-intro-card-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fa-intro-scroll { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+@media (min-width: 1600px) {
+  .fa-intro-inner { min-height: 810px; padding-top: 83px; }
+  .fa-intro-visual img { object-position: center 56%; }
+}
+@media (max-width: 1190px) {
+  .fa-intro-inner { min-height: 730px; padding-top: 58px; }
+  .fa-intro-copy { width: 74%; }
+  .fa-intro h1 { font-size: clamp(53px, 5.4vw, 64px); }
+  .fa-intro-description { max-width: 440px; font-size: 18px; }
+  .fa-intro-incident { width: 294px; bottom: 139px; }
+  .fa-intro-audience { font-size: 15px; }
+  .fa-intro-support { max-width: 420px; }
+}
+@media (max-width: 1000px) {
+  .fa-intro-inner { min-height: 785px; padding-top: 51px; }
+  .fa-intro-visual img { object-position: 61% center; }
+  .fa-intro::before { background: linear-gradient(90deg, #f9fafbfa 0%, #f9fafbf0 34%, #f9fafba6 57%, #f9fafb1a 86%); }
+  .fa-intro-copy { width: 100%; }
+  .fa-intro h1 { font-size: clamp(56px, 7vw, 68px); }
+  .fa-intro-incident { right: 0; bottom: 104px; width: 294px; }
+  .fa-intro-support { max-width: 425px; }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .fa-intro-incident { position: relative; bottom: auto; margin: 24px 0 8px auto; }
+}
+@media (max-width: 760px) {
+  .fa-intro-inner { min-height: 970px; padding-top: 37px; padding-bottom: 560px; }
+  .fa-intro-copy { width: 100%; }
+  .fa-intro-kicker { font-size: 14px; }
+  .fa-intro-audience { font-size: 14px; margin-top: 12px !important; max-width: 350px; }
+  .fa-intro h1 { font-size: clamp(36px, 8.3vw, 54px); line-height: 1.27; letter-spacing: -.06em; margin-top: 23px !important; }
+  .fa-intro-description { font-size: 17px; line-height: 1.8; margin-top: 23px !important; max-width: 420px; }
+  .fa-intro-actions { gap: 13px 21px; margin-top: 25px; }
+  .fa-intro-actions .fa-intro-button { min-height: 55px; padding-inline: 20px 18px; font-size: 17px; gap: 20px; }
+  .fa-intro-flow-link { font-size: 15px; gap: 8px; }
+  .fa-intro-support { font-size: 13px; max-width: 370px; margin-top: 18px !important; }
+  .fa-intro-visual { inset: auto -24% 48px -23%; height: 510px; }
+  .fa-intro-visual img { object-fit: cover; object-position: 84% 50%; }
+  .fa-intro::before { background: linear-gradient(180deg, var(--fa-surface) 0%, var(--fa-surface) 45%, #f9fafb00 65%); }
+  .fa-intro-incident { width: 270px; right: 0; bottom: 94px; padding: 15px 17px 0; border-radius: 12px; }
+  .fa-intro-incident-main { padding-block: 15px; }
+  .fa-intro-incident-icon { height: 42px; width: 42px; border-radius: 10px; }
+  .fa-intro-incident-main strong { font-size: 19px; }
+  .fa-intro-incident-foot { font-size: 13px; padding-block: 11px; gap: 6px; letter-spacing: -.5px; }
+  .fa-intro-bottom { min-height: 66px; font-size: 13px; gap: 12px; }
+  .fa-intro-bottom > a { gap: 10px; }
+  .fa-intro-bottom > a > span { display: none; }
+}
+@media (max-width: 420px) {
+  .fa-intro-inner { min-height: 933px; }
+  .fa-intro-audience { max-width: 305px; }
+  .fa-intro h1 { font-size: clamp(36px, 9.8vw, 42px); letter-spacing: -.07em; }
+  .fa-intro-title-mobile-break { display: block; }
+  .fa-intro-description { font-size: 16px; letter-spacing: -.4px; }
+  .fa-intro-actions { gap: 11px 17px; }
+  .fa-intro-flow-link { font-size: 14px; }
+  .fa-intro-actions .fa-intro-button { padding-inline: 17px; gap: 16px; font-size: 16px; }
+  .fa-intro-incident { width: 266px; bottom: 91px; }
+}
+@media (max-width: 360px) {
+  .fa-intro h1 { width: calc(100% + 8px); max-width: calc(100vw - 28px); letter-spacing: -.08em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fa-intro-incident, .fa-intro-bottom > a > svg { animation: none; }
+  .fa-intro-flow-link svg { transition: none; }
+}

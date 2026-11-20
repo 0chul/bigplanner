@@ -19,6 +19,7 @@ jobs:
         env:
           VITE_KAKAO_MAP_JS_KEY: ${{ secrets.VITE_KAKAO_MAP_JS_KEY }}
           VITE_NAVER_MAP_CLIENT_ID: ${{ secrets.VITE_NAVER_MAP_CLIENT_ID }}
+          VITE_FIRE_SAFETY_SUBDOMAIN: ${{ vars.VITE_FIRE_SAFETY_SUBDOMAIN }}
         run: |
           npm install
           npm run build

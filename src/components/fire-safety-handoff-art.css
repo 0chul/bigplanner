@@ -1,0 +1,120 @@
+.fire-ai .fa-story-art.fa-story-handoff-art {
+  container: fa-handoff / size;
+  display: grid;
+  place-items: center;
+  color: var(--fa-ink);
+  background-color: #f1f2f3;
+  background-image: radial-gradient(circle, #c5c8cb .8px, transparent .9px);
+  background-size: 12px 12px;
+}
+
+.fa-handoff-route {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10px, .55fr) minmax(0, 1.75fr) minmax(10px, .55fr) minmax(0, 1fr);
+  align-items: center;
+  width: min(90%, 580px);
+  --person-size: clamp(36px, min(12cqw, 28cqh), 78px);
+}
+
+.fa-handoff-person {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 2px;
+  text-align: center;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.fa-handoff-avatar {
+  display: grid;
+  place-items: center;
+  width: var(--person-size);
+  height: var(--person-size);
+  margin-bottom: clamp(2px, 2cqh, 7px);
+  border: 1px solid #81858a;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.fa-handoff-avatar svg {
+  width: 53%;
+  height: 53%;
+  stroke-width: 1.6;
+}
+
+.fa-handoff-person strong { font-size: clamp(14px, 3cqw, 20px); font-weight: 700; }
+.fa-handoff-person > span:last-child { font-size: clamp(12px, 2.4cqw, 15px); color: var(--fa-muted); }
+.fa-handoff-recipient .fa-handoff-avatar { background: var(--fa-accent); color: white; border-color: var(--fa-accent); }
+
+.fa-handoff-link {
+  position: relative;
+  border-top: 2px dotted #85898c;
+}
+
+.fa-handoff-link svg {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: -8px;
+  right: -3px;
+  color: #464a4d;
+  stroke-width: 2;
+}
+
+.fa-handoff-ticket {
+  z-index: 1;
+  position: relative;
+  border: 1px solid #58606a;
+  border-radius: 6px;
+  background: white;
+  box-shadow: 3px 4px 0 #d8dadd;
+  animation: fa-handoff-transfer .72s cubic-bezier(.2,.7,.3,1) both;
+}
+
+.fa-handoff-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: clamp(4px, 2.4cqh, 9px) 3px;
+  border-bottom: 1px dashed #b5b8bc;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(12px, 2.6cqw, 16px);
+  font-weight: 650;
+  letter-spacing: .04em;
+  line-height: 1.2;
+}
+
+.fa-handoff-id svg { width: 1.1em; height: 1.1em; flex: none; }
+
+.fa-handoff-issue {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: clamp(6px, 4cqh, 18px) 3px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.fa-handoff-issue strong { font-size: clamp(16px, 3.8cqw, 28px); font-weight: 750; letter-spacing: -.04em; }
+.fa-handoff-issue span { font-size: clamp(12px, 2.6cqw, 17px); color: var(--fa-muted); }
+
+@keyframes fa-handoff-transfer {
+  from { transform: translateX(-10%) rotate(-3deg); }
+  to { transform: translateX(0) rotate(0); }
+}
+
+@container fa-handoff (max-width: 360px) {
+  .fa-handoff-route { width: 95%; grid-template-columns: 1fr 12px minmax(0, 1.45fr) 15px 1fr; }
+}
+
+@container fa-handoff (max-height: 130px) {
+  .fa-handoff-issue { padding-block: 5px; }
+  .fa-handoff-issue strong { font-size: 20px; }
+}
+
+.fa-scroll-story[data-reduced="true"] .fa-handoff-ticket { animation: none; }
+@media (prefers-reduced-motion: reduce), print {
+  .fa-handoff-ticket { animation: none; }
+}

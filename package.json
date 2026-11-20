@@ -7,10 +7,12 @@
     "dev": "tsx server.ts",
     "start": "tsx server.ts",
     "prebuild": "node scripts/generate-sitemap.js",
-    "build": "vite build && node scripts/prerender.js && cp dist/index.html dist/404.html",
+    "build": "vite build && node scripts/prerender.js",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test:fire-safety": "node --import tsx --test tests/fire-safety-demo.test.mjs",
+    "test:fire-safety:ui": "node tests/fire-safety-ui.test.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
