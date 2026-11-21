@@ -22,7 +22,7 @@ export default function Footer() {
           {/* Links */}
           <div className="flex items-center space-x-6 text-sm">
             <a 
-              href="https://www.bigplanner.co.kr/content/content.php?cont=privacy" 
+              href="/privacy/"
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:text-white transition-colors font-bold text-white"
