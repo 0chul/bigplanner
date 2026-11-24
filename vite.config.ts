@@ -15,6 +15,8 @@ export default defineConfig(({mode}) => {
         registerType: 'autoUpdate',
         injectRegister: 'inline',
         workbox: {
+          // Allow an open site's next reload to receive updated policy pages after activation.
+          skipWaiting: true,
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
           runtimeCaching: [
             {

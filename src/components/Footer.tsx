@@ -20,14 +20,21 @@ export default function Footer() {
           </div>
           
           {/* Links */}
-          <div className="flex items-center space-x-6 text-sm">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
             <a 
-              href="/privacy/"
+              href={language === 'ko' ? '/privacy/' : '/privacy/en/'}
+              hrefLang={language}
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:text-white transition-colors font-bold text-white"
             >
               {language === 'ko' ? '개인정보처리방침' : 'Privacy Policy'}
+            </a>
+            <a
+              href={language === 'ko' ? '/privacy/notice-2026-11-24/#ko' : '/privacy/notice-2026-11-24/#en'}
+              className="font-medium text-white underline underline-offset-4 hover:text-gray-200"
+            >
+              {language === 'ko' ? '개인정보처리방침 변경 공지' : 'Privacy policy change notice'}
             </a>
           </div>
 
