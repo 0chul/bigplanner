@@ -25,6 +25,10 @@ async function verifyFireSafetyPage(page) {
 
 async function prerender() {
   console.log('Starting pre-rendering process...');
+  // GitHub Pages serves this login-gated deep link, including the proposal preview.
+  const pmDirectory = path.join(distPath, 'admin', 'pm-estimates');
+  fs.mkdirSync(pmDirectory, { recursive: true });
+  fs.copyFileSync(path.join(distPath, 'index.html'), path.join(pmDirectory, 'index.html'));
 
   // 1. Start a local server to serve the dist folder
   const app = express();

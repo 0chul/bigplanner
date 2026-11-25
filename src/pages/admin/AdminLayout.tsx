@@ -1,12 +1,13 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FolderKanban, MessageSquare, UserPlus, LogOut, Menu, X, Handshake, ShieldCheck } from 'lucide-react';
+import { Link, Outlet, useLocation, useMatch } from 'react-router-dom';
+import { LayoutDashboard, FolderKanban, Calculator, MessageSquare, UserPlus, LogOut, Menu, X, Handshake, ShieldCheck } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../../supabase';
 
 export default function AdminLayout() {
   const { user, isAdmin, login, logout, loading } = useAuth();
   const location = useLocation();
+  const pmWorkspace = useMatch('/admin/pm-estimates');
   const [inquiries, setInquiries] = useState<any[]>([]);
   const [leads, setLeads] = useState<any[]>([]);
   const [fireSafetyLeads, setFireSafetyLeads] = useState<any[]>([]);
@@ -96,6 +97,7 @@ export default function AdminLayout() {
   const navItems = [
     { path: '/admin', label: '대시보드', icon: <LayoutDashboard size={20} /> },
     { path: '/admin/projects', label: '포트폴리오 관리', icon: <FolderKanban size={20} /> },
+    { path: '/admin/pm-estimates', label: '건축 PM 견적·제안서', icon: <Calculator size={20} /> },
     { path: '/admin/interior', label: '인테리어 관리', icon: <FolderKanban size={20} /> },
     { path: '/admin/inquiries', label: '고객 문의 관리', icon: <MessageSquare size={20} />, count: inquiries.filter(i => i.status === 'new').length },
     { path: '/admin/leads', label: 'META 리드 관리', icon: <UserPlus size={20} />, count: leads.filter(l => l.status === 'new').length },
@@ -104,13 +106,13 @@ export default function AdminLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
+    <div className={`bg-gray-50 flex flex-col md:flex-row ${pmWorkspace ? 'h-dvh overflow-hidden' : 'min-h-screen'}`}>
       {/* Mobile Header */}
-      <div className="md:hidden bg-black text-white p-4 flex justify-between items-center sticky top-0 z-20">
+      <div className="md:hidden shrink-0 bg-black text-white p-4 flex justify-between items-center sticky top-0 z-20">
         <Link to="/" className="text-xl font-bold tracking-tighter">
           BIGPLANNER<span className="text-gray-500">.</span> ADMIN
         </Link>
-        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2">
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? '관리자 메뉴 닫기' : '관리자 메뉴 열기'} aria-expanded={isMobileMenuOpen} className="p-2">
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -137,11 +139,12 @@ export default function AdminLayout() {
         
         <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
           {navItems.map((item) => {
-            const isActive = location.pathname === item.path;
+            const isActive = location.pathname.replace(/\/$/, '') === item.path;
             return (
               <Link
                 key={item.path}
                 to={item.path}
+                aria-current={isActive ? 'page' : undefined}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center justify-between px-4 py-3 rounded-xl transition-colors ${
                   isActive ? 'bg-white/10 text-white font-bold' : 'text-gray-400 hover:bg-white/5 hover:text-white'
@@ -182,7 +185,7 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto w-full">
+      <main className="flex-1 min-w-0 min-h-0 overflow-auto w-full">
         <Outlet />
       </main>
     </div>
