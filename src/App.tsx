@@ -22,6 +22,7 @@ const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const AdminProjects = lazy(() => import('./pages/admin/AdminProjects'));
+const AdminPmEstimates = lazy(() => import('./pages/admin/AdminPmEstimates'));
 const AdminInterior = lazy(() => import('./pages/admin/AdminInterior'));
 const AdminInquiries = lazy(() => import('./pages/admin/AdminInquiries'));
 const AdminLeads = lazy(() => import('./pages/admin/AdminLeads'));
@@ -61,6 +62,7 @@ export default function App() {
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminDashboard />} />
                 <Route path="projects" element={<AdminProjects />} />
+                <Route path="pm-estimates" element={<AdminPmEstimates />} />
                 <Route path="interior" element={<AdminInterior />} />
                 <Route path="inquiries" element={<AdminInquiries />} />
                 <Route path="leads" element={<AdminLeads />} />
