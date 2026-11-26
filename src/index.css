@@ -28,3 +28,37 @@
     letter-spacing: -0.015em;
   }
 }
+
+@keyframes bp-field-shake-a {
+  0%, 100% { transform: translateX(0); }
+  18% { transform: translateX(-5px); }
+  36% { transform: translateX(4px); }
+  54% { transform: translateX(-3px); }
+  72% { transform: translateX(2px); }
+  90% { transform: translateX(-1px); }
+}
+
+@keyframes bp-field-shake-b {
+  0%, 100% { transform: translateX(0); }
+  18% { transform: translateX(-5px); }
+  36% { transform: translateX(4px); }
+  54% { transform: translateX(-3px); }
+  72% { transform: translateX(2px); }
+  90% { transform: translateX(-1px); }
+}
+
+.animate-bp-shake-a {
+  animation: bp-field-shake-a 380ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.animate-bp-shake-b {
+  animation: bp-field-shake-b 380ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bp-shake-a,
+  .animate-bp-shake-b {
+    animation: none;
+  }
+}
+

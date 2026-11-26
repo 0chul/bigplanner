@@ -9,8 +9,8 @@ const BRAND_HEAD_ASSETS = `
     --bp-muted: #4b5563;
     --bp-border: #e5e7eb;
     --bp-surface: #f9fafb;
-    --bp-accent: #2563eb;
-    --bp-accent-dark: #1d4ed8;
+    --bp-accent: #111827;
+    --bp-accent-dark: #000000;
   }
   html, body {
     font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
@@ -23,11 +23,11 @@ const BRAND_HEAD_ASSETS = `
     font-variant-numeric: tabular-nums;
   }
   ::selection {
-    background: #dbeafe;
-    color: #1e3a8a;
+    background: #e5e7eb;
+    color: #111827;
   }
   :focus-visible {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #111827;
     outline-offset: 2px;
   }
   @media screen {
@@ -35,7 +35,7 @@ const BRAND_HEAD_ASSETS = `
       display: none !important;
     }
     .bp-step-focus-ring {
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.25);
       transition: box-shadow 0.25s ease;
     }
   }

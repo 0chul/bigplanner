@@ -40,12 +40,16 @@ import {
 
 type WorkspaceStatus = { state: 'loading' | 'error' } | { state: 'ready'; html: string };
 
+const DRAFT_TTL_DAYS = 30;
+const DRAFT_TTL_MS = DRAFT_TTL_DAYS * 24 * 60 * 60 * 1000;
+
 interface PmWizardDraftSnapshot {
   formData: PmEstimateFormData;
   currentStep: PmWizardStep;
   completedSteps: Record<number, boolean>;
   savedAt: string | null;
   hasRestorableContent: boolean;
+  wasExpired: boolean;
 }
 
 function getDraftStorageKey(accountId: string) {
@@ -73,6 +77,31 @@ function normalizeStep(step: unknown): PmWizardStep {
   return 0;
 }
 
+function isStoredDraftExpired(parsed: unknown, nowMs = Date.now()): boolean {
+  if (!parsed || typeof parsed !== 'object') return false;
+  const record = parsed as Record<string, unknown>;
+
+  if (typeof record.savedAt === 'string') {
+    const savedMs = Date.parse(record.savedAt);
+    if (Number.isFinite(savedMs)) {
+      return nowMs - savedMs >= DRAFT_TTL_MS;
+    }
+  }
+
+  if (typeof record.updatedAt === 'number' && Number.isFinite(record.updatedAt)) {
+    return nowMs - record.updatedAt >= DRAFT_TTL_MS;
+  }
+
+  if (typeof record.expiresAt === 'string') {
+    const expiresMs = Date.parse(record.expiresAt);
+    if (Number.isFinite(expiresMs)) {
+      return nowMs >= expiresMs;
+    }
+  }
+
+  return false;
+}
+
 function loadSavedDraft(accountId: string): PmWizardDraftSnapshot {
   const emptySnapshot: PmWizardDraftSnapshot = {
     formData: INITIAL_PM_FORM_DATA,
@@ -80,15 +109,25 @@ function loadSavedDraft(accountId: string): PmWizardDraftSnapshot {
     completedSteps: {},
     savedAt: null,
     hasRestorableContent: false,
+    wasExpired: false,
   };
 
   try {
-    const raw = window.localStorage.getItem(getDraftStorageKey(accountId));
+    const storageKey = getDraftStorageKey(accountId);
+    const raw = window.localStorage.getItem(storageKey);
     if (!raw) return emptySnapshot;
 
     const parsed = JSON.parse(raw) as
       | Partial<PmWizardDraftSnapshot>
       | Partial<PmEstimateFormData>;
+
+    if (isStoredDraftExpired(parsed)) {
+      window.localStorage.removeItem(storageKey);
+      return {
+        ...emptySnapshot,
+        wasExpired: true,
+      };
+    }
 
     const rawForm =
       parsed && typeof parsed === 'object' && 'formData' in parsed && parsed.formData
@@ -133,6 +172,7 @@ function loadSavedDraft(accountId: string): PmWizardDraftSnapshot {
       completedSteps,
       savedAt,
       hasRestorableContent: hasContent,
+      wasExpired: false,
     };
   } catch {
     return emptySnapshot;
@@ -198,9 +238,14 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
   const [showRestoredBanner, setShowRestoredBanner] = useState<boolean>(
     initialSnapshot.hasRestorableContent,
   );
+  const [showExpiredBanner, setShowExpiredBanner] = useState<boolean>(
+    initialSnapshot.wasExpired,
+  );
   const [draftJustSaved, setDraftJustSaved] = useState(false);
+  const [toast, setToast] = useState<{ title: string; subtitle?: string } | null>(null);
 
   const [errors, setErrors] = useState<PmFormErrors>({});
+  const [validationTrigger, setValidationTrigger] = useState(0);
   const [isWizardCompleted, setIsWizardCompleted] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
   const [copiedSummary, setCopiedSummary] = useState(false);
@@ -212,6 +257,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const stepBodyRef = useRef<HTMLDivElement | null>(null);
   const draftTimerRef = useRef<number | null>(null);
+  const toastTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -226,23 +272,40 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
     return () => controller.abort();
   }, [accountId, sample, attempt]);
 
-  // Clean up transient save indicator timeout on unmount
+  // Clean up transient timers on unmount
   useEffect(() => {
     return () => {
       if (draftTimerRef.current !== null) {
         window.clearTimeout(draftTimerRef.current);
       }
+      if (toastTimerRef.current !== null) {
+        window.clearTimeout(toastTimerRef.current);
+      }
     };
   }, []);
 
-  // Auto-persist wizard progress to localStorage whenever edited
+  // Auto-persist wizard progress to localStorage (only when non-empty; respects 30-day TTL)
   useEffect(() => {
+    const hasDraftData =
+      hasUserEnteredFields(formData) ||
+      currentStep > 0 ||
+      Object.values(completedSteps).some(Boolean) ||
+      lastSavedAt !== null;
+
+    if (!hasDraftData) return;
+
     try {
+      const nowMs = Date.now();
+      const baseMs = lastSavedAt && Number.isFinite(Date.parse(lastSavedAt))
+        ? Date.parse(lastSavedAt)
+        : nowMs;
       const payload = {
         formData,
         currentStep,
         completedSteps,
         savedAt: lastSavedAt,
+        updatedAt: nowMs,
+        expiresAt: new Date(baseMs + DRAFT_TTL_MS).toISOString(),
       };
       window.localStorage.setItem(getDraftStorageKey(accountId), JSON.stringify(payload));
     } catch {
@@ -293,6 +356,22 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
     stepBodyRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function triggerValidationFeedback(stepErrors: PmFormErrors) {
+    setErrors(stepErrors);
+    setValidationTrigger((prev) => prev + 1);
+    const firstField = Object.keys(stepErrors)[0];
+    if (!firstField) return;
+    window.requestAnimationFrame(() => {
+      const target = stepBodyRef.current?.querySelector<HTMLElement>(
+        `[data-error-field="${firstField}"]`,
+      );
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.focus({ preventScroll: true });
+      }
+    });
+  }
+
   function handleStepSelect(targetStep: PmWizardStep) {
     if (targetStep === currentStep) return;
 
@@ -311,8 +390,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
       const stepErrors = validateWizardStep(typedStep, formData);
       if (Object.keys(stepErrors).length > 0) {
         setCurrentStep(typedStep);
-        setErrors(stepErrors);
-        scrollStepBodyTop();
+        triggerValidationFeedback(stepErrors);
         return;
       }
       nextCompleted[typedStep] = true;
@@ -334,7 +412,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
   function handleNextStep() {
     const stepErrors = validateWizardStep(currentStep, formData);
     if (Object.keys(stepErrors).length > 0) {
-      setErrors(stepErrors);
+      triggerValidationFeedback(stepErrors);
       return;
     }
 
@@ -355,8 +433,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
       const stepErrors = validateWizardStep(stepMeta.index, formData);
       if (Object.keys(stepErrors).length > 0) {
         setCurrentStep(stepMeta.index);
-        setErrors(stepErrors);
-        scrollStepBodyTop();
+        triggerValidationFeedback(stepErrors);
         return;
       }
     }
@@ -377,25 +454,47 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
     }
   }
 
+  function showToast(title: string, subtitle?: string) {
+    setToast({ title, subtitle });
+    if (toastTimerRef.current !== null) {
+      window.clearTimeout(toastTimerRef.current);
+    }
+    toastTimerRef.current = window.setTimeout(() => {
+      setToast(null);
+    }, 3200);
+  }
+
   function handleSaveDraft() {
-    const nowIso = new Date().toISOString();
+    const nowMs = Date.now();
+    const nowIso = new Date(nowMs).toISOString();
     try {
       const payload = {
         formData,
         currentStep,
         completedSteps,
         savedAt: nowIso,
+        updatedAt: nowMs,
+        expiresAt: new Date(nowMs + DRAFT_TTL_MS).toISOString(),
       };
       window.localStorage.setItem(getDraftStorageKey(accountId), JSON.stringify(payload));
       setLastSavedAt(nowIso);
       setDraftJustSaved(true);
       setShowRestoredBanner(false);
+      setShowExpiredBanner(false);
       if (draftTimerRef.current !== null) {
         window.clearTimeout(draftTimerRef.current);
       }
       draftTimerRef.current = window.setTimeout(() => {
         setDraftJustSaved(false);
       }, 2500);
+
+      const savedTime = formatSavedTime(nowIso);
+      showToast(
+        '임시 저장이 완료되었습니다.',
+        `STEP ${WIZARD_STEPS[currentStep].num} (${WIZARD_STEPS[currentStep].title})${
+          savedTime ? ` · ${savedTime} 저장 (${DRAFT_TTL_DAYS}일 보관)` : ''
+        }`,
+      );
     } catch {
       setSaveNotice({
         type: 'error',
@@ -408,12 +507,14 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
     setFormData(INITIAL_PM_FORM_DATA);
     setCompletedSteps({});
     setErrors({});
+    setValidationTrigger(0);
     setCurrentStep(0);
     setIsWizardCompleted(false);
     setConfirmReset(false);
     setSaveNotice(null);
     setLastSavedAt(null);
     setShowRestoredBanner(false);
+    setShowExpiredBanner(false);
     setDraftJustSaved(false);
     try {
       window.localStorage.removeItem(getDraftStorageKey(accountId));
@@ -441,7 +542,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
       const stepErrors = validateWizardStep(stepMeta.index, formData);
       if (Object.keys(stepErrors).length > 0) {
         setCurrentStep(stepMeta.index);
-        setErrors(stepErrors);
+        triggerValidationFeedback(stepErrors);
         return;
       }
     }
@@ -504,24 +605,18 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
       className="flex h-full min-h-0 flex-col bg-gray-50"
       aria-label="건축 PM 견적·제안서"
     >
-      {/* Brand-Aligned Workspace Header */}
-      <header className="shrink-0 border-b border-gray-200 bg-white px-4 py-3 sm:px-6 print:hidden">
+      {/* Admin-Aligned Workspace Header */}
+      <header className="shrink-0 border-b border-gray-200 bg-white px-4 py-3.5 sm:px-6 print:hidden">
         <div className="flex flex-col justify-between gap-3 lg:flex-row lg:items-center">
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-blue-600">
-              BIGPLANNER PROP-TECH · BIG MANAGEMENT
+            <h1 className="whitespace-nowrap text-lg font-bold tracking-tight text-gray-900 sm:text-xl">
+              건축 PM 견적 · 제안서
+            </h1>
+            <p className="mt-0.5 truncate text-xs text-gray-500">
+              {sample
+                ? '건축주용 예시 제안서 미리보기 화면입니다.'
+                : `STEP ${currentStepMeta.num} (${currentStepMeta.title}) · ${currentStepMeta.subtitle}`}
             </p>
-            <div className="mt-0.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
-              <h1 className="whitespace-nowrap text-lg font-bold tracking-tight text-gray-900 sm:text-xl">
-                건축 PM 견적 · 제안서
-              </h1>
-              <span className="hidden whitespace-nowrap text-xs text-gray-500 md:inline">
-                ·{' '}
-                {sample
-                  ? '건축주용 예시 제안서 미리보기'
-                  : `STEP ${currentStepMeta.num} (${currentStepMeta.title}) · ${currentStepMeta.subtitle}`}
-              </span>
-            </div>
           </div>
 
           <div className="flex shrink-0 flex-wrap items-center gap-2">
@@ -613,10 +708,34 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
               ref={stepBodyRef}
               className="px-4 py-4 sm:px-5 lg:min-h-0 lg:flex-1 lg:overflow-y-auto"
             >
+              {showExpiredBanner && (
+                <div
+                  role="status"
+                  className="mb-4 flex items-start justify-between gap-2.5 rounded-xl border border-amber-200 bg-amber-50/80 px-3.5 py-2.5 text-xs"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-gray-900">
+                      만료된 임시 저장 데이터가 자동 삭제되었습니다
+                    </p>
+                    <p className="mt-0.5 text-[11px] text-gray-600 tabular-nums">
+                      임시 저장 후 {DRAFT_TTL_DAYS}일이 경과하여 보안 및 최신 견적 기준 유지를 위해 초기화되었습니다.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowExpiredBanner(false)}
+                    aria-label="만료 안내 닫기"
+                    className="shrink-0 rounded-lg p-1 text-gray-500 transition-colors hover:bg-amber-100 hover:text-gray-800"
+                  >
+                    <X size={14} aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+
               {showRestoredBanner && (
                 <div
                   role="status"
-                  className="mb-4 flex items-start justify-between gap-2.5 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2.5 text-xs"
+                  className="mb-4 flex items-start justify-between gap-2.5 rounded-xl border border-gray-200 bg-gray-50 px-3.5 py-2.5 text-xs"
                 >
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-gray-900">
@@ -631,10 +750,28 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                     type="button"
                     onClick={() => setShowRestoredBanner(false)}
                     aria-label="임시 저장 안내 닫기"
-                    className="shrink-0 rounded-lg p-1 text-gray-500 transition-colors hover:bg-blue-100 hover:text-gray-800"
+                    className="shrink-0 rounded-lg p-1 text-gray-500 transition-colors hover:bg-gray-200 hover:text-gray-900"
                   >
                     <X size={14} aria-hidden="true" />
                   </button>
+                </div>
+              )}
+
+              {Object.keys(errors).length > 0 && (
+                <div
+                  role="alert"
+                  className={`mb-4 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50/80 px-3.5 py-2.5 text-xs font-semibold text-red-700 ${
+                    validationTrigger > 0
+                      ? validationTrigger % 2 === 1
+                        ? 'animate-bp-shake-a'
+                        : 'animate-bp-shake-b'
+                      : ''
+                  }`}
+                >
+                  <AlertCircle size={15} className="shrink-0 text-red-600" aria-hidden="true" />
+                  <span className="tabular-nums">
+                    필수 입력 또는 형식을 확인해 주세요 ({Object.keys(errors).length}건)
+                  </span>
                 </div>
               )}
 
@@ -642,6 +779,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                 <StepBasicInfo
                   data={formData}
                   errors={errors}
+                  validationTrigger={validationTrigger}
                   onChange={handleFieldChange}
                 />
               )}
@@ -650,6 +788,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                 <StepSpaceDetails
                   data={formData}
                   errors={errors}
+                  validationTrigger={validationTrigger}
                   onChange={handleFieldChange}
                 />
               )}
@@ -658,6 +797,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                 <StepRequests
                   data={formData}
                   errors={errors}
+                  validationTrigger={validationTrigger}
                   onChange={handleFieldChange}
                   onJumpToStep={(step) => {
                     setErrors({});
@@ -669,11 +809,11 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
 
               {/* Completion Summary & Quick Export/Save Banner */}
               {isWizardCompleted && currentStep === 2 && (
-                <div className="mt-5 rounded-2xl border border-blue-200 bg-blue-50/70 p-4">
+                <div className="mt-5 rounded-2xl border border-gray-200 bg-gray-50 p-4">
                   <div className="flex items-start gap-2.5">
                     <CheckCircle2
                       size={18}
-                      className="mt-0.5 shrink-0 text-blue-600"
+                      className="mt-0.5 shrink-0 text-emerald-600"
                       aria-hidden="true"
                     />
                     <div className="min-w-0 flex-1">
@@ -688,10 +828,10 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                         <button
                           type="button"
                           onClick={handleCopySummary}
-                          className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-gray-700 transition-colors hover:bg-gray-50"
+                          className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900"
                         >
                           {copiedSummary ? (
-                            <Check size={13} className="text-blue-600" aria-hidden="true" />
+                            <Check size={13} className="text-emerald-600" aria-hidden="true" />
                           ) : (
                             <Copy size={13} aria-hidden="true" />
                           )}
@@ -702,7 +842,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                           type="button"
                           onClick={handleSaveToInquiries}
                           disabled={savingInquiry}
-                          className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+                          className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg bg-black px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-gray-800 disabled:opacity-50"
                         >
                           <Save size={13} aria-hidden="true" />
                           <span>{savingInquiry ? '저장 중...' : '고객 문의로 저장'}</span>
@@ -797,7 +937,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                         <button
                           type="button"
                           onClick={handleNextStep}
-                          className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-lg bg-gray-950 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
+                          className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-lg bg-black px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
                         >
                           <span>다음 단계</span>
                           <ChevronRight size={14} aria-hidden="true" />
@@ -806,7 +946,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                         <button
                           type="button"
                           onClick={handleCompleteWizard}
-                          className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
+                          className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg bg-black px-3.5 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
                         >
                           <Check size={14} aria-hidden="true" />
                           <span>작성 완료</span>
@@ -817,7 +957,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
 
                   {lastSavedAt && (
                     <p className="text-[11px] text-gray-500 tabular-nums">
-                      로컬 저장소 임시 저장 완료 · {formatSavedTime(lastSavedAt)}
+                      로컬 저장소 임시 저장 완료 · {formatSavedTime(lastSavedAt)} ({DRAFT_TTL_DAYS}일 보관 후 자동 삭제)
                     </p>
                   )}
                 </div>
@@ -831,8 +971,8 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
           <div className="flex min-h-[420px] flex-1 flex-col overflow-hidden bg-white sm:rounded-2xl sm:border sm:border-gray-200 lg:min-h-0 print:rounded-none print:border-0">
             {status.state === 'loading' && (
               <div className="m-auto w-full max-w-md space-y-4 p-8 text-center">
-                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-gray-950 text-white">
-                  <Calculator size={20} className="text-blue-400" aria-hidden="true" />
+                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-black text-white">
+                  <Calculator size={20} aria-hidden="true" />
                 </div>
                 <div className="space-y-2">
                   <p role="status" className="text-sm font-semibold text-gray-900">
@@ -860,7 +1000,7 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
                 <button
                   type="button"
                   onClick={retry}
-                  className="mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-gray-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
+                  className="mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-black px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
                 >
                   다시 시도
                 </button>
@@ -901,6 +1041,41 @@ function PmWorkspace({ accountId, sample }: { accountId: string; sample: boolean
           </div>
         </div>
       </div>
+
+      {/* Draft Saved Toast Notification */}
+      {toast && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed bottom-5 right-4 left-4 z-50 flex items-start justify-between gap-3 rounded-xl border border-gray-800 bg-gray-950 px-4 py-3 text-white shadow-lg sm:left-auto sm:right-6 sm:max-w-sm print:hidden"
+        >
+          <div className="flex min-w-0 items-start gap-2.5">
+            <CheckCircle2
+              size={18}
+              className="mt-0.5 shrink-0 text-emerald-400"
+              aria-hidden="true"
+            />
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-white sm:text-sm">
+                {toast.title}
+              </p>
+              {toast.subtitle && (
+                <p className="mt-0.5 truncate text-[11px] text-gray-300 tabular-nums">
+                  {toast.subtitle}
+                </p>
+              )}
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setToast(null)}
+            aria-label="임시 저장 알림 닫기"
+            className="shrink-0 rounded-lg p-1 text-gray-400 transition-colors hover:bg-gray-800 hover:text-white"
+          >
+            <X size={14} aria-hidden="true" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }
