@@ -83,6 +83,10 @@
     .caption-languages summary { cursor: pointer; font-weight: 700; font-size: .9rem; }
     .caption-languages .links { position: absolute; z-index: 2; inset-block-start: calc(100% + .7rem); inset-inline-end: 0; width: min(17rem, 78vw); margin: 0; padding: .8rem; border: 1px solid var(--line); border-radius: .55rem; background: #fff; box-shadow: 0 .25rem 1rem #19232624; }
     .caption-languages .links a { color: var(--accent); }
+    .demo-still { margin: clamp(1.5rem, 4vw, 2.5rem) 0 0; padding: clamp(.75rem, 2vw, 1.2rem); border: 1px solid var(--line); border-radius: .55rem; background: var(--paper); }
+    .demo-still figcaption { margin-bottom: .65rem; color: var(--muted); }
+    .demo-still a { display: block; font-weight: 700; }
+    .demo-still img { display: block; width: 100%; height: auto; margin-bottom: .55rem; border: 1px solid var(--line); border-radius: .4rem; }
     footer { color: var(--muted); padding-block: 1rem; border-top: 1px solid var(--line); }
     @supports (height: 1svh) {
       .watch { --player-width: min(22.5rem, 37.5svh); }
@@ -160,6 +164,13 @@
         </details>
       </div>
     </div>
+    <figure class="demo-still">
+      <figcaption>가상 냉방 민원 DEMO-012의 한국어 입주사·관리자 화면과 교대 인계 이력을 영어 설명과 함께 볼 수 있습니다.</figcaption>
+      <a href="/fire-safety-ai/handoff-checklist/tenant-cooling-request-handover.jpg">
+        <img src="/fire-safety-ai/handoff-checklist/tenant-cooling-request-handover.jpg" width="2826" height="2230" loading="lazy" decoding="async" alt="5층 공용 회의실 냉방 불편을 접수하는 입주사 채팅, 관리자가 담당자를 지정하는 화면, 다음 근무자가 확인하는 접수 이력">
+        냉방 민원 예시 원본 이미지 열기
+      </a>
+    </figure>
   </main>
   <footer><div class="wrap">빅플래너파트너스 · <a href="/fire-safety-ai/rss.xml" type="application/rss+xml">시설관리 자료 RSS</a> · <a href="/privacy/">개인정보처리방침</a></div></footer>
 </body>

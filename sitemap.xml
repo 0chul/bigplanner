@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://bigplanner.co.kr/</loc>
     <changefreq>weekly</changefreq>
@@ -302,6 +302,9 @@
       <video:duration>27</video:duration>
       <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
     </video:video>
+    <image:image>
+      <image:loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/tenant-cooling-request-handover.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/en/demo-video/</loc>
@@ -315,6 +318,9 @@
       <video:duration>27</video:duration>
       <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
     </video:video>
+    <image:image>
+      <image:loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/tenant-cooling-request-handover.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/de/demo-video/</loc>

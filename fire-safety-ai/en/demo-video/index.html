@@ -128,6 +128,11 @@ footer { color: var(--muted); font-size: .9rem; }
     .watch-timeline li { display: grid; grid-template-columns: 2.8rem minmax(0, 1fr); gap: .4rem; padding-block: .5rem; }
     .watch-timeline li + li { border-block-start: 1px solid var(--rule); }
     .watch-timeline time { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--green); }
+    
+    .watch-workflow { margin: clamp(1.5rem, 4vw, 2.4rem) 0 0; border: 1px solid var(--rule); border-radius: .6rem; overflow: hidden; }
+    .watch-workflow img { display: block; width: 100%; height: auto; }
+    .watch-workflow figcaption { padding: .8rem 1rem; background: var(--paper); color: var(--muted); }
+    .watch-workflow figcaption a { display: inline-block; margin-block-start: .3rem; font-weight: 650; }
     @media (max-width: 41rem) { .watch-stage { grid-template-columns: minmax(0, 1fr); } .watch-stage video { max-width: min(100%, 14.5rem); } }
     @media (max-width: 23rem) {
       .watch-header .header-content { gap: .35rem .65rem; padding-block: .6rem; }
@@ -201,6 +206,14 @@ footer { color: var(--muted); font-size: .9rem; }
   </details>
       </div>
     </div>
+    <figure class="watch-workflow">
+      <img src="/fire-safety-ai/handoff-checklist/tenant-cooling-request-handover.jpg" width="2826" height="2230" loading="lazy" decoding="async"
+        alt="Korean demo screens showing a tenant’s cooling request, the facilities supervisor’s assignment and the same request history at shift change.">
+      <figcaption>
+        In this simulated case, a tenant reports weak cooling in a fifth-floor meeting room. Request DEMO-012 keeps the tenant’s message, staff assignment and handover history together.
+        <a href="/fire-safety-ai/handoff-checklist/tenant-cooling-request-handover.jpg">View the full-size demo image</a>
+      </figcaption>
+    </figure>
   </main>
   <footer><div class="wrap"><span lang="en" dir="ltr">BigPlanner Partners</span><a href="/fire-safety-ai/en/rss.xml" type="application/rss+xml" aria-label="Facilities resources RSS">Facilities resources RSS</a><a href="/privacy/" hreflang="ko">Privacy policy (Korean)</a></div></footer>
 </body>
