@@ -96,10 +96,19 @@ footer { color: var(--muted); font-size: .9rem; }
     .watch-timeline li + li { border-block-start: 1px solid var(--rule); }
     .watch-timeline time { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--green); }
     @media (max-width: 41rem) { .watch-stage { grid-template-columns: minmax(0, 1fr); } .watch-stage video { max-width: min(100%, 14.5rem); } }
+    @media (max-width: 23rem) {
+      .watch-header .header-content { gap: .35rem .65rem; padding-block: .6rem; }
+      .watch-header .brand { font-size: 1rem; }
+      .watch-header a[hreflang] { font-size: .85rem; }
+      .watch { padding-block: .9rem 1.7rem; }
+      .watch h1 { font-size: 1.6rem; }
+      .watch .intro { font-size: .9rem; margin-block: .45rem .65rem; }
+      .watch-stage video { max-width: min(100%, 12rem); }
+    }
   </style>
 </head>
 <body>
-  <header class="site-header"><div class="wrap header-content">
+  <header class="site-header watch-header"><div class="wrap header-content">
     <a class="brand" href="/fire-safety-ai/en/">BigPlanner <span>Partners</span></a>
     <a href="/fire-safety-ai/demo-video/" lang="ko" hreflang="ko">한국어 영상 안내</a>
   </div></header>
