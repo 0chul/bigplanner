@@ -28,6 +28,8 @@ export const fireSafetyLanguages = [
   { code: 'sv', label: 'Svenska', path: `${fireSafetyPath}sv/`, locale: 'sv_SE' },
   { code: 'fi', label: 'Suomi', path: `${fireSafetyPath}fi/`, locale: 'fi_FI' },
   { code: 'it', label: 'Italiano', path: `${fireSafetyPath}it/`, locale: 'it_IT' },
+  { code: 'he', label: 'עברית', path: `${fireSafetyPath}he/`, locale: 'he_IL', direction: 'rtl' },
+  { code: 'es', label: 'Español', path: `${fireSafetyPath}es/`, locale: 'es_ES' },
 ].map((language) => ({
   ...language,
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,

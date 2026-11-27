@@ -1,0 +1,48 @@
+{
+  "title": "Lista para el relevo de turno y registro gratuito en Excel",
+  "description": "Descarga un registro gratuito en Excel para el relevo en instalaciones comerciales. Usa la lista y el ejemplo de climatización para trasladar las solicitudes abiertas al siguiente turno.",
+  "productLabel": "Asistente de IA para las solicitudes de los inquilinos",
+  "h1": "Lista de comprobación para el relevo en instalaciones",
+  "intro": "Pasa las solicitudes abiertas al siguiente turno con la ubicación exacta, la persona responsable y la próxima comprobación. El archivo de Excel incluye un registro en blanco y un ejemplo cumplimentado para un edificio comercial.",
+  "download": "Descargar el registro gratuito en Excel",
+  "print": "Imprimir la lista de comprobación",
+  "share": "Compartir por correo electrónico",
+  "languageLabel": "Idiomas de la lista de relevo",
+  "checklistTitle": "Antes de que termine el turno saliente",
+  "checklist": [
+    "Utiliza un identificador por solicitud. Registra cuándo se recibió en la hora local del edificio e indica el edificio, el piso y la sala.",
+    "Resume lo que comunicó el inquilino y registra las comprobaciones y actuaciones ya realizadas.",
+    "Identifica a la persona o al equipo responsable. Añade el estado actual, la siguiente acción y la hora límite o de la próxima comprobación.",
+    "Revisa las solicitudes abiertas con el equipo entrante y confirma quién hará el seguimiento."
+  ],
+  "note": "En caso de emergencia, sigue los procedimientos y utiliza los contactos establecidos para el edificio.",
+  "exampleTitle": "Ejemplo de anotación para el relevo",
+  "exampleIntro": "El edificio y la solicitud son ficticios. Todas las horas son locales.",
+  "example": [
+    [
+      "Identificador y hora",
+      "DEMO-012, 5 de octubre de 2026 a las 20:35"
+    ],
+    [
+      "Ubicación",
+      "Edificio A, quinto piso, sala de reuniones común"
+    ],
+    [
+      "Incidencia",
+      "Un inquilino avisó de que el aire acondicionado enfriaba poco."
+    ],
+    [
+      "Responsable y estado",
+      "Técnico de instalaciones del turno de mañana. En curso."
+    ],
+    [
+      "Próxima comprobación",
+      "6 de octubre a las 07:30. Inspeccionar el filtro y comprobar el flujo de aire."
+    ]
+  ],
+  "demoTitle": "De un turno a otro con la misma solicitud",
+  "demoText": "El vídeo de 27 segundos muestra cómo la IA recoge los datos, un supervisor asigna la solicitud y el siguiente turno consulta el mismo registro. La interfaz está en coreano y los subtítulos están en español.",
+  "demoAction": "Ver la demostración con subtítulos en español",
+  "privacy": "Política de privacidad (en coreano)",
+  "landingLink": "Descargar la plantilla gratuita para el relevo de turno"
+}

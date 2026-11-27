@@ -1,0 +1,69 @@
+{
+  "title": "Asistente de IA para inquilinos de edificios comerciales",
+  "description": "Ayuda a los equipos de instalaciones a responder preguntas habituales, registrar incidencias de climatización y mantenimiento y conservar un solo registro hasta el relevo de turno.",
+  "heading": "Asistente de IA para las solicitudes de los inquilinos",
+  "intro": "Responde a las preguntas habituales de los inquilinos con el manual del edificio. Cuando una solicitud requiere una visita, registra qué ha ocurrido y dónde para que el siguiente turno pueda continuar en el mismo registro.",
+  "audience": "Para gestores de inmuebles comerciales, equipos de gestión de instalaciones y empresas de administración inmobiliaria.",
+  "workflowTitle": "De la consulta del inquilino al relevo de turno",
+  "steps": [
+    [
+      "Responder preguntas habituales",
+      "El chatbot consulta el manual del edificio para responder preguntas sobre el estacionamiento de visitantes y otros servicios que recoge el manual."
+    ],
+    [
+      "Registrar y asignar una solicitud",
+      "Si el aire acondicionado enfría poco, la IA registra la ubicación y los detalles. Un supervisor revisa la solicitud y asigna a una persona para que haga el seguimiento."
+    ],
+    [
+      "Entregar el mismo registro al siguiente turno",
+      "El equipo entrante puede consultar lo que se notificó, las indicaciones dadas y la persona asignada. El personal autorizado confirma los horarios y las aprobaciones."
+    ]
+  ],
+  "demoTitle": "Una incidencia de climatización en 27 segundos",
+  "demoNote": "La simulación muestra la interfaz en coreano con subtítulos en español.",
+  "watch": {
+    "title": "Demo de IA para incidencias de climatización y relevo de turno",
+    "description": "En 27 segundos, una incidencia simulada de climatización pasa por el registro, la asignación y el relevo de turno. La interfaz está en coreano y los subtítulos están en español.",
+    "timelineTitle": "Qué ocurre en la demostración"
+  },
+  "subtitles": [
+    "Un inquilino avisa de poca refrigeración en la sala de reuniones común del 5.º piso.",
+    "La IA registra la ubicación y los detalles de la solicitud.",
+    "Un supervisor revisa la solicitud DEMO-012 y asigna a un responsable.",
+    "El siguiente turno consulta las notas y la asignación en el mismo registro.",
+    "BigPlanner Partners. Solicita una demostración en línea."
+  ],
+  "caseTitle": "Registro de solicitudes en una empresa de gestión de edificios",
+  "caseSummary": "El equipo de gestión registraba a mano las solicitudes que llegaban por teléfono y mensajería. En la prueba de concepto se probó un chatbot web y móvil para orientar según el manual del edificio y registrar solicitudes. También se probó una interfaz de administración para derivarlas al personal.",
+  "caseLabels": [
+    "Solicitudes en la muestra interna",
+    "Omisiones al derivar solicitudes al personal responsable en esta muestra"
+  ],
+  "caseScope": "El informe final abarca del 23 de septiembre al 22 de octubre de 2026. Los datos corresponden a la muestra interna de la prueba de concepto, que incluye solicitudes creadas para comprobar las funciones.",
+  "caseLink": "Leer el resumen del caso en coreano",
+  "faqTitle": "Preguntas antes de una prueba piloto",
+  "faq": [
+    [
+      "¿Puede funcionar en nuestro idioma?",
+      "La demostración pública muestra el producto en coreano. Cuéntanos qué idiomas utilizan los ocupantes y el personal para valorar qué requeriría una prueba piloto."
+    ],
+    [
+      "¿Podemos conservar la línea telefónica o el sistema de órdenes de trabajo?",
+      "El equipo puede seguir atendiendo llamadas. Al definir la prueba piloto, revisamos los canales actuales, los campos de registro y las integraciones necesarias."
+    ],
+    [
+      "¿Cómo gestionamos una emergencia?",
+      "Sigue los procedimientos y utiliza los contactos de emergencia establecidos para el edificio en caso de incendio, incidente de seguridad u otra urgencia."
+    ]
+  ],
+  "contactTitle": "Solicita una demostración en línea",
+  "contactText": "Cuéntanos qué proceso del edificio quieres revisar. Coordinaremos la demostración en línea por correo electrónico.",
+  "quoteTitle": "Cómo preparamos un presupuesto",
+  "quoteText": "Preparamos un presupuesto de implantación y asistencia continua para cada proyecto según el número de edificios, sus manuales de operación, las integraciones necesarias y el alcance de la asistencia.",
+  "contactAction": "Solicitar una demostración por correo",
+  "formAction": "Solicitar una demostración en línea",
+  "privacy": "Política de privacidad (en coreano)",
+  "navLabel": "Elegir idioma",
+  "videoFallback": "Abrir el archivo de vídeo",
+  "subject": "[ES] Demostración del asistente de IA de BigPlanner para inquilinos"
+}

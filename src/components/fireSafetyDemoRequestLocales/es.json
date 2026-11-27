@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "Solicita una demostración de IA para instalaciones | BigPlanner Partners",
+    "description": "Solicita una demostración en línea del asistente de IA de BigPlanner Partners para gestionar las solicitudes de los inquilinos de edificios comerciales.",
+    "back": "Ver la demostración del producto",
+    "heading": "Descubre cómo funciona el asistente de IA",
+    "intro": "Descubre cómo se trasladan las solicitudes de los inquilinos entre turnos y cuéntanos cómo trabaja tu equipo. La demostración pública muestra una interfaz en coreano con subtítulos en español."
+  },
+  "form": {
+    "heading": "Solicita una demostración en línea",
+    "required": "Campos obligatorios",
+    "introduction": "Después de enviar la solicitud, nos pondremos en contacto contigo por correo electrónico para coordinar la demostración en línea.",
+    "legend": "Datos de la solicitud de demostración",
+    "company": "Empresa u organización",
+    "companyPlaceholder": "Nombre de la empresa o del edificio",
+    "name": "Nombre de la persona de contacto",
+    "namePlaceholder": "Tu nombre",
+    "role": "Función",
+    "rolePlaceholder": "Selecciona tu función",
+    "roles": {
+      "head-office": "Sede central de la empresa gestora",
+      "site": "Gestión en el edificio o equipo de instalaciones",
+      "other": "Otra"
+    },
+    "email": "Correo electrónico",
+    "emailPlaceholder": "nombre@example.com",
+    "buildingCount": "Número de edificios que gestionas",
+    "buildingCountPlaceholder": "Por ejemplo, 3",
+    "interests": "¿Qué quieres ver en la demostración?",
+    "interestsPlaceholder": "Por ejemplo, registro de incidencias de climatización, estacionamiento de visitantes o relevo de turno",
+    "interestsHint": "Omite los datos personales, como los datos de contacto reales de los inquilinos, y los documentos internos.",
+    "optional": "Opcional",
+    "website": "Sitio web",
+    "consent": "Doy mi consentimiento para que se recojan y utilicen mis datos personales con el fin de tramitar mi solicitud de demostración.",
+    "consentRequired": "(Obligatorio)",
+    "submit": "Enviar la solicitud de demostración",
+    "submitting": "Enviando la solicitud",
+    "afterSubmit": "Puedes solicitar una demostración sin aportar manuales ni registros de solicitudes reales de los inquilinos.",
+    "validationSummary": "Revisa los campos resaltados y vuelve a intentarlo.",
+    "invalidRequest": "No hemos podido enviar la solicitud. Revisa los datos y vuelve a intentarlo.",
+    "failedRequest": "No hemos podido enviar la solicitud. Tus datos siguen en el formulario. Vuelve a intentarlo en unos instantes o escríbenos al correo que aparece abajo.",
+    "successLabel": "Solicitud recibida",
+    "successTitle": "Hemos recibido tu solicitud de demostración.",
+    "successText": "Te escribiremos a la dirección de correo electrónico que indicaste para coordinar la demostración.",
+    "emailLabel": "Contacto",
+    "reset": "Iniciar otra solicitud",
+    "privacy": {
+      "title": "Cómo recogemos y utilizamos tus datos personales",
+      "rows": [
+        [
+          "Quién recoge y utiliza los datos",
+          "BigPlanner Partners"
+        ],
+        [
+          "Para qué utilizamos los datos",
+          "Para tramitar solicitudes de demostración, hablar sobre la implantación del servicio y coordinar las demostraciones en línea."
+        ],
+        [
+          "Qué datos recogemos",
+          "Nombre de la empresa u organización, nombre de la persona de contacto, correo electrónico y función. Solo recogemos el número de edificios que gestionas y los procesos que te interesan si los indicas."
+        ],
+        [
+          "Cuánto tiempo conservamos los datos",
+          "Hasta 90 días desde la recepción de tu solicitud. Puedes pedir que eliminemos tus datos escribiendo a la dirección de correo electrónico que figura abajo."
+        ],
+        [
+          "Tu elección",
+          "Puedes negarte a dar tu consentimiento. El consentimiento es necesario para enviar una solicitud de demostración en línea."
+        ]
+      ],
+      "contact": "Consultas y solicitudes de eliminación de datos"
+    }
+  },
+  "errors": {
+    "company": "Introduce el nombre de la empresa u organización, con un máximo de 120 caracteres.",
+    "name": "Introduce el nombre de la persona de contacto, con un máximo de 80 caracteres.",
+    "email": "Comprueba que la dirección de correo electrónico sea válida.",
+    "role": "Selecciona tu función.",
+    "buildingCount": "Introduce un número entero del 1 al 100 000.",
+    "interests": "Describe en un máximo de 1000 caracteres qué quieres ver en la demostración.",
+    "consent": "Da tu consentimiento para que recojamos y utilicemos tus datos personales con el fin de tramitar tu solicitud de demostración."
+  }
+}

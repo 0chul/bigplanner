@@ -47,6 +47,14 @@ const copyByLanguage = {
     summary: 'Condividi il link', address: 'Indirizzo della pagina', native: 'Condividi tramite un’app', copy: 'Copia il link',
     copied: 'Link copiato.', manual: 'Seleziona e copia l’indirizzo della pagina qui sopra.',
   },
+  he: {
+    summary: 'שיתוף קישור', address: 'כתובת הדף', native: 'שיתוף דרך יישום', copy: 'העתקת קישור',
+    copied: 'הקישור הועתק.', manual: 'יש לבחור ולהעתיק את כתובת הדף שמופיעה למעלה.',
+  },
+  es: {
+    summary: 'Compartir enlace', address: 'Dirección de la página', native: 'Compartir en una app', copy: 'Copiar enlace',
+    copied: 'Enlace copiado.', manual: 'Selecciona y copia la dirección de la página que aparece arriba.',
+  },
 };
 
 export const shareAssets = `<link rel="stylesheet" href="/fire-safety-ai/share.css">
