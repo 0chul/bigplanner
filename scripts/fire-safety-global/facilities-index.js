@@ -11,6 +11,7 @@ import {
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
 import { maintenanceRequestLanguages } from './maintenance-intake.js';
+import { requestHandoverBundleUrl } from './pilot-kits.js';
 
 const languageSections = [
   ['Facilities operations resource libraries', 'resourcesPath'],
@@ -50,6 +51,8 @@ ${officialLink('회사 서비스 안내', '/service/')}
 ${languageLinks}
 
 ## Tenant maintenance request forms
+
+- [Download blank request forms and shift handover workbooks in 17 languages (ZIP)](${requestHandoverBundleUrl})
 
 ${maintenanceRequestLanguages.map(({ label, maintenancePath }) => officialLink(label, maintenancePath)).join('\n')}
 

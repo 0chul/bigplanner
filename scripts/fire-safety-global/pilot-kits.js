@@ -5,6 +5,8 @@ import {
   fireSafetyKoreanResourcesPath,
 } from '../../src/utils/fireSafetyLocales.js';
 
+export const requestHandoverBundleUrl = 'https://github.com/0chul/bigplanner/releases/download/facilities-pilot-kit-2026-11-27/facilities-request-handover-17-languages.zip';
+
 export const pilotKits = {
   ko: {
     path: fireSafetyKoreanPilotKitPath,

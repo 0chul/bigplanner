@@ -3,90 +3,105 @@
     "title": "Arbeitshilfen für den Gebäudebetrieb",
     "intro": "Laden Sie die Vorlage für die Schichtübergabe herunter, schätzen Sie den Aufwand für Routineanfragen und sehen Sie sich die Demo mit Untertiteln an.",
     "resourcesHeading": "Vorlagen und Werkzeuge",
-    "languagesHeading": "Weitere Sprachen"
+    "languagesHeading": "Weitere Sprachen",
+    "bundleLabel": "Vorlagen für Instandhaltungsmeldungen und Schichtübergabe in 17 Sprachen herunterladen (ZIP)"
   },
   "fr": {
     "title": "Ressources pour l’exploitation des bâtiments",
     "intro": "Téléchargez le modèle de relève, estimez le temps consacré aux demandes courantes et regardez la vidéo de démonstration sous-titrée.",
     "resourcesHeading": "Modèles et outils",
-    "languagesHeading": "Autres langues"
+    "languagesHeading": "Autres langues",
+    "bundleLabel": "Télécharger les modèles de demande d’intervention et de relève en 17 langues (ZIP)"
   },
   "ja": {
     "title": "ビル設備管理の実務資料",
     "intro": "シフト引き継ぎ用の台帳をダウンロードできます。よくある問い合わせの対応工数を試算するツールと、字幕付きのデモ動画もご用意しています。",
     "resourcesHeading": "テンプレートとツール",
-    "languagesHeading": "他の言語"
+    "languagesHeading": "他の言語",
+    "bundleLabel": "設備修繕依頼書と引き継ぎ台帳を17言語まとめてダウンロード（ZIP）"
   },
   "zh-Hant": {
     "title": "物業管理實務資源",
     "intro": "下載交更紀錄表、使用工具估算處理常見租戶查詢所需的時間，並觀看附字幕的示範短片。",
     "resourcesHeading": "範本和工具",
-    "languagesHeading": "其他語言"
+    "languagesHeading": "其他語言",
+    "bundleLabel": "下載 17 種語言的設備報修表及交更紀錄表（ZIP）"
   },
   "ar": {
     "title": "أدوات عملية لإدارة المرافق",
     "intro": "نزّلوا نموذج تسليم المناوبات، وقدّروا وقت معالجة استفسارات المستأجرين المتكررة، وشاهدوا فيديو توضيحيًا مع ترجمة نصية.",
     "resourcesHeading": "النماذج والأدوات",
-    "languagesHeading": "لغات أخرى"
+    "languagesHeading": "لغات أخرى",
+    "bundleLabel": "تنزيل نماذج بلاغات الصيانة وتسليم المناوبات بـ17 لغة (ZIP)"
   },
   "nb": {
     "title": "Ressurser for eiendomsdrift",
     "intro": "Last ned en mal for vaktskifte, anslå tidsbruken på vanlige leietakerhenvendelser og se en tekstet demonstrasjonsvideo.",
     "resourcesHeading": "Maler og verktøy",
-    "languagesHeading": "Andre språk"
+    "languagesHeading": "Andre språk",
+    "bundleLabel": "Last ned maler for vedlikeholdsmeldinger og vaktskifte på 17 språk (ZIP)"
   },
   "da": {
     "title": "Ressourcer til bygningsdrift",
     "intro": "Hent en skabelon til vagtskifte, beregn tidsforbruget på tilbagevendende lejerhenvendelser og se en demovideo med undertekster.",
     "resourcesHeading": "Skabeloner og værktøjer",
-    "languagesHeading": "Andre sprog"
+    "languagesHeading": "Andre sprog",
+    "bundleLabel": "Hent skabeloner til vedligeholdelsesanmodninger og vagtskifte på 17 sprog (ZIP)"
   },
   "nl": {
     "title": "Hulpmiddelen voor facilitair beheer",
     "intro": "Download het Excel-logboek voor de facilitaire dienstoverdracht, bereken de tijd voor terugkerende huurdersvragen en bekijk de demo met Nederlandse ondertiteling.",
     "resourcesHeading": "Beschikbare hulpmiddelen",
-    "languagesHeading": "Hulpmiddelen in andere talen"
+    "languagesHeading": "Hulpmiddelen in andere talen",
+    "bundleLabel": "Download sjablonen voor onderhoudsmeldingen en dienstoverdracht in 17 talen (ZIP)"
   },
   "sv": {
     "title": "Verktyg för fastighetsdrift",
     "intro": "Ladda ner Excel-mallen för skiftöverlämning, beräkna tiden för återkommande hyresgästfrågor och se demon med svensk textning.",
     "resourcesHeading": "Tillgängliga verktyg",
-    "languagesHeading": "Verktyg på andra språk"
+    "languagesHeading": "Verktyg på andra språk",
+    "bundleLabel": "Ladda ner mallar för felanmälan och skiftöverlämning på 17 språk (ZIP)"
   },
   "fi": {
     "title": "Työkalut kiinteistön ylläpitoon",
     "intro": "Lataa vuoronvaihdon Excel-lomake, arvioi toistuviin vuokralaiskysymyksiin kuluva työaika ja katso esittelyvideo suomenkielisillä tekstityksillä.",
     "resourcesHeading": "Saatavilla olevat työkalut",
-    "languagesHeading": "Työkalut muilla kielillä"
+    "languagesHeading": "Työkalut muilla kielillä",
+    "bundleLabel": "Lataa vikailmoituksen ja vuoronvaihdon lomakkeet 17 kielellä (ZIP)"
   },
   "it": {
     "title": "Risorse per la gestione degli immobili",
     "intro": "Scarica il registro Excel per il passaggio di consegne, stima il carico di lavoro legato alle richieste ricorrenti dei locatari e guarda la demo con sottotitoli in italiano.",
     "resourcesHeading": "Risorse disponibili",
-    "languagesHeading": "Risorse in altre lingue"
+    "languagesHeading": "Risorse in altre lingue",
+    "bundleLabel": "Scarica i moduli per le richieste di manutenzione e il passaggio di consegne in 17 lingue (ZIP)"
   },
   "he": {
     "title": "כלים לניהול מבנים",
     "intro": "הורידו את תבנית האקסל לחפיפה בין משמרות, העריכו את עומס הטיפול בפניות שגרתיות של שוכרים וצפו בהדגמה עם כתוביות בעברית.",
     "resourcesHeading": "כלים זמינים",
-    "languagesHeading": "כלים בשפות נוספות"
+    "languagesHeading": "כלים בשפות נוספות",
+    "bundleLabel": "הורדת טפסים לבקשות תחזוקה ולחפיפה בין משמרות ב־17 שפות (ZIP)"
   },
   "es": {
     "title": "Recursos para la gestión de instalaciones",
     "intro": "Descarga la plantilla de Excel para el relevo de turno, calcula el tiempo dedicado a las consultas habituales de los inquilinos y mira la demostración con subtítulos en español.",
     "resourcesHeading": "Recursos disponibles",
-    "languagesHeading": "Recursos en otros idiomas"
+    "languagesHeading": "Recursos en otros idiomas",
+    "bundleLabel": "Descargar plantillas de solicitud de mantenimiento y relevo de turno en 17 idiomas (ZIP)"
   },
   "pt": {
     "title": "Recursos para a gestão de instalações",
     "intro": "Descarregue o registo Excel para a passagem de turno, estime o tempo dedicado aos pedidos recorrentes dos arrendatários e veja a demonstração com legendas em português.",
     "resourcesHeading": "Recursos disponíveis",
-    "languagesHeading": "Recursos noutros idiomas"
+    "languagesHeading": "Recursos noutros idiomas",
+    "bundleLabel": "Descarregue os modelos de pedido de manutenção e passagem de turno em 17 línguas (ZIP)"
   },
   "is": {
     "title": "Verkfæri fyrir fasteignarekstur",
     "intro": "Sæktu Excel-sniðmát fyrir vaktaskipti, áætlaðu tímann sem fer í að svara algengum fyrirspurnum leigutaka og horfðu á kynningarmyndbandið með íslenskum texta.",
     "resourcesHeading": "Tiltæk verkfæri",
-    "languagesHeading": "Verkfæri á öðrum tungumálum"
+    "languagesHeading": "Verkfæri á öðrum tungumálum",
+    "bundleLabel": "Sækja sniðmát fyrir viðhaldsbeiðnir og vaktaskipti á 17 tungumálum (ZIP)"
   }
 }

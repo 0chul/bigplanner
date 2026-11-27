@@ -28,7 +28,7 @@ import {
 import { readAdoptionCopy } from './adoption-guide.js';
 import { faqWorksheetName } from './faq-authoring.js';
 import { maintenanceRequestResource } from './maintenance-intake.js';
-import { pilotKits } from './pilot-kits.js';
+import { pilotKits, requestHandoverBundleUrl } from './pilot-kits.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { readWorkloadCopy } from './workload-calculator.js';
 
@@ -49,6 +49,7 @@ const libraries = [
     intro: '입주사 민원 접수, FAQ 매뉴얼 작성, 교대 인계에 쓰는 무료 양식과 시연 자료입니다.',
     cardsHeading: '실무 도구와 시연 자료',
     workloadPath: fireSafetyKoreanWorkloadPath, workloadLabel: '반복 문의 응대 업무량 계산기',
+    bundleLabel: '시설보수 요청서·교대 인계대장 17개 언어 다운로드 (ZIP)',
     languagesHeading: '언어별 제품과 자료',
     languageLinks: ['제품 소개', '시연 영상', '교대 인계', '업무량 계산기', '시연 신청', '도입 체크리스트'],
     privacy: '개인정보 처리방침',
@@ -76,6 +77,7 @@ const libraries = [
     intro: 'Free templates and a short demo for managing tenant requests, writing building FAQs and handing over work between shifts.',
     cardsHeading: 'Tools, templates and demos',
     workloadPath: fireSafetyEnglishWorkloadPath, workloadLabel: 'Routine enquiry workload calculator',
+    bundleLabel: 'Download request and handover templates in 17 languages (ZIP)',
     languagesHeading: 'Product and resources by language',
     languageLinks: ['Product', 'Demo video', 'Handover guide', 'Workload calculator', 'Request a demo', 'Pilot checklist'],
     privacy: 'Privacy policy (Korean)',
@@ -102,6 +104,7 @@ const libraryStyles = `
 .library-section { padding-block: clamp(1.75rem, 4vw, 3.25rem); }
 :lang(ko):is(.library-lead, .library-section) { word-break: keep-all; }
 .library-section + .library-section { border-block-start: 1px solid var(--rule); }
+.library-file-links { display: flex; flex-wrap: wrap; column-gap: 1.3rem; }
 .library-grid, .library-languages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; margin: 1.05rem 0 0; list-style: none; }
 .library-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .library-card { height: 100%; padding: clamp(.95rem, 2.2vw, 1.45rem); border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
@@ -229,7 +232,10 @@ ${alternates}
     </section>` : ''}
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">${escapeHtml(copy.cardsHeading)}</h2>
-      ${copy.workloadPath ? `<a class="resource-link" href="${copy.workloadPath}">${escapeHtml(copy.workloadLabel)}</a>` : ''}
+      <div class="library-file-links">
+        ${copy.workloadPath ? `<a class="resource-link" href="${copy.workloadPath}">${escapeHtml(copy.workloadLabel)}</a>` : ''}
+        <a class="resource-link" href="${requestHandoverBundleUrl}">${escapeHtml(copy.bundleLabel)}</a>
+      </div>
       <ul class="library-grid${resources.length === 4 ? ' library-grid-four' : ''}" role="list">
         ${cards}
       </ul>
@@ -257,7 +263,7 @@ ${alternates}
 
 function localizedLibrary({ language, content, handover }) {
   const { code, direction, locale, path, resourcesPath, feedPath, handoverPath, workloadPath, videoPath, requestPath, adoptionPath } = language;
-  const { title, intro, resourcesHeading, languagesHeading } = localizedCopy[code];
+  const { title, intro, resourcesHeading, languagesHeading, bundleLabel } = localizedCopy[code];
   const workload = readWorkloadCopy(code);
   const guide = readAdoptionCopy(code);
   const resources = [
@@ -269,7 +275,7 @@ function localizedLibrary({ language, content, handover }) {
   ];
   return {
     code, direction, locale, path: resourcesPath, product: path, feed: feedPath, brand: 'BigPlanner Partners',
-    title, intro, cardsHeading: resourcesHeading, languagesHeading, rssLabel: workload.rssLabel,
+    title, intro, cardsHeading: resourcesHeading, languagesHeading, bundleLabel, rssLabel: workload.rssLabel,
     emailShare: handover.share, privacy: workload.privacy, requestPath, requestLabel: content.formAction,
     resources,
   };
