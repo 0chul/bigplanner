@@ -42,6 +42,15 @@
     .secondary { color: var(--accent); background: white; }
     .intro-demo { align-self: center; font-weight: 700; padding: .65rem .25rem; }
     .form-jump { margin-top: .85rem; }
+    .share { margin-top: .85rem; }
+    .share summary { width: fit-content; color: var(--accent); cursor: pointer; font-weight: 700; }
+    .share-panel { max-width: 34rem; margin-top: .65rem; padding: .8rem 1rem; background: var(--paper); border-radius: .5rem; }
+    .share-panel label { display: block; padding: 0 0 .35rem; }
+    .share-panel input { width: 100%; height: auto; padding: .45rem .6rem; border: 1px solid var(--line); border-radius: .25rem; font: inherit; }
+    .share-panel .buttons { margin-top: .7rem; }
+    .share-panel .button[hidden] { display: none; }
+    .share-status { margin: 0; }
+    .share-status:not(:empty) { margin-top: .65rem; }
     .example { margin: 1rem 0; background: var(--paper); border-radius: .5rem; padding: 1rem 1.25rem; }
     dl { margin: 0; display: grid; grid-template-columns: minmax(6.5rem, .53fr) 1.47fr; gap: .4rem 1rem; }
     dt { font-weight: 750; }
@@ -61,7 +70,7 @@
       @page { size: A4; margin: 13mm; }
       body { font-size: 10pt; line-height: 1.5; }
       .wrap { width: 100%; }
-      header, footer, .buttons, .form-jump, .demo { display: none; }
+      header, footer, .buttons, .form-jump, .share, .demo { display: none; }
       main { padding: 0; }
       h1 { font-size: 24pt; }
       h2 { font-size: 15pt; }
@@ -85,6 +94,18 @@
       <button class="button secondary" type="button" onclick="window.print()">인쇄 또는 PDF로 저장</button>
       <a class="intro-demo" data-product-link href="/fire-safety-ai/?utm_source=handoff_checklist&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch#demo-request">온라인 시연 신청</a>
     </div>
+    <details class="share">
+      <summary>동료에게 체크리스트 공유</summary>
+      <div class="share-panel">
+        <label for="checklist-share-url">공유 링크</label>
+        <input id="checklist-share-url" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/?utm_source=handoff_share&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch&amp;utm_content=checklist_share">
+        <div class="buttons">
+          <button class="button" id="checklist-share-device" type="button" hidden>기기에서 공유</button>
+          <button class="button secondary" id="checklist-share-copy" type="button" hidden>링크 복사</button>
+        </div>
+        <p class="note share-status" id="checklist-share-status" role="status"></p>
+      </div>
+    </details>
     <p class="note form-jump"><a href="#handoff-form">인쇄용 빈 인계표 보기</a></p>
 
     <section aria-labelledby="before-handoff">
@@ -153,6 +174,7 @@
       ['youtube', ['organic_social', 'short_handover']],
       ['kakao_channel', ['organic_social', 'channel_post']],
       ['facility_community', ['referral', 'handover_template']],
+      ['handoff_share', ['referral', 'checklist_share']],
       ['venturesquare', ['referral', 'editorial_pitch']],
       ['proptech_forum', ['referral', 'newsletter_pitch']],
       ['jarang', ['referral', 'startup_times']],
@@ -171,6 +193,40 @@
         target.searchParams.set('utm_content', hasTaggedChannel ? channel[1] : 'handoff_checklist');
         link.href = target.href;
       }
+    }
+
+    const shareUrl = document.getElementById('checklist-share-url');
+    const shareDevice = document.getElementById('checklist-share-device');
+    const shareCopy = document.getElementById('checklist-share-copy');
+    const shareStatus = document.getElementById('checklist-share-status');
+    const shareData = { title: document.querySelector('h1').textContent, url: shareUrl.value };
+
+    if (typeof navigator.share === 'function' && (!navigator.canShare || navigator.canShare(shareData))) {
+      shareDevice.hidden = false;
+      shareDevice.addEventListener('click', async () => {
+        shareStatus.textContent = '';
+        try {
+          await navigator.share(shareData);
+        } catch (error) {
+          if (error.name !== 'AbortError') {
+            shareStatus.textContent = '기기에서 공유할 수 없습니다. 위 링크를 복사해 주세요.';
+          }
+        }
+      });
+    }
+
+    if (navigator.clipboard?.writeText) {
+      shareCopy.hidden = false;
+      shareCopy.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(shareUrl.value);
+          shareStatus.textContent = '공유 링크를 복사했습니다.';
+        } catch {
+          shareUrl.focus();
+          shareUrl.select();
+          shareStatus.textContent = '선택된 주소를 복사해 주세요.';
+        }
+      });
     }
   </script>
 </body>
