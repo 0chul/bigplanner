@@ -23,7 +23,7 @@ export const fireSafetyKoreanWorkloadPath = `${fireSafetyPath}workload-calculato
 export const fireSafetyEnglishWorkloadPath = `${fireSafetyEnglishPath}workload-calculator/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
-const adoptionGuideLanguages = new Set(['ko', 'en', 'de', 'fr', 'ja']);
+const adoptionGuideLanguages = new Set(['ko', 'en', 'de', 'fr', 'ja', 'zh-Hant']);
 
 export const fireSafetyLanguages = [
   { code: 'ko', label: '한국어', path: fireSafetyPath, locale: 'ko_KR' },

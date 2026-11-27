@@ -49,7 +49,7 @@ const libraries = [
     cardsHeading: '실무 도구와 시연 자료',
     workloadPath: fireSafetyKoreanWorkloadPath, workloadLabel: '반복 문의 응대 업무량 계산기',
     languagesHeading: '언어별 제품과 자료',
-    languageLinks: ['제품 소개', '시연 영상', '교대 인계', '업무량 계산기', '시연 신청'],
+    languageLinks: ['제품 소개', '시연 영상', '교대 인계', '업무량 계산기', '시연 신청', '도입 체크리스트'],
     privacy: '개인정보 처리방침',
     emailShare: '이메일로 공유',
     shareCopy: {
@@ -76,7 +76,7 @@ const libraries = [
     cardsHeading: 'Tools, templates and demos',
     workloadPath: fireSafetyEnglishWorkloadPath, workloadLabel: 'Routine enquiry workload calculator',
     languagesHeading: 'Product and resources by language',
-    languageLinks: ['Product', 'Demo video', 'Handover guide', 'Workload calculator', 'Request a demo'],
+    languageLinks: ['Product', 'Demo video', 'Handover guide', 'Workload calculator', 'Request a demo', 'Pilot checklist'],
     privacy: 'Privacy policy (Korean)',
     emailShare: 'Share by email',
     resources: [
@@ -139,10 +139,10 @@ function renderResource({ url, title, detail, download, language }) {
 }
 
 function renderLanguage(language, labels, requests) {
-  const { code, label, path, videoPath, handoverPath, workloadPath, feedPath, resourcesPath } = language;
+  const { code, label, path, videoPath, handoverPath, workloadPath, feedPath, resourcesPath, adoptionPath } = language;
   const requestPath = code === 'ko' ? `${path}#demo-request` : requests.get(code);
   if (!requestPath) throw new Error(`Missing resource library request route for ${code}`);
-  const links = [path, videoPath, handoverPath, workloadPath, requestPath].map((url, index) => {
+  const links = [path, videoPath, handoverPath, workloadPath, requestPath, adoptionPath].filter(Boolean).map((url, index) => {
     const text = labels[index];
     return `<a href="${escapeHtml(url)}" hreflang="${code}" aria-label="${escapeHtml(`${text} (${label})`)}">${escapeHtml(text)}</a>`;
   }).join('\n            ');

@@ -10,11 +10,12 @@ import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 
 const styles = readFileSync(new URL('./adoption-guide/pilot.css', import.meta.url), 'utf8');
 const policyReference = 'https://www.gov.uk/government/publications/facilities-management-standards-for-govs-004-property/facilities-management-standard-001-management-and-services#access-to-fm-services';
+const hongKongPolicyReference = 'https://www.pmsa.org.hk/tc/licensing-regime/property-management-services';
 const alternates = fireSafetyAdoptionAlternates.map(({ code, path }) =>
   `  <link rel="alternate" hreflang="${code}" href="${siteOrigin + path}">`).join('\n');
 
 export function readAdoptionCopy(code) {
-  return JSON.parse(readFileSync(new URL(`./adoption-guide/${code}.json`, import.meta.url), 'utf8'));
+  return JSON.parse(readFileSync(new URL(`./adoption-guide/${code.toLowerCase()}.json`, import.meta.url), 'utf8'));
 }
 
 function renderAdoptionGuide(language, copy) {
@@ -23,6 +24,7 @@ function renderAdoptionGuide(language, copy) {
   const title = escapeHtml(copy.title);
   const description = escapeHtml(copy.description);
   const shareDescription = escapeHtml(copy.shareDescription ?? copy.description);
+  const localReference = code === 'zh-Hant';
   const request = escapeHtml(`${requestPath}?utm_source=adoption_guide&utm_medium=referral&utm_campaign=fire_safety_global&utm_content=${code}`);
   const resources = [handoverPath, fireSafetyEnglishFaqPath, workloadPath, resourcesPath];
   if (copy.scope.length !== 6 || copy.example.length !== 3 || copy.metrics.length !== 2 || copy.materials.length !== resources.length) {
@@ -100,7 +102,7 @@ ${alternates}
           ${metrics}
         </ul>
         <p>${escapeHtml(copy.review)}</p>
-        <p class="reference">${escapeHtml(copy.referenceIntro)} <a href="${policyReference}" hreflang="en">${escapeHtml(copy.referenceLabel)}</a></p>
+        <p class="reference">${escapeHtml(copy.referenceIntro)} <a href="${localReference ? hongKongPolicyReference : policyReference}" hreflang="${localReference ? code : 'en'}">${escapeHtml(copy.referenceLabel)}</a></p>
       </section>
       <section class="section" aria-labelledby="pricing-heading">
         <h2 id="pricing-heading">${escapeHtml(copy.pricingHeading)}</h2>

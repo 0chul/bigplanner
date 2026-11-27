@@ -16,7 +16,7 @@ h1, h2, h3, p { margin: 0; }
 h1, h2, h3 { line-height: 1.19; }
 h1 { max-width: 22ch; font-size: clamp(2.25rem, 5.8vw, 4.15rem); letter-spacing: -.045em; text-wrap: balance; }
 h2 { font-size: clamp(1.6rem, 3.35vw, 2.3rem); letter-spacing: -.025em; }
-:lang(ja):is(h1, h2) { letter-spacing: normal; }
+:is(:lang(ja), :lang(zh-Hant)):is(h1, h2) { letter-spacing: normal; }
 h3 { font-size: 1.11rem; }
 .hero { padding-block: clamp(2.1rem, 6vw, 4.6rem); background: var(--paper); border-block-end: 1px solid var(--rule); }
 .hero p { max-width: 58ch; margin-block-start: 1rem; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.23rem); }
