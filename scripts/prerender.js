@@ -6,6 +6,7 @@ import express from 'express';
 import { fireSafetyAdoptionAlternates, fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyLanguages, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 import { faqWorksheetName } from './fire-safety-global/faq-authoring.js';
 import { writeResourceFeeds } from './fire-safety-global/feeds.js';
+import { maintenanceRequestLanguages } from './fire-safety-global/maintenance-intake.js';
 import { demoVideo } from './fire-safety-global/video.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +16,7 @@ const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
 const fireSafetyStaticPaths = [
   ...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath,
+  ...maintenanceRequestLanguages.map(({ maintenancePath }) => maintenancePath),
   ...fireSafetyTranslations.map(({ adoptionPath }) => adoptionPath),
   ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath, workloadPath, resourcesPath }) =>
     [handoverPath, videoPath, workloadPath, resourcesPath]),

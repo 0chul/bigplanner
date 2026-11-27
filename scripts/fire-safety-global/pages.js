@@ -4,6 +4,7 @@ import { fireSafetyProductStructuredData } from '../../src/utils/fireSafetyStruc
 import { readAdoptionCopy, renderAdoptionPages } from './adoption-guide.js';
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilitiesIndex } from './facilities-index.js';
+import { maintenanceRequestLanguages, renderMaintenanceRequestPages } from './maintenance-intake.js';
 import { facilityResourceTitle, renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, demoWorkflowImage, readLocalizedProduct } from './video.js';
@@ -11,6 +12,7 @@ import { readWorkloadCopy, renderWorkloadCalculatorPages } from './workload-calc
 
 const pagePaths = new Set([
   fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
+  ...maintenanceRequestLanguages.map(({ maintenancePath }) => maintenancePath),
   ...fireSafetyLanguages.flatMap(({ resourcesPath, workloadPath, workloadEmbedPath }) => [resourcesPath, workloadPath, workloadEmbedPath]),
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
   ...fireSafetyTranslations.map(({ adoptionPath }) => adoptionPath),
@@ -351,6 +353,7 @@ export function fireSafetyGlobalPages() {
     ['/llms.txt', renderFacilitiesIndex()],
     ...renderAdoptionPages(),
     ...renderFaqManualPages(styles),
+    ...renderMaintenanceRequestPages(styles),
     ...renderFacilityResourcePages(styles, localizations),
     ...renderWorkloadCalculatorPages(styles),
   ]);

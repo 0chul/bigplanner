@@ -1,0 +1,28 @@
+{
+  "title": "Kostenlose Vorlage für Störungsmeldungen im Gebäudebetrieb",
+  "description": "Kostenlose, druckbare Vorlage für Störungsmeldungen von Mietparteien in Gewerbegebäuden. Mit ausgefülltem Beispiel zur Kühlung eines Sitzungsraums.",
+  "intro": "Laden Sie die Vorlage herunter oder drucken Sie sie aus. Füllen Sie sie aus und senden Sie die Meldung über den bestehenden Meldeweg Ihres Gebäudes an den Gebäudebetrieb.",
+  "emergency": "Nutzen Sie bei einem Notfall sofort die vorgesehenen Notfallkontakte und Verfahren Ihres Gebäudes.",
+  "fieldsTitle": "Angaben für die Störungsmeldung",
+  "download": "Kostenlose Vorlage herunterladen",
+  "print": "Vorlage drucken",
+  "exampleTitle": "Ausgefülltes Beispiel",
+  "exampleNote": "Gebäude, Raum und Störung in diesem Beispiel sind frei erfunden. Die Uhrzeiten beziehen sich auf die Ortszeit des Gebäudes.",
+  "nextTitle": "Weiterbearbeitung im Gebäudebetrieb",
+  "nextText": "Das zuständige Team prüft die Meldung, erfasst den Vorgang im vorgesehenen System und hält die nächste Massnahme fest. Bleibt die Meldung bis zum Schichtwechsel offen, übergibt das Team denselben Vorgang an die nächste Schicht.",
+  "handover": "Checkliste für die Schichtübergabe",
+  "pilot": "Checkliste für den KI-Pilotbetrieb",
+  "library": "Weitere Ressourcen für den Gebäudebetrieb",
+  "demo": "Demo mit deutschen Untertiteln ansehen",
+  "languageLabel": "Sprache der Vorlage auswählen",
+  "fields": [
+    ["Liegenschaft und Gebäude", "Gewerbeliegenschaft Lindenhof, Gebäude A"],
+    ["Geschoss, Raum und genauer Ort", "5. Obergeschoss, gemeinsamer Sitzungsraum A-5.12 bei den Aufzügen"],
+    ["Kategorie der Störung", "Klimatisierung und Lüftung"],
+    ["Beobachtete Störung und Auswirkungen", "Die Klimaanlage läuft, aber der Raum bleibt warm. Das Team hat die Besprechung in einen anderen Raum verlegt."],
+    ["Erstmals bemerkt", "5. Oktober 2026 um 20:35 Uhr Ortszeit"],
+    ["Zugangszeit und Bedingungen", "Am 6. Oktober von 07:15 bis 08:00 Uhr begleitet der Empfang das Team in den Raum. Keine Schlüssel, Zugangscodes oder Passwörter angeben."],
+    ["Anlaufstelle oder zugelassener Rückmeldeweg", "Der Gebäudebetrieb antwortet über das für das Gebäude freigegebene Meldeportal."],
+    ["Nur intern – Vorgangsnummer, zuständiges Team und nächster Schritt", "DEMO-012. Die Haustechnik im Frühdienst prüft um 07:30 Uhr die Kühlung im Raum."]
+  ]
+}

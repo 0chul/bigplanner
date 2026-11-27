@@ -1,0 +1,28 @@
+{
+  "title": "Modèle gratuit de demande d’intervention pour les occupants",
+  "description": "Modèle gratuit à imprimer pour signaler un problème technique dans un immeuble commercial. Avec un exemple rempli pour une salle de réunion mal climatisée.",
+  "intro": "Téléchargez ou imprimez le modèle et remplissez-le. Transmettez ensuite la demande à l’équipe d’exploitation par le canal de signalement habituel de votre immeuble.",
+  "emergency": "En cas d’urgence, contactez immédiatement les personnes désignées et suivez les procédures d’urgence de l’immeuble.",
+  "fieldsTitle": "Informations à renseigner",
+  "download": "Télécharger le modèle gratuit",
+  "print": "Imprimer le modèle",
+  "exampleTitle": "Exemple de demande remplie",
+  "exampleNote": "L’immeuble, la salle et le problème sont fictifs. Les heures indiquées sont celles du site.",
+  "nextTitle": "Suivi par l’équipe d’exploitation des bâtiments",
+  "nextText": "L’équipe vérifie la demande, l’enregistre dans le système prévu et indique la prochaine action. Si le dossier reste ouvert au changement d’équipe, elle transmet le même dossier à l’équipe de relève.",
+  "handover": "Liste de contrôle pour la relève technique",
+  "pilot": "Liste de contrôle pour un projet pilote d’IA",
+  "library": "Ressources pour l’exploitation des bâtiments",
+  "demo": "Voir la démonstration sous-titrée en français",
+  "languageLabel": "Choisir la langue du modèle",
+  "fields": [
+    ["Site et bâtiment", "Site tertiaire du Tilleul, bâtiment A"],
+    ["Étage, local et emplacement précis", "5e étage, salle de réunion commune A-5.12, près des ascenseurs"],
+    ["Catégorie d’intervention", "Climatisation et ventilation"],
+    ["Problème observé et impact", "La climatisation fonctionne, mais la salle reste chaude. L’équipe a déplacé la réunion dans une autre salle."],
+    ["Première constatation", "Le 5 octobre 2026 à 20 h 35, heure locale"],
+    ["Créneau et conditions d’accès", "Le 6 octobre, de 7 h 15 à 8 h, l’accueil accompagne l’équipe jusqu’à la salle. Ne communiquez ni clé, ni code, ni mot de passe."],
+    ["Équipe à contacter ou canal de réponse autorisé", "L’équipe d’exploitation répond via le portail de signalement prévu par la gestion de l’immeuble."],
+    ["Réservé à l’équipe interne – numéro de dossier, équipe responsable et prochaine action", "DEMO-012. L’équipe technique du matin vérifie le refroidissement de la salle à 7 h 30."]
+  ]
+}

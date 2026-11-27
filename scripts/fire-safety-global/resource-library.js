@@ -27,6 +27,7 @@ import {
 } from '../../src/utils/fireSafetyLocales.js';
 import { readAdoptionCopy } from './adoption-guide.js';
 import { faqWorksheetName } from './faq-authoring.js';
+import { maintenanceRequestResource } from './maintenance-intake.js';
 import { pilotKits } from './pilot-kits.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { readWorkloadCopy } from './workload-calculator.js';
@@ -162,7 +163,9 @@ function renderLibrary(copy, styles, requests) {
   const brand = escapeHtml(copy.brand);
   const alternates = fireSafetyResourcesAlternates.map(({ code, path }) =>
     `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`).join('\n');
-  const cards = copy.resources.map(renderResource).join('\n        ');
+  const maintenance = maintenanceRequestResource(copy.code);
+  const resources = maintenance ? [maintenance, ...copy.resources] : copy.resources;
+  const cards = resources.map(renderResource).join('\n        ');
   const languages = copy.languageLinks
     ? fireSafetyLanguages.map((language) => renderLanguage(language, copy.languageLinks, requests)).join('\n        ')
     : fireSafetyLanguages.filter(({ code }) => code !== copy.code).map(({ code, label, resourcesPath }) =>
@@ -227,7 +230,7 @@ ${alternates}
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">${escapeHtml(copy.cardsHeading)}</h2>
       ${copy.workloadPath ? `<a class="resource-link" href="${copy.workloadPath}">${escapeHtml(copy.workloadLabel)}</a>` : ''}
-      <ul class="library-grid${copy.resources.length === 4 ? ' library-grid-four' : ''}" role="list">
+      <ul class="library-grid${resources.length === 4 ? ' library-grid-four' : ''}" role="list">
         ${cards}
       </ul>
     </section>

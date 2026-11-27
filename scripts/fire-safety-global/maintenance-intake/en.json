@@ -1,0 +1,28 @@
+{
+  "title": "Tenant maintenance request form for commercial buildings",
+  "description": "A free template for reporting routine HVAC, lighting or plumbing issues in a commercial building. Record the exact location, what you noticed and when staff can check it.",
+  "intro": "Download or print this form, fill it in and send it through your building’s approved maintenance channel. For site access, give the available time and escort arrangements.",
+  "emergency": "For a fire or immediate hazard, follow the building’s emergency procedures and use its designated emergency contacts.",
+  "fieldsTitle": "Blank maintenance request form",
+  "download": "Download blank form (TXT)",
+  "print": "Print blank form",
+  "exampleTitle": "Completed example",
+  "exampleNote": "This example uses a fictional shared meeting room where the cooling is insufficient.",
+  "nextTitle": "Hand an open request to the next shift",
+  "nextText": "Facilities staff can record the request reference, assigned team and next check. Use the same reference at shift handover so the incoming team can find the exact location and current status.",
+  "handover": "Get the shift handover worksheet",
+  "pilot": "Open the facilities AI pilot checklist",
+  "library": "Facilities resource library",
+  "demo": "Watch the 27-second cooling request demo",
+  "languageLabel": "Choose the form language",
+  "fields": [
+    ["Site and building", "Linden Business Centre, Building A"],
+    ["Floor, suite or room and exact location", "Fifth floor, shared meeting room A-5.12 beside the lifts"],
+    ["Service category", "Heating, ventilation and air conditioning"],
+    ["Observed issue and effect on building use", "The cooling is on, but the room stays warm. The team moved the meeting to another room."],
+    ["Date and local time first noticed", "5 October 2026, 20:35"],
+    ["Access window and conditions", "6 October, 07:15 to 08:00, with a reception escort"],
+    ["Tenant team and approved reply channel", "Fifth-floor tenant operations team, reply through the building’s approved service channel"],
+    ["Facilities staff only — request reference, assigned team and next action", "DEMO-012, morning maintenance team, check the room’s cooling at 07:30"]
+  ]
+}

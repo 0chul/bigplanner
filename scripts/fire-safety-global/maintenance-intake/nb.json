@@ -1,0 +1,28 @@
+{
+  "title": "Gratis mal for feilmelding til drift",
+  "description": "Bruk malen til å registrere feilmeldinger fra leietakere med nøyaktig sted, hva som er observert og når driftsteamet kan få tilgang.",
+  "intro": "Last ned eller skriv ut malen. Fyll den ut og send meldingen gjennom kanalen bygget allerede bruker for feilmeldinger.",
+  "emergency": "I en nødsituasjon følger dere byggets etablerte varslingsrutiner og bruker de avtalte kontaktpunktene.",
+  "fieldsTitle": "Dette bør stå i meldingen",
+  "download": "Last ned gratis mal",
+  "print": "Skriv ut malen",
+  "exampleTitle": "Eksempel på en melding om svak kjøling",
+  "exampleNote": "Bygget, hendelsen og registreringene i eksemplet er oppdiktet. Alle klokkeslett er oppgitt i lokal tid.",
+  "nextTitle": "Når meldingen er fylt ut",
+  "nextText": "Send den utfylte meldingen gjennom kanalen bygget allerede bruker for feilmeldinger. Det ansvarlige driftsteamet kan sjekke opplysningene, tildele saken og avklare hva som skal skje videre.",
+  "handover": "Se sjekklisten for vaktskifte",
+  "pilot": "Se sjekklisten for pilotprosjektet",
+  "library": "Se verktøy og maler for eiendomsdrift",
+  "demo": "Se demoen på 27 sekunder",
+  "languageLabel": "Språk for malen",
+  "fields": [
+    ["Eiendom og bygg", "Forretningssenteret Linden, bygg A."],
+    ["Etasje, rom og nøyaktig plassering", "5. etasje, felles møterom A-5.12 ved heisene."],
+    ["Type feilmelding", "Inneklima, svak kjøling."],
+    ["Hva dere observerte, og hvordan det påvirker bruken", "Rommet er fortsatt varmt selv om kjølingen er på. Teamet måtte flytte møtet til et annet rom."],
+    ["Når feilen først ble oppdaget", "5. oktober 2026 kl. 20:35 lokal tid."],
+    ["Tidspunkt og vilkår for tilgang (utelat nøkler og passord)", "6. oktober kl. 07:15–08:00, med følge fra resepsjonen."],
+    ["Teamet som melder fra, og godkjent svarkanal", "Driftsteamet i 5. etasje. Teamet svarer gjennom byggets godkjente portal for driftsmeldinger."],
+    ["Bare for driftsteamet. Saks-ID, ansvarlig team og neste tiltak", "DEMO-012. Driftsteamet på morgenvakten sjekker kjølingen i rommet kl. 07:30."]
+  ]
+}

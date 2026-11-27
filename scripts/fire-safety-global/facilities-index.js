@@ -10,6 +10,7 @@ import {
   fireSafetyLanguages,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
+import { maintenanceRequestLanguages } from './maintenance-intake.js';
 
 const languageSections = [
   ['Facilities operations resource libraries', 'resourcesPath'],
@@ -47,6 +48,10 @@ ${officialLink('BigPlanner Partners official website', '/')}
 ${officialLink('회사 서비스 안내', '/service/')}
 
 ${languageLinks}
+
+## Tenant maintenance request forms
+
+${maintenanceRequestLanguages.map(({ label, maintenancePath }) => officialLink(label, maintenancePath)).join('\n')}
 
 ## Facilities templates and product briefs
 

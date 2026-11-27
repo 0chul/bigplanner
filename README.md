@@ -32,6 +32,7 @@ BigPlanner Partners' AI tenant service desk uses building manuals to answer rout
 
 ## 한 장 소개서와 실무 가이드 · Product briefs and guides
 
+- 입주사 시설보수 요청서 · [한국어](https://bigplanner.co.kr/fire-safety-ai/maintenance-request-form/) · [English](https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/) · [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/) · [Français](https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/) · [Norsk bokmål](https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/) · [Português](https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/)
 - 웹사이트에 시설관리 업무량 계산기 삽입 · [한국어 코드](https://bigplanner.co.kr/fire-safety-ai/workload-calculator/#embed-calculator) · [English embed code](https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/#embed-calculator)
 - 시설관리 AI 도입 검토 자료 묶음 · [한국어 ZIP](https://bigplanner.co.kr/fire-safety-ai/facilities-pilot-kit-ko.zip) · [English ZIP](https://bigplanner.co.kr/fire-safety-ai/en/facilities-pilot-kit-en.zip)
 - 한 장 제품 소개서 · [한국어 PDF](https://bigplanner.co.kr/fire-safety-ai/facilities-ai-overview.pdf) · [English PDF](https://bigplanner.co.kr/fire-safety-ai/en/facilities-ai-overview.pdf)

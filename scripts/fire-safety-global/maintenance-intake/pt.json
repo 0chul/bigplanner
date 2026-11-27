@@ -1,0 +1,28 @@
+{
+  "title": "Modelo de pedido de intervenção para a manutenção de edifícios",
+  "description": "Modelo gratuito para registar pedidos de assistência dos ocupantes, identificar o local da ocorrência e indicar quando a equipa de manutenção pode aceder.",
+  "intro": "Descarregue ou imprima o modelo. Preencha-o e envie-o pelo canal que o edifício já usa para pedidos de assistência.",
+  "emergency": "Em caso de emergência, siga os procedimentos do edifício e use os contactos indicados para esse fim.",
+  "fieldsTitle": "O que registar no pedido",
+  "download": "Descarregar o modelo gratuito",
+  "print": "Imprimir o modelo",
+  "exampleTitle": "Exemplo de um pedido sobre climatização",
+  "exampleNote": "O edifício, a ocorrência e os registos deste exemplo são fictícios. Todos os horários são locais.",
+  "nextTitle": "Depois de preencher o pedido",
+  "nextText": "Envie o pedido preenchido pelo canal de pedidos de assistência que o edifício já utiliza. A equipa responsável pode verificar a informação, atribuir a intervenção e indicar o próximo passo.",
+  "handover": "Ver a lista de verificação para a passagem de turno",
+  "pilot": "Ver a lista de verificação para o teste-piloto",
+  "library": "Ver os recursos para a gestão de edifícios",
+  "demo": "Ver a demonstração de 27 segundos",
+  "languageLabel": "Idiomas do modelo",
+  "fields": [
+    ["Imóvel e edifício", "Centro Empresarial Linden, edifício A."],
+    ["Piso, sala e localização exata", "Piso 5, sala de reuniões partilhada A-5.12, junto aos elevadores."],
+    ["Categoria do pedido", "Climatização, arrefecimento insuficiente."],
+    ["Problema observado e impacto", "A sala continua quente com a climatização ligada. A equipa teve de mudar a reunião para outra sala."],
+    ["Quando foi detetado pela primeira vez", "5 de outubro de 2026, às 20:35, hora local."],
+    ["Horário e condições de acesso (omita chaves e palavras-passe)", "6 de outubro, das 07:15 às 08:00, com acompanhamento a partir da receção."],
+    ["Equipa que faz o pedido e canal aprovado para resposta", "Equipa de operações do piso 5. A equipa responde pelo portal de assistência aprovado do edifício."],
+    ["Só para a equipa de manutenção. Número do pedido, equipa responsável e próxima ação", "DEMO-012. A equipa de manutenção do turno da manhã verifica a climatização da sala às 07:30."]
+  ]
+}

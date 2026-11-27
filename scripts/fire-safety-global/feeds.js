@@ -18,6 +18,7 @@ import {
   fireSafetyPath,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
+import { maintenanceRequestResource } from './maintenance-intake.js';
 import { escapeHtml } from './sharing.js';
 import { pilotKits } from './pilot-kits.js';
 import { readLocalizedProduct } from './video.js';
@@ -184,7 +185,9 @@ export async function writeResourceFeeds(browser, distPath) {
   try {
     await page.setOfflineMode(true);
     for (const feed of [...feeds, ...localized]) {
-      const articles = await Promise.all(feed.resources.map(async (resourcePath) => {
+      const maintenance = maintenanceRequestResource(feed.language);
+      const paths = maintenance ? [maintenance.url, ...feed.resources] : feed.resources;
+      const articles = await Promise.all(paths.map(async (resourcePath) => {
         const html = await readFile(path.join(distPath, resourcePath, 'index.html'), 'utf8');
         const watchLabel = resourcePath === feed.videoPath ? feed.watchLabel : null;
         return page.evaluate(extractArticle, {

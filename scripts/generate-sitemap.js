@@ -3,6 +3,7 @@ import path from 'path';
 import { createClient } from '@supabase/supabase-js';
 import { fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishVideoPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
 import { demoVideo, demoWorkflowImage, readLocalizedProduct } from './fire-safety-global/video.js';
+import { maintenanceRequestLanguages } from './fire-safety-global/maintenance-intake.js';
 
 const supabaseUrl = 'https://injrbniytgtubemniaps.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImluanJibml5dGd0dWJlbW5pYXBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MzA3NDcsImV4cCI6MjA4OTIwNjc0N30.h3njZ7cRvJblL_MIZJ5qJRD45zjzsdWpPiV-90tDxmg';
@@ -40,6 +41,7 @@ async function generateSitemap() {
       ...fireSafetyTranslations.map(({ path }) => ({ path, priority: 0.8, changefreq: 'monthly' })),
       ...fireSafetyLanguages.map(({ handoverPath }) => ({ path: handoverPath, priority: 0.8, changefreq: 'monthly' })),
       ...fireSafetyLanguages.map(({ adoptionPath }) => ({ path: adoptionPath, priority: 0.8, changefreq: 'monthly' })),
+      ...maintenanceRequestLanguages.map(({ maintenancePath }) => ({ path: maintenancePath, priority: 0.8, changefreq: 'monthly' })),
       { path: fireSafetyKoreanAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyEnglishAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyKoreanFaqPath, priority: 0.8, changefreq: 'monthly' },
