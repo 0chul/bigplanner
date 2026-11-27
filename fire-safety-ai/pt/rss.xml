@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lista de verificação para a passagem de turno em instalações | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/pt/</link>
+    <description>Descarregue um registo Excel gratuito para a passagem de turno em edifícios comerciais. Use a lista de verificação e o exemplo de climatização para transmitir os pedidos em aberto à equipa seguinte. Este caso simulado é apresentado numa interface em coreano com legendas em português.</description>
+    <language>pt</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/pt/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculadora da carga de trabalho na gestão de edifícios</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/</guid>
+      <description><![CDATA[<div lang="pt" dir="ltr"><p>Estime o tempo mensal gasto a responder às consultas de rotina dos ocupantes e a parte dessa carga de trabalho atual a avaliar num teste-piloto do serviço de assistência do edifício.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/">Abrir a calculadora da carga de trabalho</a></p></div>]]></description>
+    </item>
+    <item>
+      <title>Lista de verificação para testar um assistente de IA na gestão de edifícios | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Teste um serviço de assistência aos ocupantes com IA num edifício</h1>
+      <p>Escolha um edifício comercial com registos de pedidos recentes e com pessoal dos dois turnos disponível para participar. Peça ao responsável pela exploração do edifício que acorde o âmbito do teste com quem responde às consultas, atribui as intervenções e recebe os pedidos em aberto.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/#checklist">Abrir a lista de verificação</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Seis verificações antes de começar</h2>
+        <div>
+          <article>
+            <h3>Escolha o edifício e os tipos de pedido</h3>
+            <p>Consulte os registos recentes. Escolha dois ou três tipos de pedido com exemplos suficientes para testar, como o estacionamento de visitantes, o arrefecimento insuficiente ou a climatização fora do horário normal. Registe o edifício, os horários, os tipos de pedido e a pessoa responsável pelo teste.</p>
+          </article>
+          <article>
+            <h3>Combine que respostas e decisões precisam de revisão</h3>
+            <p>Para as consultas de rotina, registe a secção aprovada do manual de exploração do edifício e quem a mantém atualizada. Verifique uma resposta com base na redação em vigor. Quando for necessária uma verificação no local, registe a localização e o problema. O pessoal autorizado analisa e decide os pedidos que exigem aprovação.</p>
+          </article>
+          <article>
+            <h3>Designe uma pessoa responsável em cada turno</h3>
+            <p>Defina quem analisa os novos pedidos, atribui o seguimento e trata dos casos fora do âmbito do teste. Simule a passagem de turno com um pedido ainda sem responsável e confirme quem fica encarregado.</p>
+          </article>
+          <article>
+            <h3>Passe os pedidos em aberto no mesmo registo</h3>
+            <p>Registe o número do pedido, a localização, o problema, a atribuição, o estado, a ação seguinte e a hora da próxima verificação. Peça à equipa que entra para registar quando reviu o pedido.</p>
+          </article>
+          <article>
+            <h3>Defina qual é o sistema de registo oficial</h3>
+            <p>Escolha o sistema de referência para o registo. Confirme que integrações com telefone, correio eletrónico e ordens de trabalho serão usadas no teste. Simule um problema comunicado duas vezes para ver como a equipa compara e consolida os registos.</p>
+          </article>
+          <article>
+            <h3>Confirme o acesso e os prazos de conservação</h3>
+            <p>Combine quem pode consultar ou alterar os dados dos ocupantes. Decida quando são precisos contactos ou fotografias, quanto tempo devem ser conservados e quem os elimina. Use registos fictícios no exercício ou oculte os dados sensíveis.</p>
+          </article>
+        </div>
+        <p>Em caso de emergência, use os contactos e siga os procedimentos de resposta definidos para o edifício.</p>
+      </section>
+      <section>
+        <h2>Pedido fictício de climatização na passagem de turno</h2>
+        <dl>
+          <div><dt>Receção do pedido</dt><dd>DEMO-012. A 5 de outubro, às 20:35, hora local, um ocupante comunica que o arrefecimento é insuficiente na sala de reuniões partilhada no quinto piso do edifício A.</dd></div>
+          <div><dt>Revisão pelo responsável do turno</dt><dd>O responsável pelo turno verifica a localização e o problema, atribui o pedido ao técnico de manutenção do turno da manhã e altera o estado para «Em curso».</dd></div>
+          <div><dt>Equipa que entra</dt><dd>Na manhã seguinte, às 07:00, a equipa que entra confirma a atribuição e regista que o técnico verificará a sala às 07:30.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/">Ver a demonstração de 27 segundos com legendas em português</a></p>
+        <p>A interface apresentada está em coreano.</p>
+      </section>
+      <section>
+        <h2>Compare os registos antes e durante o teste</h2>
+        <p>Defina antecipadamente que resultados justificariam a continuação do teste. Por exemplo, compare cinco dias úteis antes do início com cinco dias úteis durante o teste. Use os mesmos dias da semana, os mesmos horários dos turnos diurno e noturno e os mesmos tipos de pedido. Conte cada ocorrência apenas uma vez. Para identificar duplicados, compare o número do pedido ou a hora, a localização e o problema.</p>
+        <ul>
+          <li><strong>Registos completos</strong> Entre os pedidos abrangidos pelo teste que exigiram uma verificação no local, conte os que têm a localização, o problema e o estado da atribuição registados. Divida esse número pelo total de pedidos abrangidos que exigiram essa verificação.</li>
+          <li><strong>Passagens de turno confirmadas</strong> Entre os pedidos em aberto que tinham de passar ao turno seguinte, conte aqueles em que, na primeira passagem, ficou registada a data e a hora em que a equipa que entrou verificou o estado e a ação seguinte. Divida esse número pelo total de pedidos em aberto que tinham de passar ao turno seguinte.</li>
+        </ul>
+        <p>Registe o numerador e o denominador de cada indicador. Se o denominador for zero, registe «0 de 0» e deixe a taxa em branco. Analise com os dois turnos os registos em falta e as atribuições tardias antes de decidir se alarga o teste.</p>
+        <p>Mais informações para planear o teste e definir o âmbito do serviço de assistência. Norma de gestão de instalações do Governo britânico (em inglês)</p>
+      </section>
+      <section>
+        <h2>Proposta e demonstração</h2>
+        <p>A BigPlanner Partners apresenta uma proposta de implementação e apoio contínuo para cada projeto, em função do número de edifícios, dos manuais de exploração, das integrações e do apoio necessário. Leve dois exemplos de procedimentos de trabalho para a demonstração em linha. Podem ser exemplos fictícios.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=pt">Pedir uma demonstração em linha</a>
+        </div>
+      </section>
+      <section>
+        <h2>Recursos para a gestão de edifícios</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/">Lista de verificação e registo Excel para a passagem de turno</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">Guia e folha de trabalho para as perguntas frequentes do edifício (em inglês)</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/">Calculadora da carga de trabalho das consultas de rotina</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/pt/resources/">Todos os recursos em português para a gestão de edifícios</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Recursos para a gestão de instalações | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/pt/resources/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/pt/resources/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <div>
+          <h1>Recursos para a gestão de instalações</h1>
+          <p>Descarregue o registo Excel para a passagem de turno, estime o tempo dedicado aos pedidos recorrentes dos arrendatários e veja a demonstração com legendas em português.</p>
+          <div><a href="https://bigplanner.co.kr/fire-safety-ai/pt/request/">Pedir uma demonstração online</a></div>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    <section>
+      <h2>Recursos disponíveis</h2>
+      
+      <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/">Lista de verificação para a passagem de turno em instalações</a></h3>
+          <p>Descarregue um registo Excel gratuito para a passagem de turno em edifícios comerciais. Use a lista de verificação e o exemplo de climatização para transmitir os pedidos em aberto à equipa seguinte.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/facilities-shift-handover-log.xlsx" download="">Descarregar o registo Excel gratuito</a>
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/">Calculadora da carga de trabalho na gestão de edifícios</a></h3>
+          <p>Estime o tempo mensal gasto a responder às consultas de rotina dos ocupantes e a parte dessa carga de trabalho atual a avaliar num teste-piloto do serviço de assistência do edifício.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/">Um pedido sobre climatização em 27 segundos</a></h3>
+          <p>Veja em 27 segundos como um pedido simulado de climatização é registado, encaminhado e passado à equipa seguinte. A interface está em coreano e as legendas estão em português.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/">Lista de verificação para testar um assistente de IA na gestão de edifícios</a></h3>
+          <p>Planeie um teste-piloto num edifício. Escolha os pedidos de assistência dos ocupantes a tratar, combine como os rever e passar ao turno seguinte e compare os registos.</p>
+          
+        </article></li>
+      </ul>
+    </section>]]></description>
+    </item>
+    <item>
+      <title>Demonstração de IA para pedidos de climatização e passagem de turno | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/</guid>
+      <description><![CDATA[<h1>Demonstração de IA para pedidos de climatização e passagem de turno</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/">Ver a demonstração com legendas em português</a></p>
+      <div>
+        <p>Veja em 27 segundos como um pedido simulado de climatização é registado, encaminhado e passado à equipa seguinte. A interface está em coreano e as legendas estão em português.</p>
+        <section>
+          <h2>O que acontece na demonstração</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>Um ocupante comunica que a sala de reuniões comum do 5.º piso não arrefece o suficiente.</span></li>
+          <li><time dir="ltr">0:04</time><span>O assistente regista a localização e os detalhes do pedido.</span></li>
+          <li><time dir="ltr">0:09</time><span>Um supervisor analisa o pedido DEMO-012 e designa um responsável.</span></li>
+          <li><time dir="ltr">0:15</time><span>A equipa do turno seguinte consulta as notas e o responsável no mesmo registo.</span></li>
+          <li><time dir="ltr">0:21</time><span>BigPlanner Partners. Peça uma demonstração online.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=pt">Pedir uma demonstração online</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/">Descarregar o modelo gratuito para a passagem de turno</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Lista de verificação para a passagem de turno e registo Excel gratuito | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Lista de verificação para a passagem de turno em instalações</h1>
+        <p>Passe os pedidos em aberto à equipa seguinte, com a localização exata, o responsável e a próxima verificação. O ficheiro Excel inclui um registo em branco e um exemplo preenchido para um edifício comercial.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/facilities-shift-handover-log.xlsx" download="">Descarregar o registo Excel gratuito</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Antes de terminar o turno</h2>
+        <ol>
+          <li>Use um identificador por pedido. Registe a hora em que foi recebido, na hora local do edifício, e indique o edifício, o piso e a sala.</li>
+          <li>Resuma o que o arrendatário comunicou e registe as verificações e as intervenções já efetuadas.</li>
+          <li>Indique a pessoa ou equipa responsável, o estado atual, a próxima ação e a hora-limite ou a hora da próxima verificação.</li>
+          <li>Reveja os pedidos em aberto com a equipa que entra e confirme quem dará seguimento a cada pedido.</li>
+        </ol>
+        <p>Em caso de emergência, siga os procedimentos do edifício e use os contactos indicados para esse fim.</p>
+      </section>
+      <section>
+        <h2>Exemplo de registo para a passagem de turno</h2>
+        <p>O edifício e o pedido são fictícios. Todas as horas são locais.</p>
+        <dl>
+          <dt>Identificador e hora</dt><dd>DEMO-012, 5 de outubro de 2026 às 20:35</dd>
+          <dt>Localização</dt><dd>Edifício A, 5.º piso, sala de reuniões comum</dd>
+          <dt>Ocorrência</dt><dd>Um arrendatário comunicou que o ar condicionado arrefecia pouco.</dd>
+          <dt>Responsável e estado</dt><dd>Técnico de manutenção do turno da manhã. Em curso.</dd>
+          <dt>Próxima verificação</dt><dd>6 de outubro às 07:30. Inspecionar o filtro e verificar o caudal de ar.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>O mesmo pedido de um turno para o outro</h2>
+        <p>O vídeo de 27 segundos mostra como a IA recolhe os dados, um supervisor atribui o pedido e a equipa do turno seguinte consulta o mesmo registo. A interface está em coreano e as legendas estão em português.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=pt">Ver a demonstração com legendas em português</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=pt" hreflang="pt">Pedir uma demonstração online</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

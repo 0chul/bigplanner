@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora da carga de trabalho na gestão de edifícios | BigPlanner Partners</title>
+  <meta name="description" content="Estime o tempo mensal gasto a responder às consultas de rotina dos ocupantes e a parte dessa carga de trabalho atual a avaliar num teste-piloto do serviço de assistência do edifício.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/">
+  <meta name="robots" content="noindex, follow">
+  <link rel="alternate" type="application/rss+xml" title="Canal RSS" href="https://bigplanner.co.kr/fire-safety-ai/pt/rss.xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:title" content="Calculadora da carga de trabalho na gestão de edifícios | BigPlanner Partners">
+  <meta property="og:description" content="Estime o tempo mensal gasto a responder às consultas de rotina dos ocupantes e a parte dessa carga de trabalho atual a avaliar num teste-piloto do serviço de assistência do edifício.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <script defer src="/fire-safety-ai/workload-calculator.js"></script>
+  <style>:root {
+  color-scheme: light;
+  --ink: #17302a;
+  --green: #1b5648;
+  --muted: #455c55;
+  --rule: #cdd9d2;
+  --paper: #f3f7f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
+.wrap { width: min(71rem, 100% - 2.5rem); margin-inline: auto; }
+.site-header { border-block-end: 1px solid var(--rule); }
+.header-content, footer .wrap { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: .85rem; }
+.brand { color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.brand span { font-weight: 500; }
+.languages { display: flex; gap: .2rem; flex-wrap: wrap; }
+.languages a { padding: .34rem .55rem; border-radius: .38rem; color: var(--muted); font-size: .875rem; text-decoration: none; }
+.languages a[aria-current="page"], .languages a:hover { background: #e9f0ec; color: var(--green); }
+a { color: var(--green); text-underline-offset: .17em; }
+a:focus-visible, summary:focus-visible, video:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { line-height: 1.22; }
+h1 { font-size: clamp(2.15rem, 4.5vw, 4.2rem); text-wrap: balance; }
+h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
+[dir="ltr"] :is(h1, h2) { letter-spacing: -.035em; }
+:is(:lang(ja), :lang(zh-Hant)) :is(h1, h2) { letter-spacing: 0; }
+[dir="rtl"] :is(h1, h2, h3) { line-height: 1.4; }
+.hero { background: var(--paper); }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.6rem); padding-block: clamp(2.5rem, 6vw, 5.8rem); }
+.intro { max-width: 53ch; margin-block: 1.12rem .75rem; font-size: clamp(1.04rem, 1.75vw, 1.25rem); }
+.audience { color: var(--muted); }
+.building { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: .75rem; }
+.links { display: flex; flex-wrap: wrap; gap: .7rem 1.35rem; align-items: center; margin-block-start: 1.3rem; font-weight: 650; }
+.button { padding: .72rem 1.12rem; border-radius: .4rem; background: var(--green); color: white; text-decoration: none; }
+.button:hover { background: var(--ink); }
+.section { padding-block: clamp(2.45rem, 5.5vw, 4.8rem); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.steps li { padding-block: 1rem; border-block-start: 2px solid var(--green); }
+.steps h3 { font-size: 1.18rem; margin-block-end: .55rem; }
+.steps p, .demo-note, .faq details p { color: var(--muted); }
+.resource-link { display: inline-block; margin-block-start: .65rem; font-weight: 650; }
+.demo-band { background: #e8f1ed; }
+.demo-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); align-items: center; gap: clamp(1.5rem, 6vw, 6rem); }
+.demo-note { margin-block-start: .6rem; }
+.scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
+.scenes li + li { margin-block-start: .6rem; }
+video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
+.faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
+.faq details { border-block-end: 1px solid var(--rule); }
+.faq details:first-child { border-block-start: 1px solid var(--rule); }
+.faq summary { cursor: pointer; padding-block: .8rem; font-weight: 650; }
+.faq details p { margin-block-end: .9rem; }
+.contact-band { background: #173930; color: #fff; }
+.contact-band .button { background: #fff; color: var(--ink); }
+.contact-band .button:hover { background: #dcebe4; }
+.contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
+.contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
+.email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
+footer { color: var(--muted); font-size: .9rem; }
+@media (max-width: 48rem) {
+  .header-content { gap: .45rem; }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
+  .building { aspect-ratio: 16 / 9; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
+}
+
+    .calculator-wrap { width: min(64rem, 100% - 2rem); margin-inline: auto; }
+    html[lang="ko"] .calculator-wrap { word-break: keep-all; }
+    .site-header .calculator-wrap { position: relative; }
+    .calculator-language summary { min-height: 2.75rem; align-content: center; padding-inline: .5rem; color: var(--green); cursor: pointer; }
+    .calculator-language nav { position: absolute; z-index: 1; inset-block-start: calc(100% - .35rem); inset-inline-end: 0; width: min(22rem, 80vw); padding: .6rem; border: 1px solid var(--rule); border-radius: .5rem; background: #fff; box-shadow: 0 8px 24px #17302a15; }
+    .calculator-language nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+    .calculator-head { padding-block: clamp(1.9rem, 4vw, 3.6rem) 1.8rem; }
+    .calculator-head h1 { max-width: 25ch; font-size: clamp(2rem, 4.8vw, 3.65rem); }
+    .calculator-head .intro { max-width: 65ch; margin-block-end: 0; }
+    .calculator-body { padding-block: 1.4rem 2.5rem; }
+    .calculator-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+    .calculator-panel { min-width: 0; border: 1px solid var(--rule); border-radius: .75rem; padding: clamp(1rem, 2.6vw, 1.65rem); }
+    .calculator-panel fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
+    .calculator-panel legend, .calculator-panel h2 { margin: 0; padding: 0; font-size: 1.26rem; font-weight: 750; line-height: 1.3; }
+    .calculator-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1rem; margin-block: 1.05rem; }
+    .calculator-fields label { display: grid; grid-template-rows: 1fr auto auto; gap: .25rem; align-items: end; font-weight: 650; line-height: 1.4; }
+    .calculator-fields small { font-size: .81rem; font-weight: 450; color: var(--muted); }
+    .calculator-fields input { width: 100%; min-height: 2.8rem; border: 1px solid #839b90; border-radius: .38rem; padding: .45rem .62rem; color: var(--ink); background: #fff; font: inherit; font-variant-numeric: tabular-nums; }
+    .calculator-fields input:focus-visible, .calculator-reset:focus-visible { outline: 3px solid #367e71; outline-offset: 2px; }
+    .calculator-fields input[aria-invalid="true"] { border-color: #a32727; }
+    .calculator-fields input:disabled { background: var(--paper); }
+    .calculator-reset { min-height: 2.75rem; border: 1px solid #839b90; border-radius: .38rem; padding: .35rem .75rem; background: #fff; color: var(--green); font: inherit; font-weight: 650; cursor: pointer; }
+    .calculator-reset:hover { background: var(--paper); }
+    .calculator-reset:disabled { color: var(--muted); cursor: default; }
+    .calculator-invalid { color: #8e2626; margin-block: .65rem 0; }
+    .calculator-results { background: var(--paper); }
+    .calculator-results dl { margin: .7rem 0 .8rem; }
+    .calculator-results dl > div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .05rem .75rem; padding: .5rem 0; border-block-end: 1px solid var(--rule); }
+    .calculator-results dt { font-size: .95rem; }
+    .calculator-results dd { color: var(--green); margin: 0; }
+    .calculator-results strong { font-size: 1.55rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
+    .calculator-share-label { display: block; font-size: .85rem; color: var(--muted); }
+    .calculator-results progress { display: block; width: 100%; margin-block-start: .25rem; accent-color: var(--green); }
+    .calculator-example { color: var(--muted); font-size: .93rem; margin: .85rem 0 1.5rem; }
+    .calculator-method { border-block-start: 1px solid var(--rule); padding-block-start: 1.5rem; }
+    .calculator-method h2 { font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
+    .calculator-method ol { margin-block: .65rem; padding-inline-start: 1.4rem; max-width: 72ch; }
+    .calculator-method li + li { margin-block-start: .42rem; }
+    .calculator-embedding { margin-block-start: .65rem; }
+    .calculator-embedding summary { color: var(--green); min-height: 2.75rem; align-content: center; cursor: pointer; font-weight: 650; }
+    .calculator-embedding textarea { display: block; margin-block-start: .35rem; width: 100%; max-width: 58rem; resize: vertical; border: 1px solid var(--rule); border-radius: .38rem; padding: .65rem; background: var(--paper); color: var(--ink); font: .88rem/1.45 ui-monospace, monospace; }
+    .calculator-embed .calculator-head { padding-block: .9rem .8rem; }
+    .calculator-embed .calculator-head h1 { font-size: clamp(1.5rem, 4.8vw, 2.1rem); max-width: 32ch; }
+    .calculator-embed .calculator-body { padding-block: .8rem 1rem; }
+    .calculator-embed .calculator-panel { padding: .85rem; }
+    .calculator-embed .calculator-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem .7rem; }
+    .calculator-embed .calculator-fields label { font-size: .9rem; }
+    .calculator-embed .calculator-results dl > div { padding-block: .35rem; }
+    .calculator-embed .links { margin-block-start: .75rem; }
+    footer { border-block-start: 1px solid var(--rule); }
+    @media (max-width: 46rem) {
+      .calculator-grid { grid-template-columns: 1fr; gap: .9rem; }
+    }
+    @media (max-width: 25rem) {
+      .calculator-fields { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="calculator-embed">
+  
+  <main>
+    <section class="hero" aria-labelledby="calculator-title">
+      <div class="calculator-wrap calculator-head">
+        <h1 id="calculator-title">Estime a carga de trabalho das consultas de rotina dos ocupantes</h1>
+        <p class="intro">Estime o tempo que a sua equipa dedica atualmente, em cada mês, a responder a consultas de rotina. Escolha a percentagem de consultas a avaliar no teste-piloto. Os valores introduzidos ficam neste navegador.</p>
+      </div>
+    </section>
+    <div class="calculator-wrap calculator-body">
+      <div class="calculator-grid">
+        <form class="calculator-panel" data-workload-form data-number-locale="pt-PT" novalidate>
+          <fieldset data-workload-fields disabled>
+            <legend>Dados para calcular a carga de trabalho mensal</legend>
+            <div class="calculator-fields">
+              <label>
+                <span>Consultas de rotina por dia de funcionamento</span>
+                <input type="text" inputmode="numeric" name="requests" data-workload-max="100000" value="20" autocomplete="off" dir="auto" required aria-describedby="requests-range">
+                <small id="requests-range"><bdi>0–100 000</bdi></small>
+              </label>
+              <label>
+                <span>Tempo médio por consulta de rotina (minutos)</span>
+                <input type="text" inputmode="decimal" name="minutes" data-workload-max="1440" value="2" autocomplete="off" dir="auto" required aria-describedby="minutes-range">
+                <small id="minutes-range"><bdi>0–1440</bdi></small>
+              </label>
+              <label>
+                <span>Dias de funcionamento por mês</span>
+                <input type="text" inputmode="numeric" name="days" data-workload-max="31" value="22" autocomplete="off" dir="auto" required aria-describedby="days-range">
+                <small id="days-range"><bdi>0–31</bdi></small>
+              </label>
+              <label>
+                <span>Percentagem de consultas de rotina a avaliar (%)</span>
+                <input type="text" inputmode="numeric" name="eligible" data-workload-max="100" value="60" autocomplete="off" dir="auto" required aria-describedby="eligible-range">
+                <small id="eligible-range"><bdi>0–100</bdi></small>
+              </label>
+            </div>
+            <button class="calculator-reset" type="button" data-workload-reset>Repor os valores do exemplo</button>
+          </fieldset>
+          <p class="calculator-invalid" data-workload-invalid role="status" hidden>Introduza um número dentro do intervalo indicado em cada campo.</p>
+          <noscript><p>Ative o JavaScript no navegador para usar a calculadora. O exemplo desta página pode ser consultado com o JavaScript desativado.</p></noscript>
+        </form>
+        <section class="calculator-panel calculator-results" aria-labelledby="results-title">
+          <h2 id="results-title">Estimativa da carga de trabalho mensal</h2>
+          <div aria-live="polite" aria-atomic="true">
+            <dl>
+              <div>
+                <dt>Tempo atual de resposta às consultas de rotina</dt>
+                <dd><strong><bdi data-workload-result="baseline">14,7</bdi></strong> horas</dd>
+              </div>
+              <div>
+                <dt>Tempo atual gasto nas consultas a avaliar</dt>
+                <dd><strong><bdi data-workload-result="review">8,8</bdi></strong> horas</dd>
+              </div>
+              <div>
+                <dt>Consultas mensais a avaliar</dt>
+                <dd><strong><bdi data-workload-result="requests">264</bdi></strong> consultas</dd>
+              </div>
+            </dl>
+          </div>
+          <span class="calculator-share-label" id="review-share">Percentagem de consultas de rotina a avaliar</span>
+          <progress data-workload-share aria-labelledby="review-share" value="60" max="100"></progress>
+        </section>
+      </div>
+      
+      <div class="links">
+        <a class="button" href="/fire-safety-ai/pt/request/?utm_source=workload_embed&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=pt" target="_blank" rel="noopener">Pedir uma demonstração em linha</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/?utm_source=workload_embed&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=pt" target="_blank" rel="noopener">Abrir a calculadora da carga de trabalho · <span lang="en">BigPlanner Partners</span></a>
+      </div>
+    </div>
+  </main>
+  
+</body>
+</html>

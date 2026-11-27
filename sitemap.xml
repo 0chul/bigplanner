@@ -96,6 +96,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/pt/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -176,6 +181,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/adoption-guide/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -252,6 +262,11 @@
   </url>
   <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -356,6 +371,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/pt/resources/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/workload-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -432,6 +452,11 @@
   </url>
   <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/is/workload-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -644,6 +669,19 @@
       <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
       <video:title><![CDATA[Gervigreind, þjónustubeiðnir og vaktaskipti í fasteignarekstri]]></video:title>
       <video:description><![CDATA[Í 27 sekúndna tilbúnu dæmi er tilkynning um litla kælingu skráð, henni úthlutað til starfsmanns og hún afhent næstu vakt. Viðmótið er á kóresku og skjátextarnir eru á íslensku.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[Demonstração de IA para pedidos de climatização e passagem de turno]]></video:title>
+      <video:description><![CDATA[Veja em 27 segundos como um pedido simulado de climatização é registado, encaminhado e passado à equipa seguinte. A interface está em coreano e as legendas estão em português.]]></video:description>
       <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
       <video:duration>27</video:duration>
       <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>

@@ -1,6 +1,6 @@
 # BigPlanner Partners
 
-> BigPlanner Partners provides an AI tenant service desk for commercial facilities and publishes free facilities operations resources in 16 languages.
+> BigPlanner Partners provides an AI tenant service desk for commercial facilities and publishes free facilities operations resources in 17 languages.
 
 The service uses building manuals to answer routine questions and records requests that need facilities staff to follow up. The 27-second demonstration uses simulated data and a Korean product interface, with captions in the language of each viewing page. Request forms are reachable from the localized product pages. Service setup and ongoing support are quoted by site and project scope.
 
@@ -31,6 +31,7 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [עברית](https://bigplanner.co.kr/fire-safety-ai/he/resources/)
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/resources/)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/resources/)
+- [Português](https://bigplanner.co.kr/fire-safety-ai/pt/resources/)
 
 ## Product introductions
 
@@ -50,6 +51,7 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [עברית](https://bigplanner.co.kr/fire-safety-ai/he/)
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/)
+- [Português](https://bigplanner.co.kr/fire-safety-ai/pt/)
 
 ## Captioned product demonstrations
 
@@ -69,6 +71,7 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [עברית](https://bigplanner.co.kr/fire-safety-ai/he/demo-video/)
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/demo-video/)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/demo-video/)
+- [Português](https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/)
 
 ## Shift handover guides and workbooks
 
@@ -88,6 +91,7 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [עברית](https://bigplanner.co.kr/fire-safety-ai/he/shift-handover/)
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/shift-handover/)
+- [Português](https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/)
 
 ## Facilities AI pilot checklists
 
@@ -107,6 +111,7 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [עברית](https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/)
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/adoption-guide/)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/)
+- [Português](https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/)
 
 ## Routine enquiry workload calculators
 
@@ -126,6 +131,7 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [עברית](https://bigplanner.co.kr/fire-safety-ai/he/workload-calculator/)
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/workload-calculator/)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/workload-calculator/)
+- [Português](https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/)
 
 ## Facilities resources RSS
 
@@ -145,6 +151,7 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [עברית](https://bigplanner.co.kr/fire-safety-ai/he/rss.xml)
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/rss.xml)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/rss.xml)
+- [Português](https://bigplanner.co.kr/fire-safety-ai/pt/rss.xml)
 
 ## Facilities templates and product briefs
 

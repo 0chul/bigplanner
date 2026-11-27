@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lista de verificação para testar um assistente de IA na gestão de edifícios | BigPlanner Partners</title>
+  <meta name="description" content="Planeie um teste-piloto num edifício. Escolha os pedidos de assistência dos ocupantes a tratar, combine como os rever e passar ao turno seguinte e compare os registos.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/adoption-guide/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/">
+  <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/">
+  <link rel="alternate" hreflang="da" href="https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/">
+  <link rel="alternate" hreflang="nl" href="https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/">
+  <link rel="alternate" hreflang="sv" href="https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/">
+  <link rel="alternate" hreflang="fi" href="https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/">
+  <link rel="alternate" hreflang="it" href="https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/">
+  <link rel="alternate" hreflang="he" href="https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/">
+  <link rel="alternate" hreflang="es" href="https://bigplanner.co.kr/fire-safety-ai/es/adoption-guide/">
+  <link rel="alternate" hreflang="is" href="https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/">
+  <link rel="alternate" hreflang="pt" href="https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
+  <link rel="alternate" type="application/rss+xml" title="RSS de recursos para a gestão de edifícios" href="https://bigplanner.co.kr/fire-safety-ai/pt/rss.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:title" content="Lista de verificação para testar um assistente de IA na gestão de edifícios">
+  <meta property="og:description" content="Escolha os pedidos a tratar, quem os retoma na passagem de turno e o que medir num teste-piloto num edifício.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
+  <style>:root { color-scheme: light; --ink: #17302a; --green: #195649; --muted: #455c55; --rule: #cdd9d2; --paper: #f3f7f4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: break-word; }
+.wrap { width: min(60rem, 100% - 2.5rem); margin-inline: auto; }
+header, footer { border-block-end: 1px solid var(--rule); }
+header .wrap, footer .wrap, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.15rem; }
+header .wrap { justify-content: space-between; align-items: baseline; }
+header .wrap, footer .wrap { padding-block: .8rem; }
+header a { padding-block: .32rem; }
+.guide-languages { max-inline-size: min(32rem, 100%); }
+.guide-languages summary { min-height: 2.75rem; padding-block: .5rem; cursor: pointer; color: var(--green); font-weight: 650; }
+.guide-language-links { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
+.guide-language-links a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+a { color: var(--green); text-underline-offset: .18em; }
+.brand { color: var(--ink); font-size: 1.14rem; font-weight: 750; text-decoration: none; }
+:focus-visible { outline: 2px solid #2f7566; outline-offset: 3px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { line-height: 1.19; }
+h1 { max-width: 22ch; font-size: clamp(2.25rem, 5.8vw, 4.15rem); letter-spacing: -.045em; text-wrap: balance; }
+h2 { font-size: clamp(1.6rem, 3.35vw, 2.3rem); letter-spacing: -.025em; }
+:is(:lang(ja), :lang(zh-Hant), :lang(ar), :lang(he)):is(h1, h2) { letter-spacing: normal; }
+:lang(ar) :is(h1, h2, h3) { line-height: 1.4; }
+h3 { font-size: 1.11rem; }
+.hero { padding-block: clamp(2.1rem, 6vw, 4.6rem); background: var(--paper); border-block-end: 1px solid var(--rule); }
+.hero p { max-width: 58ch; margin-block-start: 1rem; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.23rem); }
+.actions { margin-block-start: 1.35rem; }
+.button, .print { min-height: 2.75rem; border: 1px solid var(--green); border-radius: .4rem; display: inline-flex; align-items: center; padding: .55rem .9rem; font: inherit; font-weight: 650; }
+.button { color: #fff; background: var(--green); text-decoration: none; }
+.button:hover { background: var(--ink); }
+.print { color: var(--green); background: #fff; cursor: pointer; }
+.print[hidden] { display: none; }
+.section { padding-block: clamp(1.65rem, 4vw, 3.2rem); }
+.section + .section { border-block-start: 1px solid var(--rule); }
+.section > p, .section > ul, .section > dl, .section > ol { margin-block: .85rem 0; }
+.checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-block-start: 1rem; }
+.check { min-width: 0; padding: 1rem 1.15rem; border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
+.check label { display: flex; align-items: flex-start; gap: .65rem; cursor: pointer; min-height: 2rem; }
+.check input { flex: 0 0 auto; width: 1.05rem; height: 1.05rem; margin: .09rem 0 0; accent-color: var(--green); }
+.check p { margin-block-start: .38rem; }
+.note { padding: .65rem .85rem; background: var(--paper); border-inline-start: 3px solid var(--green); }
+.example { background: var(--paper); border-radius: .45rem; padding: .32rem 1rem; }
+.example > div { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: .35rem .85rem; padding-block: .55rem; }
+.example > div + div { border-block-start: 1px solid var(--rule); }
+.example dt { font-weight: 700; }
+.example dd { margin: 0; }
+.measures, .materials { padding-inline-start: 1.35rem; }
+.measures li + li, .materials li + li { margin-block-start: .4rem; }
+.reference { font-size: .94rem; color: var(--muted); }
+footer { border-block-start: 1px solid var(--rule); border-block-end: 0; color: var(--muted); font-size: .9rem; }
+@media (max-width: 38rem) {
+  .wrap { width: calc(100% - 2rem); }
+  .checks, .example > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  @page { margin: 15mm; }
+  body { background: white; color: black; font-size: 10.5pt; line-height: 1.36; }
+  header, footer, .actions, .fs-share { display: none; }
+  .wrap { width: 100%; }
+  .hero, .note, .example { background: white; }
+  .hero, .section { padding-block: 8pt; }
+  .hero p { color: black; font-size: 11pt; }
+  h1 { max-width: none; font-size: 24pt; }
+  h2 { font-size: 15pt; break-after: avoid; }
+  h3 { font-size: 11pt; break-after: avoid; }
+  .checks { gap: 6pt; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .check { break-inside: avoid; padding: 6pt; }
+  .check label { min-height: 0; }
+  .check input { print-color-adjust: exact; }
+  .example > div, li { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+  <header><div class="wrap">
+    <a href="/fire-safety-ai/pt/" class="brand" lang="en">BigPlanner Partners</a>
+    <details class="guide-languages"><summary>Português</summary>
+      <nav class="guide-language-links"><a href="/fire-safety-ai/adoption-guide/" lang="ko" hreflang="ko" dir="auto">한국어</a>
+      <a href="/fire-safety-ai/en/adoption-guide/" lang="en" hreflang="en" dir="auto">English</a>
+      <a href="/fire-safety-ai/de/adoption-guide/" lang="de" hreflang="de" dir="auto">Deutsch</a>
+      <a href="/fire-safety-ai/fr/adoption-guide/" lang="fr" hreflang="fr" dir="auto">Français</a>
+      <a href="/fire-safety-ai/ja/adoption-guide/" lang="ja" hreflang="ja" dir="auto">日本語</a>
+      <a href="/fire-safety-ai/zh-hant/adoption-guide/" lang="zh-Hant" hreflang="zh-Hant" dir="auto">繁體中文</a>
+      <a href="/fire-safety-ai/ar/adoption-guide/" lang="ar" hreflang="ar" dir="auto">العربية</a>
+      <a href="/fire-safety-ai/nb/adoption-guide/" lang="nb" hreflang="nb" dir="auto">Norsk bokmål</a>
+      <a href="/fire-safety-ai/da/adoption-guide/" lang="da" hreflang="da" dir="auto">Dansk</a>
+      <a href="/fire-safety-ai/nl/adoption-guide/" lang="nl" hreflang="nl" dir="auto">Nederlands</a>
+      <a href="/fire-safety-ai/sv/adoption-guide/" lang="sv" hreflang="sv" dir="auto">Svenska</a>
+      <a href="/fire-safety-ai/fi/adoption-guide/" lang="fi" hreflang="fi" dir="auto">Suomi</a>
+      <a href="/fire-safety-ai/it/adoption-guide/" lang="it" hreflang="it" dir="auto">Italiano</a>
+      <a href="/fire-safety-ai/he/adoption-guide/" lang="he" hreflang="he" dir="auto">עברית</a>
+      <a href="/fire-safety-ai/es/adoption-guide/" lang="es" hreflang="es" dir="auto">Español</a>
+      <a href="/fire-safety-ai/is/adoption-guide/" lang="is" hreflang="is" dir="auto">Íslenska</a></nav>
+    </details>
+  </div></header>
+  <main>
+    <section class="hero" aria-labelledby="guide-title"><div class="wrap">
+      <h1 id="guide-title">Teste um serviço de assistência aos ocupantes com IA num edifício</h1>
+      <p>Escolha um edifício comercial com registos de pedidos recentes e com pessoal dos dois turnos disponível para participar. Peça ao responsável pela exploração do edifício que acorde o âmbito do teste com quem responde às consultas, atribui as intervenções e recebe os pedidos em aberto.</p>
+      <div class="actions">
+        <a class="button" href="#checklist">Abrir a lista de verificação</a>
+        <button class="print" id="print-checklist" type="button" hidden>Imprimir a lista de verificação</button>
+      </div>
+      <details class="fs-share share" data-fs-share>
+    <summary>Partilhar esta lista de verificação</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Endereço da página<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Partilhar numa aplicação</button>
+        <button data-fs-share-copy type="button" hidden>Copiar a ligação</button>
+        <a href="mailto:?subject=Lista%20de%20verifica%C3%A7%C3%A3o%20para%20testar%20um%20assistente%20de%20IA%20na%20gest%C3%A3o%20de%20edif%C3%ADcios&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fpt%2Fadoption-guide%2F">Partilhar por correio eletrónico</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Ligação copiada." data-manual="Selecione e copie o endereço da página acima."></p>
+    </div>
+  </details>
+    </div></section>
+    <div class="wrap">
+      <section class="section" id="checklist" aria-labelledby="scope-heading">
+        <h2 id="scope-heading">Seis verificações antes de começar</h2>
+        <div class="checks">
+          <article class="check">
+            <h3><label><input type="checkbox">Escolha o edifício e os tipos de pedido</label></h3>
+            <p>Consulte os registos recentes. Escolha dois ou três tipos de pedido com exemplos suficientes para testar, como o estacionamento de visitantes, o arrefecimento insuficiente ou a climatização fora do horário normal. Registe o edifício, os horários, os tipos de pedido e a pessoa responsável pelo teste.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Combine que respostas e decisões precisam de revisão</label></h3>
+            <p>Para as consultas de rotina, registe a secção aprovada do manual de exploração do edifício e quem a mantém atualizada. Verifique uma resposta com base na redação em vigor. Quando for necessária uma verificação no local, registe a localização e o problema. O pessoal autorizado analisa e decide os pedidos que exigem aprovação.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Designe uma pessoa responsável em cada turno</label></h3>
+            <p>Defina quem analisa os novos pedidos, atribui o seguimento e trata dos casos fora do âmbito do teste. Simule a passagem de turno com um pedido ainda sem responsável e confirme quem fica encarregado.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Passe os pedidos em aberto no mesmo registo</label></h3>
+            <p>Registe o número do pedido, a localização, o problema, a atribuição, o estado, a ação seguinte e a hora da próxima verificação. Peça à equipa que entra para registar quando reviu o pedido.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Defina qual é o sistema de registo oficial</label></h3>
+            <p>Escolha o sistema de referência para o registo. Confirme que integrações com telefone, correio eletrónico e ordens de trabalho serão usadas no teste. Simule um problema comunicado duas vezes para ver como a equipa compara e consolida os registos.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Confirme o acesso e os prazos de conservação</label></h3>
+            <p>Combine quem pode consultar ou alterar os dados dos ocupantes. Decida quando são precisos contactos ou fotografias, quanto tempo devem ser conservados e quem os elimina. Use registos fictícios no exercício ou oculte os dados sensíveis.</p>
+          </article>
+        </div>
+        <p class="note">Em caso de emergência, use os contactos e siga os procedimentos de resposta definidos para o edifício.</p>
+      </section>
+      <section class="section" aria-labelledby="example-heading">
+        <h2 id="example-heading">Pedido fictício de climatização na passagem de turno</h2>
+        <dl class="example">
+          <div><dt>Receção do pedido</dt><dd>DEMO-012. A 5 de outubro, às 20:35, hora local, um ocupante comunica que o arrefecimento é insuficiente na sala de reuniões partilhada no quinto piso do edifício A.</dd></div>
+          <div><dt>Revisão pelo responsável do turno</dt><dd>O responsável pelo turno verifica a localização e o problema, atribui o pedido ao técnico de manutenção do turno da manhã e altera o estado para «Em curso».</dd></div>
+          <div><dt>Equipa que entra</dt><dd>Na manhã seguinte, às 07:00, a equipa que entra confirma a atribuição e regista que o técnico verificará a sala às 07:30.</dd></div>
+        </dl>
+        <p><a href="/fire-safety-ai/pt/demo-video/">Ver a demonstração de 27 segundos com legendas em português</a></p>
+        <p>A interface apresentada está em coreano.</p>
+      </section>
+      <section class="section" aria-labelledby="measure-heading">
+        <h2 id="measure-heading">Compare os registos antes e durante o teste</h2>
+        <p>Defina antecipadamente que resultados justificariam a continuação do teste. Por exemplo, compare cinco dias úteis antes do início com cinco dias úteis durante o teste. Use os mesmos dias da semana, os mesmos horários dos turnos diurno e noturno e os mesmos tipos de pedido. Conte cada ocorrência apenas uma vez. Para identificar duplicados, compare o número do pedido ou a hora, a localização e o problema.</p>
+        <ul class="measures">
+          <li><strong>Registos completos</strong> Entre os pedidos abrangidos pelo teste que exigiram uma verificação no local, conte os que têm a localização, o problema e o estado da atribuição registados. Divida esse número pelo total de pedidos abrangidos que exigiram essa verificação.</li>
+          <li><strong>Passagens de turno confirmadas</strong> Entre os pedidos em aberto que tinham de passar ao turno seguinte, conte aqueles em que, na primeira passagem, ficou registada a data e a hora em que a equipa que entrou verificou o estado e a ação seguinte. Divida esse número pelo total de pedidos em aberto que tinham de passar ao turno seguinte.</li>
+        </ul>
+        <p>Registe o numerador e o denominador de cada indicador. Se o denominador for zero, registe «0 de 0» e deixe a taxa em branco. Analise com os dois turnos os registos em falta e as atribuições tardias antes de decidir se alarga o teste.</p>
+        <p class="reference">Mais informações para planear o teste e definir o âmbito do serviço de assistência. <a href="https://www.gov.uk/government/publications/facilities-management-standards-for-govs-004-property/facilities-management-standard-001-management-and-services#access-to-fm-services" hreflang="en">Norma de gestão de instalações do Governo britânico (em inglês)</a></p>
+      </section>
+      <section class="section" aria-labelledby="pricing-heading">
+        <h2 id="pricing-heading">Proposta e demonstração</h2>
+        <p>A BigPlanner Partners apresenta uma proposta de implementação e apoio contínuo para cada projeto, em função do número de edifícios, dos manuais de exploração, das integrações e do apoio necessário. Leve dois exemplos de procedimentos de trabalho para a demonstração em linha. Podem ser exemplos fictícios.</p>
+        <div class="actions">
+          <a class="button" href="/fire-safety-ai/pt/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=pt">Pedir uma demonstração em linha</a>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="materials-heading">
+        <h2 id="materials-heading">Recursos para a gestão de edifícios</h2>
+        <ul class="materials">
+          <li><a href="/fire-safety-ai/pt/shift-handover/">Lista de verificação e registo Excel para a passagem de turno</a></li>
+          <li><a href="/fire-safety-ai/en/faq-manual/" hreflang="en">Guia e folha de trabalho para as perguntas frequentes do edifício (em inglês)</a></li>
+          <li><a href="/fire-safety-ai/pt/workload-calculator/">Calculadora da carga de trabalho das consultas de rotina</a></li>
+          <li><a href="/fire-safety-ai/pt/resources/">Todos os recursos em português para a gestão de edifícios</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">
+    <span lang="en">BigPlanner Partners</span>
+    <a href="/fire-safety-ai/pt/rss.xml" type="application/rss+xml">RSS de recursos para a gestão de edifícios</a>
+    <a href="/privacy/" hreflang="ko">Política de privacidade (em coreano)</a>
+  </div></footer>
+  <script>
+    const printChecklist = document.getElementById('print-checklist');
+    printChecklist.addEventListener('click', () => window.print());
+    printChecklist.hidden = false;
+  </script>
+</body>
+</html>
