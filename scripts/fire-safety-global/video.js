@@ -8,6 +8,12 @@ export const demoVideo = {
   uploadDate: '2026-11-27T10:26:31+09:00',
 };
 
+export const demoWorkflowImage = {
+  path: `${fireSafetyPath}handoff-checklist/tenant-cooling-request-handover.jpg`,
+  width: 2826,
+  height: 2230,
+};
+
 export function readLocalizedProduct(code) {
   return JSON.parse(readFileSync(new URL(`./${code.toLowerCase()}.json`, import.meta.url), 'utf8'));
 }

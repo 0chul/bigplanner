@@ -4,7 +4,7 @@ import { fireSafetyProductStructuredData } from '../../src/utils/fireSafetyStruc
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
-import { demoVideo, readLocalizedProduct } from './video.js';
+import { demoVideo, demoWorkflowImage, readLocalizedProduct } from './video.js';
 import { readWorkloadCopy, renderWorkloadCalculatorPages } from './workload-calculator.js';
 
 const pagePaths = new Set([
@@ -193,6 +193,15 @@ function renderVideo(language, content, handover) {
   const navigation = fireSafetyLanguages.map(({ code: itemCode, label: itemLabel, videoPath: itemPath }) =>
     `<a href="${itemPath}" lang="${itemCode}" hreflang="${itemCode}" dir="auto"${itemCode === code ? ' aria-current="page"' : ''}>${escapeHtml(itemLabel)}</a>`).join('\n          ');
   const requestUrl = `${requestPath}?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}`;
+  const workflowFigure = code === 'en' ? `
+    <figure class="watch-workflow">
+      <img src="${demoWorkflowImage.path}" width="${demoWorkflowImage.width}" height="${demoWorkflowImage.height}" loading="lazy" decoding="async"
+        alt="Korean demo screens showing a tenant’s cooling request, the facilities supervisor’s assignment and the same request history at shift change.">
+      <figcaption>
+        In this simulated case, a tenant reports weak cooling in a fifth-floor meeting room. Request DEMO-012 keeps the tenant’s message, staff assignment and handover history together.
+        <a href="${demoWorkflowImage.path}">View the full-size demo image</a>
+      </figcaption>
+    </figure>` : '';
 
   return `<!doctype html>
 <html lang="${code}" dir="${direction}">
@@ -231,6 +240,11 @@ ${styles}
     .watch-timeline li { display: grid; grid-template-columns: 2.8rem minmax(0, 1fr); gap: .4rem; padding-block: .5rem; }
     .watch-timeline li + li { border-block-start: 1px solid var(--rule); }
     .watch-timeline time { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--green); }
+    ${workflowFigure ? `
+    .watch-workflow { margin: clamp(1.5rem, 4vw, 2.4rem) 0 0; border: 1px solid var(--rule); border-radius: .6rem; overflow: hidden; }
+    .watch-workflow img { display: block; width: 100%; height: auto; }
+    .watch-workflow figcaption { padding: .8rem 1rem; background: var(--paper); color: var(--muted); }
+    .watch-workflow figcaption a { display: inline-block; margin-block-start: .3rem; font-weight: 650; }` : ''}
     @media (max-width: 41rem) { .watch-stage { grid-template-columns: minmax(0, 1fr); } .watch-stage video { max-width: min(100%, 14.5rem); } }
     @media (max-width: 23rem) {
       .watch-header .header-content { gap: .35rem .65rem; padding-block: .6rem; }
@@ -273,7 +287,7 @@ ${styles}
         </div>
         ${renderPageShare(code, title, videoUrl, handover.share)}
       </div>
-    </div>
+    </div>${workflowFigure}
   </main>
   <footer><div class="wrap"><span lang="en" dir="ltr">BigPlanner Partners</span>${rssLink}<a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
 </body>

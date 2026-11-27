@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import { fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishResourcesPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
-import { demoVideo, readLocalizedProduct } from './fire-safety-global/video.js';
+import { fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishResourcesPath, fireSafetyEnglishVideoPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
+import { demoVideo, demoWorkflowImage, readLocalizedProduct } from './fire-safety-global/video.js';
 
 const supabaseUrl = 'https://injrbniytgtubemniaps.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImluanJibml5dGd0dWJlbW5pYXBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MzA3NDcsImV4cCI6MjA4OTIwNjc0N30.h3njZ7cRvJblL_MIZJ5qJRD45zjzsdWpPiV-90tDxmg';
@@ -67,7 +67,7 @@ async function generateSitemap() {
     ];
 
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-    sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n`;
+    sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n`;
 
     // Add core routes
     for (const route of routes) {
@@ -85,6 +85,11 @@ async function generateSitemap() {
         sitemap += `      <video:duration>${duration}</video:duration>\n`;
         sitemap += `      <video:publication_date>${uploadDate}</video:publication_date>\n`;
         sitemap += `    </video:video>\n`;
+      }
+      if (route.path === fireSafetyKoreanVideoPath || route.path === fireSafetyEnglishVideoPath) {
+        sitemap += `    <image:image>\n`;
+        sitemap += `      <image:loc>${baseUrl}${demoWorkflowImage.path}</image:loc>\n`;
+        sitemap += `    </image:image>\n`;
       }
       sitemap += `  </url>\n`;
     }
