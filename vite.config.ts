@@ -19,7 +19,7 @@ export default defineConfig(({mode}) => {
           skipWaiting: true,
           clientsClaim: true,
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-          navigateFallbackDenylist: [/^\/fire-safety-ai\/(?:handoff-checklist|adoption-guide)(?:\/|\?|$)/],
+          navigateFallbackDenylist: [/^\/fire-safety-ai\/(?:handoff-checklist|adoption-guide|demo-video)(?:\/|\?|$)/],
           runtimeCaching: [
             {
               // Storage(이미지 등) 요청만 캐싱하도록 정규식 수정 (REST API는 캐싱 제외)

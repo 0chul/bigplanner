@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://bigplanner.co.kr/</loc>
     <changefreq>weekly</changefreq>
@@ -29,6 +29,18 @@
     <loc>https://bigplanner.co.kr/fire-safety-ai/adoption-guide/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[방재실 AI 민원 도우미 27초 데모]]></video:title>
+      <video:description><![CDATA[입주사 냉방 민원을 접수하고 담당자를 지정한 뒤 다음 근무자가 기록을 확인하는 가상 사례를 27초 영상으로 보여줍니다.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+    </video:video>
   </url>
   <url>
     <loc>https://bigplanner.co.kr/projects</loc>

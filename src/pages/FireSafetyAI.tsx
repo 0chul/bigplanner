@@ -107,6 +107,7 @@ export default function FireSafetyAI() {
               <p className="fa-eyebrow">문의에 맞춰 나누는 AI와 담당자의 역할</p>
               <h2 id="fa-product-demo-title">반복 문의는 AI가 안내하고,<br />현장 민원은 담당자가 확인합니다.</h2>
               <p>반복 설명과 접수 정보 정리에 드는 수고를 덜어줍니다.</p>
+              <a className="fa-text-link mt-3" href="/fire-safety-ai/demo-video/">27초 데모 영상 보기 <ArrowRight size={16} aria-hidden="true" /></a>
             </div>
             <div className="fa-workflow-demo"><FireSafetyProductDemo /></div>
             <div className="fa-workflow-note"><Phone size={18} aria-hidden="true" /><p>기존 전화는 현장 여건에 맞춰 병행합니다. 챗봇으로 접수한 내용은 관리자 화면에서 확인합니다.</p></div>

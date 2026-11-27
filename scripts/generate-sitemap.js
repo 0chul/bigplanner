@@ -37,13 +37,25 @@ async function generateSitemap() {
       { path: '/fire-safety-ai/', priority: 0.9, changefreq: 'monthly' },
       { path: '/fire-safety-ai/handoff-checklist/', priority: 0.8, changefreq: 'monthly' },
       { path: '/fire-safety-ai/adoption-guide/', priority: 0.8, changefreq: 'monthly' },
+      {
+        path: '/fire-safety-ai/demo-video/',
+        priority: 0.8,
+        changefreq: 'monthly',
+        video: {
+          title: '방재실 AI 민원 도우미 27초 데모',
+          description: '입주사 냉방 민원을 접수하고 담당자를 지정한 뒤 다음 근무자가 기록을 확인하는 가상 사례를 27초 영상으로 보여줍니다.',
+          thumbnail: '/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg',
+          content: '/fire-safety-ai/handoff-checklist/handoff-demo.mp4',
+          duration: 27,
+        },
+      },
       { path: '/projects', priority: 0.9, changefreq: 'daily' },
       { path: '/partners', priority: 0.7, changefreq: 'monthly' },
       { path: '/contact', priority: 0.8, changefreq: 'monthly' },
     ];
 
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-    sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+    sitemap += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n`;
 
     // Add core routes
     for (const route of routes) {
@@ -51,6 +63,16 @@ async function generateSitemap() {
       sitemap += `    <loc>${baseUrl}${route.path}</loc>\n`;
       sitemap += `    <changefreq>${route.changefreq}</changefreq>\n`;
       sitemap += `    <priority>${route.priority}</priority>\n`;
+      if (route.video) {
+        const { title, description, thumbnail, content, duration } = route.video;
+        sitemap += `    <video:video>\n`;
+        sitemap += `      <video:thumbnail_loc>${baseUrl}${thumbnail}</video:thumbnail_loc>\n`;
+        sitemap += `      <video:title><![CDATA[${title}]]></video:title>\n`;
+        sitemap += `      <video:description><![CDATA[${description}]]></video:description>\n`;
+        sitemap += `      <video:content_loc>${baseUrl}${content}</video:content_loc>\n`;
+        sitemap += `      <video:duration>${duration}</video:duration>\n`;
+        sitemap += `    </video:video>\n`;
+      }
       sitemap += `  </url>\n`;
     }
 
