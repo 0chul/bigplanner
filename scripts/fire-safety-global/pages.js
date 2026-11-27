@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishFeedPath, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { demoVideo, readLocalizedProduct } from './video.js';
 
 const pagePaths = new Set([
@@ -10,6 +10,8 @@ const styles = readFileSync(new URL('./landing.css', import.meta.url), 'utf8');
 const handoverTemplate = readFileSync(new URL('./shift-handover.html', import.meta.url), 'utf8');
 const cueTimes = ['00:00:00.000', '00:00:04.400', '00:00:09.800', '00:00:15.300', '00:00:21.400', '00:00:27.000'];
 const demoEmail = 'bigplanner0799@gmail.com';
+const englishRssHead = `<link rel="alternate" type="application/rss+xml" title="Facilities operations resources RSS" href="${siteOrigin + fireSafetyEnglishFeedPath}">`;
+const englishRssLink = `<a href="${fireSafetyEnglishFeedPath}" type="application/rss+xml">Facilities resources RSS</a>`;
 
 function escapeHtml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -44,6 +46,7 @@ function renderLanding(language, content, handover) {
   <meta name="description" content="${description}">
   <link rel="canonical" href="${url}">
 ${alternates}
+  ${code === 'en' ? englishRssHead : ''}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BigPlanner Partners">
   <meta property="og:locale" content="${locale}">
@@ -136,7 +139,7 @@ ${alternates}
       </div>
     </section>
   </main>
-  <footer><div class="wrap"><span lang="en">BigPlanner Partners</span><a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
+  <footer><div class="wrap"><span lang="en">BigPlanner Partners</span>${code === 'en' ? englishRssLink : ''}<a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
 </body>
 </html>
 `;
@@ -174,6 +177,7 @@ function renderVideo(language, content, handoverLabel) {
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="${videoUrl}">
 ${alternates}
+  ${code === 'en' ? englishRssHead : ''}
   <meta property="og:type" content="video.other">
   <meta property="og:site_name" content="BigPlanner Partners">
   <meta property="og:locale" content="${locale}">
@@ -243,7 +247,7 @@ ${styles}
       </div>
     </div>
   </main>
-  <footer><div class="wrap"><span lang="en" dir="ltr">BigPlanner Partners</span><a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
+  <footer><div class="wrap"><span lang="en" dir="ltr">BigPlanner Partners</span>${code === 'en' ? englishRssLink : ''}<a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
 </body>
 </html>
 `;
@@ -272,7 +276,10 @@ function renderHandover(language, content, formAction) {
     requestUrl: escapeHtml(requestUrl),
     formAction: escapeHtml(formAction),
   };
-  return handoverTemplate.replace(/{{(\w+)}}/g, (_, key) => {
+  const template = handoverTemplate
+    .replace('{{rssHead}}', code === 'en' ? englishRssHead : '')
+    .replace('{{rssLink}}', code === 'en' ? englishRssLink : '');
+  return template.replace(/{{(\w+)}}/g, (_, key) => {
     if (!Object.hasOwn(values, key) || !values[key]) throw new Error(`Missing handover ${code} value for ${key}`);
     return values[key];
   });

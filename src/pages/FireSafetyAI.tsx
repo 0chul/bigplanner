@@ -8,7 +8,7 @@ import FireSafetyScrollStory from '../components/FireSafetyScrollStory';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
-import { fireSafetyAlternates, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyKoreanFeedPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
 import './fire-safety-ai.css';
 
 const organicShareImage = 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg';
@@ -83,6 +83,7 @@ export default function FireSafetyAI() {
       <Helmet>
         <html lang="ko" />
         {fireSafetyAlternates.map(({ code, path }) => <link key={code} rel="alternate" hrefLang={code} href={siteOrigin + path} />)}
+        <link rel="alternate" type="application/rss+xml" title="시설관리 실무 자료 RSS" href={siteOrigin + fireSafetyKoreanFeedPath} />
         <meta property="og:image:alt" content="빅플래너파트너스 방재실 AI 민원 도우미와 냉방 불편 접수 예시" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -171,7 +172,7 @@ export default function FireSafetyAI() {
         <section className="fa-section fa-demo-section" id="demo-request" aria-labelledby="fa-demo-title"><div className="fa-container fa-demo-grid"><div className="fa-demo-intro"><p className="fa-eyebrow">우리 건물의 업무로 확인하세요</p><h2 id="fa-demo-title">우리 현장에서<br />줄일 수 있는 업무부터<br /><span>확인하세요.</span></h2><p>실제 화면을 보며 AI에 맡길 업무와<br />현장에 필요한 구축 범위를 함께 확인합니다.</p><ul className="fa-demo-agenda"><li><span>01</span><div><strong>맡길 수 있는 반복 업무</strong><p>우리 건물의 반복 문의 중 AI로 안내할 내용</p></div></li><li><span>02</span><div><strong>접수 항목과 전달 방식</strong><p>AI가 정리할 정보와 관리자가 확인할 업무</p></div></li><li><span>03</span><div><strong>구축·교육·운영지원 범위</strong><p>매뉴얼 정리부터 현장 사용과 갱신 지원까지</p></div></li></ul><div className="fa-demo-footnote"><FileText size={17} /><span>첫 신청에는 매뉴얼이나 실제 민원 자료가 필요하지 않습니다.<br />신청 후 이메일로 온라인 시연 일정을 조율합니다.</span></div></div><div className="fa-form-panel"><FireSafetyDemoRequestForm /></div></div></section>
       </main>
 
-      <footer className="fa-footer"><div className="fa-container"><div className="fa-footer-top"><div><strong>방재실 AI 민원 도우미</strong><span>접수에서 전달, 그리고 기록까지.</span></div><a href="https://bigplanner.co.kr/" className="fa-footer-company"><span className="fa-footer-logo"><img src="/images/bigplanner-logo.png" width="280" height="33" alt="BIGPLANNER PARTNERS" /></span><ArrowUpRight size={15} /></a></div><div className="fa-footer-bottom"><div><p>빅플래너파트너스 · 사업자등록번호 265-87-02571</p><p>서울특별시 용산구 회나무로 13가길 16 어반메시남산 C동 102호</p><p><a href="tel:027900799"><Phone size={12} />02-790-0799</a><a href="mailto:bigplanner0799@gmail.com"><Mail size={12} />bigplanner0799@gmail.com</a></p></div><div><a href="#demo-privacy">개인정보 수집·이용 안내</a><span>© {new Date().getFullYear()} BIGPLANNER PARTNERS</span></div></div></div></footer>
+      <footer className="fa-footer"><div className="fa-container"><div className="fa-footer-top"><div><strong>방재실 AI 민원 도우미</strong><span>접수에서 전달, 그리고 기록까지.</span></div><a href="https://bigplanner.co.kr/" className="fa-footer-company"><span className="fa-footer-logo"><img src="/images/bigplanner-logo.png" width="280" height="33" alt="BIGPLANNER PARTNERS" /></span><ArrowUpRight size={15} /></a></div><div className="fa-footer-bottom"><div><p>빅플래너파트너스 · 사업자등록번호 265-87-02571</p><p>서울특별시 용산구 회나무로 13가길 16 어반메시남산 C동 102호</p><p><a href="tel:027900799"><Phone size={12} />02-790-0799</a><a href="mailto:bigplanner0799@gmail.com"><Mail size={12} />bigplanner0799@gmail.com</a></p></div><div><a href={fireSafetyKoreanFeedPath}>시설관리 자료 RSS</a><a href="#demo-privacy">개인정보 수집·이용 안내</a><span>© {new Date().getFullYear()} BIGPLANNER PARTNERS</span></div></div></div></footer>
       {!demoVisible && <div className="fa-mobile-cta"><a className="fa-button" href="#demo-request" onClick={() => trackCTA('mobile_sticky')}>데모 시연 신청<ArrowUpRight size={17} /></a></div>}
     </div>
   );

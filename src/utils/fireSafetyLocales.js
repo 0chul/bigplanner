@@ -1,10 +1,13 @@
 export const fireSafetyPath = '/fire-safety-ai/';
 export const fireSafetyEnglishPath = `${fireSafetyPath}en/`;
+export const fireSafetyKoreanFeedPath = `${fireSafetyPath}rss.xml`;
+export const fireSafetyEnglishFeedPath = `${fireSafetyEnglishPath}rss.xml`;
 export const fireSafetyEnglishDemoPath = `${fireSafetyEnglishPath}request/`;
 export const fireSafetyKoreanVideoPath = `${fireSafetyPath}demo-video/`;
 export const fireSafetyEnglishVideoPath = `${fireSafetyEnglishPath}demo-video/`;
 export const facilitiesHandoverPath = `${fireSafetyEnglishPath}shift-handover/`;
 export const fireSafetyChecklistPath = `${fireSafetyPath}handoff-checklist/`;
+export const fireSafetyAdoptionPath = `${fireSafetyPath}adoption-guide/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
 export const fireSafetyLanguages = [

@@ -3,13 +3,13 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyHandoverAlternates, fireSafetyKoreanVideoPath, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyHandoverAlternates, fireSafetyKoreanVideoPath, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { writeResourceFeeds } from './fire-safety-global/feeds.js';
 import { demoVideo } from './fire-safety-global/video.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
-const fireSafetyAdoptionPath = '/fire-safety-ai/adoption-guide/';
 const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath];
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
 const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath }) => [handoverPath, videoPath])];
@@ -263,6 +263,7 @@ async function prerender() {
   try {
     const workers = Array.from({ length: CONCURRENCY }, (_, i) => worker(i));
     await Promise.all(workers);
+    await writeResourceFeeds(browser, distPath);
     fs.copyFileSync(path.join(distPath, 'index.html'), path.join(distPath, '404.html'));
   } finally {
     await browser.close().catch(() => {});
