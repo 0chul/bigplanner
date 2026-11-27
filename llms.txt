@@ -155,6 +155,8 @@ The free calculator estimates the current monthly enquiry workload and the porti
 
 ## Tenant maintenance request forms
 
+- [Download blank request forms and shift handover workbooks in 17 languages (ZIP)](https://github.com/0chul/bigplanner/releases/download/facilities-pilot-kit-2026-11-27/facilities-request-handover-17-languages.zip)
+
 - [한국어](https://bigplanner.co.kr/fire-safety-ai/maintenance-request-form/)
 - [English](https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/)
 - [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/)

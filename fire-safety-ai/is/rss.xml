@@ -167,7 +167,10 @@
     
     <section>
       <h2>Tiltæk verkfæri</h2>
-      
+      <div>
+        
+        Sækja sniðmát fyrir viðhaldsbeiðnir og vaktaskipti á 17 tungumálum (ZIP)
+      </div>
       <ul>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/is/maintenance-request-form/">Beiðni leigutaka um viðhald í atvinnuhúsnæði</a></h3>

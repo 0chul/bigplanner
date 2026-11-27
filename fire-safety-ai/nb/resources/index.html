@@ -120,6 +120,7 @@ footer { color: var(--muted); font-size: .9rem; }
 .library-section { padding-block: clamp(1.75rem, 4vw, 3.25rem); }
 :lang(ko):is(.library-lead, .library-section) { word-break: keep-all; }
 .library-section + .library-section { border-block-start: 1px solid var(--rule); }
+.library-file-links { display: flex; flex-wrap: wrap; column-gap: 1.3rem; }
 .library-grid, .library-languages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; margin: 1.05rem 0 0; list-style: none; }
 .library-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .library-card { height: 100%; padding: clamp(.95rem, 2.2vw, 1.45rem); border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
@@ -182,7 +183,10 @@ footer { color: var(--muted); font-size: .9rem; }
     
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">Maler og verktøy</h2>
-      
+      <div class="library-file-links">
+        
+        <a class="resource-link" href="https://github.com/0chul/bigplanner/releases/download/facilities-pilot-kit-2026-11-27/facilities-request-handover-17-languages.zip">Last ned maler for vedlikeholdsmeldinger og vaktskifte på 17 språk (ZIP)</a>
+      </div>
       <ul class="library-grid" role="list">
         <li><article class="library-card">
           <h3><a href="/fire-safety-ai/nb/maintenance-request-form/">Gratis mal for feilmelding til drift</a></h3>
