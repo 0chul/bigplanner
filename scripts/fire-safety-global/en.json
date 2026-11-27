@@ -19,6 +19,11 @@
     "The incoming shift checks the notes and assignment in the same request record.",
     "BigPlanner Partners · Request an online demo."
   ],
+  "caseTitle": "Tenant request intake at a building management company",
+  "caseSummary": "The management team had logged requests from calls and messages by hand. In this proof of concept, it tested a web and mobile chatbot for building-manual guidance and request intake, plus an admin screen for passing requests to staff.",
+  "caseLabels": ["Requests in the internal sample", "Missed transfers to responsible staff in this sample"],
+  "caseScope": "The completion report covers 23 September to 22 October 2026. The figures describe the internal proof-of-concept sample, including requests raised for feature checks.",
+  "caseLink": "Read the case summary in Korean",
   "faqTitle": "Questions before a pilot",
   "faq": [
     ["Can it operate in our language?", "The public product walkthrough is in Korean. Tell us which languages your occupants and staff use so we can discuss what a pilot would require."],
@@ -27,6 +32,8 @@
   ],
   "contactTitle": "Request an online demo",
   "contactText": "Tell us which building workflow you want to review. We’ll arrange the online demo by email.",
+  "quoteTitle": "How we prepare a quote",
+  "quoteText": "We quote setup and ongoing support per project after reviewing the number of buildings, their operating manuals, integration requirements and support scope.",
   "contactAction": "Request a demo by email",
   "formAction": "Request a demo online",
   "privacy": "Privacy policy (Korean)",

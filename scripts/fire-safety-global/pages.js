@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyLanguages, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { demoVideo, englishDemoVideo, fireSafetyKoreanVideoPath, fireSafetyVideoAlternates } from './video.js';
 
 const pagePaths = new Set([...fireSafetyTranslations.map(({ path }) => path), facilitiesHandoverPath, fireSafetyEnglishVideoPath]);
@@ -26,6 +26,10 @@ function renderLanding(language, content) {
   const scenes = content.subtitles.slice(0, 4).map((text) => `<li>${escapeHtml(text)}</li>`).join('\n          ');
   const faq = content.faq.map(([question, answer]) =>
     `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('\n        ');
+  const caseCounts = [59, 0];
+  if (content.caseLabels.length !== caseCounts.length) throw new Error(`Missing case evidence labels for ${code}`);
+  const caseStats = caseCounts.map((count, index) =>
+    `<div><dt>${escapeHtml(content.caseLabels[index])}</dt><dd>${count}</dd></div>`).join('\n          ');
   const requestUrl = `${fireSafetyEnglishDemoPath}?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}`;
   const mailUrl = `mailto:${demoEmail}?subject=${encodeURIComponent(content.subject)}`;
   return `<!doctype html>
@@ -94,6 +98,19 @@ ${alternates}
         </video>
       </div>
     </section>
+    <section class="wrap section case-study" id="case-study" aria-labelledby="case-title">
+      <div>
+        <h2 id="case-title">${escapeHtml(content.caseTitle)}</h2>
+        <p class="case-summary">${escapeHtml(content.caseSummary)}</p>
+        <a class="resource-link" href="${fireSafetyPath}#case-study" hreflang="ko">${escapeHtml(content.caseLink)}</a>
+      </div>
+      <div class="case-evidence">
+        <dl class="case-stats">
+          ${caseStats}
+        </dl>
+        <p class="case-scope">${escapeHtml(content.caseScope)}</p>
+      </div>
+    </section>
     <section class="wrap section faq" aria-labelledby="faq-title">
       <h2 id="faq-title">${escapeHtml(content.faqTitle)}</h2>
       <div>
@@ -104,6 +121,10 @@ ${alternates}
       <div class="wrap section">
         <h2 id="contact-title">${escapeHtml(content.contactTitle)}</h2>
         <p>${escapeHtml(content.contactText)}</p>
+        <div class="quote-details">
+          <h3>${escapeHtml(content.quoteTitle)}</h3>
+          <p>${escapeHtml(content.quoteText)}</p>
+        </div>
         <div class="links">
           ${code === 'en'
     ? `<a class="button" href="${requestUrl}">${escapeHtml(content.formAction)}</a>

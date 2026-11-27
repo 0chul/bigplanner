@@ -28,6 +28,16 @@
     "L’équipe de relève consulte les notes et voit à qui le dossier a été attribué.",
     "Assistant IA de BIGPLANNER PARTNERS pour les immeubles. Demandez une démonstration en ligne."
   ],
+  "caseTitle": "Essai de faisabilité chez un prestataire de gestion d’immeubles",
+  "caseSummary": "L’équipe consignait à la main les demandes reçues par téléphone et par messagerie, puis les transmettait à d’autres services. Pour cet essai, nous avons relié à une interface de gestion un chatbot web et mobile qui répond à partir des guides de l’immeuble et enregistre les signalements.",
+  "caseLabels": [
+    "signalements enregistrés pendant les opérations internes",
+    "omissions de transmission à la personne responsable dans cet échantillon"
+  ],
+  "caseScope": "Les chiffres portent uniquement sur l’échantillon issu des opérations internes du 23 septembre au 22 octobre 2026. Cet échantillon comprend aussi des signalements utilisés pour vérifier les fonctionnalités lors de l’essai de faisabilité.",
+  "caseLink": "Lire la présentation du cas en coréen",
+  "quoteTitle": "Devis personnalisé pour la mise en place et l’assistance à l’exploitation",
+  "quoteText": "Le devis tient compte du nombre de sites, de vos guides d’immeuble, des intégrations nécessaires et de l’assistance dont vous aurez besoin pour exploiter le service.",
   "faqTitle": "Questions fréquentes",
   "faq": [
     [

@@ -28,6 +28,16 @@
     "Die nächste Schicht sieht die Notizen und die Zuweisung im selben Vorgang.",
     "KI-Assistent für den Gebäudebetrieb von BIGPLANNER PARTNERS. Jetzt Online-Demo anfragen."
   ],
+  "caseTitle": "Machbarkeitstest bei einem Gebäudedienstleister",
+  "caseSummary": "Das Team erfasste Anfragen aus Telefonaten und Nachrichten bisher von Hand und leitete sie an andere Abteilungen weiter. Im Machbarkeitstest verbanden wir die Auskünfte aus dem Gebäudehandbuch und die Erfassung von Meldungen in einem Chatbot für Web und Mobilgeräte mit einer Verwaltungsoberfläche.",
+  "caseLabels": [
+    "Meldungen aus dem internen Betrieb",
+    "unterbliebene Weiterleitungen an zuständige Personen in dieser Stichprobe"
+  ],
+  "caseScope": "Die Zahlen gelten nur für die Stichprobe aus dem internen Betrieb vom 23. September bis 22. Oktober 2026. Sie enthält auch Meldungen zur Funktionsprüfung im Rahmen des Machbarkeitstests.",
+  "caseLink": "Fallbeschreibung auf Koreanisch lesen",
+  "quoteTitle": "Individuelles Angebot für Einrichtung und Betriebsunterstützung",
+  "quoteText": "Für Ihr Angebot prüfen wir die Zahl der Standorte, die vorhandenen Gebäudehandbücher, die benötigten Systemanbindungen und den Umfang der Betriebsunterstützung.",
   "faqTitle": "Häufige Fragen",
   "faq": [
     [
