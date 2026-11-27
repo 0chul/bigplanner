@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft } from 'lucide-react';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
-import { fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyPath, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyPath, siteOrigin } from '../utils/fireSafetyLocales.js';
 import './fire-safety-ai.css';
 import './fire-safety-english-demo.css';
 
@@ -23,7 +23,7 @@ export default function FireSafetyEnglishDemo() {
       </header>
       <main className="fa-en-request" id="demo-request">
         <div className="fa-en-intro">
-          <a className="fa-en-back" href={`${fireSafetyEnglishPath}#demo`}><ArrowLeft size={16} aria-hidden="true" />Back to the product demo</a>
+          <a className="fa-en-back" href={fireSafetyEnglishVideoPath}><ArrowLeft size={16} aria-hidden="true" />Watch the product demo</a>
           <h1>See the AI helpdesk in action</h1>
           <p>See how tenant requests move across shifts and discuss your building’s workflow. The public walkthrough shows Korean screens with English captions.</p>
         </div>

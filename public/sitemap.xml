@@ -75,6 +75,20 @@
       <video:description><![CDATA[입주사 냉방 민원을 접수하고 담당자를 지정한 뒤 다음 근무자가 기록을 확인하는 가상 사례를 27초 영상으로 보여줍니다.]]></video:description>
       <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
       <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/en/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[AI tenant request and shift handover demo]]></video:title>
+      <video:description><![CDATA[Watch a 27-second facilities demo with English captions. Follow a simulated tenant cooling request from intake and staff assignment through shift handover.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
     </video:video>
   </url>
   <url>

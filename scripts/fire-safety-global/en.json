@@ -11,7 +11,7 @@
     ["Hand over with the same record", "Incoming staff can see what was reported, the guidance given and who was assigned. Authorised staff confirm schedules and approvals."]
   ],
   "demoTitle": "A cooling request in 27 seconds",
-  "demoNote": "This simulated case shows the Korean product interface with English captions.",
+  "demoNote": "This simulated case uses Korean on-screen text with English captions.",
   "subtitles": [
     "A tenant reports weak air conditioning in the shared meeting room on the fifth floor.",
     "AI records the location and details of the request.",

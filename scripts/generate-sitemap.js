@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import { facilitiesHandoverPath, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyEnglishVideoPath, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
+import { demoVideo, englishDemoVideo, fireSafetyKoreanVideoPath } from './fire-safety-global/video.js';
 
 const supabaseUrl = 'https://injrbniytgtubemniaps.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImluanJibml5dGd0dWJlbW5pYXBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MzA3NDcsImV4cCI6MjA4OTIwNjc0N30.h3njZ7cRvJblL_MIZJ5qJRD45zjzsdWpPiV-90tDxmg';
@@ -41,17 +42,16 @@ async function generateSitemap() {
       { path: '/fire-safety-ai/handoff-checklist/', priority: 0.8, changefreq: 'monthly' },
       { path: '/fire-safety-ai/adoption-guide/', priority: 0.8, changefreq: 'monthly' },
       {
-        path: '/fire-safety-ai/demo-video/',
+        path: fireSafetyKoreanVideoPath,
         priority: 0.8,
         changefreq: 'monthly',
         video: {
+          ...demoVideo,
           title: '방재실 AI 민원 도우미 27초 데모',
           description: '입주사 냉방 민원을 접수하고 담당자를 지정한 뒤 다음 근무자가 기록을 확인하는 가상 사례를 27초 영상으로 보여줍니다.',
-          thumbnail: '/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg',
-          content: '/fire-safety-ai/handoff-checklist/handoff-demo.mp4',
-          duration: 27,
         },
       },
+      { path: fireSafetyEnglishVideoPath, priority: 0.8, changefreq: 'monthly', video: englishDemoVideo },
       { path: '/projects', priority: 0.9, changefreq: 'daily' },
       { path: '/partners', priority: 0.7, changefreq: 'monthly' },
       { path: '/contact', priority: 0.8, changefreq: 'monthly' },
@@ -67,13 +67,14 @@ async function generateSitemap() {
       sitemap += `    <changefreq>${route.changefreq}</changefreq>\n`;
       sitemap += `    <priority>${route.priority}</priority>\n`;
       if (route.video) {
-        const { title, description, thumbnail, content, duration } = route.video;
+        const { title, description, thumbnail, content, duration, uploadDate } = route.video;
         sitemap += `    <video:video>\n`;
         sitemap += `      <video:thumbnail_loc>${baseUrl}${thumbnail}</video:thumbnail_loc>\n`;
         sitemap += `      <video:title><![CDATA[${title}]]></video:title>\n`;
         sitemap += `      <video:description><![CDATA[${description}]]></video:description>\n`;
         sitemap += `      <video:content_loc>${baseUrl}${content}</video:content_loc>\n`;
         sitemap += `      <video:duration>${duration}</video:duration>\n`;
+        sitemap += `      <video:publication_date>${uploadDate}</video:publication_date>\n`;
         sitemap += `    </video:video>\n`;
       }
       sitemap += `  </url>\n`;

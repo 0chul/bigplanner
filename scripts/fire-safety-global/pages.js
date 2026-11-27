@@ -1,10 +1,9 @@
 import { readFileSync } from 'node:fs';
-import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyLanguages, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { demoVideo, englishDemoVideo, fireSafetyKoreanVideoPath, fireSafetyVideoAlternates } from './video.js';
 
-const pagePaths = new Set([...fireSafetyTranslations.map(({ path }) => path), facilitiesHandoverPath]);
+const pagePaths = new Set([...fireSafetyTranslations.map(({ path }) => path), facilitiesHandoverPath, fireSafetyEnglishVideoPath]);
 const artworkPath = '/images/fire-safety-building.webp';
-const demoBase = `${fireSafetyPath}handoff-checklist/`;
-const demoFile = `${demoBase}handoff-demo.mp4`;
 const styles = readFileSync(new URL('./landing.css', import.meta.url), 'utf8');
 const cueTimes = ['00:00:00.000', '00:00:04.400', '00:00:09.800', '00:00:15.300', '00:00:21.400', '00:00:27.000'];
 const demoEmail = 'bigplanner0799@gmail.com';
@@ -66,7 +65,7 @@ ${alternates}
           <p class="audience">${escapeHtml(content.audience)}</p>
           <div class="links">
             <a class="button" href="#contact">${escapeHtml(content.contactTitle)}</a>
-            <a href="#demo">${escapeHtml(content.demoTitle)}</a>
+            <a href="${code === 'en' ? fireSafetyEnglishVideoPath : '#demo'}">${escapeHtml(content.demoTitle)}</a>
           </div>
         </div>
         <img class="building" src="${artworkPath}" width="1672" height="941" alt="" fetchpriority="high">
@@ -87,10 +86,11 @@ ${alternates}
           <ol class="scenes">
           ${scenes}
           </ol>
+          ${code === 'en' ? `<a class="resource-link" href="${fireSafetyEnglishVideoPath}">Open the captioned video</a>` : ''}
         </div>
-        <video controls playsinline preload="none" width="1080" height="1920" aria-labelledby="demo-title" aria-describedby="demo-note" src="${demoFile}" poster="${demoBase}handoff-demo-cover.jpg">
+        <video controls playsinline preload="none" width="1080" height="1920" aria-labelledby="demo-title" aria-describedby="demo-note" src="${demoVideo.content}" poster="${demoVideo.thumbnail}">
           <track kind="captions" src="${path}demo.vtt" srclang="${code}" label="${label}" default>
-          <a href="${demoFile}">${escapeHtml(content.videoFallback)}</a>
+          <a href="${demoVideo.content}">${escapeHtml(content.videoFallback)}</a>
         </video>
       </div>
     </section>
@@ -121,6 +121,89 @@ ${alternates}
 `;
 }
 
+function renderEnglishVideo(content) {
+  const videoUrl = siteOrigin + fireSafetyEnglishVideoPath;
+  const { title, description, thumbnail, content: media, uploadDate, duration } = englishDemoVideo;
+  const data = JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'VideoObject', name: title, description,
+    thumbnailUrl: siteOrigin + thumbnail, contentUrl: siteOrigin + media,
+    uploadDate, duration: `PT${duration}S`, inLanguage: 'ko',
+  });
+  const timeline = content.subtitles.map((line, index) => {
+    const seconds = Number(cueTimes[index].slice(6));
+    const time = `0:${String(Math.floor(seconds)).padStart(2, '0')}`;
+    return `<li><time datetime="PT${seconds}S">${time}</time><span>${escapeHtml(line)}</span></li>`;
+  }).join('\n          ');
+  const alternates = fireSafetyVideoAlternates.map(({ code, path }) =>
+    `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`).join('\n');
+
+  return `<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(title)} | BigPlanner Partners</title>
+  <meta name="description" content="${escapeHtml(description)}">
+  <link rel="canonical" href="${videoUrl}">
+${alternates}
+  <meta property="og:type" content="video.other">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="${escapeHtml(title)}">
+  <meta property="og:description" content="${escapeHtml(description)}">
+  <meta property="og:url" content="${videoUrl}">
+  <meta property="og:image" content="${siteOrigin}${thumbnail}">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">${data}</script>
+  <style>
+${styles}
+    .watch { max-width: 53rem; padding-block: clamp(1.4rem, 4vw, 2.8rem); }
+    .watch h1 { font-size: clamp(1.8rem, 4.5vw, 3rem); }
+    .watch .intro { margin-block: .5rem 1.1rem; }
+    .watch-stage { display: grid; grid-template-columns: minmax(12rem, 17rem) minmax(0, 1fr); gap: clamp(1.2rem, 4vw, 3rem); align-items: start; }
+    .watch-stage video { max-width: 17rem; }
+    .watch-details { padding: 1rem 1.15rem; background: var(--paper); border: 1px solid var(--rule); border-radius: .6rem; }
+    .watch-details h2 { font-size: 1.25rem; }
+    .watch-timeline { margin-block: .55rem 0; padding: 0; list-style: none; }
+    .watch-timeline li { display: grid; grid-template-columns: 2.8rem minmax(0, 1fr); gap: .4rem; padding-block: .5rem; }
+    .watch-timeline li + li { border-block-start: 1px solid var(--rule); }
+    .watch-timeline time { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--green); }
+    @media (max-width: 41rem) { .watch-stage { grid-template-columns: minmax(0, 1fr); } .watch-stage video { max-width: min(100%, 14.5rem); } }
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="wrap header-content">
+    <a class="brand" href="${fireSafetyEnglishPath}">BigPlanner <span>Partners</span></a>
+    <a href="${fireSafetyKoreanVideoPath}" lang="ko" hreflang="ko">한국어 영상 안내</a>
+  </div></header>
+  <main class="wrap watch">
+    <h1 id="video-title">${escapeHtml(title)}</h1>
+    <p class="intro" id="video-description">A 27-second simulated cooling request with Korean on-screen text and English captions.</p>
+    <div class="watch-stage">
+      <video controls playsinline preload="metadata" width="1080" height="1920" aria-labelledby="video-title" aria-describedby="video-description" src="${media}" poster="${thumbnail}">
+        <track kind="captions" src="${fireSafetyEnglishPath}demo.vtt" srclang="en" label="English" default>
+        <a href="${media}">Open the demo video file</a>
+      </video>
+      <div>
+        <section class="watch-details" aria-labelledby="transcript-title">
+          <h2 id="transcript-title">What happens in the demo</h2>
+          <ol class="watch-timeline">
+          ${timeline}
+          </ol>
+        </section>
+        <div class="links">
+          <a class="button" href="${fireSafetyEnglishDemoPath}?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=en">Request an online demo</a>
+          <a href="${facilitiesHandoverPath}">Get the free Excel handover log</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer><div class="wrap"><span>BigPlanner Partners</span><a href="/privacy/" hreflang="ko">Privacy policy (Korean)</a></div></footer>
+</body>
+</html>
+`;
+}
+
 function renderCaptions(subtitles) {
   if (subtitles.length !== cueTimes.length - 1) throw new Error('Incorrect number of demo captions');
   return `WEBVTT\n\n${subtitles.map((line, index) => `${cueTimes[index]} --> ${cueTimes[index + 1]}\n${line}`).join('\n\n')}\n`;
@@ -132,6 +215,7 @@ export function fireSafetyGlobalPages() {
     const content = JSON.parse(readFileSync(new URL(`./${language.code.toLowerCase()}.json`, import.meta.url), 'utf8'));
     files.set(`${language.path}index.html`, renderLanding(language, content));
     files.set(`${language.path}demo.vtt`, renderCaptions(content.subtitles));
+    if (language.code === 'en') files.set(`${fireSafetyEnglishVideoPath}index.html`, renderEnglishVideo(content));
   }
   const handover = readFileSync(new URL('./shift-handover.html', import.meta.url), 'utf8');
   files.set(`${facilitiesHandoverPath}index.html`, handover.replace('/* SHARED LANDING STYLES */', styles));
