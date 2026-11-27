@@ -1,11 +1,13 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishFeedPath, fireSafetyEnglishOverviewPdf, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishFeedPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { renderFaqManualPages } from './faq-authoring.js';
+import { renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, readLocalizedProduct } from './video.js';
 
 const pagePaths = new Set([
   fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
+  fireSafetyKoreanResourcesPath, fireSafetyEnglishResourcesPath,
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
 ]);
 const artworkPath = '/images/fire-safety-building.webp';
@@ -77,6 +79,7 @@ ${alternates}
           <div class="links">
             <a class="button" href="#contact">${escapeHtml(content.contactTitle)}</a>
             <a href="${videoPath}">${escapeHtml(content.demoTitle)}</a>
+            ${code === 'en' ? `<a href="${fireSafetyEnglishResourcesPath}">Facilities resource library</a>` : ''}
           </div>
           ${renderPageShare(code, content.title, url, handover.share)}
         </div>
@@ -299,7 +302,7 @@ function renderCaptions(subtitles) {
 }
 
 export function fireSafetyGlobalPages() {
-  const files = renderFaqManualPages(styles);
+  const files = new Map([...renderFaqManualPages(styles), ...renderFacilityResourcePages(styles)]);
   for (const language of fireSafetyTranslations) {
     const filename = `${language.code.toLowerCase()}.json`;
     const content = readLocalizedProduct(language.code);

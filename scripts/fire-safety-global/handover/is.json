@@ -1,0 +1,48 @@
+{
+  "title": "Gátlisti fyrir vaktaskipti og ókeypis Excel-vaktaskrá",
+  "description": "Sæktu ókeypis Excel-vaktaskrá fyrir fasteignarekstur í atvinnuhúsnæði. Notaðu gátlistann og útfyllt dæmi um kælivandamál til að afhenda næstu vakt opnar þjónustubeiðnir.",
+  "productLabel": "Gervigreindaraðstoð við þjónustubeiðnir leigutaka",
+  "h1": "Gátlisti fyrir vaktaskipti í fasteignarekstri",
+  "intro": "Afhentu næstu vakt opnar þjónustubeiðnir ásamt nákvæmri staðsetningu, ábyrgðaraðila og tíma næstu athugunar. Í Excel-skránni er autt sniðmát og útfyllt dæmi fyrir atvinnuhúsnæði.",
+  "download": "Sækja ókeypis Excel-vaktaskrá",
+  "print": "Prenta gátlista",
+  "share": "Deila með tölvupósti",
+  "languageLabel": "Tungumál gátlistans",
+  "checklistTitle": "Áður en fráfarandi vakt lýkur",
+  "checklist": [
+    "Notaðu eitt málsnúmer fyrir hverja beiðni. Skráðu hvenær hún barst á staðartíma og tilgreindu byggingu, hæð og rými.",
+    "Taktu saman það sem leigutakinn tilkynnti og skráðu hvaða athuganir eða aðgerðir hafa þegar farið fram.",
+    "Tilgreindu starfsmann eða teymi sem ber ábyrgð. Bættu við stöðu máls, næstu aðgerð og fresti eða tíma næstu athugunar.",
+    "Farðu yfir opin mál með næstu vakt og staðfestu hver fylgir þeim eftir."
+  ],
+  "note": "Í neyðartilvikum skaltu fylgja gildandi viðbragðsferlum og nota tilgreindar neyðarsamskiptaleiðir hússins.",
+  "exampleTitle": "Dæmi um færslu við vaktaskipti",
+  "exampleIntro": "Byggingin og þjónustubeiðnin í dæminu eru skáldaðar. Tímasetningar eru á staðartíma.",
+  "example": [
+    [
+      "Málsnúmer og tími",
+      "DEMO-012, 5. október 2026 kl. 20:35"
+    ],
+    [
+      "Staðsetning",
+      "Bygging A, 5. hæð, sameiginlegt fundarherbergi"
+    ],
+    [
+      "Tilkynning",
+      "Leigutaki tilkynnti að kælingin væri of lítil."
+    ],
+    [
+      "Ábyrgðaraðili og staða",
+      "Tæknimaður fasteignarekstrar á morgunvakt. Í vinnslu."
+    ],
+    [
+      "Næsta athugun",
+      "6. október kl. 07:30. Skoða síuna og athuga loftflæðið."
+    ]
+  ],
+  "demoTitle": "Sjáðu hvernig sama beiðni færist á milli vakta",
+  "demoText": "Á 27 sekúndum sýnir myndbandið hvernig gervigreind skráir upplýsingarnar, vaktstjóri úthlutar beiðninni og næsta vakt skoðar sama mál. Viðmótið er á kóresku og skjátextarnir eru á íslensku.",
+  "demoAction": "Horfa á myndbandið með íslenskum skjátexta",
+  "privacy": "Persónuverndarstefna (á kóresku)",
+  "landingLink": "Sækja ókeypis Excel-sniðmát fyrir vaktaskipti"
+}

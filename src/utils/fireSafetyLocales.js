@@ -14,6 +14,8 @@ export const fireSafetyKoreanOverviewPdf = `${fireSafetyPath}facilities-ai-overv
 export const fireSafetyEnglishOverviewPdf = `${fireSafetyEnglishPath}facilities-ai-overview.pdf`;
 export const fireSafetyKoreanFaqPath = `${fireSafetyPath}faq-manual/`;
 export const fireSafetyEnglishFaqPath = `${fireSafetyEnglishPath}faq-manual/`;
+export const fireSafetyKoreanResourcesPath = `${fireSafetyPath}resources/`;
+export const fireSafetyEnglishResourcesPath = `${fireSafetyEnglishPath}resources/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
 export const fireSafetyLanguages = [
@@ -32,6 +34,7 @@ export const fireSafetyLanguages = [
   { code: 'it', label: 'Italiano', path: `${fireSafetyPath}it/`, locale: 'it_IT' },
   { code: 'he', label: 'עברית', path: `${fireSafetyPath}he/`, locale: 'he_IL', direction: 'rtl' },
   { code: 'es', label: 'Español', path: `${fireSafetyPath}es/`, locale: 'es_ES' },
+  { code: 'is', label: 'Íslenska', path: `${fireSafetyPath}is/`, locale: 'is_IS' },
 ].map((language) => ({
   ...language,
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,

@@ -1,0 +1,69 @@
+{
+  "title": "Gervigreindaraðstoð við þjónustubeiðnir í atvinnuhúsnæði",
+  "description": "Auðveldaðu starfsfólki í fasteignarekstri að svara spurningum leigutaka, skrá beiðnir vegna hitunar, kælingar, loftræstingar og viðhalds og fylgja sama máli frá móttöku til vaktaskipta.",
+  "heading": "Gervigreindaraðstoð við þjónustubeiðnir leigutaka",
+  "intro": "Svaraðu algengum spurningum leigutaka með hliðsjón af rekstrarhandbók hússins. Ef skoða þarf mál á staðnum skráir kerfið hvað kom upp og hvar, svo næsta vakt geti unnið áfram með sama mál.",
+  "audience": "Fyrir umsjónaraðila atvinnuhúsnæðis, starfsfólk í fasteignarekstri og fyrirtæki í fasteignaumsýslu.",
+  "workflowTitle": "Frá spurningu leigutaka til vaktaskipta",
+  "steps": [
+    [
+      "Svaraðu algengum spurningum",
+      "Spjallmennið styðst við rekstrarhandbók hússins til að svara spurningum um bílastæði gesta og aðra þjónustu sem handbókin fjallar um."
+    ],
+    [
+      "Skráðu beiðni og úthlutaðu henni",
+      "Þegar leigutaki tilkynnir um vandamál, svo sem litla kælingu, skráir gervigreind staðsetningu og lýsingu. Vaktstjóri fer yfir beiðnina og felur starfsmanni að fylgja henni eftir."
+    ],
+    [
+      "Afhentu næstu vakt sömu skráningu",
+      "Starfsfólk á næstu vakt sér hvað var tilkynnt, hvaða leiðbeiningar voru gefnar og hver ber ábyrgð á eftirfylgninni. Starfsfólk með viðeigandi heimildir staðfestir tímasetningar og samþykki."
+    ]
+  ],
+  "demoTitle": "Tilkynning um kælivandamál á 27 sekúndum",
+  "demoNote": "Dæmið er tilbúið. Viðmótið er á kóresku og skjátextarnir eru á íslensku.",
+  "watch": {
+    "title": "Gervigreind, þjónustubeiðnir og vaktaskipti í fasteignarekstri",
+    "description": "Í 27 sekúndna tilbúnu dæmi er tilkynning um litla kælingu skráð, henni úthlutað til starfsmanns og hún afhent næstu vakt. Viðmótið er á kóresku og skjátextarnir eru á íslensku.",
+    "timelineTitle": "Hvað gerist í myndbandinu?"
+  },
+  "subtitles": [
+    "Leigutaki tilkynnir um litla kælingu í sameiginlegu fundarherbergi á 5. hæð.",
+    "Gervigreind skráir staðsetningu og lýsingu á beiðninni.",
+    "Vaktstjóri fer yfir DEMO-012 og úthlutar beiðninni.",
+    "Næsta vakt skoðar athugasemdir og úthlutun í sama máli.",
+    "BigPlanner Partners. Óskaðu eftir kynningu á netinu."
+  ],
+  "caseTitle": "Móttaka þjónustubeiðna hjá fyrirtæki í fasteignaumsýslu",
+  "caseSummary": "Rekstrarteymið skráði áður beiðnir úr símtölum og skilaboðum handvirkt. Til að kanna hvort lausnin virkaði prófaði teymið spjallmenni fyrir vef og farsíma sem veitti leiðbeiningar úr rekstrarhandbókinni og tók við þjónustubeiðnum. Teymið prófaði einnig stjórnborð til að senda beiðnir áfram til starfsfólks.",
+  "caseLabels": [
+    "Beiðnir í innra úrtakinu",
+    "Beiðnir í þessu úrtaki sem voru ekki sendar ábyrgðaraðila"
+  ],
+  "caseScope": "Lokaskýrslan nær yfir tímabilið frá 23. september til 22. október 2026. Tölurnar eiga við innra úrtak úr prófun á virkni lausnarinnar. Í úrtakinu eru einnig beiðnir sem voru stofnaðar til að prófa einstaka eiginleika.",
+  "caseLink": "Lestu samantekt málsins á kóresku",
+  "faqTitle": "Spurningar fyrir tilraunaverkefni",
+  "faq": [
+    [
+      "Er hægt að nota lausnina á okkar tungumáli?",
+      "Opinbera kynningin sýnir viðmót á kóresku. Segðu okkur hvaða tungumál notendur húsnæðisins og starfsfólk nota svo við getum rætt hvað þyrfti til í tilraunaverkefni."
+    ],
+    [
+      "Getum við áfram notað símalínuna eða verkbeiðnakerfið okkar?",
+      "Þið getið áfram tekið við símtölum. Við förum yfir núverandi samskiptaleiðir, hvaða upplýsingar þarf að skrá og þörf fyrir samþættingar þegar við skipuleggjum tilraunaverkefni."
+    ],
+    [
+      "Hvernig bregðumst við við neyðartilvikum?",
+      "Fylgdu gildandi viðbragðsferlum og notaðu tilgreindar neyðarsamskiptaleiðir hússins við eldsvoða, öryggisatvik eða önnur brýn tilvik."
+    ]
+  ],
+  "contactTitle": "Óskaðu eftir kynningu á netinu",
+  "contactText": "Segðu okkur hvaða verkferli í húsinu þú vilt skoða. Við finnum tíma fyrir kynningu á netinu í tölvupósti.",
+  "quoteTitle": "Hvernig við gerum verðtilboð",
+  "quoteText": "Við gerum tilboð í innleiðingu og áframhaldandi stuðning fyrir hvert verkefni. Fyrst förum við yfir fjölda bygginga, rekstrarhandbækur þeirra, samþættingarþarfir og umfang stuðnings.",
+  "contactAction": "Óska eftir kynningu með tölvupósti",
+  "formAction": "Óska eftir kynningu á netinu",
+  "privacy": "Persónuverndarstefna (á kóresku)",
+  "navLabel": "Veldu tungumál",
+  "videoFallback": "Opna myndbandið",
+  "subject": "[IS] Kynning á þjónustulausn BigPlanner fyrir leigutaka"
+}

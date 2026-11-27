@@ -6,6 +6,8 @@ BigPlanner Partners' AI tenant service desk uses building manuals to answer rout
 
 ## 언어별 제품과 시설관리 자료 · Product and facilities resources
 
+[한국어 공식 자료실](https://bigplanner.co.kr/fire-safety-ai/resources/) · [English resource library](https://bigplanner.co.kr/fire-safety-ai/en/resources/)
+
 시연은 한국어 화면에 각 언어의 자막을 제공합니다. The demo shows Korean screens with captions in the selected language.
 
 | 언어 / Language | 제품 / Product | 시연 / Video | 인계 / Handover | 신청 / Request |
@@ -25,6 +27,7 @@ BigPlanner Partners' AI tenant service desk uses building manuals to answer rout
 | Italiano | [Overview](https://bigplanner.co.kr/fire-safety-ai/it/) | [Watch](https://bigplanner.co.kr/fire-safety-ai/it/demo-video/) | [Checklist and Excel](https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/) | [Request a demo](https://bigplanner.co.kr/fire-safety-ai/it/request/?utm_source=github&utm_medium=referral&utm_campaign=fire_safety_global&utm_content=it) |
 | עברית | [Overview](https://bigplanner.co.kr/fire-safety-ai/he/) | [Watch](https://bigplanner.co.kr/fire-safety-ai/he/demo-video/) | [Checklist and Excel](https://bigplanner.co.kr/fire-safety-ai/he/shift-handover/) | [Request a demo](https://bigplanner.co.kr/fire-safety-ai/he/request/?utm_source=github&utm_medium=referral&utm_campaign=fire_safety_global&utm_content=he) |
 | Español | [Overview](https://bigplanner.co.kr/fire-safety-ai/es/) | [Watch](https://bigplanner.co.kr/fire-safety-ai/es/demo-video/) | [Checklist and Excel](https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/) | [Request a demo](https://bigplanner.co.kr/fire-safety-ai/es/request/?utm_source=github&utm_medium=referral&utm_campaign=fire_safety_global&utm_content=es) |
+| Íslenska | [Overview](https://bigplanner.co.kr/fire-safety-ai/is/) | [Watch](https://bigplanner.co.kr/fire-safety-ai/is/demo-video/) | [Checklist and Excel](https://bigplanner.co.kr/fire-safety-ai/is/shift-handover/) | [Request a demo](https://bigplanner.co.kr/fire-safety-ai/is/request/?utm_source=github&utm_medium=referral&utm_campaign=fire_safety_global&utm_content=is) |
 
 ## 한 장 소개서와 실무 가이드 · Product briefs and guides
 

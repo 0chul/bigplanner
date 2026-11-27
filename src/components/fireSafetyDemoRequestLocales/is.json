@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "Óskaðu eftir kynningu á gervigreind í fasteignarekstri | BigPlanner Partners",
+    "description": "Óskaðu eftir netkynningu á lausn BigPlanner Partners sem notar gervigreind til að sinna þjónustubeiðnum leigutaka í atvinnuhúsnæði.",
+    "back": "Horfa á kynningarmyndbandið",
+    "heading": "Sjáðu hvernig lausnin með gervigreind virkar",
+    "intro": "Sjáðu hvernig þjónustubeiðnum leigutaka er fylgt eftir milli vakta og ræddu við okkur um verkferla í húsinu þínu. Í opinbera kynningarmyndbandinu er viðmótið á kóresku og skjátextarnir á íslensku."
+  },
+  "form": {
+    "heading": "Óskaðu eftir kynningu á netinu",
+    "required": "Nauðsynlegir reitir",
+    "introduction": "Þegar þú hefur sent beiðnina höfum við samband með tölvupósti til að finna tíma fyrir kynningu á netinu.",
+    "legend": "Upplýsingar fyrir kynningarbeiðni",
+    "company": "Fyrirtæki eða stofnun",
+    "companyPlaceholder": "Heiti fyrirtækis eða byggingar",
+    "name": "Nafn tengiliðar",
+    "namePlaceholder": "Nafnið þitt",
+    "role": "Hlutverk",
+    "rolePlaceholder": "Veldu hlutverk",
+    "roles": {
+      "head-office": "Höfuðstöðvar fasteignaumsýslufyrirtækis",
+      "site": "Umsjón á staðnum eða rekstrarteymi",
+      "other": "Annað"
+    },
+    "email": "Netfang",
+    "emailPlaceholder": "nafn@example.com",
+    "buildingCount": "Fjöldi bygginga í umsjón",
+    "buildingCountPlaceholder": "T.d. 3",
+    "interests": "Hvað viltu sjá í kynningunni?",
+    "interestsPlaceholder": "T.d. skráningu kælivandamála, upplýsingar um bílastæði gesta eða vaktaskipti",
+    "interestsHint": "Slepptu persónuupplýsingum, svo sem raunverulegum samskiptaupplýsingum leigutaka, og innanhússgögnum.",
+    "optional": "Valfrjálst",
+    "website": "Vefsvæði",
+    "consent": "Ég samþykki að persónuupplýsingum mínum sé safnað og þær notaðar til að afgreiða kynningarbeiðni mína.",
+    "consentRequired": "(Nauðsynlegt)",
+    "submit": "Senda kynningarbeiðni",
+    "submitting": "Sendi kynningarbeiðni",
+    "afterSubmit": "Þú getur óskað eftir kynningu án þess að senda handbækur eða gögn um raunverulegar þjónustubeiðnir leigutaka.",
+    "validationSummary": "Yfirfarðu merktu reitina og reyndu aftur.",
+    "invalidRequest": "Ekki tókst að senda beiðnina. Farðu yfir upplýsingarnar og reyndu aftur.",
+    "failedRequest": "Ekki tókst að senda beiðnina. Upplýsingarnar eru enn í eyðublaðinu. Reyndu aftur eftir smástund eða sendu okkur tölvupóst á netfangið hér fyrir neðan.",
+    "successLabel": "Beiðni móttekin",
+    "successTitle": "Við höfum móttekið kynningarbeiðnina þína.",
+    "successText": "Við höfum samband á netfanginu sem þú gafst upp til að finna tíma fyrir kynninguna.",
+    "emailLabel": "Hafðu samband",
+    "reset": "Stofna nýja beiðni",
+    "privacy": {
+      "title": "Hvernig við söfnum og notum persónuupplýsingar þínar",
+      "rows": [
+        [
+          "Hver safnar upplýsingunum og notar þær?",
+          "BigPlanner Partners"
+        ],
+        [
+          "Til hvers notum við upplýsingarnar?",
+          "Til að afgreiða kynningarbeiðnir, ræða innleiðingu og skipuleggja kynningar á netinu."
+        ],
+        [
+          "Hvaða upplýsingum söfnum við?",
+          "Heiti fyrirtækis eða stofnunar, nafn tengiliðar, netfang og hlutverk. Fjölda bygginga í umsjón þinni og verkferla sem þú hefur áhuga á skráum við aðeins ef þú gefur þær upplýsingar upp."
+        ],
+        [
+          "Hversu lengi geymum við upplýsingarnar?",
+          "Í allt að 90 daga frá móttöku beiðninnar. Þú getur óskað eftir eyðingu upplýsinganna með því að senda tölvupóst á netfangið hér fyrir neðan."
+        ],
+        [
+          "Val þitt",
+          "Þú getur hafnað því að veita samþykki. Samþykki er nauðsynlegt til að senda beiðni um kynningu á netinu."
+        ]
+      ],
+      "contact": "Fyrirspurnir og beiðnir um eyðingu upplýsinga"
+    }
+  },
+  "errors": {
+    "company": "Sláðu inn heiti fyrirtækis eða stofnunar, að hámarki 120 stafi.",
+    "name": "Sláðu inn nafn tengiliðar, að hámarki 80 stafi.",
+    "email": "Athugaðu hvort netfangið sé gilt.",
+    "role": "Veldu hlutverk.",
+    "buildingCount": "Sláðu inn heila tölu frá 1 til 100.000.",
+    "interests": "Lýstu því sem þú vilt sjá í kynningunni með allt að 1.000 stöfum.",
+    "consent": "Veittu samþykki fyrir söfnun og notkun persónuupplýsinga til að afgreiða kynningarbeiðnina þína."
+  }
+}

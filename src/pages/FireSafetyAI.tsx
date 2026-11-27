@@ -8,7 +8,7 @@ import FireSafetyScrollStory from '../components/FireSafetyScrollStory';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
-import { fireSafetyAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanFeedPath, fireSafetyKoreanOverviewPdf, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanFeedPath, fireSafetyKoreanOverviewPdf, fireSafetyKoreanResourcesPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
 import './fire-safety-ai.css';
 
 const organicShareImage = 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg';
@@ -19,6 +19,7 @@ const navItems = [
   { label: '도입 효과', href: '#benefits' },
   { label: '구축 사례', href: '#case-study' },
   { label: '도입 절차', href: '#process' },
+  { label: '자료실', href: fireSafetyKoreanResourcesPath },
 ];
 
 const process = [

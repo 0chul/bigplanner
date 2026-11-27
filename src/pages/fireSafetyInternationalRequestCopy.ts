@@ -6,6 +6,7 @@ import es from '../components/fireSafetyDemoRequestLocales/es.json';
 import fi from '../components/fireSafetyDemoRequestLocales/fi.json';
 import fr from '../components/fireSafetyDemoRequestLocales/fr.json';
 import he from '../components/fireSafetyDemoRequestLocales/he.json';
+import is from '../components/fireSafetyDemoRequestLocales/is.json';
 import it from '../components/fireSafetyDemoRequestLocales/it.json';
 import ja from '../components/fireSafetyDemoRequestLocales/ja.json';
 import nb from '../components/fireSafetyDemoRequestLocales/nb.json';
@@ -29,5 +30,5 @@ export const internationalDemoRequestCopy: Readonly<Record<string, DemoRequestTr
     form: demoRequestCopy.en,
     errors: englishDemoFieldErrors,
   },
-  ar, da, de, es, fi, fr, he, it, ja, nb, nl, sv, 'zh-Hant': zhHant,
+  ar, da, de, es, fi, fr, he, is, it, ja, nb, nl, sv, 'zh-Hant': zhHant,
 };
