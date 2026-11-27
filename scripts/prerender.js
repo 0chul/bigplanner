@@ -124,6 +124,14 @@ async function prerender() {
       !englishProduct.includes(`href="${facilitiesHandoverPath}"`)) {
     throw new Error('Missing English handover workbook or product link.');
   }
+  const koreanChecklist = fs.readFileSync(path.join(distPath, fireSafetyChecklistPath, 'index.html'), 'utf-8');
+  const handoverAlternates = [['ko', fireSafetyChecklistPath], ['en', facilitiesHandoverPath]];
+  for (const [language, resourcePath] of handoverAlternates) {
+    const tag = `<link rel="alternate" hreflang="${language}" href="${siteOrigin}${resourcePath}">`;
+    if (!koreanChecklist.includes(tag) || !handoverGuide.includes(tag)) {
+      throw new Error(`Missing ${language} language link on a handover checklist.`);
+    }
+  }
   for (const assetName of ['handoff-log.xlsx', 'handoff-demo.mp4', 'handoff-demo-cover.jpg']) {
     if (!fs.existsSync(path.join(distPath, fireSafetyChecklistPath, assetName))) {
       throw new Error(`Missing fire safety handoff asset: ${assetName}`);
