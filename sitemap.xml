@@ -81,6 +81,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/he/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/es/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -142,6 +152,16 @@
   </url>
   <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/he/shift-handover/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -324,6 +344,32 @@
       <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
       <video:title><![CDATA[Demo IA per immobili commerciali, dalla segnalazione al cambio turno]]></video:title>
       <video:description><![CDATA[In 27 secondi, l’IA registra una segnalazione simulata sul raffrescamento, il responsabile la assegna e chi subentra consulta la stessa scheda. Interfaccia in coreano e sottotitoli in italiano.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/he/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[הדגמת AI לניהול קריאות שירות וחפיפה בין משמרות]]></video:title>
+      <video:description><![CDATA[הדגמה בת 27 שניות של דיווח מדומה על קירור חלש, מקליטת הקריאה דרך שיוך לאיש צוות ועד לחפיפה בין משמרות. הממשק בקוריאנית והכתוביות בעברית.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/es/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[Demo de IA para incidencias de climatización y relevo de turno]]></video:title>
+      <video:description><![CDATA[En 27 segundos, una incidencia simulada de climatización pasa por el registro, la asignación y el relevo de turno. La interfaz está en coreano y los subtítulos están en español.]]></video:description>
       <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
       <video:duration>27</video:duration>
       <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
