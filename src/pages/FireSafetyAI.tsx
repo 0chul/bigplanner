@@ -8,7 +8,7 @@ import FireSafetyScrollStory from '../components/FireSafetyScrollStory';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
-import { fireSafetyAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFeedPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFeedPath, fireSafetyKoreanOverviewPdf, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
 import './fire-safety-ai.css';
 
 const organicShareImage = 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg';
@@ -171,7 +171,11 @@ export default function FireSafetyAI() {
               <div><dt>구축 흐름</dt><dd>매뉴얼 안내와 민원 접수를 웹·모바일 챗봇, 관리자 화면으로 연결했습니다.</dd></div>
               <div><dt>확인 결과</dt><dd>내부 운영 접수 59건의 기록과 담당자 전달 흐름을 점검했습니다.</dd></div>
             </dl>
-            <a className="fa-text-link" href="#demo-request" onClick={() => trackCTA('case_study')}>우리 현장의 적용 범위 확인하기<ArrowUpRight size={16} /></a></div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <a className="fa-text-link" href="#demo-request" onClick={() => trackCTA('case_study')}>우리 현장의 적용 범위 확인하기<ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a className="fa-text-link" href={fireSafetyKoreanOverviewPdf} download="bigplanner-facilities-ai-ko.pdf">제품 소개서 PDF 받기<FileText size={16} aria-hidden="true" /></a>
+            </div>
+          </div>
             <div className="fa-case-evidence"><div className="fa-evidence-numbers"><div><span>내부 운영 접수</span><strong>59<small>건</small></strong></div><div><span>해당 표본의 담당자 전달 누락</span><strong>0<small>건</small></strong></div></div><div className="fa-evidence-notes"><p><b>집계 기간</b>2026. 9. 23. ~ 10. 22.</p><p><b>검증 범위</b>기능 점검용 접수를 포함한 내부 운영 표본</p><p><b>수행 단계</b>웹·모바일 챗봇 및 관리자 화면 PoC</p></div><p className="fa-evidence-disclaimer">위 수치는 제공된 완료보고서의 기록이며, 전체 상용 운영 성과나 향후 성능을 보장하는 수치가 아닙니다.</p></div>
           </div>
         </section>

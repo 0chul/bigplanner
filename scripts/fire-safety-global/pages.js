@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFeedPath, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFeedPath, fireSafetyEnglishOverviewPdf, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, readLocalizedProduct } from './video.js';
 
@@ -13,6 +13,7 @@ const cueTimes = ['00:00:00.000', '00:00:04.400', '00:00:09.800', '00:00:15.300'
 const demoEmail = 'bigplanner0799@gmail.com';
 const englishRssHead = `<link rel="alternate" type="application/rss+xml" title="Facilities operations resources RSS" href="${siteOrigin + fireSafetyEnglishFeedPath}">`;
 const englishRssLink = `<a href="${fireSafetyEnglishFeedPath}" type="application/rss+xml">Facilities resources RSS</a>`;
+const englishOverviewDownload = `<a href="${fireSafetyEnglishOverviewPdf}" download="bigplanner-facilities-ai-en.pdf">Download the facilities AI overview (PDF)</a>`;
 
 function renderLanding(language, content, handover) {
   const { code, label, path, handoverPath, requestPath, videoPath, locale, direction = 'ltr' } = language;
@@ -109,6 +110,7 @@ ${alternates}
         <h2 id="case-title">${escapeHtml(content.caseTitle)}</h2>
         <p class="case-summary">${escapeHtml(content.caseSummary)}</p>
         <a class="resource-link" href="${fireSafetyPath}#case-study" hreflang="ko">${escapeHtml(content.caseLink)}</a>
+        ${code === 'en' ? `<p class="resource-link">${englishOverviewDownload}</p>` : ''}
       </div>
       <div class="case-evidence">
         <dl class="case-stats">
@@ -281,7 +283,8 @@ function renderHandover(language, content, formAction) {
   };
   const template = handoverTemplate
     .replace('{{rssHead}}', code === 'en' ? englishRssHead : '')
-    .replace('{{rssLink}}', code === 'en' ? englishRssLink : '');
+    .replace('{{rssLink}}', code === 'en' ? englishRssLink : '')
+    .replace('{{overviewDownload}}', code === 'en' ? englishOverviewDownload : '');
   return template.replace(/{{(\w+)}}/g, (_, key) => {
     if (!Object.hasOwn(values, key) || !values[key]) throw new Error(`Missing handover ${code} value for ${key}`);
     return values[key];
