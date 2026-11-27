@@ -121,7 +121,7 @@ function renderResource({ url, title, detail, download, language }) {
 }
 
 function renderLanguage(language, labels, requests) {
-  const { code, label, path, videoPath, handoverPath } = language;
+  const { code, label, path, videoPath, handoverPath, feedPath } = language;
   const requestPath = code === 'ko' ? `${path}#demo-request` : requests.get(code);
   if (!requestPath) throw new Error(`Missing resource library request route for ${code}`);
   const links = [path, videoPath, handoverPath, requestPath].map((url, index) => {
@@ -132,6 +132,7 @@ function renderLanguage(language, labels, requests) {
           <h3><bdi lang="${code}">${escapeHtml(label)}</bdi></h3>
           <div class="library-language-links">
             ${links}
+            <a href="${escapeHtml(feedPath)}" type="${rssType}" hreflang="${code}" aria-label="${escapeHtml(`RSS (${label})`)}">RSS</a>
           </div>
         </li>`;
 }

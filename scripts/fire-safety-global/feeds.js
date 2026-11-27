@@ -13,9 +13,11 @@ import {
   fireSafetyKoreanAfterHoursPath,
   fireSafetyKoreanFaqPath,
   fireSafetyKoreanVideoPath,
+  fireSafetyLanguages,
   fireSafetyPath,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
+import { readLocalizedProduct } from './video.js';
 
 const feeds = [
   {
@@ -24,6 +26,7 @@ const feeds = [
     description: '시설관리 FAQ 작성·연장 운전 양식, 교대 인계 체크리스트, 도입 가이드와 방재실 AI 민원 도우미 데모입니다.',
     path: fireSafetyKoreanFeedPath,
     home: fireSafetyPath,
+    videoPath: fireSafetyKoreanVideoPath,
     watchLabel: '공식 페이지에서 데모 영상 보기',
     resources: [fireSafetyKoreanFaqPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanVideoPath, fireSafetyChecklistPath, fireSafetyAdoptionPath],
   },
@@ -33,10 +36,31 @@ const feeds = [
     description: 'Facilities resources including a building FAQ worksheet, after-hours HVAC request form, handover workbook and tenant service desk demo.',
     path: fireSafetyEnglishFeedPath,
     home: fireSafetyEnglishPath,
+    videoPath: fireSafetyEnglishVideoPath,
     watchLabel: 'Watch the demo on the product site',
     resources: [fireSafetyEnglishFaqPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishVideoPath, facilitiesHandoverPath],
   },
 ];
+
+async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPath }) {
+  const { h1, description, demoAction } = JSON.parse(await readFile(
+    new URL(`./handover/${code.toLowerCase()}.json`, import.meta.url), 'utf8',
+  ));
+  const { demoNote } = readLocalizedProduct(code);
+  if (!feedPath || ![h1, description, demoAction, demoNote].every((value) => typeof value === 'string' && value.trim())) {
+    throw new Error(`Missing localized feed path or text for ${code}`);
+  }
+  return {
+    language: code,
+    title: `${h1} | BigPlanner Partners`,
+    description: `${description} ${demoNote}`,
+    path: feedPath,
+    home,
+    videoPath,
+    watchLabel: demoAction,
+    resources: [videoPath, handoverPath],
+  };
+}
 
 function extractArticle({ html, url, language, watchLabel }, origin) {
   const document = new DOMParser().parseFromString(html, 'text/html');
@@ -113,7 +137,12 @@ function extractArticle({ html, url, language, watchLabel }, origin) {
   if (!main.querySelector('h1')?.textContent.trim() || !main.textContent.trim()) {
     throw new Error(`Feed source has no readable article: ${url}`);
   }
-  return { title, url, body: main.innerHTML.trim() };
+  const body = main.innerHTML.trim();
+  return {
+    title,
+    url,
+    body: document.documentElement.dir === 'rtl' ? `<div lang="${language}" dir="rtl">${body}</div>` : body,
+  };
 }
 
 function escapeXml(text) {
@@ -143,14 +172,15 @@ ${entries}
 }
 
 export async function writeResourceFeeds(browser, distPath) {
+  const languages = fireSafetyLanguages.filter(({ code }) => code !== 'ko' && code !== 'en');
+  const localized = await Promise.all(languages.map(localizedFeed));
   const page = await browser.newPage();
   try {
     await page.setOfflineMode(true);
-    for (const feed of feeds) {
+    for (const feed of [...feeds, ...localized]) {
       const articles = await Promise.all(feed.resources.map(async (resourcePath) => {
         const html = await readFile(path.join(distPath, resourcePath, 'index.html'), 'utf8');
-        const watchLabel = resourcePath === fireSafetyKoreanVideoPath || resourcePath === fireSafetyEnglishVideoPath
-          ? feed.watchLabel : null;
+        const watchLabel = resourcePath === feed.videoPath ? feed.watchLabel : null;
         return page.evaluate(extractArticle, {
           html, url: siteOrigin + resourcePath, language: feed.language, watchLabel,
         }, siteOrigin);

@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishFeedPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
@@ -15,12 +15,21 @@ const styles = readFileSync(new URL('./landing.css', import.meta.url), 'utf8');
 const handoverTemplate = readFileSync(new URL('./shift-handover.html', import.meta.url), 'utf8');
 const cueTimes = ['00:00:00.000', '00:00:04.400', '00:00:09.800', '00:00:15.300', '00:00:21.400', '00:00:27.000'];
 const demoEmail = 'bigplanner0799@gmail.com';
-const englishRssHead = `<link rel="alternate" type="application/rss+xml" title="Facilities operations resources RSS" href="${siteOrigin + fireSafetyEnglishFeedPath}">`;
-const englishRssLink = `<a href="${fireSafetyEnglishFeedPath}" type="application/rss+xml">Facilities resources RSS</a>`;
 const englishOverviewDownload = `<a href="${fireSafetyEnglishOverviewPdf}" download="bigplanner-facilities-ai-en.pdf">Download the facilities AI overview (PDF)</a>`;
+
+function resourceFeedTags({ code, feedPath }, guideTitle) {
+  const title = code === 'en' ? 'Facilities operations resources RSS' : escapeHtml(`${guideTitle} RSS`);
+  const label = code === 'en' ? 'Facilities resources RSS' : 'RSS';
+  const accessibleLabel = code === 'en' ? label : title;
+  return {
+    rssHead: `<link rel="alternate" type="application/rss+xml" title="${title}" href="${siteOrigin + feedPath}">`,
+    rssLink: `<a href="${feedPath}" type="application/rss+xml" aria-label="${accessibleLabel}">${label}</a>`,
+  };
+}
 
 function renderLanding(language, content, handover) {
   const { code, label, path, handoverPath, requestPath, videoPath, locale, direction = 'ltr' } = language;
+  const { rssHead, rssLink } = resourceFeedTags(language, handover.h1);
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
   const description = escapeHtml(content.description);
@@ -48,7 +57,7 @@ function renderLanding(language, content, handover) {
   <meta name="description" content="${description}">
   <link rel="canonical" href="${url}">
 ${alternates}
-  ${code === 'en' ? englishRssHead : ''}
+  ${rssHead}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BigPlanner Partners">
   <meta property="og:locale" content="${locale}">
@@ -146,13 +155,14 @@ ${alternates}
       </div>
     </section>
   </main>
-  <footer><div class="wrap"><span lang="en">BigPlanner Partners</span>${code === 'en' ? englishRssLink : ''}<a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
+  <footer><div class="wrap"><span lang="en">BigPlanner Partners</span>${rssLink}<a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
 </body>
 </html>
 `;
 }
 
 function renderVideo(language, content, handover) {
+  const { rssHead, rssLink } = resourceFeedTags(language, handover.h1);
   const { code, label, locale, path, videoPath, handoverPath, requestPath, direction = 'ltr' } = language;
   const videoUrl = siteOrigin + videoPath;
   const captionsPath = path + 'demo.vtt';
@@ -184,7 +194,7 @@ function renderVideo(language, content, handover) {
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="${videoUrl}">
 ${alternates}
-  ${code === 'en' ? englishRssHead : ''}
+  ${rssHead}
   <meta property="og:type" content="video.other">
   <meta property="og:site_name" content="BigPlanner Partners">
   <meta property="og:locale" content="${locale}">
@@ -256,7 +266,7 @@ ${styles}
       </div>
     </div>
   </main>
-  <footer><div class="wrap"><span lang="en" dir="ltr">BigPlanner Partners</span>${code === 'en' ? englishRssLink : ''}<a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
+  <footer><div class="wrap"><span lang="en" dir="ltr">BigPlanner Partners</span>${rssLink}<a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
 </body>
 </html>
 `;
@@ -272,7 +282,7 @@ function renderHandover(language, content, formAction) {
     ...Object.fromEntries(Object.entries(content)
       .filter(([, value]) => typeof value === 'string')
       .map(([key, value]) => [key, escapeHtml(value)])),
-    code, direction, locale, url, productPath: path, styles,
+    code, direction, locale, url, productPath: path, styles, ...resourceFeedTags(language, content.h1),
     alternates: fireSafetyHandoverAlternates.map(({ code, path }) =>
       `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`).join('\n'),
     navigation: fireSafetyLanguages.map(({ code: itemCode, label, handoverPath }) =>
@@ -286,10 +296,7 @@ function renderHandover(language, content, formAction) {
     requestUrl: escapeHtml(requestUrl),
     formAction: escapeHtml(formAction),
   };
-  const template = handoverTemplate
-    .replace('{{rssHead}}', code === 'en' ? englishRssHead : '')
-    .replace('{{rssLink}}', code === 'en' ? englishRssLink : '')
-    .replace('{{overviewDownload}}', code === 'en' ? englishOverviewDownload : '');
+  const template = handoverTemplate.replace('{{overviewDownload}}', code === 'en' ? englishOverviewDownload : '');
   return template.replace(/{{(\w+)}}/g, (_, key) => {
     if (!Object.hasOwn(values, key) || !values[key]) throw new Error(`Missing handover ${code} value for ${key}`);
     return values[key];

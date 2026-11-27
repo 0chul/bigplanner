@@ -39,6 +39,7 @@ export const fireSafetyLanguages = [
   ...language,
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,
   videoPath: `${language.path}demo-video/`,
+  feedPath: `${language.path}rss.xml`,
 }));
 
 export const fireSafetyTranslations = fireSafetyLanguages
