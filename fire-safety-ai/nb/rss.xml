@@ -13,6 +13,44 @@
       <description><![CDATA[<div lang="nb" dir="ltr"><p>Anslå månedlig tidsbruk på vanlige leietakerhenvendelser og andelen av dagens arbeid som kan vurderes i en pilot.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/nb/workload-calculator/">Beregn arbeidsmengden for vanlige henvendelser</a></p></div>]]></description>
     </item>
     <item>
+      <title>Ressurser for eiendomsdrift | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/nb/resources/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nb/resources/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <div>
+          <h1>Ressurser for eiendomsdrift</h1>
+          <p>Last ned en mal for vaktskifte, anslå tidsbruken på vanlige leietakerhenvendelser og se en tekstet demonstrasjonsvideo.</p>
+          <div><a href="https://bigplanner.co.kr/fire-safety-ai/nb/request/">Be om en demo på nett</a></div>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    <section>
+      <h2>Maler og verktøy</h2>
+      
+      <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/">Sjekkliste for vaktskifte i eiendomsdrift</a></h3>
+          <p>Last ned en gratis Excel-logg for vaktskifte i næringsbygg. Bruk sjekklisten og kjøleeksempelet til å overføre åpne leietakerhenvendelser til neste vakt.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/facilities-shift-handover-log.xlsx" download="">Last ned gratis Excel-logg</a>
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nb/workload-calculator/">Kalkulator for arbeidsmengde i eiendomsdrift</a></h3>
+          <p>Anslå månedlig tidsbruk på vanlige leietakerhenvendelser og andelen av dagens arbeid som kan vurderes i en pilot.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/">En kjølemelding på 27 sekunder</a></h3>
+          <p>KI registrerer leietakerens kjølemelding, og vaktlederen tildeler saken til en medarbeider. Neste vakt leser samme sak. Fiktiv sak på 27 sekunder med koreansk grensesnitt og norske undertekster.</p>
+          
+        </article></li>
+      </ul>
+    </section>]]></description>
+    </item>
+    <item>
       <title>KI-demo for eiendomsdrift med kjølemelding og vaktskifte | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/</guid>

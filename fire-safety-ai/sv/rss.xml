@@ -13,6 +13,44 @@
       <description><![CDATA[<div lang="sv" dir="ltr"><p>Uppskatta den nuvarande tiden för återkommande hyresgästfrågor per månad och vilken andel ni vill granska inför en pilot i fastighetsdriften.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/">Beräkna tiden för återkommande frågor</a></p></div>]]></description>
     </item>
     <item>
+      <title>Verktyg för fastighetsdrift | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/sv/resources/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/resources/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <div>
+          <h1>Verktyg för fastighetsdrift</h1>
+          <p>Ladda ner Excel-mallen för skiftöverlämning, beräkna tiden för återkommande hyresgästfrågor och se demon med svensk textning.</p>
+          <div><a href="https://bigplanner.co.kr/fire-safety-ai/sv/request/">Be om en demo online</a></div>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    <section>
+      <h2>Tillgängliga verktyg</h2>
+      
+      <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/">Checklista för skiftöverlämning i fastighetsdrift</a></h3>
+          <p>Ladda ner en gratis Excel-mall för skiftöverlämning i kommersiella fastigheter. Använd checklistan och ett exempel på felanmälan för kyla.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/facilities-shift-handover-log.xlsx" download="">Ladda ner gratis Excel-mall</a>
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/">Kalkylator för arbetsbelastning i fastighetsdriften</a></h3>
+          <p>Uppskatta den nuvarande tiden för återkommande hyresgästfrågor per månad och vilken andel ni vill granska inför en pilot i fastighetsdriften.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/">En felanmälan om kyla på 27 sekunder</a></h3>
+          <p>AI registrerar hyresgästens felanmälan om kyla. En arbetsledare tilldelar ärendet och nästa skift läser det. Fiktivt ärende på 27 sekunder med koreanskt gränssnitt och svensk textning.</p>
+          
+        </article></li>
+      </ul>
+    </section>]]></description>
+    </item>
+    <item>
       <title>AI-demo för fastighetsdrift med felanmälan om kyla och skiftöverlämning | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/</guid>
