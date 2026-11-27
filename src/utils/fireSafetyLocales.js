@@ -14,6 +14,10 @@ export const fireSafetyLanguages = [
   { code: 'ja', label: '日本語', path: `${fireSafetyPath}ja/`, locale: 'ja_JP' },
   { code: 'zh-Hant', label: '繁體中文', path: `${fireSafetyPath}zh-hant/`, locale: 'zh_HK' },
   { code: 'ar', label: 'العربية', path: `${fireSafetyPath}ar/`, locale: 'ar_QA', direction: 'rtl' },
+  { code: 'nb', label: 'Norsk bokmål', path: `${fireSafetyPath}nb/`, locale: 'nb_NO' },
+  { code: 'da', label: 'Dansk', path: `${fireSafetyPath}da/`, locale: 'da_DK' },
+  { code: 'nl', label: 'Nederlands', path: `${fireSafetyPath}nl/`, locale: 'nl_NL' },
+  { code: 'sv', label: 'Svenska', path: `${fireSafetyPath}sv/`, locale: 'sv_SE' },
 ].map((language) => ({
   ...language,
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,

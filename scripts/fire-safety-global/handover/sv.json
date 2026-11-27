@@ -1,0 +1,33 @@
+{
+  "title": "Checklista för skiftöverlämning i fastighetsdrift och gratis Excel-mall",
+  "description": "Ladda ner en gratis Excel-mall för skiftöverlämning i kommersiella fastigheter. Använd checklistan och ett exempel på felanmälan för kyla.",
+  "productLabel": "AI för hyresgästärenden",
+  "h1": "Checklista för skiftöverlämning i fastighetsdrift",
+  "intro": "Lämna över öppna hyresgästärenden till nästa skift med exakt plats, ansvarig och tid för nästa kontroll. Excel-filen innehåller en tom mall och ett ifyllt exempel för en kommersiell fastighet.",
+  "download": "Ladda ner gratis Excel-mall",
+  "print": "Skriv ut checklistan",
+  "share": "Dela via e-post",
+  "languageLabel": "Språk för checklistan",
+  "checklistTitle": "Innan avgående skift går hem",
+  "checklist": [
+    "Använd ett ärendenummer per anmälan. Ange när ärendet kom in i lokal tid och identifiera byggnaden, våningsplanet och rummet.",
+    "Sammanfatta vad hyresgästen anmält och anteckna vilka kontroller och åtgärder som redan gjorts.",
+    "Ange ansvarig person eller grupp, aktuell status, nästa åtgärd samt när den ska vara klar eller följas upp.",
+    "Gå igenom öppna ärenden med tillträdande skift och bekräfta vem som följer upp varje ärende."
+  ],
+  "note": "Vid akuta händelser följer ni fastighetens ordinarie larmvägar och rutiner.",
+  "exampleTitle": "Exempel på en överlämning",
+  "exampleIntro": "Fastigheten och ärendet i exemplet är fiktiva. Tiderna är lokala.",
+  "example": [
+    ["Ärendenummer och tid", "DEMO-012 · 5 oktober 2026 kl. 20.35"],
+    ["Plats", "Byggnad A, plan 5, gemensamt mötesrum"],
+    ["Felanmälan", "En hyresgäst anmälde att kylningen var otillräcklig."],
+    ["Ansvarig och status", "Drifttekniker på morgonskiftet · Pågår"],
+    ["Nästa kontroll", "6 oktober kl. 07.30 · Inspektera filtret och kontrollera luftflödet."]
+  ],
+  "demoTitle": "Se samma ärende lämnas över till nästa skift",
+  "demoText": "Den 27 sekunder långa demon visar hur AI registrerar uppgifterna, en arbetsledare tilldelar ärendet och nästa skift läser samma ärende. Demon har ett koreanskt gränssnitt och svensk textning.",
+  "demoAction": "Se demon med svensk textning",
+  "privacy": "Integritetspolicy på koreanska",
+  "landingLink": "Hämta checklistan och en gratis Excel-mall för skiftöverlämning"
+}

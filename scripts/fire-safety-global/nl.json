@@ -1,0 +1,43 @@
+{
+  "title": "AI-servicedesk voor huurders in commercieel vastgoed",
+  "description": "Beantwoord huurdersvragen, registreer storingen in klimaatinstallaties en onderhoudsmeldingen, en houd één dossier bij van ontvangst tot dienstoverdracht.",
+  "heading": "Een AI-servicedesk voor huurdersmeldingen",
+  "intro": "Beantwoord veelgestelde huurdersvragen met de handleiding van het gebouw. Is een bezoek ter plaatse nodig? Leg vast wat er speelt en waar, zodat de volgende dienst verder kan met hetzelfde dossier.",
+  "audience": "Voor facilitair beheer, beheerders van commercieel vastgoed en externe vastgoedbeheerders.",
+  "workflowTitle": "Van huurdersvraag tot dienstoverdracht",
+  "steps": [
+    ["Veelgestelde vragen beantwoorden", "De chatbot gebruikt de handleiding van het gebouw voor vragen over bezoekersparkeren en andere diensten die daarin staan."],
+    ["Een storingsmelding vastleggen en toewijzen", "Bij problemen zoals onvoldoende koeling legt AI de locatie en details vast. Een teamleider beoordeelt de melding en wijst een medewerker aan voor de opvolging."],
+    ["Hetzelfde dossier overdragen", "De volgende dienst ziet wat er is gemeld, welk advies is gegeven en wie de melding opvolgt. Bevoegde medewerkers bevestigen de planning en eventuele goedkeuringen."]
+  ],
+  "demoTitle": "Een melding over koeling in 27 seconden",
+  "demoNote": "Dit is een gesimuleerde melding met een Koreaanse interface en Nederlandse ondertiteling.",
+  "subtitles": [
+    "Huurder meldt zwakke koeling in de gedeelde vergaderruimte op de 5e etage.",
+    "AI legt de locatie en details van de melding vast.",
+    "Een teamleider bekijkt DEMO-012 en wijst een medewerker aan.",
+    "De volgende dienst ziet in hetzelfde dossier de notities en wie de melding opvolgt.",
+    "BigPlanner Partners. Vraag een online demo aan."
+  ],
+  "caseTitle": "Huurdersmeldingen bij een vastgoedbeheerder",
+  "caseSummary": "Het beheerteam registreerde meldingen uit telefoongesprekken en berichten handmatig. In een praktijkproef testte het team een chatbot voor web en mobiel die gebouwinformatie geeft en meldingen registreert. Via een beheerscherm kon het team meldingen doorzetten naar medewerkers.",
+  "caseLabels": ["Meldingen in de interne steekproef", "Gemiste overdrachten aan de verantwoordelijke medewerker in deze steekproef"],
+  "caseScope": "Het eindrapport beslaat 23 september tot en met 22 oktober 2026. De cijfers gelden alleen voor de interne steekproef van de praktijkproef, inclusief meldingen waarmee functies zijn getest.",
+  "caseLink": "Lees de samenvatting van de proef in het Koreaans",
+  "faqTitle": "Vragen vóór een proeftraject",
+  "faq": [
+    ["Kan de chatbot in onze taal werken?", "De openbare demo toont de Koreaanse interface. Geef aan welke talen huurders en medewerkers gebruiken. Dan bespreken we wat daarvoor nodig is in een proeftraject."],
+    ["Kunnen we ons telefoonnummer of werkordersysteem behouden?", "U kunt telefoontjes blijven aannemen. Voor het proeftraject bekijken we uw huidige kanalen, de gegevens die u vastlegt en de benodigde koppelingen."],
+    ["Hoe handelen we bij een noodsituatie?", "Volg bij brand, veiligheidsincidenten of andere spoedeisende situaties de geldende noodprocedures van uw gebouw en gebruik de daarvoor aangewezen contactgegevens."]
+  ],
+  "contactTitle": "Vraag een online demo aan",
+  "contactText": "Vertel ons welk werkproces in uw gebouw u wilt bekijken. We plannen de online demo per e-mail.",
+  "quoteTitle": "Hoe we een offerte opstellen",
+  "quoteText": "We offreren de inrichting en doorlopende ondersteuning per project. Daarbij kijken we naar het aantal gebouwen, de handleidingen, de benodigde koppelingen en de gewenste ondersteuning.",
+  "contactAction": "Vraag een demo aan per e-mail",
+  "formAction": "Vraag een demo aan (Engelstalig formulier)",
+  "privacy": "Privacybeleid (Koreaans)",
+  "navLabel": "Kies een taal",
+  "videoFallback": "Open het demovideobestand",
+  "subject": "[NL] Demo BigPlanner-servicedesk voor huurders"
+}

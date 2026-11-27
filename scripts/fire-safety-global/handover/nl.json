@@ -1,0 +1,33 @@
+{
+  "title": "Facilitaire dienstoverdracht met checklist en gratis Excel-logboek",
+  "description": "Download een gratis Excel-logboek voor de dienstoverdracht in commercieel vastgoed. Gebruik de checklist en het voorbeeld over koeling om openstaande huurdersmeldingen over te dragen.",
+  "productLabel": "AI-servicedesk voor huurders",
+  "h1": "Checklist voor facilitaire dienstoverdracht",
+  "intro": "Draag openstaande huurdersmeldingen over aan de volgende dienst. Vermeld de exacte locatie, de verantwoordelijke medewerker en het volgende controlemoment. Het Excel-bestand bevat een leeg logboek en een ingevuld voorbeeld voor een commercieel gebouw.",
+  "download": "Download het gratis Excel-logboek",
+  "print": "Print de checklist",
+  "share": "Deel per e-mail",
+  "languageLabel": "Talen van de overdrachtschecklist",
+  "checklistTitle": "Vóór het einde van de dienst",
+  "checklist": [
+    "Gebruik één meldingsnummer per melding. Noteer de ontvangsttijd in de lokale tijd van het gebouw en vermeld het gebouw, de verdieping en de ruimte.",
+    "Vat samen wat de huurder heeft gemeld en noteer welke controles of werkzaamheden al zijn uitgevoerd.",
+    "Leg vast welke medewerker of welk team verantwoordelijk is. Noteer de actuele status, de volgende actie en de termijn of het controlemoment.",
+    "Bespreek openstaande meldingen met de volgende dienst en bevestig wie elke melding opvolgt."
+  ],
+  "note": "Volg bij een noodsituatie de geldende noodprocedures en contactinstructies van het gebouw.",
+  "exampleTitle": "Voorbeeld van een overdrachtsmelding",
+  "exampleIntro": "Het gebouw en de melding in dit voorbeeld zijn fictief. De tijden zijn lokaal.",
+  "example": [
+    ["Meldingsnummer en tijd", "DEMO-012 · 5 oktober 2026, 20:35"],
+    ["Locatie", "Gebouw A, vijfde verdieping, gedeelde vergaderruimte"],
+    ["Probleem", "Een huurder meldt dat de koeling onvoldoende is."],
+    ["Verantwoordelijke en status", "Facilitair monteur van de ochtenddienst · In behandeling"],
+    ["Volgende controle", "6 oktober, 07:30. Inspecteer het filter en controleer de luchtstroom."]
+  ],
+  "demoTitle": "Bekijk hoe dezelfde melding naar de volgende dienst gaat",
+  "demoText": "In 27 seconden ziet u hoe AI de details vastlegt, een teamleider de melding toewijst en de volgende dienst hetzelfde dossier opent. De demo heeft een Koreaanse interface en Nederlandse ondertiteling.",
+  "demoAction": "Bekijk de demo met Nederlandse ondertiteling",
+  "privacy": "Privacybeleid (Koreaans)",
+  "landingLink": "Download de gratis checklist en het Excel-logboek voor dienstoverdracht"
+}

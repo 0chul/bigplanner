@@ -1,0 +1,48 @@
+{
+  "title": "Sjekkliste for vaktskifte i eiendomsdrift og gratis Excel-logg",
+  "description": "Last ned en gratis Excel-logg for vaktskifte i næringsbygg. Bruk sjekklisten og kjøleeksempelet til å overføre åpne leietakerhenvendelser til neste vakt.",
+  "productLabel": "KI-assistent for leietakerhenvendelser",
+  "h1": "Sjekkliste for vaktskifte i eiendomsdrift",
+  "intro": "Overfør åpne leietakerhenvendelser til neste vakt med nøyaktig sted, hvem som er ansvarlig og tidspunkt for neste kontroll. Excel-filen inneholder en tom logg og et utfylt eksempel for et næringsbygg.",
+  "download": "Last ned gratis Excel-logg",
+  "print": "Skriv ut sjekklisten",
+  "share": "Del på e-post",
+  "languageLabel": "Språk for sjekklisten",
+  "checklistTitle": "Før vakten går av",
+  "checklist": [
+    "Bruk én saks-ID per henvendelse. Registrer når den kom inn i lokal tid, og oppgi bygg, etasje og rom.",
+    "Oppsummer hva leietakeren meldte, og noter hvilke kontroller og tiltak som er gjennomført.",
+    "Oppgi hvem eller hvilket team som har ansvaret. Noter status, neste tiltak og frist eller tidspunkt for ny kontroll.",
+    "Gå gjennom åpne saker med neste vakt, og bekreft hvem som følger opp."
+  ],
+  "note": "I en nødsituasjon følger dere byggets etablerte varslingsrutiner og bruker de avtalte kontaktpunktene.",
+  "exampleTitle": "Eksempel på en oppføring i vaktloggen",
+  "exampleIntro": "Bygget og saken i eksempelet er fiktive. Tidspunktene er oppgitt i lokal tid.",
+  "example": [
+    [
+      "Sak og tidspunkt",
+      "DEMO-012, 5. oktober 2026 kl. 20.35"
+    ],
+    [
+      "Sted",
+      "Bygg A, 5. etasje, felles møterom"
+    ],
+    [
+      "Driftsmelding",
+      "En leietaker meldte om dårlig kjøling."
+    ],
+    [
+      "Ansvarlig og status",
+      "Driftstekniker på morgenvakt. Pågår."
+    ],
+    [
+      "Neste kontroll",
+      "6. oktober kl. 07.30. Kontroller filteret og sjekk luftstrømmen."
+    ]
+  ],
+  "demoTitle": "Følg samme sak gjennom et vaktskifte",
+  "demoText": "Videoen på 27 sekunder viser hvordan KI registrerer opplysningene, hvordan en vaktleder tildeler saken og hvordan neste vakt åpner samme sak. Grensesnittet er på koreansk, og undertekstene er på norsk.",
+  "demoAction": "Se demoen med norske undertekster",
+  "privacy": "Personvernerklæring (koreansk)",
+  "landingLink": "Last ned gratis Excel-mal for vaktskifte"
+}

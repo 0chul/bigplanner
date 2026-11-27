@@ -1,0 +1,64 @@
+{
+  "title": "KI-assistent for leietakerhenvendelser i næringsbygg",
+  "description": "Hjelp driftsteamet med å svare på vanlige spørsmål fra leietakere, registrere drifts- og vedlikeholdsmeldinger og bruke samme sakslogg fram til neste vaktskifte.",
+  "heading": "KI-assistent for henvendelser fra leietakere",
+  "intro": "Svar på vanlige spørsmål fra leietakere ved hjelp av driftshåndboken for bygget. Når en sak krever oppfølging på stedet, registrerer dere hva som har skjedd og hvor. Neste vakt kan følge opp i samme sak.",
+  "audience": "For forvaltere av næringseiendom, driftsteam og eksterne eiendomsforvaltere.",
+  "workflowTitle": "Fra leietakerhenvendelse til vaktskifte",
+  "steps": [
+    [
+      "Svar på vanlige spørsmål",
+      "Chatboten bruker driftshåndboken for bygget til å svare på spørsmål om gjesteparkering og andre tjenester som håndboken dekker."
+    ],
+    [
+      "Registrer og tildel saken",
+      "Ved problemer som svak kjøling registrerer KI hvor problemet oppstod og hva leietakeren meldte. En vaktleder går gjennom saken og tildeler den til en medarbeider."
+    ],
+    [
+      "Overlever samme sak til neste vakt",
+      "Neste vakt ser hva som ble meldt, hvilke råd som ble gitt og hvem som har fått saken. Medarbeidere med fullmakt bekrefter tidspunkt og godkjenninger."
+    ]
+  ],
+  "demoTitle": "En kjølemelding på 27 sekunder",
+  "demoNote": "Det simulerte eksempelet har koreansk grensesnitt og norske undertekster.",
+  "subtitles": [
+    "En leietaker melder om dårlig kjøling i felles møterom i 5. etasje.",
+    "KI registrerer sted og detaljer i saken.",
+    "Vaktlederen sjekker DEMO-012 og tildeler saken.",
+    "Neste vakt ser notater og ansvarlig i samme sak.",
+    "BigPlanner Partners. Be om en demo på nett."
+  ],
+  "caseTitle": "Mottak av leietakerhenvendelser hos en eiendomsforvalter",
+  "caseSummary": "Driftsteamet registrerte tidligere henvendelser fra telefonsamtaler og meldinger for hånd. I utprøvingen testet de en chatbot for nett og mobil som svarte ut fra driftshåndboken og registrerte saker. De testet også et administrasjonsgrensesnitt for å sende saker videre til medarbeidere.",
+  "caseLabels": [
+    "Henvendelser i det interne utvalget",
+    "Manglende videresendinger til ansvarlig i dette utvalget"
+  ],
+  "caseScope": "Sluttrapporten dekker perioden 23. september til 22. oktober 2026. Tallene gjelder utvalget fra den interne utprøvingen, som også omfatter henvendelser opprettet for å teste funksjoner.",
+  "caseLink": "Les om utprøvingen på koreansk",
+  "faqTitle": "Spørsmål før en pilot",
+  "faq": [
+    [
+      "Kan løsningen brukes på vårt språk?",
+      "Den offentlige demoen viser grensesnittet på koreansk. Fortell oss hvilke språk leietakerne og medarbeiderne bruker, så kan vi vurdere hva en pilot vil kreve."
+    ],
+    [
+      "Kan vi beholde telefonlinjen eller arbeidsordresystemet?",
+      "Dere kan fortsatt ta imot henvendelser på telefon. Når vi planlegger en pilot, går vi gjennom kanalene dere bruker, hvilke opplysninger som skal registreres og hvilke integrasjoner dere trenger."
+    ],
+    [
+      "Hva gjør vi i en nødsituasjon?",
+      "Bruk byggets etablerte varslingsrutiner og avtalte kontaktpunkter ved brann, sikkerhetshendelser og andre akutte situasjoner."
+    ]
+  ],
+  "contactTitle": "Be om en demo på nett",
+  "contactText": "Fortell oss hvilken arbeidsflyt i bygget dere vil se nærmere på. Vi avtaler tidspunkt for nettmøtet på e-post.",
+  "quoteTitle": "Slik utarbeider vi et tilbud",
+  "quoteText": "Vi gir tilbud på oppsett og løpende driftsstøtte for hvert prosjekt. Tilbudet tar hensyn til antall bygg, driftshåndbøkene, integrasjonsbehov og omfanget av driftsstøtten.",
+  "contactAction": "Be om demo på e-post",
+  "formAction": "Be om demo (engelsk skjema)",
+  "privacy": "Personvernerklæring (koreansk)",
+  "navLabel": "Velg språk",
+  "videoFallback": "Åpne videofilen",
+  "subject": "[NB] Demo av BigPlanners KI-assistent for leietakerhenvendelser"
+}

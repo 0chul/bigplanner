@@ -1,0 +1,43 @@
+{
+  "title": "AI för felanmälan och hyresgästservice i kommersiella fastigheter",
+  "description": "Besvara hyresgästfrågor, registrera felanmälningar om kyla och ventilation och låt driftpersonalen följa samma ärende från mottagning till skiftöverlämning.",
+  "heading": "AI för hyresgästfrågor och felanmälningar",
+  "intro": "Besvara vanliga frågor med hjälp av fastighetens driftinstruktioner. När ett ärende kräver ett besök på plats registreras vad som hänt och var, så att nästa skift kan arbeta vidare i samma ärende.",
+  "audience": "För fastighetsförvaltare, driftteam och externa förvaltningsbolag.",
+  "workflowTitle": "Från hyresgästfråga till skiftöverlämning",
+  "steps": [
+    ["Besvara vanliga frågor", "Chattboten använder fastighetens driftinstruktioner för att svara på frågor om till exempel besöksparkering och andra tjänster som beskrivs där."],
+    ["Registrera och tilldela ett ärende", "Om en hyresgäst till exempel anmäler otillräcklig kyla registrerar AI platsen och vad som hänt. En arbetsledare granskar ärendet och utser den som ska följa upp det."],
+    ["Lämna över samma ärende", "Nästa skift ser vad som anmälts, vilka besked som lämnats och vem som ansvarar för ärendet. Behörig personal bekräftar tider och fattar beslut om godkännande."]
+  ],
+  "demoTitle": "En felanmälan om kyla på 27 sekunder",
+  "demoNote": "Demonstrationen visar ett fiktivt ärende med koreanskt gränssnitt och svensk textning.",
+  "subtitles": [
+    "En hyresgäst anmäler dålig kyla i det gemensamma mötesrummet på plan 5.",
+    "AI registrerar platsen och felbeskrivningen.",
+    "En arbetsledare granskar DEMO-012 och tilldelar ärendet.",
+    "Nästa skift ser anteckningar och ansvarig i samma ärende.",
+    "BigPlanner Partners · Boka en demo online."
+  ],
+  "caseTitle": "Pilot för hyresgästärenden hos ett fastighetsbolag",
+  "caseSummary": "Förvaltningen registrerade tidigare ärenden från telefonsamtal och meddelanden manuellt. I en pilot testade teamet en chattbot för webb och mobil som svarade utifrån driftinstruktionerna och tog emot felanmälningar. Via ett administratörsgränssnitt kunde ärenden lämnas vidare till ansvarig personal.",
+  "caseLabels": ["Ärenden i det interna urvalet", "Missade överlämningar till ansvarig personal i urvalet"],
+  "caseScope": "Slutrapporten omfattar perioden 23 september–22 oktober 2026. Uppgifterna gäller pilotens interna urval, där även ärenden som skapats för att testa funktioner ingår.",
+  "caseLink": "Läs sammanfattningen på koreanska",
+  "faqTitle": "Frågor inför en pilot",
+  "faq": [
+    ["Kan lösningen användas på våra språk?", "Den publika demon har ett koreanskt gränssnitt. Beskriv vilka språk hyresgäster och personal använder, så går vi igenom vad som krävs för en pilot."],
+    ["Kan vi behålla telefonnumret eller vårt arbetsordersystem?", "Ni kan fortsätta att ta emot samtal. Inför en pilot går vi igenom era kanaler, vilka uppgifter som behöver registreras och vilka system som behöver kopplas samman."],
+    ["Vad gör vi i en nödsituation?", "Vid brand, säkerhetsincidenter eller andra akuta situationer följer ni fastighetens ordinarie larmvägar och rutiner."]
+  ],
+  "contactTitle": "Boka en demo online",
+  "contactText": "Berätta vilket arbetsflöde i fastighetsdriften ni vill gå igenom. Vi bokar demon via e-post.",
+  "quoteTitle": "Så tar vi fram en offert",
+  "quoteText": "Vi lämnar en offert för införande och löpande stöd efter att ha gått igenom antal byggnader, driftinstruktioner, integrationsbehov och omfattningen av driftsstödet.",
+  "contactAction": "Boka en demo via e-post",
+  "formAction": "Öppna bokningsformuläret på engelska",
+  "privacy": "Integritetspolicy på koreanska",
+  "navLabel": "Välj språk",
+  "videoFallback": "Öppna demovideon",
+  "subject": "[SV] Demo av BigPlanner för hyresgästärenden"
+}

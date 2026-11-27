@@ -1,0 +1,64 @@
+{
+  "title": "AI-helpdesk til lejerhenvendelser i erhvervsejendomme",
+  "description": "Besvar lejernes spørgsmål, registrér fejlmeldinger om varme, køling og ventilation samt behov for vedligehold. Følg samme sag fra modtagelse til vagtskifte.",
+  "heading": "AI til lejernes henvendelser i bygningsdriften",
+  "intro": "Besvar rutinespørgsmål fra lejere ud fra bygningens driftsvejledning. Hvis en sag kræver tilsyn på stedet, registreres problemet og placeringen, så næste vagt kan fortsætte arbejdet i samme sag.",
+  "audience": "Til ejendomsadministratorer, driftsservice og forvaltere af erhvervsejendomme.",
+  "workflowTitle": "Fra lejerens henvendelse til vagtskifte",
+  "steps": [
+    [
+      "Besvar rutinespørgsmål",
+      "Chatbotten bruger bygningens driftsvejledning til at besvare spørgsmål om gæsteparkering og andre emner, der er dækket i vejledningen."
+    ],
+    [
+      "Registrér og fordel en fejlmelding",
+      "Ved problemer som utilstrækkelig køling registrerer AI placeringen og detaljerne. En ansvarlig medarbejder gennemgår sagen og udpeger den, der skal følge op."
+    ],
+    [
+      "Overdrag sagen ved vagtskiftet",
+      "Næste vagt kan se, hvad der blev meldt, hvilken vejledning der blev givet, og hvem sagen blev tildelt. Medarbejdere med den rette bemyndigelse bekræfter tidsplaner og godkendelser."
+    ]
+  ],
+  "demoTitle": "En fejlmelding om køling på 27 sekunder",
+  "demoNote": "Det fiktive eksempel vises med koreansk skærmtekst og danske undertekster.",
+  "subtitles": [
+    "En lejer melder svag køling i det fælles mødelokale på 5. sal.",
+    "AI registrerer placeringen og detaljerne.",
+    "Driftslederen tjekker DEMO-012 og udpeger en ansvarlig.",
+    "Næste vagt ser noterne og den ansvarlige i samme sag.",
+    "BigPlanner Partners · Bestil en online demo."
+  ],
+  "caseTitle": "Sådan registrerede en bygningsadministrator lejerhenvendelser",
+  "caseSummary": "Driftsteamet registrerede tidligere telefonopkald og beskeder i hånden. I afprøvningen testede teamet en chatbot til web og mobil, der gav svar fra driftsvejledningen og modtog henvendelser. Teamet brugte også et administrationspanel til at sende sager videre til medarbejdere.",
+  "caseLabels": [
+    "Henvendelser i det interne datagrundlag",
+    "Manglende videresendelser til ansvarlige i dette udsnit"
+  ],
+  "caseScope": "Afslutningsrapporten dækker 23. september til 22. oktober 2026. Tallene gælder kun det interne datagrundlag fra afprøvningen (PoC), som også omfattede henvendelser oprettet for at teste funktioner.",
+  "caseLink": "Læs om afprøvningen på koreansk",
+  "faqTitle": "Spørgsmål før en afprøvning",
+  "faq": [
+    [
+      "Kan vi bruge løsningen på vores eget sprog?",
+      "Den offentlige gennemgang vises på koreansk med danske undertekster. Formularen til at bestille en demo er på engelsk. Fortæl os, hvilke sprog lejere og medarbejdere bruger, så vi kan afklare, hvad en afprøvning kræver."
+    ],
+    [
+      "Kan vi beholde vores telefonlinje eller ordresystem?",
+      "I kan fortsat modtage opkald. Når vi afgrænser en afprøvning, gennemgår vi jeres nuværende kanaler, registreringsfelter og behov for integration."
+    ],
+    [
+      "Hvad gør vi i en nødsituation?",
+      "Følg bygningens fastlagte kontaktveje og beredskabsprocedurer ved brand, sikkerhedshændelser eller andre akutte situationer."
+    ]
+  ],
+  "contactTitle": "Bestil en online demo",
+  "contactText": "Fortæl os, hvilken arbejdsgang i bygningsdriften I vil gennemgå. Vi aftaler tidspunktet for demoen pr. mail.",
+  "quoteTitle": "Sådan udarbejder vi et tilbud",
+  "quoteText": "Vi giver et tilbud på opsætning og løbende driftsstøtte for det enkelte projekt. Først gennemgår vi antallet af bygninger, deres driftsvejledninger, behovet for systemintegration og omfanget af driftsstøtten.",
+  "contactAction": "Bestil en demo pr. mail",
+  "formAction": "Bestil en demo (engelsk formular)",
+  "privacy": "Privatlivspolitik (koreansk)",
+  "navLabel": "Vælg sprog",
+  "videoFallback": "Åbn demovideoen",
+  "subject": "[DA] Demo af BigPlanners lejerhelpdesk"
+}
