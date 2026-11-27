@@ -31,7 +31,7 @@ jobs:
       - name: Retain recent releases' hashed assets
         run: |
           if git ls-remote --exit-code --heads origin refs/heads/gh-pages; then
-            git fetch --no-tags --depth=2 origin refs/heads/gh-pages
+            git fetch --no-tags --depth=3 origin refs/heads/gh-pages
             node scripts/retain-pages-assets.mjs FETCH_HEAD
           else
             status=$?

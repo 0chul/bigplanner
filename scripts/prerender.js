@@ -90,10 +90,11 @@ async function prerender() {
   }
 
   const checklistFile = path.join(distPath, fireSafetyChecklistPath, 'index.html');
+  const checklistWorkbook = path.join(distPath, fireSafetyChecklistPath, 'handoff-log.xlsx');
   const checklistUrl = 'https://bigplanner.co.kr' + fireSafetyChecklistPath;
-  if (!urls.includes(fireSafetyChecklistPath) || !fs.existsSync(checklistFile) ||
+  if (!urls.includes(fireSafetyChecklistPath) || !fs.existsSync(checklistFile) || !fs.existsSync(checklistWorkbook) ||
       !fs.readFileSync(checklistFile, 'utf-8').includes('<link rel="canonical" href="' + checklistUrl + '">')) {
-    throw new Error('The static fire safety checklist or its sitemap entry is missing.');
+    throw new Error('The static fire safety checklist, its workbook, or its sitemap entry is missing.');
   }
   const spaUrls = urls.filter((url) => url !== fireSafetyChecklistPath);
   const targetUrls = process.env.PRERENDER_ALL === 'true' ? spaUrls : spaUrls.slice(0, 25);

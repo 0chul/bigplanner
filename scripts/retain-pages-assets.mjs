@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
-const previousReleaseCount = 2;
+const previousReleaseCount = 3;
 const manifestName = 'pages-release-assets.json';
 const viteAsset = /^assets\/[^/\\]+-[A-Za-z0-9_-]{8}\.(?!html?(?:\.|$))[A-Za-z0-9]+(?:\.map)?$/i;
 const workboxAsset = /^workbox-[A-Za-z0-9_-]{8}\.js(?:\.map)?$/;
