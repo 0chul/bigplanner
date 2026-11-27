@@ -3,7 +3,7 @@
   <channel>
     <title>Facilities resources from BigPlanner Partners</title>
     <link>https://bigplanner.co.kr/fire-safety-ai/en/</link>
-    <description>Facilities resources including a building FAQ worksheet, after-hours HVAC request form, handover workbook and tenant service desk demo.</description>
+    <description>Facilities resources including a pilot checklist, building FAQ worksheet, after-hours HVAC request form, handover workbook and tenant service desk demo.</description>
     <language>en</language>
     <atom:link href="https://bigplanner.co.kr/fire-safety-ai/en/rss.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -17,6 +17,87 @@
       <link>https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/</guid>
       <description><![CDATA[<div lang="en" dir="ltr"><p>Estimate monthly time spent on routine tenant enquiries and the share of that current workload to review for a facilities service desk pilot.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">Facilities enquiry workload calculator</a></p></div>]]></description>
+    </item>
+    <item>
+      <title>AI tenant service desk pilot checklist for facilities teams | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Pilot an AI tenant service desk in one building</h1>
+      <p>Choose a commercial building with recent request records and staff from both shifts who can take part. Ask the facilities lead to agree the pilot scope with the people who answer questions, assign work and receive open cases.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/#checklist">Open the checklist</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Six checks before you start</h2>
+        <div>
+          <article>
+            <h3>Choose the building and request types</h3>
+            <p>Review recent records. Pick two or three request types with enough examples to test, such as visitor parking, weak cooling and after-hours HVAC. Record the building, hours, request types and pilot owner.</p>
+          </article>
+          <article>
+            <h3>Agree which answers and decisions need review</h3>
+            <p>For routine questions, record the approved manual section and who updates it. Test one answer against the latest wording. For site visits, capture the location and issue. Authorised staff review and decide requests that need approval.</p>
+          </article>
+          <article>
+            <h3>Assign an owner on each shift</h3>
+            <p>Identify who reviews new requests, assigns follow-up and handles cases outside the pilot. Walk through one unassigned request at shift change to confirm who picks it up.</p>
+          </article>
+          <article>
+            <h3>Hand over open cases in the same record</h3>
+            <p>Record the ticket ID, location, issue, assignment, status, next action and check-in time. Ask the incoming shift to record when it reviewed the case.</p>
+          </article>
+          <article>
+            <h3>Decide where the official record lives</h3>
+            <p>Choose the authoritative system. Confirm which phone, email and work-order integrations the pilot supports. Test one issue reported twice to see how staff will reconcile the records.</p>
+          </article>
+          <article>
+            <h3>Confirm access and retention</h3>
+            <p>Agree who can view or edit tenant information. Decide when contact details or photos are needed, how long to retain them and who handles deletion. Use fictional or redacted records for the walkthrough.</p>
+          </article>
+        </div>
+        <p>For emergencies, use the building’s established emergency contacts and response procedures.</p>
+      </section>
+      <section>
+        <h2>Fictional cooling request at shift change</h2>
+        <dl>
+          <div><dt>Intake</dt><dd>DEMO-012. On 5 October at 20:35 local time, a tenant reports weak cooling in the shared meeting room on the fifth floor of Building A.</dd></div>
+          <div><dt>Supervisor review</dt><dd>The supervisor checks the location and issue, assigns the morning facilities technician and marks the request in progress.</dd></div>
+          <div><dt>Incoming shift</dt><dd>At 07:00 the next morning, incoming staff confirm the assignment and record a 07:30 check of the room by the technician.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/en/demo-video/">Watch the 27-second demo with English captions</a>. The interface shown is Korean.</p>
+      </section>
+      <section>
+        <h2>Compare a small baseline with the pilot</h2>
+        <p>Decide in advance what would justify continuing. For example, compare five working days before the pilot with five during it. Match weekdays, day and night shift windows, and request types. Count duplicate reports once using the ticket ID or the time, location and issue.</p>
+        <ul>
+          <li><strong>Record completeness.</strong> Divide cases with the location, issue and assignment status recorded by all in-scope cases that needed a site check.</li>
+          <li><strong>Handover acknowledgement.</strong> Divide open cases whose first handover includes a timestamped check of the status and next action by all open cases that needed handover.</li>
+        </ul>
+        <p>Record both counts for each measure. If no cases qualify, record 0 of 0 and leave the rate blank. Review missing records and delayed assignments with both shifts before deciding whether to expand.</p>
+        <p>Further reading for pilot design and helpdesk scope. UK government facilities management standard</p>
+      </section>
+      <section>
+        <h2>Pricing and demo</h2>
+        <p>BigPlanner Partners quotes setup and ongoing support per project, based on the number of buildings, manuals, integrations and support needed. Bring two sample workflows to the online demo. Fictional examples are enough.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/en/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=en">Request an online demo</a>
+        </div>
+      </section>
+      <section>
+        <h2>Facilities resources</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/shift-handover/">Shift handover checklist and Excel log</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/">Building FAQ guide and worksheet</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">Routine enquiry workload calculator</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/resources/">All English facilities resources</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
     </item>
     <item>
       <title>Facilities FAQ template and free Excel worksheet for tenant helpdesks</title>
