@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import {
   facilitiesHandoverPath,
   fireSafetyAdoptionPath,
@@ -19,20 +20,22 @@ import {
   fireSafetyKoreanWorkloadPath,
   fireSafetyLanguages,
   fireSafetyPath,
+  fireSafetyResourcesAlternates,
   fireSafetyTranslations,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
 import { faqWorksheetName } from './faq-authoring.js';
 import { pilotKits } from './pilot-kits.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
+import { readWorkloadCopy } from './workload-calculator.js';
 
 const artworkPath = '/images/fire-safety-building.webp';
 const rssType = 'application/rss+xml';
-const libraryAlternates = [
-  ['ko', fireSafetyKoreanResourcesPath],
-  ['en', fireSafetyEnglishResourcesPath],
-  ['x-default', fireSafetyEnglishResourcesPath],
-];
+const localizedCopy = JSON.parse(readFileSync(new URL('./resource-library-copy.json', import.meta.url), 'utf8'));
+
+export function facilityResourceTitle(code) {
+  return code === 'en' ? 'Facilities resource library' : localizedCopy[code].title;
+}
 
 const libraries = [
   {
@@ -111,6 +114,8 @@ const libraryStyles = `
 .library-language h3 { font-size: 1.08rem; }
 .library-language-links { display: flex; flex-wrap: wrap; gap: 0 .65rem; }
 .library-language-links a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .9rem; }
+.library-language-list { display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; margin-block: 1rem 0; list-style: none; }
+.library-language-list a { display: inline-flex; align-items: center; min-height: 2.75rem; padding-inline: .8rem; border: 1px solid var(--rule); border-radius: .4rem; }
 .library-footer { border-block-start: 1px solid var(--rule); }
 .library-footer nav { display: flex; flex-wrap: wrap; gap: .6rem 1.1rem; }
 @media (max-width: 57rem) {
@@ -131,7 +136,7 @@ function renderResource({ url, title, detail, download, language }) {
 }
 
 function renderLanguage(language, labels, requests) {
-  const { code, label, path, videoPath, handoverPath, workloadPath, feedPath } = language;
+  const { code, label, path, videoPath, handoverPath, workloadPath, feedPath, resourcesPath } = language;
   const requestPath = code === 'ko' ? `${path}#demo-request` : requests.get(code);
   if (!requestPath) throw new Error(`Missing resource library request route for ${code}`);
   const links = [path, videoPath, handoverPath, workloadPath, requestPath].map((url, index) => {
@@ -139,7 +144,7 @@ function renderLanguage(language, labels, requests) {
     return `<a href="${escapeHtml(url)}" hreflang="${code}" aria-label="${escapeHtml(`${text} (${label})`)}">${escapeHtml(text)}</a>`;
   }).join('\n            ');
   return `<li class="library-language">
-          <h3><bdi lang="${code}">${escapeHtml(label)}</bdi></h3>
+          <h3><a href="${resourcesPath}" lang="${code}" hreflang="${code}" dir="auto">${escapeHtml(label)}</a></h3>
           <div class="library-language-links">
             ${links}
             <a href="${escapeHtml(feedPath)}" type="${rssType}" hreflang="${code}" aria-label="${escapeHtml(`RSS (${label})`)}">RSS</a>
@@ -152,14 +157,21 @@ function renderLibrary(copy, styles, requests) {
   const title = escapeHtml(copy.title);
   const description = escapeHtml(copy.intro);
   const brand = escapeHtml(copy.brand);
-  const alternates = libraryAlternates.map(([code, route]) =>
-    `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${route}">`).join('\n');
+  const alternates = fireSafetyResourcesAlternates.map(({ code, path }) =>
+    `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`).join('\n');
   const cards = copy.resources.map(renderResource).join('\n        ');
-  const languages = fireSafetyLanguages.map((language) => renderLanguage(language, copy.languageLinks, requests)).join('\n        ');
+  const languages = copy.languageLinks
+    ? fireSafetyLanguages.map((language) => renderLanguage(language, copy.languageLinks, requests)).join('\n        ')
+    : fireSafetyLanguages.filter(({ code }) => code !== copy.code).map(({ code, label, resourcesPath }) =>
+      `<li><a href="${resourcesPath}" lang="${code}" hreflang="${code}" dir="auto">${escapeHtml(label)}</a></li>`).join('\n        ');
   const kit = pilotKits[copy.code];
+  const subscription = copy.rssLabel
+    ? `<a href="${copy.feed}" type="${rssType}">${escapeHtml(copy.rssLabel)}</a>`
+    : `<a href="${fireSafetyKoreanFeedPath}" type="${rssType}" lang="ko" hreflang="ko">한국어 RSS</a>
+        <a href="${fireSafetyEnglishFeedPath}" type="${rssType}" lang="en" hreflang="en">English RSS</a>`;
 
   return `<!doctype html>
-<html lang="${copy.code}" dir="ltr">
+<html lang="${copy.code}" dir="${copy.direction ?? 'ltr'}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -182,8 +194,10 @@ ${alternates}
 <body>
   <header class="site-header">
     <div class="wrap header-content">
-      <a class="brand" href="${copy.product}">${brand}</a>
-      <a href="${copy.otherPath}" lang="${copy.otherCode}" hreflang="${copy.otherCode}">${copy.otherLabel}</a>
+      <a class="brand" href="${copy.product}" lang="${copy.code === 'ko' ? 'ko' : 'en'}" dir="ltr">${brand}</a>
+      ${copy.otherPath
+        ? `<a href="${copy.otherPath}" lang="${copy.otherCode}" hreflang="${copy.otherCode}">${copy.otherLabel}</a>`
+        : `<a href="#library-languages">${escapeHtml(copy.languagesHeading)}</a>`}
     </div>
   </header>
   <main>
@@ -192,12 +206,13 @@ ${alternates}
         <div>
           <h1 id="resources-title">${title}</h1>
           <p class="intro">${description}</p>
+          ${copy.requestPath ? `<div class="links"><a class="button" href="${copy.requestPath}">${escapeHtml(copy.requestLabel)}</a></div>` : ''}
           ${renderPageShare(copy.code, copy.title, canonical, copy.emailShare, copy.shareCopy)}
         </div>
         <img class="library-lead-image" src="${artworkPath}" width="1672" height="941" alt="">
       </div>
     </section>
-    <section id="pilot-kit" class="wrap library-section" aria-labelledby="pilot-kit-title">
+    ${kit ? `<section id="pilot-kit" class="wrap library-section" aria-labelledby="pilot-kit-title">
       <div class="library-pilot">
         <div>
           <h2 id="pilot-kit-title">${escapeHtml(kit.title)}</h2>
@@ -205,17 +220,17 @@ ${alternates}
         </div>
         <a class="button" href="${kit.path}" download>${escapeHtml(kit.download)}</a>
       </div>
-    </section>
+    </section>` : ''}
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">${escapeHtml(copy.cardsHeading)}</h2>
-      <a class="resource-link" href="${copy.workloadPath}">${escapeHtml(copy.workloadLabel)}</a>
+      ${copy.workloadPath ? `<a class="resource-link" href="${copy.workloadPath}">${escapeHtml(copy.workloadLabel)}</a>` : ''}
       <ul class="library-grid" role="list">
         ${cards}
       </ul>
     </section>
     <section class="wrap library-section" aria-labelledby="library-languages">
       <h2 id="library-languages">${escapeHtml(copy.languagesHeading)}</h2>
-      <ul class="library-languages" role="list">
+      <ul class="${copy.languageLinks ? 'library-languages' : 'library-language-list'}" role="list">
         ${languages}
       </ul>
     </section>
@@ -224,8 +239,7 @@ ${alternates}
     <div class="wrap">
       <span>${brand}</span>
       <nav>
-        <a href="${fireSafetyKoreanFeedPath}" type="${rssType}" lang="ko" hreflang="ko">한국어 RSS</a>
-        <a href="${fireSafetyEnglishFeedPath}" type="${rssType}" lang="en" hreflang="en">English RSS</a>
+        ${subscription}
         <a href="/privacy/" hreflang="ko">${escapeHtml(copy.privacy)}</a>
       </nav>
     </div>
@@ -235,7 +249,25 @@ ${alternates}
 `;
 }
 
-export function renderFacilityResourcePages(styles) {
+function localizedLibrary({ language, content, handover }) {
+  const { code, direction, locale, path, resourcesPath, feedPath, handoverPath, workloadPath, videoPath, requestPath } = language;
+  const { title, intro, resourcesHeading, languagesHeading } = localizedCopy[code];
+  const workload = readWorkloadCopy(code);
+  return {
+    code, direction, locale, path: resourcesPath, product: path, feed: feedPath, brand: 'BigPlanner Partners',
+    title, intro, cardsHeading: resourcesHeading, languagesHeading, rssLabel: workload.rssLabel,
+    emailShare: handover.share, privacy: workload.privacy, requestPath, requestLabel: content.formAction,
+    resources: [
+      { url: handoverPath, title: handover.h1, detail: handover.description,
+        download: { url: `${handoverPath}facilities-shift-handover-log.xlsx`, label: handover.download } },
+      { url: workloadPath, title: workload.pageTitle, detail: workload.description },
+      { url: videoPath, title: content.demoTitle, detail: content.watch.description },
+    ],
+  };
+}
+
+export function renderFacilityResourcePages(styles, localizations) {
   const requests = new Map(fireSafetyTranslations.map(({ code, requestPath }) => [code, requestPath]));
-  return new Map(libraries.map((copy) => [`${copy.path}index.html`, renderLibrary(copy, styles, requests)]));
+  const otherLibraries = localizations.filter(({ language }) => language.code !== 'en').map(localizedLibrary);
+  return new Map([...libraries, ...otherLibraries].map((copy) => [`${copy.path}index.html`, renderLibrary(copy, styles, requests)]));
 }

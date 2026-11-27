@@ -45,7 +45,7 @@ const feeds = [
   },
 ];
 
-async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPath }) {
+async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPath, resourcesPath }) {
   const { h1, description, demoAction } = JSON.parse(await readFile(
     new URL(`./handover/${code.toLowerCase()}.json`, import.meta.url), 'utf8',
   ));
@@ -61,7 +61,7 @@ async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPa
     home,
     videoPath,
     watchLabel: demoAction,
-    resources: [videoPath, handoverPath],
+    resources: [resourcesPath, videoPath, handoverPath],
   };
 }
 
@@ -90,7 +90,8 @@ function extractArticle({ html, url, language, watchLabel }, origin) {
   }
 
   const discard = 'script, style, template, noscript, iframe, object, embed, svg, math, audio, source, track, ' +
-    'header, footer, nav.languages, .share, form, button, input, select, textarea, [hidden], [aria-hidden="true"]';
+    'header, footer, nav.languages, [aria-labelledby="library-languages"], .library-lead-image, ' +
+    '.share, form, button, input, select, textarea, [hidden], [aria-hidden="true"]';
   for (const element of main.querySelectorAll(discard)) element.remove();
 
   function siteUrl(value) {

@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyLanguages, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 import { faqWorksheetName } from './fire-safety-global/faq-authoring.js';
 import { writeResourceFeeds } from './fire-safety-global/feeds.js';
 import { demoVideo } from './fire-safety-global/video.js';
@@ -14,8 +14,9 @@ const distPath = path.resolve(__dirname, '../dist');
 const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanWorkloadPath];
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
 const fireSafetyStaticPaths = [
-  ...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishResourcesPath,
-  ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath, workloadPath }) => [handoverPath, videoPath, workloadPath]),
+  ...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath,
+  ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath, workloadPath, resourcesPath }) =>
+    [handoverPath, videoPath, workloadPath, resourcesPath]),
 ];
 const servicePath = '/service/';
 const requiredSpaRoutes = new Set(['/', servicePath, fireSafetyPath, ...fireSafetyRequestPages.keys()]);
@@ -137,6 +138,12 @@ async function prerender() {
   while ((match = regex.exec(sitemapContent)) !== null) {
     const url = match[1].replace('https://bigplanner.co.kr', '');
     urls.push(url === '' ? '/' : url);
+  }
+
+  const libraryPaths = fireSafetyLanguages.map(({ resourcesPath }) => resourcesPath);
+  const sitemapLibraries = urls.filter((url) => url.startsWith(fireSafetyPath) && url.endsWith('/resources/'));
+  if (sitemapLibraries.length !== libraryPaths.length || !libraryPaths.every((libraryPath) => sitemapLibraries.includes(libraryPath))) {
+    throw new Error('Expected exactly one sitemap entry for each localized fire safety resource library.');
   }
 
   for (const resourcePath of fireSafetyStaticPaths) {

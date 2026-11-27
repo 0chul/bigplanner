@@ -4,17 +4,16 @@ import {
   fireSafetyEnglishFaqPath,
   fireSafetyEnglishOverviewPdf,
   fireSafetyEnglishPilotKitPath,
-  fireSafetyEnglishResourcesPath,
   fireSafetyKoreanAfterHoursPath,
   fireSafetyKoreanFaqPath,
   fireSafetyKoreanOverviewPdf,
   fireSafetyKoreanPilotKitPath,
-  fireSafetyKoreanResourcesPath,
   fireSafetyLanguages,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
 
 const languageSections = [
+  ['Facilities operations resource libraries', 'resourcesPath'],
   ['Product introductions', 'path'],
   ['Captioned product demonstrations', 'videoPath'],
   ['Shift handover guides and workbooks', 'handoverPath'],
@@ -41,12 +40,10 @@ The free calculator estimates the current monthly enquiry workload and the porti
 
 빅플래너파트너스의 방재실 AI 민원 도우미는 상업시설의 반복 문의를 건물 매뉴얼에 따라 안내하고, 현장 확인이 필요한 민원은 담당자가 이어받을 수 있도록 기록합니다. 시연은 가상 사례로 구성한 한국어 화면과 각 언어의 자막을 제공합니다. 무료 교대 인계대장과 업무량 계산기를 이용할 수 있습니다.
 
-## Company and official resource libraries
+## Official company information
 
 ${officialLink('BigPlanner Partners official website', '/')}
 ${officialLink('회사 서비스 안내', '/service/')}
-${officialLink('시설관리 공식 자료실', fireSafetyKoreanResourcesPath)}
-${officialLink('Facilities operations resource library', fireSafetyEnglishResourcesPath)}
 
 ${languageLinks}
 

@@ -44,6 +44,7 @@ export const fireSafetyLanguages = [
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,
   videoPath: `${language.path}demo-video/`,
   feedPath: `${language.path}rss.xml`,
+  resourcesPath: `${language.path}resources/`,
   workloadPath: `${language.path}workload-calculator/`,
 }));
 
@@ -66,4 +67,8 @@ export const fireSafetyVideoAlternates = [
 export const fireSafetyWorkloadAlternates = [
   ...fireSafetyLanguages.map(({ code, workloadPath }) => ({ code, path: workloadPath })),
   { code: 'x-default', path: fireSafetyEnglishWorkloadPath },
+];
+export const fireSafetyResourcesAlternates = [
+  ...fireSafetyLanguages.map(({ code, resourcesPath }) => ({ code, path: resourcesPath })),
+  { code: 'x-default', path: fireSafetyEnglishResourcesPath },
 ];

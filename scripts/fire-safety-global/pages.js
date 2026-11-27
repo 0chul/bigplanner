@@ -1,17 +1,16 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishPilotKitPath, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishPilotKitPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { fireSafetyProductStructuredData } from '../../src/utils/fireSafetyStructuredData.js';
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilitiesIndex } from './facilities-index.js';
-import { renderFacilityResourcePages } from './resource-library.js';
+import { facilityResourceTitle, renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, demoWorkflowImage, readLocalizedProduct } from './video.js';
 import { readWorkloadCopy, renderWorkloadCalculatorPages } from './workload-calculator.js';
 
 const pagePaths = new Set([
   fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
-  fireSafetyKoreanResourcesPath, fireSafetyEnglishResourcesPath,
-  ...fireSafetyLanguages.map(({ workloadPath }) => workloadPath),
+  ...fireSafetyLanguages.flatMap(({ resourcesPath, workloadPath }) => [resourcesPath, workloadPath]),
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
 ]);
 const contentTypes = { '.vtt': 'text/vtt', '.txt': 'text/plain', '.html': 'text/html' };
@@ -33,7 +32,7 @@ function resourceFeedTags({ code, feedPath }, guideTitle) {
 }
 
 function renderLanding(language, content, handover) {
-  const { code, label, path, handoverPath, requestPath, videoPath, workloadPath, locale, direction = 'ltr' } = language;
+  const { code, label, path, handoverPath, requestPath, videoPath, resourcesPath, workloadPath, locale, direction = 'ltr' } = language;
   const workloadLabel = readWorkloadCopy(code).open;
   const { rssHead, rssLink } = resourceFeedTags(language, handover.h1);
   const url = `${siteOrigin}${path}`;
@@ -97,7 +96,7 @@ ${alternates}
           <div class="links">
             <a class="button" href="#contact">${escapeHtml(content.contactTitle)}</a>
             <a href="${videoPath}">${escapeHtml(content.demoTitle)}</a>
-            ${code === 'en' ? `<a href="${fireSafetyEnglishResourcesPath}">Facilities resource library</a>` : ''}
+            <a href="${resourcesPath}">${escapeHtml(facilityResourceTitle(code))}</a>
           </div>
           ${renderPageShare(code, content.title, url, handover.share)}
         </div>
@@ -335,16 +334,19 @@ function renderCaptions(subtitles) {
 }
 
 export function fireSafetyGlobalPages() {
-  const files = new Map([
-    ['/llms.txt', renderFacilitiesIndex()],
-    ...renderFaqManualPages(styles),
-    ...renderFacilityResourcePages(styles),
-    ...renderWorkloadCalculatorPages(styles),
-  ]);
-  for (const language of fireSafetyTranslations) {
+  const localizations = fireSafetyTranslations.map((language) => {
     const filename = `${language.code.toLowerCase()}.json`;
     const content = readLocalizedProduct(language.code);
     const handover = JSON.parse(readFileSync(new URL(`./handover/${filename}`, import.meta.url), 'utf8'));
+    return { language, content, handover };
+  });
+  const files = new Map([
+    ['/llms.txt', renderFacilitiesIndex()],
+    ...renderFaqManualPages(styles),
+    ...renderFacilityResourcePages(styles, localizations),
+    ...renderWorkloadCalculatorPages(styles),
+  ]);
+  for (const { language, content, handover } of localizations) {
     files.set(`${language.path}index.html`, renderLanding(language, content, handover));
     files.set(`${language.path}demo.vtt`, renderCaptions(content.subtitles));
     files.set(`${language.handoverPath}index.html`, renderHandover(language, handover, content.formAction));
