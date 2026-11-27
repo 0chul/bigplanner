@@ -1,0 +1,127 @@
+# BigPlanner Partners
+
+> BigPlanner Partners provides an AI tenant service desk for commercial facilities and publishes free facilities operations resources in 16 languages.
+
+The service uses building manuals to answer routine questions and records requests that need facilities staff to follow up. The 27-second demonstration uses simulated data and a Korean product interface, with captions in the language of each viewing page. Request forms are reachable from the localized product pages. Service setup and ongoing support are quoted by site and project scope.
+
+The free calculator estimates the current monthly enquiry workload and the portion under review for a pilot. It calculates in the browser. The handover workbook gives staff a place to record the assigned person, status and next action.
+
+빅플래너파트너스의 방재실 AI 민원 도우미는 상업시설의 반복 문의를 건물 매뉴얼에 따라 안내하고, 현장 확인이 필요한 민원은 담당자가 이어받을 수 있도록 기록합니다. 시연은 가상 사례로 구성한 한국어 화면과 각 언어의 자막을 제공합니다. 무료 교대 인계대장과 업무량 계산기를 이용할 수 있습니다.
+
+## Company and official resource libraries
+
+- [BigPlanner Partners official website](https://bigplanner.co.kr/)
+- [회사 서비스 안내](https://bigplanner.co.kr/service/)
+- [시설관리 공식 자료실](https://bigplanner.co.kr/fire-safety-ai/resources/)
+- [Facilities operations resource library](https://bigplanner.co.kr/fire-safety-ai/en/resources/)
+
+## Product introductions
+
+- [한국어](https://bigplanner.co.kr/fire-safety-ai/)
+- [English](https://bigplanner.co.kr/fire-safety-ai/en/)
+- [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/)
+- [Français](https://bigplanner.co.kr/fire-safety-ai/fr/)
+- [日本語](https://bigplanner.co.kr/fire-safety-ai/ja/)
+- [繁體中文](https://bigplanner.co.kr/fire-safety-ai/zh-hant/)
+- [العربية](https://bigplanner.co.kr/fire-safety-ai/ar/)
+- [Norsk bokmål](https://bigplanner.co.kr/fire-safety-ai/nb/)
+- [Dansk](https://bigplanner.co.kr/fire-safety-ai/da/)
+- [Nederlands](https://bigplanner.co.kr/fire-safety-ai/nl/)
+- [Svenska](https://bigplanner.co.kr/fire-safety-ai/sv/)
+- [Suomi](https://bigplanner.co.kr/fire-safety-ai/fi/)
+- [Italiano](https://bigplanner.co.kr/fire-safety-ai/it/)
+- [עברית](https://bigplanner.co.kr/fire-safety-ai/he/)
+- [Español](https://bigplanner.co.kr/fire-safety-ai/es/)
+- [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/)
+
+## Captioned product demonstrations
+
+- [한국어](https://bigplanner.co.kr/fire-safety-ai/demo-video/)
+- [English](https://bigplanner.co.kr/fire-safety-ai/en/demo-video/)
+- [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/demo-video/)
+- [Français](https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/)
+- [日本語](https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/)
+- [繁體中文](https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/)
+- [العربية](https://bigplanner.co.kr/fire-safety-ai/ar/demo-video/)
+- [Norsk bokmål](https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/)
+- [Dansk](https://bigplanner.co.kr/fire-safety-ai/da/demo-video/)
+- [Nederlands](https://bigplanner.co.kr/fire-safety-ai/nl/demo-video/)
+- [Svenska](https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/)
+- [Suomi](https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/)
+- [Italiano](https://bigplanner.co.kr/fire-safety-ai/it/demo-video/)
+- [עברית](https://bigplanner.co.kr/fire-safety-ai/he/demo-video/)
+- [Español](https://bigplanner.co.kr/fire-safety-ai/es/demo-video/)
+- [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/demo-video/)
+
+## Shift handover guides and workbooks
+
+- [한국어](https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/)
+- [English](https://bigplanner.co.kr/fire-safety-ai/en/shift-handover/)
+- [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/)
+- [Français](https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/)
+- [日本語](https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/)
+- [繁體中文](https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/)
+- [العربية](https://bigplanner.co.kr/fire-safety-ai/ar/shift-handover/)
+- [Norsk bokmål](https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/)
+- [Dansk](https://bigplanner.co.kr/fire-safety-ai/da/shift-handover/)
+- [Nederlands](https://bigplanner.co.kr/fire-safety-ai/nl/shift-handover/)
+- [Svenska](https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/)
+- [Suomi](https://bigplanner.co.kr/fire-safety-ai/fi/shift-handover/)
+- [Italiano](https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/)
+- [עברית](https://bigplanner.co.kr/fire-safety-ai/he/shift-handover/)
+- [Español](https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/)
+- [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/shift-handover/)
+
+## Routine enquiry workload calculators
+
+- [한국어](https://bigplanner.co.kr/fire-safety-ai/workload-calculator/)
+- [English](https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/)
+- [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/workload-calculator/)
+- [Français](https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/)
+- [日本語](https://bigplanner.co.kr/fire-safety-ai/ja/workload-calculator/)
+- [繁體中文](https://bigplanner.co.kr/fire-safety-ai/zh-hant/workload-calculator/)
+- [العربية](https://bigplanner.co.kr/fire-safety-ai/ar/workload-calculator/)
+- [Norsk bokmål](https://bigplanner.co.kr/fire-safety-ai/nb/workload-calculator/)
+- [Dansk](https://bigplanner.co.kr/fire-safety-ai/da/workload-calculator/)
+- [Nederlands](https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/)
+- [Svenska](https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/)
+- [Suomi](https://bigplanner.co.kr/fire-safety-ai/fi/workload-calculator/)
+- [Italiano](https://bigplanner.co.kr/fire-safety-ai/it/workload-calculator/)
+- [עברית](https://bigplanner.co.kr/fire-safety-ai/he/workload-calculator/)
+- [Español](https://bigplanner.co.kr/fire-safety-ai/es/workload-calculator/)
+- [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/workload-calculator/)
+
+## Facilities resources RSS
+
+- [한국어](https://bigplanner.co.kr/fire-safety-ai/rss.xml)
+- [English](https://bigplanner.co.kr/fire-safety-ai/en/rss.xml)
+- [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/rss.xml)
+- [Français](https://bigplanner.co.kr/fire-safety-ai/fr/rss.xml)
+- [日本語](https://bigplanner.co.kr/fire-safety-ai/ja/rss.xml)
+- [繁體中文](https://bigplanner.co.kr/fire-safety-ai/zh-hant/rss.xml)
+- [العربية](https://bigplanner.co.kr/fire-safety-ai/ar/rss.xml)
+- [Norsk bokmål](https://bigplanner.co.kr/fire-safety-ai/nb/rss.xml)
+- [Dansk](https://bigplanner.co.kr/fire-safety-ai/da/rss.xml)
+- [Nederlands](https://bigplanner.co.kr/fire-safety-ai/nl/rss.xml)
+- [Svenska](https://bigplanner.co.kr/fire-safety-ai/sv/rss.xml)
+- [Suomi](https://bigplanner.co.kr/fire-safety-ai/fi/rss.xml)
+- [Italiano](https://bigplanner.co.kr/fire-safety-ai/it/rss.xml)
+- [עברית](https://bigplanner.co.kr/fire-safety-ai/he/rss.xml)
+- [Español](https://bigplanner.co.kr/fire-safety-ai/es/rss.xml)
+- [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/rss.xml)
+
+## Facilities templates and product briefs
+
+- [시설관리 FAQ 매뉴얼 작성 양식](https://bigplanner.co.kr/fire-safety-ai/faq-manual/)
+- [Building FAQ guide and Excel template](https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/)
+- [냉난방 연장 운전 신청서](https://bigplanner.co.kr/fire-safety-ai/after-hours-hvac-request/)
+- [After-hours HVAC request form](https://bigplanner.co.kr/fire-safety-ai/en/after-hours-hvac-request/)
+- [시설관리 민원 접수 시스템 도입 체크리스트](https://bigplanner.co.kr/fire-safety-ai/adoption-guide/)
+- [방재실 AI 한 장 소개서 (PDF)](https://bigplanner.co.kr/fire-safety-ai/facilities-ai-overview.pdf)
+- [Facilities AI one-page brief (PDF)](https://bigplanner.co.kr/fire-safety-ai/en/facilities-ai-overview.pdf)
+
+## Optional
+
+- [Public BigPlanner resource repository](https://github.com/0chul/bigplanner#readme)
+- [Korean product listing at saaskr](https://saaskr.com/saas/bigplanner-co-kr)
+- [English product listing at TechTools Launchpad](https://techtools.cz/tools/launchpad/?tool=13354)
