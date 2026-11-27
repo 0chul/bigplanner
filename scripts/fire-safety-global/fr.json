@@ -1,0 +1,54 @@
+{
+  "title": "Assistant IA pour les demandes et incidents dans les immeubles",
+  "description": "Le chatbot de BIGPLANNER PARTNERS répond aux questions courantes à partir de vos guides et consigne les incidents. Démonstration sous-titrée en français.",
+  "heading": "Assistant IA pour la gestion des demandes dans les immeubles",
+  "intro": "Le chatbot répond aux questions courantes à partir des guides de votre immeuble. Lorsqu’un problème est signalé, l’IA relève le lieu et les détails. Votre équipe vérifie le dossier, l’attribue et peut le consulter lors de la relève.",
+  "audience": "Pour les gestionnaires d’immeubles, les équipes techniques et le personnel des postes de sécurité.",
+  "workflowTitle": "Du signalement à la relève",
+  "steps": [
+    [
+      "Répondre aux questions courantes",
+      "Le chatbot s’appuie sur le guide de l’immeuble pour répondre, par exemple, aux questions sur le stationnement des visiteurs."
+    ],
+    [
+      "Consigner et attribuer les signalements",
+      "L’IA relève le lieu et les détails du problème. L’équipe vérifie le dossier et confie son traitement à une personne responsable."
+    ],
+    [
+      "Retrouver le dossier à la relève",
+      "L’équipe qui prend la relève retrouve le signalement, les notes et la personne responsable dans le même dossier."
+    ]
+  ],
+  "demoTitle": "Démonstration d’un signalement de climatisation",
+  "demoNote": "Vidéo de 27 secondes avec un cas simulé. L’interface est en coréen et les sous-titres sont en français.",
+  "subtitles": [
+    "Un locataire signale que la climatisation de la salle de réunion commune du cinquième étage ne refroidit pas assez.",
+    "L’IA consigne le lieu et les détails du problème.",
+    "Le responsable de service vérifie le dossier DEMO-012 et le confie à la personne chargée de l’intervention.",
+    "L’équipe de relève consulte les notes et voit à qui le dossier a été attribué.",
+    "Assistant IA de BIGPLANNER PARTNERS pour les immeubles. Demandez une démonstration en ligne."
+  ],
+  "faqTitle": "Questions fréquentes",
+  "faq": [
+    [
+      "Peut-on utiliser le chatbot en français sur notre site ?",
+      "Cette page et les sous-titres sont en français. Lors de la démonstration, nous vérifions les langues dont vous avez besoin pour le chatbot et l’interface de gestion, ainsi que les possibilités sur votre site."
+    ],
+    [
+      "Le chatbot peut-il s’intégrer à notre logiciel de gestion immobilière ?",
+      "Nous examinons les interfaces de votre logiciel et vos procédures. La proposition précise les intégrations possibles et les éventuels travaux de développement."
+    ],
+    [
+      "Que faire en cas d’urgence ?",
+      "En cas de danger immédiat, utilisez les numéros d’urgence et suivez les procédures prévues pour votre immeuble. Le personnel responsable évalue la situation et intervient sur place."
+    ]
+  ],
+  "contactTitle": "Demander une démonstration en ligne",
+  "contactText": "Envoyez-nous un courriel en indiquant le nom de votre organisation et le pays concerné. Décrivez brièvement comment votre équipe traite aujourd’hui les demandes et les incidents. Pour ce premier échange, vous n’avez besoin ni des guides de l’immeuble ni de dossiers réels de locataires.",
+  "contactAction": "Demander une démo par courriel",
+  "formAction": "Formulaire de demande en coréen",
+  "privacy": "Avis de confidentialité en coréen",
+  "navLabel": "Choisir la langue",
+  "videoFallback": "Ouvrir le fichier vidéo de la démonstration",
+  "subject": "[FR] Démonstration de l’assistant IA pour immeubles"
+}

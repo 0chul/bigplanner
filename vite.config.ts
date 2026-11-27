@@ -3,6 +3,10 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import { fireSafetyGlobalPages } from './scripts/fire-safety-global/pages.js';
+import { fireSafetyTranslations } from './src/utils/fireSafetyLocales.js';
+
+const fireSafetyStaticSlugs = ['handoff-checklist', 'adoption-guide', 'demo-video', ...fireSafetyTranslations.map(({ code }) => code.toLowerCase())];
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
@@ -11,6 +15,7 @@ export default defineConfig(({mode}) => {
     plugins: [
       react(), 
       tailwindcss(),
+      fireSafetyGlobalPages(),
       VitePWA({
         registerType: 'autoUpdate',
         injectRegister: 'inline',
@@ -19,7 +24,7 @@ export default defineConfig(({mode}) => {
           skipWaiting: true,
           clientsClaim: true,
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-          navigateFallbackDenylist: [/^\/fire-safety-ai\/(?:handoff-checklist|adoption-guide|demo-video)(?:\/|\?|$)/],
+          navigateFallbackDenylist: [new RegExp(`^/fire-safety-ai/(?:${fireSafetyStaticSlugs.join('|')})(?:/|\\?|$)`)],
           runtimeCaching: [
             {
               // Storage(이미지 등) 요청만 캐싱하도록 정규식 수정 (REST API는 캐싱 제외)

@@ -8,6 +8,7 @@ import FireSafetyScrollStory from '../components/FireSafetyScrollStory';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
+import { fireSafetyAlternates, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
 import './fire-safety-ai.css';
 
 const organicShareImage = 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg';
@@ -81,6 +82,7 @@ export default function FireSafetyAI() {
       />
       <Helmet>
         <html lang="ko" />
+        {fireSafetyAlternates.map(({ code, path }) => <link key={code} rel="alternate" hrefLang={code} href={siteOrigin + path} />)}
         <meta property="og:image:alt" content="빅플래너파트너스 방재실 AI 민원 도우미와 냉방 불편 접수 예시" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -99,6 +101,9 @@ export default function FireSafetyAI() {
 
       <main id="fa-main" tabIndex={-1}>
         <FireSafetyHero />
+        <nav className="fa-container fa-language-nav" aria-label="서비스 소개 언어">
+          {fireSafetyTranslations.map(({ code, label, path }) => <a key={code} href={path} lang={code} hrefLang={code} dir="auto">{label}</a>)}
+        </nav>
         <FireSafetyScrollStory />
 
         <section className="fa-section fa-product-section" id="product-demo" aria-labelledby="fa-product-demo-title">

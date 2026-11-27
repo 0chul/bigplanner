@@ -3,21 +3,22 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
+import { fireSafetyAlternates, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
-const fireSafetyPath = '/fire-safety-ai/';
 const fireSafetyChecklistPath = '/fire-safety-ai/handoff-checklist/';
 const fireSafetyAdoptionPath = '/fire-safety-ai/adoption-guide/';
 const fireSafetyVideoPath = '/fire-safety-ai/demo-video/';
-const fireSafetyStaticPaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyVideoPath];
+const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyVideoPath];
+const fireSafetyStaticPaths = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
 const servicePath = '/service/';
 
 async function verifyFireSafetyPage(page) {
   await page.waitForSelector('#demo-request form button[type="submit"]');
   await Promise.all(fireSafetyStaticPaths.map((resourcePath) => page.waitForSelector(`a[href="${resourcePath}"]`)));
-  await page.evaluate(() => {
+  await page.evaluate((alternates, origin) => {
     const canonical = document.head.querySelectorAll('link[rel="canonical"]');
     const ogUrl = document.head.querySelectorAll('meta[property="og:url"]');
     const description = document.head.querySelectorAll('meta[name="description"]');
@@ -30,7 +31,12 @@ async function verifyFireSafetyPage(page) {
         !document.title.includes('방재실')) {
       throw new Error('Invalid fire safety landing page metadata.');
     }
-  });
+    for (const { code, path } of alternates) {
+      if (document.head.querySelector(`link[rel="alternate"][hreflang="${code}"]`)?.href !== origin + path) {
+        throw new Error(`Missing fire safety language alternate: ${code}`);
+      }
+    }
+  }, fireSafetyAlternates, siteOrigin);
 }
 
 async function verifyServicePage(page) {
@@ -98,6 +104,15 @@ async function prerender() {
     if (!urls.includes(resourcePath) || !fs.existsSync(resourceFile) ||
         !fs.readFileSync(resourceFile, 'utf-8').includes(canonical)) {
       throw new Error(`Missing static fire safety page, canonical, or sitemap entry for ${resourcePath}`);
+    }
+  }
+  for (const { path: languagePath } of fireSafetyTranslations) {
+    const languageDirectory = path.join(distPath, languagePath);
+    const html = fs.readFileSync(path.join(languageDirectory, 'index.html'), 'utf-8');
+    const captions = fs.readFileSync(path.join(languageDirectory, 'demo.vtt'), 'utf-8');
+    if (!captions.startsWith('WEBVTT\n') || !fireSafetyAlternates.every(({ code, path }) =>
+      html.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
+      throw new Error(`Missing captions or language alternates for ${languagePath}`);
     }
   }
   for (const assetName of ['handoff-log.xlsx', 'handoff-demo.mp4', 'handoff-demo-cover.jpg']) {

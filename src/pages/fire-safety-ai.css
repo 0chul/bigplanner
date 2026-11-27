@@ -555,3 +555,5 @@
 @media (prefers-reduced-motion: reduce) {
   .fire-ai *, .fire-ai *::before, .fire-ai *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+.fire-ai .fa-language-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: .4rem 1.1rem; padding-block: .85rem; font-size: .9rem; }
+.fire-ai .fa-language-nav a { min-height: 1.7rem; display: inline-flex; align-items: center; color: #205345; text-decoration: underline; text-underline-offset: .2em; }

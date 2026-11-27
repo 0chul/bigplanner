@@ -1,0 +1,64 @@
+:root {
+  color-scheme: light;
+  --ink: #17302a;
+  --green: #1b5648;
+  --muted: #455c55;
+  --rule: #cdd9d2;
+  --paper: #f3f7f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
+.wrap { width: min(71rem, 100% - 2.5rem); margin-inline: auto; }
+.site-header { border-block-end: 1px solid var(--rule); }
+.header-content, footer .wrap { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: .85rem; }
+.brand { color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.brand span { font-weight: 500; }
+.languages { display: flex; gap: .2rem; flex-wrap: wrap; }
+.languages a { padding: .34rem .55rem; border-radius: .38rem; color: var(--muted); font-size: .875rem; text-decoration: none; }
+.languages a[aria-current="page"], .languages a:hover { background: #e9f0ec; color: var(--green); }
+a { color: var(--green); text-underline-offset: .17em; }
+a:focus-visible, summary:focus-visible, video:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { line-height: 1.22; }
+h1 { font-size: clamp(2.15rem, 4.5vw, 4.2rem); text-wrap: balance; }
+h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
+[dir="ltr"] :is(h1, h2) { letter-spacing: -.035em; }
+:is(:lang(ja), :lang(zh-Hant)) :is(h1, h2) { letter-spacing: 0; }
+[dir="rtl"] :is(h1, h2, h3) { line-height: 1.4; }
+.hero { background: var(--paper); }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.6rem); padding-block: clamp(2.5rem, 6vw, 5.8rem); }
+.intro { max-width: 53ch; margin-block: 1.12rem .75rem; font-size: clamp(1.04rem, 1.75vw, 1.25rem); }
+.audience { color: var(--muted); }
+.building { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: .75rem; }
+.links { display: flex; flex-wrap: wrap; gap: .7rem 1.35rem; align-items: center; margin-block-start: 1.3rem; font-weight: 650; }
+.button { padding: .72rem 1.12rem; border-radius: .4rem; background: var(--green); color: white; text-decoration: none; }
+.button:hover { background: var(--ink); }
+.section { padding-block: clamp(2.45rem, 5.5vw, 4.8rem); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.steps li { padding-block: 1rem; border-block-start: 2px solid var(--green); }
+.steps h3 { font-size: 1.18rem; margin-block-end: .55rem; }
+.steps p, .demo-note, .faq details p { color: var(--muted); }
+.demo-band { background: #e8f1ed; }
+.demo-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); align-items: center; gap: clamp(1.5rem, 6vw, 6rem); }
+.demo-note { margin-block-start: .6rem; }
+.scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
+.scenes li + li { margin-block-start: .6rem; }
+video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
+.faq details { border-block-end: 1px solid var(--rule); }
+.faq details:first-child { border-block-start: 1px solid var(--rule); }
+.faq summary { cursor: pointer; padding-block: .8rem; font-weight: 650; }
+.faq details p { margin-block-end: .9rem; }
+.contact-band { background: #173930; color: #fff; }
+.contact-band .button { background: #fff; color: var(--ink); }
+.contact-band .button:hover { background: #dcebe4; }
+.contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
+.contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
+footer { color: var(--muted); font-size: .9rem; }
+@media (max-width: 48rem) {
+  .header-content { gap: .45rem; }
+  .hero-content, .demo-section, .faq { grid-template-columns: minmax(0, 1fr); }
+  .building { aspect-ratio: 16 / 9; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
+}

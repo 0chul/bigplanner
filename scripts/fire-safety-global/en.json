@@ -1,0 +1,36 @@
+{
+  "title": "AI tenant service desk for commercial buildings",
+  "description": "Help facilities teams answer routine tenant questions, log HVAC and maintenance requests, and keep one record from intake through shift handover.",
+  "heading": "An AI helpdesk for tenant service requests",
+  "intro": "Answer routine tenant questions from your building manual. When a request needs a site visit, record what happened and where, then give the next shift the same record to work from.",
+  "audience": "For commercial property managers, facilities teams and managing agents.",
+  "workflowTitle": "From tenant question to shift handover",
+  "steps": [
+    ["Answer routine questions", "The chatbot uses your building’s operating guide to answer questions about visitor parking and other services covered in the manual."],
+    ["Record and assign a request", "For issues such as weak cooling, AI records the location and details. A supervisor reviews the request and assigns someone to follow up."],
+    ["Hand over with the same record", "Incoming staff can see what was reported, the guidance given and who was assigned. Authorised staff confirm schedules and approvals."]
+  ],
+  "demoTitle": "A cooling request in 27 seconds",
+  "demoNote": "This simulated case shows the Korean product interface with English captions.",
+  "subtitles": [
+    "A tenant reports weak air conditioning in the shared meeting room on the fifth floor.",
+    "AI records the location and details of the request.",
+    "A supervisor reviews request DEMO-012 and assigns a team member.",
+    "The incoming shift checks the notes and assignment in the same request record.",
+    "BigPlanner Partners · Request an online demo."
+  ],
+  "faqTitle": "Questions before a pilot",
+  "faq": [
+    ["Can it operate in our language?", "The public product walkthrough is in Korean. Tell us which languages your occupants and staff use so we can discuss what a pilot would require."],
+    ["Can we keep our existing phone line or work order system?", "You can continue to take calls. We review your current channels, record fields and integration requirements when scoping a pilot."],
+    ["How do we handle an emergency?", "Follow your building’s established emergency contacts and procedures for fire, safety incidents or other urgent situations."]
+  ],
+  "contactTitle": "Request an online demo",
+  "contactText": "Email us your organisation, country and a short description of the workflow you want to review. That’s enough to arrange an online demo.",
+  "contactAction": "Request a demo by email",
+  "formAction": "Use the Korean request form",
+  "privacy": "Privacy policy (Korean)",
+  "navLabel": "Choose language",
+  "videoFallback": "Open the demo video file",
+  "subject": "[EN] BigPlanner tenant service desk demo"
+}

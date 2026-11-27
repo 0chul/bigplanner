@@ -1,0 +1,54 @@
+{
+  "title": "KI-Chatbot für Gebäudemanagement und Störungsmeldungen",
+  "description": "Der KI-Chatbot von BIGPLANNER PARTNERS beantwortet Fragen anhand Ihrer Gebäudehandbücher und erfasst Störungsmeldungen für Ihr Team. Demo mit deutschen Untertiteln.",
+  "heading": "KI-Assistent für Anfragen und Störungsmeldungen im Gebäudebetrieb",
+  "intro": "Der Chatbot beantwortet wiederkehrende Fragen anhand Ihrer Gebäudehandbücher. Bei einer Störungsmeldung erfasst die KI den Ort und die Angaben der meldenden Person. Ihr Team prüft den Vorgang, weist ihn zu und kann ihn bei der Schichtübergabe nachvollziehen.",
+  "audience": "Für Hausverwaltungen, Facility-Management-Teams und Mitarbeitende in Gebäudeleitstellen.",
+  "workflowTitle": "Von der Anfrage bis zur Schichtübergabe",
+  "steps": [
+    [
+      "Häufige Fragen beantworten",
+      "Der Chatbot beantwortet Fragen wie die nach Besucherparkplätzen anhand der Informationen im Gebäudehandbuch."
+    ],
+    [
+      "Störungsmeldungen erfassen und zuweisen",
+      "Die KI erfasst den Ort und die Angaben aus der Meldung. Das zuständige Team prüft den Vorgang und weist ihn einer Person zur Bearbeitung zu."
+    ],
+    [
+      "Die nächste Schicht informieren",
+      "Das Team der nächsten Schicht sieht im selben Vorgang, was gemeldet wurde, welche Notizen vorliegen und wer zuständig ist."
+    ]
+  ],
+  "demoTitle": "Demo zur Meldung einer Kühlungsstörung",
+  "demoNote": "27 Sekunden mit einem simulierten Fall. Die Oberfläche ist auf Koreanisch, die Untertitel sind auf Deutsch.",
+  "subtitles": [
+    "Ein Mieter meldet, dass der gemeinsam genutzte Besprechungsraum im fünften Stock zu wenig gekühlt wird.",
+    "Die KI erfasst den Ort und die Angaben zur Störung.",
+    "Die Schichtleitung prüft den Vorgang DEMO-012 und weist ihn einer zuständigen Person zu.",
+    "Die nächste Schicht sieht die Notizen und die Zuweisung im selben Vorgang.",
+    "KI-Assistent für den Gebäudebetrieb von BIGPLANNER PARTNERS. Jetzt Online-Demo anfragen."
+  ],
+  "faqTitle": "Häufige Fragen",
+  "faq": [
+    [
+      "Kann der Chatbot vor Ort auf Deutsch eingesetzt werden?",
+      "Diese Seite und die Untertitel sind auf Deutsch. Welche Sprachen Sie für den Chatbot und die Verwaltungsoberfläche benötigen und welcher Umfang verfügbar ist, klären wir bei der Demo."
+    ],
+    [
+      "Lässt sich der Chatbot mit unserer Gebäudemanagement-Software verbinden?",
+      "Wir prüfen die Schnittstellen Ihres Systems und die Abläufe vor Ort. Welche Anbindung möglich ist und ob zusätzlicher Entwicklungsaufwand nötig ist, klären wir im Angebot."
+    ],
+    [
+      "Was tun bei einem Notfall?",
+      "Nutzen Sie bei akuter Gefahr die vorgesehenen Notruf- und Meldewege Ihres Standorts. Das zuständige Personal beurteilt die Lage und leitet vor Ort die nötigen Schritte ein."
+    ]
+  ],
+  "contactTitle": "Online-Demo anfragen",
+  "contactText": "Schreiben Sie uns per E-Mail, für welche Organisation und in welchem Land Sie den Chatbot einsetzen möchten. Beschreiben Sie kurz, wie Sie Anfragen und Störungen heute bearbeiten. Für die erste Anfrage brauchen Sie weder Handbücher noch echte Meldungen oder Daten von Mietern.",
+  "contactAction": "Demo per E-Mail anfragen",
+  "formAction": "Anfrageformular auf Koreanisch",
+  "privacy": "Datenschutzhinweise auf Koreanisch",
+  "navLabel": "Sprache auswählen",
+  "videoFallback": "Videodatei der Demo öffnen",
+  "subject": "[DE] Demo zum KI-Assistenten für Gebäudebetrieb"
+}
