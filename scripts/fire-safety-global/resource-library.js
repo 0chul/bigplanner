@@ -3,6 +3,7 @@ import {
   facilitiesHandoverPath,
   fireSafetyAdoptionPath,
   fireSafetyChecklistPath,
+  fireSafetyEnglishAdoptionPath,
   fireSafetyEnglishAfterHoursPath,
   fireSafetyEnglishFaqPath,
   fireSafetyEnglishFeedPath,
@@ -85,7 +86,7 @@ const libraries = [
       { url: fireSafetyEnglishAfterHoursPath, title: 'After-hours HVAC request form', detail: 'Record the area, operating hours requested and details for facilities staff to check.' },
       { url: fireSafetyEnglishVideoPath, title: '27-second cooling request demo', detail: 'Follow a simulated cooling issue across intake, assignment and handover. Korean interface with English captions.' },
       { url: fireSafetyEnglishOverviewPdf, title: 'Facilities AI overview (PDF)', detail: 'Forward a one-page summary of the workflow and the internal pilot sample.' },
-      { url: fireSafetyAdoptionPath, title: 'Facilities adoption checklist (Korean)', language: 'ko', detail: 'Review operating procedures, approval roles, integrations and pilot scope.' },
+      { url: fireSafetyEnglishAdoptionPath, title: 'Facilities AI pilot checklist', detail: 'Choose a pilot building, define which requests staff handle and compare records using a consistent baseline.' },
     ],
   },
 ];

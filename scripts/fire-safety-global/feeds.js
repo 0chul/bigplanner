@@ -4,6 +4,7 @@ import {
   facilitiesHandoverPath,
   fireSafetyAdoptionPath,
   fireSafetyChecklistPath,
+  fireSafetyEnglishAdoptionPath,
   fireSafetyEnglishAfterHoursPath,
   fireSafetyEnglishFaqPath,
   fireSafetyEnglishFeedPath,
@@ -36,12 +37,12 @@ const feeds = [
   {
     language: 'en',
     title: 'Facilities resources from BigPlanner Partners',
-    description: 'Facilities resources including a building FAQ worksheet, after-hours HVAC request form, handover workbook and tenant service desk demo.',
+    description: 'Facilities resources including a pilot checklist, building FAQ worksheet, after-hours HVAC request form, handover workbook and tenant service desk demo.',
     path: fireSafetyEnglishFeedPath,
     home: fireSafetyEnglishPath,
     videoPath: fireSafetyEnglishVideoPath,
     watchLabel: 'Watch the demo on the product site',
-    resources: [fireSafetyEnglishFaqPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishVideoPath, facilitiesHandoverPath],
+    resources: [fireSafetyEnglishAdoptionPath, fireSafetyEnglishFaqPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishVideoPath, facilitiesHandoverPath],
   },
 ];
 

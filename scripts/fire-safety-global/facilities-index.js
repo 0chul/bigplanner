@@ -1,5 +1,6 @@
 import {
   fireSafetyAdoptionPath,
+  fireSafetyEnglishAdoptionPath,
   fireSafetyEnglishAfterHoursPath,
   fireSafetyEnglishFaqPath,
   fireSafetyEnglishOverviewPdf,
@@ -56,6 +57,7 @@ ${officialLink('Building FAQ guide and Excel template', fireSafetyEnglishFaqPath
 ${officialLink('냉난방 연장 운전 신청서', fireSafetyKoreanAfterHoursPath)}
 ${officialLink('After-hours HVAC request form', fireSafetyEnglishAfterHoursPath)}
 ${officialLink('시설관리 민원 접수 시스템 도입 체크리스트', fireSafetyAdoptionPath)}
+${officialLink('Facilities AI pilot checklist', fireSafetyEnglishAdoptionPath)}
 ${officialLink('방재실 AI 한 장 소개서 (PDF)', fireSafetyKoreanOverviewPdf)}
 ${officialLink('Facilities AI one-page brief (PDF)', fireSafetyEnglishOverviewPdf)}
 

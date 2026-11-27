@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import { fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishVideoPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyAdoptionPath, fireSafetyEnglishAdoptionPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishVideoPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
 import { demoVideo, demoWorkflowImage, readLocalizedProduct } from './fire-safety-global/video.js';
 
 const supabaseUrl = 'https://injrbniytgtubemniaps.supabase.co';
@@ -39,7 +39,8 @@ async function generateSitemap() {
       { path: '/fire-safety-ai/', priority: 0.9, changefreq: 'monthly' },
       ...fireSafetyTranslations.map(({ path }) => ({ path, priority: 0.8, changefreq: 'monthly' })),
       ...fireSafetyLanguages.map(({ handoverPath }) => ({ path: handoverPath, priority: 0.8, changefreq: 'monthly' })),
-      { path: '/fire-safety-ai/adoption-guide/', priority: 0.8, changefreq: 'monthly' },
+      { path: fireSafetyAdoptionPath, priority: 0.8, changefreq: 'monthly' },
+      { path: fireSafetyEnglishAdoptionPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyKoreanAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyEnglishAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyKoreanFaqPath, priority: 0.8, changefreq: 'monthly' },
