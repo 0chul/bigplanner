@@ -13,6 +13,61 @@
       <description><![CDATA[<div lang="is" dir="ltr"><p>Áætlaðu mánaðarlegan tíma sem fer í algengar fyrirspurnir leigutaka og þann hluta núverandi vinnuálags sem á að skoða í tilraunaverkefni.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/is/workload-calculator/">Reikna vinnuálag vegna algengra fyrirspurna</a></p></div>]]></description>
     </item>
     <item>
+      <title>Beiðni leigutaka um viðhald í atvinnuhúsnæði | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/is/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/is/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Beiðni leigutaka um viðhald í atvinnuhúsnæði</h1>
+      <p>Ókeypis eyðublað til að tilkynna um almenn vandamál í hita- og loftræstikerfum, lýsingu eða lögnum í atvinnuhúsnæði. Skráðu nákvæma staðsetningu, hvað þú tókst eftir og hvenær starfsfólk kemst að.</p>
+    </section>
+    <section>
+      <h2>Óútfyllt eyðublað fyrir viðhaldsbeiðni</h2>
+      <p>Sæktu eða prentaðu eyðublaðið, fylltu það út og sendu það eftir þeirri leið sem húsið hefur samþykkt fyrir viðhaldsbeiðnir. Taktu fram hvenær hægt er að komast að og hvort fylgd þurfi.</p>
+      <p>Ef eldur kemur upp eða hætta er yfirvofandi skaltu fylgja neyðarferlum hússins og nota þar til gerðar neyðarsamskiptaleiðir.</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/is/maintenance-request-form/maintenance-request-form.txt" download="">Sækja óútfyllt eyðublað (TXT)</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>Starfsstöð og bygging</dt></div>
+        <div><dt>Hæð, rými eða herbergi og nákvæm staðsetning</dt></div>
+        <div><dt>Flokkur beiðni</dt></div>
+        <div><dt>Vandamál og áhrif á notkun húsnæðisins</dt></div>
+        <div><dt>Dagsetning og staðartími þegar fyrst varð vart við vandann</dt></div>
+        <div><dt>Tími og skilyrði fyrir aðgangi</dt></div>
+        <div><dt>Teymi leigutaka og samþykkt samskiptaleið fyrir svar</dt></div>
+        <div><dt>Málsnúmer, ábyrgt teymi og næsta skref (starfsfólk í fasteignarekstri fyllir út)</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Dæmi um útfyllta beiðni</h2>
+      <p>Dæmið er tilbúið og fjallar um ófullnægjandi kælingu í sameiginlegu fundarherbergi.</p>
+      <dl>
+        <div><dt>Starfsstöð og bygging</dt><dd>Viðskiptamiðstöðin Lind, hús A</dd></div>
+        <div><dt>Hæð, rými eða herbergi og nákvæm staðsetning</dt><dd>5. hæð, sameiginlegt fundarherbergi A-5.12 við lyfturnar</dd></div>
+        <div><dt>Flokkur beiðni</dt><dd>Hitun, loftræsting og kæling</dd></div>
+        <div><dt>Vandamál og áhrif á notkun húsnæðisins</dt><dd>Kælingin er í gangi en herbergið er enn of heitt. Fundurinn var færður í annað herbergi.</dd></div>
+        <div><dt>Dagsetning og staðartími þegar fyrst varð vart við vandann</dt><dd>5. október 2026 kl. 20:35</dd></div>
+        <div><dt>Tími og skilyrði fyrir aðgangi</dt><dd>6. október kl. 07:15–08:00. Starfsfólk móttöku vísar viðhaldsteyminu til vegar.</dd></div>
+        <div><dt>Teymi leigutaka og samþykkt samskiptaleið fyrir svar</dt><dd>Rekstrarteymi leigutaka á 5. hæð. Svarið berist eftir samþykktri þjónustuleið hússins.</dd></div>
+        <div><dt>Málsnúmer, ábyrgt teymi og næsta skref (starfsfólk í fasteignarekstri fyllir út)</dt><dd>DEMO-012. Viðhaldsteymi morgunvaktar athugar kælingu fundarherbergisins kl. 07:30.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Afhentu næstu vakt ólokið mál</h2>
+      <p>Starfsfólk skráir málsnúmer, hvaða teymi sinnir beiðninni og næstu athugun. Notaðu sama málsnúmer við vaktaskipti svo næsta vakt finni nákvæma staðsetningu og stöðu málsins.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/is/shift-handover/">Sjá gátlista og Excel-sniðmát fyrir vaktaskipti</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/">Sjá gátlista fyrir prófun gervigreindar í fasteignarekstri</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/is/demo-video/">Sjá 27 sekúndna sýnidæmi um tilkynningu vegna ófullnægjandi kælingar</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/is/request/?utm_source=maintenance_request_form&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=is">Óska eftir kynningu á netinu</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Gátlisti fyrir prófun gervigreindar í þjónustu við leigutaka | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/</guid>
@@ -114,6 +169,11 @@
       <h2>Tiltæk verkfæri</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/is/maintenance-request-form/">Beiðni leigutaka um viðhald í atvinnuhúsnæði</a></h3>
+          <p>Ókeypis eyðublað til að tilkynna um almenn vandamál í hita- og loftræstikerfum, lýsingu eða lögnum í atvinnuhúsnæði. Skráðu nákvæma staðsetningu, hvað þú tókst eftir og hvenær starfsfólk kemst að.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/is/maintenance-request-form/maintenance-request-form.txt" download="">Sækja óútfyllt eyðublað (TXT)</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/is/shift-handover/">Gátlisti fyrir vaktaskipti í fasteignarekstri</a></h3>
           <p>Sæktu ókeypis Excel-vaktaskrá fyrir fasteignarekstur í atvinnuhúsnæði. Notaðu gátlistann og útfyllt dæmi um kælivandamál til að afhenda næstu vakt opnar þjónustubeiðnir.</p>

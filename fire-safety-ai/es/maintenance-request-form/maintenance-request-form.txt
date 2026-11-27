@@ -1,0 +1,29 @@
+Formulario de solicitud de mantenimiento para inquilinos de edificios comerciales
+
+Descarga o imprime el formulario, complétalo y envíalo por el canal de mantenimiento autorizado del edificio. Indica el horario de acceso al lugar y si alguien debe acompañar al personal.
+
+En caso de incendio o peligro inmediato, sigue los procedimientos de emergencia del edificio y utiliza sus contactos de emergencia designados.
+
+Complejo y edificio
+_______________________________________________
+
+Piso, oficina o sala y ubicación exacta
+_______________________________________________
+
+Categoría de la solicitud
+_______________________________________________
+
+Problema observado y efecto en el uso del espacio
+_______________________________________________
+
+Fecha y hora local en que se detectó por primera vez
+_______________________________________________
+
+Horario y condiciones de acceso
+_______________________________________________
+
+Equipo del inquilino y canal autorizado para responder
+_______________________________________________
+
+Referencia de la solicitud, equipo asignado y próxima acción (solo para el personal de instalaciones)
+_______________________________________________

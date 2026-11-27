@@ -13,6 +13,61 @@
       <description><![CDATA[<div lang="da" dir="ltr"><p>Beregn det nuværende månedlige tidsforbrug på tilbagevendende lejerhenvendelser og den andel, I vil vurdere til et pilotprojekt i bygningsdriften.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/da/workload-calculator/">Beregn tidsforbruget på lejerhenvendelser</a></p></div>]]></description>
     </item>
     <item>
+      <title>Fejlmeldingsblanket til lejere i erhvervsejendomme | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/da/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/da/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Fejlmeldingsblanket til lejere i erhvervsejendomme</h1>
+      <p>En gratis skabelon til at melde almindelige fejl på varme, ventilation, køling, belysning eller VVS i en erhvervsejendom. Notér det nøjagtige sted, hvad du har bemærket, og hvornår driftspersonalet kan se på det.</p>
+    </section>
+    <section>
+      <h2>Tom fejlmeldingsblanket</h2>
+      <p>Download eller print blanketten, udfyld den, og send den via ejendommens godkendte kanal til fejlmeldinger. Angiv, hvornår der er adgang, og hvem der kan ledsage driftspersonalet.</p>
+      <p>Ved brand eller akut fare skal du følge ejendommens beredskabsprocedurer og bruge dens anviste nødkontakter.</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/da/maintenance-request-form/maintenance-request-form.txt" download="">Download den tomme blanket (TXT)</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>Ejendom og bygning</dt></div>
+        <div><dt>Etage, lokale og nøjagtig placering</dt></div>
+        <div><dt>Type af fejlmelding</dt></div>
+        <div><dt>Observeret fejl og betydning for brugen af bygningen</dt></div>
+        <div><dt>Dato og lokalt klokkeslæt for første observation</dt></div>
+        <div><dt>Adgangstid og adgangsbetingelser</dt></div>
+        <div><dt>Lejerens team og godkendt svarkanal</dt></div>
+        <div><dt>Kun til driftspersonalet. Sagsnummer, ansvarligt team og næste skridt</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Udfyldt eksempel</h2>
+      <p>Eksemplet viser et fiktivt, fælles mødelokale med utilstrækkelig køling.</p>
+      <dl>
+        <div><dt>Ejendom og bygning</dt><dd>Linden Erhvervscenter, bygning A</dd></div>
+        <div><dt>Etage, lokale og nøjagtig placering</dt><dd>5. etage, fælles mødelokale A-5.12 ved elevatorerne</dd></div>
+        <div><dt>Type af fejlmelding</dt><dd>Varme, ventilation og køling</dd></div>
+        <div><dt>Observeret fejl og betydning for brugen af bygningen</dt><dd>Kølingen er i gang, men lokalet er stadig varmt. Teamet flyttede mødet til et andet lokale.</dd></div>
+        <div><dt>Dato og lokalt klokkeslæt for første observation</dt><dd>5. oktober 2026 kl. 20:35</dd></div>
+        <div><dt>Adgangstid og adgangsbetingelser</dt><dd>6. oktober kl. 07:15–08:00, med ledsagelse fra receptionen</dd></div>
+        <div><dt>Lejerens team og godkendt svarkanal</dt><dd>Lejerens driftsteam på 5. etage. Svar via ejendommens godkendte kanal til fejlmeldinger.</dd></div>
+        <div><dt>Kun til driftspersonalet. Sagsnummer, ansvarligt team og næste skridt</dt><dd>DEMO-012. Vedligeholdelsesteamet på morgenvagten kontrollerer kølingen i lokalet kl. 07:30.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Overdrag åbne sager til næste vagt</h2>
+      <p>Driftspersonalet kan notere sagsnummeret, det ansvarlige team og næste kontrol. Brug samme sagsnummer ved vagtskiftet, så næste vagt kan finde det nøjagtige sted og den aktuelle status.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/da/shift-handover/">Hent skabelonen til vagtskifte</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/">Åbn tjeklisten til afprøvning af AI i ejendomsdrift</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/da/demo-video/">Se videoen om en fejlmelding vedrørende køling (27 sekunder)</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/da/request/?utm_source=maintenance_request_form&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=da">Bed om en onlinedemo</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Tjekliste til afprøvning af AI i bygningsdriften | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/</guid>
@@ -114,6 +169,11 @@
       <h2>Skabeloner og værktøjer</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/da/maintenance-request-form/">Fejlmeldingsblanket til lejere i erhvervsejendomme</a></h3>
+          <p>En gratis skabelon til at melde almindelige fejl på varme, ventilation, køling, belysning eller VVS i en erhvervsejendom. Notér det nøjagtige sted, hvad du har bemærket, og hvornår driftspersonalet kan se på det.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/da/maintenance-request-form/maintenance-request-form.txt" download="">Download den tomme blanket (TXT)</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/da/shift-handover/">Tjekliste til vagtskifte i bygningsdriften</a></h3>
           <p>Download en gratis Excel-log til vagtskifte i erhvervsejendomme. Brug tjeklisten og eksemplet om utilstrækkelig køling til at overdrage åbne sager fra lejere til næste vagt.</p>

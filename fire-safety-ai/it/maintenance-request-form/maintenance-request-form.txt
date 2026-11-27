@@ -1,0 +1,29 @@
+Modulo di richiesta di manutenzione per locatari di immobili commerciali
+
+Scarica o stampa il modulo, compilalo e invialo tramite il canale di manutenzione previsto dall’edificio. Indica la fascia oraria disponibile e se serve un accompagnatore per accedere al locale.
+
+In caso di incendio o pericolo immediato, segui le procedure di emergenza dell’edificio e usa i recapiti designati per le emergenze.
+
+Complesso ed edificio
+_______________________________________________
+
+Piano, unità o locale e posizione esatta
+_______________________________________________
+
+Categoria della richiesta
+_______________________________________________
+
+Problema osservato e conseguenze sull’uso del locale
+_______________________________________________
+
+Data e ora locale in cui è stato rilevato il problema
+_______________________________________________
+
+Fascia oraria e condizioni di accesso
+_______________________________________________
+
+Gruppo del locatario e canale autorizzato per la risposta
+_______________________________________________
+
+Numero della richiesta, squadra incaricata e prossima azione (a cura del personale addetto alla gestione dell’immobile)
+_______________________________________________

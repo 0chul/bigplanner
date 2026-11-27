@@ -13,6 +13,61 @@
       <description><![CDATA[<div lang="he" dir="rtl"><p>העריכו כמה זמן בחודש מוקדש כיום לטיפול בפניות שגרתיות של שוכרים, ואיזה חלק מעומס העבודה הקיים לבחון לקראת פיילוט במוקד השירות של המבנה.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/he/workload-calculator/">למחשבון עומס העבודה</a></p></div>]]></description>
     </item>
     <item>
+      <title>טופס בקשת תחזוקה לשוכרים במבנים מסחריים | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/he/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/he/maintenance-request-form/</guid>
+      <description><![CDATA[<div lang="he" dir="rtl"><section>
+      <h1>טופס בקשת תחזוקה לשוכרים במבנים מסחריים</h1>
+      <p>טופס חינמי לדיווח על תקלות שגרתיות במיזוג אוויר, בתאורה או בצנרת במבנה מסחרי. ציינו את המיקום המדויק, במה הבחנתם ומתי צוות התחזוקה יכול לבדוק את המקום.</p>
+    </section>
+    <section>
+      <h2>טופס בקשת תחזוקה ריק</h2>
+      <p>הורידו או הדפיסו את הטופס, מלאו אותו ושלחו אותו דרך ערוץ התחזוקה שאושר לשימוש במבנה. כדי שהצוות יוכל להיכנס, ציינו מתי המקום נגיש ומי ילווה את הצוות.</p>
+      <p>במקרה של שריפה או סכנה מיידית, פעלו לפי נוהלי החירום של המבנה ופנו לגורמים שנקבעו בהם.</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/he/maintenance-request-form/maintenance-request-form.txt" download="">הורדת טופס ריק (TXT)</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>מתחם ומבנה</dt></div>
+        <div><dt>קומה, יחידה או חדר ומיקום מדויק</dt></div>
+        <div><dt>סוג התקלה</dt></div>
+        <div><dt>תיאור התקלה והשפעתה על השימוש במבנה</dt></div>
+        <div><dt>מועד הזיהוי הראשון של התקלה (תאריך ושעה מקומית)</dt></div>
+        <div><dt>שעות כניסה ותנאי גישה</dt></div>
+        <div><dt>הצוות מטעם השוכר וערוץ המענה המאושר</dt></div>
+        <div><dt>לשימוש צוות התחזוקה בלבד — מספר הקריאה, הצוות האחראי והפעולה הבאה</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>דוגמה לטופס מלא</h2>
+      <p>הדוגמה מתארת חדר ישיבות משותף במבנה בדיוני, שבו המיזוג אינו מקרר מספיק.</p>
+      <dl>
+        <div><dt>מתחם ומבנה</dt><dd>מרכז העסקים לינדן (Linden Business Centre), בניין A</dd></div>
+        <div><dt>קומה, יחידה או חדר ומיקום מדויק</dt><dd>קומה חמישית, חדר ישיבות משותף A-5.12 ליד המעליות</dd></div>
+        <div><dt>סוג התקלה</dt><dd>חימום, אוורור ומיזוג אוויר</dd></div>
+        <div><dt>תיאור התקלה והשפעתה על השימוש במבנה</dt><dd>המיזוג פועל אבל החדר נשאר חם. הצוות העביר את הישיבה לחדר אחר.</dd></div>
+        <div><dt>מועד הזיהוי הראשון של התקלה (תאריך ושעה מקומית)</dt><dd>5 באוקטובר 2026, 20:35</dd></div>
+        <div><dt>שעות כניסה ותנאי גישה</dt><dd>6 באוקטובר, 07:15 עד 08:00, בליווי איש צוות מדלפק הקבלה</dd></div>
+        <div><dt>הצוות מטעם השוכר וערוץ המענה המאושר</dt><dd>צוות התפעול של השוכר בקומה החמישית. יש להשיב בערוץ השירות המאושר של המבנה.</dd></div>
+        <div><dt>לשימוש צוות התחזוקה בלבד — מספר הקריאה, הצוות האחראי והפעולה הבאה</dt><dd>DEMO-012, צוות תחזוקת משמרת הבוקר, בדיקת המיזוג בחדר ב-07:30</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>העברת בקשה פתוחה למשמרת הבאה</h2>
+      <p>צוות התחזוקה יכול לתעד את מספר הקריאה, הצוות האחראי והבדיקה הבאה. השתמשו באותו מספר בחפיפה בין המשמרות כדי שהצוות הנכנס יוכל לאתר את המיקום המדויק ולבדוק את מצב הטיפול.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/he/shift-handover/">הורדת יומן חפיפה בין משמרות</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/">פתיחת רשימת הבדיקה לניסוי בשימוש בבינה מלאכותית בניהול מבנים</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/he/demo-video/">צפייה בהדגמת פניית מיזוג של 27 שניות, עם ממשק בקוריאנית וכתוביות בעברית</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/he/request/?utm_source=maintenance_request_form&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=he">בקשה להדגמה מקוונת</a>
+      </div>
+    </section></div>]]></description>
+    </item>
+    <item>
       <title>רשימת בדיקה לניסוי במוקד שירות מבוסס AI לשוכרים | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/</guid>
@@ -114,6 +169,11 @@
       <h2>כלים זמינים</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/he/maintenance-request-form/">טופס בקשת תחזוקה לשוכרים במבנים מסחריים</a></h3>
+          <p>טופס חינמי לדיווח על תקלות שגרתיות במיזוג אוויר, בתאורה או בצנרת במבנה מסחרי. ציינו את המיקום המדויק, במה הבחנתם ומתי צוות התחזוקה יכול לבדוק את המקום.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/he/maintenance-request-form/maintenance-request-form.txt" download="">הורדת טופס ריק (TXT)</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/he/shift-handover/">רשימת בדיקה לחפיפה בין משמרות בניהול מבנים</a></h3>
           <p>הורידו יומן Excel חינמי לחפיפה בין משמרות לצוותי תפעול מבנים מסחריים. רשימת הבדיקה והדוגמה לדיווח על קירור חלש עוזרות להעביר קריאות פתוחות של שוכרים למשמרת הבאה.</p>

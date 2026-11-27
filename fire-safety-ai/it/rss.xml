@@ -13,6 +13,61 @@
       <description><![CDATA[<div lang="it" dir="ltr"><p>Stima il tempo dedicato ogni mese alle richieste ricorrenti dei locatari e la quota del carico attuale da valutare per un progetto pilota.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/it/workload-calculator/">Calcola il carico delle richieste ricorrenti</a></p></div>]]></description>
     </item>
     <item>
+      <title>Modulo di richiesta di manutenzione per locatari di immobili commerciali | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/it/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/it/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Modulo di richiesta di manutenzione per locatari di immobili commerciali</h1>
+      <p>Un modello gratuito per segnalare problemi ordinari di climatizzazione, illuminazione o impianti idraulici in un immobile commerciale. Indica il punto esatto, che cosa hai notato e quando il personale può effettuare una verifica.</p>
+    </section>
+    <section>
+      <h2>Modulo di richiesta di manutenzione da compilare</h2>
+      <p>Scarica o stampa il modulo, compilalo e invialo tramite il canale di manutenzione previsto dall’edificio. Indica la fascia oraria disponibile e se serve un accompagnatore per accedere al locale.</p>
+      <p>In caso di incendio o pericolo immediato, segui le procedure di emergenza dell’edificio e usa i recapiti designati per le emergenze.</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/it/maintenance-request-form/maintenance-request-form.txt" download="">Scarica il modulo da compilare (TXT)</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>Complesso ed edificio</dt></div>
+        <div><dt>Piano, unità o locale e posizione esatta</dt></div>
+        <div><dt>Categoria della richiesta</dt></div>
+        <div><dt>Problema osservato e conseguenze sull’uso del locale</dt></div>
+        <div><dt>Data e ora locale in cui è stato rilevato il problema</dt></div>
+        <div><dt>Fascia oraria e condizioni di accesso</dt></div>
+        <div><dt>Gruppo del locatario e canale autorizzato per la risposta</dt></div>
+        <div><dt>Numero della richiesta, squadra incaricata e prossima azione (a cura del personale addetto alla gestione dell’immobile)</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Esempio compilato</h2>
+      <p>L’esempio descrive un problema di raffrescamento in una sala riunioni condivisa di fantasia.</p>
+      <dl>
+        <div><dt>Complesso ed edificio</dt><dd>Centro direzionale Tiglio, edificio A</dd></div>
+        <div><dt>Piano, unità o locale e posizione esatta</dt><dd>Quinto piano, sala riunioni condivisa A-5.12 accanto agli ascensori</dd></div>
+        <div><dt>Categoria della richiesta</dt><dd>Riscaldamento, ventilazione e climatizzazione</dd></div>
+        <div><dt>Problema osservato e conseguenze sull’uso del locale</dt><dd>La climatizzazione è accesa, ma la sala rimane calda. Il gruppo ha spostato la riunione in un’altra sala.</dd></div>
+        <div><dt>Data e ora locale in cui è stato rilevato il problema</dt><dd>5 ottobre 2026, ore 20:35</dd></div>
+        <div><dt>Fascia oraria e condizioni di accesso</dt><dd>6 ottobre, dalle 07:15 alle 08:00, con accompagnamento da parte della reception</dd></div>
+        <div><dt>Gruppo del locatario e canale autorizzato per la risposta</dt><dd>Gruppo operativo del locatario al quinto piano. Rispondere tramite il canale di assistenza previsto dall’edificio.</dd></div>
+        <div><dt>Numero della richiesta, squadra incaricata e prossima azione (a cura del personale addetto alla gestione dell’immobile)</dt><dd>DEMO-012. La squadra di manutenzione del turno del mattino controlla il raffrescamento della sala alle 07:30.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Passa le richieste aperte al turno successivo</h2>
+      <p>Il personale addetto alla gestione dell’immobile può registrare il numero della richiesta, la squadra incaricata e il prossimo controllo. Usa lo stesso numero nel passaggio di consegne, così il turno successivo ritrova il luogo esatto e lo stato della richiesta.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/">Scarica la scheda per il passaggio di consegne</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/">Consulta la lista di controllo per la prova pilota di IA nella gestione degli immobili</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/it/demo-video/">Guarda la demo di 27 secondi sulla segnalazione di un problema di raffrescamento</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/it/request/?utm_source=maintenance_request_form&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=it">Richiedi una demo online</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Checklist per provare un help desk IA per i locatari | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/</guid>
@@ -114,6 +169,11 @@
       <h2>Risorse disponibili</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/it/maintenance-request-form/">Modulo di richiesta di manutenzione per locatari di immobili commerciali</a></h3>
+          <p>Un modello gratuito per segnalare problemi ordinari di climatizzazione, illuminazione o impianti idraulici in un immobile commerciale. Indica il punto esatto, che cosa hai notato e quando il personale può effettuare una verifica.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/it/maintenance-request-form/maintenance-request-form.txt" download="">Scarica il modulo da compilare (TXT)</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/">Checklist per il passaggio di consegne nella gestione degli immobili</a></h3>
           <p>Scarica il registro Excel gratuito per il passaggio di consegne nella gestione degli immobili commerciali. Usa la checklist e l’esempio sul raffrescamento per trasmettere al turno successivo le segnalazioni dei locatari ancora aperte.</p>

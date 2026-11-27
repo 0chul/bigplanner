@@ -1,0 +1,29 @@
+Liikekiinteistön vuokralaisen vikailmoituslomake
+
+Lataa tai tulosta lomake, täytä se ja lähetä se kiinteistön hyväksytyn huoltokanavan kautta. Ilmoita, milloin huolto pääsee tilaan ja miten saattaminen on järjestetty.
+
+Tulipalon tai välittömän vaaran sattuessa noudata kiinteistön hätätilanneohjeita ja käytä niissä annettuja yhteystietoja.
+
+Kohde ja rakennus
+_______________________________________________
+
+Kerros, tila tai huone ja tarkka sijainti
+_______________________________________________
+
+Vikaluokka
+_______________________________________________
+
+Havaittu vika ja vaikutus tilan käyttöön
+_______________________________________________
+
+Ensimmäisen havainnon päivämäärä ja kellonaika paikallista aikaa
+_______________________________________________
+
+Tilaan pääsyn ajankohta ja ehdot
+_______________________________________________
+
+Vuokralaisen tiimi ja hyväksytty vastauskanava
+_______________________________________________
+
+Vain kiinteistön huollolle — ilmoituksen tunnus, vastuutiimi ja seuraava toimenpide
+_______________________________________________

@@ -13,6 +13,61 @@
       <description><![CDATA[<div lang="nl" dir="ltr"><p>Schat de huidige maandelijkse tijd voor terugkerende huurdersvragen en het deel dat u wilt beoordelen voor een proeftraject met een facilitaire servicedesk.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/">Bereken de werklast voor huurdersvragen</a></p></div>]]></description>
     </item>
     <item>
+      <title>Formulier voor onderhoudsmeldingen van huurders in bedrijfsgebouwen | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/nl/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nl/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Formulier voor onderhoudsmeldingen van huurders in bedrijfsgebouwen</h1>
+      <p>Gratis formulier om gewone storingen aan verwarming, ventilatie, koeling, verlichting of sanitair in een bedrijfsgebouw te melden. Noteer de precieze locatie, wat u opmerkte en wanneer het facilitaire team kan komen kijken.</p>
+    </section>
+    <section>
+      <h2>Blanco formulier voor onderhoudsmeldingen</h2>
+      <p>Download of print het formulier, vul het in en stuur het in via het goedgekeurde meldkanaal van uw gebouw. Geef aan wanneer de ruimte toegankelijk is en wie het facilitaire team kan begeleiden.</p>
+      <p>Volg bij brand of direct gevaar de noodprocedures van het gebouw en gebruik de daarvoor aangewezen noodcontacten.</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nl/maintenance-request-form/maintenance-request-form.txt" download="">Download het blanco formulier (TXT)</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>Locatie en gebouw</dt></div>
+        <div><dt>Verdieping, ruimte en precieze locatie</dt></div>
+        <div><dt>Type onderhoudsmelding</dt></div>
+        <div><dt>Waargenomen storing en gevolgen voor het gebruik</dt></div>
+        <div><dt>Datum en lokale tijd waarop u het probleem voor het eerst opmerkte</dt></div>
+        <div><dt>Toegangstijden en toegangsvoorwaarden</dt></div>
+        <div><dt>Team van de huurder en goedgekeurd antwoordkanaal</dt></div>
+        <div><dt>Alleen voor het facilitaire team. Meldingsnummer, toegewezen team en volgende actie</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Ingevuld voorbeeld</h2>
+      <p>Dit voorbeeld gaat over een fictieve gedeelde vergaderruimte die onvoldoende wordt gekoeld.</p>
+      <dl>
+        <div><dt>Locatie en gebouw</dt><dd>Linden Bedrijvencentrum, gebouw A</dd></div>
+        <div><dt>Verdieping, ruimte en precieze locatie</dt><dd>Vijfde verdieping, gedeelde vergaderruimte A-5.12 naast de liften</dd></div>
+        <div><dt>Type onderhoudsmelding</dt><dd>Verwarming, ventilatie en airconditioning</dd></div>
+        <div><dt>Waargenomen storing en gevolgen voor het gebruik</dt><dd>De koeling staat aan, maar de ruimte blijft warm. Het team heeft de vergadering naar een andere ruimte verplaatst.</dd></div>
+        <div><dt>Datum en lokale tijd waarop u het probleem voor het eerst opmerkte</dt><dd>5 oktober 2026, 20:35</dd></div>
+        <div><dt>Toegangstijden en toegangsvoorwaarden</dt><dd>6 oktober, 07:15–08:00, onder begeleiding van de receptie</dd></div>
+        <div><dt>Team van de huurder en goedgekeurd antwoordkanaal</dt><dd>Het operationele team van de huurder op de vijfde verdieping. Reageer via het goedgekeurde meldkanaal van het gebouw.</dd></div>
+        <div><dt>Alleen voor het facilitaire team. Meldingsnummer, toegewezen team en volgende actie</dt><dd>DEMO-012. Het onderhoudsteam van de ochtenddienst controleert om 07:30 de koeling in de ruimte.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Draag openstaande meldingen over aan de volgende dienst</h2>
+      <p>Het facilitaire team kan het meldingsnummer, het verantwoordelijke team en de volgende controle vastleggen. Gebruik bij de dienstoverdracht hetzelfde meldingsnummer, zodat de volgende dienst de precieze locatie en de actuele status kan terugvinden.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nl/shift-handover/">Download het werkblad voor de dienstoverdracht</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/">Open de checklist voor een facilitaire AI-pilot</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nl/demo-video/">Bekijk de demo van een melding over koeling (27 seconden)</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nl/request/?utm_source=maintenance_request_form&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=nl">Vraag een online demo aan</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Pilotchecklist voor een AI-servicedesk in facilitair beheer | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/</guid>
@@ -114,6 +169,11 @@
       <h2>Beschikbare hulpmiddelen</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nl/maintenance-request-form/">Formulier voor onderhoudsmeldingen van huurders in bedrijfsgebouwen</a></h3>
+          <p>Gratis formulier om gewone storingen aan verwarming, ventilatie, koeling, verlichting of sanitair in een bedrijfsgebouw te melden. Noteer de precieze locatie, wat u opmerkte en wanneer het facilitaire team kan komen kijken.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nl/maintenance-request-form/maintenance-request-form.txt" download="">Download het blanco formulier (TXT)</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nl/shift-handover/">Checklist voor facilitaire dienstoverdracht</a></h3>
           <p>Download een gratis Excel-logboek voor de dienstoverdracht in commercieel vastgoed. Gebruik de checklist en het voorbeeld over koeling om openstaande huurdersmeldingen over te dragen.</p>

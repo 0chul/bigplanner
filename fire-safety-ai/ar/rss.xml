@@ -13,6 +13,61 @@
       <description><![CDATA[<div lang="ar" dir="rtl"><p>قدّروا الوقت الشهري الذي يستغرقه الرد على استفسارات المستأجرين المتكررة، وحدّدوا الجزء من عبء العمل الحالي الذي تودّون مراجعته لتطبيق تجريبي في إدارة المرافق.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/ar/workload-calculator/">احسبوا وقت العمل للاستفسارات المتكررة</a></p></div>]]></description>
     </item>
     <item>
+      <title>نموذج طلب صيانة للمستأجرين في المباني التجارية | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/ar/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ar/maintenance-request-form/</guid>
+      <description><![CDATA[<div lang="ar" dir="rtl"><section>
+      <h1>نموذج طلب صيانة للمستأجرين في المباني التجارية</h1>
+      <p>نموذج مجاني للإبلاغ عن الأعطال المعتادة في أنظمة التدفئة والتهوية والتكييف أو الإضاءة أو السباكة في المباني التجارية. حدّد الموقع بدقة، وصف ما لاحظته، واذكر متى يمكن لفريق الصيانة معاينة المكان.</p>
+    </section>
+    <section>
+      <h2>نموذج طلب صيانة فارغ</h2>
+      <p>نزّل النموذج أو اطبعه واملأه، ثم أرسله عبر قناة الصيانة المعتمدة في المبنى. اذكر الأوقات التي يمكن فيها دخول الموقع وترتيبات المرافقة عند المعاينة.</p>
+      <p>في حال نشوب حريق أو وجود خطر فوري، اتبع إجراءات الطوارئ المعتمدة في المبنى وتواصل مع جهات الاتصال المحددة فيها.</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ar/maintenance-request-form/maintenance-request-form.txt" download="">تنزيل النموذج الفارغ (TXT)</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>الموقع والمبنى</dt></div>
+        <div><dt>الطابق أو الوحدة أو الغرفة والموقع الدقيق</dt></div>
+        <div><dt>فئة الصيانة</dt></div>
+        <div><dt>وصف العطل وأثره على استخدام المكان</dt></div>
+        <div><dt>تاريخ ووقت ملاحظة العطل لأول مرة (بالتوقيت المحلي)</dt></div>
+        <div><dt>أوقات الدخول وشروطه</dt></div>
+        <div><dt>فريق المستأجر وقناة الرد المعتمدة</dt></div>
+        <div><dt>لفريق إدارة المرافق فقط — الرقم المرجعي للطلب والفريق المكلّف والإجراء التالي</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>مثال على تعبئة النموذج</h2>
+      <p>يتناول هذا المثال قاعة اجتماعات مشتركة خيالية لا يعمل فيها التبريد بالكفاءة المطلوبة.</p>
+      <dl>
+        <div><dt>الموقع والمبنى</dt><dd>مركز ليندن للأعمال (Linden Business Centre)، المبنى A</dd></div>
+        <div><dt>الطابق أو الوحدة أو الغرفة والموقع الدقيق</dt><dd>الطابق الخامس، قاعة الاجتماعات المشتركة A-5.12 بجوار المصاعد</dd></div>
+        <div><dt>فئة الصيانة</dt><dd>التدفئة والتهوية وتكييف الهواء</dd></div>
+        <div><dt>وصف العطل وأثره على استخدام المكان</dt><dd>التبريد يعمل لكن القاعة تظل دافئة. نقل الفريق الاجتماع إلى قاعة أخرى.</dd></div>
+        <div><dt>تاريخ ووقت ملاحظة العطل لأول مرة (بالتوقيت المحلي)</dt><dd>5 أكتوبر 2026، 20:35</dd></div>
+        <div><dt>أوقات الدخول وشروطه</dt><dd>6 أكتوبر، من 07:15 إلى 08:00، بمرافقة أحد موظفي الاستقبال</dd></div>
+        <div><dt>فريق المستأجر وقناة الرد المعتمدة</dt><dd>فريق العمليات لدى مستأجر الطابق الخامس. يُرسل الرد عبر قناة الخدمة المعتمدة في المبنى.</dd></div>
+        <div><dt>لفريق إدارة المرافق فقط — الرقم المرجعي للطلب والفريق المكلّف والإجراء التالي</dt><dd>DEMO-012، فريق الصيانة في المناوبة الصباحية، فحص تبريد القاعة الساعة 07:30</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>تسليم طلب الصيانة المفتوح إلى المناوبة التالية</h2>
+      <p>يمكن لفريق إدارة المرافق تسجيل الرقم المرجعي للطلب والفريق المكلّف به وما يجب التحقق منه لاحقًا. استخدم الرقم نفسه عند تسليم المناوبة ليتمكّن الفريق التالي من معرفة الموقع الدقيق وحالة الطلب.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ar/shift-handover/">الحصول على سجل تسليم المناوبات</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/">فتح قائمة التحقق للتجربة الأولية للذكاء الاصطناعي في إدارة المرافق</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ar/demo-video/">مشاهدة عرض بلاغ التبريد في 27 ثانية بواجهة كورية وترجمة نصية عربية</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ar/request/?utm_source=maintenance_request_form&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=ar">طلب عرض توضيحي عبر الإنترنت</a>
+      </div>
+    </section></div>]]></description>
+    </item>
+    <item>
       <title>قائمة التحقق لتجربة مساعد بلاغات المستأجرين بالذكاء الاصطناعي | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/</guid>
@@ -114,6 +169,11 @@
       <h2>النماذج والأدوات</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/ar/maintenance-request-form/">نموذج طلب صيانة للمستأجرين في المباني التجارية</a></h3>
+          <p>نموذج مجاني للإبلاغ عن الأعطال المعتادة في أنظمة التدفئة والتهوية والتكييف أو الإضاءة أو السباكة في المباني التجارية. حدّد الموقع بدقة، وصف ما لاحظته، واذكر متى يمكن لفريق الصيانة معاينة المكان.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ar/maintenance-request-form/maintenance-request-form.txt" download="">تنزيل النموذج الفارغ (TXT)</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/ar/shift-handover/">قائمة التحقق لتسليم المناوبات في إدارة المرافق</a></h3>
           <p>نزّلوا سجل Excel مجانياً لفرق إدارة المرافق في المباني التجارية. استخدموا قائمة التحقق ومثالاً لبلاغ ضعف التبريد لتسليم بلاغات المستأجرين المفتوحة إلى المناوبة التالية.</p>

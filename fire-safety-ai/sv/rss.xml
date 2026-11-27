@@ -13,6 +13,61 @@
       <description><![CDATA[<div lang="sv" dir="ltr"><p>Uppskatta den nuvarande tiden för återkommande hyresgästfrågor per månad och vilken andel ni vill granska inför en pilot i fastighetsdriften.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/">Beräkna tiden för återkommande frågor</a></p></div>]]></description>
     </item>
     <item>
+      <title>Blankett för hyresgästers felanmälan i kommersiella fastigheter | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/sv/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Blankett för hyresgästers felanmälan i kommersiella fastigheter</h1>
+      <p>En gratis mall för att anmäla vanliga fel på värme, ventilation, kyla, belysning eller VVS i en kommersiell fastighet. Ange exakt plats, vad du har märkt och när driftpersonalen kan undersöka felet.</p>
+    </section>
+    <section>
+      <h2>Tom blankett för felanmälan</h2>
+      <p>Ladda ner eller skriv ut blanketten, fyll i den och skicka den via fastighetens godkända kanal för felanmälan. Ange när lokalen är tillgänglig och vem som kan följa med driftpersonalen.</p>
+      <p>Vid brand eller omedelbar fara ska du följa fastighetens nödrutiner och använda de kontaktvägar som gäller vid nödläge.</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/maintenance-request-form/maintenance-request-form.txt" download="">Ladda ner den tomma blanketten (TXT)</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>Fastighet och byggnad</dt></div>
+        <div><dt>Våning, rum och exakt plats</dt></div>
+        <div><dt>Typ av felanmälan</dt></div>
+        <div><dt>Observerat fel och påverkan på hur lokalen används</dt></div>
+        <div><dt>Datum och lokal tid då du först märkte felet</dt></div>
+        <div><dt>Tillträdestid och villkor</dt></div>
+        <div><dt>Hyresgästens team och godkänd svarskanal</dt></div>
+        <div><dt>Endast för driftpersonalen. Ärendenummer, ansvarigt team och nästa åtgärd</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Ifyllt exempel</h2>
+      <p>Exemplet gäller ett fiktivt gemensamt mötesrum där kylningen är otillräcklig.</p>
+      <dl>
+        <div><dt>Fastighet och byggnad</dt><dd>Företagscentret Linden, byggnad A</dd></div>
+        <div><dt>Våning, rum och exakt plats</dt><dd>Våning 5, gemensamt mötesrum A-5.12 vid hissarna</dd></div>
+        <div><dt>Typ av felanmälan</dt><dd>Värme, ventilation och luftkonditionering</dd></div>
+        <div><dt>Observerat fel och påverkan på hur lokalen används</dt><dd>Kylningen är igång, men rummet förblir varmt. Teamet flyttade mötet till ett annat rum.</dd></div>
+        <div><dt>Datum och lokal tid då du först märkte felet</dt><dd>5 oktober 2026 kl. 20.35</dd></div>
+        <div><dt>Tillträdestid och villkor</dt><dd>6 oktober kl. 07.15–08.00, med ledsagning från receptionen</dd></div>
+        <div><dt>Hyresgästens team och godkänd svarskanal</dt><dd>Hyresgästens driftteam på våning 5. Svara via fastighetens godkända kanal för felanmälan.</dd></div>
+        <div><dt>Endast för driftpersonalen. Ärendenummer, ansvarigt team och nästa åtgärd</dt><dd>DEMO-012. Underhållsteamet på morgonskiftet kontrollerar kylningen i rummet kl. 07.30.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Lämna över öppna ärenden till nästa skift</h2>
+      <p>Driftpersonalen kan notera ärendenummer, ansvarigt team och när nästa kontroll ska göras. Använd samma ärendenummer vid skiftöverlämningen så att nästa skift hittar exakt plats och aktuell status.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/">Hämta mallen för skiftöverlämning</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/">Öppna checklistan för AI-piloten i fastighetsdrift</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/">Se demon om en felanmälan för kyla (27 sekunder)</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/sv/request/?utm_source=maintenance_request_form&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=sv">Be om en demo online</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Checklista för att testa AI för hyresgästärenden i fastighetsdriften | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/</guid>
@@ -114,6 +169,11 @@
       <h2>Tillgängliga verktyg</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/sv/maintenance-request-form/">Blankett för hyresgästers felanmälan i kommersiella fastigheter</a></h3>
+          <p>En gratis mall för att anmäla vanliga fel på värme, ventilation, kyla, belysning eller VVS i en kommersiell fastighet. Ange exakt plats, vad du har märkt och när driftpersonalen kan undersöka felet.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/maintenance-request-form/maintenance-request-form.txt" download="">Ladda ner den tomma blanketten (TXT)</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/">Checklista för skiftöverlämning i fastighetsdrift</a></h3>
           <p>Ladda ner en gratis Excel-mall för skiftöverlämning i kommersiella fastigheter. Använd checklistan och ett exempel på felanmälan för kyla.</p>
