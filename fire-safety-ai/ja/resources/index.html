@@ -120,6 +120,7 @@ footer { color: var(--muted); font-size: .9rem; }
 :lang(ko):is(.library-lead, .library-section) { word-break: keep-all; }
 .library-section + .library-section { border-block-start: 1px solid var(--rule); }
 .library-grid, .library-languages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; margin: 1.05rem 0 0; list-style: none; }
+.library-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .library-card { height: 100%; padding: clamp(.95rem, 2.2vw, 1.45rem); border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
 .library-card h3 { font-size: 1.13rem; }
 .library-card p { margin-block: .48rem 0; color: var(--muted); }
@@ -181,7 +182,7 @@ footer { color: var(--muted); font-size: .9rem; }
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">テンプレートとツール</h2>
       
-      <ul class="library-grid" role="list">
+      <ul class="library-grid library-grid-four" role="list">
         <li><article class="library-card">
           <h3><a href="/fire-safety-ai/ja/shift-handover/">ビル設備管理の引き継ぎチェックリスト</a></h3>
           <p>商業ビルの設備管理チーム向けの無料Excel引き継ぎ台帳です。空調の問い合わせを例に、場所・担当者・次の確認事項を記録し、未完了の案件を次のシフトへ引き継ぐ方法を確認できます。</p>
@@ -195,6 +196,11 @@ footer { color: var(--muted); font-size: .9rem; }
         <li><article class="library-card">
           <h3><a href="/fire-safety-ai/ja/demo-video/">27秒で見る、空調の問い合わせから引き継ぎまで</a></h3>
           <p>架空のビルでの冷房の問い合わせを取り上げ、受付から管理者による担当者の指定、次のシフトへの引き継ぎまでを27秒で紹介します。韓国語のデモ画面に日本語字幕を付けています。</p>
+          
+        </article></li>
+        <li><article class="library-card">
+          <h3><a href="/fire-safety-ai/ja/adoption-guide/">ビル設備管理向け テナント問い合わせ対応AIの試験導入チェックリスト</a></h3>
+          <p>商業ビル1棟で始める試験導入のチェックリストです。対象とする問い合わせ、担当者による確認とシフト間の引き継ぎ、導入前後の記録の比較方法を整理します。</p>
           
         </article></li>
       </ul>

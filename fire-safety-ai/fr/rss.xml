@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="fr" dir="ltr"><p>Estimez le temps consacré aux demandes courantes des locataires et la part de cette charge à examiner pour un projet pilote.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/">Calculer la charge des demandes courantes</a></p></div>]]></description>
     </item>
     <item>
+      <title>Liste de contrôle pour tester un assistant IA en gestion d’immeubles | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Tester un assistant IA pour les demandes des occupants</h1>
+      <p>Choisissez un immeuble commercial dont vous pouvez consulter les demandes récentes et où les équipes de jour et de nuit peuvent participer. Le responsable de l’exploitation définit le périmètre du pilote avec les personnes qui répondent aux demandes, attribuent les interventions et reprennent les dossiers en cours.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/#checklist">Ouvrir la liste de contrôle</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Six points à vérifier avant de commencer</h2>
+        <div>
+          <article>
+            <h3>Choisir l’immeuble et les types de demandes</h3>
+            <p>Consultez les dossiers récents. Retenez deux ou trois types de demandes pour lesquels vous avez assez d’exemples, comme le stationnement des visiteurs, un manque de climatisation ou une demande de chauffage ou de climatisation hors horaires. Notez l’immeuble, les plages horaires, les demandes retenues et la personne responsable du pilote.</p>
+          </article>
+          <article>
+            <h3>Définir les réponses et les décisions à vérifier</h3>
+            <p>Pour les questions courantes, repérez la rubrique validée du guide de l’immeuble et la personne qui la tient à jour. Comparez une réponse au texte en vigueur. Si une vérification sur place est nécessaire, consignez le lieu et le problème. Les personnes habilitées examinent les demandes soumises à autorisation et prennent la décision.</p>
+          </article>
+          <article>
+            <h3>Désigner un responsable dans chaque équipe</h3>
+            <p>Identifiez qui vérifie les nouvelles demandes, attribue le suivi et prend en charge les dossiers hors périmètre. Simulez la relève avec une demande encore non attribuée pour vérifier qui la reprend.</p>
+          </article>
+          <article>
+            <h3>Transmettre les demandes ouvertes dans le même dossier</h3>
+            <p>Consignez le numéro de dossier, le lieu, le problème, le responsable désigné, le statut, la prochaine action et l’heure de la prochaine vérification. Demandez à l’équipe de relève de noter à quelle heure elle a consulté le dossier.</p>
+          </article>
+          <article>
+            <h3>Choisir le registre de référence</h3>
+            <p>Décidez quel système fera foi. Vérifiez quelles intégrations avec le téléphone, la messagerie et le logiciel de suivi des interventions sont possibles pendant le pilote. Testez un problème signalé deux fois pour voir comment rapprocher les dossiers.</p>
+          </article>
+          <article>
+            <h3>Confirmer les droits d’accès et la durée de conservation</h3>
+            <p>Définissez qui peut consulter ou modifier les informations sur les occupants. Précisez quand les coordonnées ou les photos sont nécessaires, combien de temps les conserver et qui doit les supprimer. Utilisez des dossiers fictifs ou masquez les données personnelles pour l’exercice.</p>
+          </article>
+        </div>
+        <p>En cas d’urgence, utilisez les contacts prévus par l’immeuble et suivez ses procédures d’intervention.</p>
+      </section>
+      <section>
+        <h2>Signalement fictif de climatisation à la relève</h2>
+        <dl>
+          <div><dt>Réception</dt><dd>DEMO-012. Le 5 octobre à 20 h 35, heure locale, un locataire signale que la climatisation de la salle de réunion commune du cinquième étage de l’immeuble A ne refroidit pas assez.</dd></div>
+          <div><dt>Vérification du responsable</dt><dd>Le responsable vérifie le lieu et le problème, attribue le dossier au technicien de l’équipe du matin et le marque « En cours ».</dd></div>
+          <div><dt>Équipe de relève</dt><dd>Le lendemain à 7 h, l’équipe confirme l’attribution du dossier et note que le technicien vérifiera la salle à 7 h 30.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/">Voir la démonstration de 27 secondes sous-titrée en français</a></p>
+        <p>L’interface présentée est en coréen.</p>
+      </section>
+      <section>
+        <h2>Comparer les dossiers avant et pendant le pilote</h2>
+        <p>Décidez à l’avance quels résultats justifieraient de poursuivre. Comparez, par exemple, cinq jours ouvrés avant le pilote et cinq jours ouvrés pendant l’essai. Gardez les mêmes jours de la semaine, les mêmes plages de jour et de nuit et les mêmes types de demandes. Comptez les doublons une seule fois en rapprochant le numéro de dossier ou l’heure, le lieu et le problème signalé.</p>
+        <ul>
+          <li><strong>Dossiers complets</strong> Parmi les demandes du périmètre qui ont nécessité une vérification sur place, comptez les dossiers qui indiquent le lieu, le problème et le statut d’attribution. Divisez ce nombre par le total de ces demandes.</li>
+          <li><strong>Relèves confirmées</strong> Parmi les dossiers ouverts à transmettre, comptez ceux dont la première transmission comporte une confirmation horodatée que l’équipe de relève a vérifié le statut et la prochaine action. Divisez ce nombre par le total des dossiers ouverts à transmettre.</li>
+        </ul>
+        <p>Pour chaque indicateur, notez le numérateur et le dénominateur. Si le dénominateur est nul, notez « 0 sur 0 » et laissez le taux vide. Examinez avec les équipes de jour et de nuit les informations manquantes et les attributions tardives avant de décider d’étendre le pilote.</p>
+        <p>Pour approfondir la préparation du pilote et définir le périmètre du service de traitement des demandes. Référentiel du gouvernement britannique pour la gestion des installations (en anglais)</p>
+      </section>
+      <section>
+        <h2>Devis et démonstration</h2>
+        <p>BigPlanner Partners établit un devis par projet pour la mise en place et l’assistance à l’exploitation. Le devis tient compte du nombre d’immeubles, des guides existants, des intégrations et de l’assistance nécessaires. Préparez deux exemples de traitement à examiner pendant la démonstration en ligne. Des cas fictifs suffisent.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fr/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fr">Demander une démonstration en ligne</a>
+        </div>
+      </section>
+      <section>
+        <h2>Ressources pour l’exploitation des bâtiments</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/">Liste de contrôle et registre Excel pour la relève</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">Guide et fiche de travail pour rédiger la FAQ d’un immeuble (en anglais)</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/">Calculateur de charge de travail pour les demandes courantes</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/fr/resources/">Toutes les ressources en français pour l’exploitation des bâtiments</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>Ressources pour l’exploitation des bâtiments | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/fr/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fr/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/">Démonstration d’un signalement de climatisation</a></h3>
           <p>Dans ce cas simulé de 27 secondes, l’IA consigne un problème de climatisation, le responsable attribue le dossier et l’équipe de relève consulte le même dossier. Interface en coréen et sous-titres en français.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/">Liste de contrôle pour tester un assistant IA en gestion d’immeubles</a></h3>
+          <p>Préparez un essai dans un seul immeuble. Choisissez les demandes à traiter, organisez la relève et comparez les dossiers avant et pendant le pilote.</p>
           
         </article></li>
       </ul>

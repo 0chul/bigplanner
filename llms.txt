@@ -89,6 +89,14 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [Español](https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/)
 - [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/shift-handover/)
 
+## Facilities AI pilot checklists
+
+- [한국어](https://bigplanner.co.kr/fire-safety-ai/adoption-guide/)
+- [English](https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/)
+- [Deutsch](https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/)
+- [Français](https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/)
+- [日本語](https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/)
+
 ## Routine enquiry workload calculators
 
 - [한국어](https://bigplanner.co.kr/fire-safety-ai/workload-calculator/)
@@ -135,8 +143,6 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [Building FAQ guide and Excel template](https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/)
 - [냉난방 연장 운전 신청서](https://bigplanner.co.kr/fire-safety-ai/after-hours-hvac-request/)
 - [After-hours HVAC request form](https://bigplanner.co.kr/fire-safety-ai/en/after-hours-hvac-request/)
-- [시설관리 민원 접수 시스템 도입 체크리스트](https://bigplanner.co.kr/fire-safety-ai/adoption-guide/)
-- [Facilities AI pilot checklist](https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/)
 - [방재실 AI 한 장 소개서 (PDF)](https://bigplanner.co.kr/fire-safety-ai/facilities-ai-overview.pdf)
 - [Facilities AI one-page brief (PDF)](https://bigplanner.co.kr/fire-safety-ai/en/facilities-ai-overview.pdf)
 

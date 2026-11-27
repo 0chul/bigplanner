@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pilot-Checkliste für einen KI-Assistenten im Gebäudebetrieb | BigPlanner Partners</title>
+  <meta name="description" content="Planen Sie einen Pilotbetrieb in einem Gewerbegebäude. Legen Sie fest, welche Mietermeldungen das Team prüft und übergibt, und vergleichen Sie die Vorgänge vor und während des Piloten.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/adoption-guide/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
+  <link rel="alternate" type="application/rss+xml" title="Arbeitshilfen für den Gebäudebetrieb per RSS" href="https://bigplanner.co.kr/fire-safety-ai/de/rss.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Pilot-Checkliste für einen KI-Assistenten im Gebäudebetrieb">
+  <meta property="og:description" content="Planen Sie einen Pilotbetrieb in einem Gewerbegebäude. Legen Sie fest, welche Mietermeldungen das Team prüft und übergibt, und vergleichen Sie die Vorgänge vor und während des Piloten.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
+  <style>:root { color-scheme: light; --ink: #17302a; --green: #195649; --muted: #455c55; --rule: #cdd9d2; --paper: #f3f7f4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: break-word; }
+.wrap { width: min(60rem, 100% - 2.5rem); margin-inline: auto; }
+header, footer { border-block-end: 1px solid var(--rule); }
+header .wrap, footer .wrap, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.15rem; }
+header .wrap { justify-content: space-between; }
+header .wrap, footer .wrap { padding-block: .8rem; }
+header a { padding-block: .32rem; }
+.guide-languages { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
+.guide-languages a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+a { color: var(--green); text-underline-offset: .18em; }
+.brand { color: var(--ink); font-size: 1.14rem; font-weight: 750; text-decoration: none; }
+:focus-visible { outline: 2px solid #2f7566; outline-offset: 3px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { line-height: 1.19; }
+h1 { max-width: 22ch; font-size: clamp(2.25rem, 5.8vw, 4.15rem); letter-spacing: -.045em; text-wrap: balance; }
+h2 { font-size: clamp(1.6rem, 3.35vw, 2.3rem); letter-spacing: -.025em; }
+:lang(ja):is(h1, h2) { letter-spacing: normal; }
+h3 { font-size: 1.11rem; }
+.hero { padding-block: clamp(2.1rem, 6vw, 4.6rem); background: var(--paper); border-block-end: 1px solid var(--rule); }
+.hero p { max-width: 58ch; margin-block-start: 1rem; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.23rem); }
+.actions { margin-block-start: 1.35rem; }
+.button, .print { min-height: 2.75rem; border: 1px solid var(--green); border-radius: .4rem; display: inline-flex; align-items: center; padding: .55rem .9rem; font: inherit; font-weight: 650; }
+.button { color: #fff; background: var(--green); text-decoration: none; }
+.button:hover { background: var(--ink); }
+.print { color: var(--green); background: #fff; cursor: pointer; }
+.print[hidden] { display: none; }
+.section { padding-block: clamp(1.65rem, 4vw, 3.2rem); }
+.section + .section { border-block-start: 1px solid var(--rule); }
+.section > p, .section > ul, .section > dl, .section > ol { margin-block: .85rem 0; }
+.checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-block-start: 1rem; }
+.check { min-width: 0; padding: 1rem 1.15rem; border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
+.check label { display: flex; align-items: flex-start; gap: .65rem; cursor: pointer; min-height: 2rem; }
+.check input { flex: 0 0 auto; width: 1.05rem; height: 1.05rem; margin: .09rem 0 0; accent-color: var(--green); }
+.check p { margin-block-start: .38rem; }
+.note { padding: .65rem .85rem; background: var(--paper); border-inline-start: 3px solid var(--green); }
+.example { background: var(--paper); border-radius: .45rem; padding: .32rem 1rem; }
+.example > div { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: .35rem .85rem; padding-block: .55rem; }
+.example > div + div { border-block-start: 1px solid var(--rule); }
+.example dt { font-weight: 700; }
+.example dd { margin: 0; }
+.measures, .materials { padding-inline-start: 1.35rem; }
+.measures li + li, .materials li + li { margin-block-start: .4rem; }
+.reference { font-size: .94rem; color: var(--muted); }
+footer { border-block-start: 1px solid var(--rule); border-block-end: 0; color: var(--muted); font-size: .9rem; }
+@media (max-width: 38rem) {
+  .wrap { width: calc(100% - 2rem); }
+  .checks, .example > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  @page { margin: 15mm; }
+  body { background: white; color: black; font-size: 10.5pt; line-height: 1.36; }
+  header, footer, .actions, .fs-share { display: none; }
+  .wrap { width: 100%; }
+  .hero, .note, .example { background: white; }
+  .hero, .section { padding-block: 8pt; }
+  .hero p { color: black; font-size: 11pt; }
+  h1 { max-width: none; font-size: 24pt; }
+  h2 { font-size: 15pt; break-after: avoid; }
+  h3 { font-size: 11pt; break-after: avoid; }
+  .checks { gap: 6pt; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .check { break-inside: avoid; padding: 6pt; }
+  .check label { min-height: 0; }
+  .check input { print-color-adjust: exact; }
+  .example > div, li { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+  <header><div class="wrap">
+    <a href="/fire-safety-ai/de/" class="brand" lang="en">BigPlanner Partners</a>
+    <nav class="guide-languages"><a href="/fire-safety-ai/adoption-guide/" lang="ko" hreflang="ko">한국어</a>
+      <a href="/fire-safety-ai/en/adoption-guide/" lang="en" hreflang="en">English</a>
+      <a href="/fire-safety-ai/fr/adoption-guide/" lang="fr" hreflang="fr">Français</a>
+      <a href="/fire-safety-ai/ja/adoption-guide/" lang="ja" hreflang="ja">日本語</a></nav>
+  </div></header>
+  <main>
+    <section class="hero" aria-labelledby="guide-title"><div class="wrap">
+      <h1 id="guide-title">Einen KI-Assistenten in einem Gebäude erproben</h1>
+      <p>Wählen Sie ein Gewerbegebäude mit aktuellen Meldungen aus, in dem Mitarbeitende aus beiden Schichten mitmachen können. Die Leitung des Gebäudebetriebs stimmt den Pilotumfang mit den Personen ab, die Fragen beantworten, Aufgaben zuweisen und offene Vorgänge übernehmen.</p>
+      <div class="actions">
+        <a class="button" href="#checklist">Checkliste öffnen</a>
+        <button class="print" id="print-checklist" type="button" hidden>Checkliste drucken</button>
+      </div>
+      <details class="fs-share share" data-fs-share>
+    <summary>Checkliste teilen</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Seitenadresse<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Über eine App teilen</button>
+        <button data-fs-share-copy type="button" hidden>Link kopieren</button>
+        <a href="mailto:?subject=Pilot-Checkliste%20f%C3%BCr%20einen%20KI-Assistenten%20im%20Geb%C3%A4udebetrieb&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fde%2Fadoption-guide%2F">Per E-Mail teilen</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Link kopiert." data-manual="Wählen Sie die Seitenadresse oben aus und kopieren Sie sie."></p>
+    </div>
+  </details>
+    </div></section>
+    <div class="wrap">
+      <section class="section" id="checklist" aria-labelledby="scope-heading">
+        <h2 id="scope-heading">Sechs Prüfpunkte vor dem Start</h2>
+        <div class="checks">
+          <article class="check">
+            <h3><label><input type="checkbox">Gebäude und Meldungsarten auswählen</label></h3>
+            <p>Sichten Sie aktuelle Vorgänge. Wählen Sie zwei oder drei Meldungsarten mit genügend Testfällen aus, etwa Fragen zu Besucherparkplätzen, unzureichende Kühlung oder eine Verlängerung der HLK-Betriebszeit. Halten Sie Gebäude, Betriebszeiten, Meldungsarten und die Verantwortung für den Piloten fest.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Prüfungen und Freigaben festlegen</label></h3>
+            <p>Halten Sie für Routinefragen fest, welcher Abschnitt des Gebäudehandbuchs freigegeben ist und wer ihn aktualisiert. Gleichen Sie eine Antwort mit der aktuellen Fassung ab. Erfassen Sie für Prüfungen vor Ort den genauen Ort und das Problem. Bei genehmigungspflichtigen Anfragen prüfen und entscheiden die dazu befugten Mitarbeitenden.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Zuständigkeit für jede Schicht klären</label></h3>
+            <p>Legen Sie fest, wer neue Meldungen prüft, die weitere Bearbeitung zuweist und Fälle jenseits des Pilotumfangs übernimmt. Spielen Sie beim Schichtwechsel einen noch nicht zugewiesenen Vorgang durch und klären Sie, wer ihn übernimmt.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Offene Fälle im selben Vorgang übergeben</label></h3>
+            <p>Erfassen Sie Vorgangsnummer, Ort, Problem, Zuständigkeit, Status, nächsten Schritt und Termin für die nächste Prüfung. Die übernehmende Schicht hält fest, wann sie den Vorgang geprüft hat.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Das führende System bestimmen</label></h3>
+            <p>Legen Sie fest, in welchem System die verbindliche Dokumentation geführt wird. Prüfen Sie, welche Anbindungen für Telefon, E-Mail und Arbeitsaufträge im Piloten möglich sind. Testen Sie anhand einer doppelt gemeldeten Störung, wie das Team die Einträge abgleicht.</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">Zugriff und Aufbewahrung klären</label></h3>
+            <p>Legen Sie fest, wer Mieterdaten einsehen oder ändern darf. Klären Sie, wann Kontaktdaten oder Fotos nötig sind, wie lange Sie sie aufbewahren und wer sie löscht. Verwenden Sie für den Probelauf fiktive Vorgänge oder Unterlagen, in denen sensible Angaben unkenntlich gemacht sind.</p>
+          </article>
+        </div>
+        <p class="note">Nutzen Sie bei einem Notfall die vorgesehenen Notfallkontakte und Verfahren des Gebäudes.</p>
+      </section>
+      <section class="section" aria-labelledby="example-heading">
+        <h2 id="example-heading">Fiktive Kühlungsstörung beim Schichtwechsel</h2>
+        <dl class="example">
+          <div><dt>Meldung erfassen</dt><dd>DEMO-012. Am 5. Oktober um 20:35 Uhr Ortszeit meldet ein Mieter, dass der gemeinsam genutzte Besprechungsraum im 5. Stock von Gebäude A zu wenig gekühlt wird.</dd></div>
+          <div><dt>Prüfung durch die Schichtleitung</dt><dd>Die Schichtleitung prüft Ort und Problem, weist den Vorgang dem zuständigen Gebäudetechniker der Frühschicht zu und markiert ihn als in Bearbeitung.</dd></div>
+          <div><dt>Übernehmende Schicht</dt><dd>Am nächsten Morgen bestätigt die übernehmende Schicht um 07:00 Uhr die Zuweisung und trägt für 07:30 Uhr die Prüfung des Raums durch den Techniker ein.</dd></div>
+        </dl>
+        <p><a href="/fire-safety-ai/de/demo-video/">27-Sekunden-Demo mit deutschen Untertiteln ansehen</a></p>
+        <p>Die gezeigte Oberfläche ist auf Koreanisch.</p>
+      </section>
+      <section class="section" aria-labelledby="measure-heading">
+        <h2 id="measure-heading">Eine kleine Stichprobe vor und während des Piloten vergleichen</h2>
+        <p>Legen Sie vorab fest, welche Ergebnisse eine Fortsetzung rechtfertigen würden. Vergleichen Sie zum Beispiel fünf Arbeitstage vor dem Piloten mit fünf Arbeitstagen während des Piloten. Vergleichen Sie dieselben Wochentage, Zeitfenster der Tag- und Nachtschichten und Meldungsarten. Zählen Sie doppelte Meldungen nur einmal. Gleichen Sie dazu die Vorgangsnummer oder Zeitpunkt, Ort und Problem ab.</p>
+        <ul class="measures">
+          <li><strong>Vollständigkeit der Vorgänge</strong> Betrachten Sie alle Vorgänge im festgelegten Umfang, die eine Prüfung vor Ort erforderten. Teilen Sie die Zahl dieser Vorgänge mit dokumentiertem Ort, Problem und Stand der Zuweisung durch die Gesamtzahl der Vorgänge, die vor Ort geprüft werden mussten.</li>
+          <li><strong>Bestätigung der Übergabe</strong> Zählen Sie von den offenen Vorgängen, die übergeben werden mussten, diejenigen mit einer bestätigten ersten Übergabe. Als Bestätigung gilt, dass die Prüfung von Status und nächstem Schritt mit Zeitstempel dokumentiert ist. Teilen Sie diese Zahl durch die Gesamtzahl der offenen Vorgänge, die übergeben werden mussten.</li>
+        </ul>
+        <p>Halten Sie für jede Kennzahl die Anzahl im Zähler und im Nenner fest. Wenn der Nenner 0 ist, notieren Sie 0 von 0 und lassen Sie die Quote leer. Gehen Sie fehlende Einträge und verspätete Zuweisungen mit beiden Schichten durch, bevor Sie über eine Ausweitung entscheiden.</p>
+        <p class="reference">Weitere Hinweise zur Planung des Piloten und zum Aufgabenbereich des Helpdesks. <a href="https://www.gov.uk/government/publications/facilities-management-standards-for-govs-004-property/facilities-management-standard-001-management-and-services#access-to-fm-services" hreflang="en">Facility-Management-Standard der britischen Regierung (Englisch)</a></p>
+      </section>
+      <section class="section" aria-labelledby="pricing-heading">
+        <h2 id="pricing-heading">Angebot und Demo</h2>
+        <p>BigPlanner Partners erstellt pro Projekt ein Angebot für Einrichtung und laufende Betriebsunterstützung. Grundlage sind die Anzahl der Gebäude, die vorhandenen Gebäudehandbücher, die Systemanbindungen und der benötigte Support. Bringen Sie zwei Beispielabläufe zur Online-Demo mit. Fiktive Beispiele genügen.</p>
+        <div class="actions">
+          <a class="button" href="/fire-safety-ai/de/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=de">Online-Demo anfragen</a>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="materials-heading">
+        <h2 id="materials-heading">Arbeitshilfen für den Gebäudebetrieb</h2>
+        <ul class="materials">
+          <li><a href="/fire-safety-ai/de/shift-handover/">Checkliste und Excel-Protokoll für die Schichtübergabe</a></li>
+          <li><a href="/fire-safety-ai/en/faq-manual/" hreflang="en">Leitfaden und Vorlage für Gebäude-FAQ (Englisch)</a></li>
+          <li><a href="/fire-safety-ai/de/workload-calculator/">Aufwand für wiederkehrende Anfragen berechnen</a></li>
+          <li><a href="/fire-safety-ai/de/resources/">Alle deutschsprachigen Arbeitshilfen</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">
+    <span lang="en">BigPlanner Partners</span>
+    <a href="/fire-safety-ai/de/rss.xml" type="application/rss+xml">Arbeitshilfen für den Gebäudebetrieb per RSS</a>
+    <a href="/privacy/" hreflang="ko">Datenschutzhinweise auf Koreanisch</a>
+  </div></footer>
+  <script>
+    const printChecklist = document.getElementById('print-checklist');
+    printChecklist.addEventListener('click', () => window.print());
+    printChecklist.hidden = false;
+  </script>
+</body>
+</html>

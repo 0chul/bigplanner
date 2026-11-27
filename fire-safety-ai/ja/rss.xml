@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="ja" dir="ltr"><p>定型的なテナント問い合わせに現在かかっている月間対応時間と、ビル設備管理窓口への試験導入に向けて検討する範囲を試算します。</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/ja/workload-calculator/">問い合わせ対応工数を試算する</a></p></div>]]></description>
     </item>
     <item>
+      <title>ビル設備管理向け テナント問い合わせ対応AIの試験導入チェックリスト | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>テナント問い合わせ対応AIをビル1棟で試験導入する</h1>
+      <p>直近の問い合わせ記録があり、日勤と夜勤のスタッフが参加できる商業ビルを1棟選びます。設備管理責任者は、案内、担当者の指定、未完了案件の引き継ぎに関わるスタッフと、試験導入の範囲を決めます。</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/#checklist">チェックリストを見る</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>試験導入前に確認する6項目</h2>
+        <div>
+          <article>
+            <h3>対象のビルと問い合わせの種類を選ぶ</h3>
+            <p>直近の受付記録を確認し、検証に必要な件数がある問い合わせを2〜3種類選びます。例として、来訪者用駐車場の利用、冷房の効きに関する問い合わせ、時間外の空調運転依頼が挙げられます。対象となるビル、時間帯、問い合わせの種類、試験導入の責任者を記録します。</p>
+          </article>
+          <article>
+            <h3>確認が必要な回答と判断を決める</h3>
+            <p>定型的な質問について、根拠となる承認済みのマニュアルの箇所と更新担当者を記録します。回答を1件選び、最新の記載内容と照合します。現地確認が必要な依頼では場所と内容を記録します。承認が必要な依頼は、権限のある担当者が確認して判断します。</p>
+          </article>
+          <article>
+            <h3>シフトごとに担当を決める</h3>
+            <p>新規受付を確認する人、対応する担当者を指定する人、試験対象外の案件を受け持つ人を明確にします。交代時に担当者が未指定の案件を1件想定し、誰が引き取るか確認します。</p>
+          </article>
+          <article>
+            <h3>未完了の案件を同じ受付記録で引き継ぐ</h3>
+            <p>受付番号、場所、内容、担当者、対応状況、次の作業、次の確認時刻を記録します。引き継いだシフトのスタッフは、案件を確認した時刻を記録します。</p>
+          </article>
+          <article>
+            <h3>正式な受付記録を残すシステムを決める</h3>
+            <p>正式な記録の保管先を決め、電話、メール、作業指示システムとの連携のうち試験導入で対応する範囲を確認します。同じ案件が2回報告された場合を想定し、スタッフが記録を照合して1件にまとめる手順を試します。</p>
+          </article>
+          <article>
+            <h3>閲覧・編集の権限と保管期間を確認する</h3>
+            <p>テナント情報を閲覧・編集できる人を決めます。連絡先や写真が必要な条件、保管期間、削除を担当する人を確認します。手順の確認には、架空の記録か個人を特定できる情報を伏せた記録を使います。</p>
+          </article>
+        </div>
+        <p>緊急時は、建物所定の緊急連絡先と対応手順に従ってください。</p>
+      </section>
+      <section>
+        <h2>シフト交代時の冷房問い合わせの架空事例</h2>
+        <dl>
+          <div><dt>受付</dt><dd>受付番号はDEMO-012。10月5日20時35分（現地時間）、A棟5階の共用会議室の冷房が弱いとテナントから連絡が入ります。</dd></div>
+          <div><dt>管理者による確認</dt><dd>管理者が場所と内容を確認し、翌朝の設備担当者を指定して、対応状況を「対応中」にします。</dd></div>
+          <div><dt>次のシフト</dt><dd>翌朝7時に引き継いだスタッフが担当者を確認し、設備担当者が7時30分に会議室を確認する予定を記録します。</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/">日本語字幕付きの27秒デモを見る</a></p>
+        <p>デモの画面は韓国語です。</p>
+      </section>
+      <section>
+        <h2>導入前と試験期間中の記録を同じ条件で比較する</h2>
+        <p>試験導入を続ける条件を事前に決めます。例えば、導入前と試験期間中の各5稼働日を比較します。曜日、日勤と夜勤の時間帯、問い合わせの種類をそろえます。重複した報告は、受付番号または日時・場所・内容で照合し、1件として数えます。</p>
+        <ul>
+          <li><strong>受付記録の必要項目記入率</strong> 現地確認が必要だった試験対象案件の全件を分母とし、そのうち場所、内容、担当者の指定状況を記録した件数を分子とします。</li>
+          <li><strong>引き継ぎの確認率</strong> 引き継ぎが必要だった未完了案件の全件を分母とし、そのうち初回の引き継ぎで対応状況と次の作業を確認し、その時刻を記録した件数を分子とします。</li>
+        </ul>
+        <p>指標ごとに分子と分母の件数を記録します。対象案件がない場合は0件中0件と記録し、割合欄は空欄にします。試験範囲を広げるか決める前に、日勤・夜勤のスタッフと記録漏れや担当者の指定が遅れた案件を確認します。</p>
+        <p>試験導入の設計と施設管理窓口で扱う業務の範囲を検討する際の参考資料です。 英国政府の施設管理基準（英語）</p>
+      </section>
+      <section>
+        <h2>お見積もりとオンラインデモ</h2>
+        <p>BigPlanner Partnersでは、対象の建物の棟数、運用マニュアル、既存システムとの連携、必要な運用支援の範囲を確認し、構築費と運用支援費を個別にお見積もりします。オンラインデモでは、確認したい業務の流れを2つご用意ください。架空の事例で構いません。</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=ja">オンラインでデモを申し込む</a>
+        </div>
+      </section>
+      <section>
+        <h2>ビル設備管理の関連資料</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/">シフト引き継ぎチェックリストとExcel台帳</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">建物のFAQ作成ガイドとExcel記入シート（英語）</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/ja/workload-calculator/">定型問い合わせ対応工数の計算ツール</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/ja/resources/">日本語の施設管理資料一覧</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>ビル設備管理の実務資料 | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/ja/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ja/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/">27秒で見る、空調の問い合わせから引き継ぎまで</a></h3>
           <p>架空のビルでの冷房の問い合わせを取り上げ、受付から管理者による担当者の指定、次のシフトへの引き継ぎまでを27秒で紹介します。韓国語のデモ画面に日本語字幕を付けています。</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/">ビル設備管理向け テナント問い合わせ対応AIの試験導入チェックリスト</a></h3>
+          <p>商業ビル1棟で始める試験導入のチェックリストです。対象とする問い合わせ、担当者による確認とシフト間の引き継ぎ、導入前後の記録の比較方法を整理します。</p>
           
         </article></li>
       </ul>

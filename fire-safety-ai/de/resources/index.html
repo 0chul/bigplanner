@@ -120,6 +120,7 @@ footer { color: var(--muted); font-size: .9rem; }
 :lang(ko):is(.library-lead, .library-section) { word-break: keep-all; }
 .library-section + .library-section { border-block-start: 1px solid var(--rule); }
 .library-grid, .library-languages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; margin: 1.05rem 0 0; list-style: none; }
+.library-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .library-card { height: 100%; padding: clamp(.95rem, 2.2vw, 1.45rem); border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
 .library-card h3 { font-size: 1.13rem; }
 .library-card p { margin-block: .48rem 0; color: var(--muted); }
@@ -181,7 +182,7 @@ footer { color: var(--muted); font-size: .9rem; }
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">Vorlagen und Werkzeuge</h2>
       
-      <ul class="library-grid" role="list">
+      <ul class="library-grid library-grid-four" role="list">
         <li><article class="library-card">
           <h3><a href="/fire-safety-ai/de/shift-handover/">Checkliste für die Schichtübergabe im Gebäudebetrieb</a></h3>
           <p>Kostenloses Excel-Protokoll für Schichtübergaben im Gebäudebetrieb. Checkliste und Beispiel zur Übergabe offener Mietermeldungen in Gewerbeimmobilien.</p>
@@ -195,6 +196,11 @@ footer { color: var(--muted); font-size: .9rem; }
         <li><article class="library-card">
           <h3><a href="/fire-safety-ai/de/demo-video/">Demo zur Meldung einer Kühlungsstörung</a></h3>
           <p>In 27 Sekunden sehen Sie, wie die KI in einem simulierten Fall eine Kühlungsstörung erfasst, die Schichtleitung den Vorgang zuweist und die nächste Schicht denselben Vorgang einsehen kann. Koreanische Oberfläche mit deutschen Untertiteln.</p>
+          
+        </article></li>
+        <li><article class="library-card">
+          <h3><a href="/fire-safety-ai/de/adoption-guide/">Pilot-Checkliste für einen KI-Assistenten im Gebäudebetrieb</a></h3>
+          <p>Planen Sie einen Pilotbetrieb in einem Gewerbegebäude. Legen Sie fest, welche Mietermeldungen das Team prüft und übergibt, und vergleichen Sie die Vorgänge vor und während des Piloten.</p>
           
         </article></li>
       </ul>

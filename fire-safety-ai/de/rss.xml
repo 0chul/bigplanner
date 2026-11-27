@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="de" dir="ltr"><p>Schätzen Sie den monatlichen Aufwand für Routineanfragen von Mietern und den Anteil, den Sie für eine Erprobung prüfen möchten.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/de/workload-calculator/">Aufwand für Routineanfragen berechnen</a></p></div>]]></description>
     </item>
     <item>
+      <title>Pilot-Checkliste für einen KI-Assistenten im Gebäudebetrieb | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Einen KI-Assistenten in einem Gebäude erproben</h1>
+      <p>Wählen Sie ein Gewerbegebäude mit aktuellen Meldungen aus, in dem Mitarbeitende aus beiden Schichten mitmachen können. Die Leitung des Gebäudebetriebs stimmt den Pilotumfang mit den Personen ab, die Fragen beantworten, Aufgaben zuweisen und offene Vorgänge übernehmen.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/#checklist">Checkliste öffnen</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Sechs Prüfpunkte vor dem Start</h2>
+        <div>
+          <article>
+            <h3>Gebäude und Meldungsarten auswählen</h3>
+            <p>Sichten Sie aktuelle Vorgänge. Wählen Sie zwei oder drei Meldungsarten mit genügend Testfällen aus, etwa Fragen zu Besucherparkplätzen, unzureichende Kühlung oder eine Verlängerung der HLK-Betriebszeit. Halten Sie Gebäude, Betriebszeiten, Meldungsarten und die Verantwortung für den Piloten fest.</p>
+          </article>
+          <article>
+            <h3>Prüfungen und Freigaben festlegen</h3>
+            <p>Halten Sie für Routinefragen fest, welcher Abschnitt des Gebäudehandbuchs freigegeben ist und wer ihn aktualisiert. Gleichen Sie eine Antwort mit der aktuellen Fassung ab. Erfassen Sie für Prüfungen vor Ort den genauen Ort und das Problem. Bei genehmigungspflichtigen Anfragen prüfen und entscheiden die dazu befugten Mitarbeitenden.</p>
+          </article>
+          <article>
+            <h3>Zuständigkeit für jede Schicht klären</h3>
+            <p>Legen Sie fest, wer neue Meldungen prüft, die weitere Bearbeitung zuweist und Fälle jenseits des Pilotumfangs übernimmt. Spielen Sie beim Schichtwechsel einen noch nicht zugewiesenen Vorgang durch und klären Sie, wer ihn übernimmt.</p>
+          </article>
+          <article>
+            <h3>Offene Fälle im selben Vorgang übergeben</h3>
+            <p>Erfassen Sie Vorgangsnummer, Ort, Problem, Zuständigkeit, Status, nächsten Schritt und Termin für die nächste Prüfung. Die übernehmende Schicht hält fest, wann sie den Vorgang geprüft hat.</p>
+          </article>
+          <article>
+            <h3>Das führende System bestimmen</h3>
+            <p>Legen Sie fest, in welchem System die verbindliche Dokumentation geführt wird. Prüfen Sie, welche Anbindungen für Telefon, E-Mail und Arbeitsaufträge im Piloten möglich sind. Testen Sie anhand einer doppelt gemeldeten Störung, wie das Team die Einträge abgleicht.</p>
+          </article>
+          <article>
+            <h3>Zugriff und Aufbewahrung klären</h3>
+            <p>Legen Sie fest, wer Mieterdaten einsehen oder ändern darf. Klären Sie, wann Kontaktdaten oder Fotos nötig sind, wie lange Sie sie aufbewahren und wer sie löscht. Verwenden Sie für den Probelauf fiktive Vorgänge oder Unterlagen, in denen sensible Angaben unkenntlich gemacht sind.</p>
+          </article>
+        </div>
+        <p>Nutzen Sie bei einem Notfall die vorgesehenen Notfallkontakte und Verfahren des Gebäudes.</p>
+      </section>
+      <section>
+        <h2>Fiktive Kühlungsstörung beim Schichtwechsel</h2>
+        <dl>
+          <div><dt>Meldung erfassen</dt><dd>DEMO-012. Am 5. Oktober um 20:35 Uhr Ortszeit meldet ein Mieter, dass der gemeinsam genutzte Besprechungsraum im 5. Stock von Gebäude A zu wenig gekühlt wird.</dd></div>
+          <div><dt>Prüfung durch die Schichtleitung</dt><dd>Die Schichtleitung prüft Ort und Problem, weist den Vorgang dem zuständigen Gebäudetechniker der Frühschicht zu und markiert ihn als in Bearbeitung.</dd></div>
+          <div><dt>Übernehmende Schicht</dt><dd>Am nächsten Morgen bestätigt die übernehmende Schicht um 07:00 Uhr die Zuweisung und trägt für 07:30 Uhr die Prüfung des Raums durch den Techniker ein.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/de/demo-video/">27-Sekunden-Demo mit deutschen Untertiteln ansehen</a></p>
+        <p>Die gezeigte Oberfläche ist auf Koreanisch.</p>
+      </section>
+      <section>
+        <h2>Eine kleine Stichprobe vor und während des Piloten vergleichen</h2>
+        <p>Legen Sie vorab fest, welche Ergebnisse eine Fortsetzung rechtfertigen würden. Vergleichen Sie zum Beispiel fünf Arbeitstage vor dem Piloten mit fünf Arbeitstagen während des Piloten. Vergleichen Sie dieselben Wochentage, Zeitfenster der Tag- und Nachtschichten und Meldungsarten. Zählen Sie doppelte Meldungen nur einmal. Gleichen Sie dazu die Vorgangsnummer oder Zeitpunkt, Ort und Problem ab.</p>
+        <ul>
+          <li><strong>Vollständigkeit der Vorgänge</strong> Betrachten Sie alle Vorgänge im festgelegten Umfang, die eine Prüfung vor Ort erforderten. Teilen Sie die Zahl dieser Vorgänge mit dokumentiertem Ort, Problem und Stand der Zuweisung durch die Gesamtzahl der Vorgänge, die vor Ort geprüft werden mussten.</li>
+          <li><strong>Bestätigung der Übergabe</strong> Zählen Sie von den offenen Vorgängen, die übergeben werden mussten, diejenigen mit einer bestätigten ersten Übergabe. Als Bestätigung gilt, dass die Prüfung von Status und nächstem Schritt mit Zeitstempel dokumentiert ist. Teilen Sie diese Zahl durch die Gesamtzahl der offenen Vorgänge, die übergeben werden mussten.</li>
+        </ul>
+        <p>Halten Sie für jede Kennzahl die Anzahl im Zähler und im Nenner fest. Wenn der Nenner 0 ist, notieren Sie 0 von 0 und lassen Sie die Quote leer. Gehen Sie fehlende Einträge und verspätete Zuweisungen mit beiden Schichten durch, bevor Sie über eine Ausweitung entscheiden.</p>
+        <p>Weitere Hinweise zur Planung des Piloten und zum Aufgabenbereich des Helpdesks. Facility-Management-Standard der britischen Regierung (Englisch)</p>
+      </section>
+      <section>
+        <h2>Angebot und Demo</h2>
+        <p>BigPlanner Partners erstellt pro Projekt ein Angebot für Einrichtung und laufende Betriebsunterstützung. Grundlage sind die Anzahl der Gebäude, die vorhandenen Gebäudehandbücher, die Systemanbindungen und der benötigte Support. Bringen Sie zwei Beispielabläufe zur Online-Demo mit. Fiktive Beispiele genügen.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/de/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=de">Online-Demo anfragen</a>
+        </div>
+      </section>
+      <section>
+        <h2>Arbeitshilfen für den Gebäudebetrieb</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/">Checkliste und Excel-Protokoll für die Schichtübergabe</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">Leitfaden und Vorlage für Gebäude-FAQ (Englisch)</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/de/workload-calculator/">Aufwand für wiederkehrende Anfragen berechnen</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/de/resources/">Alle deutschsprachigen Arbeitshilfen</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>Arbeitshilfen für den Gebäudebetrieb | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/de/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/de/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/de/demo-video/">Demo zur Meldung einer Kühlungsstörung</a></h3>
           <p>In 27 Sekunden sehen Sie, wie die KI in einem simulierten Fall eine Kühlungsstörung erfasst, die Schichtleitung den Vorgang zuweist und die nächste Schicht denselben Vorgang einsehen kann. Koreanische Oberfläche mit deutschen Untertiteln.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/">Pilot-Checkliste für einen KI-Assistenten im Gebäudebetrieb</a></h3>
+          <p>Planen Sie einen Pilotbetrieb in einem Gewerbegebäude. Legen Sie fest, welche Mietermeldungen das Team prüft und übergibt, und vergleichen Sie die Vorgänge vor und während des Piloten.</p>
           
         </article></li>
       </ul>

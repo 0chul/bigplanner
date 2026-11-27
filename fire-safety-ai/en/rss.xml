@@ -69,7 +69,8 @@
           <div><dt>Supervisor review</dt><dd>The supervisor checks the location and issue, assigns the morning facilities technician and marks the request in progress.</dd></div>
           <div><dt>Incoming shift</dt><dd>At 07:00 the next morning, incoming staff confirm the assignment and record a 07:30 check of the room by the technician.</dd></div>
         </dl>
-        <p><a href="https://bigplanner.co.kr/fire-safety-ai/en/demo-video/">Watch the 27-second demo with English captions</a>. The interface shown is Korean.</p>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/en/demo-video/">Watch the 27-second demo with English captions</a></p>
+        <p>The interface shown is Korean.</p>
       </section>
       <section>
         <h2>Compare a small baseline with the pilot</h2>

@@ -120,6 +120,7 @@ footer { color: var(--muted); font-size: .9rem; }
 :lang(ko):is(.library-lead, .library-section) { word-break: keep-all; }
 .library-section + .library-section { border-block-start: 1px solid var(--rule); }
 .library-grid, .library-languages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; margin: 1.05rem 0 0; list-style: none; }
+.library-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .library-card { height: 100%; padding: clamp(.95rem, 2.2vw, 1.45rem); border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
 .library-card h3 { font-size: 1.13rem; }
 .library-card p { margin-block: .48rem 0; color: var(--muted); }
@@ -181,7 +182,7 @@ footer { color: var(--muted); font-size: .9rem; }
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">Modèles et outils</h2>
       
-      <ul class="library-grid" role="list">
+      <ul class="library-grid library-grid-four" role="list">
         <li><article class="library-card">
           <h3><a href="/fire-safety-ai/fr/shift-handover/">Liste de contrôle pour la relève des équipes techniques</a></h3>
           <p>Téléchargez un registre Excel gratuit pour la relève des équipes techniques d’immeubles commerciaux. Une liste de contrôle et un exemple de signalement de climatisation aident à transmettre les dossiers en cours.</p>
@@ -195,6 +196,11 @@ footer { color: var(--muted); font-size: .9rem; }
         <li><article class="library-card">
           <h3><a href="/fire-safety-ai/fr/demo-video/">Démonstration d’un signalement de climatisation</a></h3>
           <p>Dans ce cas simulé de 27 secondes, l’IA consigne un problème de climatisation, le responsable attribue le dossier et l’équipe de relève consulte le même dossier. Interface en coréen et sous-titres en français.</p>
+          
+        </article></li>
+        <li><article class="library-card">
+          <h3><a href="/fire-safety-ai/fr/adoption-guide/">Liste de contrôle pour tester un assistant IA en gestion d’immeubles</a></h3>
+          <p>Préparez un essai dans un seul immeuble. Choisissez les demandes à traiter, organisez la relève et comparez les dossiers avant et pendant le pilote.</p>
           
         </article></li>
       </ul>
