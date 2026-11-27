@@ -71,6 +71,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/fi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/it/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -122,6 +132,16 @@
   </url>
   <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/fi/shift-handover/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -278,6 +298,32 @@
       <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
       <video:title><![CDATA[AI-demo för fastighetsdrift med felanmälan om kyla och skiftöverlämning]]></video:title>
       <video:description><![CDATA[AI registrerar hyresgästens felanmälan om kyla. En arbetsledare tilldelar ärendet och nästa skift läser det. Fiktivt ärende på 27 sekunder med koreanskt gränssnitt och svensk textning.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[Tekoälyavusteinen palvelupyyntö ja vuoronvaihto]]></video:title>
+      <video:description><![CDATA[Katso 27 sekunnin kuvitteellinen esimerkki jäähdytysongelman ilmoittamisesta, vastuuhenkilön nimeämisestä ja pyynnön siirtämisestä seuraavalle vuorolle. Koreankielinen käyttöliittymä ja suomenkielinen tekstitys.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/it/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[Demo IA per immobili commerciali, dalla segnalazione al cambio turno]]></video:title>
+      <video:description><![CDATA[In 27 secondi, l’IA registra una segnalazione simulata sul raffrescamento, il responsabile la assegna e chi subentra consulta la stessa scheda. Interfaccia in coreano e sottotitoli in italiano.]]></video:description>
       <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
       <video:duration>27</video:duration>
       <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
