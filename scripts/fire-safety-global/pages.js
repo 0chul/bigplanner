@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 
-const translationPaths = new Set(fireSafetyTranslations.map(({ path }) => path));
+const pagePaths = new Set([...fireSafetyTranslations.map(({ path }) => path), facilitiesHandoverPath]);
 const artworkPath = '/images/fire-safety-building.webp';
 const demoBase = `${fireSafetyPath}handoff-checklist/`;
 const demoFile = `${demoBase}handoff-demo.mp4`;
@@ -75,6 +75,7 @@ ${alternates}
       <ul class="steps">
         ${steps}
       </ul>
+      ${code === 'en' ? `<a class="resource-link" href="${facilitiesHandoverPath}">Get the free facilities shift handover template</a>` : ''}
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">
       <div class="wrap section demo-section">
@@ -127,12 +128,14 @@ export function fireSafetyGlobalPages() {
     files.set(`${language.path}index.html`, renderLanding(language, content));
     files.set(`${language.path}demo.vtt`, renderCaptions(content.subtitles));
   }
+  const handover = readFileSync(new URL('./shift-handover.html', import.meta.url), 'utf8');
+  files.set(`${facilitiesHandoverPath}index.html`, handover.replace('/* SHARED LANDING STYLES */', styles));
   return {
     name: 'fire-safety-global-pages',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const { pathname, search } = new URL(req.url ?? '/', siteOrigin);
-        if (translationPaths.has(`${pathname}/`)) {
+        if (pagePaths.has(`${pathname}/`)) {
           res.writeHead(302, { Location: `${pathname}/${search}` });
           return res.end();
         }

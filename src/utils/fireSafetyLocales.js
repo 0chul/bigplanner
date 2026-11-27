@@ -1,9 +1,11 @@
 export const fireSafetyPath = '/fire-safety-ai/';
+export const fireSafetyEnglishPath = `${fireSafetyPath}en/`;
+export const facilitiesHandoverPath = `${fireSafetyEnglishPath}shift-handover/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
 export const fireSafetyLanguages = [
   { code: 'ko', label: '한국어', path: fireSafetyPath, locale: 'ko_KR' },
-  { code: 'en', label: 'English', path: `${fireSafetyPath}en/`, locale: 'en_US' },
+  { code: 'en', label: 'English', path: fireSafetyEnglishPath, locale: 'en_US' },
   { code: 'de', label: 'Deutsch', path: `${fireSafetyPath}de/`, locale: 'de_DE' },
   { code: 'fr', label: 'Français', path: `${fireSafetyPath}fr/`, locale: 'fr_FR' },
   { code: 'ja', label: '日本語', path: `${fireSafetyPath}ja/`, locale: 'ja_JP' },
@@ -14,5 +16,5 @@ export const fireSafetyLanguages = [
 export const fireSafetyTranslations = fireSafetyLanguages.filter(({ code }) => code !== 'ko');
 export const fireSafetyAlternates = [
   ...fireSafetyLanguages,
-  { code: 'x-default', path: fireSafetyTranslations[0].path },
+  { code: 'x-default', path: fireSafetyEnglishPath },
 ];

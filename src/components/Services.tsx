@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { fireSafetyPath } from '../utils/fireSafetyLanding';
+import { fireSafetyEnglishPath } from '../utils/fireSafetyLocales.js';
 import {
   ConsultingCurveGraphic,
   ManagementTimelineGraphic,
@@ -191,7 +192,8 @@ export default function Services() {
                 {language === 'ko' ? '자동 응대 · 이력 기록 · 데모 시연 신청' : 'Auto Guide · History · Demo'}
               </span>
               <Link
-                to={fireSafetyPath}
+                to={language === 'ko' ? fireSafetyPath : fireSafetyEnglishPath}
+                reloadDocument={language === 'en'}
                 className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:text-blue-300 transition-colors whitespace-nowrap"
               >
                 <span>{language === 'ko' ? '방재실 AI 데모 보기' : 'View the building AI demo'}</span>

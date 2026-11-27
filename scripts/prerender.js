@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { fireSafetyAlternates, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishPath, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,12 +12,13 @@ const fireSafetyChecklistPath = '/fire-safety-ai/handoff-checklist/';
 const fireSafetyAdoptionPath = '/fire-safety-ai/adoption-guide/';
 const fireSafetyVideoPath = '/fire-safety-ai/demo-video/';
 const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyVideoPath];
-const fireSafetyStaticPaths = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
+const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
+const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, facilitiesHandoverPath];
 const servicePath = '/service/';
 
 async function verifyFireSafetyPage(page) {
   await page.waitForSelector('#demo-request form button[type="submit"]');
-  await Promise.all(fireSafetyStaticPaths.map((resourcePath) => page.waitForSelector(`a[href="${resourcePath}"]`)));
+  await Promise.all(fireSafetyKoreanLinks.map((resourcePath) => page.waitForSelector(`a[href="${resourcePath}"]`)));
   await page.evaluate((alternates, origin) => {
     const canonical = document.head.querySelectorAll('link[rel="canonical"]');
     const ogUrl = document.head.querySelectorAll('meta[property="og:url"]');
@@ -114,6 +115,14 @@ async function prerender() {
       html.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
       throw new Error(`Missing captions or language alternates for ${languagePath}`);
     }
+  }
+  const workbookName = 'facilities-shift-handover-log.xlsx';
+  const handoverDirectory = path.join(distPath, facilitiesHandoverPath);
+  const englishProduct = fs.readFileSync(path.join(distPath, fireSafetyEnglishPath, 'index.html'), 'utf-8');
+  const handoverGuide = fs.readFileSync(path.join(handoverDirectory, 'index.html'), 'utf-8');
+  if (!fs.existsSync(path.join(handoverDirectory, workbookName)) || !handoverGuide.includes(`href="${workbookName}" download`) ||
+      !englishProduct.includes(`href="${facilitiesHandoverPath}"`)) {
+    throw new Error('Missing English handover workbook or product link.');
   }
   for (const assetName of ['handoff-log.xlsx', 'handoff-demo.mp4', 'handoff-demo-cover.jpg']) {
     if (!fs.existsSync(path.join(distPath, fireSafetyChecklistPath, assetName))) {

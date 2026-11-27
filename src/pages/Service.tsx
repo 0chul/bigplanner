@@ -23,6 +23,7 @@ import SafetyDevicesMotion from '../components/motion/SafetyDevicesMotion';
 import EscrowFlowMotion from '../components/motion/EscrowFlowMotion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { fireSafetyLinkFromService } from '../utils/fireSafetyLanding';
+import { facilitiesHandoverPath } from '../utils/fireSafetyLocales.js';
 
 const tabs = [
   { id: 'consulting', label: 'BIG Consulting' },
@@ -35,7 +36,7 @@ export default function Service() {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = tabs.find(tab => tab.id === searchParams.get('tab'))?.id ?? 'consulting';
   const { language } = useLanguage();
-  const productUrl = fireSafetyLinkFromService(searchParams);
+  const productUrl = fireSafetyLinkFromService(searchParams, language);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
@@ -136,7 +137,7 @@ export default function Service() {
             </p>
           </div>
           <a href={productUrl} className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-gray-900 px-5 text-sm font-bold text-white transition-colors hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-900">
-            {language === 'ko' ? '방재실 AI 데모 보기' : 'View the demo (Korean)'}
+            {language === 'ko' ? '방재실 AI 데모 보기' : 'View the AI tenant service desk'}
           </a>
         </section>
       </div>
@@ -256,8 +257,9 @@ export default function Service() {
                   </p>
                   <a href={productUrl}
                     className="mt-7 inline-flex min-h-12 items-center rounded-full bg-gray-900 px-6 py-3 text-base font-bold text-white transition-colors hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-900">
-                    {language === 'ko' ? '서비스 소개 및 데모 보기' : 'Explore the service and demo (Korean)'}
+                    {language === 'ko' ? '서비스 소개 및 데모 보기' : 'Explore the service and demo'}
                   </a>
+                  {language === 'en' && <div className="mt-3"><a className="font-semibold text-gray-700 underline underline-offset-4" href={facilitiesHandoverPath}>Get the free shift handover template</a></div>}
                 </div>
                 <figure className="relative isolate flex min-h-56 items-end overflow-hidden bg-slate-100 p-5 sm:p-8">
                   <img src="/images/fire-safety-building.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Facilities shift handover checklist and free Excel log | BigPlanner Partners</title>
+  <meta name="description" content="Download a free Excel shift handover log for commercial facilities teams. Use the checklist and a worked cooling example to pass open tenant requests to the next shift.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/en/shift-handover/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:title" content="Facilities shift handover checklist and free Excel log">
+  <meta property="og:description" content="An editable log and a worked example for handing over open service requests in commercial buildings.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/en/shift-handover/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    /* SHARED LANDING STYLES */
+    .handout { max-width: 58rem; }
+    .handout h1 { max-width: 21ch; }
+    .handout .intro { max-width: 60ch; }
+    .secondary { border: 1px solid var(--green); border-radius: .4rem; padding: .67rem 1rem; background: transparent; color: var(--green); cursor: pointer; font: inherit; }
+    .secondary:hover { background: #e9f0ec; }
+    .secondary:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+    .sections { display: grid; gap: 2rem; }
+    .sections h2 { font-size: clamp(1.4rem, 3vw, 2.05rem); margin-block-end: .75rem; }
+    .checks { margin: .5rem 0 0; padding-inline-start: 1.5rem; }
+    .checks li + li { margin-block-start: .55rem; }
+    .example { border-block: 1px solid var(--rule); padding-block: 1.4rem; }
+    .example dl { display: grid; grid-template-columns: minmax(8rem, .42fr) minmax(0, 1fr); margin-block: .9rem 0; }
+    .example dt, .example dd { padding-block: .38rem; margin: 0; border-block-start: 1px solid #e3ebe5; }
+    .example dt { font-weight: 650; padding-inline-end: .55rem; }
+    .note { color: var(--muted); margin-block-start: .75rem; }
+    @media (max-width: 31rem) {
+      .example dl { grid-template-columns: minmax(0, 1fr); }
+      .example dd { border: 0; padding-block-start: 0; }
+    }
+    @media print {
+      .screen-only, .site-header, footer { display: none !important; }
+      .hero { background: #fff; }
+      .handout { width: 100%; }
+      .section { padding-block: .55rem; }
+      .sections { gap: .8rem; }
+      .example { break-inside: avoid; padding-block: .7rem; }
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap handout header-content">
+      <a class="brand" href="/">BigPlanner <span>Partners</span></a>
+      <a href="/fire-safety-ai/en/">AI tenant service desk</a>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="wrap handout section">
+        <h1 id="title">Facilities shift handover checklist</h1>
+        <p class="intro">Pass open tenant requests to the next shift with the exact location, current owner and next check. The Excel workbook includes a blank log and a worked example for a commercial building.</p>
+        <div class="links screen-only">
+          <a class="button" href="facilities-shift-handover-log.xlsx" download>Download the free Excel log</a>
+          <button type="button" class="secondary" id="print-checklist" hidden>Print checklist</button>
+          <a href="mailto:?subject=Facilities%20shift%20handover%20checklist&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fen%2Fshift-handover%2F">Share by email</a>
+          <a href="/fire-safety-ai/handoff-checklist/" lang="ko" hreflang="ko">한국어 양식</a>
+        </div>
+      </div>
+    </section>
+    <div class="wrap handout section sections">
+      <section aria-labelledby="check-title">
+        <h2 id="check-title">Before the outgoing shift leaves</h2>
+        <ol class="checks">
+          <li>Use one ticket ID for the request. Record when it came in, in site-local time, and identify the building, floor and room.</li>
+          <li>Summarise what the tenant reported and record any checks or actions already completed.</li>
+          <li>Identify the person or team responsible. Add the current status, the next action and a due time or check-in time.</li>
+          <li>Review open items with the incoming shift and confirm who will follow up.</li>
+        </ol>
+        <p class="note">For emergencies, follow the building’s established contacts and procedures.</p>
+      </section>
+      <section class="example" aria-labelledby="example-title">
+        <h2 id="example-title">Example handover entry</h2>
+        <p>This example uses a fictional building and request. Times are local to the site.</p>
+        <dl>
+          <dt>Ticket and time</dt><dd>DEMO-012 · 5 October 2026, 20:35</dd>
+          <dt>Location</dt><dd>Building A, fifth floor, shared meeting room</dd>
+          <dt>Issue</dt><dd>A tenant reported weak cooling.</dd>
+          <dt>Owner and status</dt><dd>Morning facilities technician · In progress</dd>
+          <dt>Next check</dt><dd>6 October, 07:30 · Inspect the filter and check airflow.</dd>
+        </dl>
+      </section>
+      <section class="screen-only" aria-labelledby="demo-title">
+        <h2 id="demo-title">See the same request move between shifts</h2>
+        <p>The 27-second walkthrough shows how AI collects the details, a supervisor assigns the request and the next shift reads the same record. The walkthrough has a Korean interface and English captions.</p>
+        <a class="resource-link" href="/fire-safety-ai/en/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global#demo">Watch the demo with English captions</a>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap handout"><span>BigPlanner Partners</span><a href="/privacy/" hreflang="ko">Privacy policy (Korean)</a></div></footer>
+  <script>
+    const printButton = document.querySelector('#print-checklist');
+    printButton.addEventListener('click', () => window.print());
+    printButton.hidden = false;
+  </script>
+</body>
+</html>
