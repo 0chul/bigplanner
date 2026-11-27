@@ -18,6 +18,7 @@ export default defineConfig(({mode}) => {
           // Allow an open site's next reload to receive updated policy pages after activation.
           skipWaiting: true,
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+          navigateFallbackDenylist: [/^\/fire-safety-ai\/handoff-checklist(?:\/|\?|$)/],
           runtimeCaching: [
             {
               // Storage(이미지 등) 요청만 캐싱하도록 정규식 수정 (REST API는 캐싱 제외)

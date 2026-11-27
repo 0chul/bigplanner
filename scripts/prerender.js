@@ -8,14 +8,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
 const fireSafetyPath = '/fire-safety-ai/';
+const fireSafetyChecklistPath = '/fire-safety-ai/handoff-checklist/';
 
 async function verifyFireSafetyPage(page) {
   await page.waitForSelector('#demo-request form button[type="submit"]');
+  await page.waitForSelector('a[href="' + fireSafetyChecklistPath + '"]');
   await page.evaluate(() => {
     const canonical = document.head.querySelectorAll('link[rel="canonical"]');
     const ogUrl = document.head.querySelectorAll('meta[property="og:url"]');
     const description = document.head.querySelectorAll('meta[name="description"]');
-    if (canonical.length !== 1 || ogUrl.length !== 1 || description.length !== 1 ||
+    const shareImages = document.head.querySelectorAll('meta[property="og:image"]');
+    const twitterImage = document.head.querySelector('meta[name="twitter:image"]');
+    if (canonical.length !== 1 || ogUrl.length !== 1 || description.length !== 1 || shareImages.length !== 1 ||
+        shareImages[0].content !== 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg' ||
+        twitterImage?.content !== shareImages[0].content ||
         ogUrl[0].content !== canonical[0].href || !description[0].content.includes('방재실') ||
         !document.title.includes('방재실')) {
       throw new Error('Invalid fire safety landing page metadata.');
@@ -61,7 +67,14 @@ async function prerender() {
     urls.push(url === '' ? '/' : url);
   }
 
-  const targetUrls = process.env.PRERENDER_ALL === 'true' ? urls : urls.slice(0, 25);
+  const checklistFile = path.join(distPath, fireSafetyChecklistPath, 'index.html');
+  const checklistUrl = 'https://bigplanner.co.kr' + fireSafetyChecklistPath;
+  if (!urls.includes(fireSafetyChecklistPath) || !fs.existsSync(checklistFile) ||
+      !fs.readFileSync(checklistFile, 'utf-8').includes('<link rel="canonical" href="' + checklistUrl + '">')) {
+    throw new Error('The static fire safety checklist or its sitemap entry is missing.');
+  }
+  const spaUrls = urls.filter((url) => url !== fireSafetyChecklistPath);
+  const targetUrls = process.env.PRERENDER_ALL === 'true' ? spaUrls : spaUrls.slice(0, 25);
   if (!targetUrls.includes(fireSafetyPath)) throw new Error('Missing fire safety landing page in sitemap.');
   console.log(`Prerendering ${targetUrls.length} of ${urls.length} URLs for fast, reliable build...`);
 
@@ -102,6 +115,7 @@ async function prerender() {
         });
         
         if (url === fireSafetyPath) await verifyFireSafetyPage(page);
+        else if (url === '/') await page.waitForSelector('#services-overview a[href="' + fireSafetyPath + '"]');
         else await new Promise(r => setTimeout(r, 100));
         const html = await page.content();
 
@@ -116,7 +130,7 @@ async function prerender() {
         fs.writeFileSync(filePath, html);
         console.log(`[${index + 1}/${targetUrls.length}] Saved ${routePath}`);
       } catch (error) {
-        if (url === fireSafetyPath) throw error;
+        if (url === fireSafetyPath || url === '/') throw error;
         console.warn(`[${index + 1}/${targetUrls.length}] Skip ${url}: ${error.message}`);
       } finally {
         await page.close().catch(() => {});

@@ -10,6 +10,8 @@ import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
 import './fire-safety-ai.css';
 
+const organicShareImage = 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg';
+
 const navItems = [
   { label: '업무 흐름', href: '#workflow' },
   { label: '도입 효과', href: '#benefits' },
@@ -71,8 +73,19 @@ export default function FireSafetyAI() {
 
   return (
     <div className="fire-ai">
-      <SEO title="방재실 AI 민원 도우미 | 민원 접수·응대 챗봇 구축" description="반복 문의 안내와 민원 정보 정리를 AI로 돕는 방재실 챗봇 구축 서비스. 건물 매뉴얼 기반 안내부터 담당자 전달·기록까지, 우리 현장에 맡길 수 있는 업무를 데모로 확인하세요." url={fireSafetyCanonicalUrl} />
-      <Helmet><html lang="ko" /></Helmet>
+      <SEO
+        title="방재실 AI 민원 도우미 | 민원 접수·응대 챗봇 구축"
+        description="건물 매뉴얼로 주차·시설 이용 문의를 안내하고, 냉난방 등 현장 확인이 필요한 민원은 접수 카드로 정리하는 방재실 AI 챗봇입니다. 업무 흐름을 데모로 확인하세요."
+        url={fireSafetyCanonicalUrl}
+        image={organicShareImage}
+      />
+      <Helmet>
+        <html lang="ko" />
+        <meta property="og:image:alt" content="빅플래너파트너스 방재실 AI 민원 도우미와 냉방 불편 접수 예시" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image:alt" content="빅플래너파트너스 방재실 AI 민원 도우미와 냉방 불편 접수 예시" />
+      </Helmet>
       <a className="fa-skip-link" href="#fa-main">본문으로 바로가기</a>
       <header className="fa-header">
         <div className="fa-container fa-header-inner">
@@ -141,7 +154,9 @@ export default function FireSafetyAI() {
           <div className="fa-container"><div className="fa-section-heading fa-heading-split"><div><p className="fa-eyebrow">도입과 정착을 함께</p><h2 id="fa-process-title">구축부터 현장 정착까지<br />함께합니다.</h2></div><p>우리 건물의 업무를 이해하는 것부터<br />담당자가 직접 활용하는 순간까지.</p></div><ol className="fa-process-list">{process.map((step, index) => <li key={step.title}><span className="fa-process-index">0{index + 1}</span><div><span className="fa-process-tag">{step.tag}</span><h3>{step.title}</h3></div><p>{step.text}</p></li>)}</ol><div className="fa-price-note"><Layers3 size={22} /><div><strong>건물과 업무에 맞춰 구축비·운영지원비를 제안합니다.</strong><p>건물 수, 매뉴얼, 연동과 운영지원 범위를 확인한 뒤 개별 견적으로 안내합니다.</p></div></div></div>
         </section>
 
-        <section className="fa-section fa-faq" aria-labelledby="fa-faq-title"><div className="fa-container fa-faq-grid"><div className="fa-section-heading"><p className="fa-eyebrow">자주 묻는 질문</p><h2 id="fa-faq-title">도입 전<br />궁금한 점</h2><p>우리 현장에 어떻게 적용할지,<br />데모에서 함께 확인하세요.</p></div><div className="fa-faq-list">{faqs.map((faq, index) => <details key={faq.q} open={index === 0 ? true : undefined}><summary><span>{faq.q}</span><ChevronDown size={19} /></summary><p>{faq.a}</p></details>)}</div></div></section>
+        <section className="fa-section fa-faq" aria-labelledby="fa-faq-title"><div className="fa-container fa-faq-grid"><div className="fa-section-heading"><p className="fa-eyebrow">자주 묻는 질문</p><h2 id="fa-faq-title">도입 전<br />궁금한 점</h2><p>우리 현장에 어떻게 적용할지,<br />데모에서 함께 확인하세요.</p>
+              <a className="fa-text-link mt-3" href="/fire-safety-ai/handoff-checklist/">민원 접수·교대 인수인계 체크리스트 <ArrowRight size={16} aria-hidden="true" /></a>
+            </div><div className="fa-faq-list">{faqs.map((faq, index) => <details key={faq.q} open={index === 0 ? true : undefined}><summary><span>{faq.q}</span><ChevronDown size={19} /></summary><p>{faq.a}</p></details>)}</div></div></section>
 
         <section className="fa-section fa-demo-section" id="demo-request" aria-labelledby="fa-demo-title"><div className="fa-container fa-demo-grid"><div className="fa-demo-intro"><p className="fa-eyebrow">우리 건물의 업무로 확인하세요</p><h2 id="fa-demo-title">우리 현장에서<br />줄일 수 있는 업무부터<br /><span>확인하세요.</span></h2><p>실제 화면을 보며 AI에 맡길 업무와<br />현장에 필요한 구축 범위를 함께 확인합니다.</p><ul className="fa-demo-agenda"><li><span>01</span><div><strong>맡길 수 있는 반복 업무</strong><p>우리 건물의 반복 문의 중 AI로 안내할 내용</p></div></li><li><span>02</span><div><strong>접수 항목과 전달 방식</strong><p>AI가 정리할 정보와 관리자가 확인할 업무</p></div></li><li><span>03</span><div><strong>구축·교육·운영지원 범위</strong><p>매뉴얼 정리부터 현장 사용과 갱신 지원까지</p></div></li></ul><div className="fa-demo-footnote"><FileText size={17} /><span>첫 신청에는 매뉴얼이나 실제 민원 자료가 필요하지 않습니다.<br />신청 후 이메일로 온라인 시연 일정을 조율합니다.</span></div></div><div className="fa-form-panel"><FireSafetyDemoRequestForm /></div></div></section>
       </main>

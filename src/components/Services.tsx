@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { fireSafetyPath } from '../utils/fireSafetyLanding';
 import {
   ConsultingCurveGraphic,
   ManagementTimelineGraphic,
@@ -178,8 +179,8 @@ export default function Services() {
               </h3>
               <p className="text-sm sm:text-base text-gray-300 leading-relaxed max-w-xl">
                 {language === 'ko'
-                  ? '준공 이후 건물 관리 단계에서 반복되는 입주민·임차인 문의를 건물 매뉴얼 기반으로 자동 안내하고, 현장 대응이 필요한 민원은 위치와 내용을 구조화하여 방재실에 전달합니다.'
-                  : 'Automates repetitive building inquiries using facility manuals while structuring urgent on-site issues for rapid facility team dispatch.'}
+                  ? '주차 등록 등 자주 받는 문의는 건물 매뉴얼을 바탕으로 안내합니다. 현장 확인이 필요한 민원은 위치와 내용을 접수 카드로 정리해 담당자가 확인할 수 있게 돕습니다.'
+                  : 'Answers common building inquiries using your facility manual and prepares tickets for staff to review when an issue needs an on-site check.'}
               </p>
             </div>
 
@@ -190,10 +191,10 @@ export default function Services() {
                 {language === 'ko' ? '자동 응대 · 이력 기록 · 데모 시연 신청' : 'Auto Guide · History · Demo'}
               </span>
               <Link
-                to="/service?tab=management#tenant-assistant-title"
+                to={fireSafetyPath}
                 className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:text-blue-300 transition-colors whitespace-nowrap"
               >
-                <span>{language === 'ko' ? '솔루션 살펴보기' : 'Explore Solution'}</span>
+                <span>{language === 'ko' ? '방재실 AI 데모 보기' : 'View the building AI demo'}</span>
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
