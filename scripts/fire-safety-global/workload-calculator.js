@@ -1,42 +1,20 @@
 import { readFileSync } from 'node:fs';
 import {
-  fireSafetyEnglishDemoPath,
   fireSafetyEnglishFaqPath,
-  fireSafetyEnglishFeedPath,
-  fireSafetyEnglishPath,
-  fireSafetyEnglishVideoPath,
-  fireSafetyEnglishWorkloadPath,
   fireSafetyKoreanFaqPath,
-  fireSafetyKoreanFeedPath,
-  fireSafetyKoreanVideoPath,
-  fireSafetyKoreanWorkloadPath,
-  fireSafetyPath,
+  fireSafetyLanguages,
+  fireSafetyWorkloadAlternates,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 
-const pages = [
-  {
-    code: 'ko', locale: 'ko_KR', path: fireSafetyKoreanWorkloadPath, product: fireSafetyPath,
-    faq: fireSafetyKoreanFaqPath, video: fireSafetyKoreanVideoPath, feed: fireSafetyKoreanFeedPath,
-    request: fireSafetyPath, campaign: 'fire_safety_launch', fragment: '#demo-request',
-    rssLabel: '시설관리 자료 RSS', privacy: '개인정보처리방침',
-    enableScripts: '값을 바꿔 계산하려면 자바스크립트를 켜 주세요.',
-  },
-  {
-    code: 'en', locale: 'en_US', path: fireSafetyEnglishWorkloadPath, product: fireSafetyEnglishPath,
-    faq: fireSafetyEnglishFaqPath, video: fireSafetyEnglishVideoPath, feed: fireSafetyEnglishFeedPath,
-    request: fireSafetyEnglishDemoPath, campaign: 'fire_safety_global', fragment: '',
-    rssLabel: 'Facilities resources RSS', privacy: 'Privacy policy (Korean)',
-    enableScripts: 'Enable JavaScript to calculate with your own figures.',
-  },
-];
+const faqPaths = { ko: fireSafetyKoreanFaqPath, en: fireSafetyEnglishFaqPath };
 
 const inputs = [
-  { name: 'requests', max: 100000, step: 1, value: 20 },
-  { name: 'minutes', max: 1440, step: 0.1, value: 2 },
-  { name: 'days', max: 31, step: 1, value: 22 },
-  { name: 'eligible', max: 100, step: 1, value: 60 },
+  { name: 'requests', max: 100000, mode: 'numeric', value: 20 },
+  { name: 'minutes', max: 1440, mode: 'decimal', value: 2 },
+  { name: 'days', max: 31, mode: 'numeric', value: 22 },
+  { name: 'eligible', max: 100, mode: 'numeric', value: 60 },
 ];
 
 const examples = [
@@ -45,39 +23,49 @@ const examples = [
   { name: 'requests', value: 264, unit: 'cases' },
 ];
 
+export function readWorkloadCopy(code) {
+  return JSON.parse(readFileSync(new URL(`./workload-calculator/${code}.json`, import.meta.url), 'utf8'));
+}
+
 export function renderWorkloadCalculatorPages(styles) {
-  return new Map(pages.map((page, index) => {
-    const { code, locale, path, product, faq, video, feed, request, campaign, fragment, rssLabel, privacy, enableScripts } = page;
-    const copy = JSON.parse(readFileSync(new URL(`./workload-calculator/${code}.json`, import.meta.url), 'utf8'));
-    const other = pages[1 - index];
-    const canonical = siteOrigin + path;
+  const alternates = fireSafetyWorkloadAlternates.map(({ code, path }) =>
+    `  <link rel="alternate" hreflang="${code}" href="${siteOrigin + path}">`).join('\n');
+  return new Map(fireSafetyLanguages.map((language) => {
+    const { code, label, locale, direction = 'ltr', path: product, workloadPath, videoPath, feedPath, handoverPath } = language;
+    const copy = readWorkloadCopy(code);
+    const canonical = siteOrigin + workloadPath;
     const title = escapeHtml(`${copy.pageTitle} | BigPlanner Partners`);
     const description = escapeHtml(copy.description);
-    const numberFormat = new Intl.NumberFormat(code);
-    const requestUrl = `${request}?utm_source=workload_calculator&utm_medium=referral&utm_campaign=${campaign}&utm_content=${code}${fragment}`;
-    const fields = inputs.map(({ name, max, step, value }) => `
+    const numberLocale = locale.replace('_', '-');
+    const numberFormat = new Intl.NumberFormat(numberLocale);
+    const request = code === 'ko' ? product : `${product}request/`;
+    const campaign = code === 'ko' ? 'fire_safety_launch' : 'fire_safety_global';
+    const fragment = code === 'ko' ? '#demo-request' : '';
+    const requestUrl = `${request}?utm_source=workload_calculator&utm_medium=referral&utm_campaign=${campaign}&utm_content=${code.toLowerCase()}${fragment}`;
+    const navigation = fireSafetyLanguages.map(({ code: itemCode, label: itemLabel, workloadPath: itemPath }) =>
+      `<a href="${itemPath}" hreflang="${itemCode}" lang="${itemCode}" dir="auto"${itemCode === code ? ' aria-current="page"' : ''}>${escapeHtml(itemLabel)}</a>`).join('\n            ');
+    const fields = inputs.map(({ name, max, mode, value }) => `
               <label>
                 <span>${escapeHtml(copy.fields[name])}</span>
-                <input type="number" inputmode="${step === 1 ? 'numeric' : 'decimal'}" name="${name}" min="0" max="${max}" step="${step}" value="${value}" required aria-describedby="${name}-range">
-                <small id="${name}-range">0–${numberFormat.format(max)}</small>
+                <input type="text" inputmode="${mode}" name="${name}" data-workload-max="${max}" value="${numberFormat.format(value)}" autocomplete="off" dir="auto" required aria-describedby="${name}-range">
+                <small id="${name}-range"><bdi>${numberFormat.format(0)}–${numberFormat.format(max)}</bdi></small>
               </label>`).join('');
     const results = examples.map(({ name, value, unit }) => `
               <div>
                 <dt>${escapeHtml(copy.result[name])}</dt>
-                <dd><strong data-workload-result="${name}">${numberFormat.format(value)}</strong> ${escapeHtml(copy.result[unit])}</dd>
+                <dd><strong><bdi data-workload-result="${name}">${numberFormat.format(value)}</bdi></strong> ${escapeHtml(copy.result[unit])}</dd>
               </div>`).join('');
-    return [`${path}index.html`, `<!doctype html>
-<html lang="${code}" dir="ltr">
+    const guidePath = faqPaths[code] ?? handoverPath;
+    return [`${workloadPath}index.html`, `<!doctype html>
+<html lang="${code}" dir="${direction}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${title}</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="${canonical}">
-  <link rel="alternate" hreflang="ko" href="${siteOrigin + fireSafetyKoreanWorkloadPath}">
-  <link rel="alternate" hreflang="en" href="${siteOrigin + fireSafetyEnglishWorkloadPath}">
-  <link rel="alternate" hreflang="x-default" href="${siteOrigin + fireSafetyEnglishWorkloadPath}">
-  <link rel="alternate" type="application/rss+xml" title="${rssLabel}" href="${siteOrigin + feed}">
+${alternates}
+  <link rel="alternate" type="application/rss+xml" title="${escapeHtml(copy.rssLabel)}" href="${siteOrigin + feedPath}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BigPlanner Partners">
   <meta property="og:locale" content="${locale}">
@@ -91,6 +79,10 @@ export function renderWorkloadCalculatorPages(styles) {
   <style>${styles}
     .calculator-wrap { width: min(64rem, 100% - 2rem); margin-inline: auto; }
     html[lang="ko"] .calculator-wrap { word-break: keep-all; }
+    .site-header .calculator-wrap { position: relative; }
+    .calculator-language summary { min-height: 2.75rem; align-content: center; padding-inline: .5rem; color: var(--green); cursor: pointer; }
+    .calculator-language nav { position: absolute; z-index: 1; inset-block-start: calc(100% - .35rem); inset-inline-end: 0; width: min(22rem, 80vw); padding: .6rem; border: 1px solid var(--rule); border-radius: .5rem; background: #fff; box-shadow: 0 8px 24px #17302a15; }
+    .calculator-language nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
     .calculator-head { padding-block: clamp(1.9rem, 4vw, 3.6rem) 1.8rem; }
     .calculator-head h1 { max-width: 25ch; font-size: clamp(2rem, 4.8vw, 3.65rem); }
     .calculator-head .intro { max-width: 65ch; margin-block-end: 0; }
@@ -104,7 +96,7 @@ export function renderWorkloadCalculatorPages(styles) {
     .calculator-fields small { font-size: .81rem; font-weight: 450; color: var(--muted); }
     .calculator-fields input { width: 100%; min-height: 2.8rem; border: 1px solid #839b90; border-radius: .38rem; padding: .45rem .62rem; color: var(--ink); background: #fff; font: inherit; font-variant-numeric: tabular-nums; }
     .calculator-fields input:focus-visible, .calculator-reset:focus-visible { outline: 3px solid #367e71; outline-offset: 2px; }
-    .calculator-fields input:invalid { border-color: #a32727; }
+    .calculator-fields input[aria-invalid="true"] { border-color: #a32727; }
     .calculator-fields input:disabled { background: var(--paper); }
     .calculator-reset { min-height: 2.75rem; border: 1px solid #839b90; border-radius: .38rem; padding: .35rem .75rem; background: #fff; color: var(--green); font: inherit; font-weight: 650; cursor: pointer; }
     .calculator-reset:hover { background: var(--paper); }
@@ -136,7 +128,12 @@ export function renderWorkloadCalculatorPages(styles) {
   <header class="site-header">
     <div class="calculator-wrap header-content">
       <a class="brand" href="${product}" lang="en">BigPlanner <span>Partners</span></a>
-      <nav class="languages" aria-label="${escapeHtml(copy.languageLabel)}"><a href="${other.path}" lang="${other.code}" hreflang="${other.code}">${escapeHtml(copy.otherLanguage)}</a></nav>
+      <details class="calculator-language">
+        <summary aria-label="${escapeHtml(`${copy.languageLabel} · ${label}`)}"><bdi lang="${code}">${escapeHtml(label)}</bdi></summary>
+        <nav class="languages" aria-label="${escapeHtml(copy.languageLabel)}">
+            ${navigation}
+        </nav>
+      </details>
     </div>
   </header>
   <main>
@@ -148,7 +145,7 @@ export function renderWorkloadCalculatorPages(styles) {
     </section>
     <div class="calculator-wrap calculator-body">
       <div class="calculator-grid">
-        <form class="calculator-panel" data-workload-form novalidate>
+        <form class="calculator-panel" data-workload-form data-number-locale="${numberLocale}" novalidate>
           <fieldset data-workload-fields disabled>
             <legend>${escapeHtml(copy.inputsHeading)}</legend>
             <div class="calculator-fields">${fields}
@@ -156,7 +153,7 @@ export function renderWorkloadCalculatorPages(styles) {
             <button class="calculator-reset" type="button" data-workload-reset>${escapeHtml(copy.reset)}</button>
           </fieldset>
           <p class="calculator-invalid" data-workload-invalid role="status" hidden>${escapeHtml(copy.invalid)}</p>
-          <noscript><p>${enableScripts}</p></noscript>
+          <noscript><p>${escapeHtml(copy.enableScripts)}</p></noscript>
         </form>
         <section class="calculator-panel calculator-results" aria-labelledby="results-title">
           <h2 id="results-title">${escapeHtml(copy.resultsHeading)}</h2>
@@ -176,14 +173,14 @@ export function renderWorkloadCalculatorPages(styles) {
         </ol>
         <div class="links">
           <a class="button" href="${escapeHtml(requestUrl)}">${escapeHtml(copy.request)}</a>
-          <a href="${faq}">${escapeHtml(copy.readGuide)}</a>
-          <a href="${video}">${escapeHtml(copy.watch)}</a>
+          <a href="${guidePath}">${escapeHtml(copy.readGuide)}</a>
+          <a href="${videoPath}">${escapeHtml(copy.watch)}</a>
         </div>
         ${renderPageShare(code, copy.pageTitle, canonical, copy.share.email, copy.share)}
       </section>
     </div>
   </main>
-  <footer><div class="calculator-wrap header-content"><span lang="en">BigPlanner Partners</span><a href="${feed}" type="application/rss+xml">${rssLabel}</a><a href="/privacy/" hreflang="ko">${privacy}</a></div></footer>
+  <footer><div class="calculator-wrap header-content"><span lang="en">BigPlanner Partners</span><a href="${feedPath}" type="application/rss+xml">${escapeHtml(copy.rssLabel)}</a><a href="/privacy/" hreflang="ko">${escapeHtml(copy.privacy)}</a></div></footer>
 </body>
 </html>
 `];

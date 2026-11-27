@@ -1,15 +1,15 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyEnglishWorkloadPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanWorkloadPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, readLocalizedProduct } from './video.js';
-import { renderWorkloadCalculatorPages } from './workload-calculator.js';
+import { readWorkloadCopy, renderWorkloadCalculatorPages } from './workload-calculator.js';
 
 const pagePaths = new Set([
   fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
   fireSafetyKoreanResourcesPath, fireSafetyEnglishResourcesPath,
-  fireSafetyKoreanWorkloadPath, fireSafetyEnglishWorkloadPath,
+  ...fireSafetyLanguages.map(({ workloadPath }) => workloadPath),
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
 ]);
 const artworkPath = '/images/fire-safety-building.webp';
@@ -30,7 +30,8 @@ function resourceFeedTags({ code, feedPath }, guideTitle) {
 }
 
 function renderLanding(language, content, handover) {
-  const { code, label, path, handoverPath, requestPath, videoPath, locale, direction = 'ltr' } = language;
+  const { code, label, path, handoverPath, requestPath, videoPath, workloadPath, locale, direction = 'ltr' } = language;
+  const workloadLabel = readWorkloadCopy(code).open;
   const { rssHead, rssLink } = resourceFeedTags(language, handover.h1);
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
@@ -103,7 +104,10 @@ ${alternates}
         ${steps}
       </ul>
       <a class="resource-link" href="${handoverPath}">${escapeHtml(handover.landingLink)}</a>
-      ${code === 'en' ? `<div class="links"><a href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a><a href="${fireSafetyEnglishFaqPath}">Building FAQ worksheet</a><a href="${fireSafetyEnglishWorkloadPath}">Facilities enquiry workload calculator</a></div>` : ''}
+      <div class="links">
+        ${code === 'en' ? `<a href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a><a href="${fireSafetyEnglishFaqPath}">Building FAQ worksheet</a>` : ''}
+        <a href="${workloadPath}">${escapeHtml(workloadLabel)}</a>
+      </div>
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">
       <div class="wrap section demo-section">

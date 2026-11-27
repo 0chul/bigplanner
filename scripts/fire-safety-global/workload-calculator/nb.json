@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Kalkulator for arbeidsmengde i eiendomsdrift",
+  "heading": "Anslå arbeidsmengden for vanlige henvendelser",
+  "description": "Anslå månedlig tidsbruk på vanlige leietakerhenvendelser og andelen av dagens arbeid som kan vurderes i en pilot.",
+  "intro": "Anslå hvor mye tid teamet bruker på vanlige henvendelser hver måned i dag. Velg hvor stor andel av henvendelsene dere vil vurdere i en pilot. Verdiene du legger inn, blir i denne nettleseren.",
+  "languageLabel": "Språk for kalkulatoren",
+  "example": "Med 20 vanlige henvendelser per driftsdag, 2 minutter per henvendelse og 22 driftsdager er arbeidsmengden rundt 14,7 timer i måneden. Hvis dere vurderer 60 %, omfatter det 264 henvendelser og rundt 8,8 timer av dagens arbeid.",
+  "inputsHeading": "Tall for månedlig arbeidsmengde",
+  "resultsHeading": "Anslått månedlig arbeidsmengde",
+  "fields": {
+    "requests": "Vanlige henvendelser per driftsdag",
+    "minutes": "Gjennomsnittlige minutter per vanlig henvendelse",
+    "days": "Driftsdager per måned",
+    "eligible": "Andel vanlige henvendelser som skal vurderes (%)"
+  },
+  "result": {
+    "baseline": "Dagens arbeid med vanlige henvendelser",
+    "review": "Dagens arbeid med henvendelsene som skal vurderes",
+    "requests": "Henvendelser som skal vurderes per måned",
+    "hours": "timer",
+    "cases": "henvendelser",
+    "share": "Andel vanlige henvendelser som skal vurderes"
+  },
+  "invalid": "Skriv inn en verdi innenfor det angitte området i hvert felt.",
+  "reset": "Tilbakestill til eksempelverdiene",
+  "methodHeading": "Velg tall for en pilot",
+  "method": [
+    "Registrer antall henvendelser og behandlingstid i vanlige og travle perioder. Bruk tallene til å velge et representativt dagsvolum og en gjennomsnittlig behandlingstid.",
+    "Hold vanlige henvendelser adskilt fra særskilte forespørsler, akutte hendelser og saker som krever godkjenning. Bruk byggets etablerte kanaler for disse sakene.",
+    "Når dere planlegger en pilot, sett av tid til å kontrollere svar, oppdatere godkjent veiledning og gi løpende støtte."
+  ],
+  "request": "Be om en demo på nett",
+  "readGuide": "Se sjekklisten for vaktskifte",
+  "watch": "Se demoen på 27 sekunder",
+  "share": {
+    "summary": "Del lenken",
+    "address": "Nettadresse",
+    "native": "Del via en app",
+    "copy": "Kopier lenken",
+    "email": "Del på e-post",
+    "copied": "Lenken er kopiert.",
+    "manual": "Merk og kopier nettadressen ovenfor."
+  },
+  "open": "Beregn arbeidsmengden for vanlige henvendelser",
+  "rssLabel": "Ressurser for eiendomsdrift via RSS",
+  "privacy": "Personvernerklæring (koreansk)",
+  "enableScripts": "Slå på JavaScript for å beregne med dine egne tall."
+}

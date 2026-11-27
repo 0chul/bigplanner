@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Kalkylator för arbetsbelastning i fastighetsdriften",
+  "heading": "Beräkna tiden för återkommande hyresgästfrågor",
+  "description": "Uppskatta den nuvarande tiden för återkommande hyresgästfrågor per månad och vilken andel ni vill granska inför en pilot i fastighetsdriften.",
+  "intro": "Uppskatta hur mycket tid teamet lägger på återkommande frågor varje månad. Välj hur stor andel ni vill granska inför en pilot. Värdena ni anger stannar i webbläsaren.",
+  "languageLabel": "Kalkylatorns språk",
+  "example": "Med 20 återkommande frågor per driftdag, 2 minuters hantering per fråga och 22 driftdagar per månad blir arbetsbelastningen ungefär 14,7 timmar i månaden. En granskning av 60 % av frågorna omfattar 264 frågor och ungefär 8,8 timmar av det nuvarande arbetet.",
+  "inputsHeading": "Uppgifter om nuvarande arbete",
+  "resultsHeading": "Uppskattad arbetsbelastning per månad",
+  "fields": {
+    "requests": "Återkommande frågor per driftdag",
+    "minutes": "Genomsnittlig hanteringstid per återkommande fråga (minuter)",
+    "days": "Driftdagar per månad",
+    "eligible": "Andel återkommande frågor att granska (%)"
+  },
+  "result": {
+    "baseline": "Nuvarande tid för återkommande frågor",
+    "review": "Nuvarande tid för frågor som ska granskas",
+    "requests": "Frågor per månad som ska granskas",
+    "hours": "timmar",
+    "cases": "frågor",
+    "share": "Andel återkommande frågor som ska granskas"
+  },
+  "invalid": "Ange ett tal inom det intervall som visas för varje fält.",
+  "reset": "Återställ till exempelvärdena",
+  "methodHeading": "Välj underlag för ett pilotprojekt",
+  "method": [
+    "Registrera antalet frågor och hanteringstiden under både vanliga perioder och perioder med hög belastning. Använd siffrorna för att välja ett representativt antal per dag och en genomsnittlig hanteringstid.",
+    "Håll återkommande frågor åtskilda från ovanliga ärenden, brådskande händelser och ärenden som kräver godkännande. Använd fastighetens ordinarie kanaler för de ärendena.",
+    "När ni planerar ett pilotprojekt, räkna också med tid för personalen att granska svar, hålla godkända instruktioner aktuella och ge löpande stöd."
+  ],
+  "request": "Be om en demo online",
+  "readGuide": "Se checklistan för skiftöverlämning",
+  "watch": "Se demon på 27 sekunder",
+  "share": {
+    "summary": "Dela länken",
+    "address": "Sidans webbadress",
+    "native": "Dela via en app",
+    "copy": "Kopiera länken",
+    "email": "Dela via e-post",
+    "copied": "Länken har kopierats.",
+    "manual": "Markera och kopiera webbadressen ovan."
+  },
+  "open": "Beräkna tiden för återkommande frågor",
+  "rssLabel": "RSS med material för fastighetsdrift",
+  "privacy": "Integritetspolicy (på koreanska)",
+  "enableScripts": "Aktivera JavaScript i webbläsaren för att använda kalkylatorn."
+}

@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Calcolatore del carico di lavoro per la gestione degli immobili",
+  "heading": "Stima il carico delle richieste ricorrenti",
+  "description": "Stima il tempo dedicato ogni mese alle richieste ricorrenti dei locatari e la quota del carico attuale da valutare per un progetto pilota.",
+  "intro": "Stima quanto tempo dedica oggi il tuo team alle richieste ricorrenti ogni mese. Scegli la quota di richieste da valutare per un progetto pilota. I valori inseriti rimangono in questo browser.",
+  "languageLabel": "Lingue del calcolatore",
+  "example": "Con 20 richieste ricorrenti per giorno operativo, 2 minuti a richiesta e 22 giorni operativi, il carico mensile è di circa 14,7 ore. Valutare il 60% delle richieste significa esaminare 264 richieste e circa 8,8 ore del carico attuale.",
+  "inputsHeading": "Dati sul carico mensile",
+  "resultsHeading": "Stima del carico mensile",
+  "fields": {
+    "requests": "Richieste ricorrenti per giorno operativo",
+    "minutes": "Minuti medi per richiesta ricorrente",
+    "days": "Giorni operativi al mese",
+    "eligible": "Quota delle richieste ricorrenti da valutare (%)"
+  },
+  "result": {
+    "baseline": "Carico attuale delle richieste ricorrenti",
+    "review": "Carico attuale delle richieste da valutare",
+    "requests": "Richieste da valutare al mese",
+    "hours": "ore",
+    "cases": "richieste",
+    "share": "Quota delle richieste ricorrenti da valutare"
+  },
+  "invalid": "Inserisci per ogni campo un valore compreso nell’intervallo indicato.",
+  "reset": "Ripristina i valori dell’esempio",
+  "methodHeading": "Scegli i dati per un progetto pilota",
+  "method": [
+    "Registra il numero delle richieste e i tempi di gestione nei periodi ordinari e in quelli più intensi. Usa questi dati per stimare una quantità giornaliera e un tempo medio rappresentativi.",
+    "Separa le richieste ricorrenti dai casi particolari, dalle urgenze e dalle richieste che richiedono un’autorizzazione. Per questi casi usa i canali previsti dall’edificio.",
+    "Nel piano del progetto pilota, considera il tempo necessario per controllare le risposte, aggiornare le istruzioni approvate e fornire assistenza continuativa."
+  ],
+  "request": "Richiedi una demo online",
+  "readGuide": "Consulta la lista di controllo per il passaggio di consegne",
+  "watch": "Guarda la demo di 27 secondi",
+  "share": {
+    "summary": "Condividi il link",
+    "address": "Indirizzo della pagina",
+    "native": "Condividi tramite un’app",
+    "copy": "Copia il link",
+    "email": "Condividi via e-mail",
+    "copied": "Link copiato.",
+    "manual": "Seleziona e copia l’indirizzo della pagina qui sopra."
+  },
+  "open": "Calcola il carico delle richieste ricorrenti",
+  "rssLabel": "Risorse per la gestione degli immobili via RSS",
+  "privacy": "Informativa sulla privacy (in coreano)",
+  "enableScripts": "Attiva JavaScript per calcolare con i tuoi dati."
+}

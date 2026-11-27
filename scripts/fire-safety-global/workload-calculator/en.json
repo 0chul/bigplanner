@@ -4,7 +4,6 @@
   "description": "Estimate monthly time spent on routine tenant enquiries and the share of that current workload to review for a facilities service desk pilot.",
   "intro": "Estimate the time your team currently spends answering routine enquiries each month. Choose the share of enquiries to review for a pilot. Your inputs stay in this browser.",
   "languageLabel": "Calculator languages",
-  "otherLanguage": "한국어",
   "example": "At 20 routine enquiries per operating day, 2 minutes per enquiry and 22 operating days, the monthly workload is about 14.7 hours. Reviewing 60% of those enquiries covers 264 enquiries and about 8.8 hours of that current workload.",
   "inputsHeading": "Monthly workload inputs",
   "resultsHeading": "Monthly workload estimate",
@@ -33,6 +32,10 @@
   "request": "Request an online demo",
   "readGuide": "Get the facilities FAQ template",
   "watch": "Watch the 27-second demo",
+  "open": "Facilities enquiry workload calculator",
+  "rssLabel": "Facilities resources RSS",
+  "privacy": "Privacy policy (Korean)",
+  "enableScripts": "Enable JavaScript to calculate with your own figures.",
   "share": {
     "summary": "Share link",
     "address": "Page address",

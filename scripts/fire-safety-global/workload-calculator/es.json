@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Calculadora de carga de trabajo para la gestión de instalaciones",
+  "heading": "Estima la carga de trabajo de las consultas habituales de los inquilinos",
+  "description": "Estima el tiempo mensual dedicado a responder consultas habituales de los inquilinos y qué parte de esa carga actual puedes revisar para una prueba piloto del servicio de atención de instalaciones.",
+  "intro": "Calcula el tiempo que tu equipo dedica cada mes a responder consultas habituales. Elige qué porcentaje de las consultas quieres revisar para la prueba piloto. Los datos que introduces se procesan únicamente en este navegador.",
+  "languageLabel": "Idiomas de la calculadora",
+  "example": "Con 20 consultas habituales por día de funcionamiento, 2 minutos por consulta y 22 días de funcionamiento al mes, la carga mensual actual es de unas 14,7 horas. Revisar el 60 % de esas consultas abarca 264 consultas y unas 8,8 horas del trabajo actual.",
+  "inputsHeading": "Datos para calcular la carga mensual",
+  "resultsHeading": "Estimación de la carga de trabajo mensual",
+  "fields": {
+    "requests": "Consultas habituales por día de funcionamiento",
+    "minutes": "Tiempo promedio de atención por consulta habitual (minutos)",
+    "days": "Días de funcionamiento al mes",
+    "eligible": "Porcentaje de consultas habituales que se revisará (%)"
+  },
+  "result": {
+    "baseline": "Tiempo actual de atención de consultas habituales",
+    "review": "Tiempo actual dedicado a las consultas que se revisarán",
+    "requests": "Consultas mensuales que se revisarán",
+    "hours": "horas",
+    "cases": "consultas",
+    "share": "Porcentaje de consultas habituales que se revisará"
+  },
+  "invalid": "Introduce en cada campo un número dentro del intervalo indicado.",
+  "reset": "Restablecer los valores del ejemplo",
+  "methodHeading": "Cómo elegir los datos para la prueba piloto",
+  "method": [
+    "Registra el número de consultas y los tiempos de atención en periodos normales y de mayor actividad. Usa los datos observados para elegir un número diario representativo y un tiempo promedio de atención.",
+    "Separa las consultas habituales de las solicitudes excepcionales, los incidentes urgentes y las solicitudes que requieren autorización. Para esos casos, sigue utilizando los canales que ya tiene el edificio.",
+    "Al planificar una prueba piloto, incluye el tiempo del personal para revisar las respuestas, mantener al día las instrucciones aprobadas y prestar asistencia continua."
+  ],
+  "request": "Solicitar una demostración en línea",
+  "readGuide": "Ver la lista de comprobación para el relevo de turno",
+  "watch": "Ver la demostración de 27 segundos",
+  "share": {
+    "summary": "Compartir enlace",
+    "address": "Dirección de la página",
+    "native": "Compartir en una aplicación",
+    "copy": "Copiar enlace",
+    "email": "Compartir por correo electrónico",
+    "copied": "Enlace copiado.",
+    "manual": "Selecciona y copia la dirección de la página que aparece arriba."
+  },
+  "open": "Abrir la calculadora de carga de trabajo",
+  "rssLabel": "Canal RSS",
+  "privacy": "Política de privacidad (en coreano)",
+  "enableScripts": "Activa JavaScript en el navegador para usar la calculadora. Puedes consultar el ejemplo de esta página sin activarlo."
+}

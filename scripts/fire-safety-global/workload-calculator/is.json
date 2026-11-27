@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Reiknivél fyrir vinnuálag í fasteignarekstri",
+  "heading": "Áætlaðu vinnuálag vegna algengra fyrirspurna",
+  "description": "Áætlaðu mánaðarlegan tíma sem fer í algengar fyrirspurnir leigutaka og þann hluta núverandi vinnuálags sem á að skoða í tilraunaverkefni.",
+  "intro": "Áætlaðu hve miklum tíma starfsfólkið ver nú í algengar fyrirspurnir í hverjum mánuði. Veldu hlutfall fyrirspurna sem á að skoða í tilraunaverkefni. Tölurnar sem þú slærð inn haldast í þessum vafra.",
+  "languageLabel": "Tungumál reiknivélarinnar",
+  "example": "Miðað við 20 algengar fyrirspurnir á rekstrardag, 2 mínútur á hverja fyrirspurn og 22 rekstrardaga er vinnuálagið um 14,7 klst. á mánuði. Ef 60% fyrirspurna eru teknar til skoðunar eru það 264 fyrirspurnir og um 8,8 klst. af núverandi vinnuálagi.",
+  "inputsHeading": "Tölur um mánaðarlegt vinnuálag",
+  "resultsHeading": "Áætlað mánaðarlegt vinnuálag",
+  "fields": {
+    "requests": "Algengar fyrirspurnir á rekstrardag",
+    "minutes": "Mínútur að meðaltali á hverja algenga fyrirspurn",
+    "days": "Rekstrardagar á mánuði",
+    "eligible": "Hlutfall algengra fyrirspurna til skoðunar (%)"
+  },
+  "result": {
+    "baseline": "Núverandi vinnuálag vegna algengra fyrirspurna",
+    "review": "Núverandi vinnuálag vegna fyrirspurna til skoðunar",
+    "requests": "Fyrirspurnir til skoðunar á mánuði",
+    "hours": "klst.",
+    "cases": "fyrirspurnir",
+    "share": "Hlutfall algengra fyrirspurna til skoðunar"
+  },
+  "invalid": "Sláðu inn tölu innan uppgefins bils fyrir hvern reit.",
+  "reset": "Endurstilla á tölur úr dæminu",
+  "methodHeading": "Veldu tölur fyrir tilraunaverkefni",
+  "method": [
+    "Skráðu fjölda fyrirspurna og afgreiðslutíma á venjulegum og annasömum tímabilum. Notaðu mælingarnar til að áætla dæmigerðan daglegan fjölda og meðalafgreiðslutíma.",
+    "Haltu algengum fyrirspurnum aðskildum frá óvenjulegum beiðnum, brýnum atvikum og málum sem þarf að samþykkja. Notaðu viðeigandi samskiptaleiðir hússins fyrir þau mál.",
+    "Taktu með í áætlun tilraunaverkefnis tíma starfsfólks til að yfirfara svör, uppfæra samþykktar leiðbeiningar og veita áframhaldandi stuðning."
+  ],
+  "request": "Óska eftir kynningu á netinu",
+  "readGuide": "Sjá gátlista fyrir vaktaskipti",
+  "watch": "Horfa á 27 sekúndna kynningarmyndband",
+  "share": {
+    "summary": "Deila hlekk",
+    "address": "Veffang síðunnar",
+    "native": "Deila í forriti",
+    "copy": "Afrita hlekk",
+    "email": "Deila með tölvupósti",
+    "copied": "Hlekkur afritaður.",
+    "manual": "Veldu og afritaðu veffang síðunnar hér fyrir ofan."
+  },
+  "open": "Reikna vinnuálag vegna algengra fyrirspurna",
+  "rssLabel": "Efni um fasteignarekstur í RSS",
+  "privacy": "Persónuverndarstefna (á kóresku)",
+  "enableScripts": "Virkjaðu JavaScript til að reikna með eigin tölum."
+}

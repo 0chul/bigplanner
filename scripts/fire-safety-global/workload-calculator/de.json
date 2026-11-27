@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Aufwandsrechner für Anfragen im Gebäudebetrieb",
+  "heading": "Aufwand für Routineanfragen im Gebäudebetrieb schätzen",
+  "description": "Schätzen Sie den monatlichen Aufwand für Routineanfragen von Mietern und den Anteil, den Sie für eine Erprobung prüfen möchten.",
+  "intro": "Schätzen Sie, wie viel Zeit Ihr Team derzeit jeden Monat für Routineanfragen aufwendet. Wählen Sie den Anteil der Anfragen, den Sie für eine Erprobung prüfen möchten. Ihre Eingaben bleiben in diesem Browser.",
+  "languageLabel": "Sprachen des Rechners",
+  "example": "Bei 20 Routineanfragen pro Betriebstag, 2 Minuten pro Anfrage und 22 Betriebstagen beträgt der monatliche Aufwand rund 14,7 Stunden. Wenn Sie 60 % prüfen, umfasst die Auswahl 264 Anfragen und rund 8,8 Stunden des heutigen Aufwands.",
+  "inputsHeading": "Angaben zum monatlichen Aufwand",
+  "resultsHeading": "Geschätzter monatlicher Aufwand",
+  "fields": {
+    "requests": "Routineanfragen pro Betriebstag",
+    "minutes": "Durchschnittliche Minuten pro Routineanfrage",
+    "days": "Betriebstage pro Monat",
+    "eligible": "Anteil der zu prüfenden Routineanfragen (%)"
+  },
+  "result": {
+    "baseline": "Aktueller Aufwand für Routineanfragen",
+    "review": "Aktueller Aufwand für die ausgewählten Anfragen",
+    "requests": "Zu prüfende Anfragen pro Monat",
+    "hours": "Stunden",
+    "cases": "Anfragen",
+    "share": "Anteil der zu prüfenden Routineanfragen"
+  },
+  "invalid": "Geben Sie für jedes Feld einen Wert im angegebenen Bereich ein.",
+  "reset": "Auf Beispielwerte zurücksetzen",
+  "methodHeading": "Werte für die Erprobung wählen",
+  "method": [
+    "Erfassen Sie Anzahl und Bearbeitungszeit der Anfragen in typischen und stark ausgelasteten Zeiten. Leiten Sie daraus einen repräsentativen Tageswert und eine durchschnittliche Bearbeitungszeit ab.",
+    "Erfassen Sie Routineanfragen getrennt von Sonderfällen, dringenden Vorfällen und Anfragen, die eine Genehmigung erfordern. Nutzen Sie für diese Fälle die vorgesehenen Meldewege Ihres Gebäudes.",
+    "Planen Sie auch Zeit ein, um Antworten zu kontrollieren, genehmigte Hinweise zu aktualisieren und den laufenden Betrieb zu unterstützen."
+  ],
+  "request": "Online-Demo anfragen",
+  "readGuide": "Checkliste für die Schichtübergabe ansehen",
+  "watch": "27-Sekunden-Demo ansehen",
+  "share": {
+    "summary": "Link teilen",
+    "address": "Adresse der Seite",
+    "native": "Über eine App teilen",
+    "copy": "Link kopieren",
+    "email": "Per E-Mail teilen",
+    "copied": "Link kopiert.",
+    "manual": "Markieren und kopieren Sie die Seitenadresse oben."
+  },
+  "open": "Aufwand für Routineanfragen berechnen",
+  "rssLabel": "Informationen zum Gebäudebetrieb per RSS",
+  "privacy": "Datenschutzhinweise (auf Koreanisch)",
+  "enableScripts": "Aktivieren Sie JavaScript, um mit Ihren eigenen Werten zu rechnen."
+}

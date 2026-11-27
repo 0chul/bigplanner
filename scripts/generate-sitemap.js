@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import { fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishResourcesPath, fireSafetyEnglishWorkloadPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishResourcesPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
 import { demoVideo, readLocalizedProduct } from './fire-safety-global/video.js';
 
 const supabaseUrl = 'https://injrbniytgtubemniaps.supabase.co';
@@ -46,8 +46,7 @@ async function generateSitemap() {
       { path: fireSafetyEnglishFaqPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyKoreanResourcesPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyEnglishResourcesPath, priority: 0.8, changefreq: 'monthly' },
-      { path: fireSafetyKoreanWorkloadPath, priority: 0.8, changefreq: 'monthly' },
-      { path: fireSafetyEnglishWorkloadPath, priority: 0.8, changefreq: 'monthly' },
+      ...fireSafetyLanguages.map(({ workloadPath }) => ({ path: workloadPath, priority: 0.8, changefreq: 'monthly' })),
       {
         path: fireSafetyKoreanVideoPath,
         priority: 0.8,

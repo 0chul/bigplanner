@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Calculateur de charge de travail pour la gestion des immeubles",
+  "heading": "Estimer la charge de travail des demandes courantes",
+  "description": "Estimez le temps consacré aux demandes courantes des locataires et la part de cette charge à examiner pour un projet pilote.",
+  "intro": "Estimez le temps que votre équipe consacre chaque mois aux demandes courantes. Choisissez la part des demandes à examiner pour un projet pilote. Les données saisies restent dans ce navigateur.",
+  "languageLabel": "Langues du calculateur",
+  "example": "À raison de 20 demandes courantes par jour d’activité, 2 minutes par demande et 22 jours d’activité, la charge mensuelle est d’environ 14,7 heures. En examinant 60 % des demandes, vous couvrez 264 demandes et environ 8,8 heures de la charge actuelle.",
+  "inputsHeading": "Données sur la charge mensuelle",
+  "resultsHeading": "Estimation de la charge mensuelle",
+  "fields": {
+    "requests": "Demandes courantes par jour d’activité",
+    "minutes": "Durée moyenne par demande courante (minutes)",
+    "days": "Jours d’activité par mois",
+    "eligible": "Part des demandes courantes à examiner (%)"
+  },
+  "result": {
+    "baseline": "Charge actuelle des demandes courantes",
+    "review": "Charge actuelle des demandes à examiner",
+    "requests": "Demandes à examiner par mois",
+    "hours": "heures",
+    "cases": "demandes",
+    "share": "Part des demandes courantes à examiner"
+  },
+  "invalid": "Saisissez une valeur comprise dans les limites indiquées pour chaque champ.",
+  "reset": "Rétablir les valeurs de l’exemple",
+  "methodHeading": "Choisir les données pour un projet pilote",
+  "method": [
+    "Relevez le nombre de demandes et leur temps de traitement lors des périodes habituelles et chargées. Servez-vous de ces observations pour choisir un volume quotidien et une durée moyenne représentatifs.",
+    "Distinguez les demandes courantes des situations inhabituelles, des urgences et des demandes qui exigent une autorisation. Pour ces cas, utilisez les voies de contact prévues par l’immeuble.",
+    "Prévoyez le temps nécessaire pour vérifier les réponses, mettre à jour les consignes approuvées et assurer le soutien courant."
+  ],
+  "request": "Demander une démonstration en ligne",
+  "readGuide": "Consulter la liste de contrôle pour la relève",
+  "watch": "Voir la démonstration de 27 secondes",
+  "share": {
+    "summary": "Partager le lien",
+    "address": "Adresse de la page",
+    "native": "Partager via une application",
+    "copy": "Copier le lien",
+    "email": "Partager par courriel",
+    "copied": "Lien copié.",
+    "manual": "Sélectionnez et copiez l’adresse de la page ci-dessus."
+  },
+  "open": "Calculer la charge des demandes courantes",
+  "rssLabel": "Ressources pour la gestion des immeubles par RSS",
+  "privacy": "Avis de confidentialité (en coréen)",
+  "enableScripts": "Activez JavaScript pour utiliser vos propres chiffres."
+}

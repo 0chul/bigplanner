@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Werklastcalculator voor facilitair beheer",
+  "heading": "Bereken de tijd voor terugkerende huurdersvragen",
+  "description": "Schat de huidige maandelijkse tijd voor terugkerende huurdersvragen en het deel dat u wilt beoordelen voor een proeftraject met een facilitaire servicedesk.",
+  "intro": "Schat hoeveel tijd uw team elke maand aan terugkerende vragen besteedt. Kies welk deel u wilt beoordelen voor een proeftraject. Uw invoer blijft in deze browser.",
+  "languageLabel": "Talen van de calculator",
+  "example": "Bij 20 terugkerende vragen per operationele dag, 2 minuten per vraag en 22 operationele dagen per maand is de huidige werklast ongeveer 14,7 uur per maand. Als u 60% beoordeelt, gaat het om 264 vragen en ongeveer 8,8 uur van die huidige werklast.",
+  "inputsHeading": "Invoer voor de maandelijkse werklast",
+  "resultsHeading": "Geschatte maandelijkse werklast",
+  "fields": {
+    "requests": "Terugkerende vragen per operationele dag",
+    "minutes": "Gemiddelde behandeltijd per terugkerende vraag (minuten)",
+    "days": "Operationele dagen per maand",
+    "eligible": "Aandeel terugkerende vragen om te beoordelen (%)"
+  },
+  "result": {
+    "baseline": "Huidige werklast voor terugkerende vragen",
+    "review": "Huidige werklast voor de te beoordelen vragen",
+    "requests": "Te beoordelen vragen per maand",
+    "hours": "uur",
+    "cases": "vragen",
+    "share": "Aandeel terugkerende vragen om te beoordelen"
+  },
+  "invalid": "Vul voor elk veld een getal in binnen het aangegeven bereik.",
+  "reset": "Voorbeeldwaarden herstellen",
+  "methodHeading": "Kies invoerwaarden voor een proeftraject",
+  "method": [
+    "Meet op gewone en drukke dagen hoeveel vragen binnenkomen en hoe lang het kost om ze te behandelen. Bepaal hiermee een representatief aantal per dag en een gemiddelde behandeltijd.",
+    "Houd terugkerende vragen apart van uitzonderingen, spoedgevallen en aanvragen die goedkeuring vereisen. Gebruik voor die gevallen de bestaande kanalen van het gebouw.",
+    "Neem bij het plannen van een proeftraject ook de tijd mee die medewerkers besteden aan het controleren van antwoorden, het bijwerken van goedgekeurde instructies en doorlopende ondersteuning."
+  ],
+  "request": "Vraag een online demo aan",
+  "readGuide": "Bekijk de checklist voor dienstoverdracht",
+  "watch": "Bekijk de demo van 27 seconden",
+  "share": {
+    "summary": "Link delen",
+    "address": "Pagina-adres",
+    "native": "Delen via een app",
+    "copy": "Link kopiëren",
+    "email": "Deel per e-mail",
+    "copied": "Link gekopieerd.",
+    "manual": "Selecteer en kopieer het pagina-adres hierboven."
+  },
+  "open": "Bereken de werklast voor huurdersvragen",
+  "rssLabel": "RSS voor hulpmiddelen voor facilitair beheer",
+  "privacy": "Privacybeleid (Koreaans)",
+  "enableScripts": "Schakel JavaScript in uw browser in om de calculator te gebruiken."
+}

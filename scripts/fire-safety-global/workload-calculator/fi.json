@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Kiinteistön ylläpidon työmäärälaskuri",
+  "heading": "Arvioi toistuviin vuokralaiskysymyksiin kuluva työaika",
+  "description": "Arvioi vuokralaisten toistuviin kysymyksiin vastaamiseen kuluva kuukausittainen työaika ja se, mikä osa nykyisestä työmäärästä otetaan tarkasteluun kiinteistön palvelukanavan pilotissa.",
+  "intro": "Arvioi, kuinka paljon aikaa tiimisi käyttää nykyisin kuukaudessa toistuviin kysymyksiin vastaamiseen. Valitse kysymysten osuus, jota haluat tarkastella pilottia varten. Syöttämäsi tiedot pysyvät tässä selaimessa.",
+  "languageLabel": "Laskurin kielet",
+  "example": "Kun toimintapäivänä tulee 20 toistuvaa kysymystä, käsittelyyn kuluu 2 minuuttia kysymystä kohden ja kuukaudessa on 22 toimintapäivää, työmäärä on nykyisin noin 14,7 tuntia kuukaudessa. Kun tarkasteluun valitaan 60 %, tarkasteltavia kysymyksiä on 264. Niiden käsittelyyn kuluu nykyisin noin 8,8 tuntia.",
+  "inputsHeading": "Kuukausittaisen työmäärän lähtötiedot",
+  "resultsHeading": "Arvio kuukausittaisesta työmäärästä",
+  "fields": {
+    "requests": "Toistuvia kysymyksiä toimintapäivässä",
+    "minutes": "Keskimääräinen käsittelyaika kysymystä kohden (min)",
+    "days": "Toimintapäiviä kuukaudessa",
+    "eligible": "Tarkasteltavien toistuvien kysymysten osuus (%)"
+  },
+  "result": {
+    "baseline": "Nykyinen työaika toistuvien kysymysten käsittelyyn",
+    "review": "Tarkasteltavien kysymysten nykyinen käsittelyaika",
+    "requests": "Tarkasteltavia kysymyksiä kuukaudessa",
+    "hours": "h",
+    "cases": "kpl",
+    "share": "Tarkasteltavien toistuvien kysymysten osuus"
+  },
+  "invalid": "Syötä kuhunkin kenttään ilmoitetun vaihteluvälin mukainen luku.",
+  "reset": "Palauta esimerkkiluvut",
+  "methodHeading": "Lähtötietojen valinta pilotin arviointiin",
+  "method": [
+    "Kirjaa kysymysten määrät ja käsittelyajat sekä tavallisina että kiireisinä aikoina. Valitse havaintojen pohjalta edustava päivittäinen kysymysmäärä ja keskimääräinen käsittelyaika.",
+    "Erota toistuvat kysymykset poikkeavista palvelupyynnöistä, kiireellisistä tilanteista ja hyväksyntää vaativista pyynnöistä. Käytä näissä tapauksissa kiinteistön nykyisiä kanavia.",
+    "Huomioi pilotin suunnittelussa henkilöstön aika vastausten tarkistamiseen, hyväksyttyjen ohjeiden ylläpitoon ja jatkuvaan tukeen."
+  ],
+  "request": "Pyydä verkkoesittely",
+  "readGuide": "Katso vuoronvaihdon tarkistuslista",
+  "watch": "Katso 27 sekunnin esittely",
+  "share": {
+    "summary": "Jaa linkki",
+    "address": "Sivun osoite",
+    "native": "Jaa sovellukseen",
+    "copy": "Kopioi linkki",
+    "email": "Jaa sähköpostitse",
+    "copied": "Linkki kopioitu.",
+    "manual": "Valitse yllä oleva sivun osoite ja kopioi se."
+  },
+  "open": "Avaa työmäärälaskuri",
+  "rssLabel": "RSS-syöte",
+  "privacy": "Tietosuojaseloste (koreaksi)",
+  "enableScripts": "Ota JavaScript käyttöön selaimessasi, jotta voit käyttää laskuria. Voit lukea sivun esimerkkilaskelman myös ilman JavaScriptiä."
+}

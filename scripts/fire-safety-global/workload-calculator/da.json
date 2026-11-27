@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Beregner for tidsforbrug på lejerhenvendelser",
+  "heading": "Beregn tidsforbruget på tilbagevendende lejerhenvendelser",
+  "description": "Beregn det nuværende månedlige tidsforbrug på tilbagevendende lejerhenvendelser og den andel, I vil vurdere til et pilotprojekt i bygningsdriften.",
+  "intro": "Beregn, hvor meget tid jeres team bruger på tilbagevendende henvendelser hver måned. Vælg den andel, I vil vurdere til et pilotprojekt. De tal, I indtaster, bliver i denne browser.",
+  "languageLabel": "Beregnerens sprog",
+  "example": "Med 20 tilbagevendende henvendelser pr. driftsdag, 2 minutter pr. henvendelse og 22 driftsdage om måneden er tidsforbruget ca. 14,7 timer. En andel på 60 % svarer til 264 henvendelser og ca. 8,8 timer af det nuværende tidsforbrug.",
+  "inputsHeading": "Tal for den nuværende drift",
+  "resultsHeading": "Anslået månedligt tidsforbrug",
+  "fields": {
+    "requests": "Tilbagevendende henvendelser pr. driftsdag",
+    "minutes": "Gennemsnitlig behandlingstid pr. henvendelse (minutter)",
+    "days": "Driftsdage pr. måned",
+    "eligible": "Andel tilbagevendende henvendelser til vurdering (%)"
+  },
+  "result": {
+    "baseline": "Nuværende tidsforbrug på tilbagevendende henvendelser",
+    "review": "Nuværende tidsforbrug for henvendelser til vurdering",
+    "requests": "Månedlige henvendelser til vurdering",
+    "hours": "timer",
+    "cases": "henvendelser",
+    "share": "Andel tilbagevendende henvendelser til vurdering"
+  },
+  "invalid": "Indtast et tal inden for det viste interval for hvert felt.",
+  "reset": "Nulstil til eksemplet",
+  "methodHeading": "Vælg tal til vurdering af et pilotprojekt",
+  "method": [
+    "Registrér antal henvendelser og behandlingstid på både typiske og travle dage. Brug tallene til at vælge et repræsentativt dagsantal og en gennemsnitlig behandlingstid.",
+    "Hold tilbagevendende henvendelser adskilt fra særlige sager, akutte hændelser og sager, der kræver godkendelse. Brug bygningens eksisterende kanaler til disse sager.",
+    "Indregn medarbejdernes tid til at kontrollere svar, holde godkendte vejledninger ajour og yde løbende støtte, når I planlægger et pilotprojekt."
+  ],
+  "request": "Bed om en onlinedemo",
+  "readGuide": "Se tjeklisten til vagtskifte",
+  "watch": "Se demoen på 27 sekunder",
+  "share": {
+    "summary": "Del linket",
+    "address": "Sidens adresse",
+    "native": "Del via en app",
+    "copy": "Kopiér linket",
+    "email": "Del pr. mail",
+    "copied": "Linket er kopieret.",
+    "manual": "Markér og kopiér sidens adresse ovenfor."
+  },
+  "open": "Beregn tidsforbruget på lejerhenvendelser",
+  "rssLabel": "RSS med materialer til bygningsdrift",
+  "privacy": "Privatlivspolitik (på koreansk)",
+  "enableScripts": "Aktivér JavaScript i browseren for at bruge beregneren."
+}

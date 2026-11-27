@@ -17,7 +17,9 @@ import {
   fireSafetyPath,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
+import { escapeHtml } from './sharing.js';
 import { readLocalizedProduct } from './video.js';
+import { readWorkloadCopy } from './workload-calculator.js';
 
 const feeds = [
   {
@@ -173,6 +175,7 @@ ${entries}
 
 export async function writeResourceFeeds(browser, distPath) {
   const languages = fireSafetyLanguages.filter(({ code }) => code !== 'ko' && code !== 'en');
+  const workloadLanguages = new Map(fireSafetyLanguages.map(language => [language.code, language]));
   const localized = await Promise.all(languages.map(localizedFeed));
   const page = await browser.newPage();
   try {
@@ -186,12 +189,21 @@ export async function writeResourceFeeds(browser, distPath) {
         }, siteOrigin);
       }));
 
-      const xml = renderFeed(feed, articles);
+      const { workloadPath, direction = 'ltr' } = workloadLanguages.get(feed.language);
+      const copy = readWorkloadCopy(feed.language);
+      const url = siteOrigin + workloadPath;
+      const calculator = {
+        title: copy.pageTitle,
+        url,
+        body: `<div lang="${feed.language}" dir="${direction}"><p>${escapeHtml(copy.description)}</p><p><a href="${url}">${escapeHtml(copy.open)}</a></p></div>`,
+      };
+      const items = [calculator, ...articles];
+      const xml = renderFeed(feed, items);
       const valid = await page.evaluate((content, count) => {
         const document = new DOMParser().parseFromString(content, 'application/xml');
         return document.documentElement.localName === 'rss' && !document.querySelector('parsererror') &&
           document.querySelectorAll('rss > channel > item').length === count;
-      }, xml, feed.resources.length);
+      }, xml, items.length);
       if (!valid) throw new Error(`Invalid resource feed XML: ${feed.path}`);
       await writeFile(path.join(distPath, feed.path), xml, 'utf8');
     }
