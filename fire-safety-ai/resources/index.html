@@ -110,6 +110,11 @@ footer { color: var(--muted); font-size: .9rem; }
 .library-card h3 { font-size: 1.13rem; }
 .library-card p { margin-block: .48rem 0; color: var(--muted); }
 .library-card a[download] { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block-start: .15rem; font-size: .94rem; }
+.library-pilot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .9rem 1.5rem; padding: clamp(1rem, 3vw, 1.65rem); border: 1px solid var(--rule); border-radius: .6rem; background: var(--paper); }
+.library-pilot > div { flex: 1 1 24rem; min-width: 0; }
+.library-pilot h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
+.library-pilot p { max-width: 58ch; margin-block-start: .4rem; color: var(--muted); }
+.library-pilot .button { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 650; }
 .library-languages { gap: 0 1.3rem; }
 .library-language { padding-block: .75rem .5rem; border-block-start: 1px solid var(--rule); }
 .library-language h3 { font-size: 1.08rem; }
@@ -153,6 +158,15 @@ footer { color: var(--muted); font-size: .9rem; }
   </details>
         </div>
         <img class="library-lead-image" src="/images/fire-safety-building.webp" width="1672" height="941" alt="">
+      </div>
+    </section>
+    <section id="pilot-kit" class="wrap library-section" aria-labelledby="pilot-kit-title">
+      <div class="library-pilot">
+        <div>
+          <h2 id="pilot-kit-title">시설관리 AI 도입 검토 자료 묶음</h2>
+          <p>시작 안내, 교대 인계대장, FAQ 작성표, 냉난방 연장 운전 신청서, 한 장 소개서를 한 파일로 받으세요.</p>
+        </div>
+        <a class="button" href="/fire-safety-ai/facilities-pilot-kit-ko.zip" download>한국어 자료 받기 (ZIP)</a>
       </div>
     </section>
     <section class="wrap library-section" aria-labelledby="library-files">
