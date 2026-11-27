@@ -60,5 +60,10 @@
   "privacy": "Datenschutzhinweise auf Koreanisch",
   "navLabel": "Sprache auswählen",
   "videoFallback": "Videodatei der Demo öffnen",
+  "watch": {
+    "title": "KI-Chatbot für Kühlungsstörungen und Schichtübergaben",
+    "description": "In 27 Sekunden sehen Sie, wie die KI in einem simulierten Fall eine Kühlungsstörung erfasst, die Schichtleitung den Vorgang zuweist und die nächste Schicht denselben Vorgang einsehen kann. Koreanische Oberfläche mit deutschen Untertiteln.",
+    "timelineTitle": "Von der Meldung bis zur Schichtübergabe"
+  },
   "subject": "[DE] Demo zum KI-Assistenten für Gebäudebetrieb"
 }

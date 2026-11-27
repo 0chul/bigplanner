@@ -1,6 +1,7 @@
 export const fireSafetyPath = '/fire-safety-ai/';
 export const fireSafetyEnglishPath = `${fireSafetyPath}en/`;
 export const fireSafetyEnglishDemoPath = `${fireSafetyEnglishPath}request/`;
+export const fireSafetyKoreanVideoPath = `${fireSafetyPath}demo-video/`;
 export const fireSafetyEnglishVideoPath = `${fireSafetyEnglishPath}demo-video/`;
 export const facilitiesHandoverPath = `${fireSafetyEnglishPath}shift-handover/`;
 export const fireSafetyChecklistPath = `${fireSafetyPath}handoff-checklist/`;
@@ -21,6 +22,7 @@ export const fireSafetyLanguages = [
 ].map((language) => ({
   ...language,
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,
+  videoPath: `${language.path}demo-video/`,
 }));
 
 export const fireSafetyTranslations = fireSafetyLanguages
@@ -34,4 +36,8 @@ export const fireSafetyAlternates = [
 export const fireSafetyHandoverAlternates = [
   ...fireSafetyLanguages.map(({ code, handoverPath }) => ({ code, path: handoverPath })),
   { code: 'x-default', path: facilitiesHandoverPath },
+];
+export const fireSafetyVideoAlternates = [
+  ...fireSafetyLanguages.map(({ code, videoPath }) => ({ code, path: videoPath })),
+  { code: 'x-default', path: fireSafetyEnglishVideoPath },
 ];

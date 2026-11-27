@@ -1,15 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft } from 'lucide-react';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
-import { fireSafetyEnglishDemoPath, fireSafetyEnglishVideoPath, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyEnglishDemoPath, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
 import { internationalDemoRequestCopy } from './fireSafetyInternationalRequestCopy';
 import './fire-safety-ai.css';
 import './fire-safety-international-demo.css';
 
 export default function FireSafetyInternationalDemo({ language }: { language: (typeof fireSafetyTranslations)[number] }) {
-  const { code, path, requestPath, direction = 'ltr' } = language;
+  const { code, path, requestPath, videoPath, direction = 'ltr' } = language;
   const copy = internationalDemoRequestCopy[code];
-  const videoPath = code === 'en' ? fireSafetyEnglishVideoPath : `${path}#demo`;
   return (
     <div className="fire-ai fa-international-demo" lang={code} dir={direction}>
       <Helmet>

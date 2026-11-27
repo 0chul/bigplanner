@@ -21,6 +21,11 @@
   ],
   "demoTitle": "En fejlmelding om køling på 27 sekunder",
   "demoNote": "Det fiktive eksempel vises med koreansk skærmtekst og danske undertekster.",
+  "watch": {
+    "title": "AI-demo om en kølefejl og vagtskifte i ejendomsdrift",
+    "description": "AI registrerer lejerens kølefejl. Driftslederen tildeler sagen til en medarbejder, og næste vagt læser samme sag. Fiktiv sag på 27 sekunder med koreansk brugerflade og danske undertekster.",
+    "timelineTitle": "Fra fejlmelding til vagtskifte"
+  },
   "subtitles": [
     "En lejer melder svag køling i det fælles mødelokale på 5. sal.",
     "AI registrerer placeringen og detaljerne.",

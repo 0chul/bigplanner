@@ -1,10 +1,9 @@
 import { readFileSync } from 'node:fs';
-import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
-import { demoVideo, englishDemoVideo, fireSafetyKoreanVideoPath, fireSafetyVideoAlternates } from './video.js';
+import { fireSafetyAlternates, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { demoVideo, readLocalizedProduct } from './video.js';
 
 const pagePaths = new Set([
-  ...fireSafetyTranslations.flatMap(({ path, handoverPath }) => [path, handoverPath]),
-  fireSafetyEnglishVideoPath,
+  ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
 ]);
 const artworkPath = '/images/fire-safety-building.webp';
 const styles = readFileSync(new URL('./landing.css', import.meta.url), 'utf8');
@@ -16,8 +15,8 @@ function escapeHtml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 }
 
-function renderLanding(language, content, handoverLabel) {
-  const { code, label, path, handoverPath, requestPath, locale, direction = 'ltr' } = language;
+function renderLanding(language, content, handover) {
+  const { code, label, path, handoverPath, requestPath, videoPath, locale, direction = 'ltr' } = language;
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
   const description = escapeHtml(content.description);
@@ -73,7 +72,7 @@ ${alternates}
           <p class="audience">${escapeHtml(content.audience)}</p>
           <div class="links">
             <a class="button" href="#contact">${escapeHtml(content.contactTitle)}</a>
-            <a href="${code === 'en' ? fireSafetyEnglishVideoPath : '#demo'}">${escapeHtml(content.demoTitle)}</a>
+            <a href="${videoPath}">${escapeHtml(content.demoTitle)}</a>
           </div>
         </div>
         <img class="building" src="${artworkPath}" width="1672" height="941" alt="" fetchpriority="high">
@@ -84,7 +83,7 @@ ${alternates}
       <ul class="steps">
         ${steps}
       </ul>
-      <a class="resource-link" href="${handoverPath}">${escapeHtml(handoverLabel)}</a>
+      <a class="resource-link" href="${handoverPath}">${escapeHtml(handover.landingLink)}</a>
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">
       <div class="wrap section demo-section">
@@ -94,7 +93,7 @@ ${alternates}
           <ol class="scenes">
           ${scenes}
           </ol>
-          ${code === 'en' ? `<a class="resource-link" href="${fireSafetyEnglishVideoPath}">Open the captioned video</a>` : ''}
+          <a class="resource-link" href="${videoPath}">${escapeHtml(handover.demoAction)}</a>
         </div>
         <video controls playsinline preload="none" width="1080" height="1920" aria-labelledby="demo-title" aria-describedby="demo-note" src="${demoVideo.content}" poster="${demoVideo.thumbnail}">
           <track kind="captions" src="${path}demo.vtt" srclang="${code}" label="${label}" default>
@@ -143,24 +142,31 @@ ${alternates}
 `;
 }
 
-function renderEnglishVideo(content) {
-  const videoUrl = siteOrigin + fireSafetyEnglishVideoPath;
-  const { title, description, thumbnail, content: media, uploadDate, duration } = englishDemoVideo;
+function renderVideo(language, content, handoverLabel) {
+  const { code, label, locale, path, videoPath, handoverPath, requestPath, direction = 'ltr' } = language;
+  const videoUrl = siteOrigin + videoPath;
+  const captionsPath = path + 'demo.vtt';
+  const { title, description, timelineTitle } = content.watch;
+  const { thumbnail, content: media, uploadDate, duration } = demoVideo;
   const data = JSON.stringify({
     '@context': 'https://schema.org', '@type': 'VideoObject', name: title, description,
     thumbnailUrl: siteOrigin + thumbnail, contentUrl: siteOrigin + media,
     uploadDate, duration: `PT${duration}S`, inLanguage: 'ko',
-  });
+    caption: { '@type': 'MediaObject', contentUrl: siteOrigin + captionsPath, encodingFormat: 'text/vtt', inLanguage: code },
+  }).replaceAll('<', '\\u003c');
   const timeline = content.subtitles.map((line, index) => {
     const seconds = Number(cueTimes[index].slice(6));
     const time = `0:${String(Math.floor(seconds)).padStart(2, '0')}`;
-    return `<li><time datetime="PT${seconds}S">${time}</time><span>${escapeHtml(line)}</span></li>`;
+    return `<li><time datetime="PT${seconds}S" dir="ltr">${time}</time><span>${escapeHtml(line)}</span></li>`;
   }).join('\n          ');
   const alternates = fireSafetyVideoAlternates.map(({ code, path }) =>
     `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`).join('\n');
+  const navigation = fireSafetyLanguages.map(({ code: itemCode, label: itemLabel, videoPath: itemPath }) =>
+    `<a href="${itemPath}" lang="${itemCode}" hreflang="${itemCode}" dir="auto"${itemCode === code ? ' aria-current="page"' : ''}>${escapeHtml(itemLabel)}</a>`).join('\n          ');
+  const requestUrl = `${requestPath}?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}`;
 
   return `<!doctype html>
-<html lang="en" dir="ltr">
+<html lang="${code}" dir="${direction}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -170,7 +176,7 @@ function renderEnglishVideo(content) {
 ${alternates}
   <meta property="og:type" content="video.other">
   <meta property="og:site_name" content="BigPlanner Partners">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="${locale}">
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${videoUrl}">
@@ -180,8 +186,12 @@ ${alternates}
   <style>
 ${styles}
     .watch { max-width: 53rem; padding-block: clamp(1.4rem, 4vw, 2.8rem); }
-    .watch h1 { font-size: clamp(1.8rem, 4.5vw, 3rem); }
-    .watch .intro { margin-block: .5rem 1.1rem; }
+    .watch h1 { font-size: clamp(1.8rem, 4.5vw, 3rem); margin-block-end: .95rem; }
+    .watch .intro { margin-block: 0 .9rem; color: var(--muted); }
+    .watch-header .header-content { position: relative; }
+    .watch-language { color: var(--green); font-weight: 650; }
+    .watch-language summary { cursor: pointer; }
+    .watch-language .languages { position: absolute; z-index: 2; inset-block-start: calc(100% + .15rem); inset-inline-end: 0; width: min(17rem, 78vw); padding: .45rem; border: 1px solid var(--rule); border-radius: .55rem; background: #fff; box-shadow: 0 .25rem 1rem #17302a24; }
     .watch-stage { display: grid; grid-template-columns: minmax(12rem, 17rem) minmax(0, 1fr); gap: clamp(1.2rem, 4vw, 3rem); align-items: start; }
     .watch-stage video { max-width: 17rem; }
     .watch-details { padding: 1rem 1.15rem; background: var(--paper); border: 1px solid var(--rule); border-radius: .6rem; }
@@ -194,54 +204,56 @@ ${styles}
     @media (max-width: 23rem) {
       .watch-header .header-content { gap: .35rem .65rem; padding-block: .6rem; }
       .watch-header .brand { font-size: 1rem; }
-      .watch-header a[hreflang] { font-size: .85rem; }
+      .watch-language { font-size: .85rem; }
       .watch { padding-block: .9rem 1.7rem; }
-      .watch h1 { font-size: 1.6rem; }
-      .watch .intro { font-size: .9rem; margin-block: .45rem .65rem; }
+      .watch h1 { font-size: 1.6rem; margin-block-end: .65rem; }
       .watch-stage video { max-width: min(100%, 12rem); }
     }
   </style>
 </head>
 <body>
   <header class="site-header watch-header"><div class="wrap header-content">
-    <a class="brand" href="${fireSafetyEnglishPath}">BigPlanner <span>Partners</span></a>
-    <a href="${fireSafetyKoreanVideoPath}" lang="ko" hreflang="ko">한국어 영상 안내</a>
+    <a class="brand" href="${path}" lang="en" dir="ltr">BigPlanner <span>Partners</span></a>
+    <details class="watch-language">
+      <summary>${escapeHtml(content.navLabel)}</summary>
+      <nav class="languages" aria-label="${escapeHtml(content.navLabel)}">
+          ${navigation}
+      </nav>
+    </details>
   </div></header>
   <main class="wrap watch">
     <h1 id="video-title">${escapeHtml(title)}</h1>
-    <p class="intro" id="video-description">A 27-second simulated cooling request with Korean on-screen text and English captions.</p>
     <div class="watch-stage">
       <video controls playsinline preload="metadata" width="1080" height="1920" aria-labelledby="video-title" aria-describedby="video-description" src="${media}" poster="${thumbnail}">
-        <track kind="captions" src="${fireSafetyEnglishPath}demo.vtt" srclang="en" label="English" default>
-        <a href="${media}">Open the demo video file</a>
+        <track kind="captions" src="${captionsPath}" srclang="${code}" label="${label}" default>
+        <a href="${media}">${escapeHtml(content.videoFallback)}</a>
       </video>
       <div>
+        <p class="intro" id="video-description">${escapeHtml(description)}</p>
         <section class="watch-details" aria-labelledby="transcript-title">
-          <h2 id="transcript-title">What happens in the demo</h2>
+          <h2 id="transcript-title">${escapeHtml(timelineTitle)}</h2>
           <ol class="watch-timeline">
           ${timeline}
           </ol>
         </section>
         <div class="links">
-          <a class="button" href="${fireSafetyEnglishDemoPath}?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=en">Request an online demo</a>
-          <a href="${facilitiesHandoverPath}">Get the free Excel handover log</a>
+          <a class="button" href="${requestUrl}">${escapeHtml(content.formAction)}</a>
+          <a href="${handoverPath}">${escapeHtml(handoverLabel)}</a>
         </div>
       </div>
     </div>
   </main>
-  <footer><div class="wrap"><span>BigPlanner Partners</span><a href="/privacy/" hreflang="ko">Privacy policy (Korean)</a></div></footer>
+  <footer><div class="wrap"><span lang="en" dir="ltr">BigPlanner Partners</span><a href="/privacy/" hreflang="ko">${escapeHtml(content.privacy)}</a></div></footer>
 </body>
 </html>
 `;
 }
 
 function renderHandover(language, content, formAction) {
-  const { code, path, handoverPath, requestPath, locale, direction = 'ltr' } = language;
+  const { code, path, handoverPath, requestPath, videoPath, locale, direction = 'ltr' } = language;
   const url = siteOrigin + handoverPath;
   const tracking = 'utm_source=handover_template&utm_medium=referral&utm_campaign=fire_safety_global';
-  const demoUrl = code === 'en'
-    ? `${fireSafetyEnglishVideoPath}?${tracking}`
-    : `${path}?${tracking}&utm_content=${code.toLowerCase()}#demo`;
+  const demoUrl = `${videoPath}?${tracking}&utm_content=${code.toLowerCase()}`;
   const requestUrl = `${requestPath}?${tracking}&utm_content=${code.toLowerCase()}`;
   const values = {
     ...Object.fromEntries(Object.entries(content)
@@ -275,12 +287,12 @@ export function fireSafetyGlobalPages() {
   const files = new Map();
   for (const language of fireSafetyTranslations) {
     const filename = `${language.code.toLowerCase()}.json`;
-    const content = JSON.parse(readFileSync(new URL(`./${filename}`, import.meta.url), 'utf8'));
+    const content = readLocalizedProduct(language.code);
     const handover = JSON.parse(readFileSync(new URL(`./handover/${filename}`, import.meta.url), 'utf8'));
-    files.set(`${language.path}index.html`, renderLanding(language, content, handover.landingLink));
+    files.set(`${language.path}index.html`, renderLanding(language, content, handover));
     files.set(`${language.path}demo.vtt`, renderCaptions(content.subtitles));
     files.set(`${language.handoverPath}index.html`, renderHandover(language, handover, content.formAction));
-    if (language.code === 'en') files.set(`${fireSafetyEnglishVideoPath}index.html`, renderEnglishVideo(content));
+    files.set(`${language.videoPath}index.html`, renderVideo(language, content, handover.landingLink));
   }
   return {
     name: 'fire-safety-global-pages',

@@ -12,6 +12,11 @@
   ],
   "demoTitle": "A cooling request in 27 seconds",
   "demoNote": "This simulated case uses Korean on-screen text with English captions.",
+  "watch": {
+    "title": "AI tenant request and shift handover demo",
+    "description": "Watch a 27-second simulated cooling request move from intake and staff assignment through shift handover. The walkthrough shows Korean screens with English captions.",
+    "timelineTitle": "What happens in the demo"
+  },
   "subtitles": [
     "A tenant reports weak air conditioning in the shared meeting room on the fifth floor.",
     "AI records the location and details of the request.",

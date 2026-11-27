@@ -150,7 +150,124 @@
     <video:video>
       <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
       <video:title><![CDATA[AI tenant request and shift handover demo]]></video:title>
-      <video:description><![CDATA[Watch a 27-second facilities demo with English captions. Follow a simulated tenant cooling request from intake and staff assignment through shift handover.]]></video:description>
+      <video:description><![CDATA[Watch a 27-second simulated cooling request move from intake and staff assignment through shift handover. The walkthrough shows Korean screens with English captions.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/de/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[KI-Chatbot für Kühlungsstörungen und Schichtübergaben]]></video:title>
+      <video:description><![CDATA[In 27 Sekunden sehen Sie, wie die KI in einem simulierten Fall eine Kühlungsstörung erfasst, die Schichtleitung den Vorgang zuweist und die nächste Schicht denselben Vorgang einsehen kann. Koreanische Oberfläche mit deutschen Untertiteln.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[Assistant IA pour les signalements de climatisation et la relève]]></video:title>
+      <video:description><![CDATA[Dans ce cas simulé de 27 secondes, l’IA consigne un problème de climatisation, le responsable attribue le dossier et l’équipe de relève consulte le même dossier. Interface en coréen et sous-titres en français.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[ビル設備管理AIの27秒デモ｜冷房の問い合わせ受付と引き継ぎ]]></video:title>
+      <video:description><![CDATA[架空のビルでの冷房の問い合わせを取り上げ、受付から管理者による担当者の指定、次のシフトへの引き継ぎまでを27秒で紹介します。韓国語のデモ画面に日本語字幕を付けています。]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[物業管理 AI 27 秒示範｜冷氣個案由接報到交更]]></video:title>
+      <video:description><![CDATA[以虛構商廈為例，27 秒展示冷氣個案由接報、管理處指派負責同事，到下一更查閱同一紀錄的流程。示範採用韓文畫面，附繁體中文字幕。]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/ar/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[ذكاء اصطناعي لإدارة المرافق من بلاغ التبريد إلى تسليم المناوبة]]></video:title>
+      <video:description><![CDATA[يعرض هذا المثال المحاكى في 27 ثانية تسجيل بلاغ ضعف التبريد، وإسناده إلى الموظف المسؤول، ثم مراجعة السجل نفسه في المناوبة التالية. واجهة العرض بالكورية مع ترجمة نصية بالعربية.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[KI-demo for eiendomsdrift med kjølemelding og vaktskifte]]></video:title>
+      <video:description><![CDATA[KI registrerer leietakerens kjølemelding, og vaktlederen tildeler saken til en medarbeider. Neste vakt leser samme sak. Fiktiv sak på 27 sekunder med koreansk grensesnitt og norske undertekster.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/da/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[AI-demo om en kølefejl og vagtskifte i ejendomsdrift]]></video:title>
+      <video:description><![CDATA[AI registrerer lejerens kølefejl. Driftslederen tildeler sagen til en medarbejder, og næste vagt læser samme sag. Fiktiv sag på 27 sekunder med koreansk brugerflade og danske undertekster.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/nl/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[AI-servicedesk voor meldingen over koeling en dienstoverdracht]]></video:title>
+      <video:description><![CDATA[Bekijk in 27 seconden hoe AI in een gesimuleerde situatie een melding over koeling vastlegt, een leidinggevende de melding toewijst en de volgende dienst hetzelfde dossier raadpleegt. Koreaanse interface met Nederlandse ondertiteling.]]></video:description>
+      <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
+      <video:duration>27</video:duration>
+      <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg</video:thumbnail_loc>
+      <video:title><![CDATA[AI-demo för fastighetsdrift med felanmälan om kyla och skiftöverlämning]]></video:title>
+      <video:description><![CDATA[AI registrerar hyresgästens felanmälan om kyla. En arbetsledare tilldelar ärendet och nästa skift läser det. Fiktivt ärende på 27 sekunder med koreanskt gränssnitt och svensk textning.]]></video:description>
       <video:content_loc>https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4</video:content_loc>
       <video:duration>27</video:duration>
       <video:publication_date>2026-11-27T10:26:31+09:00</video:publication_date>

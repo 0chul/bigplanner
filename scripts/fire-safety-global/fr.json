@@ -60,5 +60,10 @@
   "privacy": "Avis de confidentialité en coréen",
   "navLabel": "Choisir la langue",
   "videoFallback": "Ouvrir le fichier vidéo de la démonstration",
+  "watch": {
+    "title": "Assistant IA pour les signalements de climatisation et la relève",
+    "description": "Dans ce cas simulé de 27 secondes, l’IA consigne un problème de climatisation, le responsable attribue le dossier et l’équipe de relève consulte le même dossier. Interface en coréen et sous-titres en français.",
+    "timelineTitle": "Du signalement à la relève"
+  },
   "subject": "[FR] Démonstration de l’assistant IA pour immeubles"
 }

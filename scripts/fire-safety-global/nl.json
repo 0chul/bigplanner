@@ -39,5 +39,10 @@
   "privacy": "Privacybeleid (Koreaans)",
   "navLabel": "Kies een taal",
   "videoFallback": "Open het demovideobestand",
+  "watch": {
+    "title": "AI-servicedesk voor meldingen over koeling en dienstoverdracht",
+    "description": "Bekijk in 27 seconden hoe AI in een gesimuleerde situatie een melding over koeling vastlegt, een leidinggevende de melding toewijst en de volgende dienst hetzelfde dossier raadpleegt. Koreaanse interface met Nederlandse ondertiteling.",
+    "timelineTitle": "Van melding tot dienstoverdracht"
+  },
   "subject": "[NL] Demo BigPlanner-servicedesk voor huurders"
 }

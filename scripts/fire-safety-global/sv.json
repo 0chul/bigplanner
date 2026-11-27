@@ -12,6 +12,11 @@
   ],
   "demoTitle": "En felanmälan om kyla på 27 sekunder",
   "demoNote": "Demonstrationen visar ett fiktivt ärende med koreanskt gränssnitt och svensk textning.",
+  "watch": {
+    "title": "AI-demo för fastighetsdrift med felanmälan om kyla och skiftöverlämning",
+    "description": "AI registrerar hyresgästens felanmälan om kyla. En arbetsledare tilldelar ärendet och nästa skift läser det. Fiktivt ärende på 27 sekunder med koreanskt gränssnitt och svensk textning.",
+    "timelineTitle": "Från felanmälan till skiftöverlämning"
+  },
   "subtitles": [
     "En hyresgäst anmäler dålig kyla i det gemensamma mötesrummet på plan 5.",
     "AI registrerar platsen och felbeskrivningen.",

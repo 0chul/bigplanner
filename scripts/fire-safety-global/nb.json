@@ -21,6 +21,11 @@
   ],
   "demoTitle": "En kjølemelding på 27 sekunder",
   "demoNote": "Det simulerte eksempelet har koreansk grensesnitt og norske undertekster.",
+  "watch": {
+    "title": "KI-demo for eiendomsdrift med kjølemelding og vaktskifte",
+    "description": "KI registrerer leietakerens kjølemelding, og vaktlederen tildeler saken til en medarbeider. Neste vakt leser samme sak. Fiktiv sak på 27 sekunder med koreansk grensesnitt og norske undertekster.",
+    "timelineTitle": "Fra kjølemelding til vaktskifte"
+  },
   "subtitles": [
     "En leietaker melder om dårlig kjøling i felles møterom i 5. etasje.",
     "KI registrerer sted og detaljer i saken.",
