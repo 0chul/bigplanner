@@ -92,7 +92,7 @@ function extractArticle({ html, url, language, watchLabel }, origin) {
   }
 
   const discard = 'script, style, template, noscript, iframe, object, embed, svg, math, audio, source, track, ' +
-    'header, footer, nav.languages, [aria-labelledby="library-languages"], .library-lead-image, ' +
+    'header, footer, nav.languages, .intake-trail, [aria-labelledby="library-languages"], .library-lead-image, ' +
     '.share, .calculator-embedding, form, button, input, select, textarea, [hidden], [aria-hidden="true"]';
   for (const element of main.querySelectorAll(discard)) element.remove();
 

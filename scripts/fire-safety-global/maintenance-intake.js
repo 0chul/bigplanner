@@ -14,6 +14,9 @@ const styles = `
 .intake-page:lang(ko) { word-break: keep-all; }
 .intake-page h1 { font-size: clamp(1.95rem, 5vw, 3.35rem); max-width: 27ch; }
 .intake-page h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); }
+.intake-trail { margin-block-end: .8rem; font-size: .875rem; color: var(--muted); }
+.intake-trail ol { display: flex; flex-wrap: wrap; gap: .15rem .5rem; margin: 0; padding: 0; list-style: none; }
+.intake-trail li > span[aria-hidden] { margin-inline-end: .45rem; }
 .intake-page section { padding-block: clamp(1.25rem, 4vw, 2.4rem); }
 .intake-page section + section { border-block-start: 1px solid var(--rule); }
 .intake-page section > p { max-width: 66ch; margin-block-start: .55rem; }
@@ -76,6 +79,15 @@ function renderPage(language, copy, baseStyles) {
     `<div><dt>${escapeHtml(field)}</dt><dd${blank ? ' aria-hidden="true"' : ''}>${blank ? '' : escapeHtml(value)}</dd></div>`).join('\n        ');
   const title = escapeHtml(copy.title);
   const description = escapeHtml(copy.description);
+  const library = escapeHtml(copy.library);
+  const breadcrumbs = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: copy.library, item: siteOrigin + resourcesPath },
+      { '@type': 'ListItem', position: 2, name: copy.title, item: canonical },
+    ],
+  }).replaceAll('<', '\\u003c');
   return `<!doctype html>
 <html lang="${code}" dir="${direction}">
 <head>
@@ -93,6 +105,7 @@ ${linkTags}
   <meta property="og:description" content="${description}">
   <meta property="og:image" content="${siteOrigin}/images/fire-safety-organic-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">${breadcrumbs}</script>
   ${shareAssets}
   <style>${baseStyles}${styles}</style>
 </head>
@@ -107,6 +120,12 @@ ${linkTags}
   </header>
   <main class="intake-page">
     <section class="intake-intro" aria-labelledby="page-title">
+      <nav class="intake-trail" aria-label="${library}">
+        <ol role="list">
+          <li><a href="${resourcesPath}">${library}</a></li>
+          <li><span aria-hidden="true">/</span><span aria-current="page">${title}</span></li>
+        </ol>
+      </nav>
       <h1 id="page-title">${title}</h1>
       <p>${description}</p>
     </section>
@@ -144,7 +163,7 @@ ${linkTags}
     </section>
   </main>
   <footer><div class="wrap">
-    <span lang="en" dir="ltr">BigPlanner Partners</span><a href="${resourcesPath}">${escapeHtml(copy.library)}</a>
+    <span lang="en" dir="ltr">BigPlanner Partners</span><a href="${resourcesPath}">${library}</a>
   </div></footer>
   <script>
     const button = document.querySelector('.intake-print');
