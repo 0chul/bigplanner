@@ -27,6 +27,8 @@
   <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
   <style>
     :root {
   color-scheme: light;
@@ -151,8 +153,19 @@ footer { color: var(--muted); font-size: .9rem; }
         <div class="links screen-only">
           <a class="button" href="facilities-shift-handover-log.xlsx" download>Télécharger le registre Excel gratuit</a>
           <button type="button" class="secondary" id="print-checklist" hidden>Imprimer la liste de contrôle</button>
-          <a href="mailto:?subject=Liste%20de%20contr%C3%B4le%20pour%20la%20rel%C3%A8ve%20des%20%C3%A9quipes%20techniques&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Ffr%2Fshift-handover%2F">Partager par courriel</a>
         </div>
+        <div class="screen-only"><details class="fs-share share" data-fs-share>
+    <summary>Partager le lien</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Adresse de la page<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Partager via une application</button>
+        <button data-fs-share-copy type="button" hidden>Copier le lien</button>
+        <a href="mailto:?subject=Liste%20de%20contr%C3%B4le%20pour%20la%20rel%C3%A8ve%20des%20%C3%A9quipes%20techniques&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Ffr%2Fshift-handover%2F">Partager par courriel</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Lien copié." data-manual="Sélectionnez et copiez l’adresse de la page ci-dessus."></p>
+    </div>
+  </details></div>
         <nav class="languages screen-only" aria-label="Choisir la langue de la liste de contrôle">
           <a href="/fire-safety-ai/handoff-checklist/" lang="ko" hreflang="ko" dir="auto">한국어</a>
           <a href="/fire-safety-ai/en/shift-handover/" lang="en" hreflang="en" dir="auto">English</a>

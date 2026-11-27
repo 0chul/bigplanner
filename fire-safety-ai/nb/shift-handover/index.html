@@ -27,6 +27,8 @@
   <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
   <style>
     :root {
   color-scheme: light;
@@ -151,8 +153,19 @@ footer { color: var(--muted); font-size: .9rem; }
         <div class="links screen-only">
           <a class="button" href="facilities-shift-handover-log.xlsx" download>Last ned gratis Excel-logg</a>
           <button type="button" class="secondary" id="print-checklist" hidden>Skriv ut sjekklisten</button>
-          <a href="mailto:?subject=Sjekkliste%20for%20vaktskifte%20i%20eiendomsdrift&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fnb%2Fshift-handover%2F">Del på e-post</a>
         </div>
+        <div class="screen-only"><details class="fs-share share" data-fs-share>
+    <summary>Del lenken</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Nettadresse<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Del via en app</button>
+        <button data-fs-share-copy type="button" hidden>Kopier lenken</button>
+        <a href="mailto:?subject=Sjekkliste%20for%20vaktskifte%20i%20eiendomsdrift&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fnb%2Fshift-handover%2F">Del på e-post</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Lenken er kopiert." data-manual="Merk og kopier nettadressen ovenfor."></p>
+    </div>
+  </details></div>
         <nav class="languages screen-only" aria-label="Språk for sjekklisten">
           <a href="/fire-safety-ai/handoff-checklist/" lang="ko" hreflang="ko" dir="auto">한국어</a>
           <a href="/fire-safety-ai/en/shift-handover/" lang="en" hreflang="en" dir="auto">English</a>

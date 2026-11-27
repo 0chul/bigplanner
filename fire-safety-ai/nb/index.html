@@ -27,6 +27,8 @@
   <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/nb/">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
   <style>:root {
   color-scheme: light;
   --ink: #17302a;
@@ -135,6 +137,18 @@ footer { color: var(--muted); font-size: .9rem; }
             <a class="button" href="#contact">Be om en demo på nett</a>
             <a href="/fire-safety-ai/nb/demo-video/">En kjølemelding på 27 sekunder</a>
           </div>
+          <details class="fs-share share" data-fs-share>
+    <summary>Del lenken</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Nettadresse<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/nb/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Del via en app</button>
+        <button data-fs-share-copy type="button" hidden>Kopier lenken</button>
+        <a href="mailto:?subject=KI-assistent%20for%20leietakerhenvendelser%20i%20n%C3%A6ringsbygg&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fnb%2F">Del på e-post</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Lenken er kopiert." data-manual="Merk og kopier nettadressen ovenfor."></p>
+    </div>
+  </details>
         </div>
         <img class="building" src="/images/fire-safety-building.webp" width="1672" height="941" alt="" fetchpriority="high">
       </div>

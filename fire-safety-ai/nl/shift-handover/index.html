@@ -27,6 +27,8 @@
   <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/nl/shift-handover/">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
   <style>
     :root {
   color-scheme: light;
@@ -151,8 +153,19 @@ footer { color: var(--muted); font-size: .9rem; }
         <div class="links screen-only">
           <a class="button" href="facilities-shift-handover-log.xlsx" download>Download het gratis Excel-logboek</a>
           <button type="button" class="secondary" id="print-checklist" hidden>Print de checklist</button>
-          <a href="mailto:?subject=Checklist%20voor%20facilitaire%20dienstoverdracht&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fnl%2Fshift-handover%2F">Deel per e-mail</a>
         </div>
+        <div class="screen-only"><details class="fs-share share" data-fs-share>
+    <summary>Link delen</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Pagina-adres<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/nl/shift-handover/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Delen via een app</button>
+        <button data-fs-share-copy type="button" hidden>Link kopiëren</button>
+        <a href="mailto:?subject=Checklist%20voor%20facilitaire%20dienstoverdracht&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fnl%2Fshift-handover%2F">Deel per e-mail</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Link gekopieerd." data-manual="Selecteer en kopieer het pagina-adres hierboven."></p>
+    </div>
+  </details></div>
         <nav class="languages screen-only" aria-label="Talen van de overdrachtschecklist">
           <a href="/fire-safety-ai/handoff-checklist/" lang="ko" hreflang="ko" dir="auto">한국어</a>
           <a href="/fire-safety-ai/en/shift-handover/" lang="en" hreflang="en" dir="auto">English</a>
