@@ -1,0 +1,29 @@
+Modelo de pedido de intervenção para a manutenção de edifícios
+
+Descarregue ou imprima o modelo. Preencha-o e envie-o pelo canal que o edifício já usa para pedidos de assistência.
+
+Em caso de emergência, siga os procedimentos do edifício e use os contactos indicados para esse fim.
+
+Imóvel e edifício
+_______________________________________________
+
+Piso, sala e localização exata
+_______________________________________________
+
+Categoria do pedido
+_______________________________________________
+
+Problema observado e impacto
+_______________________________________________
+
+Quando foi detetado pela primeira vez
+_______________________________________________
+
+Horário e condições de acesso (omita chaves e palavras-passe)
+_______________________________________________
+
+Equipa que faz o pedido e canal aprovado para resposta
+_______________________________________________
+
+Só para a equipa de manutenção. Número do pedido, equipa responsável e próxima ação
+_______________________________________________

@@ -19,6 +19,57 @@
       <description><![CDATA[<div lang="en" dir="ltr"><p>Estimate monthly time spent on routine tenant enquiries and the share of that current workload to review for a facilities service desk pilot.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">Facilities enquiry workload calculator</a></p></div>]]></description>
     </item>
     <item>
+      <title>Tenant maintenance request form for commercial buildings | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Tenant maintenance request form for commercial buildings</h1>
+      <p>A free template for reporting routine HVAC, lighting or plumbing issues in a commercial building. Record the exact location, what you noticed and when staff can check it.</p>
+    </section>
+    <section>
+      <h2>Blank maintenance request form</h2>
+      <p>Download or print this form, fill it in and send it through your building’s approved maintenance channel. For site access, give the available time and escort arrangements.</p>
+      <p>For a fire or immediate hazard, follow the building’s emergency procedures and use its designated emergency contacts.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/maintenance-request-form.txt" download="">Download blank form (TXT)</a>
+        
+      </div>
+      <dl>
+        <div><dt>Site and building</dt></div>
+        <div><dt>Floor, suite or room and exact location</dt></div>
+        <div><dt>Service category</dt></div>
+        <div><dt>Observed issue and effect on building use</dt></div>
+        <div><dt>Date and local time first noticed</dt></div>
+        <div><dt>Access window and conditions</dt></div>
+        <div><dt>Tenant team and approved reply channel</dt></div>
+        <div><dt>Facilities staff only — request reference, assigned team and next action</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Completed example</h2>
+      <p>This example uses a fictional shared meeting room where the cooling is insufficient.</p>
+      <dl>
+        <div><dt>Site and building</dt><dd>Linden Business Centre, Building A</dd></div>
+        <div><dt>Floor, suite or room and exact location</dt><dd>Fifth floor, shared meeting room A-5.12 beside the lifts</dd></div>
+        <div><dt>Service category</dt><dd>Heating, ventilation and air conditioning</dd></div>
+        <div><dt>Observed issue and effect on building use</dt><dd>The cooling is on, but the room stays warm. The team moved the meeting to another room.</dd></div>
+        <div><dt>Date and local time first noticed</dt><dd>5 October 2026, 20:35</dd></div>
+        <div><dt>Access window and conditions</dt><dd>6 October, 07:15 to 08:00, with a reception escort</dd></div>
+        <div><dt>Tenant team and approved reply channel</dt><dd>Fifth-floor tenant operations team, reply through the building’s approved service channel</dd></div>
+        <div><dt>Facilities staff only — request reference, assigned team and next action</dt><dd>DEMO-012, morning maintenance team, check the room’s cooling at 07:30</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Hand an open request to the next shift</h2>
+      <p>Facilities staff can record the request reference, assigned team and next check. Use the same reference at shift handover so the incoming team can find the exact location and current status.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/en/shift-handover/">Get the shift handover worksheet</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">Open the facilities AI pilot checklist</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/en/demo-video/">Watch the 27-second cooling request demo</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>AI tenant service desk pilot checklist for facilities teams | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/</guid>

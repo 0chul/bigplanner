@@ -13,6 +13,57 @@
       <description><![CDATA[<div lang="pt" dir="ltr"><p>Estime o tempo mensal gasto a responder às consultas de rotina dos ocupantes e a parte dessa carga de trabalho atual a avaliar num teste-piloto do serviço de assistência do edifício.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/pt/workload-calculator/">Abrir a calculadora da carga de trabalho</a></p></div>]]></description>
     </item>
     <item>
+      <title>Modelo de pedido de intervenção para a manutenção de edifícios | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Modelo de pedido de intervenção para a manutenção de edifícios</h1>
+      <p>Modelo gratuito para registar pedidos de assistência dos ocupantes, identificar o local da ocorrência e indicar quando a equipa de manutenção pode aceder.</p>
+    </section>
+    <section>
+      <h2>O que registar no pedido</h2>
+      <p>Descarregue ou imprima o modelo. Preencha-o e envie-o pelo canal que o edifício já usa para pedidos de assistência.</p>
+      <p>Em caso de emergência, siga os procedimentos do edifício e use os contactos indicados para esse fim.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/maintenance-request-form.txt" download="">Descarregar o modelo gratuito</a>
+        
+      </div>
+      <dl>
+        <div><dt>Imóvel e edifício</dt></div>
+        <div><dt>Piso, sala e localização exata</dt></div>
+        <div><dt>Categoria do pedido</dt></div>
+        <div><dt>Problema observado e impacto</dt></div>
+        <div><dt>Quando foi detetado pela primeira vez</dt></div>
+        <div><dt>Horário e condições de acesso (omita chaves e palavras-passe)</dt></div>
+        <div><dt>Equipa que faz o pedido e canal aprovado para resposta</dt></div>
+        <div><dt>Só para a equipa de manutenção. Número do pedido, equipa responsável e próxima ação</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Exemplo de um pedido sobre climatização</h2>
+      <p>O edifício, a ocorrência e os registos deste exemplo são fictícios. Todos os horários são locais.</p>
+      <dl>
+        <div><dt>Imóvel e edifício</dt><dd>Centro Empresarial Linden, edifício A.</dd></div>
+        <div><dt>Piso, sala e localização exata</dt><dd>Piso 5, sala de reuniões partilhada A-5.12, junto aos elevadores.</dd></div>
+        <div><dt>Categoria do pedido</dt><dd>Climatização, arrefecimento insuficiente.</dd></div>
+        <div><dt>Problema observado e impacto</dt><dd>A sala continua quente com a climatização ligada. A equipa teve de mudar a reunião para outra sala.</dd></div>
+        <div><dt>Quando foi detetado pela primeira vez</dt><dd>5 de outubro de 2026, às 20:35, hora local.</dd></div>
+        <div><dt>Horário e condições de acesso (omita chaves e palavras-passe)</dt><dd>6 de outubro, das 07:15 às 08:00, com acompanhamento a partir da receção.</dd></div>
+        <div><dt>Equipa que faz o pedido e canal aprovado para resposta</dt><dd>Equipa de operações do piso 5. A equipa responde pelo portal de assistência aprovado do edifício.</dd></div>
+        <div><dt>Só para a equipa de manutenção. Número do pedido, equipa responsável e próxima ação</dt><dd>DEMO-012. A equipa de manutenção do turno da manhã verifica a climatização da sala às 07:30.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Depois de preencher o pedido</h2>
+      <p>Envie o pedido preenchido pelo canal de pedidos de assistência que o edifício já utiliza. A equipa responsável pode verificar a informação, atribuir a intervenção e indicar o próximo passo.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/">Ver a lista de verificação para a passagem de turno</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/">Ver a lista de verificação para o teste-piloto</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/pt/demo-video/">Ver a demonstração de 27 segundos</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Lista de verificação para testar um assistente de IA na gestão de edifícios | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/pt/adoption-guide/</guid>
@@ -114,6 +165,11 @@
       <h2>Recursos disponíveis</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/">Modelo de pedido de intervenção para a manutenção de edifícios</a></h3>
+          <p>Modelo gratuito para registar pedidos de assistência dos ocupantes, identificar o local da ocorrência e indicar quando a equipa de manutenção pode aceder.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/maintenance-request-form.txt" download="">Descarregar o modelo gratuito</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/pt/shift-handover/">Lista de verificação para a passagem de turno em instalações</a></h3>
           <p>Descarregue um registo Excel gratuito para a passagem de turno em edifícios comerciais. Use a lista de verificação e o exemplo de climatização para transmitir os pedidos em aberto à equipa seguinte.</p>

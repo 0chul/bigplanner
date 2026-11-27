@@ -13,6 +13,57 @@
       <description><![CDATA[<div lang="de" dir="ltr"><p>Schätzen Sie den monatlichen Aufwand für Routineanfragen von Mietern und den Anteil, den Sie für eine Erprobung prüfen möchten.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/de/workload-calculator/">Aufwand für Routineanfragen berechnen</a></p></div>]]></description>
     </item>
     <item>
+      <title>Kostenlose Vorlage für Störungsmeldungen im Gebäudebetrieb | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Kostenlose Vorlage für Störungsmeldungen im Gebäudebetrieb</h1>
+      <p>Kostenlose, druckbare Vorlage für Störungsmeldungen von Mietparteien in Gewerbegebäuden. Mit ausgefülltem Beispiel zur Kühlung eines Sitzungsraums.</p>
+    </section>
+    <section>
+      <h2>Angaben für die Störungsmeldung</h2>
+      <p>Laden Sie die Vorlage herunter oder drucken Sie sie aus. Füllen Sie sie aus und senden Sie die Meldung über den bestehenden Meldeweg Ihres Gebäudes an den Gebäudebetrieb.</p>
+      <p>Nutzen Sie bei einem Notfall sofort die vorgesehenen Notfallkontakte und Verfahren Ihres Gebäudes.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/maintenance-request-form.txt" download="">Kostenlose Vorlage herunterladen</a>
+        
+      </div>
+      <dl>
+        <div><dt>Liegenschaft und Gebäude</dt></div>
+        <div><dt>Geschoss, Raum und genauer Ort</dt></div>
+        <div><dt>Kategorie der Störung</dt></div>
+        <div><dt>Beobachtete Störung und Auswirkungen</dt></div>
+        <div><dt>Erstmals bemerkt</dt></div>
+        <div><dt>Zugangszeit und Bedingungen</dt></div>
+        <div><dt>Anlaufstelle oder zugelassener Rückmeldeweg</dt></div>
+        <div><dt>Nur intern – Vorgangsnummer, zuständiges Team und nächster Schritt</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Ausgefülltes Beispiel</h2>
+      <p>Gebäude, Raum und Störung in diesem Beispiel sind frei erfunden. Die Uhrzeiten beziehen sich auf die Ortszeit des Gebäudes.</p>
+      <dl>
+        <div><dt>Liegenschaft und Gebäude</dt><dd>Gewerbeliegenschaft Lindenhof, Gebäude A</dd></div>
+        <div><dt>Geschoss, Raum und genauer Ort</dt><dd>5. Obergeschoss, gemeinsamer Sitzungsraum A-5.12 bei den Aufzügen</dd></div>
+        <div><dt>Kategorie der Störung</dt><dd>Klimatisierung und Lüftung</dd></div>
+        <div><dt>Beobachtete Störung und Auswirkungen</dt><dd>Die Klimaanlage läuft, aber der Raum bleibt warm. Das Team hat die Besprechung in einen anderen Raum verlegt.</dd></div>
+        <div><dt>Erstmals bemerkt</dt><dd>5. Oktober 2026 um 20:35 Uhr Ortszeit</dd></div>
+        <div><dt>Zugangszeit und Bedingungen</dt><dd>Am 6. Oktober von 07:15 bis 08:00 Uhr begleitet der Empfang das Team in den Raum. Keine Schlüssel, Zugangscodes oder Passwörter angeben.</dd></div>
+        <div><dt>Anlaufstelle oder zugelassener Rückmeldeweg</dt><dd>Der Gebäudebetrieb antwortet über das für das Gebäude freigegebene Meldeportal.</dd></div>
+        <div><dt>Nur intern – Vorgangsnummer, zuständiges Team und nächster Schritt</dt><dd>DEMO-012. Die Haustechnik im Frühdienst prüft um 07:30 Uhr die Kühlung im Raum.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Weiterbearbeitung im Gebäudebetrieb</h2>
+      <p>Das zuständige Team prüft die Meldung, erfasst den Vorgang im vorgesehenen System und hält die nächste Massnahme fest. Bleibt die Meldung bis zum Schichtwechsel offen, übergibt das Team denselben Vorgang an die nächste Schicht.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/">Checkliste für die Schichtübergabe</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/">Checkliste für den KI-Pilotbetrieb</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/de/demo-video/">Demo mit deutschen Untertiteln ansehen</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Pilot-Checkliste für einen KI-Assistenten im Gebäudebetrieb | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/</guid>
@@ -114,6 +165,11 @@
       <h2>Vorlagen und Werkzeuge</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/">Kostenlose Vorlage für Störungsmeldungen im Gebäudebetrieb</a></h3>
+          <p>Kostenlose, druckbare Vorlage für Störungsmeldungen von Mietparteien in Gewerbegebäuden. Mit ausgefülltem Beispiel zur Kühlung eines Sitzungsraums.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/maintenance-request-form.txt" download="">Kostenlose Vorlage herunterladen</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/">Checkliste für die Schichtübergabe im Gebäudebetrieb</a></h3>
           <p>Kostenloses Excel-Protokoll für Schichtübergaben im Gebäudebetrieb. Checkliste und Beispiel zur Übergabe offener Mietermeldungen in Gewerbeimmobilien.</p>

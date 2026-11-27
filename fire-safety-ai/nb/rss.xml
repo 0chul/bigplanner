@@ -13,6 +13,57 @@
       <description><![CDATA[<div lang="nb" dir="ltr"><p>Anslå månedlig tidsbruk på vanlige leietakerhenvendelser og andelen av dagens arbeid som kan vurderes i en pilot.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/nb/workload-calculator/">Beregn arbeidsmengden for vanlige henvendelser</a></p></div>]]></description>
     </item>
     <item>
+      <title>Gratis mal for feilmelding til drift | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Gratis mal for feilmelding til drift</h1>
+      <p>Bruk malen til å registrere feilmeldinger fra leietakere med nøyaktig sted, hva som er observert og når driftsteamet kan få tilgang.</p>
+    </section>
+    <section>
+      <h2>Dette bør stå i meldingen</h2>
+      <p>Last ned eller skriv ut malen. Fyll den ut og send meldingen gjennom kanalen bygget allerede bruker for feilmeldinger.</p>
+      <p>I en nødsituasjon følger dere byggets etablerte varslingsrutiner og bruker de avtalte kontaktpunktene.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/maintenance-request-form.txt" download="">Last ned gratis mal</a>
+        
+      </div>
+      <dl>
+        <div><dt>Eiendom og bygg</dt></div>
+        <div><dt>Etasje, rom og nøyaktig plassering</dt></div>
+        <div><dt>Type feilmelding</dt></div>
+        <div><dt>Hva dere observerte, og hvordan det påvirker bruken</dt></div>
+        <div><dt>Når feilen først ble oppdaget</dt></div>
+        <div><dt>Tidspunkt og vilkår for tilgang (utelat nøkler og passord)</dt></div>
+        <div><dt>Teamet som melder fra, og godkjent svarkanal</dt></div>
+        <div><dt>Bare for driftsteamet. Saks-ID, ansvarlig team og neste tiltak</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Eksempel på en melding om svak kjøling</h2>
+      <p>Bygget, hendelsen og registreringene i eksemplet er oppdiktet. Alle klokkeslett er oppgitt i lokal tid.</p>
+      <dl>
+        <div><dt>Eiendom og bygg</dt><dd>Forretningssenteret Linden, bygg A.</dd></div>
+        <div><dt>Etasje, rom og nøyaktig plassering</dt><dd>5. etasje, felles møterom A-5.12 ved heisene.</dd></div>
+        <div><dt>Type feilmelding</dt><dd>Inneklima, svak kjøling.</dd></div>
+        <div><dt>Hva dere observerte, og hvordan det påvirker bruken</dt><dd>Rommet er fortsatt varmt selv om kjølingen er på. Teamet måtte flytte møtet til et annet rom.</dd></div>
+        <div><dt>Når feilen først ble oppdaget</dt><dd>5. oktober 2026 kl. 20:35 lokal tid.</dd></div>
+        <div><dt>Tidspunkt og vilkår for tilgang (utelat nøkler og passord)</dt><dd>6. oktober kl. 07:15–08:00, med følge fra resepsjonen.</dd></div>
+        <div><dt>Teamet som melder fra, og godkjent svarkanal</dt><dd>Driftsteamet i 5. etasje. Teamet svarer gjennom byggets godkjente portal for driftsmeldinger.</dd></div>
+        <div><dt>Bare for driftsteamet. Saks-ID, ansvarlig team og neste tiltak</dt><dd>DEMO-012. Driftsteamet på morgenvakten sjekker kjølingen i rommet kl. 07:30.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Når meldingen er fylt ut</h2>
+      <p>Send den utfylte meldingen gjennom kanalen bygget allerede bruker for feilmeldinger. Det ansvarlige driftsteamet kan sjekke opplysningene, tildele saken og avklare hva som skal skje videre.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/">Se sjekklisten for vaktskifte</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/">Se sjekklisten for pilotprosjektet</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/">Se demoen på 27 sekunder</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Sjekkliste for pilot med KI-assistent i eiendomsdrift | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/</guid>
@@ -114,6 +165,11 @@
       <h2>Maler og verktøy</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/">Gratis mal for feilmelding til drift</a></h3>
+          <p>Bruk malen til å registrere feilmeldinger fra leietakere med nøyaktig sted, hva som er observert og når driftsteamet kan få tilgang.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/maintenance-request-form.txt" download="">Last ned gratis mal</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/">Sjekkliste for vaktskifte i eiendomsdrift</a></h3>
           <p>Last ned en gratis Excel-logg for vaktskifte i næringsbygg. Bruk sjekklisten og kjøleeksempelet til å overføre åpne leietakerhenvendelser til neste vakt.</p>

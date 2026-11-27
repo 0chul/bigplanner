@@ -13,6 +13,57 @@
       <description><![CDATA[<div lang="fr" dir="ltr"><p>Estimez le temps consacré aux demandes courantes des locataires et la part de cette charge à examiner pour un projet pilote.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/">Calculer la charge des demandes courantes</a></p></div>]]></description>
     </item>
     <item>
+      <title>Modèle gratuit de demande d’intervention pour les occupants | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>Modèle gratuit de demande d’intervention pour les occupants</h1>
+      <p>Modèle gratuit à imprimer pour signaler un problème technique dans un immeuble commercial. Avec un exemple rempli pour une salle de réunion mal climatisée.</p>
+    </section>
+    <section>
+      <h2>Informations à renseigner</h2>
+      <p>Téléchargez ou imprimez le modèle et remplissez-le. Transmettez ensuite la demande à l’équipe d’exploitation par le canal de signalement habituel de votre immeuble.</p>
+      <p>En cas d’urgence, contactez immédiatement les personnes désignées et suivez les procédures d’urgence de l’immeuble.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/maintenance-request-form.txt" download="">Télécharger le modèle gratuit</a>
+        
+      </div>
+      <dl>
+        <div><dt>Site et bâtiment</dt></div>
+        <div><dt>Étage, local et emplacement précis</dt></div>
+        <div><dt>Catégorie d’intervention</dt></div>
+        <div><dt>Problème observé et impact</dt></div>
+        <div><dt>Première constatation</dt></div>
+        <div><dt>Créneau et conditions d’accès</dt></div>
+        <div><dt>Équipe à contacter ou canal de réponse autorisé</dt></div>
+        <div><dt>Réservé à l’équipe interne – numéro de dossier, équipe responsable et prochaine action</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Exemple de demande remplie</h2>
+      <p>L’immeuble, la salle et le problème sont fictifs. Les heures indiquées sont celles du site.</p>
+      <dl>
+        <div><dt>Site et bâtiment</dt><dd>Site tertiaire du Tilleul, bâtiment A</dd></div>
+        <div><dt>Étage, local et emplacement précis</dt><dd>5e étage, salle de réunion commune A-5.12, près des ascenseurs</dd></div>
+        <div><dt>Catégorie d’intervention</dt><dd>Climatisation et ventilation</dd></div>
+        <div><dt>Problème observé et impact</dt><dd>La climatisation fonctionne, mais la salle reste chaude. L’équipe a déplacé la réunion dans une autre salle.</dd></div>
+        <div><dt>Première constatation</dt><dd>Le 5 octobre 2026 à 20 h 35, heure locale</dd></div>
+        <div><dt>Créneau et conditions d’accès</dt><dd>Le 6 octobre, de 7 h 15 à 8 h, l’accueil accompagne l’équipe jusqu’à la salle. Ne communiquez ni clé, ni code, ni mot de passe.</dd></div>
+        <div><dt>Équipe à contacter ou canal de réponse autorisé</dt><dd>L’équipe d’exploitation répond via le portail de signalement prévu par la gestion de l’immeuble.</dd></div>
+        <div><dt>Réservé à l’équipe interne – numéro de dossier, équipe responsable et prochaine action</dt><dd>DEMO-012. L’équipe technique du matin vérifie le refroidissement de la salle à 7 h 30.</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Suivi par l’équipe d’exploitation des bâtiments</h2>
+      <p>L’équipe vérifie la demande, l’enregistre dans le système prévu et indique la prochaine action. Si le dossier reste ouvert au changement d’équipe, elle transmet le même dossier à l’équipe de relève.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/">Liste de contrôle pour la relève technique</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/">Liste de contrôle pour un projet pilote d’IA</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/">Voir la démonstration sous-titrée en français</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>Liste de contrôle pour tester un assistant IA en gestion d’immeubles | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/</guid>
@@ -114,6 +165,11 @@
       <h2>Modèles et outils</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/">Modèle gratuit de demande d’intervention pour les occupants</a></h3>
+          <p>Modèle gratuit à imprimer pour signaler un problème technique dans un immeuble commercial. Avec un exemple rempli pour une salle de réunion mal climatisée.</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/maintenance-request-form.txt" download="">Télécharger le modèle gratuit</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/">Liste de contrôle pour la relève des équipes techniques</a></h3>
           <p>Téléchargez un registre Excel gratuit pour la relève des équipes techniques d’immeubles commerciaux. Une liste de contrôle et un exemple de signalement de climatisation aident à transmettre les dossiers en cours.</p>
