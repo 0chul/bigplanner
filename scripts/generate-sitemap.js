@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import { fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyEnglishAfterHoursPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanVideoPath, fireSafetyLanguages, fireSafetyTranslations } from '../src/utils/fireSafetyLocales.js';
 import { demoVideo, readLocalizedProduct } from './fire-safety-global/video.js';
 
 const supabaseUrl = 'https://injrbniytgtubemniaps.supabase.co';
@@ -40,6 +40,8 @@ async function generateSitemap() {
       ...fireSafetyTranslations.map(({ path }) => ({ path, priority: 0.8, changefreq: 'monthly' })),
       ...fireSafetyLanguages.map(({ handoverPath }) => ({ path: handoverPath, priority: 0.8, changefreq: 'monthly' })),
       { path: '/fire-safety-ai/adoption-guide/', priority: 0.8, changefreq: 'monthly' },
+      { path: fireSafetyKoreanAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
+      { path: fireSafetyEnglishAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
       {
         path: fireSafetyKoreanVideoPath,
         priority: 0.8,

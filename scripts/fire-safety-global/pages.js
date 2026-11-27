@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishFeedPath, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFeedPath, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, readLocalizedProduct } from './video.js';
 
@@ -86,6 +86,7 @@ ${alternates}
         ${steps}
       </ul>
       <a class="resource-link" href="${handoverPath}">${escapeHtml(handover.landingLink)}</a>
+      ${code === 'en' ? `<p><a class="resource-link" href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a></p>` : ''}
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">
       <div class="wrap section demo-section">

@@ -8,6 +8,8 @@ export const fireSafetyEnglishVideoPath = `${fireSafetyEnglishPath}demo-video/`;
 export const facilitiesHandoverPath = `${fireSafetyEnglishPath}shift-handover/`;
 export const fireSafetyChecklistPath = `${fireSafetyPath}handoff-checklist/`;
 export const fireSafetyAdoptionPath = `${fireSafetyPath}adoption-guide/`;
+export const fireSafetyKoreanAfterHoursPath = `${fireSafetyPath}after-hours-hvac-request/`;
+export const fireSafetyEnglishAfterHoursPath = `${fireSafetyEnglishPath}after-hours-hvac-request/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
 export const fireSafetyLanguages = [

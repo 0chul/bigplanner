@@ -3,16 +3,16 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyHandoverAlternates, fireSafetyKoreanVideoPath, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAfterHoursPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanVideoPath, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 import { writeResourceFeeds } from './fire-safety-global/feeds.js';
 import { demoVideo } from './fire-safety-global/video.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
-const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath];
+const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath, fireSafetyKoreanAfterHoursPath];
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
-const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath }) => [handoverPath, videoPath])];
+const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath }) => [handoverPath, videoPath])];
 const servicePath = '/service/';
 const requiredSpaRoutes = new Set(['/', servicePath, fireSafetyPath, ...fireSafetyRequestPages.keys()]);
 

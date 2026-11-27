@@ -8,7 +8,7 @@ import FireSafetyScrollStory from '../components/FireSafetyScrollStory';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
-import { fireSafetyAlternates, fireSafetyKoreanFeedPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFeedPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
 import './fire-safety-ai.css';
 
 const organicShareImage = 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg';
@@ -184,6 +184,7 @@ export default function FireSafetyAI() {
               <div className="mt-3 grid justify-items-start">
                 <a className="fa-text-link" href="/fire-safety-ai/handoff-checklist/">민원 접수·교대 인수인계 체크리스트 <ArrowRight size={16} aria-hidden="true" /></a>
                 <a className="fa-text-link" href="/fire-safety-ai/adoption-guide/">시설관리 민원 접수 시스템 도입 체크리스트 <ArrowRight size={16} aria-hidden="true" /></a>
+                <a className="fa-text-link" href={fireSafetyKoreanAfterHoursPath}>야간·휴일 냉난방 연장 운전 신청서 <ArrowRight size={16} aria-hidden="true" /></a>
                 <a className="fa-text-link" href="https://blog.naver.com/bigplannerpartners" hrefLang="ko">네이버 블로그의 시설관리 실무 글 <ArrowUpRight size={16} aria-hidden="true" /></a>
               </div>
             </div><div className="fa-faq-list">{faqs.map((faq, index) => <details key={faq.q} open={index === 0 ? true : undefined}><summary><span>{faq.q}</span><ChevronDown size={19} /></summary><p>{faq.a}</p></details>)}</div></div></section>
