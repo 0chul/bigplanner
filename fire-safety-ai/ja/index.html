@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ビル管理のテナント問い合わせ対応を支援するAI | BigPlanner Partners</title>
+  <meta name="description" content="建物のマニュアルに沿った案内から、設備の問い合わせ受付、担当者の指定、次のシフトへの引き継ぎまで。オフィスビル管理の業務を27秒の事例動画で紹介します。">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/ja/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ビル管理のテナント問い合わせ対応を支援するAI | BigPlanner Partners">
+  <meta property="og:description" content="建物のマニュアルに沿った案内から、設備の問い合わせ受付、担当者の指定、次のシフトへの引き継ぎまで。オフィスビル管理の業務を27秒の事例動画で紹介します。">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/ja/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>:root {
+  color-scheme: light;
+  --ink: #17302a;
+  --green: #1b5648;
+  --muted: #455c55;
+  --rule: #cdd9d2;
+  --paper: #f3f7f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
+.wrap { width: min(71rem, 100% - 2.5rem); margin-inline: auto; }
+.site-header { border-block-end: 1px solid var(--rule); }
+.header-content, footer .wrap { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: .85rem; }
+.brand { color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.brand span { font-weight: 500; }
+.languages { display: flex; gap: .2rem; flex-wrap: wrap; }
+.languages a { padding: .34rem .55rem; border-radius: .38rem; color: var(--muted); font-size: .875rem; text-decoration: none; }
+.languages a[aria-current="page"], .languages a:hover { background: #e9f0ec; color: var(--green); }
+a { color: var(--green); text-underline-offset: .17em; }
+a:focus-visible, summary:focus-visible, video:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { line-height: 1.22; }
+h1 { font-size: clamp(2.15rem, 4.5vw, 4.2rem); text-wrap: balance; }
+h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
+[dir="ltr"] :is(h1, h2) { letter-spacing: -.035em; }
+:is(:lang(ja), :lang(zh-Hant)) :is(h1, h2) { letter-spacing: 0; }
+[dir="rtl"] :is(h1, h2, h3) { line-height: 1.4; }
+.hero { background: var(--paper); }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.6rem); padding-block: clamp(2.5rem, 6vw, 5.8rem); }
+.intro { max-width: 53ch; margin-block: 1.12rem .75rem; font-size: clamp(1.04rem, 1.75vw, 1.25rem); }
+.audience { color: var(--muted); }
+.building { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: .75rem; }
+.links { display: flex; flex-wrap: wrap; gap: .7rem 1.35rem; align-items: center; margin-block-start: 1.3rem; font-weight: 650; }
+.button { padding: .72rem 1.12rem; border-radius: .4rem; background: var(--green); color: white; text-decoration: none; }
+.button:hover { background: var(--ink); }
+.section { padding-block: clamp(2.45rem, 5.5vw, 4.8rem); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.steps li { padding-block: 1rem; border-block-start: 2px solid var(--green); }
+.steps h3 { font-size: 1.18rem; margin-block-end: .55rem; }
+.steps p, .demo-note, .faq details p { color: var(--muted); }
+.demo-band { background: #e8f1ed; }
+.demo-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); align-items: center; gap: clamp(1.5rem, 6vw, 6rem); }
+.demo-note { margin-block-start: .6rem; }
+.scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
+.scenes li + li { margin-block-start: .6rem; }
+video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
+.faq details { border-block-end: 1px solid var(--rule); }
+.faq details:first-child { border-block-start: 1px solid var(--rule); }
+.faq summary { cursor: pointer; padding-block: .8rem; font-weight: 650; }
+.faq details p { margin-block-end: .9rem; }
+.contact-band { background: #173930; color: #fff; }
+.contact-band .button { background: #fff; color: var(--ink); }
+.contact-band .button:hover { background: #dcebe4; }
+.contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
+.contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
+footer { color: var(--muted); font-size: .9rem; }
+@media (max-width: 48rem) {
+  .header-content { gap: .45rem; }
+  .hero-content, .demo-section, .faq { grid-template-columns: minmax(0, 1fr); }
+  .building { aspect-ratio: 16 / 9; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
+}
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-content">
+      <a class="brand" href="/" lang="en">BigPlanner <span>Partners</span></a>
+      <nav class="languages" aria-label="言語を選択">
+        <a href="/fire-safety-ai/" lang="ko" hreflang="ko" dir="auto">한국어</a>
+        <a href="/fire-safety-ai/en/" lang="en" hreflang="en" dir="auto">English</a>
+        <a href="/fire-safety-ai/de/" lang="de" hreflang="de" dir="auto">Deutsch</a>
+        <a href="/fire-safety-ai/fr/" lang="fr" hreflang="fr" dir="auto">Français</a>
+        <a href="/fire-safety-ai/ja/" lang="ja" hreflang="ja" dir="auto" aria-current="page">日本語</a>
+        <a href="/fire-safety-ai/zh-hant/" lang="zh-Hant" hreflang="zh-Hant" dir="auto">繁體中文</a>
+        <a href="/fire-safety-ai/ar/" lang="ar" hreflang="ar" dir="auto">العربية</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="wrap hero-content">
+        <div class="hero-copy">
+          <h1 id="page-title">ビル管理のテナント問い合わせ対応を支援するAI</h1>
+          <p class="intro">オフィスビルのよくある問い合わせは、建物の運用マニュアルに沿ってご案内。現地確認が必要な依頼は、場所と内容を受付記録に整理し、管理スタッフの担当者指定と引き継ぎを支援します。</p>
+          <p class="audience">オフィスビルの管理会社、設備管理責任者、交代勤務の現場スタッフ向け</p>
+          <div class="links">
+            <a class="button" href="#contact">オンラインデモのご相談</a>
+            <a href="#demo">27秒で見る、空調の問い合わせから引き継ぎまで</a>
+          </div>
+        </div>
+        <img class="building" src="/images/fire-safety-building.webp" width="1672" height="941" alt="" fetchpriority="high">
+      </div>
+    </section>
+    <section class="wrap section" aria-labelledby="workflow-title">
+      <h2 id="workflow-title">問い合わせ受付から次のシフトへの引き継ぎまで</h2>
+      <ul class="steps">
+        <li><h3>よくある質問に答える</h3><p>来訪者用駐車場の利用方法など、建物のマニュアルに記載された内容をAIが案内します。</p></li>
+        <li><h3>現地確認が必要な依頼を受け付ける</h3><p>空調の不具合などは場所と内容をAIが整理し、管理者が記録を確認して担当者を指定します。</p></li>
+        <li><h3>同じ受付記録で引き継ぐ</h3><p>次のシフトのスタッフは受付記録から対応の経緯を確認します。作業日程や許可の判断は、権限のある担当者が行います。</p></li>
+      </ul>
+    </section>
+    <section class="demo-band" id="demo" aria-labelledby="demo-title">
+      <div class="wrap section demo-section">
+        <div>
+          <h2 id="demo-title">27秒で見る、空調の問い合わせから引き継ぎまで</h2>
+          <p class="demo-note" id="demo-note">架空のビルでの対応を再構成した27秒の動画です。画面は韓国語で、日本語字幕を表示できます。</p>
+          <ol class="scenes">
+          <li>テナントから「5階の共用会議室の冷房が弱い」と問い合わせが入ります。</li>
+          <li>AIが場所と問い合わせの内容を受付記録に整理します。</li>
+          <li>管理者が受付番号DEMO-012の内容を確認し、担当者を指定します。</li>
+          <li>次のシフトのスタッフが同じ受付記録で対応メモと担当者の指定を確認します。</li>
+          </ol>
+        </div>
+        <video controls playsinline preload="none" width="1080" height="1920" aria-labelledby="demo-title" aria-describedby="demo-note" src="/fire-safety-ai/handoff-checklist/handoff-demo.mp4" poster="/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg">
+          <track kind="captions" src="/fire-safety-ai/ja/demo.vtt" srclang="ja" label="日本語" default>
+          <a href="/fire-safety-ai/handoff-checklist/handoff-demo.mp4">デモ動画ファイルを開く</a>
+        </video>
+      </div>
+    </section>
+    <section class="wrap section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">よくあるご質問</h2>
+      <div>
+        <details><summary>日本語で利用できますか？</summary><p>公開デモの画面と申込フォームは韓国語です。日本語での運用に必要な画面や案内文の対応範囲は、導入相談時に確認します。</p></details>
+        <details><summary>既存の電話や管理システムと連携できますか？</summary><p>現在の受付方法と残したい記録項目を伺い、連携の可否と範囲を個別に確認します。</p></details>
+        <details><summary>火災などの緊急時はどうすればよいですか？</summary><p>このサービスは日常のビル管理における問い合わせ対応を支援します。緊急時は、建物所定の緊急連絡先と対応手順に従ってください。</p></details>
+      </div>
+    </section>
+    <section class="contact-band" id="contact" aria-labelledby="contact-title">
+      <div class="wrap section">
+        <h2 id="contact-title">オンラインデモのご相談</h2>
+        <p>メールに会社・団体名、国・地域、確認したい業務の流れをご記入ください。オンラインデモの日程はメールで調整します。お申し込み時に、マニュアルやテナントからの実際の問い合わせ記録を添付する必要はありません。</p>
+        <div class="links">
+          <a class="button" href="mailto:bigplanner0799@gmail.com?subject=%5BJA%5D%20%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%87%E3%83%A2%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">メールでデモを申し込む</a>
+          <a href="/fire-safety-ai/?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=ja#demo-request" hreflang="ko">韓国語の申込フォームを開く</a>
+        </div>
+        <p class="email" dir="ltr">bigplanner0799@gmail.com</p>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><span lang="en">BigPlanner Partners</span><a href="/privacy/" hreflang="ko">プライバシーポリシー（韓国語）</a></div></footer>
+</body>
+</html>
