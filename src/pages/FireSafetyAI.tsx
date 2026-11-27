@@ -155,7 +155,10 @@ export default function FireSafetyAI() {
         </section>
 
         <section className="fa-section fa-faq" aria-labelledby="fa-faq-title"><div className="fa-container fa-faq-grid"><div className="fa-section-heading"><p className="fa-eyebrow">자주 묻는 질문</p><h2 id="fa-faq-title">도입 전<br />궁금한 점</h2><p>우리 현장에 어떻게 적용할지,<br />데모에서 함께 확인하세요.</p>
-              <a className="fa-text-link mt-3" href="/fire-safety-ai/handoff-checklist/">민원 접수·교대 인수인계 체크리스트 <ArrowRight size={16} aria-hidden="true" /></a>
+              <div className="mt-3 grid justify-items-start">
+                <a className="fa-text-link" href="/fire-safety-ai/handoff-checklist/">민원 접수·교대 인수인계 체크리스트 <ArrowRight size={16} aria-hidden="true" /></a>
+                <a className="fa-text-link" href="/fire-safety-ai/adoption-guide/">시설관리 민원 접수 시스템 도입 체크리스트 <ArrowRight size={16} aria-hidden="true" /></a>
+              </div>
             </div><div className="fa-faq-list">{faqs.map((faq, index) => <details key={faq.q} open={index === 0 ? true : undefined}><summary><span>{faq.q}</span><ChevronDown size={19} /></summary><p>{faq.a}</p></details>)}</div></div></section>
 
         <section className="fa-section fa-demo-section" id="demo-request" aria-labelledby="fa-demo-title"><div className="fa-container fa-demo-grid"><div className="fa-demo-intro"><p className="fa-eyebrow">우리 건물의 업무로 확인하세요</p><h2 id="fa-demo-title">우리 현장에서<br />줄일 수 있는 업무부터<br /><span>확인하세요.</span></h2><p>실제 화면을 보며 AI에 맡길 업무와<br />현장에 필요한 구축 범위를 함께 확인합니다.</p><ul className="fa-demo-agenda"><li><span>01</span><div><strong>맡길 수 있는 반복 업무</strong><p>우리 건물의 반복 문의 중 AI로 안내할 내용</p></div></li><li><span>02</span><div><strong>접수 항목과 전달 방식</strong><p>AI가 정리할 정보와 관리자가 확인할 업무</p></div></li><li><span>03</span><div><strong>구축·교육·운영지원 범위</strong><p>매뉴얼 정리부터 현장 사용과 갱신 지원까지</p></div></li></ul><div className="fa-demo-footnote"><FileText size={17} /><span>첫 신청에는 매뉴얼이나 실제 민원 자료가 필요하지 않습니다.<br />신청 후 이메일로 온라인 시연 일정을 조율합니다.</span></div></div><div className="fa-form-panel"><FireSafetyDemoRequestForm /></div></div></section>

@@ -36,6 +36,7 @@ async function generateSitemap() {
       { path: '/service/', priority: 0.8, changefreq: 'monthly' },
       { path: '/fire-safety-ai/', priority: 0.9, changefreq: 'monthly' },
       { path: '/fire-safety-ai/handoff-checklist/', priority: 0.8, changefreq: 'monthly' },
+      { path: '/fire-safety-ai/adoption-guide/', priority: 0.8, changefreq: 'monthly' },
       { path: '/projects', priority: 0.9, changefreq: 'daily' },
       { path: '/partners', priority: 0.7, changefreq: 'monthly' },
       { path: '/contact', priority: 0.8, changefreq: 'monthly' },

@@ -9,11 +9,13 @@ const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
 const fireSafetyPath = '/fire-safety-ai/';
 const fireSafetyChecklistPath = '/fire-safety-ai/handoff-checklist/';
+const fireSafetyAdoptionPath = '/fire-safety-ai/adoption-guide/';
+const staticGuidePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath];
 const servicePath = '/service/';
 
 async function verifyFireSafetyPage(page) {
   await page.waitForSelector('#demo-request form button[type="submit"]');
-  await page.waitForSelector('a[href="' + fireSafetyChecklistPath + '"]');
+  await Promise.all(staticGuidePaths.map((guidePath) => page.waitForSelector(`a[href="${guidePath}"]`)));
   await page.evaluate(() => {
     const canonical = document.head.querySelectorAll('link[rel="canonical"]');
     const ogUrl = document.head.querySelectorAll('meta[property="og:url"]');
@@ -89,14 +91,19 @@ async function prerender() {
     urls.push(url === '' ? '/' : url);
   }
 
-  const checklistFile = path.join(distPath, fireSafetyChecklistPath, 'index.html');
-  const checklistWorkbook = path.join(distPath, fireSafetyChecklistPath, 'handoff-log.xlsx');
-  const checklistUrl = 'https://bigplanner.co.kr' + fireSafetyChecklistPath;
-  if (!urls.includes(fireSafetyChecklistPath) || !fs.existsSync(checklistFile) || !fs.existsSync(checklistWorkbook) ||
-      !fs.readFileSync(checklistFile, 'utf-8').includes('<link rel="canonical" href="' + checklistUrl + '">')) {
-    throw new Error('The static fire safety checklist, its workbook, or its sitemap entry is missing.');
+  for (const guidePath of staticGuidePaths) {
+    const guideFile = path.join(distPath, guidePath, 'index.html');
+    const canonical = `<link rel="canonical" href="https://bigplanner.co.kr${guidePath}">`;
+    if (!urls.includes(guidePath) || !fs.existsSync(guideFile) ||
+        !fs.readFileSync(guideFile, 'utf-8').includes(canonical)) {
+      throw new Error(`Missing static guide, canonical, or sitemap entry for ${guidePath}`);
+    }
   }
-  const spaUrls = urls.filter((url) => url !== fireSafetyChecklistPath);
+  const checklistWorkbook = path.join(distPath, fireSafetyChecklistPath, 'handoff-log.xlsx');
+  if (!fs.existsSync(checklistWorkbook)) {
+    throw new Error('The fire safety checklist workbook is missing.');
+  }
+  const spaUrls = urls.filter((url) => !staticGuidePaths.includes(url));
   const targetUrls = process.env.PRERENDER_ALL === 'true' ? spaUrls : spaUrls.slice(0, 25);
   if (!targetUrls.includes(fireSafetyPath)) throw new Error('Missing fire safety landing page in sitemap.');
   if (!targetUrls.includes(servicePath)) throw new Error('Missing services page in sitemap.');
