@@ -1,0 +1,90 @@
+{
+  "title": "Tjekliste til afprøvning af AI i bygningsdriften",
+  "description": "Planlæg en afprøvning i én bygning. Vælg, hvilke lejerhenvendelser der skal håndteres, aftal gennemgang og vagtskifte, og sammenlign sagsregistreringer før og under forsøget.",
+  "shareDescription": "Vælg, hvilke sager I vil afprøve, hvem der overtager ved vagtskifte, og hvad I vil måle i én bygning.",
+  "heading": "Afprøv en AI-helpdesk til lejere i én bygning",
+  "intro": "Vælg en erhvervsbygning med nyere sagsregistreringer og medarbejdere fra begge vagter, som kan deltage. Bed den driftsansvarlige aftale omfanget med dem, der besvarer spørgsmål, fordeler arbejdet og overtager åbne sager.",
+  "open": "Åbn tjeklisten",
+  "print": "Udskriv tjeklisten",
+  "share": {
+    "summary": "Del denne tjekliste",
+    "address": "Sidens webadresse",
+    "native": "Del via en app",
+    "copy": "Kopiér link",
+    "email": "Del pr. mail",
+    "copied": "Linket er kopieret.",
+    "manual": "Markér og kopiér webadressen ovenfor."
+  },
+  "scopeHeading": "Seks punkter, inden I går i gang",
+  "scope": [
+    {
+      "heading": "Vælg bygning og typer af henvendelser",
+      "text": "Gennemgå nyere sager. Vælg to eller tre typer med nok eksempler til at teste, f.eks. gæsteparkering, utilstrækkelig køling og behov for varme, ventilation eller køling uden for normal driftstid. Notér bygningen, tidsrummene, typerne og den ansvarlige for afprøvningen."
+    },
+    {
+      "heading": "Aftal, hvilke svar og beslutninger der skal gennemgås",
+      "text": "Notér det godkendte afsnit i driftsvejledningen for rutinespørgsmål, og hvem der opdaterer det. Kontrollér ét svar mod den nyeste vejledning. Hvis en medarbejder skal ud og se på sagen, registreres placering og problem. Sager, der kræver godkendelse, gennemgås og afgøres af medarbejdere med den rette bemyndigelse."
+    },
+    {
+      "heading": "Udpeg en ansvarlig på hver vagt",
+      "text": "Aftal, hvem der gennemgår nye sager, fordeler opgaver og håndterer sager uden for afprøvningen. Gennemgå en sag uden ansvarlig ved vagtskiftet, så det er klart, hvem der overtager."
+    },
+    {
+      "heading": "Overdrag åbne sager med samme sagsregistrering",
+      "text": "Notér sagsnummer, placering, problem, tildeling, status, næste skridt og tidspunktet for næste kontrol. Bed næste vagt notere, hvornår sagen er gennemgået."
+    },
+    {
+      "heading": "Vælg det system, den officielle sag skal ligge i",
+      "text": "Aftal, hvilket system der skal være hovedkilden. Afklar, hvilke integrationer afprøvningen kan bruge til telefon, mail og arbejdsordrer. Test et problem, der meldes to gange, og se, hvordan medarbejderne afstemmer registreringerne."
+    },
+    {
+      "heading": "Aftal adgang og opbevaring",
+      "text": "Aftal, hvem der må se eller redigere lejeroplysninger. Beslut, hvornår kontaktoplysninger eller fotos er nødvendige, hvor længe de opbevares, og hvem der står for sletning. Brug fiktive sager eller sager med følsomme oplysninger maskeret ved gennemgangen."
+    }
+  ],
+  "safety": "Følg bygningens fastlagte kontaktveje og beredskabsprocedurer i en nødsituation.",
+  "exampleHeading": "Fiktiv fejlmelding om køling ved vagtskifte",
+  "example": [
+    {
+      "label": "Registrering",
+      "value": "DEMO-012. Den 5. oktober kl. 20:35 lokal tid melder en lejer, at kølingen er for svag i det fælles mødelokale på 5. sal i bygning A."
+    },
+    {
+      "label": "Driftslederens gennemgang",
+      "value": "Driftslederen gennemgår placeringen og problemet, tildeler sagen til driftsteknikeren på morgenvagten og markerer sagen som i gang."
+    },
+    {
+      "label": "Næste vagt",
+      "value": "Kl. 07:00 næste morgen bekræfter morgenvagten tildelingen og registrerer, at driftsteknikeren skal kontrollere lokalet kl. 07:30."
+    }
+  ],
+  "watch": "Se demoen på 27 sekunder med danske undertekster",
+  "interfaceNote": "Den viste brugerflade er på koreansk.",
+  "pilotHeading": "Sammenlign et lille udsnit før og under afprøvningen",
+  "baseline": "Aftal på forhånd, hvilke resultater der taler for at fortsætte. Sammenlign f.eks. fem arbejdsdage før afprøvningen med fem under den. Brug de samme ugedage, tidsrum for dag- og nattevagter og typer af henvendelser. Tæl en dublet én gang ved at sammenholde sagsnummer eller tidspunkt, placering og problem.",
+  "metrics": [
+    {
+      "title": "Fuldstændige sagsregistreringer.",
+      "text": "Find alle sager i afprøvningen, der krævede kontrol på stedet. Del antallet med registreret placering, problem og tildelingsstatus med det samlede antal af disse sager."
+    },
+    {
+      "title": "Bekræftet overdragelse.",
+      "text": "Tæl de åbne sager, hvor første overdragelse omfatter en kontrol af status og næste skridt med et registreret tidspunkt. Del med antallet af åbne sager, der skulle overdrages."
+    }
+  ],
+  "review": "Notér tæller og nævner for hvert mål. Hvis ingen sager opfylder kriterierne, noterer I 0 af 0 og lader andelen stå tom. Gennemgå manglende registreringer og forsinkede tildelinger med begge vagter, før I afgør, om afprøvningen skal udvides.",
+  "referenceIntro": "Læs mere om at planlægge afprøvningen og afgrænse helpdeskens opgaver.",
+  "referenceLabel": "Den britiske regerings standard for facility management (engelsk)",
+  "pricingHeading": "Pris og demo",
+  "pricing": "BigPlanner Partners giver et individuelt tilbud på opsætning og løbende driftsstøtte ud fra antal bygninger, driftsvejledninger, integrationer og behovet for støtte. Medbring to eksempler på arbejdsgange til onlinedemoen. Fiktive eksempler er tilstrækkelige.",
+  "demoLabel": "Bestil en online demo",
+  "resourcesHeading": "Ressourcer til bygningsdrift",
+  "materials": [
+    "Tjekliste til vagtskifte og Excel-log",
+    "Vejledning til ofte stillede spørgsmål og arbejdsark (engelsk)",
+    "Beregn tidsforbruget på tilbagevendende lejerhenvendelser",
+    "Alle ressourcer til bygningsdrift"
+  ],
+  "rss": "RSS for ressourcer til bygningsdrift",
+  "privacy": "Privatlivspolitik (koreansk)"
+}

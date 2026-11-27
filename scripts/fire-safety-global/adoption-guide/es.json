@@ -1,0 +1,90 @@
+{
+  "title": "Lista de comprobación para probar un asistente de IA en instalaciones",
+  "description": "Planifica una prueba piloto en un solo edificio. Elige qué solicitudes atender, acuerda cómo revisarlas y pasarlas al siguiente turno y compara los registros.",
+  "shareDescription": "Elige qué solicitudes atender, quién las retoma en el relevo y qué vas a medir durante la prueba en un edificio.",
+  "heading": "Prueba un asistente de IA para inquilinos en un edificio",
+  "intro": "Elige un edificio comercial cuyo equipo pueda consultar solicitudes recientes y en el que puedan participar los turnos de día y de noche. La persona responsable de instalaciones debe acordar el alcance de la prueba con quienes responden a las consultas, asignan las intervenciones y reciben los casos abiertos.",
+  "open": "Abrir la lista de comprobación",
+  "print": "Imprimir la lista",
+  "share": {
+    "summary": "Compartir esta lista de comprobación",
+    "address": "Dirección de la página",
+    "native": "Compartir en una aplicación",
+    "copy": "Copiar el enlace",
+    "email": "Compartir por correo electrónico",
+    "copied": "Enlace copiado.",
+    "manual": "Selecciona y copia la dirección de arriba."
+  },
+  "scopeHeading": "Seis comprobaciones antes de empezar",
+  "scope": [
+    {
+      "heading": "Elige el edificio y los tipos de solicitud",
+      "text": "Revisa los registros recientes. Elige dos o tres tipos de solicitud con suficientes ejemplos para probar, como el aparcamiento de visitantes, un aire acondicionado que enfría poco o la climatización fuera del horario habitual. Anota el edificio, los horarios, los tipos elegidos y la persona responsable de la prueba."
+    },
+    {
+      "heading": "Acuerda qué respuestas y decisiones hay que revisar",
+      "text": "Para las consultas habituales, anota el apartado aprobado del manual y quién lo mantiene al día. Comprueba una respuesta con el texto vigente. Si hace falta una visita, registra la ubicación y la incidencia. El personal autorizado revisa y resuelve las solicitudes que requieren aprobación."
+    },
+    {
+      "heading": "Designa a una persona responsable en cada turno",
+      "text": "Aclara quién revisa las solicitudes nuevas, asigna el seguimiento y se ocupa de los casos fuera del alcance de la prueba. Simula el relevo con una solicitud pendiente de asignar y confirma quién se hace cargo."
+    },
+    {
+      "heading": "Traspasa los casos abiertos en el mismo registro",
+      "text": "Anota el identificador de la solicitud, la ubicación, la incidencia, la asignación, el estado, la próxima acción y la hora de la siguiente comprobación. Pide al turno entrante que deje constancia de cuándo revisó el caso."
+    },
+    {
+      "heading": "Decide qué sistema será el registro de referencia",
+      "text": "Elige el sistema que se usará como registro oficial. Confirma qué integraciones con teléfono, correo electrónico y órdenes de trabajo admite la prueba. Usa una incidencia comunicada dos veces para comprobar cómo el personal cotejará los registros."
+    },
+    {
+      "heading": "Confirma el acceso y la conservación de datos",
+      "text": "Acuerda quién puede consultar o modificar la información de los inquilinos. Decide cuándo hacen falta datos de contacto o fotos, cuánto tiempo conservarlos y quién se encarga de eliminarlos. Para el ejercicio, usa registros ficticios o con los datos personales ocultos."
+    }
+  ],
+  "safety": "En caso de emergencia, usa los contactos y procedimientos de respuesta establecidos en el edificio.",
+  "exampleHeading": "Incidencia ficticia de climatización durante el relevo",
+  "example": [
+    {
+      "label": "Recepción",
+      "value": "DEMO-012. El 5 de octubre a las 20:35, hora local, un inquilino avisa de que el aire acondicionado enfría poco en la sala de reuniones común del quinto piso del edificio A."
+    },
+    {
+      "label": "Revisión del responsable",
+      "value": "El responsable comprueba la ubicación y la incidencia, asigna el caso al técnico de instalaciones del turno de mañana y lo marca como «En curso»."
+    },
+    {
+      "label": "Turno entrante",
+      "value": "Al día siguiente a las 07:00, el turno entrante confirma la asignación y anota que el técnico comprobará la sala a las 07:30."
+    }
+  ],
+  "watch": "Ver la demostración de 27 segundos con subtítulos en español",
+  "interfaceNote": "La interfaz que se muestra está en coreano.",
+  "pilotHeading": "Compara los registros antes y durante la prueba",
+  "baseline": "Decide de antemano qué resultados justificarían continuar. Por ejemplo, compara cinco días laborables previos con cinco durante la prueba. Usa los mismos días de la semana, las mismas franjas de los turnos de día y de noche y los mismos tipos de solicitud. Cuenta cada incidencia una sola vez. Para reconocer duplicados, coteja el identificador o la hora, la ubicación y el problema.",
+  "metrics": [
+    {
+      "title": "Registros completos",
+      "text": "Entre los casos incluidos en la prueba que requirieron una comprobación in situ, cuenta los que tienen registrada la ubicación, la incidencia y el estado de la asignación. Divide ese número entre el total de esos casos."
+    },
+    {
+      "title": "Relevos confirmados",
+      "text": "Entre los casos abiertos que debían pasar al siguiente turno, cuenta aquellos cuya primera entrega incluye una confirmación con fecha y hora de que el turno entrante comprobó el estado y la próxima acción. Divide ese número entre el total de casos abiertos que debían traspasarse."
+    }
+  ],
+  "review": "Anota el numerador y el denominador de cada indicador. Si el denominador es cero, registra «0 de 0» y deja la tasa en blanco. Revisa con ambos turnos los registros incompletos y las asignaciones tardías antes de decidir si amplías la prueba.",
+  "referenceIntro": "Más información para planificar la prueba y definir el alcance del servicio de atención.",
+  "referenceLabel": "Norma de gestión de instalaciones del Gobierno británico (en inglés)",
+  "pricingHeading": "Presupuesto y demostración",
+  "pricing": "BigPlanner Partners prepara un presupuesto de implantación y asistencia continua para cada proyecto según el número de edificios, sus manuales de operación, las integraciones y el alcance de la asistencia. Lleva dos ejemplos de trabajo a la demostración en línea. Pueden ser casos ficticios.",
+  "demoLabel": "Solicitar una demostración en línea",
+  "resourcesHeading": "Recursos para la gestión de instalaciones",
+  "materials": [
+    "Lista de comprobación y registro Excel para el relevo",
+    "Guía y plantilla para redactar las preguntas frecuentes de un edificio (en inglés)",
+    "Calculadora de carga de trabajo para las consultas habituales",
+    "Todos los recursos en español para la gestión de instalaciones"
+  ],
+  "rss": "RSS de recursos para la gestión de instalaciones",
+  "privacy": "Política de privacidad (en coreano)"
+}

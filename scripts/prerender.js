@@ -15,7 +15,7 @@ const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
 const fireSafetyStaticPaths = [
   ...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath,
-  ...fireSafetyTranslations.filter(({ adoptionPath }) => adoptionPath).map(({ adoptionPath }) => adoptionPath),
+  ...fireSafetyTranslations.map(({ adoptionPath }) => adoptionPath),
   ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath, workloadPath, resourcesPath }) =>
     [handoverPath, videoPath, workloadPath, resourcesPath]),
 ];
@@ -155,11 +155,11 @@ async function prerender() {
       throw new Error(`Missing static fire safety page, canonical, or sitemap entry for ${resourcePath}`);
     }
   }
-  for (const { code, adoptionPath } of fireSafetyLanguages.filter(({ adoptionPath }) => adoptionPath)) {
+  for (const { code, direction = 'ltr', adoptionPath } of fireSafetyLanguages) {
     const html = fs.readFileSync(path.join(distPath, adoptionPath, 'index.html'), 'utf-8');
-    if (!html.includes(`<html lang="${code}"`) || !fireSafetyAdoptionAlternates.every(({ code, path }) =>
+    if (!html.includes(`<html lang="${code}" dir="${direction}">`) || !fireSafetyAdoptionAlternates.every(({ code, path }) =>
       html.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
-      throw new Error(`Missing adoption checklist language or reciprocal alternates for ${adoptionPath}`);
+      throw new Error(`Missing adoption checklist language, direction or reciprocal alternates for ${adoptionPath}`);
     }
   }
   for (const resourcePath of [fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath]) {

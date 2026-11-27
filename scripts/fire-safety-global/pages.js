@@ -13,7 +13,7 @@ const pagePaths = new Set([
   fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
   ...fireSafetyLanguages.flatMap(({ resourcesPath, workloadPath }) => [resourcesPath, workloadPath]),
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
-  ...fireSafetyTranslations.map(({ adoptionPath }) => adoptionPath).filter(Boolean),
+  ...fireSafetyTranslations.map(({ adoptionPath }) => adoptionPath),
 ]);
 const contentTypes = { '.vtt': 'text/vtt', '.txt': 'text/plain', '.html': 'text/html' };
 const artworkPath = '/images/fire-safety-building.webp';
@@ -36,7 +36,7 @@ function resourceFeedTags({ code, feedPath }, guideTitle) {
 function renderLanding(language, content, handover) {
   const { code, label, path, handoverPath, requestPath, videoPath, resourcesPath, workloadPath, adoptionPath, locale, direction = 'ltr' } = language;
   const workloadLabel = readWorkloadCopy(code).open;
-  const adoptionLabel = adoptionPath && (code === 'en' ? 'Facilities AI pilot checklist' : readAdoptionCopy(code).title);
+  const adoptionLabel = code === 'en' ? 'Facilities AI pilot checklist' : readAdoptionCopy(code).title;
   const { rssHead, rssLink } = resourceFeedTags(language, handover.h1);
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
@@ -118,7 +118,7 @@ ${alternates}
           <a href="${fireSafetyEnglishFaqPath}">Building FAQ worksheet</a>
           <a href="${fireSafetyEnglishPilotKitPath}" download>Facilities AI pilot starter kit (ZIP)</a>` : ''}
         <a href="${workloadPath}">${escapeHtml(workloadLabel)}</a>
-        ${adoptionPath ? `<a href="${adoptionPath}">${escapeHtml(adoptionLabel)}</a>` : ''}
+        <a href="${adoptionPath}">${escapeHtml(adoptionLabel)}</a>
       </div>
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,16 @@
   <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/">
   <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/">
   <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/">
+  <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/">
+  <link rel="alternate" hreflang="da" href="https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/">
+  <link rel="alternate" hreflang="nl" href="https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/">
+  <link rel="alternate" hreflang="sv" href="https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/">
+  <link rel="alternate" hreflang="fi" href="https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/">
+  <link rel="alternate" hreflang="it" href="https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/">
+  <link rel="alternate" hreflang="he" href="https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/">
+  <link rel="alternate" hreflang="es" href="https://bigplanner.co.kr/fire-safety-ai/es/adoption-guide/">
+  <link rel="alternate" hreflang="is" href="https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/">
   <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
   <link rel="alternate" type="application/rss+xml" title="시설관리 실무 자료 RSS" href="https://bigplanner.co.kr/fire-safety-ai/rss.xml">
   <meta property="og:type" content="article">
@@ -31,7 +41,12 @@
     body { margin: 0; background: white; color: var(--ink); font: 1rem/1.7 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif; word-break: keep-all; overflow-wrap: break-word; }
     .wrap { width: min(100% - 2.5rem, 66rem); margin-inline: auto; }
     header { padding-block: 1rem; background: #192326; color: white; }
+    header .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; }
     header a { color: inherit; font-weight: 800; text-decoration: none; }
+    .guide-languages { max-inline-size: min(32rem, 100%); }
+    .guide-languages summary { min-height: 2.75rem; padding-block: .5rem; cursor: pointer; font-weight: 650; }
+    .guide-language-links { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
+    .guide-language-links a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: underline; }
     a { color: var(--accent); text-underline-offset: .18em; }
     :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
     h1, h2, h3 { line-height: 1.27; letter-spacing: -.04em; }
@@ -76,12 +91,26 @@
 </head>
 <body>
   <header><div class="wrap">
-    <a href="/fire-safety-ai/">빅플래너파트너스 · 방재실 AI 민원 도우미</a> ·
-    <a href="/fire-safety-ai/en/adoption-guide/" lang="en" hreflang="en">English</a> ·
-    <a href="/fire-safety-ai/de/adoption-guide/" lang="de" hreflang="de">Deutsch</a> ·
-    <a href="/fire-safety-ai/fr/adoption-guide/" lang="fr" hreflang="fr">Français</a> ·
-    <a href="/fire-safety-ai/ja/adoption-guide/" lang="ja" hreflang="ja">日本語</a> ·
-    <a href="/fire-safety-ai/zh-hant/adoption-guide/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+    <a href="/fire-safety-ai/">빅플래너파트너스 · 방재실 AI 민원 도우미</a>
+    <details class="guide-languages"><summary>한국어</summary>
+      <nav class="guide-language-links">
+      <a href="/fire-safety-ai/en/adoption-guide/" lang="en" hreflang="en" dir="auto">English</a>
+      <a href="/fire-safety-ai/de/adoption-guide/" lang="de" hreflang="de" dir="auto">Deutsch</a>
+      <a href="/fire-safety-ai/fr/adoption-guide/" lang="fr" hreflang="fr" dir="auto">Français</a>
+      <a href="/fire-safety-ai/ja/adoption-guide/" lang="ja" hreflang="ja" dir="auto">日本語</a>
+      <a href="/fire-safety-ai/zh-hant/adoption-guide/" lang="zh-Hant" hreflang="zh-Hant" dir="auto">繁體中文</a>
+      <a href="/fire-safety-ai/ar/adoption-guide/" lang="ar" hreflang="ar" dir="auto">العربية</a>
+      <a href="/fire-safety-ai/nb/adoption-guide/" lang="nb" hreflang="nb" dir="auto">Norsk bokmål</a>
+      <a href="/fire-safety-ai/da/adoption-guide/" lang="da" hreflang="da" dir="auto">Dansk</a>
+      <a href="/fire-safety-ai/nl/adoption-guide/" lang="nl" hreflang="nl" dir="auto">Nederlands</a>
+      <a href="/fire-safety-ai/sv/adoption-guide/" lang="sv" hreflang="sv" dir="auto">Svenska</a>
+      <a href="/fire-safety-ai/fi/adoption-guide/" lang="fi" hreflang="fi" dir="auto">Suomi</a>
+      <a href="/fire-safety-ai/it/adoption-guide/" lang="it" hreflang="it" dir="auto">Italiano</a>
+      <a href="/fire-safety-ai/he/adoption-guide/" lang="he" hreflang="he" dir="auto">עברית</a>
+      <a href="/fire-safety-ai/es/adoption-guide/" lang="es" hreflang="es" dir="auto">Español</a>
+      <a href="/fire-safety-ai/is/adoption-guide/" lang="is" hreflang="is" dir="auto">Íslenska</a>
+      </nav>
+    </details>
   </div></header>
   <main>
     <div class="hero">
@@ -180,6 +209,7 @@
         <div class="buttons">
           <a class="button" href="/fire-safety-ai/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch#demo-request">온라인 시연 신청</a>
           <a class="jump" href="/fire-safety-ai/handoff-checklist/">방재실 교대 인계 체크리스트 보기</a>
+          <a class="jump" href="/fire-safety-ai/demo-video/">27초 냉방 민원 시연 보기</a>
           <a class="jump" href="/fire-safety-ai/after-hours-hvac-request/">야간·휴일 냉난방 연장 운전 신청서</a>
           <a class="jump" href="/fire-safety-ai/faq-manual/">시설관리 FAQ 작성 가이드와 엑셀</a>
           <a class="jump" href="/fire-safety-ai/facilities-ai-overview.pdf" download="bigplanner-facilities-ai-ko.pdf">방재실 AI 제품 소개서 PDF</a>

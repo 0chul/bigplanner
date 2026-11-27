@@ -39,8 +39,7 @@ async function generateSitemap() {
       { path: '/fire-safety-ai/', priority: 0.9, changefreq: 'monthly' },
       ...fireSafetyTranslations.map(({ path }) => ({ path, priority: 0.8, changefreq: 'monthly' })),
       ...fireSafetyLanguages.map(({ handoverPath }) => ({ path: handoverPath, priority: 0.8, changefreq: 'monthly' })),
-      ...fireSafetyLanguages.filter(({ adoptionPath }) => adoptionPath)
-        .map(({ adoptionPath }) => ({ path: adoptionPath, priority: 0.8, changefreq: 'monthly' })),
+      ...fireSafetyLanguages.map(({ adoptionPath }) => ({ path: adoptionPath, priority: 0.8, changefreq: 'monthly' })),
       { path: fireSafetyKoreanAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyEnglishAfterHoursPath, priority: 0.8, changefreq: 'monthly' },
       { path: fireSafetyKoreanFaqPath, priority: 0.8, changefreq: 'monthly' },

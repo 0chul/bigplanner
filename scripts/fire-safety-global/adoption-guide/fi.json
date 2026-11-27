@@ -1,0 +1,90 @@
+{
+  "title": "Tarkistuslista tekoälyavusteisen vuokralaispalvelun pilotointiin",
+  "description": "Suunnittele yhden kiinteistön pilotti. Valitse käsiteltävät vuokralaisten palvelupyynnöt, sovi niiden tarkistamisesta ja siirtämisestä vuorolta toiselle ja vertaa kirjauksia ennen pilottia ja sen aikana.",
+  "shareDescription": "Valitse yhden kiinteistön pilotissa käsiteltävät pyynnöt ja sovi, kuka jatkaa niiden käsittelyä vuoronvaihdossa ja mitä pilotissa mitataan.",
+  "heading": "Kokeile tekoälyavusteista vuokralaispalvelua yhdessä kiinteistössä",
+  "intro": "Valitse liikekiinteistö, josta on tallessa viimeaikaisia palvelupyyntöjä ja jonka kummankin vuoron työntekijöitä voi osallistua. Pyydä kiinteistön ylläpidosta vastaavaa henkilöä sopimaan pilotin rajauksesta kysymyksiin vastaavien, töitä osoittavien ja avoimia pyyntöjä vastaanottavien työntekijöiden kanssa.",
+  "open": "Avaa tarkistuslista",
+  "print": "Tulosta tarkistuslista",
+  "share": {
+    "summary": "Jaa tarkistuslista",
+    "address": "Sivun osoite",
+    "native": "Jaa sovellukseen",
+    "copy": "Kopioi linkki",
+    "email": "Jaa sähköpostitse",
+    "copied": "Linkki kopioitu.",
+    "manual": "Valitse yllä oleva sivun osoite ja kopioi se."
+  },
+  "scopeHeading": "Tarkista nämä kuusi asiaa ennen aloitusta",
+  "scope": [
+    {
+      "heading": "Valitse kiinteistö ja palvelupyyntöjen tyypit",
+      "text": "Käy läpi viimeaikaisia kirjauksia. Valitse kaksi tai kolme pyyntötyyppiä, joista on riittävästi esimerkkejä. Niitä voivat olla vaikkapa vieraspysäköinti, riittämätön jäähdytys tai lämmityksen, ilmanvaihdon tai jäähdytyksen käyttö normaalin käyttöajan ulkopuolella. Kirjaa kiinteistö, pilotin toiminta-ajat, pyyntötyypit ja pilotista vastaava henkilö."
+    },
+    {
+      "heading": "Sovi tarkistettavista vastauksista ja hyväksyntää vaativista päätöksistä",
+      "text": "Kirjaa tavallisille kysymyksille hyväksytty kiinteistöohjeen kohta ja siitä vastaava päivittäjä. Tarkista yksi vastaus ohjeen uusinta versiota vasten. Kirjaa paikan päällä tarkistettavasta tilanteesta sijainti ja ongelma. Hyväksyntää vaativat pyynnöt tarkistaa ja ratkaisee siihen valtuutettu henkilöstö."
+    },
+    {
+      "heading": "Nimeä vastuuhenkilö jokaiseen vuoroon",
+      "text": "Sovi, kuka tarkistaa uudet pyynnöt, osoittaa jatkotoimet ja käsittelee pilotin ulkopuolelle jäävät tapaukset. Käy vuoronvaihdossa läpi yksi pyyntö, jolla ei vielä ole vastuuhenkilöä, ja varmista, kuka ottaa sen käsittelyyn."
+    },
+    {
+      "heading": "Siirrä avoimet pyynnöt seuraavalle vuorolle samassa kirjauksessa",
+      "text": "Kirjaa pyynnön tunnus, sijainti, ongelma, vastuuhenkilö, tila, seuraava toimi ja seuraavan tarkistuksen ajankohta. Pyydä vuoroon tulevia työntekijöitä kirjaamaan, milloin he tarkistivat pyynnön."
+    },
+    {
+      "heading": "Valitse virallisten kirjausten järjestelmä",
+      "text": "Sovi, missä järjestelmässä virallinen kirjaus säilytetään. Selvitä, mitä puhelin-, sähköposti- ja työmääräysjärjestelmien liitäntöjä pilotissa voidaan käyttää. Kokeile yhdellä kahdesti ilmoitetulla ongelmalla, miten henkilöstö sovittaa kirjaukset yhteen."
+    },
+    {
+      "heading": "Varmista käyttöoikeudet ja säilytysajat",
+      "text": "Sovi, kuka saa nähdä ja muokata vuokralaisten tietoja. Päätä, milloin yhteystietoja tai kuvia tarvitaan, miten pitkään tiedot säilytetään ja kuka vastaa niiden poistamisesta. Käytä harjoituksessa kuvitteellisia kirjauksia tai peitä arkaluonteiset tiedot."
+    }
+  ],
+  "safety": "Noudata hätätilanteissa kiinteistön vakiintuneita yhteydenotto- ja toimintaohjeita.",
+  "exampleHeading": "Kuvitteellinen jäähdytysongelma vuoronvaihdossa",
+  "example": [
+    {
+      "label": "Pyynnön kirjaaminen",
+      "value": "DEMO-012. Vuokralainen ilmoittaa 5. lokakuuta kello 20:35 paikallista aikaa, että A-rakennuksen viidennen kerroksen yhteisen neuvotteluhuoneen jäähdytys on riittämätön."
+    },
+    {
+      "label": "Vuorovastaavan tarkistus",
+      "value": "Vuorovastaava tarkistaa sijainnin ja ongelman, osoittaa pyynnön aamuvuoron kiinteistöteknikolle ja merkitsee pyynnön käsittelyyn."
+    },
+    {
+      "label": "Seuraava vuoro",
+      "value": "Seuraavana aamuna vuoroon tulevat työntekijät vahvistavat kello 07:00, kuka hoitaa pyynnön, ja kirjaavat, että teknikko tarkistaa huoneen kello 07:30."
+    }
+  ],
+  "watch": "Katso 27 sekunnin esittely suomenkielisillä tekstityksillä",
+  "interfaceNote": "Videolla näkyvä käyttöliittymä on koreankielinen.",
+  "pilotHeading": "Vertaa pilotin tuloksia pieneen lähtötilanteen otokseen",
+  "baseline": "Päätä etukäteen, millä tuloksilla kokeilua kannattaa jatkaa. Vertaa esimerkiksi viittä työpäivää ennen pilottia viiteen työpäivään pilotin aikana. Valitse samat viikonpäivät, päivä- ja yövuorojen ajanjaksot ja pyyntötyypit. Laske useaan kertaan ilmoitettu ongelma vain kerran. Tunnista päällekkäisyydet pyynnön tunnuksen tai kellonajan, sijainnin ja ongelman perusteella.",
+  "metrics": [
+    {
+      "title": "Kirjausten kattavuus.",
+      "text": "Ota mukaan kaikki pilotin piiriin kuuluvat pyynnöt, jotka vaativat tarkistusta paikan päällä. Jaa niiden pyyntöjen määrä, joihin on kirjattu sijainti, ongelma ja vastuuhenkilön nimeämisen tila, kaikkien mukaan otettujen pyyntöjen määrällä."
+    },
+    {
+      "title": "Kuittaus vuoronvaihdossa.",
+      "text": "Ota mukaan kaikki avoimet pyynnöt, jotka piti siirtää seuraavalle vuorolle. Jaa niiden pyyntöjen määrä, joissa tilan ja seuraavan toimen tarkistus kirjattiin aikaleimalla ensimmäisessä vuoronvaihdossa, kaikkien siirrettävien avointen pyyntöjen määrällä."
+    }
+  ],
+  "review": "Kirjaa kullekin mittarille sekä osoittajan että nimittäjän lukumäärä. Kun nimittäjä on nolla, kirjaa 0/0 ja jätä osuus tyhjäksi. Käy puuttuvat kirjaukset ja viiveet vastuun osoittamisessa läpi kummankin vuoron kanssa ennen laajentamispäätöstä.",
+  "referenceIntro": "Lisätietoa pilotin suunnittelusta ja palvelupisteen tehtävistä.",
+  "referenceLabel": "Yhdistyneen kuningaskunnan hallinnon kiinteistönpidon standardi (englanniksi)",
+  "pricingHeading": "Tarjous ja esittely",
+  "pricing": "BigPlanner Partners tekee projektikohtaisen tarjouksen käyttöönotosta ja jatkuvasta tuesta. Tarjous perustuu kiinteistöjen määrään, kiinteistöohjeisiin, järjestelmäliitäntöihin ja tuen tarpeeseen. Valmistele verkkoesittelyyn kaksi esimerkkityönkulkua. Kuvitteelliset esimerkit riittävät.",
+  "demoLabel": "Lähetä esittelypyyntö verkossa",
+  "resourcesHeading": "Työkalut kiinteistön ylläpitoon",
+  "materials": [
+    "Vuoronvaihdon tarkistuslista ja Excel-lomake",
+    "Ohje ja lomake kiinteistön usein kysytyille kysymyksille (englanniksi)",
+    "Arvioi toistuviin vuokralaiskysymyksiin kuluva työaika",
+    "Kaikki suomenkieliset työkalut"
+  ],
+  "rss": "Kiinteistön ylläpidon RSS-syöte",
+  "privacy": "Tietosuojaseloste (koreaksi)"
+}

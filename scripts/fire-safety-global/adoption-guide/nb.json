@@ -1,0 +1,90 @@
+{
+  "title": "Sjekkliste for pilot med KI-assistent i eiendomsdrift",
+  "description": "Planlegg en pilot i ett bygg. Velg hvilke leietakerhenvendelser som skal håndteres, avtal saksbehandling og vaktskifte, og sammenlign registreringer før og under piloten.",
+  "shareDescription": "Velg hvilke henvendelser som inngår, hvem som overtar ved vaktskifte, og hva dere skal måle i piloten.",
+  "heading": "Prøv ut en KI-assistent for leietakere i ett bygg",
+  "intro": "Velg et næringsbygg med nyere saksregistreringer og deltakere fra begge vakter. Be den driftsansvarlige avgrense piloten sammen med dem som svarer på spørsmål, fordeler oppgaver og overtar åpne saker.",
+  "open": "Åpne sjekklisten",
+  "print": "Skriv ut sjekklisten",
+  "share": {
+    "summary": "Del denne sjekklisten",
+    "address": "Nettadresse",
+    "native": "Del via en app",
+    "copy": "Kopier lenken",
+    "email": "Del på e-post",
+    "copied": "Lenken er kopiert.",
+    "manual": "Marker og kopier nettadressen ovenfor."
+  },
+  "scopeHeading": "Seks punkter før dere starter",
+  "scope": [
+    {
+      "heading": "Velg bygg og typer henvendelser",
+      "text": "Se gjennom nyere registreringer. Velg to eller tre typer med nok eksempler til å teste, for eksempel gjesteparkering, svak kjøling og behov for varme, ventilasjon eller kjøling utenom ordinær driftstid. Noter bygg, tidsrom, typer henvendelser og hvem som har ansvar for piloten."
+    },
+    {
+      "heading": "Avklar hvilke svar og beslutninger som må vurderes",
+      "text": "For vanlige spørsmål dokumenterer dere hvilken godkjent del av driftshåndboken som gjelder, og hvem som holder den oppdatert. Test ett svar mot den nyeste ordlyden. Når noen må sjekke saken på stedet, registrerer dere plassering og problem. Personell med fullmakt vurderer og avgjør saker som krever godkjenning."
+    },
+    {
+      "heading": "Utpek en ansvarlig på hver vakt",
+      "text": "Avklar hvem som går gjennom nye saker, fordeler oppfølgingen og håndterer saker utenfor piloten. Gå gjennom én sak uten ansvarlig ved vaktskiftet, slik at det er klart hvem som overtar."
+    },
+    {
+      "heading": "Overlever åpne saker med samme saksregistrering",
+      "text": "Registrer saksnummer, plassering, problem, hvem som er tildelt saken, status, neste tiltak og tidspunkt for neste kontroll. Be påtroppende vakt notere når den gikk gjennom saken."
+    },
+    {
+      "heading": "Velg hvor hovedregistreringen skal ligge",
+      "text": "Bestem hvilket system som skal være hovedkilden. Avklar hvilke integrasjoner piloten støtter for telefon, e-post og arbeidsordrer. Test hva som skjer når samme problem meldes to ganger, og hvordan medarbeiderne avstemmer opplysningene."
+    },
+    {
+      "heading": "Avklar tilgang og oppbevaring",
+      "text": "Avtal hvem som kan se eller endre leietakeropplysninger. Avgjør når det er behov for kontaktopplysninger eller bilder, hvor lenge de skal oppbevares og hvem som håndterer sletting. Bruk fiktive eller sladdede saker i gjennomgangen."
+    }
+  ],
+  "safety": "Ved nødsituasjoner følger dere byggets etablerte varslingsrutiner og beredskapsprosedyrer.",
+  "exampleHeading": "Fiktiv kjølesak ved vaktskifte",
+  "example": [
+    {
+      "label": "Mottak",
+      "value": "DEMO-012. Den 5. oktober kl. 20:35 lokal tid melder en leietaker om svak kjøling i det felles møterommet i femte etasje i bygg A."
+    },
+    {
+      "label": "Vaktleders vurdering",
+      "value": "Vaktlederen kontrollerer plasseringen og problemet, tildeler saken til driftsteknikeren på morgenvakten og markerer saken som under behandling."
+    },
+    {
+      "label": "Påtroppende vakt",
+      "value": "Kl. 07:00 neste morgen bekrefter påtroppende vakt hvem som har fått saken, og registrerer at driftsteknikeren skal sjekke rommet kl. 07:30."
+    }
+  ],
+  "watch": "Se demoen på 27 sekunder med norske undertekster",
+  "interfaceNote": "Grensesnittet som vises, er på koreansk.",
+  "pilotHeading": "Sammenlign et lite utvalg før og under piloten",
+  "baseline": "Avtal på forhånd hvilke resultater som vil forsvare videreføring. Dere kan for eksempel sammenligne fem arbeidsdager før piloten med fem underveis. Bruk de samme ukedagene, tidsrommene for dag- og nattevakt og typene henvendelser. Tell duplikater én gang ved å sammenholde saksnummer eller tidspunkt, plassering og problem.",
+  "metrics": [
+    {
+      "title": "Fullstendige saksregistreringer.",
+      "text": "Blant alle saker i piloten som krevde en kontroll på stedet, deler dere antallet med registrert plassering, problem og tildelingsstatus på det totale antallet slike saker."
+    },
+    {
+      "title": "Bekreftet overlevering.",
+      "text": "Tell åpne saker der den første overleveringen inneholder en tidfestet kontroll av status og neste tiltak. Del på antallet åpne saker som måtte overleveres."
+    }
+  ],
+  "review": "Noter telleren og nevneren for hvert mål. Hvis ingen saker inngår, skriv 0 av 0 og la andelen stå tom. Gå gjennom manglende registreringer og forsinkede tildelinger med begge vakter før dere avgjør om piloten skal utvides.",
+  "referenceIntro": "Les mer om å planlegge en pilot og avgrense brukerstøtten.",
+  "referenceLabel": "Britiske myndigheters standard for eiendomsdrift (engelsk)",
+  "pricingHeading": "Pris og demonstrasjon",
+  "pricing": "BigPlanner Partners gir et individuelt tilbud på oppsett og løpende driftsstøtte basert på antall bygg, driftshåndbøker, integrasjonsbehov og ønsket støtte. Ta med to eksempler på arbeidsflyt til nettdemoen. Fiktive eksempler holder.",
+  "demoLabel": "Be om en demo på nett",
+  "resourcesHeading": "Ressurser for eiendomsdrift",
+  "materials": [
+    "Sjekkliste for vaktskifte og Excel-logg",
+    "Veiledning for vanlige spørsmål i bygget og arbeidsark (engelsk)",
+    "Kalkulator for vanlige henvendelser",
+    "Alle ressursene for eiendomsdrift"
+  ],
+  "rss": "RSS for ressurser om eiendomsdrift",
+  "privacy": "Personvernerklæring (koreansk)"
+}

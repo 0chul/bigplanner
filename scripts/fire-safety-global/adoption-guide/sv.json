@@ -1,0 +1,90 @@
+{
+  "title": "Checklista för att testa AI för hyresgästärenden i fastighetsdriften",
+  "description": "Planera ett pilottest i en byggnad. Välj vilka hyresgästärenden som ska ingå, kom överens om granskning och skiftöverlämning och jämför ärenderegistreringar före och under piloten.",
+  "shareDescription": "Välj vilka ärenden som ska ingå, vem som tar över vid skiftbyte och vad ni ska mäta i piloten.",
+  "heading": "Testa en AI-assistent för hyresgästärenden i en byggnad",
+  "intro": "Välj en kommersiell byggnad med aktuella ärenderegistreringar och personal från båda skiften som kan delta. Be driftansvarig avgränsa piloten tillsammans med dem som svarar på frågor, fördelar arbetet och tar över öppna ärenden.",
+  "open": "Öppna checklistan",
+  "print": "Skriv ut checklistan",
+  "share": {
+    "summary": "Dela den här checklistan",
+    "address": "Sidadress",
+    "native": "Dela via en app",
+    "copy": "Kopiera länken",
+    "email": "Dela via e-post",
+    "copied": "Länken har kopierats.",
+    "manual": "Markera och kopiera sidadressen ovan."
+  },
+  "scopeHeading": "Sex punkter innan ni börjar",
+  "scope": [
+    {
+      "heading": "Välj byggnad och ärendetyper",
+      "text": "Gå igenom aktuella ärenden. Välj två eller tre typer med tillräckligt många exempel för att testa, till exempel besöksparkering, dålig kyla och behov av värme, ventilation eller kyla utanför ordinarie drifttid. Anteckna byggnaden, aktuella tider, ärendetyperna och vem som ansvarar för piloten."
+    },
+    {
+      "heading": "Bestäm vilka svar och beslut som behöver granskas",
+      "text": "För vanliga frågor, anteckna vilket godkänt avsnitt i driftinstruktionerna som gäller och vem som uppdaterar det. Kontrollera ett svar mot den senaste versionen. Vid besök på plats, anteckna plats och problem. Behörig personal granskar och beslutar i ärenden som kräver godkännande."
+    },
+    {
+      "heading": "Utse en ansvarig för varje skift",
+      "text": "Bestäm vem som granskar nya ärenden, fördelar uppföljningen och hanterar ärenden utanför piloten. Gå igenom ett ärende som saknar ansvarig vid skiftbytet för att se vem som tar över."
+    },
+    {
+      "heading": "Lämna över öppna ärenden med samma ärendepost",
+      "text": "Anteckna ärendenummer, plats, problem, vem ärendet tilldelats, status, nästa åtgärd och tid för nästa kontroll. Be nästa skift notera när de granskade ärendet."
+    },
+    {
+      "heading": "Välj huvudsystem för ärenderegistreringen",
+      "text": "Välj vilket system som ska vara huvudkälla. Kontrollera vilka integrationer piloten stöder för telefon, e-post och arbetsorder. Testa ett problem som rapporteras två gånger för att se hur personalen stämmer av registreringarna."
+    },
+    {
+      "heading": "Bestäm åtkomst och lagringstid",
+      "text": "Kom överens om vem som får se och ändra hyresgästuppgifter. Avgör när kontaktuppgifter eller foton behövs, hur länge de ska sparas och vem som ansvarar för radering. Använd fiktiva ärenden eller maskerade uppgifter i genomgången."
+    }
+  ],
+  "safety": "Vid en nödsituation ska ni följa byggnadens ordinarie larmvägar och beredskapsrutiner.",
+  "exampleHeading": "Fiktivt kylärende vid skiftbyte",
+  "example": [
+    {
+      "label": "Registrering",
+      "value": "DEMO-012. Den 5 oktober kl. 20:35 lokal tid anmäler en hyresgäst att kylan är för svag i det gemensamma mötesrummet på plan 5 i byggnad A."
+    },
+    {
+      "label": "Arbetsledarens granskning",
+      "value": "Arbetsledaren kontrollerar plats och problem, tilldelar morgonskiftets drifttekniker ärendet och markerar det som pågående."
+    },
+    {
+      "label": "Nästa skift",
+      "value": "Kl. 07:00 nästa morgon bekräftar det nya skiftet vem ärendet tilldelats och antecknar att driftteknikern ska kontrollera rummet kl. 07:30."
+    }
+  ],
+  "watch": "Se demon på 27 sekunder med svensk textning",
+  "interfaceNote": "Gränssnittet som visas är på koreanska.",
+  "pilotHeading": "Jämför ett litet urval före och under piloten",
+  "baseline": "Bestäm i förväg vilka resultat som motiverar att ni fortsätter. Jämför exempelvis fem arbetsdagar före piloten med fem arbetsdagar under den. Använd samma veckodagar, tider för dag- och nattskift och ärendetyper. Räkna dubbletter en gång genom att jämföra ärendenummer eller tid, plats och problem.",
+  "metrics": [
+    {
+      "title": "Fullständiga ärenderegistreringar.",
+      "text": "Utgå från alla ärenden i piloten som krävde kontroll på plats. Dela antalet där plats, problem och tilldelningsstatus har registrerats med det totala antalet sådana ärenden."
+    },
+    {
+      "title": "Bekräftad skiftöverlämning.",
+      "text": "Räkna öppna ärenden där en tidsstämplad kontroll av status och nästa åtgärd ingår i den första överlämningen. Dela med antalet öppna ärenden som behövde lämnas över."
+    }
+  ],
+  "review": "Anteckna täljare och nämnare för varje mått. Om inga ärenden kvalificerar, skriv 0 av 0 och lämna andelen tom. Gå igenom saknade uppgifter och försenade tilldelningar med båda skiften innan ni avgör om piloten ska utökas.",
+  "referenceIntro": "Läs mer om att planera en pilot och avgränsa servicedeskens uppgifter.",
+  "referenceLabel": "Den brittiska regeringens standard för facility management (engelska)",
+  "pricingHeading": "Pris och demo",
+  "pricing": "BigPlanner Partners lämnar en individuell offert för införande och löpande stöd utifrån antal byggnader, driftinstruktioner, integrationsbehov och önskat stöd. Ta med två exempel på arbetsflöden till demon online. Fiktiva exempel räcker.",
+  "demoLabel": "Be om en demo online",
+  "resourcesHeading": "Resurser för fastighetsdrift",
+  "materials": [
+    "Checklista för skiftöverlämning och Excel-mall",
+    "Guide för vanliga frågor i byggnaden med arbetsblad (engelska)",
+    "Beräkna tiden för återkommande hyresgästfrågor",
+    "Alla resurser för fastighetsdrift"
+  ],
+  "rss": "RSS för resurser om fastighetsdrift",
+  "privacy": "Integritetspolicy (koreanska)"
+}

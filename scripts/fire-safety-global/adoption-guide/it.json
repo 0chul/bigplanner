@@ -1,0 +1,90 @@
+{
+  "title": "Checklist per provare un help desk IA per i locatari",
+  "description": "Pianifica una prova pilota in un edificio. Scegli quali richieste gestire, concorda come verificarle e passarle al turno successivo e confronta le schede.",
+  "shareDescription": "Scegli quali richieste gestire, chi le prende in carico al cambio turno e cosa misurare durante un pilota in un edificio.",
+  "heading": "Prova un help desk IA per i locatari in un edificio",
+  "intro": "Scegli un edificio commerciale con segnalazioni recenti consultabili e personale dei turni diurni e notturni che possa partecipare. Chi è responsabile della gestione dell’immobile concorda il perimetro della prova con chi risponde alle richieste, assegna gli interventi e riceve le segnalazioni ancora aperte.",
+  "open": "Apri la checklist",
+  "print": "Stampa la checklist",
+  "share": {
+    "summary": "Condividi questa checklist",
+    "address": "Indirizzo della pagina",
+    "native": "Condividi con un’app",
+    "copy": "Copia il link",
+    "email": "Condividi via e-mail",
+    "copied": "Link copiato.",
+    "manual": "Seleziona e copia l’indirizzo della pagina qui sopra."
+  },
+  "scopeHeading": "Sei verifiche prima di iniziare",
+  "scope": [
+    {
+      "heading": "Scegli l’edificio e i tipi di richiesta",
+      "text": "Consulta le segnalazioni recenti. Scegli due o tre tipi di richiesta per cui hai abbastanza esempi, come il parcheggio dei visitatori, il raffrescamento insufficiente o la climatizzazione fuori orario. Annota l’edificio, gli orari, i tipi di richiesta e chi è responsabile della prova."
+    },
+    {
+      "heading": "Stabilisci quali risposte e decisioni vanno verificate",
+      "text": "Per le domande ricorrenti, individua la sezione approvata del manuale e chi la aggiorna. Confronta una risposta con il testo in vigore. Quando serve un sopralluogo, registra il luogo e il problema. Il personale autorizzato esamina le richieste che richiedono approvazione e prende la decisione."
+    },
+    {
+      "heading": "Individua un responsabile per ogni turno",
+      "text": "Stabilisci chi controlla le nuove segnalazioni, assegna il seguito e gestisce i casi fuori dal perimetro della prova. Simula un cambio turno con una segnalazione non assegnata e verifica chi la prende in carico."
+    },
+    {
+      "heading": "Passa le segnalazioni aperte nella stessa scheda",
+      "text": "Registra il numero della segnalazione, il luogo, il problema, l’assegnazione, lo stato, la prossima azione e l’orario della verifica successiva. Chiedi a chi subentra di annotare quando ha controllato la scheda."
+    },
+    {
+      "heading": "Scegli il sistema di riferimento",
+      "text": "Indica quale sistema farà fede come registro ufficiale. Verifica quali integrazioni con telefono, posta elettronica e ordini di lavoro sono possibili durante la prova. Simula un problema segnalato due volte per vedere come il personale riconcilia le schede."
+    },
+    {
+      "heading": "Definisci accessi e tempi di conservazione",
+      "text": "Stabilisci chi può consultare o modificare le informazioni sui locatari. Decidi quando servono recapiti o foto, per quanto tempo conservarli e chi li cancella. Per l’esercitazione usa schede fittizie o con i dati personali oscurati."
+    }
+  ],
+  "safety": "In caso di emergenza, usa i contatti e segui le procedure di emergenza già previste per l’edificio.",
+  "exampleHeading": "Segnalazione simulata di raffrescamento al cambio turno",
+  "example": [
+    {
+      "label": "Ricezione",
+      "value": "DEMO-012. Il 5 ottobre alle 20:35, ora locale, un locatario segnala che il raffrescamento è insufficiente nella sala riunioni comune al quinto piano dell’edificio A."
+    },
+    {
+      "label": "Verifica del responsabile",
+      "value": "Il responsabile verifica il luogo e il problema, assegna la segnalazione al tecnico del turno del mattino e la contrassegna come «In corso»."
+    },
+    {
+      "label": "Turno entrante",
+      "value": "Alle 07:00 del mattino seguente chi subentra conferma l’assegnazione e annota che il tecnico controllerà la sala alle 07:30."
+    }
+  ],
+  "watch": "Guarda la demo di 27 secondi con sottotitoli in italiano",
+  "interfaceNote": "L’interfaccia mostrata è in coreano.",
+  "pilotHeading": "Confronta le schede prima e durante la prova",
+  "baseline": "Decidi in anticipo quali risultati giustificherebbero una prosecuzione. Confronta, per esempio, cinque giorni lavorativi prima della prova con cinque durante la prova. Usa gli stessi giorni della settimana, le stesse fasce dei turni diurni e notturni e gli stessi tipi di richiesta. Per contare una sola volta le segnalazioni duplicate, confronta il numero della segnalazione oppure l’orario, il luogo e il problema.",
+  "metrics": [
+    {
+      "title": "Completezza delle schede",
+      "text": "Tra le segnalazioni comprese nella prova che hanno richiesto una verifica sul posto, conta quelle che riportano il luogo, il problema e lo stato dell’assegnazione. Dividi quel numero per il totale di tali segnalazioni."
+    },
+    {
+      "title": "Passaggi di consegne confermati",
+      "text": "Tra le segnalazioni aperte da passare al turno successivo, conta quelle per cui il primo passaggio contiene una conferma con data e ora che il turno entrante ha verificato lo stato e la prossima azione. Dividi quel numero per il totale delle segnalazioni aperte che richiedevano il passaggio."
+    }
+  ],
+  "review": "Annota numeratore e denominatore per ciascun indicatore. Se il denominatore è zero, indica «0 su 0» e lascia vuota la percentuale. Esamina le schede incomplete e le assegnazioni tardive con entrambi i turni prima di decidere se ampliare la prova.",
+  "referenceIntro": "Approfondimenti per pianificare la prova e definire l’ambito dell’help desk.",
+  "referenceLabel": "Standard del governo britannico per il facility management (in inglese)",
+  "pricingHeading": "Preventivo e demo",
+  "pricing": "BigPlanner Partners prepara un preventivo per la configurazione e l’assistenza continuativa in base al progetto. Valuta il numero di edifici, i manuali operativi, le integrazioni e l’assistenza richiesta. Porta due esempi di procedure da esaminare durante la demo online. Vanno bene anche esempi fittizi.",
+  "demoLabel": "Richiedi una demo online",
+  "resourcesHeading": "Risorse per la gestione degli immobili",
+  "materials": [
+    "Checklist e registro Excel per il passaggio di consegne",
+    "Guida e scheda di lavoro per preparare le FAQ dell’edificio (in inglese)",
+    "Calcolatore del carico di lavoro per le richieste ricorrenti",
+    "Tutte le risorse in italiano per la gestione degli immobili"
+  ],
+  "rss": "Feed RSS delle risorse per la gestione degli immobili",
+  "privacy": "Informativa sulla privacy (in coreano)"
+}

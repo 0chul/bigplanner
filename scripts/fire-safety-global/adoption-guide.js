@@ -19,7 +19,7 @@ export function readAdoptionCopy(code) {
 }
 
 function renderAdoptionGuide(language, copy) {
-  const { code, locale, path, adoptionPath, videoPath, requestPath, feedPath, handoverPath, workloadPath, resourcesPath } = language;
+  const { code, label, locale, path, direction = 'ltr', adoptionPath, videoPath, requestPath, feedPath, handoverPath, workloadPath, resourcesPath } = language;
   const canonical = siteOrigin + adoptionPath;
   const title = escapeHtml(copy.title);
   const description = escapeHtml(copy.description);
@@ -30,8 +30,8 @@ function renderAdoptionGuide(language, copy) {
   if (copy.scope.length !== 6 || copy.example.length !== 3 || copy.metrics.length !== 2 || copy.materials.length !== resources.length) {
     throw new Error(`Invalid facilities pilot checklist structure for ${code}`);
   }
-  const languages = fireSafetyLanguages.filter((item) => item.adoptionPath && item.code !== code)
-    .map((item) => `<a href="${item.adoptionPath}" lang="${item.code}" hreflang="${item.code}">${escapeHtml(item.label)}</a>`).join('\n      ');
+  const languages = fireSafetyLanguages.filter((item) => item.code !== code)
+    .map((item) => `<a href="${item.adoptionPath}" lang="${item.code}" hreflang="${item.code}" dir="auto">${escapeHtml(item.label)}</a>`).join('\n      ');
   const checks = copy.scope.map(({ heading, text }) => `<article class="check">
             <h3><label><input type="checkbox">${escapeHtml(heading)}</label></h3>
             <p>${escapeHtml(text)}</p>
@@ -44,7 +44,7 @@ function renderAdoptionGuide(language, copy) {
     `<li><a href="${url}"${url === fireSafetyEnglishFaqPath && code !== 'en' ? ' hreflang="en"' : ''}>${escapeHtml(copy.materials[index])}</a></li>`).join('\n          ');
 
   return `<!doctype html>
-<html lang="${code}">
+<html lang="${code}" dir="${direction}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,7 +67,9 @@ ${alternates}
 <body>
   <header><div class="wrap">
     <a href="${path}" class="brand" lang="en">BigPlanner Partners</a>
-    <nav class="guide-languages">${languages}</nav>
+    <details class="guide-languages"><summary>${escapeHtml(label)}</summary>
+      <nav class="guide-language-links">${languages}</nav>
+    </details>
   </div></header>
   <main>
     <section class="hero" aria-labelledby="guide-title"><div class="wrap">
@@ -135,6 +137,6 @@ ${alternates}
 }
 
 export function renderAdoptionPages() {
-  return new Map(fireSafetyTranslations.filter(({ adoptionPath }) => adoptionPath)
-    .map((language) => [`${language.adoptionPath}index.html`, renderAdoptionGuide(language, readAdoptionCopy(language.code))]));
+  return new Map(fireSafetyTranslations.map((language) =>
+    [`${language.adoptionPath}index.html`, renderAdoptionGuide(language, readAdoptionCopy(language.code))]));
 }

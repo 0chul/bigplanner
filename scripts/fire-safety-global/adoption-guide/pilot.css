@@ -4,11 +4,13 @@ body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui
 .wrap { width: min(60rem, 100% - 2.5rem); margin-inline: auto; }
 header, footer { border-block-end: 1px solid var(--rule); }
 header .wrap, footer .wrap, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.15rem; }
-header .wrap { justify-content: space-between; }
+header .wrap { justify-content: space-between; align-items: baseline; }
 header .wrap, footer .wrap { padding-block: .8rem; }
 header a { padding-block: .32rem; }
-.guide-languages { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
-.guide-languages a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.guide-languages { max-inline-size: min(32rem, 100%); }
+.guide-languages summary { min-height: 2.75rem; padding-block: .5rem; cursor: pointer; color: var(--green); font-weight: 650; }
+.guide-language-links { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
+.guide-language-links a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 a { color: var(--green); text-underline-offset: .18em; }
 .brand { color: var(--ink); font-size: 1.14rem; font-weight: 750; text-decoration: none; }
 :focus-visible { outline: 2px solid #2f7566; outline-offset: 3px; }
@@ -16,7 +18,8 @@ h1, h2, h3, p { margin: 0; }
 h1, h2, h3 { line-height: 1.19; }
 h1 { max-width: 22ch; font-size: clamp(2.25rem, 5.8vw, 4.15rem); letter-spacing: -.045em; text-wrap: balance; }
 h2 { font-size: clamp(1.6rem, 3.35vw, 2.3rem); letter-spacing: -.025em; }
-:is(:lang(ja), :lang(zh-Hant)):is(h1, h2) { letter-spacing: normal; }
+:is(:lang(ja), :lang(zh-Hant), :lang(ar), :lang(he)):is(h1, h2) { letter-spacing: normal; }
+:lang(ar) :is(h1, h2, h3) { line-height: 1.4; }
 h3 { font-size: 1.11rem; }
 .hero { padding-block: clamp(2.1rem, 6vw, 4.6rem); background: var(--paper); border-block-end: 1px solid var(--rule); }
 .hero p { max-width: 58ch; margin-block-start: 1rem; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.23rem); }

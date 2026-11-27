@@ -62,7 +62,7 @@ async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPa
     home,
     videoPath,
     watchLabel: demoAction,
-    resources: [adoptionPath, resourcesPath, videoPath, handoverPath].filter(Boolean),
+    resources: [adoptionPath, resourcesPath, videoPath, handoverPath],
   };
 }
 

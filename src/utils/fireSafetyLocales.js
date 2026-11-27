@@ -23,8 +23,6 @@ export const fireSafetyKoreanWorkloadPath = `${fireSafetyPath}workload-calculato
 export const fireSafetyEnglishWorkloadPath = `${fireSafetyEnglishPath}workload-calculator/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
-const adoptionGuideLanguages = new Set(['ko', 'en', 'de', 'fr', 'ja', 'zh-Hant']);
-
 export const fireSafetyLanguages = [
   { code: 'ko', label: '한국어', path: fireSafetyPath, locale: 'ko_KR' },
   { code: 'en', label: 'English', path: fireSafetyEnglishPath, locale: 'en_US' },
@@ -49,7 +47,7 @@ export const fireSafetyLanguages = [
   feedPath: `${language.path}rss.xml`,
   resourcesPath: `${language.path}resources/`,
   workloadPath: `${language.path}workload-calculator/`,
-  adoptionPath: adoptionGuideLanguages.has(language.code) ? `${language.path}adoption-guide/` : undefined,
+  adoptionPath: `${language.path}adoption-guide/`,
 }));
 
 export const fireSafetyTranslations = fireSafetyLanguages
@@ -77,6 +75,6 @@ export const fireSafetyResourcesAlternates = [
   { code: 'x-default', path: fireSafetyEnglishResourcesPath },
 ];
 export const fireSafetyAdoptionAlternates = [
-  ...fireSafetyLanguages.filter(({ adoptionPath }) => adoptionPath).map(({ code, adoptionPath }) => ({ code, path: adoptionPath })),
+  ...fireSafetyLanguages.map(({ code, adoptionPath }) => ({ code, path: adoptionPath })),
   { code: 'x-default', path: fireSafetyEnglishAdoptionPath },
 ];

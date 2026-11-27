@@ -142,7 +142,7 @@ function renderLanguage(language, labels, requests) {
   const { code, label, path, videoPath, handoverPath, workloadPath, feedPath, resourcesPath, adoptionPath } = language;
   const requestPath = code === 'ko' ? `${path}#demo-request` : requests.get(code);
   if (!requestPath) throw new Error(`Missing resource library request route for ${code}`);
-  const links = [path, videoPath, handoverPath, workloadPath, requestPath, adoptionPath].filter(Boolean).map((url, index) => {
+  const links = [path, videoPath, handoverPath, workloadPath, requestPath, adoptionPath].map((url, index) => {
     const text = labels[index];
     return `<a href="${escapeHtml(url)}" hreflang="${code}" aria-label="${escapeHtml(`${text} (${label})`)}">${escapeHtml(text)}</a>`;
   }).join('\n            ');
@@ -256,16 +256,14 @@ function localizedLibrary({ language, content, handover }) {
   const { code, direction, locale, path, resourcesPath, feedPath, handoverPath, workloadPath, videoPath, requestPath, adoptionPath } = language;
   const { title, intro, resourcesHeading, languagesHeading } = localizedCopy[code];
   const workload = readWorkloadCopy(code);
+  const guide = readAdoptionCopy(code);
   const resources = [
     { url: handoverPath, title: handover.h1, detail: handover.description,
       download: { url: `${handoverPath}facilities-shift-handover-log.xlsx`, label: handover.download } },
     { url: workloadPath, title: workload.pageTitle, detail: workload.description },
     { url: videoPath, title: content.demoTitle, detail: content.watch.description },
+    { url: adoptionPath, title: guide.title, detail: guide.description },
   ];
-  if (adoptionPath) {
-    const guide = readAdoptionCopy(code);
-    resources.push({ url: adoptionPath, title: guide.title, detail: guide.description });
-  }
   return {
     code, direction, locale, path: resourcesPath, product: path, feed: feedPath, brand: 'BigPlanner Partners',
     title, intro, cardsHeading: resourcesHeading, languagesHeading, rssLabel: workload.rssLabel,

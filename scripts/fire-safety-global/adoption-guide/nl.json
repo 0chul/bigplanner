@@ -1,0 +1,90 @@
+{
+  "title": "Pilotchecklist voor een AI-servicedesk in facilitair beheer",
+  "description": "Plan een pilot in één gebouw. Kies welke huurdersmeldingen u behandelt, maak afspraken over controle en overdracht en vergelijk de dossiers van vóór en tijdens de pilot.",
+  "shareDescription": "Bepaal welke meldingen u behandelt, wie ze bij de dienstwissel overneemt en wat u meet tijdens een pilot in één gebouw.",
+  "heading": "Test een AI-servicedesk voor huurders in één gebouw",
+  "intro": "Kies een bedrijfsgebouw met recente meldingen en medewerkers uit beide diensten die kunnen meedoen. Laat de facilitair verantwoordelijke de reikwijdte van de pilot afstemmen met de medewerkers die vragen beantwoorden, werk toewijzen en openstaande meldingen overnemen.",
+  "open": "Open de checklist",
+  "print": "Print de checklist",
+  "share": {
+    "summary": "Deze checklist delen",
+    "address": "Pagina-adres",
+    "native": "Delen via een app",
+    "copy": "Link kopiëren",
+    "email": "Deel per e-mail",
+    "copied": "Link gekopieerd.",
+    "manual": "Selecteer en kopieer het pagina-adres hierboven."
+  },
+  "scopeHeading": "Zes punten om vóór de start te controleren",
+  "scope": [
+    {
+      "heading": "Kies het gebouw en de soorten meldingen",
+      "text": "Bekijk recente dossiers. Kies twee of drie soorten meldingen met voldoende voorbeelden, zoals vragen over bezoekersparkeren, onvoldoende koeling en extra draaitijd van de klimaatinstallatie. Leg vast om welk gebouw, welke uren en welke soorten meldingen het gaat en wie verantwoordelijk is voor de pilot."
+    },
+    {
+      "heading": "Spreek af welke antwoorden en besluiten controle vragen",
+      "text": "Noteer voor routinevragen welke passage uit het gebouwreglement is goedgekeurd en wie die bijwerkt. Toets één antwoord aan de actuele tekst. Leg bij een controle ter plaatse de locatie en het probleem vast. Bevoegde medewerkers beoordelen aanvragen waarvoor goedkeuring nodig is en nemen daarover een besluit."
+    },
+    {
+      "heading": "Wijs per dienst een verantwoordelijke aan",
+      "text": "Spreek af wie nieuwe meldingen beoordeelt, vervolgwerk toewijst en meldingen buiten de pilot behandelt. Loop bij de dienstwissel één nog niet toegewezen melding door en bevestig wie die oppakt."
+    },
+    {
+      "heading": "Draag openstaande meldingen over in hetzelfde dossier",
+      "text": "Noteer het meldingsnummer, de locatie, het probleem, de verantwoordelijke, de status, de volgende stap en het tijdstip van de volgende controle. Laat de nieuwe dienst vastleggen wanneer die het dossier heeft beoordeeld."
+    },
+    {
+      "heading": "Kies het systeem voor de officiële registratie",
+      "text": "Bepaal welk systeem leidend is. Controleer welke koppelingen voor telefonie, e-mail en werkorders in de pilot beschikbaar zijn. Test met één probleem dat tweemaal is gemeld hoe het team de dossiers op elkaar afstemt."
+    },
+    {
+      "heading": "Maak afspraken over toegang en bewaartermijnen",
+      "text": "Bepaal wie gegevens van huurders mag inzien of wijzigen. Spreek af wanneer contactgegevens of foto's nodig zijn, hoe lang u die bewaart en wie ze verwijdert. Gebruik voor de oefening fictieve dossiers of maak gevoelige gegevens onleesbaar."
+    }
+  ],
+  "safety": "Volg bij een noodsituatie de geldende noodprocedures en contactinstructies van het gebouw.",
+  "exampleHeading": "Fictieve melding over koeling bij de dienstwissel",
+  "example": [
+    {
+      "label": "Melding vastleggen",
+      "value": "DEMO-012. Op 5 oktober om 20:35 uur lokale tijd meldt een huurder dat de gedeelde vergaderruimte op de vijfde verdieping van gebouw A onvoldoende wordt gekoeld."
+    },
+    {
+      "label": "Beoordeling door de dienstverantwoordelijke",
+      "value": "De dienstverantwoordelijke controleert de locatie en het probleem, wijst de melding toe aan de gebouwtechnicus van de ochtenddienst en zet de status op ‘In behandeling’."
+    },
+    {
+      "label": "Nieuwe dienst",
+      "value": "De volgende ochtend bevestigt de nieuwe dienst om 07:00 uur de toewijzing en noteert dat de technicus de ruimte om 07:30 uur controleert."
+    }
+  ],
+  "watch": "Bekijk de demo van 27 seconden met Nederlandse ondertiteling",
+  "interfaceNote": "De getoonde interface is Koreaans.",
+  "pilotHeading": "Vergelijk een korte nulmeting met de pilot",
+  "baseline": "Bepaal vooraf welke uitkomsten aanleiding zijn om door te gaan. Vergelijk bijvoorbeeld vijf werkdagen vóór de pilot met vijf werkdagen tijdens de pilot. Kies dezelfde weekdagen, tijdvakken van dag- en nachtdiensten en soorten meldingen. Tel dubbele meldingen één keer. Vergelijk daarvoor het meldingsnummer of het tijdstip, de locatie en het probleem.",
+  "metrics": [
+    {
+      "title": "Volledigheid van de dossiers.",
+      "text": "Neem alle meldingen binnen de pilot waarvoor een controle ter plaatse nodig was. Deel het aantal daarvan met een vastgelegde locatie, probleemomschrijving en toewijzingsstatus door het totale aantal meldingen waarvoor zo'n controle nodig was."
+    },
+    {
+      "title": "Bevestiging van de overdracht.",
+      "text": "Neem alle openstaande meldingen die moesten worden overgedragen. Deel het aantal waarvan de eerste overdracht een controle van de status en de volgende stap met tijdstempel bevat door het totale aantal openstaande meldingen dat moest worden overgedragen."
+    }
+  ],
+  "review": "Noteer bij elke maatstaf zowel de teller als de noemer. Als de noemer nul is, noteert u 0 van 0 en laat u het percentage leeg. Bespreek ontbrekende registraties en te late toewijzingen met beide diensten voordat u over uitbreiding beslist.",
+  "referenceIntro": "Verder lezen over de opzet van de pilot en de taken van de servicedesk.",
+  "referenceLabel": "Norm voor facilitair beheer van de Britse overheid (Engels)",
+  "pricingHeading": "Offerte en demo",
+  "pricing": "BigPlanner Partners maakt per project een offerte voor inrichting en doorlopende ondersteuning. De offerte hangt af van het aantal gebouwen, de gebouwdocumentatie, de koppelingen en de benodigde ondersteuning. Neem twee voorbeeldprocessen mee naar de online demo. Fictieve voorbeelden volstaan.",
+  "demoLabel": "Vraag online een demo aan",
+  "resourcesHeading": "Hulpmiddelen voor facilitair beheer",
+  "materials": [
+    "Checklist en Excel-logboek voor de dienstoverdracht",
+    "Handleiding en werkblad voor gebouw-FAQ’s (Engels)",
+    "Bereken de tijd voor terugkerende huurdersvragen",
+    "Alle Nederlandstalige hulpmiddelen"
+  ],
+  "rss": "RSS voor hulpmiddelen voor facilitair beheer",
+  "privacy": "Privacybeleid (Koreaans)"
+}
