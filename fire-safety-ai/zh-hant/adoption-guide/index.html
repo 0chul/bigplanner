@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>設施管理 AI 助手試行清單｜租戶查詢與交更 | BigPlanner Partners</title>
+  <meta name="description" content="在一幢商廈試行 AI 租戶查詢助手。選定受理的個案類型，安排同事審閱和交更，並比較試行前後的紀錄。">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/adoption-guide/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/adoption-guide/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
+  <link rel="alternate" type="application/rss+xml" title="設施管理資源 RSS" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/rss.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="zh_HK">
+  <meta property="og:title" content="設施管理 AI 助手試行清單｜租戶查詢與交更">
+  <meta property="og:description" content="在一幢商廈試行前，確認處理哪些租戶個案、由誰接更，以及如何衡量成效。">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
+  <style>:root { color-scheme: light; --ink: #17302a; --green: #195649; --muted: #455c55; --rule: #cdd9d2; --paper: #f3f7f4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: break-word; }
+.wrap { width: min(60rem, 100% - 2.5rem); margin-inline: auto; }
+header, footer { border-block-end: 1px solid var(--rule); }
+header .wrap, footer .wrap, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.15rem; }
+header .wrap { justify-content: space-between; }
+header .wrap, footer .wrap { padding-block: .8rem; }
+header a { padding-block: .32rem; }
+.guide-languages { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
+.guide-languages a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+a { color: var(--green); text-underline-offset: .18em; }
+.brand { color: var(--ink); font-size: 1.14rem; font-weight: 750; text-decoration: none; }
+:focus-visible { outline: 2px solid #2f7566; outline-offset: 3px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { line-height: 1.19; }
+h1 { max-width: 22ch; font-size: clamp(2.25rem, 5.8vw, 4.15rem); letter-spacing: -.045em; text-wrap: balance; }
+h2 { font-size: clamp(1.6rem, 3.35vw, 2.3rem); letter-spacing: -.025em; }
+:is(:lang(ja), :lang(zh-Hant)):is(h1, h2) { letter-spacing: normal; }
+h3 { font-size: 1.11rem; }
+.hero { padding-block: clamp(2.1rem, 6vw, 4.6rem); background: var(--paper); border-block-end: 1px solid var(--rule); }
+.hero p { max-width: 58ch; margin-block-start: 1rem; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.23rem); }
+.actions { margin-block-start: 1.35rem; }
+.button, .print { min-height: 2.75rem; border: 1px solid var(--green); border-radius: .4rem; display: inline-flex; align-items: center; padding: .55rem .9rem; font: inherit; font-weight: 650; }
+.button { color: #fff; background: var(--green); text-decoration: none; }
+.button:hover { background: var(--ink); }
+.print { color: var(--green); background: #fff; cursor: pointer; }
+.print[hidden] { display: none; }
+.section { padding-block: clamp(1.65rem, 4vw, 3.2rem); }
+.section + .section { border-block-start: 1px solid var(--rule); }
+.section > p, .section > ul, .section > dl, .section > ol { margin-block: .85rem 0; }
+.checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-block-start: 1rem; }
+.check { min-width: 0; padding: 1rem 1.15rem; border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
+.check label { display: flex; align-items: flex-start; gap: .65rem; cursor: pointer; min-height: 2rem; }
+.check input { flex: 0 0 auto; width: 1.05rem; height: 1.05rem; margin: .09rem 0 0; accent-color: var(--green); }
+.check p { margin-block-start: .38rem; }
+.note { padding: .65rem .85rem; background: var(--paper); border-inline-start: 3px solid var(--green); }
+.example { background: var(--paper); border-radius: .45rem; padding: .32rem 1rem; }
+.example > div { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: .35rem .85rem; padding-block: .55rem; }
+.example > div + div { border-block-start: 1px solid var(--rule); }
+.example dt { font-weight: 700; }
+.example dd { margin: 0; }
+.measures, .materials { padding-inline-start: 1.35rem; }
+.measures li + li, .materials li + li { margin-block-start: .4rem; }
+.reference { font-size: .94rem; color: var(--muted); }
+footer { border-block-start: 1px solid var(--rule); border-block-end: 0; color: var(--muted); font-size: .9rem; }
+@media (max-width: 38rem) {
+  .wrap { width: calc(100% - 2rem); }
+  .checks, .example > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  @page { margin: 15mm; }
+  body { background: white; color: black; font-size: 10.5pt; line-height: 1.36; }
+  header, footer, .actions, .fs-share { display: none; }
+  .wrap { width: 100%; }
+  .hero, .note, .example { background: white; }
+  .hero, .section { padding-block: 8pt; }
+  .hero p { color: black; font-size: 11pt; }
+  h1 { max-width: none; font-size: 24pt; }
+  h2 { font-size: 15pt; break-after: avoid; }
+  h3 { font-size: 11pt; break-after: avoid; }
+  .checks { gap: 6pt; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .check { break-inside: avoid; padding: 6pt; }
+  .check label { min-height: 0; }
+  .check input { print-color-adjust: exact; }
+  .example > div, li { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+  <header><div class="wrap">
+    <a href="/fire-safety-ai/zh-hant/" class="brand" lang="en">BigPlanner Partners</a>
+    <nav class="guide-languages"><a href="/fire-safety-ai/adoption-guide/" lang="ko" hreflang="ko">한국어</a>
+      <a href="/fire-safety-ai/en/adoption-guide/" lang="en" hreflang="en">English</a>
+      <a href="/fire-safety-ai/de/adoption-guide/" lang="de" hreflang="de">Deutsch</a>
+      <a href="/fire-safety-ai/fr/adoption-guide/" lang="fr" hreflang="fr">Français</a>
+      <a href="/fire-safety-ai/ja/adoption-guide/" lang="ja" hreflang="ja">日本語</a></nav>
+  </div></header>
+  <main>
+    <section class="hero" aria-labelledby="guide-title"><div class="wrap">
+      <h1 id="guide-title">在一幢商廈試行租戶查詢 AI 助手</h1>
+      <p>選擇一幢有近期個案紀錄的商廈，並確認日更及夜更同事都能參與。請設施管理主管與負責回答查詢、指派工作及接更的同事商定試行範圍。</p>
+      <div class="actions">
+        <a class="button" href="#checklist">查看試行清單</a>
+        <button class="print" id="print-checklist" type="button" hidden>列印清單</button>
+      </div>
+      <details class="fs-share share" data-fs-share>
+    <summary>分享這份清單</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">頁面網址<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>分享至應用程式</button>
+        <button data-fs-share-copy type="button" hidden>複製連結</button>
+        <a href="mailto:?subject=%E8%A8%AD%E6%96%BD%E7%AE%A1%E7%90%86%20AI%20%E5%8A%A9%E6%89%8B%E8%A9%A6%E8%A1%8C%E6%B8%85%E5%96%AE%EF%BD%9C%E7%A7%9F%E6%88%B6%E6%9F%A5%E8%A9%A2%E8%88%87%E4%BA%A4%E6%9B%B4&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fzh-hant%2Fadoption-guide%2F">以電郵分享</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="已複製連結。" data-manual="選取並複製上方的頁面網址。"></p>
+    </div>
+  </details>
+    </div></section>
+    <div class="wrap">
+      <section class="section" id="checklist" aria-labelledby="scope-heading">
+        <h2 id="scope-heading">試行前要確認的六項事項</h2>
+        <div class="checks">
+          <article class="check">
+            <h3><label><input type="checkbox">選定大廈及個案類型</label></h3>
+            <p>查看近期紀錄，選出有足夠個案可測試的兩至三類，例如訪客泊車、冷氣不足，以及辦公時間以外的空調需求。記下大廈、適用時間、個案類型及試行負責人。</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">訂明哪些答覆與決定需要審核</label></h3>
+            <p>就常見查詢，記下經核准的管理指引章節及負責更新的人員。用最新指引核對一項答覆。需要到場檢查的個案，應記下位置和問題。涉及審批的個案由獲授權人員審閱及決定。</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">為每個班次安排負責人</label></h3>
+            <p>確認由誰查看新個案、指派同事跟進及處理試行範圍以外的個案。用一宗交更時仍未指派的個案演練，確認由誰接手。</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">用同一紀錄交接未完成的個案</label></h3>
+            <p>記下個案編號、位置、問題、指派情況、狀態、下一步行動及下次確認時間。請接更同事記錄查閱個案的時間。</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">決定正式紀錄存放在哪個系統</label></h3>
+            <p>選定以哪個系統的紀錄為準。確認試行期間可接駁哪些電話、電郵及維修工單系統。以同一問題被通報兩次為例，演練如何核對及合併紀錄。</p>
+          </article>
+          <article class="check">
+            <h3><label><input type="checkbox">確認查閱權限及保留期限</label></h3>
+            <p>商定哪些人可查閱或修改租戶資料。確認何時需要聯絡資料或照片、保留多久，以及由誰負責刪除。演練時使用虛構紀錄或已遮蓋敏感資料的紀錄。</p>
+          </article>
+        </div>
+        <p class="note">遇到緊急事故，請按大廈既定的緊急聯絡及應變程序處理。</p>
+      </section>
+      <section class="section" aria-labelledby="example-heading">
+        <h2 id="example-heading">交更時接手冷氣個案的虛構示例</h2>
+        <dl class="example">
+          <div><dt>接報</dt><dd>個案 DEMO-012。10 月 5 日 20:35（大廈所在地時間），租戶反映 A 座五樓共用會議室冷氣不足。</dd></div>
+          <div><dt>主管審閱</dt><dd>主管核對位置及問題，指派早更設施管理技術員跟進，並將個案標記為跟進中。</dd></div>
+          <div><dt>接更</dt><dd>翌日早上 07:00，接更同事確認負責人，並記下由技術員於 07:30 到會議室檢查。</dd></div>
+        </dl>
+        <p><a href="/fire-safety-ai/zh-hant/demo-video/">觀看附繁體中文字幕的 27 秒示範</a></p>
+        <p>示範畫面使用韓文。</p>
+      </section>
+      <section class="section" aria-labelledby="measure-heading">
+        <h2 id="measure-heading">比較試行前及試行期間的少量個案</h2>
+        <p>事先訂明哪些結果足以支持繼續試行。例如比較試行前五個工作日與試行期間五個工作日的紀錄。兩段期間的星期幾、日更及夜更時段和個案類型應一致。按個案編號，或按接報時間、位置及問題核對，重複通報只計一次。</p>
+        <ul class="measures">
+          <li><strong>紀錄完整率</strong> 先找出試行範圍內所有需要到場檢查的個案。以其中已記下位置、問題及指派狀態的個案數，除以這些需要到場檢查的個案總數。</li>
+          <li><strong>交更確認率</strong> 以首次交更時已核對狀態及下一步行動、並留下確認時間的未完成個案數，除以所有需要交更的未完成個案數。</li>
+        </ul>
+        <p>記下每項指標的分子及分母。如沒有符合條件的個案，記為 0/0，百分比留空。在決定是否擴大試行前，與兩個班次的同事檢視紀錄遺漏及指派延誤的個案。</p>
+        <p class="reference">如需了解香港物業管理服務的範圍及相關用語，可參閱監管局的說明。 <a href="https://www.pmsa.org.hk/tc/licensing-regime/property-management-services" hreflang="zh-Hant">香港物業管理業監管局的服務分類</a></p>
+      </section>
+      <section class="section" aria-labelledby="pricing-heading">
+        <h2 id="pricing-heading">報價及網上示範</h2>
+        <p>BigPlanner Partners 會按大廈數目、管理指引、系統接駁及營運支援的需要，就系統部署及持續支援提供個別報價。參加網上示範時可準備兩項想了解的工作流程，使用虛構示例即可。</p>
+        <div class="actions">
+          <a class="button" href="/fire-safety-ai/zh-hant/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=zh-Hant">申請網上示範</a>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="materials-heading">
+        <h2 id="materials-heading">設施管理資源</h2>
+        <ul class="materials">
+          <li><a href="/fire-safety-ai/zh-hant/shift-handover/">交更清單及 Excel 紀錄表</a></li>
+          <li><a href="/fire-safety-ai/en/faq-manual/" hreflang="en">大廈常見查詢指南及工作表（英文）</a></li>
+          <li><a href="/fire-safety-ai/zh-hant/workload-calculator/">常見查詢工作量計算工具</a></li>
+          <li><a href="/fire-safety-ai/zh-hant/resources/">設施管理資源庫</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">
+    <span lang="en">BigPlanner Partners</span>
+    <a href="/fire-safety-ai/zh-hant/rss.xml" type="application/rss+xml">設施管理資源 RSS</a>
+    <a href="/privacy/" hreflang="ko">私隱政策（韓文）</a>
+  </div></footer>
+  <script>
+    const printChecklist = document.getElementById('print-checklist');
+    printChecklist.addEventListener('click', () => window.print());
+    printChecklist.hidden = false;
+  </script>
+</body>
+</html>

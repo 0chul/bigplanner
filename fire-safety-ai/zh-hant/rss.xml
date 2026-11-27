@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="zh-Hant" dir="ltr"><p>估算物業管理團隊目前每月處理常見租戶查詢所需的時間，以及擬納入服務試行評估的工作量。</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/workload-calculator/">計算常見查詢的處理時間</a></p></div>]]></description>
     </item>
     <item>
+      <title>設施管理 AI 助手試行清單｜租戶查詢與交更 | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>在一幢商廈試行租戶查詢 AI 助手</h1>
+      <p>選擇一幢有近期個案紀錄的商廈，並確認日更及夜更同事都能參與。請設施管理主管與負責回答查詢、指派工作及接更的同事商定試行範圍。</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/#checklist">查看試行清單</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>試行前要確認的六項事項</h2>
+        <div>
+          <article>
+            <h3>選定大廈及個案類型</h3>
+            <p>查看近期紀錄，選出有足夠個案可測試的兩至三類，例如訪客泊車、冷氣不足，以及辦公時間以外的空調需求。記下大廈、適用時間、個案類型及試行負責人。</p>
+          </article>
+          <article>
+            <h3>訂明哪些答覆與決定需要審核</h3>
+            <p>就常見查詢，記下經核准的管理指引章節及負責更新的人員。用最新指引核對一項答覆。需要到場檢查的個案，應記下位置和問題。涉及審批的個案由獲授權人員審閱及決定。</p>
+          </article>
+          <article>
+            <h3>為每個班次安排負責人</h3>
+            <p>確認由誰查看新個案、指派同事跟進及處理試行範圍以外的個案。用一宗交更時仍未指派的個案演練，確認由誰接手。</p>
+          </article>
+          <article>
+            <h3>用同一紀錄交接未完成的個案</h3>
+            <p>記下個案編號、位置、問題、指派情況、狀態、下一步行動及下次確認時間。請接更同事記錄查閱個案的時間。</p>
+          </article>
+          <article>
+            <h3>決定正式紀錄存放在哪個系統</h3>
+            <p>選定以哪個系統的紀錄為準。確認試行期間可接駁哪些電話、電郵及維修工單系統。以同一問題被通報兩次為例，演練如何核對及合併紀錄。</p>
+          </article>
+          <article>
+            <h3>確認查閱權限及保留期限</h3>
+            <p>商定哪些人可查閱或修改租戶資料。確認何時需要聯絡資料或照片、保留多久，以及由誰負責刪除。演練時使用虛構紀錄或已遮蓋敏感資料的紀錄。</p>
+          </article>
+        </div>
+        <p>遇到緊急事故，請按大廈既定的緊急聯絡及應變程序處理。</p>
+      </section>
+      <section>
+        <h2>交更時接手冷氣個案的虛構示例</h2>
+        <dl>
+          <div><dt>接報</dt><dd>個案 DEMO-012。10 月 5 日 20:35（大廈所在地時間），租戶反映 A 座五樓共用會議室冷氣不足。</dd></div>
+          <div><dt>主管審閱</dt><dd>主管核對位置及問題，指派早更設施管理技術員跟進，並將個案標記為跟進中。</dd></div>
+          <div><dt>接更</dt><dd>翌日早上 07:00，接更同事確認負責人，並記下由技術員於 07:30 到會議室檢查。</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/">觀看附繁體中文字幕的 27 秒示範</a></p>
+        <p>示範畫面使用韓文。</p>
+      </section>
+      <section>
+        <h2>比較試行前及試行期間的少量個案</h2>
+        <p>事先訂明哪些結果足以支持繼續試行。例如比較試行前五個工作日與試行期間五個工作日的紀錄。兩段期間的星期幾、日更及夜更時段和個案類型應一致。按個案編號，或按接報時間、位置及問題核對，重複通報只計一次。</p>
+        <ul>
+          <li><strong>紀錄完整率</strong> 先找出試行範圍內所有需要到場檢查的個案。以其中已記下位置、問題及指派狀態的個案數，除以這些需要到場檢查的個案總數。</li>
+          <li><strong>交更確認率</strong> 以首次交更時已核對狀態及下一步行動、並留下確認時間的未完成個案數，除以所有需要交更的未完成個案數。</li>
+        </ul>
+        <p>記下每項指標的分子及分母。如沒有符合條件的個案，記為 0/0，百分比留空。在決定是否擴大試行前，與兩個班次的同事檢視紀錄遺漏及指派延誤的個案。</p>
+        <p>如需了解香港物業管理服務的範圍及相關用語，可參閱監管局的說明。 香港物業管理業監管局的服務分類</p>
+      </section>
+      <section>
+        <h2>報價及網上示範</h2>
+        <p>BigPlanner Partners 會按大廈數目、管理指引、系統接駁及營運支援的需要，就系統部署及持續支援提供個別報價。參加網上示範時可準備兩項想了解的工作流程，使用虛構示例即可。</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=zh-Hant">申請網上示範</a>
+        </div>
+      </section>
+      <section>
+        <h2>設施管理資源</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/">交更清單及 Excel 紀錄表</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">大廈常見查詢指南及工作表（英文）</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/workload-calculator/">常見查詢工作量計算工具</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/resources/">設施管理資源庫</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>物業管理實務資源 | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/zh-hant/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/zh-hant/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/">27 秒示範｜由接收冷氣查詢到交更跟進</a></h3>
           <p>以虛構商廈為例，27 秒展示冷氣個案由接報、管理處指派負責同事，到下一更查閱同一紀錄的流程。示範採用韓文畫面，附繁體中文字幕。</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">設施管理 AI 助手試行清單｜租戶查詢與交更</a></h3>
+          <p>在一幢商廈試行 AI 租戶查詢助手。選定受理的個案類型，安排同事審閱和交更，並比較試行前後的紀錄。</p>
           
         </article></li>
       </ul>
