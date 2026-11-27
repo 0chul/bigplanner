@@ -33,7 +33,7 @@ async function generateSitemap() {
     const routes = [
       { path: '/', priority: 1.0, changefreq: 'weekly' },
       { path: '/about', priority: 0.8, changefreq: 'monthly' },
-      { path: '/service', priority: 0.8, changefreq: 'monthly' },
+      { path: '/service/', priority: 0.8, changefreq: 'monthly' },
       { path: '/fire-safety-ai/', priority: 0.9, changefreq: 'monthly' },
       { path: '/fire-safety-ai/handoff-checklist/', priority: 0.8, changefreq: 'monthly' },
       { path: '/projects', priority: 0.9, changefreq: 'daily' },

@@ -6,10 +6,10 @@ import { fireSafetyHost, fireSafetyPath } from './utils/fireSafetyLanding';
 import './index.css';
 
 const { hostname, pathname } = window.location;
-if (pathname === fireSafetyPath || pathname + '/' === fireSafetyPath ||
+const pathWithTrailingSlash = pathname.endsWith('/') ? pathname : pathname + '/';
+if (pathWithTrailingSlash === fireSafetyPath || pathWithTrailingSlash === '/service/' ||
     (hostname === fireSafetyHost && pathname === '/')) {
-  // React 19 recreates these tags when the product route mounts, including on
-  // a visit served by the corporate SPA fallback or the pre-rendered page.
+  // React 19 recreates these route tags after loading a fallback or pre-rendered page.
   document.head.querySelectorAll('title, link[rel="canonical"], meta[name="description"], meta[name="keywords"], meta[property^="og:"], meta[name^="twitter:"]')
     .forEach(tag => tag.remove());
 }

@@ -29,23 +29,24 @@ const tabs = [
   { id: 'management', label: 'BIG Management' },
   { id: 'credit', label: 'BIG Credit' }
 ];
+const serviceUrl = 'https://bigplanner.co.kr/service/';
 
 export default function Service() {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = tabs.find(tab => tab.id === searchParams.get('tab'))?.id ?? 'consulting';
   const { language } = useLanguage();
+  const productUrl = fireSafetyLinkFromService(searchParams);
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
       <SEO 
         title={language === 'ko' ? '서비스 | 빅플래너파트너스' : 'Services | BIGPLANNER PARTNERS'}
-        description={language === 'ko' ? "빅플래너파트너스의 부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 확인하세요. 공간 가치를 극대화하는 전문 서비스를 제공합니다." : "Check out BIGPLANNER PARTNERS' real estate consulting, PM (Project Management), and financial solutions. We provide professional services that maximize space value."}
-        url="https://bigplanner.co.kr/service"
+        description={language === 'ko' ? '빅플래너파트너스의 부동산 컨설팅, 프로젝트 관리, 금융 솔루션과 입주사 민원 접수·인계를 돕는 방재실 AI 민원 도우미를 확인하세요.' : 'Explore BIGPLANNER PARTNERS’ real estate consulting, project management, financial solutions, and AI assistant for building operations.'}
+        url={serviceUrl}
         image="https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png"
+        keywords="빅플래너파트너스, 서비스, 부동산컨설팅, PM, 프로젝트관리, 부동산금융, 방재실 AI 민원 도우미"
       />
       <Helmet>
-        <meta name="keywords" content="빅플래너파트너스, 서비스, 부동산컨설팅, PM, 프로젝트관리, 부동산금융, BIGPLANNER PARTNERS, Services, Real Estate Consulting, PM, Project Management, Real Estate Finance" />
-        <link rel="canonical" href="https://bigplanner.co.kr/service" />
         <script type="application/ld+json">
           {`
             [
@@ -58,7 +59,7 @@ export default function Service() {
                   "name": "${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}"
                 },
                 "description": "${language === 'ko' ? '부동산 컨설팅, PM(프로젝트 관리), 금융 솔루션을 제공합니다.' : 'We provide real estate consulting, PM, and financial solutions.'}",
-                "url": "https://bigplanner.co.kr/service"
+                "url": "${serviceUrl}"
               },
               {
                 "@context": "https://schema.org",
@@ -74,7 +75,7 @@ export default function Service() {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "${language === 'ko' ? '서비스' : 'Services'}",
-                    "item": "https://bigplanner.co.kr/service"
+                    "item": "${serviceUrl}"
                   }
                 ]
               }
@@ -122,6 +123,22 @@ export default function Service() {
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="mx-auto mt-6 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section id="service-fire-safety" aria-labelledby="service-fire-safety-title" className="flex flex-col items-start gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <div>
+            <h2 id="service-fire-safety-title" className="text-base font-bold text-gray-900">
+              {language === 'ko' ? '방재실 AI 민원 도우미' : 'AI Assistant for Building Operations'}
+            </h2>
+            <p className="mt-1 break-keep text-sm text-gray-600">
+              {language === 'ko' ? '입주사 민원 접수와 교대 인수인계가 이어지는 과정을 데모에서 확인하세요.' : 'See how the demo handles tenant requests and shift handoffs.'}
+            </p>
+          </div>
+          <a href={productUrl} className="inline-flex min-h-11 shrink-0 items-center rounded-full bg-gray-900 px-5 text-sm font-bold text-white transition-colors hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-900">
+            {language === 'ko' ? '방재실 AI 데모 보기' : 'View the demo (Korean)'}
+          </a>
+        </section>
       </div>
 
       {/* Content Area */}
@@ -224,7 +241,7 @@ export default function Service() {
 
               <section aria-labelledby="tenant-assistant-title" className="grid overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm md:grid-cols-[1.15fr_1fr]">
                 <div className="self-center p-6 sm:p-10 lg:p-14">
-                  <h3 id="tenant-assistant-title" className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
+                  <h3 id="tenant-assistant-title" className="scroll-mt-24 text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
                     {language === 'ko' ? '방재실 AI 민원 도우미' : 'AI Assistant for Building Operations'}
                   </h3>
                   <p className="mt-5 break-keep text-lg leading-relaxed text-gray-700">
@@ -237,7 +254,7 @@ export default function Service() {
                       ? '관리자가 같은 카드에서 담당자를 지정하고, 다음 근무자는 교대할 때 접수·전달 이력을 확인합니다.'
                       : 'Managers use the same ticket to assign a team member. The next shift can see what was reported and who received it.'}
                   </p>
-                  <a href={fireSafetyLinkFromService(searchParams)}
+                  <a href={productUrl}
                     className="mt-7 inline-flex min-h-12 items-center rounded-full bg-gray-900 px-6 py-3 text-base font-bold text-white transition-colors hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-900">
                     {language === 'ko' ? '서비스 소개 및 데모 보기' : 'Explore the service and demo (Korean)'}
                   </a>

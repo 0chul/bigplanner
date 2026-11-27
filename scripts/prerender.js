@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
 const fireSafetyPath = '/fire-safety-ai/';
 const fireSafetyChecklistPath = '/fire-safety-ai/handoff-checklist/';
+const servicePath = '/service/';
 
 async function verifyFireSafetyPage(page) {
   await page.waitForSelector('#demo-request form button[type="submit"]');
@@ -27,6 +28,27 @@ async function verifyFireSafetyPage(page) {
       throw new Error('Invalid fire safety landing page metadata.');
     }
   });
+}
+
+async function verifyServicePage(page) {
+  await page.waitForSelector('#service-fire-safety a[href]');
+  await page.evaluate((servicePath, fireSafetyPath) => {
+    const canonical = document.head.querySelectorAll('link[rel="canonical"]');
+    const ogUrl = document.head.querySelectorAll('meta[property="og:url"]');
+    const description = document.head.querySelectorAll('meta[name="description"]');
+    const demoLink = document.querySelector('#service-fire-safety a');
+    const expectedUrl = 'https://bigplanner.co.kr' + servicePath;
+    const destination = new URL(demoLink.getAttribute('href'), expectedUrl);
+    const pointsToProduct = destination.protocol === 'https:' && (
+      (destination.hostname === 'bigplanner.co.kr' && destination.pathname === fireSafetyPath) ||
+      (destination.hostname.endsWith('.bigplanner.co.kr') && destination.pathname === '/')
+    );
+    if (canonical.length !== 1 || canonical[0].href !== expectedUrl || ogUrl.length !== 1 ||
+        ogUrl[0].content !== expectedUrl || description.length !== 1 || !description[0].content.includes('방재실') ||
+        !document.title.startsWith('서비스 | ') || !pointsToProduct) {
+      throw new Error('Invalid services page metadata or fire safety demo link.');
+    }
+  }, servicePath, fireSafetyPath);
 }
 
 async function prerender() {
@@ -76,6 +98,7 @@ async function prerender() {
   const spaUrls = urls.filter((url) => url !== fireSafetyChecklistPath);
   const targetUrls = process.env.PRERENDER_ALL === 'true' ? spaUrls : spaUrls.slice(0, 25);
   if (!targetUrls.includes(fireSafetyPath)) throw new Error('Missing fire safety landing page in sitemap.');
+  if (!targetUrls.includes(servicePath)) throw new Error('Missing services page in sitemap.');
   console.log(`Prerendering ${targetUrls.length} of ${urls.length} URLs for fast, reliable build...`);
 
   // 3. Launch Puppeteer
@@ -111,10 +134,11 @@ async function prerender() {
         const activePort = server.address()?.port || port;
         await page.goto(`http://localhost:${activePort}${url}`, { 
           waitUntil: 'domcontentloaded', 
-          timeout: url === fireSafetyPath ? 30000 : 6000
+          timeout: url === fireSafetyPath || url === servicePath ? 30000 : 6000
         });
         
         if (url === fireSafetyPath) await verifyFireSafetyPage(page);
+        else if (url === servicePath) await verifyServicePage(page);
         else if (url === '/') await page.waitForSelector('#services-overview a[href="' + fireSafetyPath + '"]');
         else await new Promise(r => setTimeout(r, 100));
         const html = await page.content();
@@ -130,7 +154,7 @@ async function prerender() {
         fs.writeFileSync(filePath, html);
         console.log(`[${index + 1}/${targetUrls.length}] Saved ${routePath}`);
       } catch (error) {
-        if (url === fireSafetyPath || url === '/') throw error;
+        if (url === fireSafetyPath || url === servicePath || url === '/') throw error;
         console.warn(`[${index + 1}/${targetUrls.length}] Skip ${url}: ${error.message}`);
       } finally {
         await page.close().catch(() => {});

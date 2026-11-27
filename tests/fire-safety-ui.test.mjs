@@ -181,6 +181,45 @@ try {
     assert.equal(desktop.state.posts.length, 0);
   });
 
+  await check('advertised fragments survive lazy rendering and browser back at desktop and mobile sizes', async () => {
+    const routes = [
+      ['/fire-safety-ai/?utm_source=facebook&utm_medium=organic_social&utm_campaign=fire_safety_launch&utm_content=site_post#demo-request', 'demo-request'],
+      ['/fire-safety-ai/?utm_source=handoff_checklist&utm_medium=referral&utm_campaign=fire_safety_launch#product-demo', 'product-demo'],
+      ['/service/?tab=management#tenant-assistant-title', 'tenant-assistant-title'],
+    ];
+    for (const { width, height } of [{ width: 1365, height: 900 }, { width: 390, height: 844 }]) {
+      const { page, state } = await newPage(width, height);
+      try {
+        await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+        const waitForFragment = (id) => page.waitForFunction((targetId) => {
+          const target = document.getElementById(targetId);
+          const top = target?.getBoundingClientRect().top;
+          return location.hash === `#${targetId}` && scrollY > 0 &&
+            top !== undefined && top >= -2 && top < innerHeight / 2;
+        }, {}, id);
+
+        for (const [route, id] of routes) {
+          await page.goto(`${origin}${route}`, { waitUntil: 'domcontentloaded' });
+          await page.waitForNetworkIdle();
+          await waitForFragment(id);
+        }
+        await page.goBack({ waitUntil: 'domcontentloaded' });
+        await page.waitForNetworkIdle();
+        await waitForFragment('product-demo');
+
+        await page.goto(`${origin}/`, { waitUntil: 'domcontentloaded' });
+        const homeDemoLink = '#services-overview a[href="/fire-safety-ai/"]';
+        await page.waitForSelector(homeDemoLink);
+        await page.click(homeDemoLink);
+        await page.waitForFunction(() => location.pathname === '/fire-safety-ai/' &&
+          !location.hash && scrollY <= 1 && document.querySelector('#demo-request'));
+        assert.equal(state.posts.length, 0);
+      } finally {
+        await page.close();
+      }
+    }
+  });
+
   await check('mobile scroll story keeps four static panels in natural document order', async () => {
     const mobile = await newPage(375, 900);
     try {
