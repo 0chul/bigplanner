@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fireSafetyAlternates, fireSafetyEnglishFeedPath, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, readLocalizedProduct } from './video.js';
 
 const pagePaths = new Set([
@@ -12,10 +13,6 @@ const cueTimes = ['00:00:00.000', '00:00:04.400', '00:00:09.800', '00:00:15.300'
 const demoEmail = 'bigplanner0799@gmail.com';
 const englishRssHead = `<link rel="alternate" type="application/rss+xml" title="Facilities operations resources RSS" href="${siteOrigin + fireSafetyEnglishFeedPath}">`;
 const englishRssLink = `<a href="${fireSafetyEnglishFeedPath}" type="application/rss+xml">Facilities resources RSS</a>`;
-
-function escapeHtml(value) {
-  return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
-}
 
 function renderLanding(language, content, handover) {
   const { code, label, path, handoverPath, requestPath, videoPath, locale, direction = 'ltr' } = language;
@@ -55,6 +52,7 @@ ${alternates}
   <meta property="og:url" content="${url}">
   <meta property="og:image" content="${siteOrigin}${artworkPath}">
   <meta name="twitter:card" content="summary_large_image">
+  ${shareAssets}
   <style>${styles}</style>
 </head>
 <body>
@@ -77,6 +75,7 @@ ${alternates}
             <a class="button" href="#contact">${escapeHtml(content.contactTitle)}</a>
             <a href="${videoPath}">${escapeHtml(content.demoTitle)}</a>
           </div>
+          ${renderPageShare(code, content.title, url, handover.share)}
         </div>
         <img class="building" src="${artworkPath}" width="1672" height="941" alt="" fetchpriority="high">
       </div>
@@ -145,7 +144,7 @@ ${alternates}
 `;
 }
 
-function renderVideo(language, content, handoverLabel) {
+function renderVideo(language, content, handover) {
   const { code, label, locale, path, videoPath, handoverPath, requestPath, direction = 'ltr' } = language;
   const videoUrl = siteOrigin + videoPath;
   const captionsPath = path + 'demo.vtt';
@@ -186,6 +185,7 @@ ${alternates}
   <meta property="og:url" content="${videoUrl}">
   <meta property="og:image" content="${siteOrigin}${thumbnail}">
   <meta name="twitter:card" content="summary">
+  ${shareAssets}
   <script type="application/ld+json">${data}</script>
   <style>
 ${styles}
@@ -242,8 +242,9 @@ ${styles}
         </section>
         <div class="links">
           <a class="button" href="${requestUrl}">${escapeHtml(content.formAction)}</a>
-          <a href="${handoverPath}">${escapeHtml(handoverLabel)}</a>
+          <a href="${handoverPath}">${escapeHtml(handover.landingLink)}</a>
         </div>
+        ${renderPageShare(code, title, videoUrl, handover.share)}
       </div>
     </div>
   </main>
@@ -271,7 +272,8 @@ function renderHandover(language, content, formAction) {
     checklist: content.checklist.map((step) => `<li>${escapeHtml(step)}</li>`).join('\n          '),
     example: content.example.map(([label, value]) =>
       `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd>`).join('\n          '),
-    shareUrl: escapeHtml(`mailto:?subject=${encodeURIComponent(content.h1)}&body=${encodeURIComponent(url)}`),
+    shareAssets,
+    pageShare: renderPageShare(code, content.h1, url, content.share),
     demoUrl: escapeHtml(demoUrl),
     requestUrl: escapeHtml(requestUrl),
     formAction: escapeHtml(formAction),
@@ -299,7 +301,7 @@ export function fireSafetyGlobalPages() {
     files.set(`${language.path}index.html`, renderLanding(language, content, handover));
     files.set(`${language.path}demo.vtt`, renderCaptions(content.subtitles));
     files.set(`${language.handoverPath}index.html`, renderHandover(language, handover, content.formAction));
-    files.set(`${language.videoPath}index.html`, renderVideo(language, content, handover.landingLink));
+    files.set(`${language.videoPath}index.html`, renderVideo(language, content, handover));
   }
   return {
     name: 'fire-safety-global-pages',

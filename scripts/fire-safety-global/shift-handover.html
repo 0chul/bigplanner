@@ -16,6 +16,7 @@
   <meta property="og:url" content="{{url}}">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
   <meta name="twitter:card" content="summary_large_image">
+  {{shareAssets}}
   <style>
     {{styles}}
     .handout { max-width: 58rem; }
@@ -64,8 +65,8 @@
         <div class="links screen-only">
           <a class="button" href="facilities-shift-handover-log.xlsx" download>{{download}}</a>
           <button type="button" class="secondary" id="print-checklist" hidden>{{print}}</button>
-          <a href="{{shareUrl}}">{{share}}</a>
         </div>
+        <div class="screen-only">{{pageShare}}</div>
         <nav class="languages screen-only" aria-label="{{languageLabel}}">
           {{navigation}}
         </nav>

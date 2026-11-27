@@ -56,15 +56,6 @@
     .intro-demo { align-self: center; font-weight: 700; padding: .65rem .25rem; }
     .languages { display: flex; flex-wrap: wrap; column-gap: 1rem; row-gap: .3rem; margin-top: .85rem; font-size: .94rem; }
     .form-jump { margin-top: .85rem; }
-    .share { margin-top: .85rem; }
-    .share summary { width: fit-content; color: var(--accent); cursor: pointer; font-weight: 700; }
-    .share-panel { max-width: 34rem; margin-top: .65rem; padding: .8rem 1rem; background: var(--paper); border-radius: .5rem; }
-    .share-panel label { display: block; padding: 0 0 .35rem; }
-    .share-panel input { width: 100%; height: auto; padding: .45rem .6rem; border: 1px solid var(--line); border-radius: .25rem; font: inherit; }
-    .share-panel .buttons { margin-top: .7rem; }
-    .share-panel .button[hidden] { display: none; }
-    .share-status { margin: 0; }
-    .share-status:not(:empty) { margin-top: .65rem; }
     .example { margin: 1rem 0; background: var(--paper); border-radius: .5rem; padding: 1rem 1.25rem; }
     dl { margin: 0; display: grid; grid-template-columns: minmax(6.5rem, .53fr) 1.47fr; gap: .4rem 1rem; }
     dt { font-weight: 750; }
@@ -97,6 +88,8 @@
       .form-row:last-child { min-height: 26pt; }
     }
   </style>
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
 </head>
 <body>
   <header><div class="wrap"><a href="/">빅플래너파트너스</a></div></header>
@@ -108,6 +101,18 @@
       <button class="button secondary" type="button" onclick="window.print()">인쇄 또는 PDF로 저장</button>
       <a class="intro-demo" data-product-link href="/fire-safety-ai/?utm_source=handoff_checklist&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch#demo-request">온라인 시연 신청</a>
     </div>
+    <details class="fs-share share" data-fs-share>
+      <summary>링크 공유</summary>
+      <div class="fs-share-panel">
+        <label class="fs-share-address">페이지 주소<input data-fs-share-url type="url" dir="ltr" readonly value="https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/?utm_source=handoff_share&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch&amp;utm_content=checklist_share"></label>
+        <div class="fs-share-actions">
+          <button data-fs-share-native type="button" hidden>앱으로 공유</button>
+          <button data-fs-share-copy type="button" hidden>링크 복사</button>
+          <a href="mailto:?subject=%EB%B0%A9%EC%9E%AC%EC%8B%A4%20%EA%B5%90%EB%8C%80%20%EC%9D%B8%EA%B3%84%20%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fhandoff-checklist%2F%3Futm_source%3Dhandoff_share%26utm_medium%3Dreferral%26utm_campaign%3Dfire_safety_launch%26utm_content%3Dchecklist_share">이메일로 공유</a>
+        </div>
+        <p class="fs-share-status" data-fs-share-status role="status" data-copied="링크를 복사했습니다." data-manual="주소를 선택했습니다. 직접 복사해 주세요."></p>
+      </div>
+    </details>
     <nav class="languages" aria-label="교대 인계 양식 언어 선택">
       <a href="/fire-safety-ai/en/shift-handover/" lang="en" hreflang="en">English</a>
       <a href="/fire-safety-ai/de/shift-handover/" lang="de" hreflang="de">Deutsch</a>
@@ -120,18 +125,6 @@
       <a href="/fire-safety-ai/nl/shift-handover/" lang="nl" hreflang="nl">Nederlands</a>
       <a href="/fire-safety-ai/sv/shift-handover/" lang="sv" hreflang="sv">Svenska</a>
     </nav>
-    <details class="share">
-      <summary>동료에게 체크리스트 공유</summary>
-      <div class="share-panel">
-        <label for="checklist-share-url">공유 링크</label>
-        <input id="checklist-share-url" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/?utm_source=handoff_share&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch&amp;utm_content=checklist_share">
-        <div class="buttons">
-          <button class="button" id="checklist-share-device" type="button" hidden>기기에서 공유</button>
-          <button class="button secondary" id="checklist-share-copy" type="button" hidden>링크 복사</button>
-        </div>
-        <p class="note share-status" id="checklist-share-status" role="status"></p>
-      </div>
-    </details>
     <p class="note form-jump"><a href="#handoff-form">인쇄용 빈 인계표 보기</a></p>
 
     <section aria-labelledby="before-handoff">
@@ -221,39 +214,6 @@
       }
     }
 
-    const shareUrl = document.getElementById('checklist-share-url');
-    const shareDevice = document.getElementById('checklist-share-device');
-    const shareCopy = document.getElementById('checklist-share-copy');
-    const shareStatus = document.getElementById('checklist-share-status');
-    const shareData = { title: document.querySelector('h1').textContent, url: shareUrl.value };
-
-    if (typeof navigator.share === 'function' && (!navigator.canShare || navigator.canShare(shareData))) {
-      shareDevice.hidden = false;
-      shareDevice.addEventListener('click', async () => {
-        shareStatus.textContent = '';
-        try {
-          await navigator.share(shareData);
-        } catch (error) {
-          if (error.name !== 'AbortError') {
-            shareStatus.textContent = '기기에서 공유할 수 없습니다. 위 링크를 복사해 주세요.';
-          }
-        }
-      });
-    }
-
-    if (navigator.clipboard?.writeText) {
-      shareCopy.hidden = false;
-      shareCopy.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(shareUrl.value);
-          shareStatus.textContent = '공유 링크를 복사했습니다.';
-        } catch {
-          shareUrl.focus();
-          shareUrl.select();
-          shareStatus.textContent = '선택된 주소를 복사해 주세요.';
-        }
-      });
-    }
   </script>
 </body>
 </html>
