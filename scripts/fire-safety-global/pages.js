@@ -238,13 +238,14 @@ ${styles}
 `;
 }
 
-function renderHandover(language, content) {
+function renderHandover(language, content, formAction) {
   const { code, path, handoverPath, locale, direction = 'ltr' } = language;
   const url = siteOrigin + handoverPath;
   const tracking = 'utm_source=handover_template&utm_medium=referral&utm_campaign=fire_safety_global';
   const demoUrl = code === 'en'
     ? `${fireSafetyEnglishVideoPath}?${tracking}`
     : `${path}?${tracking}&utm_content=${code.toLowerCase()}#demo`;
+  const requestUrl = `${fireSafetyEnglishDemoPath}?${tracking}&utm_content=${code.toLowerCase()}`;
   const values = {
     ...Object.fromEntries(Object.entries(content)
       .filter(([, value]) => typeof value === 'string')
@@ -259,6 +260,8 @@ function renderHandover(language, content) {
       `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd>`).join('\n          '),
     shareUrl: escapeHtml(`mailto:?subject=${encodeURIComponent(content.h1)}&body=${encodeURIComponent(url)}`),
     demoUrl: escapeHtml(demoUrl),
+    requestUrl: escapeHtml(requestUrl),
+    formAction: escapeHtml(formAction),
   };
   return handoverTemplate.replace(/{{(\w+)}}/g, (_, key) => {
     if (!Object.hasOwn(values, key) || !values[key]) throw new Error(`Missing handover ${code} value for ${key}`);
@@ -279,7 +282,7 @@ export function fireSafetyGlobalPages() {
     const handover = JSON.parse(readFileSync(new URL(`./handover/${filename}`, import.meta.url), 'utf8'));
     files.set(`${language.path}index.html`, renderLanding(language, content, handover.landingLink));
     files.set(`${language.path}demo.vtt`, renderCaptions(content.subtitles));
-    files.set(`${language.handoverPath}index.html`, renderHandover(language, handover));
+    files.set(`${language.handoverPath}index.html`, renderHandover(language, handover, content.formAction));
     if (language.code === 'en') files.set(`${fireSafetyEnglishVideoPath}index.html`, renderEnglishVideo(content));
   }
   return {

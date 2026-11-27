@@ -131,12 +131,14 @@ async function prerender() {
     }
     const handoverDirectory = path.join(distPath, handoverPath);
     const guide = fs.readFileSync(path.join(handoverDirectory, 'index.html'), 'utf-8');
+    const guideRequestUrl = `${fireSafetyEnglishDemoPath}?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}`;
     if (!sitemapContent.includes(`<loc>${siteOrigin}${handoverPath}</loc>`) ||
         !fs.existsSync(path.join(handoverDirectory, workbookName)) ||
         !html.includes(`href="${handoverPath}"`) || !guide.includes(`href="${workbookName}" download`) ||
         !guide.includes(`<link rel="canonical" href="${siteOrigin}${handoverPath}">`) ||
         !guide.includes(`<html lang="${code}"`) || !guide.includes(`href="${languagePath}"`) ||
         !guide.includes(`href="${code === 'en' ? fireSafetyEnglishVideoPath : languagePath}?`) ||
+        !guide.includes(`href="${guideRequestUrl}" hreflang="en"`) ||
         !fireSafetyHandoverAlternates.every(({ code, path }) =>
           guide.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
       throw new Error(`Missing handover workbook, language links, or sitemap entry for ${handoverPath}`);
