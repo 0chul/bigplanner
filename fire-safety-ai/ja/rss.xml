@@ -13,6 +13,60 @@
       <description><![CDATA[<div lang="ja" dir="ltr"><p>定型的なテナント問い合わせに現在かかっている月間対応時間と、ビル設備管理窓口への試験導入に向けて検討する範囲を試算します。</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/ja/workload-calculator/">問い合わせ対応工数を試算する</a></p></div>]]></description>
     </item>
     <item>
+      <title>商業ビル向けテナント設備修繕依頼書 | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>商業ビル向けテナント設備修繕依頼書</h1>
+      <p>商業ビルの空調・照明・給排水設備の不具合を報告するための無料テンプレートです。詳しい場所、気付いた症状、設備管理スタッフが現地を確認できる時間を記入します。</p>
+    </section>
+    <section>
+      <h2>設備修繕依頼書（空欄）</h2>
+      <p>依頼書をダウンロードまたは印刷し、必要事項を記入して、ビル所定の設備管理窓口に提出してください。現地確認のため、入室可能な時間帯と立ち会いの手配を記入してください。</p>
+      <p>火災や差し迫った危険がある場合は、ビル所定の緊急時対応手順に従い、指定の緊急連絡先に連絡してください。</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/maintenance-request-form.txt" download="">空欄の依頼書をダウンロード（TXT）</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>施設名・建物名</dt></div>
+        <div><dt>階・区画または部屋番号・詳しい場所</dt></div>
+        <div><dt>設備の区分</dt></div>
+        <div><dt>確認した症状と施設利用への影響</dt></div>
+        <div><dt>最初に気付いた日時（現地時間）</dt></div>
+        <div><dt>入室可能な時間帯と条件</dt></div>
+        <div><dt>テナント側の担当部署と指定の返信窓口</dt></div>
+        <div><dt>設備管理スタッフ記入欄：受付番号・担当チーム・次に行うこと</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>記入例</h2>
+      <p>架空のビルで、共用会議室の冷房の効きが弱い場合の記入例です。</p>
+      <dl>
+        <div><dt>施設名・建物名</dt><dd>リンデン・ビジネスセンター（Linden Business Centre）A棟</dd></div>
+        <div><dt>階・区画または部屋番号・詳しい場所</dt><dd>5階、エレベーター横の共用会議室 A-5.12</dd></div>
+        <div><dt>設備の区分</dt><dd>空調・換気設備</dd></div>
+        <div><dt>確認した症状と施設利用への影響</dt><dd>冷房を入れているが室温が下がらないため、会議を別の部屋に移した。</dd></div>
+        <div><dt>最初に気付いた日時（現地時間）</dt><dd>2026年10月5日 20:35</dd></div>
+        <div><dt>入室可能な時間帯と条件</dt><dd>10月6日 07:15〜08:00、受付スタッフの立ち会いあり</dd></div>
+        <div><dt>テナント側の担当部署と指定の返信窓口</dt><dd>5階テナントの運営担当チーム。返信はビル所定の設備管理窓口へ。</dd></div>
+        <div><dt>設備管理スタッフ記入欄：受付番号・担当チーム・次に行うこと</dt><dd>DEMO-012。早番の設備管理チームが07:30に会議室の冷房を確認する。</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>対応が終わっていない依頼を次のシフトへ引き継ぐ</h2>
+      <p>設備管理スタッフは、受付番号、担当チーム、次の確認事項を記録します。引き継ぎ時も同じ受付番号を使うと、次のシフトのスタッフが詳しい場所と対応状況を確認できます。</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/">設備管理のシフト引き継ぎ台帳を入手</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/">ビル設備管理AIの試験導入チェックリストを見る</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/">冷房の不具合受付デモを見る（27秒・韓国語画面、日本語字幕）</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>ビル設備管理向け テナント問い合わせ対応AIの試験導入チェックリスト | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/</guid>
@@ -114,6 +168,11 @@
       <h2>テンプレートとツール</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/">商業ビル向けテナント設備修繕依頼書</a></h3>
+          <p>商業ビルの空調・照明・給排水設備の不具合を報告するための無料テンプレートです。詳しい場所、気付いた症状、設備管理スタッフが現地を確認できる時間を記入します。</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/maintenance-request-form.txt" download="">空欄の依頼書をダウンロード（TXT）</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/">ビル設備管理の引き継ぎチェックリスト</a></h3>
           <p>商業ビルの設備管理チーム向けの無料Excel引き継ぎ台帳です。空調の問い合わせを例に、場所・担当者・次の確認事項を記録し、未完了の案件を次のシフトへ引き継ぐ方法を確認できます。</p>

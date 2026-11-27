@@ -10,6 +10,8 @@
   <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/">
   <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/">
   <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/">
   <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/">
   <link rel="alternate" hreflang="pt" href="https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/">
   <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/">
@@ -21,6 +23,8 @@
   <meta property="og:description" content="상업용 건물에서 냉난방, 조명, 배관 등 일반 시설보수를 요청할 때 쓰는 무료 양식입니다. 이상이 발생한 위치와 증상, 확인 가능한 시간을 남길 수 있습니다.">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
   <style>:root {
   color-scheme: light;
   --ink: #17302a;
@@ -135,6 +139,8 @@ footer { color: var(--muted); font-size: .9rem; }
         <a href="/fire-safety-ai/en/maintenance-request-form/" lang="en" hreflang="en">English</a>
         <a href="/fire-safety-ai/de/maintenance-request-form/" lang="de" hreflang="de">Deutsch</a>
         <a href="/fire-safety-ai/fr/maintenance-request-form/" lang="fr" hreflang="fr">Français</a>
+        <a href="/fire-safety-ai/ja/maintenance-request-form/" lang="ja" hreflang="ja">日本語</a>
+        <a href="/fire-safety-ai/zh-hant/maintenance-request-form/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
         <a href="/fire-safety-ai/nb/maintenance-request-form/" lang="nb" hreflang="nb">Norsk bokmål</a>
         <a href="/fire-safety-ai/pt/maintenance-request-form/" lang="pt" hreflang="pt">Português</a>
       </nav>
@@ -149,9 +155,23 @@ footer { color: var(--muted); font-size: .9rem; }
       <h2 id="fields-title">빈 시설보수 요청서</h2>
       <p>양식을 내려받거나 인쇄해 작성한 뒤 건물에서 지정한 시설관리 접수 채널로 보내세요. 출입 조건에는 확인 가능한 시간과 동행 여부만 적어주세요.</p>
       <p class="intake-notice">화재나 즉시 위험한 상황에는 건물의 비상 절차를 따르고 지정된 긴급 연락처로 바로 알리세요.</p>
-      <div class="links intake-actions">
-        <a class="button" href="/fire-safety-ai/maintenance-request-form/maintenance-request-form.txt" download>빈 요청서 내려받기 (TXT)</a>
-        <button type="button" class="intake-print" hidden>빈 요청서 인쇄</button>
+      <div class="intake-actions">
+        <div class="links">
+          <a class="button" href="/fire-safety-ai/maintenance-request-form/maintenance-request-form.txt" download>빈 요청서 내려받기 (TXT)</a>
+          <button type="button" class="intake-print" hidden>빈 요청서 인쇄</button>
+        </div>
+        <details class="fs-share share" data-fs-share>
+    <summary>링크 공유</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">페이지 주소<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/maintenance-request-form/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>앱으로 공유</button>
+        <button data-fs-share-copy type="button" hidden>링크 복사</button>
+        <a href="mailto:?subject=%EC%9E%85%EC%A3%BC%EC%82%AC%20%EC%8B%9C%EC%84%A4%EB%B3%B4%EC%88%98%20%EC%9A%94%EC%B2%AD%EC%84%9C%20%EC%96%91%EC%8B%9D&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fmaintenance-request-form%2F">이메일로 공유</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="링크를 복사했습니다." data-manual="위 주소를 선택해 복사해 주세요."></p>
+    </div>
+  </details>
       </div>
       <dl class="intake-fields intake-blank">
         <div><dt>사업장과 건물</dt><dd aria-hidden="true"></dd></div>

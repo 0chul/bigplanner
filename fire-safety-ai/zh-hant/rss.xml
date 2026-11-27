@@ -13,6 +13,60 @@
       <description><![CDATA[<div lang="zh-Hant" dir="ltr"><p>估算物業管理團隊目前每月處理常見租戶查詢所需的時間，以及擬納入服務試行評估的工作量。</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/workload-calculator/">計算常見查詢的處理時間</a></p></div>]]></description>
     </item>
     <item>
+      <title>商用大樓租戶設備報修表 | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/</guid>
+      <description><![CDATA[<section>
+      <h1>商用大樓租戶設備報修表</h1>
+      <p>免費表格，適用於商用大樓的日常空調、照明或給排水報修。填寫確切位置、發現的問題，以及人員可到場查看的時間。</p>
+    </section>
+    <section>
+      <h2>空白設備報修表</h2>
+      <p>下載或列印表格，填妥後透過大樓指定的報修管道送交物業管理團隊。若需安排人員到場，請填寫可進入的時段和陪同安排。</p>
+      <p>如遇火警或有即時危險，請依照大樓的緊急應變程序處理，並聯絡大樓指定的緊急聯絡人員。</p>
+      <div>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/maintenance-request-form.txt" download="">下載空白表格（TXT）</a>
+          
+        </div>
+        
+      </div>
+      <dl>
+        <div><dt>大樓名稱及座別</dt></div>
+        <div><dt>樓層、單位或房間及確切位置</dt></div>
+        <div><dt>報修類別</dt></div>
+        <div><dt>發現的問題及對使用的影響</dt></div>
+        <div><dt>首次發現的日期及當地時間</dt></div>
+        <div><dt>可進入的時段及條件</dt></div>
+        <div><dt>租戶團隊及指定回覆管道</dt></div>
+        <div><dt>僅供物業管理人員填寫（報修編號、負責團隊及下一步）</dt></div>
+      </dl>
+    </section>
+    <section>
+      <h2>填寫範例</h2>
+      <p>以下以一間虛構的共用會議室為例，示範如何通報冷氣不足。</p>
+      <dl>
+        <div><dt>大樓名稱及座別</dt><dd>林登商務中心 A 座</dd></div>
+        <div><dt>樓層、單位或房間及確切位置</dt><dd>五樓電梯旁的共用會議室 A-5.12</dd></div>
+        <div><dt>報修類別</dt><dd>暖氣、通風及空調</dd></div>
+        <div><dt>發現的問題及對使用的影響</dt><dd>冷氣已開啟，但室內仍然偏熱。團隊已改到另一間會議室開會。</dd></div>
+        <div><dt>首次發現的日期及當地時間</dt><dd>2026 年 10 月 5 日 20:35</dd></div>
+        <div><dt>可進入的時段及條件</dt><dd>10 月 6 日 07:15–08:00，由接待櫃檯人員陪同進入。</dd></div>
+        <div><dt>租戶團隊及指定回覆管道</dt><dd>五樓租戶的營運團隊。請透過大樓指定的報修管道回覆。</dd></div>
+        <div><dt>僅供物業管理人員填寫（報修編號、負責團隊及下一步）</dt><dd>DEMO-012。由早班維修團隊於 07:30 檢查會議室的冷氣。</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>將未完成的報修案件交給下一班</h2>
+      <p>物業管理人員可記下報修編號、負責團隊和下一次檢查安排。交班時沿用同一報修編號，接班人員就能查到確切位置及目前進度。</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/">下載交班紀錄表</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">查看設施管理 AI 試行清單</a>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/">觀看 27 秒冷氣報修示範（韓文介面、繁體中文字幕）</a>
+      </div>
+    </section>]]></description>
+    </item>
+    <item>
       <title>設施管理 AI 助手試行清單｜租戶查詢與交更 | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/</guid>
@@ -114,6 +168,11 @@
       <h2>範本和工具</h2>
       
       <ul>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/">商用大樓租戶設備報修表</a></h3>
+          <p>免費表格，適用於商用大樓的日常空調、照明或給排水報修。填寫確切位置、發現的問題，以及人員可到場查看的時間。</p>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/maintenance-request-form.txt" download="">下載空白表格（TXT）</a>
+        </article></li>
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/">設施管理交更清單</a></h3>
           <p>下載免費 Excel 交更紀錄表，供商廈設施管理團隊使用。參考核對清單及冷氣問題填寫示例，將未完成的租戶個案交予下一更跟進。</p>

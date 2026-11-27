@@ -31,7 +31,10 @@
       <p>양식을 내려받거나 인쇄해 작성한 뒤 건물에서 지정한 시설관리 접수 채널로 보내세요. 출입 조건에는 확인 가능한 시간과 동행 여부만 적어주세요.</p>
       <p>화재나 즉시 위험한 상황에는 건물의 비상 절차를 따르고 지정된 긴급 연락처로 바로 알리세요.</p>
       <div>
-        <a href="https://bigplanner.co.kr/fire-safety-ai/maintenance-request-form/maintenance-request-form.txt" download="">빈 요청서 내려받기 (TXT)</a>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/maintenance-request-form/maintenance-request-form.txt" download="">빈 요청서 내려받기 (TXT)</a>
+          
+        </div>
         
       </div>
       <dl>

@@ -10,6 +10,8 @@
   <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/">
   <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/">
   <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/">
   <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/">
   <link rel="alternate" hreflang="pt" href="https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/">
   <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/">
@@ -21,6 +23,8 @@
   <meta property="og:description" content="Bruk malen til å registrere feilmeldinger fra leietakere med nøyaktig sted, hva som er observert og når driftsteamet kan få tilgang.">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
   <style>:root {
   color-scheme: light;
   --ink: #17302a;
@@ -135,6 +139,8 @@ footer { color: var(--muted); font-size: .9rem; }
         <a href="/fire-safety-ai/en/maintenance-request-form/" lang="en" hreflang="en">English</a>
         <a href="/fire-safety-ai/de/maintenance-request-form/" lang="de" hreflang="de">Deutsch</a>
         <a href="/fire-safety-ai/fr/maintenance-request-form/" lang="fr" hreflang="fr">Français</a>
+        <a href="/fire-safety-ai/ja/maintenance-request-form/" lang="ja" hreflang="ja">日本語</a>
+        <a href="/fire-safety-ai/zh-hant/maintenance-request-form/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
         <a href="/fire-safety-ai/nb/maintenance-request-form/" lang="nb" hreflang="nb" aria-current="page">Norsk bokmål</a>
         <a href="/fire-safety-ai/pt/maintenance-request-form/" lang="pt" hreflang="pt">Português</a>
       </nav>
@@ -149,9 +155,23 @@ footer { color: var(--muted); font-size: .9rem; }
       <h2 id="fields-title">Dette bør stå i meldingen</h2>
       <p>Last ned eller skriv ut malen. Fyll den ut og send meldingen gjennom kanalen bygget allerede bruker for feilmeldinger.</p>
       <p class="intake-notice">I en nødsituasjon følger dere byggets etablerte varslingsrutiner og bruker de avtalte kontaktpunktene.</p>
-      <div class="links intake-actions">
-        <a class="button" href="/fire-safety-ai/nb/maintenance-request-form/maintenance-request-form.txt" download>Last ned gratis mal</a>
-        <button type="button" class="intake-print" hidden>Skriv ut malen</button>
+      <div class="intake-actions">
+        <div class="links">
+          <a class="button" href="/fire-safety-ai/nb/maintenance-request-form/maintenance-request-form.txt" download>Last ned gratis mal</a>
+          <button type="button" class="intake-print" hidden>Skriv ut malen</button>
+        </div>
+        <details class="fs-share share" data-fs-share>
+    <summary>Del lenken</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Nettadresse<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Del via en app</button>
+        <button data-fs-share-copy type="button" hidden>Kopier lenken</button>
+        <a href="mailto:?subject=Gratis%20mal%20for%20feilmelding%20til%20drift&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fnb%2Fmaintenance-request-form%2F">Del på e-post</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Lenken er kopiert." data-manual="Merk og kopier nettadressen ovenfor."></p>
+    </div>
+  </details>
       </div>
       <dl class="intake-fields intake-blank">
         <div><dt>Eiendom og bygg</dt><dd aria-hidden="true"></dd></div>

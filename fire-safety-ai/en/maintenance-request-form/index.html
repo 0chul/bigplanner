@@ -10,6 +10,8 @@
   <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/">
   <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/maintenance-request-form/">
   <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/maintenance-request-form/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/">
   <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/">
   <link rel="alternate" hreflang="pt" href="https://bigplanner.co.kr/fire-safety-ai/pt/maintenance-request-form/">
   <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/">
@@ -21,6 +23,8 @@
   <meta property="og:description" content="A free template for reporting routine HVAC, lighting or plumbing issues in a commercial building. Record the exact location, what you noticed and when staff can check it.">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
   <style>:root {
   color-scheme: light;
   --ink: #17302a;
@@ -135,6 +139,8 @@ footer { color: var(--muted); font-size: .9rem; }
         <a href="/fire-safety-ai/en/maintenance-request-form/" lang="en" hreflang="en" aria-current="page">English</a>
         <a href="/fire-safety-ai/de/maintenance-request-form/" lang="de" hreflang="de">Deutsch</a>
         <a href="/fire-safety-ai/fr/maintenance-request-form/" lang="fr" hreflang="fr">Français</a>
+        <a href="/fire-safety-ai/ja/maintenance-request-form/" lang="ja" hreflang="ja">日本語</a>
+        <a href="/fire-safety-ai/zh-hant/maintenance-request-form/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
         <a href="/fire-safety-ai/nb/maintenance-request-form/" lang="nb" hreflang="nb">Norsk bokmål</a>
         <a href="/fire-safety-ai/pt/maintenance-request-form/" lang="pt" hreflang="pt">Português</a>
       </nav>
@@ -149,9 +155,23 @@ footer { color: var(--muted); font-size: .9rem; }
       <h2 id="fields-title">Blank maintenance request form</h2>
       <p>Download or print this form, fill it in and send it through your building’s approved maintenance channel. For site access, give the available time and escort arrangements.</p>
       <p class="intake-notice">For a fire or immediate hazard, follow the building’s emergency procedures and use its designated emergency contacts.</p>
-      <div class="links intake-actions">
-        <a class="button" href="/fire-safety-ai/en/maintenance-request-form/maintenance-request-form.txt" download>Download blank form (TXT)</a>
-        <button type="button" class="intake-print" hidden>Print blank form</button>
+      <div class="intake-actions">
+        <div class="links">
+          <a class="button" href="/fire-safety-ai/en/maintenance-request-form/maintenance-request-form.txt" download>Download blank form (TXT)</a>
+          <button type="button" class="intake-print" hidden>Print blank form</button>
+        </div>
+        <details class="fs-share share" data-fs-share>
+    <summary>Share link</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Page address<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/en/maintenance-request-form/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Share to an app</button>
+        <button data-fs-share-copy type="button" hidden>Copy link</button>
+        <a href="mailto:?subject=Tenant%20maintenance%20request%20form%20for%20commercial%20buildings&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fen%2Fmaintenance-request-form%2F">Share by email</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Link copied." data-manual="Select and copy the page address above."></p>
+    </div>
+  </details>
       </div>
       <dl class="intake-fields intake-blank">
         <div><dt>Site and building</dt><dd aria-hidden="true"></dd></div>
