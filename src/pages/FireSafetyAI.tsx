@@ -97,6 +97,7 @@ export default function FireSafetyAI() {
       <Helmet>
         <html lang="ko" />
         <script type="application/ld+json">{productData}</script>
+        <link rel="describedby" href={`${siteOrigin}/llms.txt`} />
         {fireSafetyAlternates.map(({ code, path }) => <link key={code} rel="alternate" hrefLang={code} href={siteOrigin + path} />)}
         <link rel="alternate" type="application/rss+xml" title="시설관리 실무 자료 RSS" href={siteOrigin + fireSafetyKoreanFeedPath} />
         <link rel="stylesheet" href="/fire-safety-ai/share.css" />

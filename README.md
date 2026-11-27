@@ -8,6 +8,8 @@ BigPlanner Partners' AI tenant service desk uses building manuals to answer rout
 
 [한국어 공식 자료실](https://bigplanner.co.kr/fire-safety-ai/resources/) · [English resource library](https://bigplanner.co.kr/fire-safety-ai/en/resources/)
 
+[공식 자료 텍스트 안내 · Plain-text resource index](https://bigplanner.co.kr/llms.txt)
+
 시연은 한국어 화면에 각 언어의 자막을 제공합니다. The demo shows Korean screens with captions in the selected language.
 
 | 언어 / Language | 제품 / Product | 시연 / Video | 인계 / Handover | 신청 / Request | RSS | 계산기 / Calculator |

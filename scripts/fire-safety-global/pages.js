@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { fireSafetyProductStructuredData } from '../../src/utils/fireSafetyStructuredData.js';
 import { renderFaqManualPages } from './faq-authoring.js';
+import { renderFacilitiesIndex } from './facilities-index.js';
 import { renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, demoWorkflowImage, readLocalizedProduct } from './video.js';
@@ -13,6 +14,7 @@ const pagePaths = new Set([
   ...fireSafetyLanguages.map(({ workloadPath }) => workloadPath),
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
 ]);
+const contentTypes = { '.vtt': 'text/vtt', '.txt': 'text/plain', '.html': 'text/html' };
 const artworkPath = '/images/fire-safety-building.webp';
 const styles = readFileSync(new URL('./landing.css', import.meta.url), 'utf8');
 const handoverTemplate = readFileSync(new URL('./shift-handover.html', import.meta.url), 'utf8');
@@ -62,6 +64,7 @@ function renderLanding(language, content, handover) {
   <meta name="description" content="${description}">
   <link rel="canonical" href="${url}">
 ${alternates}
+  <link rel="describedby" href="${siteOrigin}/llms.txt">
   <script type="application/ld+json">${productData}</script>
   ${rssHead}
   <meta property="og:type" content="website">
@@ -333,6 +336,7 @@ function renderCaptions(subtitles) {
 
 export function fireSafetyGlobalPages() {
   const files = new Map([
+    ['/llms.txt', renderFacilitiesIndex()],
     ...renderFaqManualPages(styles),
     ...renderFacilityResourcePages(styles),
     ...renderWorkloadCalculatorPages(styles),
@@ -358,7 +362,8 @@ export function fireSafetyGlobalPages() {
         const filePath = pathname.endsWith('/') ? `${pathname}index.html` : pathname;
         const body = files.get(filePath);
         if (!body) return next();
-        res.setHeader('Content-Type', filePath.endsWith('.vtt') ? 'text/vtt; charset=utf-8' : 'text/html; charset=utf-8');
+        const extension = filePath.slice(filePath.lastIndexOf('.'));
+        res.setHeader('Content-Type', `${contentTypes[extension]}; charset=utf-8`);
         res.end(body);
       });
     },
