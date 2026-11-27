@@ -7,6 +7,12 @@
     <language>ko</language>
     <atom:link href="https://bigplanner.co.kr/fire-safety-ai/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>시설관리 반복 문의 응대 업무량 계산기</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/workload-calculator/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/workload-calculator/</guid>
+      <description><![CDATA[<div lang="ko" dir="ltr"><p>일평균 문의 건수와 건당 응대 시간으로 월간 현재 업무량을 계산합니다. 그중 FAQ 매뉴얼 답변 적용을 검토할 범위를 확인하세요.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/workload-calculator/">반복 문의 응대 업무량 계산기</a></p></div>]]></description>
+    </item>
+    <item>
       <title>시설관리 FAQ 매뉴얼 작성 양식과 무료 엑셀</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/faq-manual/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/faq-manual/</guid>

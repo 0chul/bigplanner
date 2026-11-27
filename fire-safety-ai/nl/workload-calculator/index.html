@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="nl" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Werklastcalculator voor facilitair beheer | BigPlanner Partners</title>
+  <meta name="description" content="Schat de huidige maandelijkse tijd voor terugkerende huurdersvragen en het deel dat u wilt beoordelen voor een proeftraject met een facilitaire servicedesk.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/workload-calculator/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/workload-calculator/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/workload-calculator/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/workload-calculator/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/workload-calculator/">
+  <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/workload-calculator/">
+  <link rel="alternate" hreflang="da" href="https://bigplanner.co.kr/fire-safety-ai/da/workload-calculator/">
+  <link rel="alternate" hreflang="nl" href="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/">
+  <link rel="alternate" hreflang="sv" href="https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/">
+  <link rel="alternate" hreflang="fi" href="https://bigplanner.co.kr/fire-safety-ai/fi/workload-calculator/">
+  <link rel="alternate" hreflang="it" href="https://bigplanner.co.kr/fire-safety-ai/it/workload-calculator/">
+  <link rel="alternate" hreflang="he" href="https://bigplanner.co.kr/fire-safety-ai/he/workload-calculator/">
+  <link rel="alternate" hreflang="es" href="https://bigplanner.co.kr/fire-safety-ai/es/workload-calculator/">
+  <link rel="alternate" hreflang="is" href="https://bigplanner.co.kr/fire-safety-ai/is/workload-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">
+  <link rel="alternate" type="application/rss+xml" title="RSS voor hulpmiddelen voor facilitair beheer" href="https://bigplanner.co.kr/fire-safety-ai/nl/rss.xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:title" content="Werklastcalculator voor facilitair beheer | BigPlanner Partners">
+  <meta property="og:description" content="Schat de huidige maandelijkse tijd voor terugkerende huurdersvragen en het deel dat u wilt beoordelen voor een proeftraject met een facilitaire servicedesk.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
+  <script defer src="/fire-safety-ai/workload-calculator.js"></script>
+  <style>:root {
+  color-scheme: light;
+  --ink: #17302a;
+  --green: #1b5648;
+  --muted: #455c55;
+  --rule: #cdd9d2;
+  --paper: #f3f7f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
+.wrap { width: min(71rem, 100% - 2.5rem); margin-inline: auto; }
+.site-header { border-block-end: 1px solid var(--rule); }
+.header-content, footer .wrap { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: .85rem; }
+.brand { color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.brand span { font-weight: 500; }
+.languages { display: flex; gap: .2rem; flex-wrap: wrap; }
+.languages a { padding: .34rem .55rem; border-radius: .38rem; color: var(--muted); font-size: .875rem; text-decoration: none; }
+.languages a[aria-current="page"], .languages a:hover { background: #e9f0ec; color: var(--green); }
+a { color: var(--green); text-underline-offset: .17em; }
+a:focus-visible, summary:focus-visible, video:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { line-height: 1.22; }
+h1 { font-size: clamp(2.15rem, 4.5vw, 4.2rem); text-wrap: balance; }
+h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
+[dir="ltr"] :is(h1, h2) { letter-spacing: -.035em; }
+:is(:lang(ja), :lang(zh-Hant)) :is(h1, h2) { letter-spacing: 0; }
+[dir="rtl"] :is(h1, h2, h3) { line-height: 1.4; }
+.hero { background: var(--paper); }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.6rem); padding-block: clamp(2.5rem, 6vw, 5.8rem); }
+.intro { max-width: 53ch; margin-block: 1.12rem .75rem; font-size: clamp(1.04rem, 1.75vw, 1.25rem); }
+.audience { color: var(--muted); }
+.building { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: .75rem; }
+.links { display: flex; flex-wrap: wrap; gap: .7rem 1.35rem; align-items: center; margin-block-start: 1.3rem; font-weight: 650; }
+.button { padding: .72rem 1.12rem; border-radius: .4rem; background: var(--green); color: white; text-decoration: none; }
+.button:hover { background: var(--ink); }
+.section { padding-block: clamp(2.45rem, 5.5vw, 4.8rem); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.steps li { padding-block: 1rem; border-block-start: 2px solid var(--green); }
+.steps h3 { font-size: 1.18rem; margin-block-end: .55rem; }
+.steps p, .demo-note, .faq details p { color: var(--muted); }
+.resource-link { display: inline-block; margin-block-start: .65rem; font-weight: 650; }
+.demo-band { background: #e8f1ed; }
+.demo-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); align-items: center; gap: clamp(1.5rem, 6vw, 6rem); }
+.demo-note { margin-block-start: .6rem; }
+.scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
+.scenes li + li { margin-block-start: .6rem; }
+video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
+.faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
+.faq details { border-block-end: 1px solid var(--rule); }
+.faq details:first-child { border-block-start: 1px solid var(--rule); }
+.faq summary { cursor: pointer; padding-block: .8rem; font-weight: 650; }
+.faq details p { margin-block-end: .9rem; }
+.contact-band { background: #173930; color: #fff; }
+.contact-band .button { background: #fff; color: var(--ink); }
+.contact-band .button:hover { background: #dcebe4; }
+.contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
+.contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
+.email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
+footer { color: var(--muted); font-size: .9rem; }
+@media (max-width: 48rem) {
+  .header-content { gap: .45rem; }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
+  .building { aspect-ratio: 16 / 9; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
+}
+
+    .calculator-wrap { width: min(64rem, 100% - 2rem); margin-inline: auto; }
+    html[lang="ko"] .calculator-wrap { word-break: keep-all; }
+    .site-header .calculator-wrap { position: relative; }
+    .calculator-language summary { min-height: 2.75rem; align-content: center; padding-inline: .5rem; color: var(--green); cursor: pointer; }
+    .calculator-language nav { position: absolute; z-index: 1; inset-block-start: calc(100% - .35rem); inset-inline-end: 0; width: min(22rem, 80vw); padding: .6rem; border: 1px solid var(--rule); border-radius: .5rem; background: #fff; box-shadow: 0 8px 24px #17302a15; }
+    .calculator-language nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+    .calculator-head { padding-block: clamp(1.9rem, 4vw, 3.6rem) 1.8rem; }
+    .calculator-head h1 { max-width: 25ch; font-size: clamp(2rem, 4.8vw, 3.65rem); }
+    .calculator-head .intro { max-width: 65ch; margin-block-end: 0; }
+    .calculator-body { padding-block: 1.4rem 2.5rem; }
+    .calculator-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+    .calculator-panel { min-width: 0; border: 1px solid var(--rule); border-radius: .75rem; padding: clamp(1rem, 2.6vw, 1.65rem); }
+    .calculator-panel fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
+    .calculator-panel legend, .calculator-panel h2 { margin: 0; padding: 0; font-size: 1.26rem; font-weight: 750; line-height: 1.3; }
+    .calculator-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1rem; margin-block: 1.05rem; }
+    .calculator-fields label { display: grid; grid-template-rows: 1fr auto auto; gap: .25rem; align-items: end; font-weight: 650; line-height: 1.4; }
+    .calculator-fields small { font-size: .81rem; font-weight: 450; color: var(--muted); }
+    .calculator-fields input { width: 100%; min-height: 2.8rem; border: 1px solid #839b90; border-radius: .38rem; padding: .45rem .62rem; color: var(--ink); background: #fff; font: inherit; font-variant-numeric: tabular-nums; }
+    .calculator-fields input:focus-visible, .calculator-reset:focus-visible { outline: 3px solid #367e71; outline-offset: 2px; }
+    .calculator-fields input[aria-invalid="true"] { border-color: #a32727; }
+    .calculator-fields input:disabled { background: var(--paper); }
+    .calculator-reset { min-height: 2.75rem; border: 1px solid #839b90; border-radius: .38rem; padding: .35rem .75rem; background: #fff; color: var(--green); font: inherit; font-weight: 650; cursor: pointer; }
+    .calculator-reset:hover { background: var(--paper); }
+    .calculator-reset:disabled { color: var(--muted); cursor: default; }
+    .calculator-invalid { color: #8e2626; margin-block: .65rem 0; }
+    .calculator-results { background: var(--paper); }
+    .calculator-results dl { margin: .7rem 0 .8rem; }
+    .calculator-results dl > div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .05rem .75rem; padding: .5rem 0; border-block-end: 1px solid var(--rule); }
+    .calculator-results dt { font-size: .95rem; }
+    .calculator-results dd { color: var(--green); margin: 0; }
+    .calculator-results strong { font-size: 1.55rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
+    .calculator-share-label { display: block; font-size: .85rem; color: var(--muted); }
+    .calculator-results progress { display: block; width: 100%; margin-block-start: .25rem; accent-color: var(--green); }
+    .calculator-example { color: var(--muted); font-size: .93rem; margin: .85rem 0 1.5rem; }
+    .calculator-method { border-block-start: 1px solid var(--rule); padding-block-start: 1.5rem; }
+    .calculator-method h2 { font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
+    .calculator-method ol { margin-block: .65rem; padding-inline-start: 1.4rem; max-width: 72ch; }
+    .calculator-method li + li { margin-block-start: .42rem; }
+    footer { border-block-start: 1px solid var(--rule); }
+    @media (max-width: 46rem) {
+      .calculator-grid { grid-template-columns: 1fr; gap: .9rem; }
+    }
+    @media (max-width: 25rem) {
+      .calculator-fields { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="calculator-wrap header-content">
+      <a class="brand" href="/fire-safety-ai/nl/" lang="en">BigPlanner <span>Partners</span></a>
+      <details class="calculator-language">
+        <summary aria-label="Talen van de calculator · Nederlands"><bdi lang="nl">Nederlands</bdi></summary>
+        <nav class="languages" aria-label="Talen van de calculator">
+            <a href="/fire-safety-ai/workload-calculator/" hreflang="ko" lang="ko" dir="auto">한국어</a>
+            <a href="/fire-safety-ai/en/workload-calculator/" hreflang="en" lang="en" dir="auto">English</a>
+            <a href="/fire-safety-ai/de/workload-calculator/" hreflang="de" lang="de" dir="auto">Deutsch</a>
+            <a href="/fire-safety-ai/fr/workload-calculator/" hreflang="fr" lang="fr" dir="auto">Français</a>
+            <a href="/fire-safety-ai/ja/workload-calculator/" hreflang="ja" lang="ja" dir="auto">日本語</a>
+            <a href="/fire-safety-ai/zh-hant/workload-calculator/" hreflang="zh-Hant" lang="zh-Hant" dir="auto">繁體中文</a>
+            <a href="/fire-safety-ai/ar/workload-calculator/" hreflang="ar" lang="ar" dir="auto">العربية</a>
+            <a href="/fire-safety-ai/nb/workload-calculator/" hreflang="nb" lang="nb" dir="auto">Norsk bokmål</a>
+            <a href="/fire-safety-ai/da/workload-calculator/" hreflang="da" lang="da" dir="auto">Dansk</a>
+            <a href="/fire-safety-ai/nl/workload-calculator/" hreflang="nl" lang="nl" dir="auto" aria-current="page">Nederlands</a>
+            <a href="/fire-safety-ai/sv/workload-calculator/" hreflang="sv" lang="sv" dir="auto">Svenska</a>
+            <a href="/fire-safety-ai/fi/workload-calculator/" hreflang="fi" lang="fi" dir="auto">Suomi</a>
+            <a href="/fire-safety-ai/it/workload-calculator/" hreflang="it" lang="it" dir="auto">Italiano</a>
+            <a href="/fire-safety-ai/he/workload-calculator/" hreflang="he" lang="he" dir="auto">עברית</a>
+            <a href="/fire-safety-ai/es/workload-calculator/" hreflang="es" lang="es" dir="auto">Español</a>
+            <a href="/fire-safety-ai/is/workload-calculator/" hreflang="is" lang="is" dir="auto">Íslenska</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="calculator-title">
+      <div class="calculator-wrap calculator-head">
+        <h1 id="calculator-title">Bereken de tijd voor terugkerende huurdersvragen</h1>
+        <p class="intro">Schat hoeveel tijd uw team elke maand aan terugkerende vragen besteedt. Kies welk deel u wilt beoordelen voor een proeftraject. Uw invoer blijft in deze browser.</p>
+      </div>
+    </section>
+    <div class="calculator-wrap calculator-body">
+      <div class="calculator-grid">
+        <form class="calculator-panel" data-workload-form data-number-locale="nl-NL" novalidate>
+          <fieldset data-workload-fields disabled>
+            <legend>Invoer voor de maandelijkse werklast</legend>
+            <div class="calculator-fields">
+              <label>
+                <span>Terugkerende vragen per operationele dag</span>
+                <input type="text" inputmode="numeric" name="requests" data-workload-max="100000" value="20" autocomplete="off" dir="auto" required aria-describedby="requests-range">
+                <small id="requests-range"><bdi>0–100.000</bdi></small>
+              </label>
+              <label>
+                <span>Gemiddelde behandeltijd per terugkerende vraag (minuten)</span>
+                <input type="text" inputmode="decimal" name="minutes" data-workload-max="1440" value="2" autocomplete="off" dir="auto" required aria-describedby="minutes-range">
+                <small id="minutes-range"><bdi>0–1.440</bdi></small>
+              </label>
+              <label>
+                <span>Operationele dagen per maand</span>
+                <input type="text" inputmode="numeric" name="days" data-workload-max="31" value="22" autocomplete="off" dir="auto" required aria-describedby="days-range">
+                <small id="days-range"><bdi>0–31</bdi></small>
+              </label>
+              <label>
+                <span>Aandeel terugkerende vragen om te beoordelen (%)</span>
+                <input type="text" inputmode="numeric" name="eligible" data-workload-max="100" value="60" autocomplete="off" dir="auto" required aria-describedby="eligible-range">
+                <small id="eligible-range"><bdi>0–100</bdi></small>
+              </label>
+            </div>
+            <button class="calculator-reset" type="button" data-workload-reset>Voorbeeldwaarden herstellen</button>
+          </fieldset>
+          <p class="calculator-invalid" data-workload-invalid role="status" hidden>Vul voor elk veld een getal in binnen het aangegeven bereik.</p>
+          <noscript><p>Schakel JavaScript in uw browser in om de calculator te gebruiken.</p></noscript>
+        </form>
+        <section class="calculator-panel calculator-results" aria-labelledby="results-title">
+          <h2 id="results-title">Geschatte maandelijkse werklast</h2>
+          <div aria-live="polite" aria-atomic="true">
+            <dl>
+              <div>
+                <dt>Huidige werklast voor terugkerende vragen</dt>
+                <dd><strong><bdi data-workload-result="baseline">14,7</bdi></strong> uur</dd>
+              </div>
+              <div>
+                <dt>Huidige werklast voor de te beoordelen vragen</dt>
+                <dd><strong><bdi data-workload-result="review">8,8</bdi></strong> uur</dd>
+              </div>
+              <div>
+                <dt>Te beoordelen vragen per maand</dt>
+                <dd><strong><bdi data-workload-result="requests">264</bdi></strong> vragen</dd>
+              </div>
+            </dl>
+          </div>
+          <span class="calculator-share-label" id="review-share">Aandeel terugkerende vragen om te beoordelen</span>
+          <progress data-workload-share aria-labelledby="review-share" value="60" max="100"></progress>
+        </section>
+      </div>
+      <p class="calculator-example">Bij 20 terugkerende vragen per operationele dag, 2 minuten per vraag en 22 operationele dagen per maand is de huidige werklast ongeveer 14,7 uur per maand. Als u 60% beoordeelt, gaat het om 264 vragen en ongeveer 8,8 uur van die huidige werklast.</p>
+      <section class="calculator-method" aria-labelledby="method-title">
+        <h2 id="method-title">Kies invoerwaarden voor een proeftraject</h2>
+        <ol>
+          <li>Meet op gewone en drukke dagen hoeveel vragen binnenkomen en hoe lang het kost om ze te behandelen. Bepaal hiermee een representatief aantal per dag en een gemiddelde behandeltijd.</li>
+          <li>Houd terugkerende vragen apart van uitzonderingen, spoedgevallen en aanvragen die goedkeuring vereisen. Gebruik voor die gevallen de bestaande kanalen van het gebouw.</li>
+          <li>Neem bij het plannen van een proeftraject ook de tijd mee die medewerkers besteden aan het controleren van antwoorden, het bijwerken van goedgekeurde instructies en doorlopende ondersteuning.</li>
+        </ol>
+        <div class="links">
+          <a class="button" href="/fire-safety-ai/nl/request/?utm_source=workload_calculator&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=nl">Vraag een online demo aan</a>
+          <a href="/fire-safety-ai/nl/shift-handover/">Bekijk de checklist voor dienstoverdracht</a>
+          <a href="/fire-safety-ai/nl/demo-video/">Bekijk de demo van 27 seconden</a>
+        </div>
+        <details class="fs-share share" data-fs-share>
+    <summary>Link delen</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">Pagina-adres<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>Delen via een app</button>
+        <button data-fs-share-copy type="button" hidden>Link kopiëren</button>
+        <a href="mailto:?subject=Werklastcalculator%20voor%20facilitair%20beheer&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fnl%2Fworkload-calculator%2F">Deel per e-mail</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="Link gekopieerd." data-manual="Selecteer en kopieer het pagina-adres hierboven."></p>
+    </div>
+  </details>
+      </section>
+    </div>
+  </main>
+  <footer><div class="calculator-wrap header-content"><span lang="en">BigPlanner Partners</span><a href="/fire-safety-ai/nl/rss.xml" type="application/rss+xml">RSS voor hulpmiddelen voor facilitair beheer</a><a href="/privacy/" hreflang="ko">Privacybeleid (Koreaans)</a></div></footer>
+</body>
+</html>

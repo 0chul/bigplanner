@@ -8,6 +8,20 @@
   <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">
   <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/workload-calculator/">
   <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/workload-calculator/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/workload-calculator/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/workload-calculator/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/workload-calculator/">
+  <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/workload-calculator/">
+  <link rel="alternate" hreflang="da" href="https://bigplanner.co.kr/fire-safety-ai/da/workload-calculator/">
+  <link rel="alternate" hreflang="nl" href="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/">
+  <link rel="alternate" hreflang="sv" href="https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/">
+  <link rel="alternate" hreflang="fi" href="https://bigplanner.co.kr/fire-safety-ai/fi/workload-calculator/">
+  <link rel="alternate" hreflang="it" href="https://bigplanner.co.kr/fire-safety-ai/it/workload-calculator/">
+  <link rel="alternate" hreflang="he" href="https://bigplanner.co.kr/fire-safety-ai/he/workload-calculator/">
+  <link rel="alternate" hreflang="es" href="https://bigplanner.co.kr/fire-safety-ai/es/workload-calculator/">
+  <link rel="alternate" hreflang="is" href="https://bigplanner.co.kr/fire-safety-ai/is/workload-calculator/">
   <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">
   <link rel="alternate" type="application/rss+xml" title="Facilities resources RSS" href="https://bigplanner.co.kr/fire-safety-ai/en/rss.xml">
   <meta property="og:type" content="website">
@@ -100,6 +114,10 @@ footer { color: var(--muted); font-size: .9rem; }
 
     .calculator-wrap { width: min(64rem, 100% - 2rem); margin-inline: auto; }
     html[lang="ko"] .calculator-wrap { word-break: keep-all; }
+    .site-header .calculator-wrap { position: relative; }
+    .calculator-language summary { min-height: 2.75rem; align-content: center; padding-inline: .5rem; color: var(--green); cursor: pointer; }
+    .calculator-language nav { position: absolute; z-index: 1; inset-block-start: calc(100% - .35rem); inset-inline-end: 0; width: min(22rem, 80vw); padding: .6rem; border: 1px solid var(--rule); border-radius: .5rem; background: #fff; box-shadow: 0 8px 24px #17302a15; }
+    .calculator-language nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
     .calculator-head { padding-block: clamp(1.9rem, 4vw, 3.6rem) 1.8rem; }
     .calculator-head h1 { max-width: 25ch; font-size: clamp(2rem, 4.8vw, 3.65rem); }
     .calculator-head .intro { max-width: 65ch; margin-block-end: 0; }
@@ -113,7 +131,7 @@ footer { color: var(--muted); font-size: .9rem; }
     .calculator-fields small { font-size: .81rem; font-weight: 450; color: var(--muted); }
     .calculator-fields input { width: 100%; min-height: 2.8rem; border: 1px solid #839b90; border-radius: .38rem; padding: .45rem .62rem; color: var(--ink); background: #fff; font: inherit; font-variant-numeric: tabular-nums; }
     .calculator-fields input:focus-visible, .calculator-reset:focus-visible { outline: 3px solid #367e71; outline-offset: 2px; }
-    .calculator-fields input:invalid { border-color: #a32727; }
+    .calculator-fields input[aria-invalid="true"] { border-color: #a32727; }
     .calculator-fields input:disabled { background: var(--paper); }
     .calculator-reset { min-height: 2.75rem; border: 1px solid #839b90; border-radius: .38rem; padding: .35rem .75rem; background: #fff; color: var(--green); font: inherit; font-weight: 650; cursor: pointer; }
     .calculator-reset:hover { background: var(--paper); }
@@ -145,7 +163,27 @@ footer { color: var(--muted); font-size: .9rem; }
   <header class="site-header">
     <div class="calculator-wrap header-content">
       <a class="brand" href="/fire-safety-ai/en/" lang="en">BigPlanner <span>Partners</span></a>
-      <nav class="languages" aria-label="Calculator languages"><a href="/fire-safety-ai/workload-calculator/" lang="ko" hreflang="ko">한국어</a></nav>
+      <details class="calculator-language">
+        <summary aria-label="Calculator languages · English"><bdi lang="en">English</bdi></summary>
+        <nav class="languages" aria-label="Calculator languages">
+            <a href="/fire-safety-ai/workload-calculator/" hreflang="ko" lang="ko" dir="auto">한국어</a>
+            <a href="/fire-safety-ai/en/workload-calculator/" hreflang="en" lang="en" dir="auto" aria-current="page">English</a>
+            <a href="/fire-safety-ai/de/workload-calculator/" hreflang="de" lang="de" dir="auto">Deutsch</a>
+            <a href="/fire-safety-ai/fr/workload-calculator/" hreflang="fr" lang="fr" dir="auto">Français</a>
+            <a href="/fire-safety-ai/ja/workload-calculator/" hreflang="ja" lang="ja" dir="auto">日本語</a>
+            <a href="/fire-safety-ai/zh-hant/workload-calculator/" hreflang="zh-Hant" lang="zh-Hant" dir="auto">繁體中文</a>
+            <a href="/fire-safety-ai/ar/workload-calculator/" hreflang="ar" lang="ar" dir="auto">العربية</a>
+            <a href="/fire-safety-ai/nb/workload-calculator/" hreflang="nb" lang="nb" dir="auto">Norsk bokmål</a>
+            <a href="/fire-safety-ai/da/workload-calculator/" hreflang="da" lang="da" dir="auto">Dansk</a>
+            <a href="/fire-safety-ai/nl/workload-calculator/" hreflang="nl" lang="nl" dir="auto">Nederlands</a>
+            <a href="/fire-safety-ai/sv/workload-calculator/" hreflang="sv" lang="sv" dir="auto">Svenska</a>
+            <a href="/fire-safety-ai/fi/workload-calculator/" hreflang="fi" lang="fi" dir="auto">Suomi</a>
+            <a href="/fire-safety-ai/it/workload-calculator/" hreflang="it" lang="it" dir="auto">Italiano</a>
+            <a href="/fire-safety-ai/he/workload-calculator/" hreflang="he" lang="he" dir="auto">עברית</a>
+            <a href="/fire-safety-ai/es/workload-calculator/" hreflang="es" lang="es" dir="auto">Español</a>
+            <a href="/fire-safety-ai/is/workload-calculator/" hreflang="is" lang="is" dir="auto">Íslenska</a>
+        </nav>
+      </details>
     </div>
   </header>
   <main>
@@ -157,29 +195,29 @@ footer { color: var(--muted); font-size: .9rem; }
     </section>
     <div class="calculator-wrap calculator-body">
       <div class="calculator-grid">
-        <form class="calculator-panel" data-workload-form novalidate>
+        <form class="calculator-panel" data-workload-form data-number-locale="en-US" novalidate>
           <fieldset data-workload-fields disabled>
             <legend>Monthly workload inputs</legend>
             <div class="calculator-fields">
               <label>
                 <span>Routine enquiries per operating day</span>
-                <input type="number" inputmode="numeric" name="requests" min="0" max="100000" step="1" value="20" required aria-describedby="requests-range">
-                <small id="requests-range">0–100,000</small>
+                <input type="text" inputmode="numeric" name="requests" data-workload-max="100000" value="20" autocomplete="off" dir="auto" required aria-describedby="requests-range">
+                <small id="requests-range"><bdi>0–100,000</bdi></small>
               </label>
               <label>
                 <span>Average minutes per routine enquiry</span>
-                <input type="number" inputmode="decimal" name="minutes" min="0" max="1440" step="0.1" value="2" required aria-describedby="minutes-range">
-                <small id="minutes-range">0–1,440</small>
+                <input type="text" inputmode="decimal" name="minutes" data-workload-max="1440" value="2" autocomplete="off" dir="auto" required aria-describedby="minutes-range">
+                <small id="minutes-range"><bdi>0–1,440</bdi></small>
               </label>
               <label>
                 <span>Operating days per month</span>
-                <input type="number" inputmode="numeric" name="days" min="0" max="31" step="1" value="22" required aria-describedby="days-range">
-                <small id="days-range">0–31</small>
+                <input type="text" inputmode="numeric" name="days" data-workload-max="31" value="22" autocomplete="off" dir="auto" required aria-describedby="days-range">
+                <small id="days-range"><bdi>0–31</bdi></small>
               </label>
               <label>
                 <span>Share of routine enquiries to review (%)</span>
-                <input type="number" inputmode="numeric" name="eligible" min="0" max="100" step="1" value="60" required aria-describedby="eligible-range">
-                <small id="eligible-range">0–100</small>
+                <input type="text" inputmode="numeric" name="eligible" data-workload-max="100" value="60" autocomplete="off" dir="auto" required aria-describedby="eligible-range">
+                <small id="eligible-range"><bdi>0–100</bdi></small>
               </label>
             </div>
             <button class="calculator-reset" type="button" data-workload-reset>Reset to example</button>
@@ -193,15 +231,15 @@ footer { color: var(--muted); font-size: .9rem; }
             <dl>
               <div>
                 <dt>Current routine workload</dt>
-                <dd><strong data-workload-result="baseline">14.7</strong> hours</dd>
+                <dd><strong><bdi data-workload-result="baseline">14.7</bdi></strong> hours</dd>
               </div>
               <div>
                 <dt>Current workload in scope for review</dt>
-                <dd><strong data-workload-result="review">8.8</strong> hours</dd>
+                <dd><strong><bdi data-workload-result="review">8.8</bdi></strong> hours</dd>
               </div>
               <div>
                 <dt>Monthly enquiries in scope for review</dt>
-                <dd><strong data-workload-result="requests">264</strong> enquiries</dd>
+                <dd><strong><bdi data-workload-result="requests">264</bdi></strong> enquiries</dd>
               </div>
             </dl>
           </div>
