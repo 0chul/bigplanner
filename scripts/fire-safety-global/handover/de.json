@@ -1,0 +1,48 @@
+{
+  "title": "Checkliste für die Schichtübergabe und kostenlose Excel-Vorlage",
+  "description": "Kostenloses Excel-Protokoll für Schichtübergaben im Gebäudebetrieb. Checkliste und Beispiel zur Übergabe offener Mietermeldungen in Gewerbeimmobilien.",
+  "productLabel": "KI-Assistent für den Gebäudebetrieb",
+  "h1": "Checkliste für die Schichtübergabe im Gebäudebetrieb",
+  "intro": "Übergeben Sie offene Mietermeldungen mit genauem Ort, aktueller Zuständigkeit und Termin für die nächste Prüfung. Die Excel-Datei enthält eine leere Vorlage und ein ausgefülltes Beispiel für ein Gewerbegebäude.",
+  "download": "Kostenlose Excel-Vorlage herunterladen",
+  "print": "Checkliste drucken",
+  "share": "Per E-Mail teilen",
+  "languageLabel": "Sprache der Checkliste auswählen",
+  "checklistTitle": "Vor dem Schichtwechsel",
+  "checklist": [
+    "Vergeben Sie pro Meldung eine Vorgangsnummer. Erfassen Sie den Meldezeitpunkt in Ortszeit und geben Sie Gebäude, Stockwerk und Raum an.",
+    "Fassen Sie zusammen, was die mietende Person gemeldet hat. Halten Sie bereits durchgeführte Prüfungen und Arbeiten fest.",
+    "Benennen Sie die zuständige Person oder das zuständige Team. Ergänzen Sie den aktuellen Status, den nächsten Schritt und eine Frist oder einen Termin für die nächste Prüfung.",
+    "Gehen Sie offene Vorgänge mit der übernehmenden Schicht durch und klären Sie, wer sich weiter darum kümmert."
+  ],
+  "note": "Nutzen Sie bei einem Notfall die vorgesehenen Notfallkontakte und Verfahren des Gebäudes.",
+  "exampleTitle": "Beispiel für einen Übergabeeintrag",
+  "exampleIntro": "Das Gebäude und die Meldung in diesem Beispiel sind frei erfunden. Alle Zeitangaben beziehen sich auf die Ortszeit.",
+  "example": [
+    [
+      "Vorgang und Meldezeitpunkt",
+      "DEMO-012 am 5. Oktober 2026 um 20:35 Uhr"
+    ],
+    [
+      "Ort",
+      "Gebäude A, 5. Stock, gemeinsam genutzter Besprechungsraum"
+    ],
+    [
+      "Meldung",
+      "Ein Mieter meldet, dass der Raum zu wenig gekühlt wird."
+    ],
+    [
+      "Zuständigkeit und Status",
+      "Gebäudetechnik der Frühschicht. In Bearbeitung."
+    ],
+    [
+      "Nächste Prüfung",
+      "Am 6. Oktober um 07:30 Uhr den Filter prüfen und den Luftstrom kontrollieren."
+    ]
+  ],
+  "demoTitle": "Eine Meldung von der Erfassung bis zur nächsten Schicht",
+  "demoText": "Das 27 Sekunden lange Video zeigt, wie die KI die Angaben erfasst, die Schichtleitung den Vorgang zuweist und die nächste Schicht denselben Vorgang einsehen kann. Die Oberfläche ist auf Koreanisch, die Untertitel sind auf Deutsch.",
+  "demoAction": "Demo mit deutschen Untertiteln ansehen",
+  "privacy": "Datenschutzhinweise auf Koreanisch",
+  "landingLink": "Kostenlose Checkliste und Excel-Vorlage für die Schichtübergabe"
+}

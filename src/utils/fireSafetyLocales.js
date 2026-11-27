@@ -3,6 +3,7 @@ export const fireSafetyEnglishPath = `${fireSafetyPath}en/`;
 export const fireSafetyEnglishDemoPath = `${fireSafetyEnglishPath}request/`;
 export const fireSafetyEnglishVideoPath = `${fireSafetyEnglishPath}demo-video/`;
 export const facilitiesHandoverPath = `${fireSafetyEnglishPath}shift-handover/`;
+export const fireSafetyChecklistPath = `${fireSafetyPath}handoff-checklist/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
 export const fireSafetyLanguages = [
@@ -13,10 +14,17 @@ export const fireSafetyLanguages = [
   { code: 'ja', label: '日本語', path: `${fireSafetyPath}ja/`, locale: 'ja_JP' },
   { code: 'zh-Hant', label: '繁體中文', path: `${fireSafetyPath}zh-hant/`, locale: 'zh_HK' },
   { code: 'ar', label: 'العربية', path: `${fireSafetyPath}ar/`, locale: 'ar_QA', direction: 'rtl' },
-];
+].map((language) => ({
+  ...language,
+  handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,
+}));
 
 export const fireSafetyTranslations = fireSafetyLanguages.filter(({ code }) => code !== 'ko');
 export const fireSafetyAlternates = [
   ...fireSafetyLanguages,
   { code: 'x-default', path: fireSafetyEnglishPath },
+];
+export const fireSafetyHandoverAlternates = [
+  ...fireSafetyLanguages.map(({ code, handoverPath }) => ({ code, path: handoverPath })),
+  { code: 'x-default', path: facilitiesHandoverPath },
 ];

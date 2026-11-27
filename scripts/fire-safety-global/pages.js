@@ -1,10 +1,14 @@
 import { readFileSync } from 'node:fs';
-import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { demoVideo, englishDemoVideo, fireSafetyKoreanVideoPath, fireSafetyVideoAlternates } from './video.js';
 
-const pagePaths = new Set([...fireSafetyTranslations.map(({ path }) => path), facilitiesHandoverPath, fireSafetyEnglishVideoPath]);
+const pagePaths = new Set([
+  ...fireSafetyTranslations.flatMap(({ path, handoverPath }) => [path, handoverPath]),
+  fireSafetyEnglishVideoPath,
+]);
 const artworkPath = '/images/fire-safety-building.webp';
 const styles = readFileSync(new URL('./landing.css', import.meta.url), 'utf8');
+const handoverTemplate = readFileSync(new URL('./shift-handover.html', import.meta.url), 'utf8');
 const cueTimes = ['00:00:00.000', '00:00:04.400', '00:00:09.800', '00:00:15.300', '00:00:21.400', '00:00:27.000'];
 const demoEmail = 'bigplanner0799@gmail.com';
 
@@ -12,8 +16,8 @@ function escapeHtml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 }
 
-function renderLanding(language, content) {
-  const { code, label, path, locale, direction = 'ltr' } = language;
+function renderLanding(language, content, handoverLabel) {
+  const { code, label, path, handoverPath, locale, direction = 'ltr' } = language;
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
   const description = escapeHtml(content.description);
@@ -80,7 +84,7 @@ ${alternates}
       <ul class="steps">
         ${steps}
       </ul>
-      ${code === 'en' ? `<a class="resource-link" href="${facilitiesHandoverPath}">Get the free facilities shift handover template</a>` : ''}
+      <a class="resource-link" href="${handoverPath}">${escapeHtml(handoverLabel)}</a>
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">
       <div class="wrap section demo-section">
@@ -234,6 +238,34 @@ ${styles}
 `;
 }
 
+function renderHandover(language, content) {
+  const { code, path, handoverPath, locale, direction = 'ltr' } = language;
+  const url = siteOrigin + handoverPath;
+  const tracking = 'utm_source=handover_template&utm_medium=referral&utm_campaign=fire_safety_global';
+  const demoUrl = code === 'en'
+    ? `${fireSafetyEnglishVideoPath}?${tracking}`
+    : `${path}?${tracking}&utm_content=${code.toLowerCase()}#demo`;
+  const values = {
+    ...Object.fromEntries(Object.entries(content)
+      .filter(([, value]) => typeof value === 'string')
+      .map(([key, value]) => [key, escapeHtml(value)])),
+    code, direction, locale, url, productPath: path, styles,
+    alternates: fireSafetyHandoverAlternates.map(({ code, path }) =>
+      `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`).join('\n'),
+    navigation: fireSafetyLanguages.map(({ code: itemCode, label, handoverPath }) =>
+      `<a href="${handoverPath}" lang="${itemCode}" hreflang="${itemCode}" dir="auto"${itemCode === code ? ' aria-current="page"' : ''}>${escapeHtml(label)}</a>`).join('\n          '),
+    checklist: content.checklist.map((step) => `<li>${escapeHtml(step)}</li>`).join('\n          '),
+    example: content.example.map(([label, value]) =>
+      `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd>`).join('\n          '),
+    shareUrl: escapeHtml(`mailto:?subject=${encodeURIComponent(content.h1)}&body=${encodeURIComponent(url)}`),
+    demoUrl: escapeHtml(demoUrl),
+  };
+  return handoverTemplate.replace(/{{(\w+)}}/g, (_, key) => {
+    if (!Object.hasOwn(values, key) || !values[key]) throw new Error(`Missing handover ${code} value for ${key}`);
+    return values[key];
+  });
+}
+
 function renderCaptions(subtitles) {
   if (subtitles.length !== cueTimes.length - 1) throw new Error('Incorrect number of demo captions');
   return `WEBVTT\n\n${subtitles.map((line, index) => `${cueTimes[index]} --> ${cueTimes[index + 1]}\n${line}`).join('\n\n')}\n`;
@@ -242,13 +274,14 @@ function renderCaptions(subtitles) {
 export function fireSafetyGlobalPages() {
   const files = new Map();
   for (const language of fireSafetyTranslations) {
-    const content = JSON.parse(readFileSync(new URL(`./${language.code.toLowerCase()}.json`, import.meta.url), 'utf8'));
-    files.set(`${language.path}index.html`, renderLanding(language, content));
+    const filename = `${language.code.toLowerCase()}.json`;
+    const content = JSON.parse(readFileSync(new URL(`./${filename}`, import.meta.url), 'utf8'));
+    const handover = JSON.parse(readFileSync(new URL(`./handover/${filename}`, import.meta.url), 'utf8'));
+    files.set(`${language.path}index.html`, renderLanding(language, content, handover.landingLink));
     files.set(`${language.path}demo.vtt`, renderCaptions(content.subtitles));
+    files.set(`${language.handoverPath}index.html`, renderHandover(language, handover));
     if (language.code === 'en') files.set(`${fireSafetyEnglishVideoPath}index.html`, renderEnglishVideo(content));
   }
-  const handover = readFileSync(new URL('./shift-handover.html', import.meta.url), 'utf8');
-  files.set(`${facilitiesHandoverPath}index.html`, handover.replace('/* SHARED LANDING STYLES */', styles));
   return {
     name: 'fire-safety-global-pages',
     configureServer(server) {

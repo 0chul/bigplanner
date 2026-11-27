@@ -3,17 +3,16 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyEnglishVideoPath, fireSafetyHandoverAlternates, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 import { englishDemoVideo, fireSafetyKoreanVideoPath, fireSafetyVideoAlternates } from './fire-safety-global/video.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
-const fireSafetyChecklistPath = '/fire-safety-ai/handoff-checklist/';
 const fireSafetyAdoptionPath = '/fire-safety-ai/adoption-guide/';
 const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath];
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
-const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, facilitiesHandoverPath, fireSafetyEnglishVideoPath];
+const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, ...fireSafetyTranslations.map(({ handoverPath }) => handoverPath), fireSafetyEnglishVideoPath];
 const servicePath = '/service/';
 const requiredSpaRoutes = new Set(['/', servicePath, fireSafetyPath, fireSafetyEnglishDemoPath]);
 
@@ -121,7 +120,8 @@ async function prerender() {
       throw new Error(`Missing static fire safety page, canonical, or sitemap entry for ${resourcePath}`);
     }
   }
-  for (const { path: languagePath } of fireSafetyTranslations) {
+  const workbookName = 'facilities-shift-handover-log.xlsx';
+  for (const { code, path: languagePath, handoverPath } of fireSafetyTranslations) {
     const languageDirectory = path.join(distPath, languagePath);
     const html = fs.readFileSync(path.join(languageDirectory, 'index.html'), 'utf-8');
     const captions = fs.readFileSync(path.join(languageDirectory, 'demo.vtt'), 'utf-8');
@@ -129,15 +129,20 @@ async function prerender() {
       html.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
       throw new Error(`Missing demo request link, captions, or language alternates for ${languagePath}`);
     }
+    const handoverDirectory = path.join(distPath, handoverPath);
+    const guide = fs.readFileSync(path.join(handoverDirectory, 'index.html'), 'utf-8');
+    if (!sitemapContent.includes(`<loc>${siteOrigin}${handoverPath}</loc>`) ||
+        !fs.existsSync(path.join(handoverDirectory, workbookName)) ||
+        !html.includes(`href="${handoverPath}"`) || !guide.includes(`href="${workbookName}" download`) ||
+        !guide.includes(`<link rel="canonical" href="${siteOrigin}${handoverPath}">`) ||
+        !guide.includes(`<html lang="${code}"`) || !guide.includes(`href="${languagePath}"`) ||
+        !guide.includes(`href="${code === 'en' ? fireSafetyEnglishVideoPath : languagePath}?`) ||
+        !fireSafetyHandoverAlternates.every(({ code, path }) =>
+          guide.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
+      throw new Error(`Missing handover workbook, language links, or sitemap entry for ${handoverPath}`);
+    }
   }
-  const workbookName = 'facilities-shift-handover-log.xlsx';
-  const handoverDirectory = path.join(distPath, facilitiesHandoverPath);
   const englishProduct = fs.readFileSync(path.join(distPath, fireSafetyEnglishPath, 'index.html'), 'utf-8');
-  const handoverGuide = fs.readFileSync(path.join(handoverDirectory, 'index.html'), 'utf-8');
-  if (!fs.existsSync(path.join(handoverDirectory, workbookName)) || !handoverGuide.includes(`href="${workbookName}" download`) ||
-      !englishProduct.includes(`href="${facilitiesHandoverPath}"`)) {
-    throw new Error('Missing English handover workbook or product link.');
-  }
   const englishVideo = fs.readFileSync(path.join(distPath, fireSafetyEnglishVideoPath, 'index.html'), 'utf-8');
   const koreanVideo = fs.readFileSync(path.join(distPath, fireSafetyKoreanVideoPath, 'index.html'), 'utf-8');
   const videoData = JSON.parse(englishVideo.match(/<script type="application\/ld\+json">(.*?)<\/script>/)?.[1] ?? '{}');
@@ -145,7 +150,7 @@ async function prerender() {
   if (videoData['@type'] !== 'VideoObject' || videoData.contentUrl !== siteOrigin + englishDemoVideo.content ||
       videoData.thumbnailUrl !== siteOrigin + englishDemoVideo.thumbnail || !videoSitemapEntry?.includes('<video:video>') ||
       !englishVideo.includes(`src="${fireSafetyEnglishPath}demo.vtt"`) || !englishVideo.includes(`href="${fireSafetyEnglishDemoPath}?`) ||
-      !englishProduct.includes(`href="${fireSafetyEnglishVideoPath}"`) || !handoverGuide.includes(`href="${fireSafetyEnglishVideoPath}?`)) {
+      !englishProduct.includes(`href="${fireSafetyEnglishVideoPath}"`) || !englishVideo.includes(`href="${facilitiesHandoverPath}"`)) {
     throw new Error('Missing English video, video sitemap entry, captions, or visitor links.');
   }
   for (const { code, path: resourcePath } of fireSafetyVideoAlternates) {
@@ -153,12 +158,9 @@ async function prerender() {
     if (!koreanVideo.includes(tag) || !englishVideo.includes(tag)) throw new Error(`Missing ${code} language link on a demo video page.`);
   }
   const koreanChecklist = fs.readFileSync(path.join(distPath, fireSafetyChecklistPath, 'index.html'), 'utf-8');
-  const handoverAlternates = [['ko', fireSafetyChecklistPath], ['en', facilitiesHandoverPath]];
-  for (const [language, resourcePath] of handoverAlternates) {
-    const tag = `<link rel="alternate" hreflang="${language}" href="${siteOrigin}${resourcePath}">`;
-    if (!koreanChecklist.includes(tag) || !handoverGuide.includes(tag)) {
-      throw new Error(`Missing ${language} language link on a handover checklist.`);
-    }
+  for (const { code, path: resourcePath } of fireSafetyHandoverAlternates) {
+    const tag = `<link rel="alternate" hreflang="${code}" href="${siteOrigin}${resourcePath}">`;
+    if (!koreanChecklist.includes(tag)) throw new Error(`Missing ${code} language link on the Korean handover checklist.`);
   }
   for (const assetName of ['handoff-log.xlsx', 'handoff-demo.mp4', 'handoff-demo-cover.jpg']) {
     if (!fs.existsSync(path.join(distPath, fireSafetyChecklistPath, assetName))) {

@@ -1,0 +1,48 @@
+{
+  "title": "Relève des équipes techniques et modèle Excel gratuit",
+  "description": "Téléchargez un registre Excel gratuit pour la relève des équipes techniques d’immeubles commerciaux. Une liste de contrôle et un exemple de signalement de climatisation aident à transmettre les dossiers en cours.",
+  "productLabel": "Assistant IA pour les demandes dans les immeubles",
+  "h1": "Liste de contrôle pour la relève des équipes techniques",
+  "intro": "Transmettez à l’équipe de relève les demandes des locataires encore ouvertes, avec le lieu précis, la personne responsable et la prochaine vérification. Le fichier Excel contient un registre vierge et un exemple rempli pour un immeuble commercial.",
+  "download": "Télécharger le registre Excel gratuit",
+  "print": "Imprimer la liste de contrôle",
+  "share": "Partager par courriel",
+  "languageLabel": "Choisir la langue de la liste de contrôle",
+  "checklistTitle": "Avant le départ de l’équipe sortante",
+  "checklist": [
+    "Attribuez un numéro à chaque demande. Notez quand elle a été reçue, en heure locale, ainsi que l’immeuble, l’étage et la pièce concernée.",
+    "Résumez le problème signalé par le locataire. Consignez les vérifications et les interventions déjà effectuées.",
+    "Indiquez la personne ou l’équipe responsable. Ajoutez le statut actuel, la prochaine action et l’échéance ou l’heure de la prochaine vérification.",
+    "Passez en revue les dossiers ouverts avec l’équipe de relève et confirmez qui assurera le suivi."
+  ],
+  "note": "En cas d’urgence, utilisez les contacts prévus par l’immeuble et suivez ses procédures d’urgence.",
+  "exampleTitle": "Exemple d’entrée dans le registre",
+  "exampleIntro": "L’immeuble et le signalement sont fictifs. Les heures indiquées sont celles du site.",
+  "example": [
+    [
+      "Dossier et heure du signalement",
+      "DEMO-012, le 5 octobre 2026 à 20 h 35"
+    ],
+    [
+      "Lieu",
+      "Immeuble A, cinquième étage, salle de réunion commune"
+    ],
+    [
+      "Signalement",
+      "Un locataire signale que la climatisation ne refroidit pas assez."
+    ],
+    [
+      "Responsable et statut",
+      "Technicien de l’équipe du matin. En cours."
+    ],
+    [
+      "Prochaine vérification",
+      "Le 6 octobre à 7 h 30, inspecter le filtre et vérifier le débit d’air."
+    ]
+  ],
+  "demoTitle": "Suivre le même signalement d’une équipe à l’autre",
+  "demoText": "Cette vidéo de 27 secondes montre comment l’IA consigne les détails, comment le responsable attribue le dossier et comment l’équipe de relève consulte le même dossier. L’interface est en coréen et les sous-titres sont en français.",
+  "demoAction": "Voir la démonstration sous-titrée en français",
+  "privacy": "Avis de confidentialité en coréen",
+  "landingLink": "Liste de contrôle et registre Excel gratuits pour la relève"
+}
