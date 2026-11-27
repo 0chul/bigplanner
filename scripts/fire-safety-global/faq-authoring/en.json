@@ -1,0 +1,64 @@
+{
+  "title": "Facilities FAQ template for tenant helpdesks",
+  "description": "Download a free editable Excel FAQ template. Turn building policy into approved answers, identify cases that need staff attention and test common tenant wording.",
+  "heading": "Facilities FAQ template for tenant helpdesks",
+  "intro": "Use the Excel template to turn current building policy into short, approved answers for common tenant questions. Each entry records where the answer comes from, when it should be checked and who handles exceptions.",
+  "download": "Download the free Excel FAQ template",
+  "request": "Request an online demo",
+  "watch": "Watch the 27-second demo",
+  "handover": "Use the shift handover checklist",
+  "languageLabel": "FAQ template languages",
+  "otherLanguage": "한국어",
+  "headings": {
+    "steps": "How to write an approved FAQ answer",
+    "example": "Fictional example for visitor parking",
+    "review": "Review before publishing or updating"
+  },
+  "steps": [
+    {
+      "title": "Choose one recurring question",
+      "body": "Group questions that ask for the same outcome. Start with a routine request such as visitor parking, delivery hours or where to submit a maintenance issue. State which building the answer applies to."
+    },
+    {
+      "title": "Write from the current building policy",
+      "body": "Use the approved source to write a short answer that gives the tenant a clear next step. Record the source title and revision, the approving role and the next review date. Have that role approve the answer for use."
+    },
+    {
+      "title": "Define when staff should take over",
+      "body": "Name who handles missing information, requests for approval and situations outside policy. Specify the context the receiving team needs, such as the building and the question. For emergencies, use the building’s existing emergency channels."
+    },
+    {
+      "title": "Test different ways tenants ask",
+      "body": "Check the standard question and a variation such as “Where can my guest park?” Both should give the same approved answer. Test an unclear question and one outside policy, such as a weekend parking request, to verify that the helpdesk asks for clarification or routes it to staff."
+    }
+  ],
+  "example": {
+    "intro": "Building A, its policy and the dates below are fictional.",
+    "question": "How do visitors arrange parking?",
+    "answer": "At Building A, the tenant hosting the visit registers the guest with reception through the tenant portal before arrival. Reception confirms availability and any charges under the current visitor parking policy.",
+    "rule": "Use this answer for standard visits at Building A. Source is the Visitor Parking Policy, revision 2, dated 20 November 2026. The property manager approves the answer. Next review is 20 December 2026.",
+    "handoff": "Send same-day exceptions, weekend requests and questions about parking fees or validation to reception. Reception checks the current policy and confirms the arrangements."
+  },
+  "review": [
+    "Have someone who did not write the entry check that each instruction follows the approved source.",
+    "Confirm the answer applies to the named building, visit type and operating hours.",
+    "Check that staff receiving an exception can see the question, the location and the next action.",
+    "Review affected entries when the building policy changes and replace outdated answers or withdraw them."
+  ],
+  "resources": [
+    {
+      "label": "101 California tenant manual, including visitor and garage procedures",
+      "url": "https://101california.com/tenant-manual"
+    }
+  ],
+  "metaTitle": "Facilities FAQ template and free Excel worksheet for tenant helpdesks",
+  "share": {
+    "summary": "Share link",
+    "address": "Page address",
+    "native": "Share to an app",
+    "copy": "Copy link",
+    "email": "Share by email",
+    "copied": "Link copied.",
+    "manual": "Select and copy the page address above."
+  }
+}

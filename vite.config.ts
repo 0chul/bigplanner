@@ -6,7 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { fireSafetyGlobalPages } from './scripts/fire-safety-global/pages.js';
 import { fireSafetyTranslations } from './src/utils/fireSafetyLocales.js';
 
-const fireSafetyStaticSlugs = ['handoff-checklist', 'adoption-guide', 'after-hours-hvac-request', 'demo-video', ...fireSafetyTranslations.map(({ code }) => code.toLowerCase())];
+const fireSafetyStaticSlugs = ['handoff-checklist', 'adoption-guide', 'after-hours-hvac-request', 'faq-manual', 'demo-video', ...fireSafetyTranslations.map(({ code }) => code.toLowerCase())];
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');

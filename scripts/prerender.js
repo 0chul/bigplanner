@@ -3,16 +3,17 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAfterHoursPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanVideoPath, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanVideoPath, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { faqWorksheetName } from './fire-safety-global/faq-authoring.js';
 import { writeResourceFeeds } from './fire-safety-global/feeds.js';
 import { demoVideo } from './fire-safety-global/video.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distPath = path.resolve(__dirname, '../dist');
-const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath, fireSafetyKoreanAfterHoursPath];
+const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath];
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
-const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath }) => [handoverPath, videoPath])];
+const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath }) => [handoverPath, videoPath])];
 const servicePath = '/service/';
 const requiredSpaRoutes = new Set(['/', servicePath, fireSafetyPath, ...fireSafetyRequestPages.keys()]);
 
@@ -141,6 +142,13 @@ async function prerender() {
     if (!urls.includes(resourcePath) || !fs.existsSync(resourceFile) ||
         !fs.readFileSync(resourceFile, 'utf-8').includes(canonical)) {
       throw new Error(`Missing static fire safety page, canonical, or sitemap entry for ${resourcePath}`);
+    }
+  }
+  for (const resourcePath of [fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath]) {
+    const directory = path.join(distPath, resourcePath);
+    const guide = fs.readFileSync(path.join(directory, 'index.html'), 'utf-8');
+    if (!fs.existsSync(path.join(directory, faqWorksheetName)) || !guide.includes(`href="${faqWorksheetName}" download`)) {
+      throw new Error(`Missing FAQ worksheet or download for ${resourcePath}`);
     }
   }
   const workbookName = 'facilities-shift-handover-log.xlsx';

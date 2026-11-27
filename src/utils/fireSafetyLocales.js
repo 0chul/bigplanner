@@ -12,6 +12,8 @@ export const fireSafetyKoreanAfterHoursPath = `${fireSafetyPath}after-hours-hvac
 export const fireSafetyEnglishAfterHoursPath = `${fireSafetyEnglishPath}after-hours-hvac-request/`;
 export const fireSafetyKoreanOverviewPdf = `${fireSafetyPath}facilities-ai-overview.pdf`;
 export const fireSafetyEnglishOverviewPdf = `${fireSafetyEnglishPath}facilities-ai-overview.pdf`;
+export const fireSafetyKoreanFaqPath = `${fireSafetyPath}faq-manual/`;
+export const fireSafetyEnglishFaqPath = `${fireSafetyEnglishPath}faq-manual/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
 export const fireSafetyLanguages = [

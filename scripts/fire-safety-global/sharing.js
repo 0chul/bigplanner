@@ -64,8 +64,7 @@ export function escapeHtml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 }
 
-export function renderPageShare(code, title, canonical, emailLabel) {
-  const copy = copyByLanguage[code];
+export function renderPageShare(code, title, canonical, emailLabel, copy = copyByLanguage[code]) {
   if (!copy || !emailLabel) throw new Error(`Missing share labels for ${code}`);
   const mailto = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(canonical)}`;
 

@@ -1,9 +1,11 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFeedPath, fireSafetyEnglishOverviewPdf, fireSafetyHandoverAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishFeedPath, fireSafetyEnglishOverviewPdf, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { renderFaqManualPages } from './faq-authoring.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { demoVideo, readLocalizedProduct } from './video.js';
 
 const pagePaths = new Set([
+  fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
 ]);
 const artworkPath = '/images/fire-safety-building.webp';
@@ -87,7 +89,7 @@ ${alternates}
         ${steps}
       </ul>
       <a class="resource-link" href="${handoverPath}">${escapeHtml(handover.landingLink)}</a>
-      ${code === 'en' ? `<p><a class="resource-link" href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a></p>` : ''}
+      ${code === 'en' ? `<div class="links"><a href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a><a href="${fireSafetyEnglishFaqPath}">Building FAQ worksheet</a></div>` : ''}
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">
       <div class="wrap section demo-section">
@@ -297,7 +299,7 @@ function renderCaptions(subtitles) {
 }
 
 export function fireSafetyGlobalPages() {
-  const files = new Map();
+  const files = renderFaqManualPages(styles);
   for (const language of fireSafetyTranslations) {
     const filename = `${language.code.toLowerCase()}.json`;
     const content = readLocalizedProduct(language.code);
