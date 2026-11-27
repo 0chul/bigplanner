@@ -1,0 +1,45 @@
+{
+  "pageTitle": "Facilities service desk workload calculator",
+  "heading": "Estimate your routine facilities enquiry workload",
+  "description": "Estimate monthly time spent on routine tenant enquiries and the share of that current workload to review for a facilities service desk pilot.",
+  "intro": "Estimate the time your team currently spends answering routine enquiries each month. Choose the share of enquiries to review for a pilot. Your inputs stay in this browser.",
+  "languageLabel": "Calculator languages",
+  "otherLanguage": "한국어",
+  "example": "At 20 routine enquiries per operating day, 2 minutes per enquiry and 22 operating days, the monthly workload is about 14.7 hours. Reviewing 60% of those enquiries covers 264 enquiries and about 8.8 hours of that current workload.",
+  "inputsHeading": "Monthly workload inputs",
+  "resultsHeading": "Monthly workload estimate",
+  "fields": {
+    "requests": "Routine enquiries per operating day",
+    "minutes": "Average minutes per routine enquiry",
+    "days": "Operating days per month",
+    "eligible": "Share of routine enquiries to review (%)"
+  },
+  "result": {
+    "baseline": "Current routine workload",
+    "review": "Current workload in scope for review",
+    "requests": "Monthly enquiries in scope for review",
+    "hours": "hours",
+    "cases": "enquiries",
+    "share": "Share of routine enquiries under review"
+  },
+  "invalid": "Enter a number within the range shown for each field.",
+  "reset": "Reset to example",
+  "methodHeading": "Choose inputs for a pilot review",
+  "method": [
+    "Record enquiry volumes and handling times during typical and busy periods. Use the observed figures to choose a representative daily count and average handling time.",
+    "Keep routine enquiries separate from unusual requests, urgent incidents and requests that need approval. Use the building’s existing channels for those cases.",
+    "Include staff time for checking answers, keeping approved guidance current and providing ongoing support when planning a pilot."
+  ],
+  "request": "Request an online demo",
+  "readGuide": "Get the facilities FAQ template",
+  "watch": "Watch the 27-second demo",
+  "share": {
+    "summary": "Share link",
+    "address": "Page address",
+    "native": "Share to an app",
+    "copy": "Copy link",
+    "email": "Share by email",
+    "copied": "Link copied.",
+    "manual": "Select and copy the page address above."
+  }
+}

@@ -16,6 +16,8 @@ export const fireSafetyKoreanFaqPath = `${fireSafetyPath}faq-manual/`;
 export const fireSafetyEnglishFaqPath = `${fireSafetyEnglishPath}faq-manual/`;
 export const fireSafetyKoreanResourcesPath = `${fireSafetyPath}resources/`;
 export const fireSafetyEnglishResourcesPath = `${fireSafetyEnglishPath}resources/`;
+export const fireSafetyKoreanWorkloadPath = `${fireSafetyPath}workload-calculator/`;
+export const fireSafetyEnglishWorkloadPath = `${fireSafetyEnglishPath}workload-calculator/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 
 export const fireSafetyLanguages = [

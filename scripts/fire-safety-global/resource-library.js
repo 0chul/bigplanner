@@ -9,12 +9,14 @@ import {
   fireSafetyEnglishPath,
   fireSafetyEnglishResourcesPath,
   fireSafetyEnglishVideoPath,
+  fireSafetyEnglishWorkloadPath,
   fireSafetyKoreanAfterHoursPath,
   fireSafetyKoreanFaqPath,
   fireSafetyKoreanFeedPath,
   fireSafetyKoreanOverviewPdf,
   fireSafetyKoreanResourcesPath,
   fireSafetyKoreanVideoPath,
+  fireSafetyKoreanWorkloadPath,
   fireSafetyLanguages,
   fireSafetyPath,
   fireSafetyTranslations,
@@ -38,7 +40,8 @@ const libraries = [
     feed: fireSafetyKoreanFeedPath, brand: '빅플래너파트너스',
     title: '시설관리 운영 자료',
     intro: '입주사 민원 접수, FAQ 매뉴얼 작성, 교대 인계에 쓰는 무료 양식과 시연 자료입니다.',
-    cardsHeading: '체크리스트와 시연 자료',
+    cardsHeading: '실무 도구와 시연 자료',
+    workloadPath: fireSafetyKoreanWorkloadPath, workloadLabel: '반복 문의 응대 업무량 계산기',
     languagesHeading: '언어별 제품과 자료',
     languageLinks: ['제품 소개', '시연 영상', '교대 인계', '시연 신청'],
     privacy: '개인정보 처리방침',
@@ -64,7 +67,8 @@ const libraries = [
     feed: fireSafetyEnglishFeedPath, brand: 'BigPlanner Partners',
     title: 'Facilities operations resources',
     intro: 'Free templates and a short demo for managing tenant requests, writing building FAQs and handing over work between shifts.',
-    cardsHeading: 'Templates and demos',
+    cardsHeading: 'Tools, templates and demos',
+    workloadPath: fireSafetyEnglishWorkloadPath, workloadLabel: 'Routine enquiry workload calculator',
     languagesHeading: 'Product and resources by language',
     languageLinks: ['Product', 'Demo video', 'Handover guide', 'Request a demo'],
     privacy: 'Privacy policy (Korean)',
@@ -188,6 +192,7 @@ ${alternates}
     </section>
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">${escapeHtml(copy.cardsHeading)}</h2>
+      <a class="resource-link" href="${copy.workloadPath}">${escapeHtml(copy.workloadLabel)}</a>
       <ul class="library-grid" role="list">
         ${cards}
       </ul>

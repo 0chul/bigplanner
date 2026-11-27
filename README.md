@@ -34,4 +34,5 @@ BigPlanner Partners' AI tenant service desk uses building manuals to answer rout
 - 한 장 제품 소개서 · [한국어 PDF](https://bigplanner.co.kr/fire-safety-ai/facilities-ai-overview.pdf) · [English PDF](https://bigplanner.co.kr/fire-safety-ai/en/facilities-ai-overview.pdf)
 - [시설관리 민원 접수 시스템 도입 체크리스트](https://bigplanner.co.kr/fire-safety-ai/adoption-guide/)
 - 시설관리 FAQ 작성 가이드와 엑셀 · [한국어](https://bigplanner.co.kr/fire-safety-ai/faq-manual/) · [English](https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/)
+- 반복 문의 응대 업무량 계산기 · [한국어 계산기](https://bigplanner.co.kr/fire-safety-ai/workload-calculator/) · [English calculator](https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/)
 - 야간·휴일 냉난방 연장 운전 신청서 · [한국어](https://bigplanner.co.kr/fire-safety-ai/after-hours-hvac-request/) · [English](https://bigplanner.co.kr/fire-safety-ai/en/after-hours-hvac-request/)
