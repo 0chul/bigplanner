@@ -150,6 +150,17 @@ footer { color: var(--muted); font-size: .9rem; }
     .calculator-method h2 { font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
     .calculator-method ol { margin-block: .65rem; padding-inline-start: 1.4rem; max-width: 72ch; }
     .calculator-method li + li { margin-block-start: .42rem; }
+    .calculator-embedding { margin-block-start: .65rem; }
+    .calculator-embedding summary { color: var(--green); min-height: 2.75rem; align-content: center; cursor: pointer; font-weight: 650; }
+    .calculator-embedding textarea { display: block; margin-block-start: .35rem; width: 100%; max-width: 58rem; resize: vertical; border: 1px solid var(--rule); border-radius: .38rem; padding: .65rem; background: var(--paper); color: var(--ink); font: .88rem/1.45 ui-monospace, monospace; }
+    .calculator-embed .calculator-head { padding-block: .9rem .8rem; }
+    .calculator-embed .calculator-head h1 { font-size: clamp(1.5rem, 4.8vw, 2.1rem); max-width: 32ch; }
+    .calculator-embed .calculator-body { padding-block: .8rem 1rem; }
+    .calculator-embed .calculator-panel { padding: .85rem; }
+    .calculator-embed .calculator-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem .7rem; }
+    .calculator-embed .calculator-fields label { font-size: .9rem; }
+    .calculator-embed .calculator-results dl > div { padding-block: .35rem; }
+    .calculator-embed .links { margin-block-start: .75rem; }
     footer { border-block-start: 1px solid var(--rule); }
     @media (max-width: 46rem) {
       .calculator-grid { grid-template-columns: 1fr; gap: .9rem; }
@@ -272,6 +283,13 @@ footer { color: var(--muted); font-size: .9rem; }
       <p class="fs-share-status" data-fs-share-status role="status" data-copied="Lien copié." data-manual="Sélectionnez et copiez l’adresse de la page ci-dessus."></p>
     </div>
   </details>
+        <details class="calculator-embedding" id="embed-calculator">
+          <summary>Intégrer ce calculateur</summary>
+          <label>Collez ce code HTML dans une page qui accepte les iframes.
+            <textarea dir="ltr" rows="6" spellcheck="false" readonly>&lt;iframe src=&quot;https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/embed/&quot; title=&quot;Calculateur de charge de travail pour la gestion des immeubles&quot; width=&quot;900&quot; height=&quot;1060&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer&quot; sandbox=&quot;allow-scripts allow-popups allow-popups-to-escape-sandbox&quot; style=&quot;display:block;box-sizing:border-box;width:100%;max-width:900px;height:clamp(760px,calc(1920px - 100vw),1500px);border:1px solid #cdd9d2;border-radius:12px;&quot;&gt;&lt;/iframe&gt;
+&lt;a href=&quot;https://bigplanner.co.kr/fire-safety-ai/fr/workload-calculator/?utm_source=workload_embed&amp;amp;utm_medium=referral&amp;amp;utm_campaign=fire_safety_global&amp;amp;utm_content=fr&quot;&gt;Calculer la charge des demandes courantes · BigPlanner Partners&lt;/a&gt;</textarea>
+          </label>
+        </details>
       </section>
     </div>
   </main>
