@@ -32,6 +32,7 @@
   <meta property="og:description" content="Ókeypis eyðublað til að tilkynna um almenn vandamál í hita- og loftræstikerfum, lýsingu eða lögnum í atvinnuhúsnæði. Skráðu nákvæma staðsetningu, hvað þú tókst eftir og hvenær starfsfólk kemst að.">
   <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Verkfæri og sniðmát fyrir fasteignarekstur","item":"https://bigplanner.co.kr/fire-safety-ai/is/resources/"},{"@type":"ListItem","position":2,"name":"Beiðni leigutaka um viðhald í atvinnuhúsnæði","item":"https://bigplanner.co.kr/fire-safety-ai/is/maintenance-request-form/"}]}</script>
   <link rel="stylesheet" href="/fire-safety-ai/share.css">
   <script defer src="/fire-safety-ai/share.js"></script>
   <style>:root {
@@ -115,6 +116,9 @@ footer { color: var(--muted); font-size: .9rem; }
 .intake-page:lang(ko) { word-break: keep-all; }
 .intake-page h1 { font-size: clamp(1.95rem, 5vw, 3.35rem); max-width: 27ch; }
 .intake-page h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); }
+.intake-trail { margin-block-end: .8rem; font-size: .875rem; color: var(--muted); }
+.intake-trail ol { display: flex; flex-wrap: wrap; gap: .15rem .5rem; margin: 0; padding: 0; list-style: none; }
+.intake-trail li > span[aria-hidden] { margin-inline-end: .45rem; }
 .intake-page section { padding-block: clamp(1.25rem, 4vw, 2.4rem); }
 .intake-page section + section { border-block-start: 1px solid var(--rule); }
 .intake-page section > p { max-width: 66ch; margin-block-start: .55rem; }
@@ -166,6 +170,12 @@ footer { color: var(--muted); font-size: .9rem; }
   </header>
   <main class="intake-page">
     <section class="intake-intro" aria-labelledby="page-title">
+      <nav class="intake-trail" aria-label="Verkfæri og sniðmát fyrir fasteignarekstur">
+        <ol role="list">
+          <li><a href="/fire-safety-ai/is/resources/">Verkfæri og sniðmát fyrir fasteignarekstur</a></li>
+          <li><span aria-hidden="true">/</span><span aria-current="page">Beiðni leigutaka um viðhald í atvinnuhúsnæði</span></li>
+        </ol>
+      </nav>
       <h1 id="page-title">Beiðni leigutaka um viðhald í atvinnuhúsnæði</h1>
       <p>Ókeypis eyðublað til að tilkynna um almenn vandamál í hita- og loftræstikerfum, lýsingu eða lögnum í atvinnuhúsnæði. Skráðu nákvæma staðsetningu, hvað þú tókst eftir og hvenær starfsfólk kemst að.</p>
     </section>
