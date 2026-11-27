@@ -8,11 +8,23 @@ import FireSafetyScrollStory from '../components/FireSafetyScrollStory';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
-import { fireSafetyAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanFeedPath, fireSafetyKoreanOverviewPdf, fireSafetyKoreanResourcesPath, fireSafetyKoreanWorkloadPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanFeedPath, fireSafetyKoreanOverviewPdf, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyProductStructuredData } from '../utils/fireSafetyStructuredData.js';
 import './fire-safety-ai.css';
 
 const organicShareImage = 'https://bigplanner.co.kr/images/fire-safety-organic-og.jpg';
 const shareByEmail = `mailto:?subject=${encodeURIComponent('방재실 AI 민원 도우미')}&body=${encodeURIComponent(fireSafetyCanonicalUrl)}`;
+const seoTitle = '방재실 AI 민원 도우미 | 민원 접수·응대 챗봇 구축';
+const seoDescription = '건물 매뉴얼로 주차·시설 이용 문의를 안내하고, 냉난방 등 현장 확인이 필요한 민원은 접수 카드로 정리하는 방재실 AI 챗봇입니다. 업무 흐름을 데모로 확인하세요.';
+const productData = fireSafetyProductStructuredData({
+  code: 'ko',
+  url: fireSafetyCanonicalUrl,
+  title: seoTitle,
+  description: seoDescription,
+  videoPath: fireSafetyKoreanVideoPath,
+  handoverPath: fireSafetyChecklistPath,
+  workloadPath: fireSafetyKoreanWorkloadPath,
+});
 
 const navItems = [
   { label: '업무 흐름', href: '#workflow' },
@@ -77,13 +89,14 @@ export default function FireSafetyAI() {
   return (
     <div className="fire-ai">
       <SEO
-        title="방재실 AI 민원 도우미 | 민원 접수·응대 챗봇 구축"
-        description="건물 매뉴얼로 주차·시설 이용 문의를 안내하고, 냉난방 등 현장 확인이 필요한 민원은 접수 카드로 정리하는 방재실 AI 챗봇입니다. 업무 흐름을 데모로 확인하세요."
+        title={seoTitle}
+        description={seoDescription}
         url={fireSafetyCanonicalUrl}
         image={organicShareImage}
       />
       <Helmet>
         <html lang="ko" />
+        <script type="application/ld+json">{productData}</script>
         {fireSafetyAlternates.map(({ code, path }) => <link key={code} rel="alternate" hrefLang={code} href={siteOrigin + path} />)}
         <link rel="alternate" type="application/rss+xml" title="시설관리 실무 자료 RSS" href={siteOrigin + fireSafetyKoreanFeedPath} />
         <link rel="stylesheet" href="/fire-safety-ai/share.css" />

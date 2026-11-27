@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyProductStructuredData } from '../../src/utils/fireSafetyStructuredData.js';
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilityResourcePages } from './resource-library.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
@@ -36,6 +37,7 @@ function renderLanding(language, content, handover) {
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
   const description = escapeHtml(content.description);
+  const productData = fireSafetyProductStructuredData({ ...language, url, title: content.title, description: content.description });
   const alternates = fireSafetyAlternates.map(({ code, path }) =>
     `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`).join('\n');
   const navigation = fireSafetyLanguages.map(({ code: itemCode, label: itemLabel, path: itemPath }) =>
@@ -60,6 +62,7 @@ function renderLanding(language, content, handover) {
   <meta name="description" content="${description}">
   <link rel="canonical" href="${url}">
 ${alternates}
+  <script type="application/ld+json">${productData}</script>
   ${rssHead}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BigPlanner Partners">
