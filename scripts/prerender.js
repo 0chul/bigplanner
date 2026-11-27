@@ -155,11 +155,20 @@ async function prerender() {
       throw new Error(`Missing static fire safety page, canonical, or sitemap entry for ${resourcePath}`);
     }
   }
-  for (const { code, direction = 'ltr', adoptionPath } of fireSafetyLanguages) {
+  for (const { code, direction = 'ltr', adoptionPath, workloadPath, workloadEmbedPath } of fireSafetyLanguages) {
     const html = fs.readFileSync(path.join(distPath, adoptionPath, 'index.html'), 'utf-8');
     if (!html.includes(`<html lang="${code}" dir="${direction}">`) || !fireSafetyAdoptionAlternates.every(({ code, path }) =>
       html.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
       throw new Error(`Missing adoption checklist language, direction or reciprocal alternates for ${adoptionPath}`);
+    }
+    const embed = fs.readFileSync(path.join(distPath, workloadEmbedPath, 'index.html'), 'utf-8');
+    if (urls.includes(workloadEmbedPath) ||
+        !embed.includes(`<html lang="${code}" dir="${direction}">`) ||
+        !embed.includes('<meta name="robots" content="noindex, follow">') ||
+        !embed.includes(`<link rel="canonical" href="${siteOrigin}${workloadPath}">`) ||
+        !embed.includes('data-workload-form') ||
+        !embed.includes('utm_source=workload_embed')) {
+      throw new Error(`Invalid embedded calculator for ${workloadEmbedPath}`);
     }
   }
   for (const resourcePath of [fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath]) {

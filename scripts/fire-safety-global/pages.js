@@ -11,7 +11,7 @@ import { readWorkloadCopy, renderWorkloadCalculatorPages } from './workload-calc
 
 const pagePaths = new Set([
   fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
-  ...fireSafetyLanguages.flatMap(({ resourcesPath, workloadPath }) => [resourcesPath, workloadPath]),
+  ...fireSafetyLanguages.flatMap(({ resourcesPath, workloadPath, workloadEmbedPath }) => [resourcesPath, workloadPath, workloadEmbedPath]),
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
   ...fireSafetyTranslations.map(({ adoptionPath }) => adoptionPath),
 ]);

@@ -47,6 +47,7 @@ export const fireSafetyLanguages = [
   feedPath: `${language.path}rss.xml`,
   resourcesPath: `${language.path}resources/`,
   workloadPath: `${language.path}workload-calculator/`,
+  workloadEmbedPath: `${language.path}workload-calculator/embed/`,
   adoptionPath: `${language.path}adoption-guide/`,
 }));
 

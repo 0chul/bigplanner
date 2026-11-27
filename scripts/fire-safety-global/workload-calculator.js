@@ -9,6 +9,7 @@ import {
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 
 const faqPaths = { ko: fireSafetyKoreanFaqPath, en: fireSafetyEnglishFaqPath };
+const embedCopy = JSON.parse(readFileSync(new URL('./workload-calculator/embed-copy.json', import.meta.url), 'utf8'));
 
 const inputs = [
   { name: 'requests', max: 100000, mode: 'numeric', value: 20 },
@@ -30,8 +31,8 @@ export function readWorkloadCopy(code) {
 export function renderWorkloadCalculatorPages(styles) {
   const alternates = fireSafetyWorkloadAlternates.map(({ code, path }) =>
     `  <link rel="alternate" hreflang="${code}" href="${siteOrigin + path}">`).join('\n');
-  return new Map(fireSafetyLanguages.map((language) => {
-    const { code, label, locale, direction = 'ltr', path: product, workloadPath, videoPath, feedPath, handoverPath } = language;
+  return new Map(fireSafetyLanguages.flatMap((language) => {
+    const { code, label, locale, direction = 'ltr', path: product, workloadPath, workloadEmbedPath, videoPath, feedPath, handoverPath } = language;
     const copy = readWorkloadCopy(code);
     const canonical = siteOrigin + workloadPath;
     const title = escapeHtml(`${copy.pageTitle} | BigPlanner Partners`);
@@ -42,6 +43,10 @@ export function renderWorkloadCalculatorPages(styles) {
     const campaign = code === 'ko' ? 'fire_safety_launch' : 'fire_safety_global';
     const fragment = code === 'ko' ? '#demo-request' : '';
     const requestUrl = `${request}?utm_source=workload_calculator&utm_medium=referral&utm_campaign=${campaign}&utm_content=${code.toLowerCase()}${fragment}`;
+    const embeddedRequestUrl = requestUrl.replace('utm_source=workload_calculator', 'utm_source=workload_embed');
+    const embeddedCalculatorUrl = `${canonical}?utm_source=workload_embed&utm_medium=referral&utm_campaign=${campaign}&utm_content=${code.toLowerCase()}`;
+    const frameCode = `<iframe src="${siteOrigin + workloadEmbedPath}" title="${escapeHtml(copy.pageTitle)}" width="900" height="1060" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" style="display:block;box-sizing:border-box;width:100%;max-width:900px;height:clamp(760px,calc(1920px - 100vw),1500px);border:1px solid #cdd9d2;border-radius:12px;"></iframe>\n<a href="${escapeHtml(embeddedCalculatorUrl)}">${escapeHtml(copy.open)} · BigPlanner Partners</a>`;
+    const { label: embedLabel, instruction: embedInstruction } = embedCopy[code];
     const navigation = fireSafetyLanguages.map(({ code: itemCode, label: itemLabel, workloadPath: itemPath }) =>
       `<a href="${itemPath}" hreflang="${itemCode}" lang="${itemCode}" dir="auto"${itemCode === code ? ' aria-current="page"' : ''}>${escapeHtml(itemLabel)}</a>`).join('\n            ');
     const fields = inputs.map(({ name, max, mode, value }) => `
@@ -56,7 +61,7 @@ export function renderWorkloadCalculatorPages(styles) {
                 <dd><strong><bdi data-workload-result="${name}">${numberFormat.format(value)}</bdi></strong> ${escapeHtml(copy.result[unit])}</dd>
               </div>`).join('');
     const guidePath = faqPaths[code] ?? handoverPath;
-    return [`${workloadPath}index.html`, `<!doctype html>
+    const renderPage = (embedded) => `<!doctype html>
 <html lang="${code}" dir="${direction}">
 <head>
   <meta charset="utf-8">
@@ -64,7 +69,7 @@ export function renderWorkloadCalculatorPages(styles) {
   <title>${title}</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="${canonical}">
-${alternates}
+${embedded ? '  <meta name="robots" content="noindex, follow">' : alternates}
   <link rel="alternate" type="application/rss+xml" title="${escapeHtml(copy.rssLabel)}" href="${siteOrigin + feedPath}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BigPlanner Partners">
@@ -74,7 +79,7 @@ ${alternates}
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${siteOrigin}/images/fire-safety-organic-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  ${shareAssets}
+  ${embedded ? '' : shareAssets}
   <script defer src="/fire-safety-ai/workload-calculator.js"></script>
   <style>${styles}
     .calculator-wrap { width: min(64rem, 100% - 2rem); margin-inline: auto; }
@@ -115,6 +120,17 @@ ${alternates}
     .calculator-method h2 { font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
     .calculator-method ol { margin-block: .65rem; padding-inline-start: 1.4rem; max-width: 72ch; }
     .calculator-method li + li { margin-block-start: .42rem; }
+    .calculator-embedding { margin-block-start: .65rem; }
+    .calculator-embedding summary { color: var(--green); min-height: 2.75rem; align-content: center; cursor: pointer; font-weight: 650; }
+    .calculator-embedding textarea { display: block; margin-block-start: .35rem; width: 100%; max-width: 58rem; resize: vertical; border: 1px solid var(--rule); border-radius: .38rem; padding: .65rem; background: var(--paper); color: var(--ink); font: .88rem/1.45 ui-monospace, monospace; }
+    .calculator-embed .calculator-head { padding-block: .9rem .8rem; }
+    .calculator-embed .calculator-head h1 { font-size: clamp(1.5rem, 4.8vw, 2.1rem); max-width: 32ch; }
+    .calculator-embed .calculator-body { padding-block: .8rem 1rem; }
+    .calculator-embed .calculator-panel { padding: .85rem; }
+    .calculator-embed .calculator-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem .7rem; }
+    .calculator-embed .calculator-fields label { font-size: .9rem; }
+    .calculator-embed .calculator-results dl > div { padding-block: .35rem; }
+    .calculator-embed .links { margin-block-start: .75rem; }
     footer { border-block-start: 1px solid var(--rule); }
     @media (max-width: 46rem) {
       .calculator-grid { grid-template-columns: 1fr; gap: .9rem; }
@@ -124,8 +140,8 @@ ${alternates}
     }
   </style>
 </head>
-<body>
-  <header class="site-header">
+<body${embedded ? ' class="calculator-embed"' : ''}>
+  ${embedded ? '' : `<header class="site-header">
     <div class="calculator-wrap header-content">
       <a class="brand" href="${product}" lang="en">BigPlanner <span>Partners</span></a>
       <details class="calculator-language">
@@ -135,7 +151,7 @@ ${alternates}
         </nav>
       </details>
     </div>
-  </header>
+  </header>`}
   <main>
     <section class="hero" aria-labelledby="calculator-title">
       <div class="calculator-wrap calculator-head">
@@ -165,8 +181,11 @@ ${alternates}
           <progress data-workload-share aria-labelledby="review-share" value="60" max="100"></progress>
         </section>
       </div>
-      <p class="calculator-example">${escapeHtml(copy.example)}</p>
-      <section class="calculator-method" aria-labelledby="method-title">
+      ${embedded ? '' : `<p class="calculator-example">${escapeHtml(copy.example)}</p>`}
+      ${embedded ? `<div class="links">
+        <a class="button" href="${escapeHtml(embeddedRequestUrl)}" target="_blank" rel="noopener">${escapeHtml(copy.request)}</a>
+        <a href="${escapeHtml(embeddedCalculatorUrl)}" target="_blank" rel="noopener">${escapeHtml(copy.open)} · <span lang="en">BigPlanner Partners</span></a>
+      </div>` : `<section class="calculator-method" aria-labelledby="method-title">
         <h2 id="method-title">${escapeHtml(copy.methodHeading)}</h2>
         <ol>
           ${copy.method.map(item => `<li>${escapeHtml(item)}</li>`).join('\n          ')}
@@ -177,12 +196,22 @@ ${alternates}
           <a href="${videoPath}">${escapeHtml(copy.watch)}</a>
         </div>
         ${renderPageShare(code, copy.pageTitle, canonical, copy.share.email, copy.share)}
-      </section>
+        <details class="calculator-embedding" id="embed-calculator">
+          <summary>${escapeHtml(embedLabel)}</summary>
+          <label>${escapeHtml(embedInstruction)}
+            <textarea dir="ltr" rows="6" spellcheck="false" readonly>${escapeHtml(frameCode)}</textarea>
+          </label>
+        </details>
+      </section>`}
     </div>
   </main>
-  <footer><div class="calculator-wrap header-content"><span lang="en">BigPlanner Partners</span><a href="${feedPath}" type="application/rss+xml">${escapeHtml(copy.rssLabel)}</a><a href="/privacy/" hreflang="ko">${escapeHtml(copy.privacy)}</a></div></footer>
+  ${embedded ? '' : `<footer><div class="calculator-wrap header-content"><span lang="en">BigPlanner Partners</span><a href="${feedPath}" type="application/rss+xml">${escapeHtml(copy.rssLabel)}</a><a href="/privacy/" hreflang="ko">${escapeHtml(copy.privacy)}</a></div></footer>`}
 </body>
 </html>
-`];
+`;
+    return [
+      [`${workloadPath}index.html`, renderPage(false)],
+      [`${workloadEmbedPath}index.html`, renderPage(true)],
+    ];
   }));
 }

@@ -1,0 +1,66 @@
+{
+  "ko": {
+    "label": "이 계산기 삽입하기",
+    "instruction": "iframe 삽입을 지원하는 페이지에 이 HTML 코드를 붙여넣으세요."
+  },
+  "en": {
+    "label": "Embed this calculator",
+    "instruction": "Copy this HTML into a page that accepts iframes."
+  },
+  "de": {
+    "label": "Diesen Rechner einbetten",
+    "instruction": "Fügen Sie diesen HTML-Code in eine Seite ein, die iframes unterstützt."
+  },
+  "fr": {
+    "label": "Intégrer ce calculateur",
+    "instruction": "Collez ce code HTML dans une page qui accepte les iframes."
+  },
+  "ja": {
+    "label": "この計算ツールを埋め込む",
+    "instruction": "iframe に対応したページに、この HTML コードを貼り付けてください。"
+  },
+  "zh-Hant": {
+    "label": "嵌入此計算工具",
+    "instruction": "將這段 HTML 程式碼貼到支援 iframe 的網頁中。"
+  },
+  "ar": {
+    "label": "تضمين هذه الحاسبة",
+    "instruction": "انسخ رمز HTML هذا والصقه في صفحة تدعم إطارات iframe."
+  },
+  "nb": {
+    "label": "Bygg inn denne kalkulatoren",
+    "instruction": "Lim inn denne HTML-koden på en side som støtter iframes."
+  },
+  "da": {
+    "label": "Indlejr denne beregner",
+    "instruction": "Indsæt denne HTML-kode på en side, der understøtter iframes."
+  },
+  "nl": {
+    "label": "Deze calculator insluiten",
+    "instruction": "Plak deze HTML-code op een pagina die iframes ondersteunt."
+  },
+  "sv": {
+    "label": "Bädda in den här kalkylatorn",
+    "instruction": "Klistra in HTML-koden på en sida med stöd för iframes."
+  },
+  "fi": {
+    "label": "Upota tämä laskuri",
+    "instruction": "Kopioi tämä HTML-koodi sivulle, joka tukee iframe-kehyksiä."
+  },
+  "it": {
+    "label": "Incorpora questo calcolatore",
+    "instruction": "Incolla questo codice HTML in una pagina che supporta gli iframe."
+  },
+  "he": {
+    "label": "הטמעת מחשבון זה",
+    "instruction": "העתיקו את קוד ה־HTML הזה והדביקו אותו בדף שתומך ב־iframe."
+  },
+  "es": {
+    "label": "Inserta esta calculadora",
+    "instruction": "Pega este código HTML en una página que admita iframes."
+  },
+  "is": {
+    "label": "Fella þessa reiknivél inn",
+    "instruction": "Límdu þennan HTML-kóða inn á síðu sem styður iframe-ramma."
+  }
+}
