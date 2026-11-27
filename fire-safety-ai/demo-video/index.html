@@ -8,6 +8,16 @@
   <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/demo-video/">
   <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/demo-video/">
   <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/demo-video/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/demo-video/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/demo-video/">
+  <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/">
+  <link rel="alternate" hreflang="da" href="https://bigplanner.co.kr/fire-safety-ai/da/demo-video/">
+  <link rel="alternate" hreflang="nl" href="https://bigplanner.co.kr/fire-safety-ai/nl/demo-video/">
+  <link rel="alternate" hreflang="sv" href="https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/demo-video/">
   <meta property="og:type" content="video.other">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:site_name" content="빅플래너파트너스">
@@ -29,7 +39,13 @@
       "uploadDate": "2026-11-27T10:26:31+09:00",
       "duration": "PT27S",
       "contentUrl": "https://bigplanner.co.kr/fire-safety-ai/handoff-checklist/handoff-demo.mp4",
-      "inLanguage": "ko"
+      "inLanguage": "ko",
+      "caption": {
+        "@type": "MediaObject",
+        "contentUrl": "https://bigplanner.co.kr/fire-safety-ai/demo-video/demo.vtt",
+        "encodingFormat": "text/vtt",
+        "inLanguage": "ko"
+      }
     }
   </script>
   <style>
@@ -38,6 +54,7 @@
     body { margin: 0; background: white; color: var(--ink); font: 1rem/1.65 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif; word-break: keep-all; overflow-wrap: break-word; }
     .wrap { width: min(100% - 2rem, 54rem); margin-inline: auto; }
     header { padding-block: .8rem; background: #192326; color: white; }
+    header .wrap { position: relative; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: .4rem .7rem; }
     header a { color: inherit; text-decoration: none; font-weight: 800; }
     a { color: var(--accent); text-underline-offset: .18em; }
     :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
@@ -57,6 +74,9 @@
     .links a { font-weight: 700; }
     .button { display: inline-block; padding: .6rem .9rem; border-radius: .35rem; background: var(--accent); color: white; text-decoration: none; }
     .button:focus-visible { outline-color: var(--accent); }
+    .caption-languages summary { cursor: pointer; font-weight: 700; font-size: .9rem; }
+    .caption-languages .links { position: absolute; z-index: 2; inset-block-start: calc(100% + .7rem); inset-inline-end: 0; width: min(17rem, 78vw); margin: 0; padding: .8rem; border: 1px solid var(--line); border-radius: .55rem; background: #fff; box-shadow: 0 .25rem 1rem #19232624; }
+    .caption-languages .links a { color: var(--accent); }
     footer { color: var(--muted); padding-block: 1rem; border-top: 1px solid var(--line); }
     @supports (height: 1svh) {
       .watch { --player-width: min(22.5rem, 37.5svh); }
@@ -65,18 +85,39 @@
       .watch { grid-template-columns: minmax(0, 1fr); }
       video { margin-inline: auto; }
     }
+    @media (max-width: 23rem) {
+      .watch { --player-width: 12rem; }
+    }
   </style>
 </head>
 <body>
-  <header><div class="wrap"><a href="/fire-safety-ai/">빅플래너파트너스 · 방재실 AI 민원 도우미</a></div></header>
+  <header><div class="wrap">
+    <a href="/fire-safety-ai/">빅플래너파트너스</a>
+    <details class="caption-languages">
+      <summary>자막 언어 선택</summary>
+      <nav class="links" aria-label="시연 영상 자막 언어">
+        <a href="/fire-safety-ai/en/demo-video/" lang="en" hreflang="en">English</a>
+        <a href="/fire-safety-ai/de/demo-video/" lang="de" hreflang="de">Deutsch</a>
+        <a href="/fire-safety-ai/fr/demo-video/" lang="fr" hreflang="fr">Français</a>
+        <a href="/fire-safety-ai/ja/demo-video/" lang="ja" hreflang="ja">日本語</a>
+        <a href="/fire-safety-ai/zh-hant/demo-video/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+        <a href="/fire-safety-ai/ar/demo-video/" lang="ar" hreflang="ar" dir="rtl">العربية</a>
+        <a href="/fire-safety-ai/nb/demo-video/" lang="nb" hreflang="nb">Norsk bokmål</a>
+        <a href="/fire-safety-ai/da/demo-video/" lang="da" hreflang="da">Dansk</a>
+        <a href="/fire-safety-ai/nl/demo-video/" lang="nl" hreflang="nl">Nederlands</a>
+        <a href="/fire-safety-ai/sv/demo-video/" lang="sv" hreflang="sv">Svenska</a>
+      </nav>
+    </details>
+  </div></header>
   <main class="wrap">
     <h1>방재실 AI 민원 도우미 27초 데모</h1>
-    <p class="intro">가상 자료로 재구성한 냉방 민원 접수와 교대 인계</p>
     <div class="watch">
-      <video controls playsinline preload="metadata" width="1080" height="1920" aria-label="방재실 AI 민원 도우미 27초 데모" src="/fire-safety-ai/handoff-checklist/handoff-demo.mp4" poster="/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg">
+      <video controls playsinline preload="metadata" width="1080" height="1920" aria-label="방재실 AI 민원 도우미 27초 데모" aria-describedby="ko-video-description" src="/fire-safety-ai/handoff-checklist/handoff-demo.mp4" poster="/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg">
+        <track kind="captions" src="/fire-safety-ai/demo-video/demo.vtt" srclang="ko" label="한국어" default>
         <a href="/fire-safety-ai/handoff-checklist/handoff-demo.mp4">데모 영상 파일 열기</a>
       </video>
       <div>
+        <p class="intro" id="ko-video-description">가상 자료로 재구성한 냉방 민원 접수와 교대 인계</p>
         <section class="details" aria-labelledby="scene-heading">
           <h2 id="scene-heading">영상 속 민원 처리 순서</h2>
           <ol class="timeline">
