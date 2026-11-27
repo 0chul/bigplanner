@@ -110,3 +110,16 @@ export const demoRequestCopy = {
     },
   },
 } as const;
+
+type FormTextFields = keyof Omit<typeof demoRequestCopy.en, 'roles' | 'privacy'>;
+export type DemoRequestFormTranslation = {
+  form: Record<FormTextFields, string> & {
+    roles: Readonly<Record<DemoRole, string>>;
+    privacy: {
+      title: string;
+      rows: readonly (readonly string[])[];
+      contact: string;
+    };
+  };
+  errors: Record<keyof DemoFormValues, string>;
+};

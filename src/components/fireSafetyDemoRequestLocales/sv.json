@@ -1,0 +1,68 @@
+{
+  "page": {
+    "title": "Be om en AI-demo för fastighetsdrift | BigPlanner Partners",
+    "description": "Be om en demo online av BigPlanner Partners AI-baserade servicedesk för hyresgästärenden i kommersiella fastigheter.",
+    "back": "Se produktdemon",
+    "heading": "Se hur den AI-baserade servicedesken fungerar",
+    "intro": "Se hur hyresgästärenden följs upp mellan skiften och prata med oss om arbetsflödet i din byggnad. Den offentliga demon visar ett koreanskt gränssnitt med svenska undertexter."
+  },
+  "form": {
+    "heading": "Be om en demo online",
+    "required": "Obligatoriska fält",
+    "introduction": "När du har skickat din förfrågan kontaktar vi dig via e-post för att boka en demo online.",
+    "legend": "Uppgifter för demoförfrågan",
+    "company": "Företag eller organisation",
+    "companyPlaceholder": "Företagets eller byggnadens namn",
+    "name": "Kontaktpersonens namn",
+    "namePlaceholder": "Ditt namn",
+    "role": "Roll",
+    "rolePlaceholder": "Välj din roll",
+    "roles": {
+      "head-office": "Huvudkontor för fastighetsförvaltning",
+      "site": "Lokal fastighetsförvaltning eller driftteam",
+      "other": "Annat"
+    },
+    "email": "E-postadress",
+    "emailPlaceholder": "du@example.com",
+    "buildingCount": "Antal byggnader du förvaltar",
+    "buildingCountPlaceholder": "T.ex. 3",
+    "interests": "Vad vill du se i demon?",
+    "interestsPlaceholder": "T.ex. registrering av kylproblem, information om besöksparkering eller skiftöverlämning",
+    "interestsHint": "Utelämna personuppgifter som verkliga hyresgästers kontaktuppgifter och internt material.",
+    "optional": "Valfritt",
+    "website": "Webbplats",
+    "consent": "Jag samtycker till att mina personuppgifter samlas in och används för att behandla min demoförfrågan.",
+    "consentRequired": "(Obligatoriskt)",
+    "submit": "Skicka demoförfrågan",
+    "submitting": "Skickar din förfrågan",
+    "afterSubmit": "Du kan be om en demo utan att lämna handböcker eller uppgifter om faktiska hyresgästärenden.",
+    "validationSummary": "Kontrollera de markerade fälten och försök igen.",
+    "invalidRequest": "Vi kunde inte skicka din förfrågan. Kontrollera uppgifterna och försök igen.",
+    "failedRequest": "Vi kunde inte skicka din förfrågan. Dina uppgifter finns kvar i formuläret. Försök igen om en stund eller mejla oss på adressen nedan.",
+    "successLabel": "Förfrågan mottagen",
+    "successTitle": "Vi har tagit emot din demoförfrågan.",
+    "successText": "Vi kontaktar dig på den e-postadress du angav för att boka demon.",
+    "emailLabel": "Kontakt",
+    "reset": "Starta en ny förfrågan",
+    "privacy": {
+      "title": "Så samlar vi in och använder dina personuppgifter",
+      "rows": [
+        ["Vem samlar in och använder uppgifterna?", "BigPlanner Partners"],
+        ["Varför använder vi uppgifterna?", "För att behandla demoförfrågningar, diskutera införandet av lösningen och boka demonstrationer online."],
+        ["Vilka uppgifter samlar vi in?", "Företagets eller organisationens namn, kontaktpersonens namn, e-postadress och roll. Vi samlar bara in antalet byggnader du förvaltar och vilka arbetsflöden du är intresserad av om du uppger dem."],
+        ["Hur länge sparar vi uppgifterna?", "I upp till 90 dagar från det datum då vi tar emot din förfrågan. Du kan begära radering via e-postadressen nedan."],
+        ["Ditt val", "Du kan välja att avstå från att samtycka. Samtycke krävs för att kunna skicka en förfrågan om en demo online."]
+      ],
+      "contact": "Frågor och begäran om radering"
+    }
+  },
+  "errors": {
+    "company": "Ange ett företags- eller organisationsnamn på högst 120 tecken.",
+    "name": "Ange kontaktpersonens namn med högst 80 tecken.",
+    "email": "Kontrollera att e-postadressen är giltig.",
+    "role": "Välj din roll.",
+    "buildingCount": "Ange ett heltal från 1 till 100 000.",
+    "interests": "Beskriv med högst 1 000 tecken vad du vill se i demon.",
+    "consent": "Samtyck till att vi samlar in och använder dina personuppgifter för att behandla din demoförfrågan."
+  }
+}

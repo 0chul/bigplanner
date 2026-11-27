@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "申請設施管理 AI 網上示範 | BigPlanner Partners",
+    "description": "為商廈設施管理團隊提供 BigPlanner Partners 租戶查詢 AI 助手的網上示範。",
+    "back": "觀看產品示範",
+    "heading": "看看租戶查詢 AI 助手如何運作",
+    "intro": "了解租戶個案如何交更，並與我們討論貴大廈的工作流程。公開示範採用韓文畫面，附繁體中文字幕。"
+  },
+  "form": {
+    "heading": "申請網上示範",
+    "required": "必填項目",
+    "introduction": "提交申請後，我們會以電郵與你協調網上示範時間。",
+    "legend": "示範申請資料",
+    "company": "公司或機構名稱",
+    "companyPlaceholder": "公司或大廈名稱",
+    "name": "聯絡人姓名",
+    "namePlaceholder": "你的姓名",
+    "role": "職務",
+    "rolePlaceholder": "選擇你的職務",
+    "roles": {
+      "head-office": "物業管理公司總部",
+      "site": "駐場管理處或設施管理團隊",
+      "other": "其他"
+    },
+    "email": "電郵地址",
+    "emailPlaceholder": "you@example.com",
+    "buildingCount": "管理的大廈數目",
+    "buildingCountPlaceholder": "例如 3",
+    "interests": "想在示範中了解哪些工作？",
+    "interestsPlaceholder": "例如登記冷氣問題、提供訪客泊車指引或交更跟進",
+    "interestsHint": "請勿填寫租戶的實際聯絡資料等個人資料，或提供內部文件內容。",
+    "optional": "選填",
+    "website": "網站",
+    "consent": "我同意收集及使用我的個人資料，以處理我的示範申請。",
+    "consentRequired": "（必須）",
+    "submit": "提交示範申請",
+    "submitting": "正在提交申請",
+    "afterSubmit": "申請示範毋須提供大廈管理指引或真實租戶個案紀錄。",
+    "validationSummary": "請檢查已標示的欄位，然後再試。",
+    "invalidRequest": "未能提交申請。請檢查所填資料，然後再試。",
+    "failedRequest": "未能提交申請，已填資料仍然保留。請稍後再試，或電郵至下方地址與我們聯絡。",
+    "successLabel": "已收到申請",
+    "successTitle": "我們已收到你的示範申請。",
+    "successText": "我們會透過你提供的電郵地址安排示範時間。",
+    "emailLabel": "聯絡",
+    "reset": "開始另一份申請",
+    "privacy": {
+      "title": "我們如何收集及使用個人資料",
+      "rows": [
+        [
+          "收集及使用資料的機構",
+          "BigPlanner Partners"
+        ],
+        [
+          "用途",
+          "處理示範申請、商討採用方案及安排網上示範。"
+        ],
+        [
+          "收集的資料",
+          "公司或機構名稱、聯絡人姓名、電郵地址及職務。管理的大廈數目及想了解的工作流程，只會在你提供時收集。"
+        ],
+        [
+          "保留期限",
+          "由我們收到申請當日起計，最多保留90天。你可透過下方電郵地址要求刪除資料。"
+        ],
+        [
+          "你的選擇",
+          "你可拒絕同意。提交網上示範申請須先取得你的同意。"
+        ]
+      ],
+      "contact": "查詢及刪除資料要求"
+    }
+  },
+  "errors": {
+    "company": "請輸入不多於120個字元的公司或機構名稱。",
+    "name": "請輸入不多於80個字元的聯絡人姓名。",
+    "email": "請確認電郵地址有效。",
+    "role": "請選擇你的職務。",
+    "buildingCount": "請輸入1至100,000之間的整數。",
+    "interests": "請用不多於1,000個字元描述想了解的工作。",
+    "consent": "請同意收集及使用個人資料，以處理你的示範申請。"
+  }
+}

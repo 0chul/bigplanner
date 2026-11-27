@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "Demander une démonstration de l’assistant IA pour immeubles | BigPlanner Partners",
+    "description": "Demandez une démonstration en ligne de l’assistant IA de BigPlanner Partners pour le traitement des demandes des locataires d’immeubles commerciaux.",
+    "back": "Voir la démonstration du produit",
+    "heading": "Découvrez l’assistant IA en action",
+    "intro": "Voyez comment les équipes se transmettent les demandes des locataires à la relève et échangez avec nous sur le fonctionnement de votre immeuble. La vidéo publique présente l’interface en coréen avec des sous-titres en français."
+  },
+  "form": {
+    "heading": "Demander une démonstration en ligne",
+    "required": "Champs obligatoires",
+    "introduction": "Une fois votre demande envoyée, nous vous écrirons par courriel pour fixer la date et l’heure de la démonstration en ligne.",
+    "legend": "Renseignements sur la demande de démonstration",
+    "company": "Entreprise ou organisation",
+    "companyPlaceholder": "Nom de l’entreprise ou de l’immeuble",
+    "name": "Nom de la personne à contacter",
+    "namePlaceholder": "Votre nom",
+    "role": "Fonction",
+    "rolePlaceholder": "Sélectionnez votre fonction",
+    "roles": {
+      "head-office": "Siège de l’entreprise de gestion immobilière",
+      "site": "Équipe de gestion sur place ou équipe technique",
+      "other": "Autre"
+    },
+    "email": "Adresse courriel",
+    "emailPlaceholder": "nom@example.com",
+    "buildingCount": "Nombre d’immeubles gérés",
+    "buildingCountPlaceholder": "p. ex. 3",
+    "interests": "Que souhaitez-vous voir dans la démonstration ?",
+    "interestsPlaceholder": "p. ex. signalements de climatisation, stationnement des visiteurs ou relève des équipes",
+    "interestsHint": "Veuillez laisser de côté les renseignements personnels, comme les coordonnées réelles de locataires, ainsi que les documents internes.",
+    "optional": "Facultatif",
+    "website": "Site web",
+    "consent": "J’accepte la collecte et l’utilisation de mes renseignements personnels pour le traitement de ma demande de démonstration.",
+    "consentRequired": "(Obligatoire)",
+    "submit": "Envoyer la demande de démonstration",
+    "submitting": "Envoi de votre demande",
+    "afterSubmit": "Vous pouvez demander une démonstration sans fournir les guides de l’immeuble ni de signalements réels de locataires.",
+    "validationSummary": "Vérifiez les champs signalés et réessayez.",
+    "invalidRequest": "Votre demande n’a pas pu être envoyée. Vérifiez vos renseignements et réessayez.",
+    "failedRequest": "Votre demande n’a pas pu être envoyée. Vos renseignements sont toujours dans le formulaire. Réessayez dans quelques instants ou écrivez-nous à l’adresse courriel ci-dessous.",
+    "successLabel": "Demande reçue",
+    "successTitle": "Nous avons reçu votre demande de démonstration.",
+    "successText": "Nous vous écrirons à l’adresse courriel indiquée pour fixer un rendez-vous.",
+    "emailLabel": "Nous contacter",
+    "reset": "Faire une autre demande",
+    "privacy": {
+      "title": "Comment nous recueillons et utilisons vos renseignements personnels",
+      "rows": [
+        [
+          "Qui recueille et utilise vos renseignements",
+          "BigPlanner Partners"
+        ],
+        [
+          "Pourquoi nous les utilisons",
+          "Pour traiter les demandes, discuter de la mise en place du service et organiser les démonstrations en ligne."
+        ],
+        [
+          "Ce que nous recueillons",
+          "Nom de l’entreprise ou de l’organisation, nom de la personne à contacter, adresse courriel et fonction. Nous recueillons le nombre d’immeubles que vous gérez et les activités qui vous intéressent uniquement si vous les indiquez."
+        ],
+        [
+          "Combien de temps nous les conservons",
+          "Jusqu’à 90 jours à compter de la réception de votre demande. Vous pouvez demander leur suppression en écrivant à l’adresse courriel ci-dessous."
+        ],
+        [
+          "Votre choix",
+          "Vous pouvez refuser de donner votre consentement. Votre consentement est nécessaire pour envoyer une demande de démonstration en ligne."
+        ]
+      ],
+      "contact": "Questions et demandes de suppression"
+    }
+  },
+  "errors": {
+    "company": "Saisissez le nom de l’entreprise ou de l’organisation, en 120 caractères maximum.",
+    "name": "Saisissez le nom de la personne à contacter, en 80 caractères maximum.",
+    "email": "Vérifiez que l’adresse courriel est valide.",
+    "role": "Sélectionnez votre fonction.",
+    "buildingCount": "Saisissez un nombre entier compris entre 1 et 100 000.",
+    "interests": "Décrivez ce que vous souhaitez voir en 1 000 caractères maximum.",
+    "consent": "Veuillez consentir à la collecte et à l’utilisation de vos renseignements personnels pour votre demande de démonstration."
+  }
+}

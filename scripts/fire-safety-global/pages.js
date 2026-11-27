@@ -17,7 +17,7 @@ function escapeHtml(value) {
 }
 
 function renderLanding(language, content, handoverLabel) {
-  const { code, label, path, handoverPath, locale, direction = 'ltr' } = language;
+  const { code, label, path, handoverPath, requestPath, locale, direction = 'ltr' } = language;
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
   const description = escapeHtml(content.description);
@@ -34,7 +34,7 @@ function renderLanding(language, content, handoverLabel) {
   if (content.caseLabels.length !== caseCounts.length) throw new Error(`Missing case evidence labels for ${code}`);
   const caseStats = caseCounts.map((count, index) =>
     `<div><dt>${escapeHtml(content.caseLabels[index])}</dt><dd>${count}</dd></div>`).join('\n          ');
-  const requestUrl = `${fireSafetyEnglishDemoPath}?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}`;
+  const requestUrl = `${requestPath}?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}`;
   const mailUrl = `mailto:${demoEmail}?subject=${encodeURIComponent(content.subject)}`;
   return `<!doctype html>
 <html lang="${code}" dir="${direction}">
@@ -130,11 +130,8 @@ ${alternates}
           <p>${escapeHtml(content.quoteText)}</p>
         </div>
         <div class="links">
-          ${code === 'en'
-    ? `<a class="button" href="${requestUrl}">${escapeHtml(content.formAction)}</a>
-          <a href="${mailUrl}">${escapeHtml(content.contactAction)}</a>`
-    : `<a class="button" href="${mailUrl}">${escapeHtml(content.contactAction)}</a>
-          <a href="${requestUrl}" hreflang="en">${escapeHtml(content.formAction)}</a>`}
+          <a class="button" href="${requestUrl}">${escapeHtml(content.formAction)}</a>
+          <a href="${mailUrl}">${escapeHtml(content.contactAction)}</a>
         </div>
         <p class="email" dir="ltr">${demoEmail}</p>
       </div>
@@ -239,13 +236,13 @@ ${styles}
 }
 
 function renderHandover(language, content, formAction) {
-  const { code, path, handoverPath, locale, direction = 'ltr' } = language;
+  const { code, path, handoverPath, requestPath, locale, direction = 'ltr' } = language;
   const url = siteOrigin + handoverPath;
   const tracking = 'utm_source=handover_template&utm_medium=referral&utm_campaign=fire_safety_global';
   const demoUrl = code === 'en'
     ? `${fireSafetyEnglishVideoPath}?${tracking}`
     : `${path}?${tracking}&utm_content=${code.toLowerCase()}#demo`;
-  const requestUrl = `${fireSafetyEnglishDemoPath}?${tracking}&utm_content=${code.toLowerCase()}`;
+  const requestUrl = `${requestPath}?${tracking}&utm_content=${code.toLowerCase()}`;
   const values = {
     ...Object.fromEntries(Object.entries(content)
       .filter(([, value]) => typeof value === 'string')

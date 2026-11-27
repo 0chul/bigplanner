@@ -23,7 +23,10 @@ export const fireSafetyLanguages = [
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,
 }));
 
-export const fireSafetyTranslations = fireSafetyLanguages.filter(({ code }) => code !== 'ko');
+export const fireSafetyTranslations = fireSafetyLanguages
+  .filter(({ code }) => code !== 'ko')
+  .map((language) => ({ ...language, requestPath: `${language.path}request/` }));
+export const fireSafetyRequestPages = new Map(fireSafetyTranslations.map((language) => [language.requestPath, language]));
 export const fireSafetyAlternates = [
   ...fireSafetyLanguages,
   { code: 'x-default', path: fireSafetyEnglishPath },

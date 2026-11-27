@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "Demo aanvragen van de AI-assistent voor gebouwbeheer | BigPlanner Partners",
+    "description": "Vraag een online demo aan van de AI-assistent van BigPlanner Partners voor vragen en meldingen van huurders in commercieel vastgoed.",
+    "back": "Bekijk de productdemo",
+    "heading": "Bekijk de AI-servicedesk in actie",
+    "intro": "Bekijk hoe teams huurdersmeldingen overdragen bij een dienstwissel en bespreek de werkwijze in uw gebouw met ons. De openbare video toont Koreaanse schermen met Nederlandse ondertiteling."
+  },
+  "form": {
+    "heading": "Vraag een online demo aan",
+    "required": "Verplichte velden",
+    "introduction": "Na ontvangst van uw aanvraag nemen we per e-mail contact op om een online demo in te plannen.",
+    "legend": "Gegevens voor de demoaanvraag",
+    "company": "Bedrijf of organisatie",
+    "companyPlaceholder": "Naam van het bedrijf of gebouw",
+    "name": "Naam contactpersoon",
+    "namePlaceholder": "Uw naam",
+    "role": "Functie",
+    "rolePlaceholder": "Kies uw functie",
+    "roles": {
+      "head-office": "Hoofdkantoor vastgoedbeheer",
+      "site": "Locatiebeheer of facilitair team",
+      "other": "Anders"
+    },
+    "email": "E-mailadres",
+    "emailPlaceholder": "naam@example.com",
+    "buildingCount": "Aantal gebouwen in beheer",
+    "buildingCountPlaceholder": "bijv. 3",
+    "interests": "Wat wilt u in de demo zien?",
+    "interestsPlaceholder": "bijv. meldingen over airconditioning, bezoekersparkeren of dienstoverdracht",
+    "interestsHint": "Laat persoonsgegevens, zoals echte contactgegevens van huurders, en interne documenten weg.",
+    "optional": "Optioneel",
+    "website": "Website",
+    "consent": "Ik geef toestemming voor het verzamelen en gebruiken van mijn persoonsgegevens om mijn demoaanvraag te behandelen.",
+    "consentRequired": "(Verplicht)",
+    "submit": "Demoaanvraag versturen",
+    "submitting": "Uw aanvraag wordt verstuurd",
+    "afterSubmit": "U kunt een demo aanvragen zonder handleidingen of echte huurdersmeldingen mee te sturen.",
+    "validationSummary": "Controleer de gemarkeerde velden en probeer het opnieuw.",
+    "invalidRequest": "Uw aanvraag kon niet worden verstuurd. Controleer uw gegevens en probeer het opnieuw.",
+    "failedRequest": "Uw aanvraag kon niet worden verstuurd. Uw gegevens staan nog in het formulier. Probeer het zo opnieuw of mail ons op het onderstaande adres.",
+    "successLabel": "Aanvraag ontvangen",
+    "successTitle": "We hebben uw demoaanvraag ontvangen.",
+    "successText": "We sturen een e-mail naar het opgegeven adres om de demo in te plannen.",
+    "emailLabel": "Contact",
+    "reset": "Nieuwe aanvraag starten",
+    "privacy": {
+      "title": "Hoe wij uw persoonsgegevens verzamelen en gebruiken",
+      "rows": [
+        [
+          "Wie uw gegevens verzamelt en gebruikt",
+          "BigPlanner Partners"
+        ],
+        [
+          "Waarvoor we uw gegevens gebruiken",
+          "Om demoaanvragen te behandelen, de invoering te bespreken en online demo’s in te plannen."
+        ],
+        [
+          "Welke gegevens we verzamelen",
+          "Naam van uw bedrijf of organisatie, naam van de contactpersoon, e-mailadres en functie. Het aantal gebouwen dat u beheert en de werkprocessen die u interesseren verzamelen we alleen als u die invult."
+        ],
+        [
+          "Hoe lang we uw gegevens bewaren",
+          "Maximaal 90 dagen vanaf de ontvangst van uw aanvraag. U kunt via het onderstaande e-mailadres om verwijdering vragen."
+        ],
+        [
+          "Uw keuze",
+          "U mag toestemming weigeren. Uw toestemming is vereist om een online demoaanvraag te versturen."
+        ]
+      ],
+      "contact": "Vragen en verzoeken om verwijdering"
+    }
+  },
+  "errors": {
+    "company": "Vul de naam van het bedrijf of de organisatie in, met maximaal 120 tekens.",
+    "name": "Vul de naam van de contactpersoon in, met maximaal 80 tekens.",
+    "email": "Controleer of het e-mailadres geldig is.",
+    "role": "Kies uw functie.",
+    "buildingCount": "Vul een geheel getal in van 1 tot en met 100.000.",
+    "interests": "Beschrijf in maximaal 1.000 tekens wat u wilt zien.",
+    "consent": "Geef toestemming voor het verzamelen en gebruiken van persoonsgegevens voor uw demoaanvraag."
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "page": {
+    "title": "Bed om en AI-demo til ejendomsdrift | BigPlanner Partners",
+    "description": "Bed om en onlinedemo af BigPlanner Partners’ AI-baserede servicedesk til lejerhenvendelser i erhvervsejendomme.",
+    "back": "Se produktdemoen",
+    "heading": "Se den AI-baserede servicedesk i brug",
+    "intro": "Se, hvordan lejerhenvendelser følges op på tværs af vagtskifter, og tal med os om arbejdsgangen i din bygning. Den offentlige demo viser en koreansk brugerflade med danske undertekster."
+  },
+  "form": {
+    "heading": "Bed om en onlinedemo",
+    "required": "Obligatoriske felter",
+    "introduction": "Når du har sendt din anmodning, kontakter vi dig via e-mail for at aftale en onlinedemo.",
+    "legend": "Oplysninger til demoanmodningen",
+    "company": "Virksomhed eller organisation",
+    "companyPlaceholder": "Navn på virksomheden eller bygningen",
+    "name": "Kontaktpersonens navn",
+    "namePlaceholder": "Dit navn",
+    "role": "Rolle",
+    "rolePlaceholder": "Vælg din rolle",
+    "roles": {
+      "head-office": "Hovedkontor for ejendomsadministration",
+      "site": "Lokal ejendomsadministration eller driftsteam",
+      "other": "Andet"
+    },
+    "email": "E-mailadresse",
+    "emailPlaceholder": "dig@example.com",
+    "buildingCount": "Antal bygninger, du administrerer",
+    "buildingCountPlaceholder": "F.eks. 3",
+    "interests": "Hvad vil du gerne se i demoen?",
+    "interestsPlaceholder": "F.eks. registrering af køleproblemer, information om gæsteparkering eller overdragelse ved vagtskifte",
+    "interestsHint": "Undlad personoplysninger som faktiske lejeres kontaktoplysninger samt internt materiale.",
+    "optional": "Valgfrit",
+    "website": "Websted",
+    "consent": "Jeg giver samtykke til, at mine personoplysninger indsamles og bruges til at behandle min demoanmodning.",
+    "consentRequired": "(Obligatorisk)",
+    "submit": "Send demoanmodning",
+    "submitting": "Sender din anmodning",
+    "afterSubmit": "Du kan bede om en demo uden at vedlægge manualer eller faktiske lejerhenvendelser.",
+    "validationSummary": "Kontrollér de markerede felter, og prøv igen.",
+    "invalidRequest": "Vi kunne ikke sende din anmodning. Kontrollér oplysningerne, og prøv igen.",
+    "failedRequest": "Vi kunne ikke sende din anmodning. Dine oplysninger står stadig i formularen. Prøv igen om lidt, eller skriv til os på e-mailadressen nedenfor.",
+    "successLabel": "Anmodning modtaget",
+    "successTitle": "Vi har modtaget din demoanmodning.",
+    "successText": "Vi kontakter dig på den e-mailadresse, du har angivet, for at aftale demoen.",
+    "emailLabel": "Kontakt",
+    "reset": "Start en ny anmodning",
+    "privacy": {
+      "title": "Sådan indsamler og bruger vi dine personoplysninger",
+      "rows": [
+        ["Hvem indsamler og bruger oplysningerne?", "BigPlanner Partners"],
+        ["Hvorfor bruger vi oplysningerne?", "For at behandle demoanmodninger, drøfte indførelse af løsningen og aftale onlinedemoer."],
+        ["Hvilke oplysninger indsamler vi?", "Virksomhedens eller organisationens navn, kontaktpersonens navn, e-mailadresse og rolle. Vi indsamler kun antallet af bygninger, du administrerer, og de arbejdsgange, du er interesseret i, hvis du oplyser dem."],
+        ["Hvor længe opbevarer vi oplysningerne?", "I op til 90 dage fra den dato, vi modtager din anmodning. Du kan bede om sletning via e-mailadressen nedenfor."],
+        ["Dit valg", "Du kan vælge at undlade at give samtykke. Samtykke er påkrævet for at sende en anmodning om en onlinedemo."]
+      ],
+      "contact": "Spørgsmål og anmodninger om sletning"
+    }
+  },
+  "errors": {
+    "company": "Indtast et virksomheds- eller organisationsnavn på højst 120 tegn.",
+    "name": "Indtast kontaktpersonens navn på højst 80 tegn.",
+    "email": "Kontrollér, at e-mailadressen er gyldig.",
+    "role": "Vælg din rolle.",
+    "buildingCount": "Indtast et helt tal fra 1 til 100.000.",
+    "interests": "Beskriv med højst 1.000 tegn, hvad du gerne vil se i demoen.",
+    "consent": "Giv samtykke til indsamling og brug af personoplysninger til behandling af din demoanmodning."
+  }
+}

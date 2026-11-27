@@ -8,7 +8,7 @@
 .fire-ai .fa-form-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
 .fire-ai .fa-form-field { margin-bottom: 23px; min-width: 0; }
 .fire-ai .fa-form-field label { display: block; margin: 0 0 10px; font-size: 16px; font-weight: 650; line-height: 1.7; }
-.fire-ai .fa-form-field small { margin-left: 6px; color: var(--fa-muted); font-size: 13px; font-weight: 400; }
+.fire-ai .fa-form-field small { margin-inline-start: 6px; color: var(--fa-muted); font-size: 13px; font-weight: 400; }
 .fire-ai .fa-form-field input, .fire-ai .fa-form-field select, .fire-ai .fa-form-field textarea { box-sizing: border-box; display: block; width: 100%; min-height: 55px; padding: 14px 15px; border: 1px solid var(--fa-control-line); border-radius: 8px; background: #fff; color: var(--fa-ink); font: inherit; font-size: 17px; line-height: 1.6; outline-offset: 3px; transition: border-color .15s, box-shadow .15s; }
 .fire-ai .fa-form-field textarea { resize: vertical; min-height: 125px; }
 .fire-ai .fa-form-field input::placeholder, .fire-ai .fa-form-field textarea::placeholder { color: var(--fa-muted); opacity: 1; }
@@ -22,6 +22,7 @@
 .fire-ai .fa-form-check strong { font-weight: 600; }
 .fire-ai .fa-form-submit { display: flex; width: 100%; justify-content: center; align-items: center; gap: 14px; min-height: 59px; padding: 16px 20px; border: 0; border-radius: 999px; background: var(--fa-accent); color: white; font: inherit; font-size: 18px; font-weight: 650; cursor: pointer; transition: background .2s; }
 .fire-ai .fa-form-submit:hover { background: #374151; }
+.fire-ai .fa-form-submit:dir(rtl) svg:not(.fa-form-spinner) { transform: scaleX(-1); }
 .fire-ai .fa-form-submit:disabled, .fire-ai .fa-form-fields:disabled { opacity: .65; }
 .fire-ai .fa-form-submit:disabled { cursor: wait; }
 .fire-ai .fa-form-after { display: flex; align-items: flex-start; justify-content: center; gap: 7px; color: var(--fa-muted); margin: 16px 0 0; font-size: 14px; line-height: 1.8; }

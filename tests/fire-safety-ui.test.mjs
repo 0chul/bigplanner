@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import puppeteer from 'puppeteer';
@@ -585,6 +585,88 @@ try {
     assert.deepEqual(state.posts[1], state.posts[0]);
     assert.equal(await page.$eval('.fa-form-success h2', (heading) => heading.textContent), 'We received your demo request.');
     await page.close();
+  });
+
+  await check('Arabic demo CTA opens an RTL form with localized consent, validation and retry', async () => {
+    const copy = JSON.parse(await readFile(new URL('../src/components/fireSafetyDemoRequestLocales/ar.json', import.meta.url), 'utf8'));
+    const { page, state } = await newPage(320, 568);
+    try {
+      await page.goto(`${origin}/fire-safety-ai/ar/#contact`, { waitUntil: 'domcontentloaded' });
+      const [response] = await Promise.all([
+        page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+        page.click('#contact .links a.button'),
+      ]);
+      assert.equal(response.status(), 200);
+      const requestUrl = new URL(page.url());
+      assert.equal(requestUrl.pathname, '/fire-safety-ai/ar/request/');
+      assert.deepEqual(Object.fromEntries(requestUrl.searchParams), {
+        utm_source: 'international',
+        utm_medium: 'referral',
+        utm_campaign: 'fire_safety_global',
+        utm_content: 'ar',
+      });
+
+      await page.waitForSelector('.fa-form-submit');
+      await page.waitForFunction(() => document.documentElement.lang === 'ar' && document.documentElement.dir === 'rtl');
+      assert.deepEqual(await page.$$eval('head meta[name="robots"]', (tags) => tags.map((tag) => tag.content)), ['noindex, follow']);
+      assert.equal(await page.$eval('.fa-form-submit', (button) => button.textContent.trim()), copy.form.submit);
+      assert.deepEqual(await page.$$eval('#fa-demo-role option:not([value=""])', (options) =>
+        options.map((option) => [option.value, option.textContent])), Object.entries(copy.form.roles));
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), 320);
+
+      const privacy = '#demo-privacy';
+      const consent = '#fa-demo-consent';
+      const summary = privacy + ' summary';
+      await page.waitForSelector(summary, { visible: true });
+      assert.equal(await page.$eval(summary, (element) => element.textContent.trim()), copy.form.privacy.title);
+      assert.equal(await page.$eval(privacy, (notice, checkbox) =>
+        Boolean(notice.compareDocumentPosition(document.querySelector(checkbox)) & Node.DOCUMENT_POSITION_FOLLOWING), consent), true);
+      assert.deepEqual(await page.$eval(consent, (input) => [input.checked, input.required]), [false, true]);
+      await page.focus(summary);
+      await page.keyboard.press('Enter');
+      await page.waitForSelector(privacy + '[open] dl', { visible: true });
+      const retention = await page.$eval(privacy + ' dl > div:nth-child(4) dd', (element) => element.textContent);
+      assert.equal(retention, copy.form.privacy.rows[3][1]);
+      assert.match(retention, /90/);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), 320);
+
+      await submit(page);
+      await page.waitForFunction(() => document.activeElement?.id === 'fa-demo-company');
+      assert.equal(await page.$eval('#fa-demo-company-error', (error) => error.textContent), copy.errors.company);
+      assert.equal(await page.$eval('#fa-demo-consent-error', (error) => error.textContent), copy.errors.consent);
+      assert.equal(state.posts.length, 0);
+
+      const values = await fillValid(page, { company: 'QA Arabic Locale Building', email: 'qa-ar@example.invalid' });
+      state.responses.push({ status: 503, body: { code: 'XX000', message: 'Temporary test failure' } });
+      await submit(page);
+      await waitForPosts(state, 1);
+      await page.waitForSelector('.fa-form-submit-error p');
+      assert.equal(await page.$eval('.fa-form-submit-error p', (error) => error.textContent), copy.form.failedRequest);
+      assert.equal(await page.$eval('#fa-demo-email', (input) => input.value), values.email);
+      assert.deepEqual(await page.$eval(consent, (input) => [input.checked, input.required]), [true, true]);
+      const { id, ...record } = state.posts[0];
+      assert.match(id, /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i);
+      assert.deepEqual(record, {
+        company_name: values.company,
+        contact_name: values.name,
+        email: values.email,
+        role: 'site',
+        building_count: null,
+        interests: '',
+        consent_granted: true,
+        consent_version: 'fire-safety-demo-v1-2026-11-17',
+        source_path: '/fire-safety-ai',
+      });
+
+      state.responses.push({ status: 201, body: '' });
+      await submit(page);
+      await waitForPosts(state, 2);
+      await page.waitForSelector('.fa-form-success h2');
+      assert.deepEqual(state.posts[1], state.posts[0]);
+      assert.equal(await page.$eval('.fa-form-success h2', (heading) => heading.textContent), copy.form.successTitle);
+    } finally {
+      await page.close();
+    }
   });
 
   await check('desktop, tablet and mobile layouts keep important controls within viewport width', async () => {

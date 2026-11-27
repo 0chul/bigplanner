@@ -6,12 +6,14 @@ import {
   createDemoRequestPayload, EMPTY_DEMO_FORM, validateDemoForm,
   type DemoFormErrors, type DemoFormValues,
 } from '../utils/fireSafetyDemo';
-import { demoRequestCopy, englishDemoFieldErrors } from './fireSafetyDemoRequestCopy';
+import { demoRequestCopy, type DemoRequestFormTranslation } from './fireSafetyDemoRequestCopy';
 import './fire-safety-demo-form.css';
 
-export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 'ko' | 'en' } = {}) {
-  const copy = demoRequestCopy[locale];
-  const Heading = locale === 'en' ? 'h2' : 'h3';
+export default function FireSafetyDemoRequestForm({
+  locale = 'ko', translation,
+}: { locale?: string; translation?: DemoRequestFormTranslation } = {}) {
+  const copy = translation?.form ?? demoRequestCopy.ko;
+  const Heading = translation ? 'h2' : 'h3';
   const [values, setValues] = useState<DemoFormValues>({ ...EMPTY_DEMO_FORM });
   const [errors, setErrors] = useState<DemoFormErrors>({});
   const [submitError, setSubmitError] = useState<'invalidRequest' | 'failedRequest' | ''>('');
@@ -90,7 +92,7 @@ export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 
 
   function fieldError(key: keyof DemoFormValues) {
     const error = errors[key];
-    return error ? <p className="fa-form-error" id={`fa-demo-${key}-error`}>{locale === 'en' ? englishDemoFieldErrors[key] : error}</p> : null;
+    return error ? <p className="fa-form-error" id={`fa-demo-${key}-error`}>{translation?.errors[key] ?? error}</p> : null;
   }
 
   const fieldAttributes = (key: keyof DemoFormValues) => ({
@@ -119,7 +121,7 @@ export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 
           <p className="fa-form-eyebrow">{copy.successLabel}</p>
           <Heading>{copy.successTitle}</Heading>
           <p>{copy.successText}</p>
-          <a href="mailto:bigplanner0799@gmail.com"><Mail size={16} aria-hidden="true" />{copy.emailLabel} bigplanner0799@gmail.com</a>
+          <a href="mailto:bigplanner0799@gmail.com"><Mail size={16} aria-hidden="true" /><span>{copy.emailLabel} <bdi>bigplanner0799@gmail.com</bdi></span></a>
           <button className="fa-form-reset" type="button" onClick={() => {
             setComplete(false);
             requestAnimationFrame(() => formRef.current?.querySelector<HTMLInputElement>('input')?.focus());
@@ -129,7 +131,7 @@ export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 
         <>
           <div className="fa-form-heading"><Heading>{copy.heading}</Heading><span><span aria-hidden="true">*</span> {copy.required}</span></div>
           <p className="fa-form-intro">{copy.introduction}</p>
-          <form ref={formRef} onSubmit={submit} noValidate aria-busy={submitting}>
+          <form ref={formRef} method="post" onSubmit={submit} noValidate aria-busy={submitting}>
             <fieldset disabled={submitting} className="fa-form-fields">
               <legend className="fa-form-sr-only">{copy.legend}</legend>
               <div className="fa-form-field">
@@ -156,7 +158,7 @@ export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 
               </div>
               <div className="fa-form-field">
                 <label htmlFor="fa-demo-email">{copy.email} <span>*</span></label>
-                <input {...fieldAttributes('email')} name="email" type="email" autoComplete="email" inputMode="email" required maxLength={254}
+                <input {...fieldAttributes('email')} name="email" type="email" dir="ltr" autoComplete="email" inputMode="email" required maxLength={254}
                   placeholder={copy.emailPlaceholder} value={values.email} onChange={e => update('email', e.target.value)} />
                 {fieldError('email')}
               </div>
@@ -177,7 +179,7 @@ export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 
                 <label htmlFor="fa-demo-website">{copy.website}</label>
                 <input ref={honeypotRef} id="fa-demo-website" name="website" tabIndex={-1} autoComplete="off" />
               </div>
-              {locale === 'en' && privacyNotice}
+              {translation && privacyNotice}
               <div className="fa-form-consent">
                 <label htmlFor="fa-demo-consent" className="fa-form-check">
                   <input {...fieldAttributes('consent')} name="consent" type="checkbox" required checked={values.consent} onChange={e => update('consent', e.target.checked)} />
@@ -195,7 +197,7 @@ export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 
           </form>
         </>
       )}
-      {(locale === 'ko' || complete) && privacyNotice}
+      {(!translation || complete) && privacyNotice}
     </div>
   );
 }

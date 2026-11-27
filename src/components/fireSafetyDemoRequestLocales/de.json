@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "Demo zum KI-Assistenten für den Gebäudebetrieb anfragen | BigPlanner Partners",
+    "description": "Fragen Sie eine Online-Demo des KI-Assistenten von BigPlanner Partners für Anfragen und Störungsmeldungen in Gewerbegebäuden an.",
+    "back": "Produktdemo ansehen",
+    "heading": "Den KI-Assistenten im Einsatz sehen",
+    "intro": "Sehen Sie, wie Ihr Team Mietermeldungen beim Schichtwechsel übergibt, und besprechen Sie die Abläufe in Ihrem Gebäude mit uns. Das öffentliche Demovideo zeigt eine koreanische Oberfläche mit deutschen Untertiteln."
+  },
+  "form": {
+    "heading": "Online-Demo anfragen",
+    "required": "Pflichtfelder",
+    "introduction": "Nach Ihrer Anfrage melden wir uns per E-Mail, um einen Termin für die Online-Demo zu vereinbaren.",
+    "legend": "Angaben zur Demoanfrage",
+    "company": "Unternehmen oder Organisation",
+    "companyPlaceholder": "Name des Unternehmens oder Gebäudes",
+    "name": "Name der Kontaktperson",
+    "namePlaceholder": "Ihr Name",
+    "role": "Funktion",
+    "rolePlaceholder": "Wählen Sie Ihre Funktion",
+    "roles": {
+      "head-office": "Zentrale der Hausverwaltung",
+      "site": "Verwaltung vor Ort oder Facility-Management-Team",
+      "other": "Sonstige"
+    },
+    "email": "E-Mail-Adresse",
+    "emailPlaceholder": "name@example.com",
+    "buildingCount": "Anzahl der betreuten Gebäude",
+    "buildingCountPlaceholder": "z. B. 3",
+    "interests": "Was möchten Sie in der Demo sehen?",
+    "interestsPlaceholder": "z. B. Meldungen zur Klimaanlage, Hinweise zum Besucherparken oder Schichtübergaben",
+    "interestsHint": "Bitte lassen Sie personenbezogene Daten wie Kontaktdaten von Mietern sowie interne Unterlagen weg.",
+    "optional": "Optional",
+    "website": "Website",
+    "consent": "Ich stimme der Erhebung und Nutzung meiner personenbezogenen Daten zur Bearbeitung meiner Demoanfrage zu.",
+    "consentRequired": "(Pflichtfeld)",
+    "submit": "Demoanfrage senden",
+    "submitting": "Anfrage wird gesendet",
+    "afterSubmit": "Sie können eine Demo ohne Handbücher oder tatsächliche Mietermeldungen anfragen.",
+    "validationSummary": "Prüfen Sie die markierten Felder und versuchen Sie es erneut.",
+    "invalidRequest": "Ihre Anfrage konnte nicht gesendet werden. Prüfen Sie Ihre Angaben und versuchen Sie es erneut.",
+    "failedRequest": "Ihre Anfrage konnte nicht gesendet werden. Ihre Angaben stehen weiterhin im Formular. Versuchen Sie es in Kürze erneut oder schreiben Sie uns an die unten angegebene E-Mail-Adresse.",
+    "successLabel": "Anfrage eingegangen",
+    "successTitle": "Wir haben Ihre Demoanfrage erhalten.",
+    "successText": "Wir melden uns an der angegebenen E-Mail-Adresse, um die Demo zu vereinbaren.",
+    "emailLabel": "Kontakt",
+    "reset": "Weitere Anfrage stellen",
+    "privacy": {
+      "title": "So erheben und nutzen wir Ihre personenbezogenen Daten",
+      "rows": [
+        [
+          "Wer Ihre Daten erhebt und nutzt",
+          "BigPlanner Partners"
+        ],
+        [
+          "Wofür wir Ihre Daten nutzen",
+          "Wir bearbeiten Demoanfragen, besprechen die Einführung und vereinbaren Termine für Online-Demos."
+        ],
+        [
+          "Welche Daten wir erheben",
+          "Name des Unternehmens oder der Organisation, Name der Kontaktperson, E-Mail-Adresse und Funktion. Die Anzahl der betreuten Gebäude und die gewünschten Abläufe erfassen wir nur, wenn Sie diese angeben."
+        ],
+        [
+          "Wie lange wir die Daten aufbewahren",
+          "Bis zu 90 Tage ab Eingang Ihrer Anfrage. Über die unten angegebene E-Mail-Adresse können Sie die Löschung beantragen."
+        ],
+        [
+          "Ihre Entscheidung",
+          "Sie können die Einwilligung verweigern. Für eine Online-Demoanfrage ist Ihre Einwilligung erforderlich."
+        ]
+      ],
+      "contact": "Fragen und Löschanfragen"
+    }
+  },
+  "errors": {
+    "company": "Geben Sie den Namen des Unternehmens oder der Organisation mit höchstens 120 Zeichen ein.",
+    "name": "Geben Sie den Namen der Kontaktperson mit höchstens 80 Zeichen ein.",
+    "email": "Prüfen Sie, ob die E-Mail-Adresse gültig ist.",
+    "role": "Wählen Sie Ihre Funktion aus.",
+    "buildingCount": "Geben Sie eine ganze Zahl von 1 bis 100.000 ein.",
+    "interests": "Beschreiben Sie in höchstens 1.000 Zeichen, was Sie sehen möchten.",
+    "consent": "Bitte stimmen Sie der Erhebung und Nutzung personenbezogener Daten für Ihre Demoanfrage zu."
+  }
+}

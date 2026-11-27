@@ -1,0 +1,68 @@
+{
+  "page": {
+    "title": "Be om en KI-demo for eiendomsdrift | BigPlanner Partners",
+    "description": "Be om en nettbasert demo av BigPlanner Partners’ KI-baserte løsning for leietakermeldinger i næringsbygg.",
+    "back": "Se produktdemoen",
+    "heading": "Se hvordan den KI-baserte serviceløsningen fungerer",
+    "intro": "Se hvordan leietakermeldinger følges opp på tvers av vaktskifter, og snakk med oss om arbeidsflyten i bygget ditt. Den offentlige demoen viser et koreansk grensesnitt med norsk teksting."
+  },
+  "form": {
+    "heading": "Be om en nettbasert demo",
+    "required": "Obligatoriske felt",
+    "introduction": "Etter at du har sendt inn forespørselen, kontakter vi deg på e-post for å avtale en nettbasert demo.",
+    "legend": "Opplysninger om demoforespørselen",
+    "company": "Bedrift eller organisasjon",
+    "companyPlaceholder": "Navn på bedriften eller bygget",
+    "name": "Kontaktpersonens navn",
+    "namePlaceholder": "Navnet ditt",
+    "role": "Rolle",
+    "rolePlaceholder": "Velg rollen din",
+    "roles": {
+      "head-office": "Hovedkontor for eiendomsforvaltning",
+      "site": "Lokal eiendomsforvaltning eller driftsteam",
+      "other": "Annet"
+    },
+    "email": "E-postadresse",
+    "emailPlaceholder": "deg@example.com",
+    "buildingCount": "Antall bygg du forvalter",
+    "buildingCountPlaceholder": "F.eks. 3",
+    "interests": "Hva vil du se i demoen?",
+    "interestsPlaceholder": "F.eks. registrering av kjøleproblemer, informasjon om gjesteparkering eller vaktoverlevering",
+    "interestsHint": "Utelat personopplysninger som kontaktinformasjon om faktiske leietakere, og internt materiale.",
+    "optional": "Valgfritt",
+    "website": "Nettsted",
+    "consent": "Jeg samtykker til at personopplysningene mine samles inn og brukes til å behandle demoforespørselen min.",
+    "consentRequired": "(Obligatorisk)",
+    "submit": "Send demoforespørselen",
+    "submitting": "Sender forespørselen",
+    "afterSubmit": "Du kan be om en demo uten å legge ved håndbøker eller faktiske leietakermeldinger.",
+    "validationSummary": "Kontroller de markerte feltene og prøv igjen.",
+    "invalidRequest": "Vi kunne ikke sende forespørselen. Kontroller opplysningene og prøv igjen.",
+    "failedRequest": "Vi kunne ikke sende forespørselen. Opplysningene er fortsatt i skjemaet. Prøv igjen om litt, eller kontakt oss på e-postadressen nedenfor.",
+    "successLabel": "Forespørselen er mottatt",
+    "successTitle": "Vi har mottatt demoforespørselen din.",
+    "successText": "Vi kontakter deg på e-postadressen du oppga for å avtale demoen.",
+    "emailLabel": "Kontakt",
+    "reset": "Start en ny forespørsel",
+    "privacy": {
+      "title": "Slik samler vi inn og bruker personopplysningene dine",
+      "rows": [
+        ["Hvem samler inn og bruker opplysningene?", "BigPlanner Partners"],
+        ["Hvorfor bruker vi opplysningene?", "For å behandle demoforespørsler, drøfte innføring av løsningen og avtale nettbaserte demoer."],
+        ["Hvilke opplysninger samler vi inn?", "Bedrifts- eller organisasjonsnavn, kontaktpersonens navn, e-postadresse og rolle. Vi samler bare inn antall bygg du forvalter og arbeidsflytene du er interessert i hvis du oppgir dem."],
+        ["Hvor lenge lagrer vi opplysningene?", "I opptil 90 dager fra datoen vi mottar forespørselen. Du kan be om sletting via e-postadressen nedenfor."],
+        ["Ditt valg", "Du kan velge å avstå fra å samtykke. Samtykke er nødvendig for å sende inn en forespørsel om en nettbasert demo."]
+      ],
+      "contact": "Spørsmål og forespørsler om sletting"
+    }
+  },
+  "errors": {
+    "company": "Skriv inn et bedrifts- eller organisasjonsnavn på maksimalt 120 tegn.",
+    "name": "Skriv inn kontaktpersonens navn med maksimalt 80 tegn.",
+    "email": "Kontroller at e-postadressen er gyldig.",
+    "role": "Velg rollen din.",
+    "buildingCount": "Skriv inn et heltall fra 1 til 100 000.",
+    "interests": "Beskriv hva du vil se i demoen med maksimalt 1 000 tegn.",
+    "consent": "Samtykk til innsamling og bruk av personopplysninger for å behandle demoforespørselen din."
+  }
+}

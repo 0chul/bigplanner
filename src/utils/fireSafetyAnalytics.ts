@@ -1,4 +1,4 @@
-import { fireSafetyEnglishDemoPath } from './fireSafetyLocales.js';
+import { fireSafetyPath, fireSafetyRequestPages } from './fireSafetyLocales.js';
 
 type FireSafetyEvent =
   | 'landing_view'
@@ -22,12 +22,11 @@ export function trackFireSafetyEvent(
   const safeProperties = Object.fromEntries(
     Object.entries(properties).filter(([key]) => allowedKeys.includes(key)),
   );
-  const englishRequest = fireSafetyEnglishDemoPath.slice(0, -1);
   const currentPath = window.location?.pathname.replace(/\/$/, '');
   try {
     analytics('event', `fire_safety_${name}`, {
       ...safeProperties,
-      page_path: currentPath === englishRequest ? englishRequest : '/fire-safety-ai',
+      page_path: fireSafetyRequestPages.has(`${currentPath}/`) ? currentPath : fireSafetyPath.slice(0, -1),
     });
   } catch {
     // Analytics availability must never affect navigation or an application.
