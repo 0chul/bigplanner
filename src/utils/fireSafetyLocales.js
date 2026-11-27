@@ -1,5 +1,6 @@
 export const fireSafetyPath = '/fire-safety-ai/';
 export const fireSafetyEnglishPath = `${fireSafetyPath}en/`;
+export const fireSafetyEnglishDemoPath = `${fireSafetyEnglishPath}request/`;
 export const facilitiesHandoverPath = `${fireSafetyEnglishPath}shift-handover/`;
 export const siteOrigin = 'https://bigplanner.co.kr';
 

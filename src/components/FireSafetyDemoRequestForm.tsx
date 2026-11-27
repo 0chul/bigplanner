@@ -3,15 +3,18 @@ import { ArrowRight, Check, CheckCircle2, LoaderCircle, Mail } from 'lucide-reac
 import { supabase } from '../supabase';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import {
-  createDemoRequestPayload, DEMO_ROLES, EMPTY_DEMO_FORM, validateDemoForm,
+  createDemoRequestPayload, EMPTY_DEMO_FORM, validateDemoForm,
   type DemoFormErrors, type DemoFormValues,
 } from '../utils/fireSafetyDemo';
+import { demoRequestCopy, englishDemoFieldErrors } from './fireSafetyDemoRequestCopy';
 import './fire-safety-demo-form.css';
 
-export default function FireSafetyDemoRequestForm() {
+export default function FireSafetyDemoRequestForm({ locale = 'ko' }: { locale?: 'ko' | 'en' } = {}) {
+  const copy = demoRequestCopy[locale];
+  const Heading = locale === 'en' ? 'h2' : 'h3';
   const [values, setValues] = useState<DemoFormValues>({ ...EMPTY_DEMO_FORM });
   const [errors, setErrors] = useState<DemoFormErrors>({});
-  const [submitError, setSubmitError] = useState('');
+  const [submitError, setSubmitError] = useState<'invalidRequest' | 'failedRequest' | ''>('');
   const [submitting, setSubmitting] = useState(false);
   const [complete, setComplete] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -43,7 +46,7 @@ export default function FireSafetyDemoRequestForm() {
       return;
     }
     if (honeypotRef.current?.value) {
-      setSubmitError('신청을 전송하지 못했습니다. 입력 내용을 확인한 뒤 다시 시도해 주세요.');
+      setSubmitError('invalidRequest');
       return;
     }
 
@@ -75,7 +78,7 @@ export default function FireSafetyDemoRequestForm() {
       attemptRef.current = null;
       trackFireSafetyEvent('demo_request_success', { role: payload.role });
     } catch {
-      setSubmitError('신청을 전송하지 못했습니다. 입력 내용은 유지되어 있습니다. 잠시 후 다시 시도해 주세요. 계속 어려우시면 아래 이메일로 문의해 주세요.');
+      setSubmitError('failedRequest');
       trackFireSafetyEvent('demo_request_error');
     } finally {
       window.clearTimeout(timeout);
@@ -86,7 +89,8 @@ export default function FireSafetyDemoRequestForm() {
   }
 
   function fieldError(key: keyof DemoFormValues) {
-    return errors[key] ? <p className="fa-form-error" id={`fa-demo-${key}-error`}>{errors[key]}</p> : null;
+    const error = errors[key];
+    return error ? <p className="fa-form-error" id={`fa-demo-${key}-error`}>{locale === 'en' ? englishDemoFieldErrors[key] : error}</p> : null;
   }
 
   const fieldAttributes = (key: keyof DemoFormValues) => ({
@@ -95,100 +99,103 @@ export default function FireSafetyDemoRequestForm() {
     'aria-describedby': errors[key] ? `fa-demo-${key}-error` : undefined,
   });
 
+  const privacyNotice = (
+    <details className="fa-form-privacy" id="demo-privacy">
+      <summary>{copy.privacy.title}</summary>
+      <dl>
+        {copy.privacy.rows.map(([term, description]) => (
+          <div key={term}><dt>{term}</dt><dd>{description}</dd></div>
+        ))}
+        <div><dt>{copy.privacy.contact}</dt><dd><a href="mailto:bigplanner0799@gmail.com">bigplanner0799@gmail.com</a></dd></div>
+      </dl>
+    </details>
+  );
+
   return (
-    <div className="fa-request-form">
+    <div className="fa-request-form" lang={locale}>
       {complete ? (
         <div className="fa-form-success" ref={successRef} tabIndex={-1} role="status">
           <span className="fa-form-success-icon"><CheckCircle2 size={32} aria-hidden="true" /></span>
-          <p className="fa-form-eyebrow">신청 완료</p>
-          <h3>데모 신청이 접수되었습니다.</h3>
-          <p>입력하신 이메일로 일정 조율을 안내드리겠습니다.</p>
-          <a href="mailto:bigplanner0799@gmail.com"><Mail size={16} aria-hidden="true" />문의 bigplanner0799@gmail.com</a>
+          <p className="fa-form-eyebrow">{copy.successLabel}</p>
+          <Heading>{copy.successTitle}</Heading>
+          <p>{copy.successText}</p>
+          <a href="mailto:bigplanner0799@gmail.com"><Mail size={16} aria-hidden="true" />{copy.emailLabel} bigplanner0799@gmail.com</a>
           <button className="fa-form-reset" type="button" onClick={() => {
             setComplete(false);
             requestAnimationFrame(() => formRef.current?.querySelector<HTMLInputElement>('input')?.focus());
-          }}>다른 신청 작성</button>
+          }}>{copy.reset}</button>
         </div>
       ) : (
         <>
-          <div className="fa-form-heading"><h3>데모 시연 신청</h3><span><span aria-hidden="true">*</span> 필수 입력</span></div>
-          <p className="fa-form-intro">신청해 주시면 이메일로 온라인 시연 일정을 조율합니다.</p>
+          <div className="fa-form-heading"><Heading>{copy.heading}</Heading><span><span aria-hidden="true">*</span> {copy.required}</span></div>
+          <p className="fa-form-intro">{copy.introduction}</p>
           <form ref={formRef} onSubmit={submit} noValidate aria-busy={submitting}>
             <fieldset disabled={submitting} className="fa-form-fields">
-              <legend className="fa-form-sr-only">데모 신청 정보</legend>
+              <legend className="fa-form-sr-only">{copy.legend}</legend>
               <div className="fa-form-field">
-                <label htmlFor="fa-demo-company">회사·기관명 <span>*</span></label>
+                <label htmlFor="fa-demo-company">{copy.company} <span>*</span></label>
                 <input {...fieldAttributes('company')} name="company" autoComplete="organization" required maxLength={120}
-                  placeholder="회사 또는 관리 건물명을 입력해 주세요" value={values.company} onChange={e => update('company', e.target.value)} />
+                  placeholder={copy.companyPlaceholder} value={values.company} onChange={e => update('company', e.target.value)} />
                 {fieldError('company')}
               </div>
               <div className="fa-form-row">
                 <div className="fa-form-field">
-                  <label htmlFor="fa-demo-name">담당자명 <span>*</span></label>
+                  <label htmlFor="fa-demo-name">{copy.name} <span>*</span></label>
                   <input {...fieldAttributes('name')} name="name" autoComplete="name" required maxLength={80}
-                    placeholder="성함" value={values.name} onChange={e => update('name', e.target.value)} />
+                    placeholder={copy.namePlaceholder} value={values.name} onChange={e => update('name', e.target.value)} />
                   {fieldError('name')}
                 </div>
                 <div className="fa-form-field">
-                  <label htmlFor="fa-demo-role">담당 업무 <span>*</span></label>
+                  <label htmlFor="fa-demo-role">{copy.role} <span>*</span></label>
                   <select {...fieldAttributes('role')} name="role" required value={values.role} onChange={e => update('role', e.target.value)}>
-                    <option value="">선택해 주세요</option>
-                    {Object.entries(DEMO_ROLES).map(([value, label]) => <option value={value} key={value}>{label}</option>)}
+                    <option value="">{copy.rolePlaceholder}</option>
+                    {Object.entries(copy.roles).map(([value, label]) => <option value={value} key={value}>{label}</option>)}
                   </select>
                   {fieldError('role')}
                 </div>
               </div>
               <div className="fa-form-field">
-                <label htmlFor="fa-demo-email">이메일 <span>*</span></label>
+                <label htmlFor="fa-demo-email">{copy.email} <span>*</span></label>
                 <input {...fieldAttributes('email')} name="email" type="email" autoComplete="email" inputMode="email" required maxLength={254}
-                  placeholder="demo@company.co.kr" value={values.email} onChange={e => update('email', e.target.value)} />
+                  placeholder={copy.emailPlaceholder} value={values.email} onChange={e => update('email', e.target.value)} />
                 {fieldError('email')}
               </div>
               <div className="fa-form-field">
-                <label htmlFor="fa-demo-buildingCount">관리 건물 수 <small>선택</small></label>
+                <label htmlFor="fa-demo-buildingCount">{copy.buildingCount} <small>{copy.optional}</small></label>
                 <input {...fieldAttributes('buildingCount')} name="buildingCount" type="number" inputMode="numeric" min={1} max={100000} step={1}
-                  placeholder="예: 3" value={values.buildingCount} onChange={e => update('buildingCount', e.target.value)} />
+                  placeholder={copy.buildingCountPlaceholder} value={values.buildingCount} onChange={e => update('buildingCount', e.target.value)} />
                 {fieldError('buildingCount')}
               </div>
               <div className="fa-form-field">
-                <label htmlFor="fa-demo-interests">데모에서 확인하고 싶은 업무 <small>선택</small></label>
+                <label htmlFor="fa-demo-interests">{copy.interests} <small>{copy.optional}</small></label>
                 <textarea {...fieldAttributes('interests')} name="interests" rows={3} maxLength={1000}
-                  placeholder="예: 냉난방 민원 접수, 주차 안내, 교대 시 접수 이력 확인" value={values.interests} onChange={e => update('interests', e.target.value)} />
-                <p className="fa-form-hint">실제 민원인의 연락처 등 개인정보나 내부 자료는 입력하지 마세요.</p>
+                  placeholder={copy.interestsPlaceholder} value={values.interests} onChange={e => update('interests', e.target.value)} />
+                <p className="fa-form-hint">{copy.interestsHint}</p>
                 {fieldError('interests')}
               </div>
               <div className="fa-form-honeypot" aria-hidden="true">
-                <label htmlFor="fa-demo-website">웹사이트</label>
+                <label htmlFor="fa-demo-website">{copy.website}</label>
                 <input ref={honeypotRef} id="fa-demo-website" name="website" tabIndex={-1} autoComplete="off" />
               </div>
+              {locale === 'en' && privacyNotice}
               <div className="fa-form-consent">
                 <label htmlFor="fa-demo-consent" className="fa-form-check">
                   <input {...fieldAttributes('consent')} name="consent" type="checkbox" required checked={values.consent} onChange={e => update('consent', e.target.checked)} />
-                  <span>데모 신청을 위한 개인정보 수집·이용에 동의합니다. <strong>(필수)</strong></span>
+                  <span>{copy.consent} <strong>{copy.consentRequired}</strong></span>
                 </label>
                 {fieldError('consent')}
               </div>
               <button type="submit" className="fa-form-submit" disabled={submitting}>
-                {submitting ? <><LoaderCircle className="fa-form-spinner" size={18} aria-hidden="true" />접수 중입니다</> : <>데모 시연 신청<ArrowRight size={18} aria-hidden="true" /></>}
+                {submitting ? <><LoaderCircle className="fa-form-spinner" size={18} aria-hidden="true" />{copy.submitting}</> : <>{copy.submit}<ArrowRight size={18} aria-hidden="true" /></>}
               </button>
-              <p className="fa-form-after"><Check size={14} aria-hidden="true" />매뉴얼 파일이나 실제 민원 자료 없이 신청할 수 있습니다.</p>
+              <p className="fa-form-after"><Check size={14} aria-hidden="true" />{copy.afterSubmit}</p>
             </fieldset>
-            {Object.values(errors).some(Boolean) && <p className="fa-form-error-summary" role="alert">입력 내용을 확인해 주세요. 표시된 항목을 수정한 뒤 다시 신청할 수 있습니다.</p>}
-            {submitError && <div className="fa-form-submit-error" role="alert"><p>{submitError}</p><a href="mailto:bigplanner0799@gmail.com">bigplanner0799@gmail.com</a></div>}
+            {Object.values(errors).some(Boolean) && <p className="fa-form-error-summary" role="alert">{copy.validationSummary}</p>}
+            {submitError && <div className="fa-form-submit-error" role="alert"><p>{copy[submitError]}</p><a href="mailto:bigplanner0799@gmail.com">bigplanner0799@gmail.com</a></div>}
           </form>
         </>
       )}
-      <details className="fa-form-privacy" id="demo-privacy">
-        <summary>개인정보 수집·이용 안내</summary>
-        <dl>
-          <div><dt>수집·이용 주체</dt><dd>빅플래너파트너스</dd></div>
-          <div><dt>이용 목적</dt><dd>데모 신청 접수, 도입 상담 및 온라인 시연 일정 조율</dd></div>
-          <div><dt>수집 항목</dt><dd>회사·기관명, 담당자명, 이메일, 담당 업무. 관리 건물 수와 관심 업무는 입력한 경우에만 수집합니다.</dd></div>
-          <div><dt>보유 기간</dt><dd>접수일로부터 최대 90일. 삭제를 원하시면 아래 이메일로 요청할 수 있습니다.</dd></div>
-          <div><dt>동의 거부</dt><dd>동의를 거부할 수 있으며, 이 경우 온라인 데모 신청이 제한됩니다.</dd></div>
-          <div><dt>문의·삭제 요청</dt><dd><a href="mailto:bigplanner0799@gmail.com">bigplanner0799@gmail.com</a></dd></div>
-        </dl>
-      </details>
+      {(locale === 'ko' || complete) && privacyNotice}
     </div>
   );
 }

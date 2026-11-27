@@ -68,6 +68,9 @@ test('analytics omits personal form fields and failures never break an applicati
   globalThis.window = { gtag: (...args) => events.push(args) };
   trackFireSafetyEvent('demo_request_success', { role: 'site', email: 'private@example.invalid', company: 'private-company' });
   assert.deepEqual(events, [['event', 'fire_safety_demo_request_success', { role: 'site', page_path: '/fire-safety-ai' }]]);
+  globalThis.window.location = { pathname: '/fire-safety-ai/en/request/', search: '?email=private@example.invalid' };
+  trackFireSafetyEvent('demo_request_success', { role: 'site', email: 'private@example.invalid' });
+  assert.deepEqual(events[1], ['event', 'fire_safety_demo_request_success', { role: 'site', page_path: '/fire-safety-ai/en/request' }]);
   globalThis.window = { gtag: () => { throw new Error('Analytics blocked'); } };
   assert.doesNotThrow(() => trackFireSafetyEvent('demo_cta_click', { source: 'hero' }));
   delete globalThis.window;

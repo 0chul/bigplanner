@@ -26,9 +26,9 @@
     ["How do we handle an emergency?", "Follow your building’s established emergency contacts and procedures for fire, safety incidents or other urgent situations."]
   ],
   "contactTitle": "Request an online demo",
-  "contactText": "Email us your organisation, country and a short description of the workflow you want to review. That’s enough to arrange an online demo.",
+  "contactText": "Tell us which building workflow you want to review. We’ll arrange the online demo by email.",
   "contactAction": "Request a demo by email",
-  "formAction": "Use the Korean request form",
+  "formAction": "Request a demo online",
   "privacy": "Privacy policy (Korean)",
   "navLabel": "Choose language",
   "videoFallback": "Open the demo video file",

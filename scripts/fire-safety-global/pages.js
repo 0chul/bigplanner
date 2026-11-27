@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 
 const pagePaths = new Set([...fireSafetyTranslations.map(({ path }) => path), facilitiesHandoverPath]);
 const artworkPath = '/images/fire-safety-building.webp';
@@ -27,6 +27,8 @@ function renderLanding(language, content) {
   const scenes = content.subtitles.slice(0, 4).map((text) => `<li>${escapeHtml(text)}</li>`).join('\n          ');
   const faq = content.faq.map(([question, answer]) =>
     `<details><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join('\n        ');
+  const requestUrl = `${fireSafetyEnglishDemoPath}?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}`;
+  const mailUrl = `mailto:${demoEmail}?subject=${encodeURIComponent(content.subject)}`;
   return `<!doctype html>
 <html lang="${code}" dir="${direction}">
 <head>
@@ -103,8 +105,11 @@ ${alternates}
         <h2 id="contact-title">${escapeHtml(content.contactTitle)}</h2>
         <p>${escapeHtml(content.contactText)}</p>
         <div class="links">
-          <a class="button" href="mailto:${demoEmail}?subject=${encodeURIComponent(content.subject)}">${escapeHtml(content.contactAction)}</a>
-          <a href="${fireSafetyPath}?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=${code.toLowerCase()}#demo-request" hreflang="ko">${escapeHtml(content.formAction)}</a>
+          ${code === 'en'
+    ? `<a class="button" href="${requestUrl}">${escapeHtml(content.formAction)}</a>
+          <a href="${mailUrl}">${escapeHtml(content.contactAction)}</a>`
+    : `<a class="button" href="${mailUrl}">${escapeHtml(content.contactAction)}</a>
+          <a href="${requestUrl}" hreflang="en">${escapeHtml(content.formAction)}</a>`}
         </div>
         <p class="email" dir="ltr">${demoEmail}</p>
       </div>

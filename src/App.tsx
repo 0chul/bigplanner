@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import { AuthProvider } from './contexts/AuthContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { fireSafetyHost, fireSafetyPath } from './utils/fireSafetyLanding';
+import { fireSafetyEnglishDemoPath } from './utils/fireSafetyLocales.js';
 
 // Lazy load routes for PRPL pattern (Lazy-load remaining routes)
 const About = lazy(() => import('./pages/About'));
@@ -30,6 +31,7 @@ const AdminFireSafetyLeads = lazy(() => import('./pages/admin/AdminFireSafetyLea
 const AdminPartnerships = lazy(() => import('./pages/admin/AdminPartnerships'));
 const SharedInquiry = lazy(() => import('./pages/public/SharedInquiry'));
 const FireSafetyAI = lazy(() => import('./pages/FireSafetyAI'));
+const FireSafetyEnglishDemo = lazy(() => import('./pages/FireSafetyEnglishDemo'));
 const AdminFireSafetyDemos = lazy(() => import('./pages/admin/AdminFireSafetyDemos'));
 
 // Loading fallback component
@@ -49,6 +51,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={window.location.hostname === fireSafetyHost ? <FireSafetyAI /> : <Home />} />
               <Route path={fireSafetyPath} element={<FireSafetyAI />} />
+              <Route path={fireSafetyEnglishDemoPath} element={<FireSafetyEnglishDemo />} />
               <Route path="/about" element={<About />} />
               <Route path="/service" element={<Service />} />
               <Route path="/partners" element={<Partners />} />

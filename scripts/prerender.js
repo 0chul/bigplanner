@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishPath, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { facilitiesHandoverPath, fireSafetyAlternates, fireSafetyEnglishDemoPath, fireSafetyEnglishPath, fireSafetyPath, fireSafetyTranslations, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +15,7 @@ const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
 const fireSafetyStaticPaths = [...fireSafetyKoreanLinks, facilitiesHandoverPath];
 const servicePath = '/service/';
+const requiredSpaRoutes = new Set(['/', servicePath, fireSafetyPath, fireSafetyEnglishDemoPath]);
 
 async function verifyFireSafetyPage(page) {
   await page.waitForSelector('#demo-request form button[type="submit"]');
@@ -38,6 +39,19 @@ async function verifyFireSafetyPage(page) {
       }
     }
   }, fireSafetyAlternates, siteOrigin);
+}
+
+async function verifyEnglishDemoRequest(page) {
+  await page.waitForSelector('#demo-request form [name="consent"]');
+  await page.evaluate((expectedUrl) => {
+    const robots = document.querySelectorAll('meta[name="robots"]');
+    const canonical = document.querySelectorAll('link[rel="canonical"]');
+    const submit = document.querySelector('#demo-request form button[type="submit"]');
+    if (document.documentElement.lang !== 'en' || robots.length !== 1 || !robots[0].content.includes('noindex') ||
+        canonical.length !== 1 || canonical[0].href !== expectedUrl || !submit?.textContent.includes('demo request')) {
+      throw new Error('Invalid English demo request page.');
+    }
+  }, siteOrigin + fireSafetyEnglishDemoPath);
 }
 
 async function verifyServicePage(page) {
@@ -111,9 +125,9 @@ async function prerender() {
     const languageDirectory = path.join(distPath, languagePath);
     const html = fs.readFileSync(path.join(languageDirectory, 'index.html'), 'utf-8');
     const captions = fs.readFileSync(path.join(languageDirectory, 'demo.vtt'), 'utf-8');
-    if (!captions.startsWith('WEBVTT\n') || !fireSafetyAlternates.every(({ code, path }) =>
+    if (!captions.startsWith('WEBVTT\n') || !html.includes(`href="${fireSafetyEnglishDemoPath}?`) || !fireSafetyAlternates.every(({ code, path }) =>
       html.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
-      throw new Error(`Missing captions or language alternates for ${languagePath}`);
+      throw new Error(`Missing demo request link, captions, or language alternates for ${languagePath}`);
     }
   }
   const workbookName = 'facilities-shift-handover-log.xlsx';
@@ -141,7 +155,9 @@ async function prerender() {
   const targetUrls = process.env.PRERENDER_ALL === 'true' ? spaUrls : spaUrls.slice(0, 25);
   if (!targetUrls.includes(fireSafetyPath)) throw new Error('Missing fire safety landing page in sitemap.');
   if (!targetUrls.includes(servicePath)) throw new Error('Missing services page in sitemap.');
-  console.log(`Prerendering ${targetUrls.length} of ${urls.length} URLs for fast, reliable build...`);
+  // The form is for visitors from the localized landings and is intentionally absent from the sitemap.
+  targetUrls.push(fireSafetyEnglishDemoPath);
+  console.log(`Prerendering ${targetUrls.length} routes for fast, reliable build...`);
 
   // 3. Launch Puppeteer
   const browser = await puppeteer.launch({
@@ -176,10 +192,11 @@ async function prerender() {
         const activePort = server.address()?.port || port;
         await page.goto(`http://localhost:${activePort}${url}`, { 
           waitUntil: 'domcontentloaded', 
-          timeout: url === fireSafetyPath || url === servicePath ? 30000 : 6000
+          timeout: requiredSpaRoutes.has(url) ? 30000 : 6000
         });
         
         if (url === fireSafetyPath) await verifyFireSafetyPage(page);
+        else if (url === fireSafetyEnglishDemoPath) await verifyEnglishDemoRequest(page);
         else if (url === servicePath) await verifyServicePage(page);
         else if (url === '/') await page.waitForSelector('#services-overview a[href="' + fireSafetyPath + '"]');
         else await new Promise(r => setTimeout(r, 100));
@@ -196,7 +213,7 @@ async function prerender() {
         fs.writeFileSync(filePath, html);
         console.log(`[${index + 1}/${targetUrls.length}] Saved ${routePath}`);
       } catch (error) {
-        if (url === fireSafetyPath || url === servicePath || url === '/') throw error;
+        if (requiredSpaRoutes.has(url)) throw error;
         console.warn(`[${index + 1}/${targetUrls.length}] Skip ${url}: ${error.message}`);
       } finally {
         await page.close().catch(() => {});
