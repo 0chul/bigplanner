@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAdoptionPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishPilotKitPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishPilotKitPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { fireSafetyProductStructuredData } from '../../src/utils/fireSafetyStructuredData.js';
+import { readAdoptionCopy, renderAdoptionPages } from './adoption-guide.js';
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilitiesIndex } from './facilities-index.js';
 import { facilityResourceTitle, renderFacilityResourcePages } from './resource-library.js';
@@ -12,6 +13,7 @@ const pagePaths = new Set([
   fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath,
   ...fireSafetyLanguages.flatMap(({ resourcesPath, workloadPath }) => [resourcesPath, workloadPath]),
   ...fireSafetyTranslations.flatMap(({ path, handoverPath, videoPath }) => [path, handoverPath, videoPath]),
+  ...fireSafetyTranslations.map(({ adoptionPath }) => adoptionPath).filter(Boolean),
 ]);
 const contentTypes = { '.vtt': 'text/vtt', '.txt': 'text/plain', '.html': 'text/html' };
 const artworkPath = '/images/fire-safety-building.webp';
@@ -32,8 +34,9 @@ function resourceFeedTags({ code, feedPath }, guideTitle) {
 }
 
 function renderLanding(language, content, handover) {
-  const { code, label, path, handoverPath, requestPath, videoPath, resourcesPath, workloadPath, locale, direction = 'ltr' } = language;
+  const { code, label, path, handoverPath, requestPath, videoPath, resourcesPath, workloadPath, adoptionPath, locale, direction = 'ltr' } = language;
   const workloadLabel = readWorkloadCopy(code).open;
+  const adoptionLabel = adoptionPath && (code === 'en' ? 'Facilities AI pilot checklist' : readAdoptionCopy(code).title);
   const { rssHead, rssLink } = resourceFeedTags(language, handover.h1);
   const url = `${siteOrigin}${path}`;
   const title = escapeHtml(`${content.title} | BigPlanner Partners`);
@@ -111,11 +114,11 @@ ${alternates}
       <a class="resource-link" href="${handoverPath}">${escapeHtml(handover.landingLink)}</a>
       <div class="links">
         ${code === 'en' ? `
-          <a href="${fireSafetyEnglishAdoptionPath}">Facilities AI pilot checklist</a>
           <a href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a>
           <a href="${fireSafetyEnglishFaqPath}">Building FAQ worksheet</a>
           <a href="${fireSafetyEnglishPilotKitPath}" download>Facilities AI pilot starter kit (ZIP)</a>` : ''}
         <a href="${workloadPath}">${escapeHtml(workloadLabel)}</a>
+        ${adoptionPath ? `<a href="${adoptionPath}">${escapeHtml(adoptionLabel)}</a>` : ''}
       </div>
     </section>
     <section class="demo-band" id="demo" aria-labelledby="demo-title">
@@ -346,6 +349,7 @@ export function fireSafetyGlobalPages() {
   });
   const files = new Map([
     ['/llms.txt', renderFacilitiesIndex()],
+    ...renderAdoptionPages(),
     ...renderFaqManualPages(styles),
     ...renderFacilityResourcePages(styles, localizations),
     ...renderWorkloadCalculatorPages(styles),

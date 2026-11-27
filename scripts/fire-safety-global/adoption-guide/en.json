@@ -1,0 +1,90 @@
+{
+  "title": "AI tenant service desk pilot checklist for facilities teams",
+  "description": "Plan a one-building pilot. Choose which tenant requests to handle, agree how staff will review and hand over cases, and compare records before and after.",
+  "shareDescription": "Plan which requests to handle, who takes over at shift change, and what to measure in a one-building pilot.",
+  "heading": "Pilot an AI tenant service desk in one building",
+  "intro": "Choose a commercial building with recent request records and staff from both shifts who can take part. Ask the facilities lead to agree the pilot scope with the people who answer questions, assign work and receive open cases.",
+  "open": "Open the checklist",
+  "print": "Print checklist",
+  "share": {
+    "summary": "Share this checklist",
+    "address": "Page address",
+    "native": "Share to an app",
+    "copy": "Copy link",
+    "email": "Share by email",
+    "copied": "Link copied.",
+    "manual": "Select and copy the page address above."
+  },
+  "scopeHeading": "Six checks before you start",
+  "scope": [
+    {
+      "heading": "Choose the building and request types",
+      "text": "Review recent records. Pick two or three request types with enough examples to test, such as visitor parking, weak cooling and after-hours HVAC. Record the building, hours, request types and pilot owner."
+    },
+    {
+      "heading": "Agree which answers and decisions need review",
+      "text": "For routine questions, record the approved manual section and who updates it. Test one answer against the latest wording. For site visits, capture the location and issue. Authorised staff review and decide requests that need approval."
+    },
+    {
+      "heading": "Assign an owner on each shift",
+      "text": "Identify who reviews new requests, assigns follow-up and handles cases outside the pilot. Walk through one unassigned request at shift change to confirm who picks it up."
+    },
+    {
+      "heading": "Hand over open cases in the same record",
+      "text": "Record the ticket ID, location, issue, assignment, status, next action and check-in time. Ask the incoming shift to record when it reviewed the case."
+    },
+    {
+      "heading": "Decide where the official record lives",
+      "text": "Choose the authoritative system. Confirm which phone, email and work-order integrations the pilot supports. Test one issue reported twice to see how staff will reconcile the records."
+    },
+    {
+      "heading": "Confirm access and retention",
+      "text": "Agree who can view or edit tenant information. Decide when contact details or photos are needed, how long to retain them and who handles deletion. Use fictional or redacted records for the walkthrough."
+    }
+  ],
+  "safety": "For emergencies, use the building’s established emergency contacts and response procedures.",
+  "exampleHeading": "Fictional cooling request at shift change",
+  "example": [
+    {
+      "label": "Intake",
+      "value": "DEMO-012. On 5 October at 20:35 local time, a tenant reports weak cooling in the shared meeting room on the fifth floor of Building A."
+    },
+    {
+      "label": "Supervisor review",
+      "value": "The supervisor checks the location and issue, assigns the morning facilities technician and marks the request in progress."
+    },
+    {
+      "label": "Incoming shift",
+      "value": "At 07:00 the next morning, incoming staff confirm the assignment and record a 07:30 check of the room by the technician."
+    }
+  ],
+  "watch": "Watch the 27-second demo with English captions",
+  "interfaceNote": "The interface shown is Korean.",
+  "pilotHeading": "Compare a small baseline with the pilot",
+  "baseline": "Decide in advance what would justify continuing. For example, compare five working days before the pilot with five during it. Match weekdays, day and night shift windows, and request types. Count duplicate reports once using the ticket ID or the time, location and issue.",
+  "metrics": [
+    {
+      "title": "Record completeness.",
+      "text": "Divide cases with the location, issue and assignment status recorded by all in-scope cases that needed a site check."
+    },
+    {
+      "title": "Handover acknowledgement.",
+      "text": "Divide open cases whose first handover includes a timestamped check of the status and next action by all open cases that needed handover."
+    }
+  ],
+  "review": "Record both counts for each measure. If no cases qualify, record 0 of 0 and leave the rate blank. Review missing records and delayed assignments with both shifts before deciding whether to expand.",
+  "referenceIntro": "Further reading for pilot design and helpdesk scope.",
+  "referenceLabel": "UK government facilities management standard",
+  "pricingHeading": "Pricing and demo",
+  "pricing": "BigPlanner Partners quotes setup and ongoing support per project, based on the number of buildings, manuals, integrations and support needed. Bring two sample workflows to the online demo. Fictional examples are enough.",
+  "demoLabel": "Request an online demo",
+  "resourcesHeading": "Facilities resources",
+  "materials": [
+    "Shift handover checklist and Excel log",
+    "Building FAQ guide and worksheet",
+    "Routine enquiry workload calculator",
+    "All English facilities resources"
+  ],
+  "rss": "Facilities resources RSS",
+  "privacy": "Privacy policy (Korean)"
+}

@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAdoptionPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyLanguages, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
+import { fireSafetyAdoptionAlternates, fireSafetyAdoptionPath, fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyHandoverAlternates, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyLanguages, fireSafetyPath, fireSafetyRequestPages, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../src/utils/fireSafetyLocales.js';
 import { faqWorksheetName } from './fire-safety-global/faq-authoring.js';
 import { writeResourceFeeds } from './fire-safety-global/feeds.js';
 import { demoVideo } from './fire-safety-global/video.js';
@@ -14,7 +14,8 @@ const distPath = path.resolve(__dirname, '../dist');
 const fireSafetyResourcePaths = [fireSafetyChecklistPath, fireSafetyAdoptionPath, fireSafetyKoreanVideoPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanWorkloadPath];
 const fireSafetyKoreanLinks = [...fireSafetyResourcePaths, ...fireSafetyTranslations.map(({ path }) => path)];
 const fireSafetyStaticPaths = [
-  ...fireSafetyKoreanLinks, fireSafetyEnglishAdoptionPath, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath,
+  ...fireSafetyKoreanLinks, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath,
+  ...fireSafetyTranslations.filter(({ adoptionPath }) => adoptionPath).map(({ adoptionPath }) => adoptionPath),
   ...fireSafetyTranslations.flatMap(({ handoverPath, videoPath, workloadPath, resourcesPath }) =>
     [handoverPath, videoPath, workloadPath, resourcesPath]),
 ];
@@ -152,6 +153,13 @@ async function prerender() {
     if (!urls.includes(resourcePath) || !fs.existsSync(resourceFile) ||
         !fs.readFileSync(resourceFile, 'utf-8').includes(canonical)) {
       throw new Error(`Missing static fire safety page, canonical, or sitemap entry for ${resourcePath}`);
+    }
+  }
+  for (const { code, adoptionPath } of fireSafetyLanguages.filter(({ adoptionPath }) => adoptionPath)) {
+    const html = fs.readFileSync(path.join(distPath, adoptionPath, 'index.html'), 'utf-8');
+    if (!html.includes(`<html lang="${code}"`) || !fireSafetyAdoptionAlternates.every(({ code, path }) =>
+      html.includes(`<link rel="alternate" hreflang="${code}" href="${siteOrigin}${path}">`))) {
+      throw new Error(`Missing adoption checklist language or reciprocal alternates for ${adoptionPath}`);
     }
   }
   for (const resourcePath of [fireSafetyKoreanFaqPath, fireSafetyEnglishFaqPath]) {

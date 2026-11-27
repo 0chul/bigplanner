@@ -1,6 +1,4 @@
 import {
-  fireSafetyAdoptionPath,
-  fireSafetyEnglishAdoptionPath,
   fireSafetyEnglishAfterHoursPath,
   fireSafetyEnglishFaqPath,
   fireSafetyEnglishOverviewPdf,
@@ -18,6 +16,7 @@ const languageSections = [
   ['Product introductions', 'path'],
   ['Captioned product demonstrations', 'videoPath'],
   ['Shift handover guides and workbooks', 'handoverPath'],
+  ['Facilities AI pilot checklists', 'adoptionPath'],
   ['Routine enquiry workload calculators', 'workloadPath'],
   ['Facilities resources RSS', 'feedPath'],
 ];
@@ -28,7 +27,8 @@ function officialLink(label, path) {
 
 export function renderFacilitiesIndex() {
   const languageLinks = languageSections.map(([heading, field]) =>
-    `## ${heading}\n\n${fireSafetyLanguages.map(language => officialLink(language.label, language[field])).join('\n')}`,
+    `## ${heading}\n\n${fireSafetyLanguages.filter(language => language[field])
+      .map(language => officialLink(language.label, language[field])).join('\n')}`,
   ).join('\n\n');
 
   return `# BigPlanner Partners
@@ -56,8 +56,6 @@ ${officialLink('시설관리 FAQ 매뉴얼 작성 양식', fireSafetyKoreanFaqPa
 ${officialLink('Building FAQ guide and Excel template', fireSafetyEnglishFaqPath)}
 ${officialLink('냉난방 연장 운전 신청서', fireSafetyKoreanAfterHoursPath)}
 ${officialLink('After-hours HVAC request form', fireSafetyEnglishAfterHoursPath)}
-${officialLink('시설관리 민원 접수 시스템 도입 체크리스트', fireSafetyAdoptionPath)}
-${officialLink('Facilities AI pilot checklist', fireSafetyEnglishAdoptionPath)}
 ${officialLink('방재실 AI 한 장 소개서 (PDF)', fireSafetyKoreanOverviewPdf)}
 ${officialLink('Facilities AI one-page brief (PDF)', fireSafetyEnglishOverviewPdf)}
 

@@ -1,0 +1,89 @@
+{
+  "title": "Pilot-Checkliste für einen KI-Assistenten im Gebäudebetrieb",
+  "description": "Planen Sie einen Pilotbetrieb in einem Gewerbegebäude. Legen Sie fest, welche Mietermeldungen das Team prüft und übergibt, und vergleichen Sie die Vorgänge vor und während des Piloten.",
+  "heading": "Einen KI-Assistenten in einem Gebäude erproben",
+  "intro": "Wählen Sie ein Gewerbegebäude mit aktuellen Meldungen aus, in dem Mitarbeitende aus beiden Schichten mitmachen können. Die Leitung des Gebäudebetriebs stimmt den Pilotumfang mit den Personen ab, die Fragen beantworten, Aufgaben zuweisen und offene Vorgänge übernehmen.",
+  "open": "Checkliste öffnen",
+  "print": "Checkliste drucken",
+  "share": {
+    "summary": "Checkliste teilen",
+    "address": "Seitenadresse",
+    "native": "Über eine App teilen",
+    "copy": "Link kopieren",
+    "email": "Per E-Mail teilen",
+    "copied": "Link kopiert.",
+    "manual": "Wählen Sie die Seitenadresse oben aus und kopieren Sie sie."
+  },
+  "scopeHeading": "Sechs Prüfpunkte vor dem Start",
+  "scope": [
+    {
+      "heading": "Gebäude und Meldungsarten auswählen",
+      "text": "Sichten Sie aktuelle Vorgänge. Wählen Sie zwei oder drei Meldungsarten mit genügend Testfällen aus, etwa Fragen zu Besucherparkplätzen, unzureichende Kühlung oder eine Verlängerung der HLK-Betriebszeit. Halten Sie Gebäude, Betriebszeiten, Meldungsarten und die Verantwortung für den Piloten fest."
+    },
+    {
+      "heading": "Prüfungen und Freigaben festlegen",
+      "text": "Halten Sie für Routinefragen fest, welcher Abschnitt des Gebäudehandbuchs freigegeben ist und wer ihn aktualisiert. Gleichen Sie eine Antwort mit der aktuellen Fassung ab. Erfassen Sie für Prüfungen vor Ort den genauen Ort und das Problem. Bei genehmigungspflichtigen Anfragen prüfen und entscheiden die dazu befugten Mitarbeitenden."
+    },
+    {
+      "heading": "Zuständigkeit für jede Schicht klären",
+      "text": "Legen Sie fest, wer neue Meldungen prüft, die weitere Bearbeitung zuweist und Fälle jenseits des Pilotumfangs übernimmt. Spielen Sie beim Schichtwechsel einen noch nicht zugewiesenen Vorgang durch und klären Sie, wer ihn übernimmt."
+    },
+    {
+      "heading": "Offene Fälle im selben Vorgang übergeben",
+      "text": "Erfassen Sie Vorgangsnummer, Ort, Problem, Zuständigkeit, Status, nächsten Schritt und Termin für die nächste Prüfung. Die übernehmende Schicht hält fest, wann sie den Vorgang geprüft hat."
+    },
+    {
+      "heading": "Das führende System bestimmen",
+      "text": "Legen Sie fest, in welchem System die verbindliche Dokumentation geführt wird. Prüfen Sie, welche Anbindungen für Telefon, E-Mail und Arbeitsaufträge im Piloten möglich sind. Testen Sie anhand einer doppelt gemeldeten Störung, wie das Team die Einträge abgleicht."
+    },
+    {
+      "heading": "Zugriff und Aufbewahrung klären",
+      "text": "Legen Sie fest, wer Mieterdaten einsehen oder ändern darf. Klären Sie, wann Kontaktdaten oder Fotos nötig sind, wie lange Sie sie aufbewahren und wer sie löscht. Verwenden Sie für den Probelauf fiktive Vorgänge oder Unterlagen, in denen sensible Angaben unkenntlich gemacht sind."
+    }
+  ],
+  "safety": "Nutzen Sie bei einem Notfall die vorgesehenen Notfallkontakte und Verfahren des Gebäudes.",
+  "exampleHeading": "Fiktive Kühlungsstörung beim Schichtwechsel",
+  "example": [
+    {
+      "label": "Meldung erfassen",
+      "value": "DEMO-012. Am 5. Oktober um 20:35 Uhr Ortszeit meldet ein Mieter, dass der gemeinsam genutzte Besprechungsraum im 5. Stock von Gebäude A zu wenig gekühlt wird."
+    },
+    {
+      "label": "Prüfung durch die Schichtleitung",
+      "value": "Die Schichtleitung prüft Ort und Problem, weist den Vorgang dem zuständigen Gebäudetechniker der Frühschicht zu und markiert ihn als in Bearbeitung."
+    },
+    {
+      "label": "Übernehmende Schicht",
+      "value": "Am nächsten Morgen bestätigt die übernehmende Schicht um 07:00 Uhr die Zuweisung und trägt für 07:30 Uhr die Prüfung des Raums durch den Techniker ein."
+    }
+  ],
+  "watch": "27-Sekunden-Demo mit deutschen Untertiteln ansehen",
+  "interfaceNote": "Die gezeigte Oberfläche ist auf Koreanisch.",
+  "pilotHeading": "Eine kleine Stichprobe vor und während des Piloten vergleichen",
+  "baseline": "Legen Sie vorab fest, welche Ergebnisse eine Fortsetzung rechtfertigen würden. Vergleichen Sie zum Beispiel fünf Arbeitstage vor dem Piloten mit fünf Arbeitstagen während des Piloten. Vergleichen Sie dieselben Wochentage, Zeitfenster der Tag- und Nachtschichten und Meldungsarten. Zählen Sie doppelte Meldungen nur einmal. Gleichen Sie dazu die Vorgangsnummer oder Zeitpunkt, Ort und Problem ab.",
+  "metrics": [
+    {
+      "title": "Vollständigkeit der Vorgänge",
+      "text": "Betrachten Sie alle Vorgänge im festgelegten Umfang, die eine Prüfung vor Ort erforderten. Teilen Sie die Zahl dieser Vorgänge mit dokumentiertem Ort, Problem und Stand der Zuweisung durch die Gesamtzahl der Vorgänge, die vor Ort geprüft werden mussten."
+    },
+    {
+      "title": "Bestätigung der Übergabe",
+      "text": "Zählen Sie von den offenen Vorgängen, die übergeben werden mussten, diejenigen mit einer bestätigten ersten Übergabe. Als Bestätigung gilt, dass die Prüfung von Status und nächstem Schritt mit Zeitstempel dokumentiert ist. Teilen Sie diese Zahl durch die Gesamtzahl der offenen Vorgänge, die übergeben werden mussten."
+    }
+  ],
+  "review": "Halten Sie für jede Kennzahl die Anzahl im Zähler und im Nenner fest. Wenn der Nenner 0 ist, notieren Sie 0 von 0 und lassen Sie die Quote leer. Gehen Sie fehlende Einträge und verspätete Zuweisungen mit beiden Schichten durch, bevor Sie über eine Ausweitung entscheiden.",
+  "referenceIntro": "Weitere Hinweise zur Planung des Piloten und zum Aufgabenbereich des Helpdesks.",
+  "referenceLabel": "Facility-Management-Standard der britischen Regierung (Englisch)",
+  "pricingHeading": "Angebot und Demo",
+  "pricing": "BigPlanner Partners erstellt pro Projekt ein Angebot für Einrichtung und laufende Betriebsunterstützung. Grundlage sind die Anzahl der Gebäude, die vorhandenen Gebäudehandbücher, die Systemanbindungen und der benötigte Support. Bringen Sie zwei Beispielabläufe zur Online-Demo mit. Fiktive Beispiele genügen.",
+  "demoLabel": "Online-Demo anfragen",
+  "resourcesHeading": "Arbeitshilfen für den Gebäudebetrieb",
+  "materials": [
+    "Checkliste und Excel-Protokoll für die Schichtübergabe",
+    "Leitfaden und Vorlage für Gebäude-FAQ (Englisch)",
+    "Aufwand für wiederkehrende Anfragen berechnen",
+    "Alle deutschsprachigen Arbeitshilfen"
+  ],
+  "rss": "Arbeitshilfen für den Gebäudebetrieb per RSS",
+  "privacy": "Datenschutzhinweise auf Koreanisch"
+}

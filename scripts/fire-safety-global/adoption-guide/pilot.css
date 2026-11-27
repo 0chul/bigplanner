@@ -1,0 +1,67 @@
+:root { color-scheme: light; --ink: #17302a; --green: #195649; --muted: #455c55; --rule: #cdd9d2; --paper: #f3f7f4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: break-word; }
+.wrap { width: min(60rem, 100% - 2.5rem); margin-inline: auto; }
+header, footer { border-block-end: 1px solid var(--rule); }
+header .wrap, footer .wrap, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.15rem; }
+header .wrap { justify-content: space-between; }
+header .wrap, footer .wrap { padding-block: .8rem; }
+header a { padding-block: .32rem; }
+.guide-languages { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
+.guide-languages a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+a { color: var(--green); text-underline-offset: .18em; }
+.brand { color: var(--ink); font-size: 1.14rem; font-weight: 750; text-decoration: none; }
+:focus-visible { outline: 2px solid #2f7566; outline-offset: 3px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { line-height: 1.19; }
+h1 { max-width: 22ch; font-size: clamp(2.25rem, 5.8vw, 4.15rem); letter-spacing: -.045em; text-wrap: balance; }
+h2 { font-size: clamp(1.6rem, 3.35vw, 2.3rem); letter-spacing: -.025em; }
+:lang(ja):is(h1, h2) { letter-spacing: normal; }
+h3 { font-size: 1.11rem; }
+.hero { padding-block: clamp(2.1rem, 6vw, 4.6rem); background: var(--paper); border-block-end: 1px solid var(--rule); }
+.hero p { max-width: 58ch; margin-block-start: 1rem; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.23rem); }
+.actions { margin-block-start: 1.35rem; }
+.button, .print { min-height: 2.75rem; border: 1px solid var(--green); border-radius: .4rem; display: inline-flex; align-items: center; padding: .55rem .9rem; font: inherit; font-weight: 650; }
+.button { color: #fff; background: var(--green); text-decoration: none; }
+.button:hover { background: var(--ink); }
+.print { color: var(--green); background: #fff; cursor: pointer; }
+.print[hidden] { display: none; }
+.section { padding-block: clamp(1.65rem, 4vw, 3.2rem); }
+.section + .section { border-block-start: 1px solid var(--rule); }
+.section > p, .section > ul, .section > dl, .section > ol { margin-block: .85rem 0; }
+.checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-block-start: 1rem; }
+.check { min-width: 0; padding: 1rem 1.15rem; border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
+.check label { display: flex; align-items: flex-start; gap: .65rem; cursor: pointer; min-height: 2rem; }
+.check input { flex: 0 0 auto; width: 1.05rem; height: 1.05rem; margin: .09rem 0 0; accent-color: var(--green); }
+.check p { margin-block-start: .38rem; }
+.note { padding: .65rem .85rem; background: var(--paper); border-inline-start: 3px solid var(--green); }
+.example { background: var(--paper); border-radius: .45rem; padding: .32rem 1rem; }
+.example > div { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: .35rem .85rem; padding-block: .55rem; }
+.example > div + div { border-block-start: 1px solid var(--rule); }
+.example dt { font-weight: 700; }
+.example dd { margin: 0; }
+.measures, .materials { padding-inline-start: 1.35rem; }
+.measures li + li, .materials li + li { margin-block-start: .4rem; }
+.reference { font-size: .94rem; color: var(--muted); }
+footer { border-block-start: 1px solid var(--rule); border-block-end: 0; color: var(--muted); font-size: .9rem; }
+@media (max-width: 38rem) {
+  .wrap { width: calc(100% - 2rem); }
+  .checks, .example > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  @page { margin: 15mm; }
+  body { background: white; color: black; font-size: 10.5pt; line-height: 1.36; }
+  header, footer, .actions, .fs-share { display: none; }
+  .wrap { width: 100%; }
+  .hero, .note, .example { background: white; }
+  .hero, .section { padding-block: 8pt; }
+  .hero p { color: black; font-size: 11pt; }
+  h1 { max-width: none; font-size: 24pt; }
+  h2 { font-size: 15pt; break-after: avoid; }
+  h3 { font-size: 11pt; break-after: avoid; }
+  .checks { gap: 6pt; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .check { break-inside: avoid; padding: 6pt; }
+  .check label { min-height: 0; }
+  .check input { print-color-adjust: exact; }
+  .example > div, li { break-inside: avoid; }
+}

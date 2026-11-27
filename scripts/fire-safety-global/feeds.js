@@ -46,7 +46,7 @@ const feeds = [
   },
 ];
 
-async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPath, resourcesPath }) {
+async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPath, resourcesPath, adoptionPath }) {
   const { h1, description, demoAction } = JSON.parse(await readFile(
     new URL(`./handover/${code.toLowerCase()}.json`, import.meta.url), 'utf8',
   ));
@@ -62,7 +62,7 @@ async function localizedFeed({ code, path: home, feedPath, videoPath, handoverPa
     home,
     videoPath,
     watchLabel: demoAction,
-    resources: [resourcesPath, videoPath, handoverPath],
+    resources: [adoptionPath, resourcesPath, videoPath, handoverPath].filter(Boolean),
   };
 }
 

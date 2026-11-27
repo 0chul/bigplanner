@@ -25,6 +25,7 @@ import {
   fireSafetyTranslations,
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
+import { readAdoptionCopy } from './adoption-guide.js';
 import { faqWorksheetName } from './faq-authoring.js';
 import { pilotKits } from './pilot-kits.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
@@ -101,6 +102,7 @@ const libraryStyles = `
 :lang(ko):is(.library-lead, .library-section) { word-break: keep-all; }
 .library-section + .library-section { border-block-start: 1px solid var(--rule); }
 .library-grid, .library-languages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; margin: 1.05rem 0 0; list-style: none; }
+.library-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .library-card { height: 100%; padding: clamp(.95rem, 2.2vw, 1.45rem); border: 1px solid var(--rule); border-block-start: 2px solid var(--green); border-radius: .45rem; }
 .library-card h3 { font-size: 1.13rem; }
 .library-card p { margin-block: .48rem 0; color: var(--muted); }
@@ -225,7 +227,7 @@ ${alternates}
     <section class="wrap library-section" aria-labelledby="library-files">
       <h2 id="library-files">${escapeHtml(copy.cardsHeading)}</h2>
       ${copy.workloadPath ? `<a class="resource-link" href="${copy.workloadPath}">${escapeHtml(copy.workloadLabel)}</a>` : ''}
-      <ul class="library-grid" role="list">
+      <ul class="library-grid${copy.resources.length === 4 ? ' library-grid-four' : ''}" role="list">
         ${cards}
       </ul>
     </section>
@@ -251,19 +253,24 @@ ${alternates}
 }
 
 function localizedLibrary({ language, content, handover }) {
-  const { code, direction, locale, path, resourcesPath, feedPath, handoverPath, workloadPath, videoPath, requestPath } = language;
+  const { code, direction, locale, path, resourcesPath, feedPath, handoverPath, workloadPath, videoPath, requestPath, adoptionPath } = language;
   const { title, intro, resourcesHeading, languagesHeading } = localizedCopy[code];
   const workload = readWorkloadCopy(code);
+  const resources = [
+    { url: handoverPath, title: handover.h1, detail: handover.description,
+      download: { url: `${handoverPath}facilities-shift-handover-log.xlsx`, label: handover.download } },
+    { url: workloadPath, title: workload.pageTitle, detail: workload.description },
+    { url: videoPath, title: content.demoTitle, detail: content.watch.description },
+  ];
+  if (adoptionPath) {
+    const guide = readAdoptionCopy(code);
+    resources.push({ url: adoptionPath, title: guide.title, detail: guide.description });
+  }
   return {
     code, direction, locale, path: resourcesPath, product: path, feed: feedPath, brand: 'BigPlanner Partners',
     title, intro, cardsHeading: resourcesHeading, languagesHeading, rssLabel: workload.rssLabel,
     emailShare: handover.share, privacy: workload.privacy, requestPath, requestLabel: content.formAction,
-    resources: [
-      { url: handoverPath, title: handover.h1, detail: handover.description,
-        download: { url: `${handoverPath}facilities-shift-handover-log.xlsx`, label: handover.download } },
-      { url: workloadPath, title: workload.pageTitle, detail: workload.description },
-      { url: videoPath, title: content.demoTitle, detail: content.watch.description },
-    ],
+    resources,
   };
 }
 
