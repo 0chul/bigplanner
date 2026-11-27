@@ -1,0 +1,22 @@
+After-hours HVAC request form
+
+Tenant request
+Tenant organization and authorized requester:
+Work contact for confirmation:
+Building, floor and suite or HVAC zone:
+Service requested (heating / cooling):
+Start date and time in building local time:
+End date and time in building local time:
+One-off or recurring (list the dates if recurring):
+Charge approval, if required:
+
+Building management record
+Request ID:
+Requester, cutoff and HVAC zone checked:
+Approved / pending and reason:
+Confirmed zone and local start and end dates and times:
+Tenant confirmation sent:
+Forwarded to facilities and completed:
+
+For requests that cross midnight, enter both dates. Check the building's scheduling, holiday, cancellation and charge policies before sending through its usual request channel.
+Guide: https://bigplanner.co.kr/fire-safety-ai/en/after-hours-hvac-request/
