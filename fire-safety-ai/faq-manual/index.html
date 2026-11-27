@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>시설관리 FAQ 매뉴얼 작성 양식과 무료 엑셀</title>
+  <meta name="description" content="시설관리팀이 반복 문의의 답변과 근거를 정리하고 현장 책임자 승인 후 챗봇에 반영할 수 있는 무료 엑셀 양식입니다. 방문객 주차 예시와 예외 문의 인계 방법을 확인하세요.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/faq-manual/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/faq-manual/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/">
+  <link rel="alternate" type="application/rss+xml" title="시설관리 자료 RSS" href="https://bigplanner.co.kr/fire-safety-ai/rss.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="시설관리 챗봇 FAQ 매뉴얼 작성 양식과 무료 엑셀">
+  <meta property="og:description" content="시설관리팀이 반복 문의의 답변과 근거를 정리하고 현장 책임자 승인 후 챗봇에 반영할 수 있는 무료 엑셀 양식입니다. 방문객 주차 예시와 예외 문의 인계 방법을 확인하세요.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/faq-manual/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
+  <style>:root {
+  color-scheme: light;
+  --ink: #17302a;
+  --green: #1b5648;
+  --muted: #455c55;
+  --rule: #cdd9d2;
+  --paper: #f3f7f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
+.wrap { width: min(71rem, 100% - 2.5rem); margin-inline: auto; }
+.site-header { border-block-end: 1px solid var(--rule); }
+.header-content, footer .wrap { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: .85rem; }
+.brand { color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.brand span { font-weight: 500; }
+.languages { display: flex; gap: .2rem; flex-wrap: wrap; }
+.languages a { padding: .34rem .55rem; border-radius: .38rem; color: var(--muted); font-size: .875rem; text-decoration: none; }
+.languages a[aria-current="page"], .languages a:hover { background: #e9f0ec; color: var(--green); }
+a { color: var(--green); text-underline-offset: .17em; }
+a:focus-visible, summary:focus-visible, video:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { line-height: 1.22; }
+h1 { font-size: clamp(2.15rem, 4.5vw, 4.2rem); text-wrap: balance; }
+h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
+[dir="ltr"] :is(h1, h2) { letter-spacing: -.035em; }
+:is(:lang(ja), :lang(zh-Hant)) :is(h1, h2) { letter-spacing: 0; }
+[dir="rtl"] :is(h1, h2, h3) { line-height: 1.4; }
+.hero { background: var(--paper); }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.6rem); padding-block: clamp(2.5rem, 6vw, 5.8rem); }
+.intro { max-width: 53ch; margin-block: 1.12rem .75rem; font-size: clamp(1.04rem, 1.75vw, 1.25rem); }
+.audience { color: var(--muted); }
+.building { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: .75rem; }
+.links { display: flex; flex-wrap: wrap; gap: .7rem 1.35rem; align-items: center; margin-block-start: 1.3rem; font-weight: 650; }
+.button { padding: .72rem 1.12rem; border-radius: .4rem; background: var(--green); color: white; text-decoration: none; }
+.button:hover { background: var(--ink); }
+.section { padding-block: clamp(2.45rem, 5.5vw, 4.8rem); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.steps li { padding-block: 1rem; border-block-start: 2px solid var(--green); }
+.steps h3 { font-size: 1.18rem; margin-block-end: .55rem; }
+.steps p, .demo-note, .faq details p { color: var(--muted); }
+.resource-link { display: inline-block; margin-block-start: .65rem; font-weight: 650; }
+.demo-band { background: #e8f1ed; }
+.demo-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); align-items: center; gap: clamp(1.5rem, 6vw, 6rem); }
+.demo-note { margin-block-start: .6rem; }
+.scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
+.scenes li + li { margin-block-start: .6rem; }
+video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
+.faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
+.faq details { border-block-end: 1px solid var(--rule); }
+.faq details:first-child { border-block-start: 1px solid var(--rule); }
+.faq summary { cursor: pointer; padding-block: .8rem; font-weight: 650; }
+.faq details p { margin-block-end: .9rem; }
+.contact-band { background: #173930; color: #fff; }
+.contact-band .button { background: #fff; color: var(--ink); }
+.contact-band .button:hover { background: #dcebe4; }
+.contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
+.contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
+.email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
+footer { color: var(--muted); font-size: .9rem; }
+@media (max-width: 48rem) {
+  .header-content { gap: .45rem; }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
+  .building { aspect-ratio: 16 / 9; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
+}
+
+    .manual { width: min(52rem, 100% - 2.5rem); margin-inline: auto; }
+    html[lang="ko"] .manual { word-break: keep-all; }
+    .manual section { padding-block: 1.7rem; border-block-end: 1px solid var(--rule); }
+    .manual h2 { margin-block: 0 .7rem; }
+    .manual-body { padding-block-end: 2rem; }
+    .manual-steps { padding-inline-start: 1.3rem; }
+    .manual-steps li { padding-inline-start: .3rem; margin-block-end: .9rem; }
+    .manual-steps h3, .manual-steps p { margin: 0; }
+    .manual-example { margin-block-end: 0; padding: .65rem 1rem; border-radius: .5rem; background: var(--paper); }
+    .manual-example > div { display: grid; grid-template-columns: minmax(0, 10rem) 1fr; gap: .45rem; padding-block: .5rem; }
+    .manual-example > div + div { border-block-start: 1px solid var(--rule); }
+    .manual-example dt { font-weight: 650; }
+    .manual-example dd { margin: 0; }
+    .manual-review, .manual-sources { padding-inline-start: 1.35rem; }
+    .manual-review li + li { margin-block-start: .45rem; }
+    .manual-sources { font-size: .925rem; }
+    @media (max-width: 33rem) {
+      .manual-example > div { grid-template-columns: 1fr; gap: .12rem; }
+      .manual { width: min(52rem, 100% - 2rem); }
+      .manual h1 { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="manual header-content">
+      <a class="brand" href="/fire-safety-ai/" lang="en">BigPlanner <span>Partners</span></a>
+      <nav class="languages" aria-label="FAQ 매뉴얼 작성 양식 언어"><a href="/fire-safety-ai/en/faq-manual/" lang="en" hreflang="en">English</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="manual section">
+        <h1 id="page-title">시설관리 챗봇 FAQ 매뉴얼 작성 양식</h1>
+        <p class="intro">방문객 주차와 같이 자주 들어오는 문의를 한 건씩 정리하세요. 무료 엑셀 양식에 답변, 근거 문서, 적용 범위, 승인 역할과 검토일을 기록하고 현장 책임자 확인을 거쳐 운영에 반영합니다.</p>
+        <div class="links">
+          <a class="button" href="building-faq-worksheet.xlsx" download>FAQ 매뉴얼 작성용 무료 엑셀 받기</a>
+          <a href="/fire-safety-ai/handoff-checklist/">교대 인계 체크리스트 보기</a>
+        </div>
+        <details class="fs-share share" data-fs-share>
+    <summary>링크 공유</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">페이지 주소<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/faq-manual/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>앱으로 공유</button>
+        <button data-fs-share-copy type="button" hidden>링크 복사</button>
+        <a href="mailto:?subject=%EC%8B%9C%EC%84%A4%EA%B4%80%EB%A6%AC%20%EC%B1%97%EB%B4%87%20FAQ%20%EB%A7%A4%EB%89%B4%EC%96%BC%20%EC%9E%91%EC%84%B1%20%EC%96%91%EC%8B%9D%EA%B3%BC%20%EB%AC%B4%EB%A3%8C%20%EC%97%91%EC%85%80&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Ffaq-manual%2F">이메일로 공유</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="링크를 복사했습니다." data-manual="위 주소를 선택해 복사해 주세요."></p>
+    </div>
+  </details>
+      </div>
+    </section>
+    <div class="manual manual-body">
+      <section aria-labelledby="steps-title">
+        <h2 id="steps-title">FAQ 답변 작성과 현장 승인 절차</h2>
+        <ol class="manual-steps">
+          <li><h3>반복 문의를 골라 한 줄에 하나씩 기록</h3><p>입주사나 방문객이 실제로 쓰는 표현으로 질문을 적습니다. 방문객 주차 위치, 이용 시간, 요금처럼 확인해야 할 내용이 다르면 질문을 나눕니다.</p></li>
+          <li><h3>근거 문서와 적용 범위 확인</h3><p>건물의 공식 안내문이나 승인된 운영 매뉴얼에서 답변 근거를 찾습니다. 문서명과 링크 또는 문서번호, 개정일, 적용 건물·구역과 대상 조건을 함께 적습니다.</p></li>
+          <li><h3>답변과 담당자 인계 조건 작성</h3><p>안내에 확인된 범위만 답변합니다. 근거가 없거나 문서가 서로 다르거나 예외 승인이 필요한 질문은 담당 부서로 전달합니다. 인계할 때는 질문 요지와 확인할 조건을 남깁니다.</p></li>
+          <li><h3>현장 책임자 승인 후 표현을 바꿔 점검</h3><p>현장 책임자가 답변과 근거를 대조합니다. 승인 역할과 검토일, 다음 검토 예정일을 기록한 뒤 같은 질문을 다른 표현으로 물어보고, 조건이 빠진 질문과 예외 문의도 시험합니다.</p></li>
+        </ol>
+      </section>
+      <section aria-labelledby="example-title">
+        <h2 id="example-title">방문객 주차 질문 작성 예시</h2>
+        <p>가상 건물의 작성 예시입니다. 운영에 쓰기 전에 대괄호를 우리 건물의 공식 안내 링크로 바꾸고 현장 담당자에게 확인받으세요.</p>
+        <dl class="manual-example">
+          <div><dt>입주사 질문</dt><dd>입주사를 방문하는데 어디에 주차하면 되나요?</dd></div>
+          <div><dt>답변 예시</dt><dd>방문객 주차장 입구와 이용 구역은 [건물 공식 주차 안내]에서 확인해 주세요. 안내에서 확인하기 어려운 조건은 주차 운영 담당자가 확인합니다.</dd></div>
+          <div><dt>근거 문서</dt><dd>이 건물의 승인된 방문객 주차 안내를 근거로 작성합니다. 문서 개정일, 적용 구역과 대상, 승인 역할, 검토일을 확인한 뒤 답변을 반영합니다.</dd></div>
+          <div><dt>담당자 전달 조건</dt><dd>안내문에 없는 차량 조건이나 사전 승인 요청은 주차 운영 담당자에게 전달합니다. 확인할 사항만 기록하고 연락처·차량번호 등 개인정보는 FAQ 작성 양식에 적지 않습니다.</dd></div>
+        </dl>
+      </section>
+      <section aria-labelledby="review-title">
+        <h2 id="review-title">답변을 사용하기 전 확인할 사항</h2>
+        <ul class="manual-review">
+          <li>답변이 최신 승인 문서와 일치하고 적용 건물·구역·대상이 분명한가?</li>
+          <li>근거 문서의 개정일, 현장 승인 담당 역할, 이번 검토일과 다음 검토 예정일을 기록했는가?</li>
+          <li>같은 질문을 다른 표현으로 물었을 때와 조건이 빠졌을 때를 각각 시험했는가?</li>
+          <li>근거가 없거나 문서가 상충하거나 승인이 필요한 질문을 올바른 담당 부서로 넘기는가?</li>
+        </ul>
+        <ul class="manual-sources">
+          <li><a href="https://www.coex.co.kr/guide/parking-information/infomation/">공개 운영 안내 구성 참고 (코엑스 주차장 안내)</a></li>
+          <li><a href="https://www.coex.co.kr/guide/parking-information/fee/">적용 조건 작성 참고 (코엑스 주차 요금 안내)</a></li>
+        </ul>
+        <div class="links">
+          <a class="button" href="/fire-safety-ai/?utm_source=faq_manual_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch&amp;utm_content=ko#demo-request">온라인 시연 신청</a>
+          <a href="/fire-safety-ai/demo-video/">27초 시연 영상 보기</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap"><span lang="en">BigPlanner Partners</span><a href="/fire-safety-ai/rss.xml" type="application/rss+xml">시설관리 자료 RSS</a><a href="/privacy/" hreflang="ko">개인정보처리방침</a></div></footer>
+</body>
+</html>

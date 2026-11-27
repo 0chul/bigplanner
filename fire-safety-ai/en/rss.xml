@@ -3,9 +3,62 @@
   <channel>
     <title>Facilities resources from BigPlanner Partners</title>
     <link>https://bigplanner.co.kr/fire-safety-ai/en/</link>
-    <description>Practical facilities resources including an after-hours HVAC request form, a shift handover workbook and a tenant service desk demo.</description>
+    <description>Facilities resources including a building FAQ worksheet, after-hours HVAC request form, handover workbook and tenant service desk demo.</description>
     <language>en</language>
     <atom:link href="https://bigplanner.co.kr/fire-safety-ai/en/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Facilities FAQ template and free Excel worksheet for tenant helpdesks</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Facilities FAQ template for tenant helpdesks</h1>
+        <p>Use the Excel template to turn current building policy into short, approved answers for common tenant questions. Each entry records where the answer comes from, when it should be checked and who handles exceptions.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/building-faq-worksheet.xlsx" download="">Download the free Excel FAQ template</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/en/shift-handover/">Use the shift handover checklist</a>
+        </div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>How to write an approved FAQ answer</h2>
+        <ol>
+          <li><h3>Choose one recurring question</h3><p>Group questions that ask for the same outcome. Start with a routine request such as visitor parking, delivery hours or where to submit a maintenance issue. State which building the answer applies to.</p></li>
+          <li><h3>Write from the current building policy</h3><p>Use the approved source to write a short answer that gives the tenant a clear next step. Record the source title and revision, the approving role and the next review date. Have that role approve the answer for use.</p></li>
+          <li><h3>Define when staff should take over</h3><p>Name who handles missing information, requests for approval and situations outside policy. Specify the context the receiving team needs, such as the building and the question. For emergencies, use the building’s existing emergency channels.</p></li>
+          <li><h3>Test different ways tenants ask</h3><p>Check the standard question and a variation such as “Where can my guest park?” Both should give the same approved answer. Test an unclear question and one outside policy, such as a weekend parking request, to verify that the helpdesk asks for clarification or routes it to staff.</p></li>
+        </ol>
+      </section>
+      <section>
+        <h2>Fictional example for visitor parking</h2>
+        <p>Building A, its policy and the dates below are fictional.</p>
+        <dl>
+          <div><dt>Tenant question</dt><dd>How do visitors arrange parking?</dd></div>
+          <div><dt>Example answer</dt><dd>At Building A, the tenant hosting the visit registers the guest with reception through the tenant portal before arrival. Reception confirms availability and any charges under the current visitor parking policy.</dd></div>
+          <div><dt>Policy source</dt><dd>Use this answer for standard visits at Building A. Source is the Visitor Parking Policy, revision 2, dated 20 November 2026. The property manager approves the answer. Next review is 20 December 2026.</dd></div>
+          <div><dt>When to hand off</dt><dd>Send same-day exceptions, weekend requests and questions about parking fees or validation to reception. Reception checks the current policy and confirms the arrangements.</dd></div>
+        </dl>
+      </section>
+      <section>
+        <h2>Review before publishing or updating</h2>
+        <ul>
+          <li>Have someone who did not write the entry check that each instruction follows the approved source.</li>
+          <li>Confirm the answer applies to the named building, visit type and operating hours.</li>
+          <li>Check that staff receiving an exception can see the question, the location and the next action.</li>
+          <li>Review affected entries when the building policy changes and replace outdated answers or withdraw them.</li>
+        </ul>
+        <ul>
+          <li>101 California tenant manual, including visitor and garage procedures</li>
+        </ul>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/en/request/?utm_source=faq_manual_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=en">Request an online demo</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/en/demo-video/">Watch the 27-second demo</a>
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
     <item>
       <title>After-hours HVAC request form for commercial buildings | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/en/after-hours-hvac-request/</link>
