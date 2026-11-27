@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lista de comprobación para el relevo en instalaciones | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/es/</link>
+    <description>Descarga un registro gratuito en Excel para el relevo en instalaciones comerciales. Usa la lista y el ejemplo de climatización para trasladar las solicitudes abiertas al siguiente turno. La simulación muestra la interfaz en coreano con subtítulos en español.</description>
+    <language>es</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/es/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Demo de IA para incidencias de climatización y relevo de turno | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/es/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/es/demo-video/</guid>
+      <description><![CDATA[<h1>Demo de IA para incidencias de climatización y relevo de turno</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/es/demo-video/">Ver la demostración con subtítulos en español</a></p>
+      <div>
+        <p>En 27 segundos, una incidencia simulada de climatización pasa por el registro, la asignación y el relevo de turno. La interfaz está en coreano y los subtítulos están en español.</p>
+        <section>
+          <h2>Qué ocurre en la demostración</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>Un inquilino avisa de poca refrigeración en la sala de reuniones común del 5.º piso.</span></li>
+          <li><time dir="ltr">0:04</time><span>La IA registra la ubicación y los detalles de la solicitud.</span></li>
+          <li><time dir="ltr">0:09</time><span>Un supervisor revisa la solicitud DEMO-012 y asigna a un responsable.</span></li>
+          <li><time dir="ltr">0:15</time><span>El siguiente turno consulta las notas y la asignación en el mismo registro.</span></li>
+          <li><time dir="ltr">0:21</time><span>BigPlanner Partners. Solicita una demostración en línea.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/es/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=es">Solicitar una demostración en línea</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/">Descargar la plantilla gratuita para el relevo de turno</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Lista para el relevo de turno y registro gratuito en Excel | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Lista de comprobación para el relevo en instalaciones</h1>
+        <p>Pasa las solicitudes abiertas al siguiente turno con la ubicación exacta, la persona responsable y la próxima comprobación. El archivo de Excel incluye un registro en blanco y un ejemplo cumplimentado para un edificio comercial.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/es/shift-handover/facilities-shift-handover-log.xlsx" download="">Descargar el registro gratuito en Excel</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Antes de que termine el turno saliente</h2>
+        <ol>
+          <li>Utiliza un identificador por solicitud. Registra cuándo se recibió en la hora local del edificio e indica el edificio, el piso y la sala.</li>
+          <li>Resume lo que comunicó el inquilino y registra las comprobaciones y actuaciones ya realizadas.</li>
+          <li>Identifica a la persona o al equipo responsable. Añade el estado actual, la siguiente acción y la hora límite o de la próxima comprobación.</li>
+          <li>Revisa las solicitudes abiertas con el equipo entrante y confirma quién hará el seguimiento.</li>
+        </ol>
+        <p>En caso de emergencia, sigue los procedimientos y utiliza los contactos establecidos para el edificio.</p>
+      </section>
+      <section>
+        <h2>Ejemplo de anotación para el relevo</h2>
+        <p>El edificio y la solicitud son ficticios. Todas las horas son locales.</p>
+        <dl>
+          <dt>Identificador y hora</dt><dd>DEMO-012, 5 de octubre de 2026 a las 20:35</dd>
+          <dt>Ubicación</dt><dd>Edificio A, quinto piso, sala de reuniones común</dd>
+          <dt>Incidencia</dt><dd>Un inquilino avisó de que el aire acondicionado enfriaba poco.</dd>
+          <dt>Responsable y estado</dt><dd>Técnico de instalaciones del turno de mañana. En curso.</dd>
+          <dt>Próxima comprobación</dt><dd>6 de octubre a las 07:30. Inspeccionar el filtro y comprobar el flujo de aire.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>De un turno a otro con la misma solicitud</h2>
+        <p>El vídeo de 27 segundos muestra cómo la IA recoge los datos, un supervisor asigna la solicitud y el siguiente turno consulta el mismo registro. La interfaz está en coreano y los subtítulos están en español.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/es/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=es">Ver la demostración con subtítulos en español</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/es/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=es" hreflang="es">Solicitar una demostración en línea</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

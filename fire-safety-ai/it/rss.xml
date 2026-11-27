@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Checklist per il passaggio di consegne nella gestione degli immobili | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/it/</link>
+    <description>Scarica il registro Excel gratuito per il passaggio di consegne nella gestione degli immobili commerciali. Usa la checklist e l’esempio sul raffrescamento per trasmettere al turno successivo le segnalazioni dei locatari ancora aperte. Il caso è simulato e mostra l’interfaccia in coreano con sottotitoli in italiano.</description>
+    <language>it</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/it/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Demo IA per immobili commerciali, dalla segnalazione al cambio turno | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/it/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/it/demo-video/</guid>
+      <description><![CDATA[<h1>Demo IA per immobili commerciali, dalla segnalazione al cambio turno</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/it/demo-video/">Guarda la demo con sottotitoli in italiano</a></p>
+      <div>
+        <p>In 27 secondi, l’IA registra una segnalazione simulata sul raffrescamento, il responsabile la assegna e chi subentra consulta la stessa scheda. Interfaccia in coreano e sottotitoli in italiano.</p>
+        <section>
+          <h2>Dalla segnalazione al passaggio di consegne</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>Un locatario segnala scarso raffrescamento nella sala riunioni comune al 5° piano.</span></li>
+          <li><time dir="ltr">0:04</time><span>L’IA registra il luogo e i dettagli della segnalazione.</span></li>
+          <li><time dir="ltr">0:09</time><span>Il responsabile esamina DEMO-012 e affida il caso a un addetto.</span></li>
+          <li><time dir="ltr">0:15</time><span>Chi subentra legge le note e il nome dell’addetto nella stessa scheda.</span></li>
+          <li><time dir="ltr">0:21</time><span>BigPlanner Partners. Richiedi una demo online.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/it/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=it">Richiedi una demo online</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/">Scarica il modello gratuito per il passaggio di consegne</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Checklist per il passaggio di consegne e registro Excel gratuito | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Checklist per il passaggio di consegne nella gestione degli immobili</h1>
+        <p>Trasmetti al turno successivo le segnalazioni ancora aperte, indicando il luogo preciso, l’addetto responsabile e l’orario della prossima verifica. Il file Excel include un registro vuoto e un esempio compilato per un immobile commerciale.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/it/shift-handover/facilities-shift-handover-log.xlsx" download="">Scarica il registro Excel gratuito</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Prima della fine del turno</h2>
+        <ol>
+          <li>Usa un solo numero identificativo per ogni segnalazione. Registra l’ora di ricezione nel fuso orario dell’edificio e indica l’edificio, il piano e il locale.</li>
+          <li>Riassumi quanto segnalato dal locatario e annota le verifiche e gli interventi già completati.</li>
+          <li>Indica la persona o la squadra responsabile. Aggiungi lo stato, la prossima azione e la scadenza o l’ora della verifica.</li>
+          <li>Rivedi le segnalazioni aperte con chi subentra e conferma chi seguirà ciascuna segnalazione.</li>
+        </ol>
+        <p>In caso di emergenza, usa i contatti e segui le procedure previste dall’edificio.</p>
+      </section>
+      <section>
+        <h2>Esempio di una scheda per il passaggio di consegne</h2>
+        <p>L’edificio e la segnalazione dell’esempio sono fittizi. Gli orari sono locali.</p>
+        <dl>
+          <dt>Numero e ora della segnalazione</dt><dd>DEMO-012 · 5 ottobre 2026, 20:35</dd>
+          <dt>Posizione</dt><dd>Edificio A, quinto piano, sala riunioni comune</dd>
+          <dt>Problema</dt><dd>Un locatario segnala che il raffrescamento è insufficiente.</dd>
+          <dt>Responsabile e stato</dt><dd>Tecnico del turno del mattino · In corso</dd>
+          <dt>Prossima verifica</dt><dd>6 ottobre, 07:30. Ispezionare il filtro e verificare il flusso d’aria.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Segui la stessa scheda al cambio di turno</h2>
+        <p>In 27 secondi vedrai come l’IA raccoglie i dettagli, un responsabile assegna la segnalazione e chi subentra consulta la stessa scheda. L’interfaccia è in coreano con sottotitoli in italiano.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/it/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=it">Guarda la demo con sottotitoli in italiano</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/it/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=it" hreflang="it">Richiedi una demo online</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

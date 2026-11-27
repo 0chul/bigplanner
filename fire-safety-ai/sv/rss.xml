@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Checklista för skiftöverlämning i fastighetsdrift | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/sv/</link>
+    <description>Ladda ner en gratis Excel-mall för skiftöverlämning i kommersiella fastigheter. Använd checklistan och ett exempel på felanmälan för kyla. Demonstrationen visar ett fiktivt ärende med koreanskt gränssnitt och svensk textning.</description>
+    <language>sv</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/sv/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI-demo för fastighetsdrift med felanmälan om kyla och skiftöverlämning | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/</guid>
+      <description><![CDATA[<h1>AI-demo för fastighetsdrift med felanmälan om kyla och skiftöverlämning</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/">Se demon med svensk textning</a></p>
+      <div>
+        <p>AI registrerar hyresgästens felanmälan om kyla. En arbetsledare tilldelar ärendet och nästa skift läser det. Fiktivt ärende på 27 sekunder med koreanskt gränssnitt och svensk textning.</p>
+        <section>
+          <h2>Från felanmälan till skiftöverlämning</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>En hyresgäst anmäler dålig kyla i det gemensamma mötesrummet på plan 5.</span></li>
+          <li><time dir="ltr">0:04</time><span>AI registrerar platsen och felbeskrivningen.</span></li>
+          <li><time dir="ltr">0:09</time><span>En arbetsledare granskar DEMO-012 och tilldelar ärendet.</span></li>
+          <li><time dir="ltr">0:15</time><span>Nästa skift ser anteckningar och ansvarig i samma ärende.</span></li>
+          <li><time dir="ltr">0:21</time><span>BigPlanner Partners · Boka en demo online.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=sv">Be om en demo online</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/">Hämta checklistan och en gratis Excel-mall för skiftöverlämning</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Checklista för skiftöverlämning i fastighetsdrift och gratis Excel-mall | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Checklista för skiftöverlämning i fastighetsdrift</h1>
+        <p>Lämna över öppna hyresgästärenden till nästa skift med exakt plats, ansvarig och tid för nästa kontroll. Excel-filen innehåller en tom mall och ett ifyllt exempel för en kommersiell fastighet.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/facilities-shift-handover-log.xlsx" download="">Ladda ner gratis Excel-mall</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Innan avgående skift går hem</h2>
+        <ol>
+          <li>Använd ett ärendenummer per anmälan. Ange när ärendet kom in i lokal tid och identifiera byggnaden, våningsplanet och rummet.</li>
+          <li>Sammanfatta vad hyresgästen anmält och anteckna vilka kontroller och åtgärder som redan gjorts.</li>
+          <li>Ange ansvarig person eller grupp, aktuell status, nästa åtgärd samt när den ska vara klar eller följas upp.</li>
+          <li>Gå igenom öppna ärenden med tillträdande skift och bekräfta vem som följer upp varje ärende.</li>
+        </ol>
+        <p>Vid akuta händelser följer ni fastighetens ordinarie larmvägar och rutiner.</p>
+      </section>
+      <section>
+        <h2>Exempel på en överlämning</h2>
+        <p>Fastigheten och ärendet i exemplet är fiktiva. Tiderna är lokala.</p>
+        <dl>
+          <dt>Ärendenummer och tid</dt><dd>DEMO-012 · 5 oktober 2026 kl. 20.35</dd>
+          <dt>Plats</dt><dd>Byggnad A, plan 5, gemensamt mötesrum</dd>
+          <dt>Felanmälan</dt><dd>En hyresgäst anmälde att kylningen var otillräcklig.</dd>
+          <dt>Ansvarig och status</dt><dd>Drifttekniker på morgonskiftet · Pågår</dd>
+          <dt>Nästa kontroll</dt><dd>6 oktober kl. 07.30 · Inspektera filtret och kontrollera luftflödet.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Se samma ärende lämnas över till nästa skift</h2>
+        <p>Den 27 sekunder långa demon visar hur AI registrerar uppgifterna, en arbetsledare tilldelar ärendet och nästa skift läser samma ärende. Demon har ett koreanskt gränssnitt och svensk textning.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=sv">Se demon med svensk textning</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=sv" hreflang="sv">Be om en demo online</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

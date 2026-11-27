@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ビル設備管理の引き継ぎチェックリスト | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/ja/</link>
+    <description>商業ビルの設備管理チーム向けの無料Excel引き継ぎ台帳です。空調の問い合わせを例に、場所・担当者・次の確認事項を記録し、未完了の案件を次のシフトへ引き継ぐ方法を確認できます。 架空のビルでの対応を再構成した27秒の動画です。画面は韓国語で、日本語字幕を表示できます。</description>
+    <language>ja</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/ja/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ビル設備管理AIの27秒デモ｜冷房の問い合わせ受付と引き継ぎ | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/</guid>
+      <description><![CDATA[<h1>ビル設備管理AIの27秒デモ｜冷房の問い合わせ受付と引き継ぎ</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/">日本語字幕付きのデモを見る</a></p>
+      <div>
+        <p>架空のビルでの冷房の問い合わせを取り上げ、受付から管理者による担当者の指定、次のシフトへの引き継ぎまでを27秒で紹介します。韓国語のデモ画面に日本語字幕を付けています。</p>
+        <section>
+          <h2>デモの流れ</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>テナントから「5階の共用会議室の冷房が弱い」と問い合わせが入ります。</span></li>
+          <li><time dir="ltr">0:04</time><span>AIが場所と問い合わせの内容を受付記録に整理します。</span></li>
+          <li><time dir="ltr">0:09</time><span>管理者が受付番号DEMO-012の内容を確認し、担当者を指定します。</span></li>
+          <li><time dir="ltr">0:15</time><span>次のシフトのスタッフが同じ受付記録で対応メモと担当者の指定を確認します。</span></li>
+          <li><time dir="ltr">0:21</time><span>BIGPLANNER PARTNERSのサービス紹介とオンラインデモの申込先をご案内します。</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=ja">オンラインでデモを申し込む</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/">無料の設備管理引き継ぎチェックリストを入手</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>ビル設備管理のシフト引き継ぎチェックリストと無料Excel台帳 | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>ビル設備管理の引き継ぎチェックリスト</h1>
+        <p>未完了のテナント問い合わせは、詳しい場所、現在の担当者、次の確認事項を記録して引き継ぎます。Excelには、空欄の引き継ぎ台帳と商業ビルを想定した記入例が入っています。</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/shift-handover/facilities-shift-handover-log.xlsx" download="">無料のExcel台帳をダウンロード</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>引き継ぎ前に確認すること</h2>
+        <ol>
+          <li>問い合わせごとに受付番号を1つ使用します。受付日時を現地時間で記録し、建物名・階・部屋を明記します。</li>
+          <li>テナントからの申告内容を要約し、実施済みの確認や対応を記録します。</li>
+          <li>担当者または担当チームを明記し、現在の状況、次に行うこと、対応期限または次の確認時刻を記録します。</li>
+          <li>次のシフトのスタッフと未完了の案件を確認し、誰が対応を引き継ぐか決めます。</li>
+        </ol>
+        <p>緊急時は、建物所定の緊急連絡先と対応手順に従ってください。</p>
+      </section>
+      <section>
+        <h2>引き継ぎ台帳の記入例</h2>
+        <p>架空のビルと問い合わせを使った例です。時刻は現地時間です。</p>
+        <dl>
+          <dt>受付番号・受付日時</dt><dd>DEMO-012 · 2026年10月5日 20:35</dd>
+          <dt>場所</dt><dd>A棟5階の共用会議室</dd>
+          <dt>問い合わせ内容</dt><dd>テナントから冷房の効きが弱いとの連絡がありました。</dd>
+          <dt>担当者・状況</dt><dd>早番の設備担当者 · 対応中</dd>
+          <dt>次の確認</dt><dd>10月6日 07:30 · フィルターの状態と風量を確認する。</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>同じ受付記録で引き継ぐ流れを見る</h2>
+        <p>27秒の動画では、AIが問い合わせ内容を整理し、管理者が担当者を指定して、次のシフトのスタッフが同じ受付記録を確認する流れを紹介します。画面は韓国語で、日本語字幕を表示できます。</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=ja">日本語字幕付きのデモを見る</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/ja/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=ja" hreflang="ja">オンラインでデモを申し込む</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

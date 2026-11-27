@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Checkliste für die Schichtübergabe im Gebäudebetrieb | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/de/</link>
+    <description>Kostenloses Excel-Protokoll für Schichtübergaben im Gebäudebetrieb. Checkliste und Beispiel zur Übergabe offener Mietermeldungen in Gewerbeimmobilien. 27 Sekunden mit einem simulierten Fall. Die Oberfläche ist auf Koreanisch, die Untertitel sind auf Deutsch.</description>
+    <language>de</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/de/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KI-Chatbot für Kühlungsstörungen und Schichtübergaben | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/de/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/de/demo-video/</guid>
+      <description><![CDATA[<h1>KI-Chatbot für Kühlungsstörungen und Schichtübergaben</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/de/demo-video/">Demo mit deutschen Untertiteln ansehen</a></p>
+      <div>
+        <p>In 27 Sekunden sehen Sie, wie die KI in einem simulierten Fall eine Kühlungsstörung erfasst, die Schichtleitung den Vorgang zuweist und die nächste Schicht denselben Vorgang einsehen kann. Koreanische Oberfläche mit deutschen Untertiteln.</p>
+        <section>
+          <h2>Von der Meldung bis zur Schichtübergabe</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>Ein Mieter meldet, dass der gemeinsam genutzte Besprechungsraum im fünften Stock zu wenig gekühlt wird.</span></li>
+          <li><time dir="ltr">0:04</time><span>Die KI erfasst den Ort und die Angaben zur Störung.</span></li>
+          <li><time dir="ltr">0:09</time><span>Die Schichtleitung prüft den Vorgang DEMO-012 und weist ihn einer zuständigen Person zu.</span></li>
+          <li><time dir="ltr">0:15</time><span>Die nächste Schicht sieht die Notizen und die Zuweisung im selben Vorgang.</span></li>
+          <li><time dir="ltr">0:21</time><span>KI-Assistent für den Gebäudebetrieb von BIGPLANNER PARTNERS. Jetzt Online-Demo anfragen.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/de/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=de">Demo online anfragen</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/">Kostenlose Checkliste und Excel-Vorlage für die Schichtübergabe</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Checkliste für die Schichtübergabe und kostenlose Excel-Vorlage | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Checkliste für die Schichtübergabe im Gebäudebetrieb</h1>
+        <p>Übergeben Sie offene Mietermeldungen mit genauem Ort, aktueller Zuständigkeit und Termin für die nächste Prüfung. Die Excel-Datei enthält eine leere Vorlage und ein ausgefülltes Beispiel für ein Gewerbegebäude.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/de/shift-handover/facilities-shift-handover-log.xlsx" download="">Kostenlose Excel-Vorlage herunterladen</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Vor dem Schichtwechsel</h2>
+        <ol>
+          <li>Vergeben Sie pro Meldung eine Vorgangsnummer. Erfassen Sie den Meldezeitpunkt in Ortszeit und geben Sie Gebäude, Stockwerk und Raum an.</li>
+          <li>Fassen Sie zusammen, was die mietende Person gemeldet hat. Halten Sie bereits durchgeführte Prüfungen und Arbeiten fest.</li>
+          <li>Benennen Sie die zuständige Person oder das zuständige Team. Ergänzen Sie den aktuellen Status, den nächsten Schritt und eine Frist oder einen Termin für die nächste Prüfung.</li>
+          <li>Gehen Sie offene Vorgänge mit der übernehmenden Schicht durch und klären Sie, wer sich weiter darum kümmert.</li>
+        </ol>
+        <p>Nutzen Sie bei einem Notfall die vorgesehenen Notfallkontakte und Verfahren des Gebäudes.</p>
+      </section>
+      <section>
+        <h2>Beispiel für einen Übergabeeintrag</h2>
+        <p>Das Gebäude und die Meldung in diesem Beispiel sind frei erfunden. Alle Zeitangaben beziehen sich auf die Ortszeit.</p>
+        <dl>
+          <dt>Vorgang und Meldezeitpunkt</dt><dd>DEMO-012 am 5. Oktober 2026 um 20:35 Uhr</dd>
+          <dt>Ort</dt><dd>Gebäude A, 5. Stock, gemeinsam genutzter Besprechungsraum</dd>
+          <dt>Meldung</dt><dd>Ein Mieter meldet, dass der Raum zu wenig gekühlt wird.</dd>
+          <dt>Zuständigkeit und Status</dt><dd>Gebäudetechnik der Frühschicht. In Bearbeitung.</dd>
+          <dt>Nächste Prüfung</dt><dd>Am 6. Oktober um 07:30 Uhr den Filter prüfen und den Luftstrom kontrollieren.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Eine Meldung von der Erfassung bis zur nächsten Schicht</h2>
+        <p>Das 27 Sekunden lange Video zeigt, wie die KI die Angaben erfasst, die Schichtleitung den Vorgang zuweist und die nächste Schicht denselben Vorgang einsehen kann. Die Oberfläche ist auf Koreanisch, die Untertitel sind auf Deutsch.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/de/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=de">Demo mit deutschen Untertiteln ansehen</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/de/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=de" hreflang="de">Demo online anfragen</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

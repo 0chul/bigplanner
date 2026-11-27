@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sjekkliste for vaktskifte i eiendomsdrift | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/nb/</link>
+    <description>Last ned en gratis Excel-logg for vaktskifte i næringsbygg. Bruk sjekklisten og kjøleeksempelet til å overføre åpne leietakerhenvendelser til neste vakt. Det simulerte eksempelet har koreansk grensesnitt og norske undertekster.</description>
+    <language>nb</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/nb/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KI-demo for eiendomsdrift med kjølemelding og vaktskifte | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/</guid>
+      <description><![CDATA[<h1>KI-demo for eiendomsdrift med kjølemelding og vaktskifte</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/">Se demoen med norske undertekster</a></p>
+      <div>
+        <p>KI registrerer leietakerens kjølemelding, og vaktlederen tildeler saken til en medarbeider. Neste vakt leser samme sak. Fiktiv sak på 27 sekunder med koreansk grensesnitt og norske undertekster.</p>
+        <section>
+          <h2>Fra kjølemelding til vaktskifte</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>En leietaker melder om dårlig kjøling i felles møterom i 5. etasje.</span></li>
+          <li><time dir="ltr">0:04</time><span>KI registrerer sted og detaljer i saken.</span></li>
+          <li><time dir="ltr">0:09</time><span>Vaktlederen sjekker DEMO-012 og tildeler saken.</span></li>
+          <li><time dir="ltr">0:15</time><span>Neste vakt ser notater og ansvarlig i samme sak.</span></li>
+          <li><time dir="ltr">0:21</time><span>BigPlanner Partners. Be om en demo på nett.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nb/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=nb">Be om en demo på nett</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/">Last ned gratis Excel-mal for vaktskifte</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Sjekkliste for vaktskifte i eiendomsdrift og gratis Excel-logg | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Sjekkliste for vaktskifte i eiendomsdrift</h1>
+        <p>Overfør åpne leietakerhenvendelser til neste vakt med nøyaktig sted, hvem som er ansvarlig og tidspunkt for neste kontroll. Excel-filen inneholder en tom logg og et utfylt eksempel for et næringsbygg.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nb/shift-handover/facilities-shift-handover-log.xlsx" download="">Last ned gratis Excel-logg</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Før vakten går av</h2>
+        <ol>
+          <li>Bruk én saks-ID per henvendelse. Registrer når den kom inn i lokal tid, og oppgi bygg, etasje og rom.</li>
+          <li>Oppsummer hva leietakeren meldte, og noter hvilke kontroller og tiltak som er gjennomført.</li>
+          <li>Oppgi hvem eller hvilket team som har ansvaret. Noter status, neste tiltak og frist eller tidspunkt for ny kontroll.</li>
+          <li>Gå gjennom åpne saker med neste vakt, og bekreft hvem som følger opp.</li>
+        </ol>
+        <p>I en nødsituasjon følger dere byggets etablerte varslingsrutiner og bruker de avtalte kontaktpunktene.</p>
+      </section>
+      <section>
+        <h2>Eksempel på en oppføring i vaktloggen</h2>
+        <p>Bygget og saken i eksempelet er fiktive. Tidspunktene er oppgitt i lokal tid.</p>
+        <dl>
+          <dt>Sak og tidspunkt</dt><dd>DEMO-012, 5. oktober 2026 kl. 20.35</dd>
+          <dt>Sted</dt><dd>Bygg A, 5. etasje, felles møterom</dd>
+          <dt>Driftsmelding</dt><dd>En leietaker meldte om dårlig kjøling.</dd>
+          <dt>Ansvarlig og status</dt><dd>Driftstekniker på morgenvakt. Pågår.</dd>
+          <dt>Neste kontroll</dt><dd>6. oktober kl. 07.30. Kontroller filteret og sjekk luftstrømmen.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Følg samme sak gjennom et vaktskifte</h2>
+        <p>Videoen på 27 sekunder viser hvordan KI registrerer opplysningene, hvordan en vaktleder tildeler saken og hvordan neste vakt åpner samme sak. Grensesnittet er på koreansk, og undertekstene er på norsk.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nb/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=nb">Se demoen med norske undertekster</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nb/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=nb" hreflang="nb">Be om en demo på nett</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

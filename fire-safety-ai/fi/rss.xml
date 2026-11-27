@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kiinteistön ylläpidon tarkistuslista vuoronvaihtoon | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/fi/</link>
+    <description>Lataa kiinteistön ylläpidon maksuton Excel-pohja vuoronvaihtoon. Tarkistuslista ja jäähdytysesimerkki auttavat siirtämään avoimet palvelupyynnöt seuraavalle vuorolle. Kuvitteellisen esimerkin käyttöliittymä on koreankielinen ja tekstitys suomeksi.</description>
+    <language>fi</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/fi/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tekoälyavusteinen palvelupyyntö ja vuoronvaihto | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/</guid>
+      <description><![CDATA[<h1>Tekoälyavusteinen palvelupyyntö ja vuoronvaihto</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/">Katso demo suomenkielisellä tekstityksellä</a></p>
+      <div>
+        <p>Katso 27 sekunnin kuvitteellinen esimerkki jäähdytysongelman ilmoittamisesta, vastuuhenkilön nimeämisestä ja pyynnön siirtämisestä seuraavalle vuorolle. Koreankielinen käyttöliittymä ja suomenkielinen tekstitys.</p>
+        <section>
+          <h2>Mitä demossa tapahtuu</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>Vuokralainen ilmoittaa 5. kerroksen yhteisen kokoustilan jäähdytysongelmasta.</span></li>
+          <li><time dir="ltr">0:04</time><span>Tekoäly kirjaa sijainnin ja pyynnön tiedot.</span></li>
+          <li><time dir="ltr">0:09</time><span>Vuorovastaava tarkistaa pyynnön DEMO-012 ja nimeää vastuuhenkilön.</span></li>
+          <li><time dir="ltr">0:15</time><span>Seuraava vuoro näkee kirjaukset ja vastuuhenkilön samasta pyynnöstä.</span></li>
+          <li><time dir="ltr">0:21</time><span>BigPlanner Partners. Pyydä etäesittelyä.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fi/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fi">Lähetä esittelypyyntö verkossa</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fi/shift-handover/">Lataa maksuton Excel-pohja vuoronvaihtoon</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Vuoronvaihdon tarkistuslista ja maksuton Excel-pohja | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/fi/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fi/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Kiinteistön ylläpidon tarkistuslista vuoronvaihtoon</h1>
+        <p>Välitä avoimet palvelupyynnöt seuraavalle vuorolle. Kerro tarkka sijainti, nykyinen vastuuhenkilö ja seuraavan tarkistuksen ajankohta. Excel-tiedosto sisältää tyhjän pohjan ja täytetyn esimerkin toimitilakiinteistöstä.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fi/shift-handover/facilities-shift-handover-log.xlsx" download="">Lataa maksuton Excel-pohja</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Ennen työvuoron päättymistä</h2>
+        <ol>
+          <li>Käytä yhtä tunnusta kullekin palvelupyynnölle. Kirjaa saapumisaika paikallista aikaa ja merkitse rakennus, kerros ja tila.</li>
+          <li>Tiivistä vuokralaisen ilmoitus ja kirjaa jo tehdyt tarkistukset ja toimenpiteet.</li>
+          <li>Nimeä vastuuhenkilö tai -tiimi. Merkitse nykyinen tila, seuraava toimenpide sekä määräaika tai seuraavan tarkistuksen ajankohta.</li>
+          <li>Käy avoimet palvelupyynnöt läpi seuraavan vuoron kanssa ja varmista, kuka niitä seuraa.</li>
+        </ol>
+        <p>Noudata hätätilanteissa kiinteistön vakiintuneita yhteydenotto- ja toimintaohjeita.</p>
+      </section>
+      <section>
+        <h2>Esimerkki vuoronvaihdon kirjauksesta</h2>
+        <p>Rakennus ja palvelupyyntö ovat kuvitteellisia. Kellonajat ovat kohteen paikallista aikaa.</p>
+        <dl>
+          <dt>Pyyntö ja kellonaika</dt><dd>DEMO-012, 5.10.2026 klo 20.35</dd>
+          <dt>Sijainti</dt><dd>Rakennus A, 5. kerros, yhteinen kokoustila</dd>
+          <dt>Vikailmoitus</dt><dd>Vuokralainen ilmoitti, että jäähdytys on liian heikko.</dd>
+          <dt>Vastuuhenkilö ja tila</dt><dd>Aamuvuoron kiinteistönhoitaja. Käsittelyssä.</dd>
+          <dt>Seuraava tarkistus</dt><dd>6.10. klo 7.30. Tarkasta suodatin ja tarkista ilmavirta.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Katso, miten sama palvelupyyntö siirtyy seuraavalle vuorolle</h2>
+        <p>27 sekunnin videossa tekoäly kirjaa tiedot, vuorovastaava nimeää vastuuhenkilön ja seuraava vuoro näkee saman pyynnön. Käyttöliittymä on koreankielinen ja tekstitys suomeksi.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fi">Katso demo suomenkielisellä tekstityksellä</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fi/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fi" hreflang="fi">Lähetä esittelypyyntö verkossa</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>設施管理交更清單 | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/zh-hant/</link>
+    <description>下載免費 Excel 交更紀錄表，供商廈設施管理團隊使用。參考核對清單及冷氣問題填寫示例，將未完成的租戶個案交予下一更跟進。 這段 27 秒短片以虛構大廈個案重現處理流程。畫面使用韓文，可開啟繁體中文字幕。</description>
+    <language>zh-Hant</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>物業管理 AI 27 秒示範｜冷氣個案由接報到交更 | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/</guid>
+      <description><![CDATA[<h1>物業管理 AI 27 秒示範｜冷氣個案由接報到交更</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/">觀看附繁體中文字幕的示範</a></p>
+      <div>
+        <p>以虛構商廈為例，27 秒展示冷氣個案由接報、管理處指派負責同事，到下一更查閱同一紀錄的流程。示範採用韓文畫面，附繁體中文字幕。</p>
+        <section>
+          <h2>示範流程</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>租戶反映五樓共用會議室冷氣不足。</span></li>
+          <li><time dir="ltr">0:04</time><span>AI 把位置和租戶反映的情況整理成個案紀錄。</span></li>
+          <li><time dir="ltr">0:09</time><span>管理人員查看個案編號 DEMO-012 的內容，並指派同事跟進。</span></li>
+          <li><time dir="ltr">0:15</time><span>接更同事從同一宗個案查閱跟進備註和獲指派的同事。</span></li>
+          <li><time dir="ltr">0:21</time><span>BIGPLANNER PARTNERS 介紹服務及網上示範的申請方法。</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=zh-hant">申請網上示範</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/">取得免費設施管理交更清單</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>物業管理交更清單及免費 Excel 紀錄表 | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>設施管理交更清單</h1>
+        <p>將未完成的租戶個案交予下一更時，請註明確切位置、現任負責人及下次跟進安排。Excel 檔案包括空白交更紀錄表及商廈個案填寫示例。</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/shift-handover/facilities-shift-handover-log.xlsx" download="">下載免費 Excel 交更紀錄表</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>交更前要核對的事項</h2>
+        <ol>
+          <li>每宗個案使用一個編號。按大廈所在地的時間記下接報日期及時間，並註明大廈、樓層及房間。</li>
+          <li>簡述租戶反映的情況，並記下已完成的檢查或處理工作。</li>
+          <li>註明負責同事或團隊，並記下目前狀態、下一步行動，以及完成期限或下次檢查時間。</li>
+          <li>與接更同事核對未完成的個案，確認每宗個案由誰跟進。</li>
+        </ol>
+        <p>遇到緊急事故，請按大廈既定的緊急聯絡及應變程序處理。</p>
+      </section>
+      <section>
+        <h2>交更紀錄填寫示例</h2>
+        <p>本例的大廈及個案均屬虛構。所列時間為大廈所在地時間。</p>
+        <dl>
+          <dt>個案編號及接報時間</dt><dd>DEMO-012 · 2026 年 10 月 5 日 20:35</dd>
+          <dt>位置</dt><dd>A 座五樓共用會議室</dd>
+          <dt>問題</dt><dd>租戶反映冷氣不足。</dd>
+          <dt>負責人及狀態</dt><dd>早更設施管理技術員 · 跟進中</dd>
+          <dt>下次檢查</dt><dd>10 月 6 日 07:30 · 檢查濾網及出風情況。</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>看看同一宗個案如何交更</h2>
+        <p>27 秒示範展示 AI 整理個案資料、管理人員指派同事，以及接更同事查閱同一宗個案紀錄的流程。畫面使用韓文，可開啟繁體中文字幕。</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=zh-hant">觀看附繁體中文字幕的示範</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=zh-hant" hreflang="zh-Hant">申請網上示範</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>

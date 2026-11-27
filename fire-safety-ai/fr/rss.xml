@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Liste de contrôle pour la relève des équipes techniques | BigPlanner Partners</title>
+    <link>https://bigplanner.co.kr/fire-safety-ai/fr/</link>
+    <description>Téléchargez un registre Excel gratuit pour la relève des équipes techniques d’immeubles commerciaux. Une liste de contrôle et un exemple de signalement de climatisation aident à transmettre les dossiers en cours. Vidéo de 27 secondes avec un cas simulé. L’interface est en coréen et les sous-titres sont en français.</description>
+    <language>fr</language>
+    <atom:link href="https://bigplanner.co.kr/fire-safety-ai/fr/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Assistant IA pour les signalements de climatisation et la relève | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/</guid>
+      <description><![CDATA[<h1>Assistant IA pour les signalements de climatisation et la relève</h1>
+    <div>
+      <p><a href="https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/">Voir la démonstration sous-titrée en français</a></p>
+      <div>
+        <p>Dans ce cas simulé de 27 secondes, l’IA consigne un problème de climatisation, le responsable attribue le dossier et l’équipe de relève consulte le même dossier. Interface en coréen et sous-titres en français.</p>
+        <section>
+          <h2>Du signalement à la relève</h2>
+          <ol>
+          <li><time dir="ltr">0:00</time><span>Un locataire signale que la climatisation de la salle de réunion commune du cinquième étage ne refroidit pas assez.</span></li>
+          <li><time dir="ltr">0:04</time><span>L’IA consigne le lieu et les détails du problème.</span></li>
+          <li><time dir="ltr">0:09</time><span>Le responsable de service vérifie le dossier DEMO-012 et le confie à la personne chargée de l’intervention.</span></li>
+          <li><time dir="ltr">0:15</time><span>L’équipe de relève consulte les notes et voit à qui le dossier a été attribué.</span></li>
+          <li><time dir="ltr">0:21</time><span>Assistant IA de BIGPLANNER PARTNERS pour les immeubles. Demandez une démonstration en ligne.</span></li>
+          </ol>
+        </section>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fr/request/?utm_source=demo_video&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fr">Demander une démo en ligne</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/">Liste de contrôle et registre Excel gratuits pour la relève</a>
+        </div>
+        
+      </div>
+    </div>]]></description>
+    </item>
+    <item>
+      <title>Relève des équipes techniques et modèle Excel gratuit | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/</guid>
+      <description><![CDATA[<section>
+      <div>
+        <h1>Liste de contrôle pour la relève des équipes techniques</h1>
+        <p>Transmettez à l’équipe de relève les demandes des locataires encore ouvertes, avec le lieu précis, la personne responsable et la prochaine vérification. Le fichier Excel contient un registre vierge et un exemple rempli pour un immeuble commercial.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fr/shift-handover/facilities-shift-handover-log.xlsx" download="">Télécharger le registre Excel gratuit</a>
+          
+        </div>
+        <div></div>
+        
+      </div>
+    </section>
+    <div>
+      <section>
+        <h2>Avant le départ de l’équipe sortante</h2>
+        <ol>
+          <li>Attribuez un numéro à chaque demande. Notez quand elle a été reçue, en heure locale, ainsi que l’immeuble, l’étage et la pièce concernée.</li>
+          <li>Résumez le problème signalé par le locataire. Consignez les vérifications et les interventions déjà effectuées.</li>
+          <li>Indiquez la personne ou l’équipe responsable. Ajoutez le statut actuel, la prochaine action et l’échéance ou l’heure de la prochaine vérification.</li>
+          <li>Passez en revue les dossiers ouverts avec l’équipe de relève et confirmez qui assurera le suivi.</li>
+        </ol>
+        <p>En cas d’urgence, utilisez les contacts prévus par l’immeuble et suivez ses procédures d’urgence.</p>
+      </section>
+      <section>
+        <h2>Exemple d’entrée dans le registre</h2>
+        <p>L’immeuble et le signalement sont fictifs. Les heures indiquées sont celles du site.</p>
+        <dl>
+          <dt>Dossier et heure du signalement</dt><dd>DEMO-012, le 5 octobre 2026 à 20 h 35</dd>
+          <dt>Lieu</dt><dd>Immeuble A, cinquième étage, salle de réunion commune</dd>
+          <dt>Signalement</dt><dd>Un locataire signale que la climatisation ne refroidit pas assez.</dd>
+          <dt>Responsable et statut</dt><dd>Technicien de l’équipe du matin. En cours.</dd>
+          <dt>Prochaine vérification</dt><dd>Le 6 octobre à 7 h 30, inspecter le filtre et vérifier le débit d’air.</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Suivre le même signalement d’une équipe à l’autre</h2>
+        <p>Cette vidéo de 27 secondes montre comment l’IA consigne les détails, comment le responsable attribue le dossier et comment l’équipe de relève consulte le même dossier. L’interface est en coréen et les sous-titres sont en français.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fr/demo-video/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fr">Voir la démonstration sous-titrée en français</a>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fr/request/?utm_source=handover_template&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fr" hreflang="fr">Demander une démo en ligne</a>
+          
+        </div>
+      </section>
+    </div>]]></description>
+    </item>
+  </channel>
+</rss>
