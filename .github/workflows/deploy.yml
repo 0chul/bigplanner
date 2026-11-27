@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: github-pages-release
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -24,8 +28,20 @@ jobs:
           npm install
           npm run build
 
+      - name: Retain recent releases' hashed assets
+        run: |
+          if git ls-remote --exit-code --heads origin refs/heads/gh-pages; then
+            git fetch --no-tags --depth=2 origin refs/heads/gh-pages
+            node scripts/retain-pages-assets.mjs FETCH_HEAD
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then exit "$status"; fi
+            node scripts/retain-pages-assets.mjs
+          fi
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          keep_files: false

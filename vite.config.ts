@@ -17,6 +17,7 @@ export default defineConfig(({mode}) => {
         workbox: {
           // Allow an open site's next reload to receive updated policy pages after activation.
           skipWaiting: true,
+          clientsClaim: true,
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
           navigateFallbackDenylist: [/^\/fire-safety-ai\/handoff-checklist(?:\/|\?|$)/],
           runtimeCaching: [
