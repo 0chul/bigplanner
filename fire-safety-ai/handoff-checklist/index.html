@@ -40,6 +40,7 @@
     .buttons { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.25rem; }
     .button { display: inline-block; padding: .65rem 1rem; border: 1px solid var(--accent); border-radius: .35rem; color: white; background: var(--accent); text-decoration: none; font: inherit; font-weight: 700; cursor: pointer; }
     .secondary { color: var(--accent); background: white; }
+    .intro-demo { align-self: center; font-weight: 700; padding: .65rem .25rem; }
     .example { margin: 1rem 0; background: var(--paper); border-radius: .5rem; padding: 1rem 1.25rem; }
     dl { margin: 0; display: grid; grid-template-columns: minmax(6.5rem, .53fr) 1.47fr; gap: .4rem 1rem; }
     dt { font-weight: 750; }
@@ -81,6 +82,7 @@
     <div class="buttons">
       <a class="button" href="#handoff-form">빈 인계표 보기</a>
       <button class="button secondary" type="button" onclick="window.print()">인쇄 또는 PDF로 저장</button>
+      <a class="intro-demo" data-product-link href="/fire-safety-ai/?utm_source=handoff_checklist&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch#demo-request">온라인 시연 신청</a>
     </div>
 
     <section aria-labelledby="before-handoff">
@@ -126,7 +128,7 @@
         <h2 id="demo-heading">민원 접수에서 담당자 인계까지 직접 보기</h2>
         <p>방재실 AI 민원 도우미 데모에서 입주사 문의 접수, 담당자 지정, 교대 후 같은 기록을 확인하는 흐름을 볼 수 있습니다.</p>
         <p class="note">27초 영상은 가상 데이터로 재구성했습니다. 화면에 나오는 문구로 진행을 확인할 수 있습니다.</p>
-        <div class="buttons"><a class="button" href="/fire-safety-ai/?utm_source=handoff_checklist&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch#product-demo">민원 처리 데모 보기</a></div>
+        <div class="buttons"><a class="button" data-product-link href="/fire-safety-ai/?utm_source=handoff_checklist&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch#product-demo">민원 처리 데모 보기</a></div>
       </div>
       <video controls playsinline preload="none" width="1080" height="1920" aria-label="방재실 민원 인계 데모 27초" poster="handoff-demo-cover.jpg">
         <source src="handoff-demo.mp4" type="video/mp4">
@@ -135,5 +137,35 @@
     </section>
   </main>
   <footer><div class="wrap">빅플래너파트너스 · <a href="/privacy/">개인정보처리방침</a></div></footer>
+  <script>
+    const guideCampaign = 'fire_safety_launch';
+    const guideChannels = new Map([
+      ['facebook', ['organic_social', 'site_post']],
+      ['instagram', ['organic_social', 'profile_demo']],
+      ['linkedin', ['organic_social', 'hq_post']],
+      ['naver_blog', ['organic_social', 'handover_checklist']],
+      ['youtube', ['organic_social', 'short_handover']],
+      ['kakao_channel', ['organic_social', 'channel_post']],
+      ['facility_community', ['referral', 'handover_template']],
+      ['venturesquare', ['referral', 'editorial_pitch']],
+      ['proptech_forum', ['referral', 'newsletter_pitch']],
+      ['jarang', ['referral', 'startup_times']],
+    ]);
+    const incoming = new URLSearchParams(location.search);
+    const source = incoming.get('utm_source');
+    const channel = guideChannels.get(source);
+    const hasTaggedChannel = incoming.get('utm_campaign') === guideCampaign && channel && incoming.get('utm_medium') === channel[0];
+    const fromFacebook = !incoming.has('utm_campaign') && incoming.has('fbclid');
+
+    if (hasTaggedChannel || fromFacebook) {
+      for (const link of document.querySelectorAll('[data-product-link]')) {
+        const target = new URL(link.href);
+        target.searchParams.set('utm_source', hasTaggedChannel ? source : 'facebook');
+        target.searchParams.set('utm_medium', hasTaggedChannel ? channel[0] : 'referral');
+        target.searchParams.set('utm_content', hasTaggedChannel ? channel[1] : 'handoff_checklist');
+        link.href = target.href;
+      }
+    }
+  </script>
 </body>
 </html>
