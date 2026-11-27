@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,16 @@
   <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/">
   <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/">
   <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/">
+  <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/">
+  <link rel="alternate" hreflang="da" href="https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/">
+  <link rel="alternate" hreflang="nl" href="https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/">
+  <link rel="alternate" hreflang="sv" href="https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/">
+  <link rel="alternate" hreflang="fi" href="https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/">
+  <link rel="alternate" hreflang="it" href="https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/">
+  <link rel="alternate" hreflang="he" href="https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/">
+  <link rel="alternate" hreflang="es" href="https://bigplanner.co.kr/fire-safety-ai/es/adoption-guide/">
+  <link rel="alternate" hreflang="is" href="https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/">
   <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/adoption-guide/">
   <link rel="alternate" type="application/rss+xml" title="Flux RSS des ressources pour l’exploitation des bâtiments" href="https://bigplanner.co.kr/fire-safety-ai/fr/rss.xml">
   <meta property="og:type" content="article">
@@ -30,11 +40,13 @@ body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui
 .wrap { width: min(60rem, 100% - 2.5rem); margin-inline: auto; }
 header, footer { border-block-end: 1px solid var(--rule); }
 header .wrap, footer .wrap, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.15rem; }
-header .wrap { justify-content: space-between; }
+header .wrap { justify-content: space-between; align-items: baseline; }
 header .wrap, footer .wrap { padding-block: .8rem; }
 header a { padding-block: .32rem; }
-.guide-languages { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
-.guide-languages a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.guide-languages { max-inline-size: min(32rem, 100%); }
+.guide-languages summary { min-height: 2.75rem; padding-block: .5rem; cursor: pointer; color: var(--green); font-weight: 650; }
+.guide-language-links { display: flex; flex-wrap: wrap; gap: .1rem .8rem; }
+.guide-language-links a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 a { color: var(--green); text-underline-offset: .18em; }
 .brand { color: var(--ink); font-size: 1.14rem; font-weight: 750; text-decoration: none; }
 :focus-visible { outline: 2px solid #2f7566; outline-offset: 3px; }
@@ -42,7 +54,8 @@ h1, h2, h3, p { margin: 0; }
 h1, h2, h3 { line-height: 1.19; }
 h1 { max-width: 22ch; font-size: clamp(2.25rem, 5.8vw, 4.15rem); letter-spacing: -.045em; text-wrap: balance; }
 h2 { font-size: clamp(1.6rem, 3.35vw, 2.3rem); letter-spacing: -.025em; }
-:is(:lang(ja), :lang(zh-Hant)):is(h1, h2) { letter-spacing: normal; }
+:is(:lang(ja), :lang(zh-Hant), :lang(ar), :lang(he)):is(h1, h2) { letter-spacing: normal; }
+:lang(ar) :is(h1, h2, h3) { line-height: 1.4; }
 h3 { font-size: 1.11rem; }
 .hero { padding-block: clamp(2.1rem, 6vw, 4.6rem); background: var(--paper); border-block-end: 1px solid var(--rule); }
 .hero p { max-width: 58ch; margin-block-start: 1rem; color: var(--muted); font-size: clamp(1.04rem, 2vw, 1.23rem); }
@@ -96,11 +109,23 @@ footer { border-block-start: 1px solid var(--rule); border-block-end: 0; color: 
 <body>
   <header><div class="wrap">
     <a href="/fire-safety-ai/fr/" class="brand" lang="en">BigPlanner Partners</a>
-    <nav class="guide-languages"><a href="/fire-safety-ai/adoption-guide/" lang="ko" hreflang="ko">한국어</a>
-      <a href="/fire-safety-ai/en/adoption-guide/" lang="en" hreflang="en">English</a>
-      <a href="/fire-safety-ai/de/adoption-guide/" lang="de" hreflang="de">Deutsch</a>
-      <a href="/fire-safety-ai/ja/adoption-guide/" lang="ja" hreflang="ja">日本語</a>
-      <a href="/fire-safety-ai/zh-hant/adoption-guide/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a></nav>
+    <details class="guide-languages"><summary>Français</summary>
+      <nav class="guide-language-links"><a href="/fire-safety-ai/adoption-guide/" lang="ko" hreflang="ko" dir="auto">한국어</a>
+      <a href="/fire-safety-ai/en/adoption-guide/" lang="en" hreflang="en" dir="auto">English</a>
+      <a href="/fire-safety-ai/de/adoption-guide/" lang="de" hreflang="de" dir="auto">Deutsch</a>
+      <a href="/fire-safety-ai/ja/adoption-guide/" lang="ja" hreflang="ja" dir="auto">日本語</a>
+      <a href="/fire-safety-ai/zh-hant/adoption-guide/" lang="zh-Hant" hreflang="zh-Hant" dir="auto">繁體中文</a>
+      <a href="/fire-safety-ai/ar/adoption-guide/" lang="ar" hreflang="ar" dir="auto">العربية</a>
+      <a href="/fire-safety-ai/nb/adoption-guide/" lang="nb" hreflang="nb" dir="auto">Norsk bokmål</a>
+      <a href="/fire-safety-ai/da/adoption-guide/" lang="da" hreflang="da" dir="auto">Dansk</a>
+      <a href="/fire-safety-ai/nl/adoption-guide/" lang="nl" hreflang="nl" dir="auto">Nederlands</a>
+      <a href="/fire-safety-ai/sv/adoption-guide/" lang="sv" hreflang="sv" dir="auto">Svenska</a>
+      <a href="/fire-safety-ai/fi/adoption-guide/" lang="fi" hreflang="fi" dir="auto">Suomi</a>
+      <a href="/fire-safety-ai/it/adoption-guide/" lang="it" hreflang="it" dir="auto">Italiano</a>
+      <a href="/fire-safety-ai/he/adoption-guide/" lang="he" hreflang="he" dir="auto">עברית</a>
+      <a href="/fire-safety-ai/es/adoption-guide/" lang="es" hreflang="es" dir="auto">Español</a>
+      <a href="/fire-safety-ai/is/adoption-guide/" lang="is" hreflang="is" dir="auto">Íslenska</a></nav>
+    </details>
   </div></header>
   <main>
     <section class="hero" aria-labelledby="guide-title"><div class="wrap">

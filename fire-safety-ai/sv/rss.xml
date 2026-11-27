@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="sv" dir="ltr"><p>Uppskatta den nuvarande tiden för återkommande hyresgästfrågor per månad och vilken andel ni vill granska inför en pilot i fastighetsdriften.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/">Beräkna tiden för återkommande frågor</a></p></div>]]></description>
     </item>
     <item>
+      <title>Checklista för att testa AI för hyresgästärenden i fastighetsdriften | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Testa en AI-assistent för hyresgästärenden i en byggnad</h1>
+      <p>Välj en kommersiell byggnad med aktuella ärenderegistreringar och personal från båda skiften som kan delta. Be driftansvarig avgränsa piloten tillsammans med dem som svarar på frågor, fördelar arbetet och tar över öppna ärenden.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/#checklist">Öppna checklistan</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Sex punkter innan ni börjar</h2>
+        <div>
+          <article>
+            <h3>Välj byggnad och ärendetyper</h3>
+            <p>Gå igenom aktuella ärenden. Välj två eller tre typer med tillräckligt många exempel för att testa, till exempel besöksparkering, dålig kyla och behov av värme, ventilation eller kyla utanför ordinarie drifttid. Anteckna byggnaden, aktuella tider, ärendetyperna och vem som ansvarar för piloten.</p>
+          </article>
+          <article>
+            <h3>Bestäm vilka svar och beslut som behöver granskas</h3>
+            <p>För vanliga frågor, anteckna vilket godkänt avsnitt i driftinstruktionerna som gäller och vem som uppdaterar det. Kontrollera ett svar mot den senaste versionen. Vid besök på plats, anteckna plats och problem. Behörig personal granskar och beslutar i ärenden som kräver godkännande.</p>
+          </article>
+          <article>
+            <h3>Utse en ansvarig för varje skift</h3>
+            <p>Bestäm vem som granskar nya ärenden, fördelar uppföljningen och hanterar ärenden utanför piloten. Gå igenom ett ärende som saknar ansvarig vid skiftbytet för att se vem som tar över.</p>
+          </article>
+          <article>
+            <h3>Lämna över öppna ärenden med samma ärendepost</h3>
+            <p>Anteckna ärendenummer, plats, problem, vem ärendet tilldelats, status, nästa åtgärd och tid för nästa kontroll. Be nästa skift notera när de granskade ärendet.</p>
+          </article>
+          <article>
+            <h3>Välj huvudsystem för ärenderegistreringen</h3>
+            <p>Välj vilket system som ska vara huvudkälla. Kontrollera vilka integrationer piloten stöder för telefon, e-post och arbetsorder. Testa ett problem som rapporteras två gånger för att se hur personalen stämmer av registreringarna.</p>
+          </article>
+          <article>
+            <h3>Bestäm åtkomst och lagringstid</h3>
+            <p>Kom överens om vem som får se och ändra hyresgästuppgifter. Avgör när kontaktuppgifter eller foton behövs, hur länge de ska sparas och vem som ansvarar för radering. Använd fiktiva ärenden eller maskerade uppgifter i genomgången.</p>
+          </article>
+        </div>
+        <p>Vid en nödsituation ska ni följa byggnadens ordinarie larmvägar och beredskapsrutiner.</p>
+      </section>
+      <section>
+        <h2>Fiktivt kylärende vid skiftbyte</h2>
+        <dl>
+          <div><dt>Registrering</dt><dd>DEMO-012. Den 5 oktober kl. 20:35 lokal tid anmäler en hyresgäst att kylan är för svag i det gemensamma mötesrummet på plan 5 i byggnad A.</dd></div>
+          <div><dt>Arbetsledarens granskning</dt><dd>Arbetsledaren kontrollerar plats och problem, tilldelar morgonskiftets drifttekniker ärendet och markerar det som pågående.</dd></div>
+          <div><dt>Nästa skift</dt><dd>Kl. 07:00 nästa morgon bekräftar det nya skiftet vem ärendet tilldelats och antecknar att driftteknikern ska kontrollera rummet kl. 07:30.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/">Se demon på 27 sekunder med svensk textning</a></p>
+        <p>Gränssnittet som visas är på koreanska.</p>
+      </section>
+      <section>
+        <h2>Jämför ett litet urval före och under piloten</h2>
+        <p>Bestäm i förväg vilka resultat som motiverar att ni fortsätter. Jämför exempelvis fem arbetsdagar före piloten med fem arbetsdagar under den. Använd samma veckodagar, tider för dag- och nattskift och ärendetyper. Räkna dubbletter en gång genom att jämföra ärendenummer eller tid, plats och problem.</p>
+        <ul>
+          <li><strong>Fullständiga ärenderegistreringar.</strong> Utgå från alla ärenden i piloten som krävde kontroll på plats. Dela antalet där plats, problem och tilldelningsstatus har registrerats med det totala antalet sådana ärenden.</li>
+          <li><strong>Bekräftad skiftöverlämning.</strong> Räkna öppna ärenden där en tidsstämplad kontroll av status och nästa åtgärd ingår i den första överlämningen. Dela med antalet öppna ärenden som behövde lämnas över.</li>
+        </ul>
+        <p>Anteckna täljare och nämnare för varje mått. Om inga ärenden kvalificerar, skriv 0 av 0 och lämna andelen tom. Gå igenom saknade uppgifter och försenade tilldelningar med båda skiften innan ni avgör om piloten ska utökas.</p>
+        <p>Läs mer om att planera en pilot och avgränsa servicedeskens uppgifter. Den brittiska regeringens standard för facility management (engelska)</p>
+      </section>
+      <section>
+        <h2>Pris och demo</h2>
+        <p>BigPlanner Partners lämnar en individuell offert för införande och löpande stöd utifrån antal byggnader, driftinstruktioner, integrationsbehov och önskat stöd. Ta med två exempel på arbetsflöden till demon online. Fiktiva exempel räcker.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/sv/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=sv">Be om en demo online</a>
+        </div>
+      </section>
+      <section>
+        <h2>Resurser för fastighetsdrift</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/sv/shift-handover/">Checklista för skiftöverlämning och Excel-mall</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">Guide för vanliga frågor i byggnaden med arbetsblad (engelska)</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/sv/workload-calculator/">Beräkna tiden för återkommande hyresgästfrågor</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/sv/resources/">Alla resurser för fastighetsdrift</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>Verktyg för fastighetsdrift | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/sv/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/sv/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/sv/demo-video/">En felanmälan om kyla på 27 sekunder</a></h3>
           <p>AI registrerar hyresgästens felanmälan om kyla. En arbetsledare tilldelar ärendet och nästa skift läser det. Fiktivt ärende på 27 sekunder med koreanskt gränssnitt och svensk textning.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/">Checklista för att testa AI för hyresgästärenden i fastighetsdriften</a></h3>
+          <p>Planera ett pilottest i en byggnad. Välj vilka hyresgästärenden som ska ingå, kom överens om granskning och skiftöverlämning och jämför ärenderegistreringar före och under piloten.</p>
           
         </article></li>
       </ul>

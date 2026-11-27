@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="fi" dir="ltr"><p>Arvioi vuokralaisten toistuviin kysymyksiin vastaamiseen kuluva kuukausittainen työaika ja se, mikä osa nykyisestä työmäärästä otetaan tarkasteluun kiinteistön palvelukanavan pilotissa.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/fi/workload-calculator/">Avaa työmäärälaskuri</a></p></div>]]></description>
     </item>
     <item>
+      <title>Tarkistuslista tekoälyavusteisen vuokralaispalvelun pilotointiin | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Kokeile tekoälyavusteista vuokralaispalvelua yhdessä kiinteistössä</h1>
+      <p>Valitse liikekiinteistö, josta on tallessa viimeaikaisia palvelupyyntöjä ja jonka kummankin vuoron työntekijöitä voi osallistua. Pyydä kiinteistön ylläpidosta vastaavaa henkilöä sopimaan pilotin rajauksesta kysymyksiin vastaavien, töitä osoittavien ja avoimia pyyntöjä vastaanottavien työntekijöiden kanssa.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/#checklist">Avaa tarkistuslista</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Tarkista nämä kuusi asiaa ennen aloitusta</h2>
+        <div>
+          <article>
+            <h3>Valitse kiinteistö ja palvelupyyntöjen tyypit</h3>
+            <p>Käy läpi viimeaikaisia kirjauksia. Valitse kaksi tai kolme pyyntötyyppiä, joista on riittävästi esimerkkejä. Niitä voivat olla vaikkapa vieraspysäköinti, riittämätön jäähdytys tai lämmityksen, ilmanvaihdon tai jäähdytyksen käyttö normaalin käyttöajan ulkopuolella. Kirjaa kiinteistö, pilotin toiminta-ajat, pyyntötyypit ja pilotista vastaava henkilö.</p>
+          </article>
+          <article>
+            <h3>Sovi tarkistettavista vastauksista ja hyväksyntää vaativista päätöksistä</h3>
+            <p>Kirjaa tavallisille kysymyksille hyväksytty kiinteistöohjeen kohta ja siitä vastaava päivittäjä. Tarkista yksi vastaus ohjeen uusinta versiota vasten. Kirjaa paikan päällä tarkistettavasta tilanteesta sijainti ja ongelma. Hyväksyntää vaativat pyynnöt tarkistaa ja ratkaisee siihen valtuutettu henkilöstö.</p>
+          </article>
+          <article>
+            <h3>Nimeä vastuuhenkilö jokaiseen vuoroon</h3>
+            <p>Sovi, kuka tarkistaa uudet pyynnöt, osoittaa jatkotoimet ja käsittelee pilotin ulkopuolelle jäävät tapaukset. Käy vuoronvaihdossa läpi yksi pyyntö, jolla ei vielä ole vastuuhenkilöä, ja varmista, kuka ottaa sen käsittelyyn.</p>
+          </article>
+          <article>
+            <h3>Siirrä avoimet pyynnöt seuraavalle vuorolle samassa kirjauksessa</h3>
+            <p>Kirjaa pyynnön tunnus, sijainti, ongelma, vastuuhenkilö, tila, seuraava toimi ja seuraavan tarkistuksen ajankohta. Pyydä vuoroon tulevia työntekijöitä kirjaamaan, milloin he tarkistivat pyynnön.</p>
+          </article>
+          <article>
+            <h3>Valitse virallisten kirjausten järjestelmä</h3>
+            <p>Sovi, missä järjestelmässä virallinen kirjaus säilytetään. Selvitä, mitä puhelin-, sähköposti- ja työmääräysjärjestelmien liitäntöjä pilotissa voidaan käyttää. Kokeile yhdellä kahdesti ilmoitetulla ongelmalla, miten henkilöstö sovittaa kirjaukset yhteen.</p>
+          </article>
+          <article>
+            <h3>Varmista käyttöoikeudet ja säilytysajat</h3>
+            <p>Sovi, kuka saa nähdä ja muokata vuokralaisten tietoja. Päätä, milloin yhteystietoja tai kuvia tarvitaan, miten pitkään tiedot säilytetään ja kuka vastaa niiden poistamisesta. Käytä harjoituksessa kuvitteellisia kirjauksia tai peitä arkaluonteiset tiedot.</p>
+          </article>
+        </div>
+        <p>Noudata hätätilanteissa kiinteistön vakiintuneita yhteydenotto- ja toimintaohjeita.</p>
+      </section>
+      <section>
+        <h2>Kuvitteellinen jäähdytysongelma vuoronvaihdossa</h2>
+        <dl>
+          <div><dt>Pyynnön kirjaaminen</dt><dd>DEMO-012. Vuokralainen ilmoittaa 5. lokakuuta kello 20:35 paikallista aikaa, että A-rakennuksen viidennen kerroksen yhteisen neuvotteluhuoneen jäähdytys on riittämätön.</dd></div>
+          <div><dt>Vuorovastaavan tarkistus</dt><dd>Vuorovastaava tarkistaa sijainnin ja ongelman, osoittaa pyynnön aamuvuoron kiinteistöteknikolle ja merkitsee pyynnön käsittelyyn.</dd></div>
+          <div><dt>Seuraava vuoro</dt><dd>Seuraavana aamuna vuoroon tulevat työntekijät vahvistavat kello 07:00, kuka hoitaa pyynnön, ja kirjaavat, että teknikko tarkistaa huoneen kello 07:30.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/">Katso 27 sekunnin esittely suomenkielisillä tekstityksillä</a></p>
+        <p>Videolla näkyvä käyttöliittymä on koreankielinen.</p>
+      </section>
+      <section>
+        <h2>Vertaa pilotin tuloksia pieneen lähtötilanteen otokseen</h2>
+        <p>Päätä etukäteen, millä tuloksilla kokeilua kannattaa jatkaa. Vertaa esimerkiksi viittä työpäivää ennen pilottia viiteen työpäivään pilotin aikana. Valitse samat viikonpäivät, päivä- ja yövuorojen ajanjaksot ja pyyntötyypit. Laske useaan kertaan ilmoitettu ongelma vain kerran. Tunnista päällekkäisyydet pyynnön tunnuksen tai kellonajan, sijainnin ja ongelman perusteella.</p>
+        <ul>
+          <li><strong>Kirjausten kattavuus.</strong> Ota mukaan kaikki pilotin piiriin kuuluvat pyynnöt, jotka vaativat tarkistusta paikan päällä. Jaa niiden pyyntöjen määrä, joihin on kirjattu sijainti, ongelma ja vastuuhenkilön nimeämisen tila, kaikkien mukaan otettujen pyyntöjen määrällä.</li>
+          <li><strong>Kuittaus vuoronvaihdossa.</strong> Ota mukaan kaikki avoimet pyynnöt, jotka piti siirtää seuraavalle vuorolle. Jaa niiden pyyntöjen määrä, joissa tilan ja seuraavan toimen tarkistus kirjattiin aikaleimalla ensimmäisessä vuoronvaihdossa, kaikkien siirrettävien avointen pyyntöjen määrällä.</li>
+        </ul>
+        <p>Kirjaa kullekin mittarille sekä osoittajan että nimittäjän lukumäärä. Kun nimittäjä on nolla, kirjaa 0/0 ja jätä osuus tyhjäksi. Käy puuttuvat kirjaukset ja viiveet vastuun osoittamisessa läpi kummankin vuoron kanssa ennen laajentamispäätöstä.</p>
+        <p>Lisätietoa pilotin suunnittelusta ja palvelupisteen tehtävistä. Yhdistyneen kuningaskunnan hallinnon kiinteistönpidon standardi (englanniksi)</p>
+      </section>
+      <section>
+        <h2>Tarjous ja esittely</h2>
+        <p>BigPlanner Partners tekee projektikohtaisen tarjouksen käyttöönotosta ja jatkuvasta tuesta. Tarjous perustuu kiinteistöjen määrään, kiinteistöohjeisiin, järjestelmäliitäntöihin ja tuen tarpeeseen. Valmistele verkkoesittelyyn kaksi esimerkkityönkulkua. Kuvitteelliset esimerkit riittävät.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/fi/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fi">Lähetä esittelypyyntö verkossa</a>
+        </div>
+      </section>
+      <section>
+        <h2>Työkalut kiinteistön ylläpitoon</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/fi/shift-handover/">Vuoronvaihdon tarkistuslista ja Excel-lomake</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">Ohje ja lomake kiinteistön usein kysytyille kysymyksille (englanniksi)</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/fi/workload-calculator/">Arvioi toistuviin vuokralaiskysymyksiin kuluva työaika</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/fi/resources/">Kaikki suomenkieliset työkalut</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>Työkalut kiinteistön ylläpitoon | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/fi/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/fi/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/fi/demo-video/">Jäähdytysongelman käsittely 27 sekunnissa</a></h3>
           <p>Katso 27 sekunnin kuvitteellinen esimerkki jäähdytysongelman ilmoittamisesta, vastuuhenkilön nimeämisestä ja pyynnön siirtämisestä seuraavalle vuorolle. Koreankielinen käyttöliittymä ja suomenkielinen tekstitys.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/">Tarkistuslista tekoälyavusteisen vuokralaispalvelun pilotointiin</a></h3>
+          <p>Suunnittele yhden kiinteistön pilotti. Valitse käsiteltävät vuokralaisten palvelupyynnöt, sovi niiden tarkistamisesta ja siirtämisestä vuorolta toiselle ja vertaa kirjauksia ennen pilottia ja sen aikana.</p>
           
         </article></li>
       </ul>

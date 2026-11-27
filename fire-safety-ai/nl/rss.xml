@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="nl" dir="ltr"><p>Schat de huidige maandelijkse tijd voor terugkerende huurdersvragen en het deel dat u wilt beoordelen voor een proeftraject met een facilitaire servicedesk.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/">Bereken de werklast voor huurdersvragen</a></p></div>]]></description>
     </item>
     <item>
+      <title>Pilotchecklist voor een AI-servicedesk in facilitair beheer | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Test een AI-servicedesk voor huurders in één gebouw</h1>
+      <p>Kies een bedrijfsgebouw met recente meldingen en medewerkers uit beide diensten die kunnen meedoen. Laat de facilitair verantwoordelijke de reikwijdte van de pilot afstemmen met de medewerkers die vragen beantwoorden, werk toewijzen en openstaande meldingen overnemen.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/#checklist">Open de checklist</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Zes punten om vóór de start te controleren</h2>
+        <div>
+          <article>
+            <h3>Kies het gebouw en de soorten meldingen</h3>
+            <p>Bekijk recente dossiers. Kies twee of drie soorten meldingen met voldoende voorbeelden, zoals vragen over bezoekersparkeren, onvoldoende koeling en extra draaitijd van de klimaatinstallatie. Leg vast om welk gebouw, welke uren en welke soorten meldingen het gaat en wie verantwoordelijk is voor de pilot.</p>
+          </article>
+          <article>
+            <h3>Spreek af welke antwoorden en besluiten controle vragen</h3>
+            <p>Noteer voor routinevragen welke passage uit het gebouwreglement is goedgekeurd en wie die bijwerkt. Toets één antwoord aan de actuele tekst. Leg bij een controle ter plaatse de locatie en het probleem vast. Bevoegde medewerkers beoordelen aanvragen waarvoor goedkeuring nodig is en nemen daarover een besluit.</p>
+          </article>
+          <article>
+            <h3>Wijs per dienst een verantwoordelijke aan</h3>
+            <p>Spreek af wie nieuwe meldingen beoordeelt, vervolgwerk toewijst en meldingen buiten de pilot behandelt. Loop bij de dienstwissel één nog niet toegewezen melding door en bevestig wie die oppakt.</p>
+          </article>
+          <article>
+            <h3>Draag openstaande meldingen over in hetzelfde dossier</h3>
+            <p>Noteer het meldingsnummer, de locatie, het probleem, de verantwoordelijke, de status, de volgende stap en het tijdstip van de volgende controle. Laat de nieuwe dienst vastleggen wanneer die het dossier heeft beoordeeld.</p>
+          </article>
+          <article>
+            <h3>Kies het systeem voor de officiële registratie</h3>
+            <p>Bepaal welk systeem leidend is. Controleer welke koppelingen voor telefonie, e-mail en werkorders in de pilot beschikbaar zijn. Test met één probleem dat tweemaal is gemeld hoe het team de dossiers op elkaar afstemt.</p>
+          </article>
+          <article>
+            <h3>Maak afspraken over toegang en bewaartermijnen</h3>
+            <p>Bepaal wie gegevens van huurders mag inzien of wijzigen. Spreek af wanneer contactgegevens of foto's nodig zijn, hoe lang u die bewaart en wie ze verwijdert. Gebruik voor de oefening fictieve dossiers of maak gevoelige gegevens onleesbaar.</p>
+          </article>
+        </div>
+        <p>Volg bij een noodsituatie de geldende noodprocedures en contactinstructies van het gebouw.</p>
+      </section>
+      <section>
+        <h2>Fictieve melding over koeling bij de dienstwissel</h2>
+        <dl>
+          <div><dt>Melding vastleggen</dt><dd>DEMO-012. Op 5 oktober om 20:35 uur lokale tijd meldt een huurder dat de gedeelde vergaderruimte op de vijfde verdieping van gebouw A onvoldoende wordt gekoeld.</dd></div>
+          <div><dt>Beoordeling door de dienstverantwoordelijke</dt><dd>De dienstverantwoordelijke controleert de locatie en het probleem, wijst de melding toe aan de gebouwtechnicus van de ochtenddienst en zet de status op ‘In behandeling’.</dd></div>
+          <div><dt>Nieuwe dienst</dt><dd>De volgende ochtend bevestigt de nieuwe dienst om 07:00 uur de toewijzing en noteert dat de technicus de ruimte om 07:30 uur controleert.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/nl/demo-video/">Bekijk de demo van 27 seconden met Nederlandse ondertiteling</a></p>
+        <p>De getoonde interface is Koreaans.</p>
+      </section>
+      <section>
+        <h2>Vergelijk een korte nulmeting met de pilot</h2>
+        <p>Bepaal vooraf welke uitkomsten aanleiding zijn om door te gaan. Vergelijk bijvoorbeeld vijf werkdagen vóór de pilot met vijf werkdagen tijdens de pilot. Kies dezelfde weekdagen, tijdvakken van dag- en nachtdiensten en soorten meldingen. Tel dubbele meldingen één keer. Vergelijk daarvoor het meldingsnummer of het tijdstip, de locatie en het probleem.</p>
+        <ul>
+          <li><strong>Volledigheid van de dossiers.</strong> Neem alle meldingen binnen de pilot waarvoor een controle ter plaatse nodig was. Deel het aantal daarvan met een vastgelegde locatie, probleemomschrijving en toewijzingsstatus door het totale aantal meldingen waarvoor zo'n controle nodig was.</li>
+          <li><strong>Bevestiging van de overdracht.</strong> Neem alle openstaande meldingen die moesten worden overgedragen. Deel het aantal waarvan de eerste overdracht een controle van de status en de volgende stap met tijdstempel bevat door het totale aantal openstaande meldingen dat moest worden overgedragen.</li>
+        </ul>
+        <p>Noteer bij elke maatstaf zowel de teller als de noemer. Als de noemer nul is, noteert u 0 van 0 en laat u het percentage leeg. Bespreek ontbrekende registraties en te late toewijzingen met beide diensten voordat u over uitbreiding beslist.</p>
+        <p>Verder lezen over de opzet van de pilot en de taken van de servicedesk. Norm voor facilitair beheer van de Britse overheid (Engels)</p>
+      </section>
+      <section>
+        <h2>Offerte en demo</h2>
+        <p>BigPlanner Partners maakt per project een offerte voor inrichting en doorlopende ondersteuning. De offerte hangt af van het aantal gebouwen, de gebouwdocumentatie, de koppelingen en de benodigde ondersteuning. Neem twee voorbeeldprocessen mee naar de online demo. Fictieve voorbeelden volstaan.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/nl/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=nl">Vraag online een demo aan</a>
+        </div>
+      </section>
+      <section>
+        <h2>Hulpmiddelen voor facilitair beheer</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/nl/shift-handover/">Checklist en Excel-logboek voor de dienstoverdracht</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">Handleiding en werkblad voor gebouw-FAQ’s (Engels)</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/nl/workload-calculator/">Bereken de tijd voor terugkerende huurdersvragen</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/nl/resources/">Alle Nederlandstalige hulpmiddelen</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>Hulpmiddelen voor facilitair beheer | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/nl/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/nl/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nl/demo-video/">Een melding over koeling in 27 seconden</a></h3>
           <p>Bekijk in 27 seconden hoe AI in een gesimuleerde situatie een melding over koeling vastlegt, een leidinggevende de melding toewijst en de volgende dienst hetzelfde dossier raadpleegt. Koreaanse interface met Nederlandse ondertiteling.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/">Pilotchecklist voor een AI-servicedesk in facilitair beheer</a></h3>
+          <p>Plan een pilot in één gebouw. Kies welke huurdersmeldingen u behandelt, maak afspraken over controle en overdracht en vergelijk de dossiers van vóór en tijdens de pilot.</p>
           
         </article></li>
       </ul>

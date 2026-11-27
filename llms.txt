@@ -97,6 +97,16 @@ The free calculator estimates the current monthly enquiry workload and the porti
 - [Français](https://bigplanner.co.kr/fire-safety-ai/fr/adoption-guide/)
 - [日本語](https://bigplanner.co.kr/fire-safety-ai/ja/adoption-guide/)
 - [繁體中文](https://bigplanner.co.kr/fire-safety-ai/zh-hant/adoption-guide/)
+- [العربية](https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/)
+- [Norsk bokmål](https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/)
+- [Dansk](https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/)
+- [Nederlands](https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/)
+- [Svenska](https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/)
+- [Suomi](https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/)
+- [Italiano](https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/)
+- [עברית](https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/)
+- [Español](https://bigplanner.co.kr/fire-safety-ai/es/adoption-guide/)
+- [Íslenska](https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/)
 
 ## Routine enquiry workload calculators
 

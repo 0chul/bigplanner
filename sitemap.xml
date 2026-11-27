@@ -206,6 +206,56 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/ar/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/nb/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/nl/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/sv/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/fi/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/it/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/he/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/es/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/is/adoption-guide/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/after-hours-hvac-request/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

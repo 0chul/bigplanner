@@ -13,6 +13,88 @@
       <description><![CDATA[<div lang="da" dir="ltr"><p>Beregn det nuværende månedlige tidsforbrug på tilbagevendende lejerhenvendelser og den andel, I vil vurdere til et pilotprojekt i bygningsdriften.</p><p><a href="https://bigplanner.co.kr/fire-safety-ai/da/workload-calculator/">Beregn tidsforbruget på lejerhenvendelser</a></p></div>]]></description>
     </item>
     <item>
+      <title>Tjekliste til afprøvning af AI i bygningsdriften | BigPlanner Partners</title>
+      <link>https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/</link>
+      <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/</guid>
+      <description><![CDATA[<section><div>
+      <h1>Afprøv en AI-helpdesk til lejere i én bygning</h1>
+      <p>Vælg en erhvervsbygning med nyere sagsregistreringer og medarbejdere fra begge vagter, som kan deltage. Bed den driftsansvarlige aftale omfanget med dem, der besvarer spørgsmål, fordeler arbejdet og overtager åbne sager.</p>
+      <div>
+        <a href="https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/#checklist">Åbn tjeklisten</a>
+        
+      </div>
+      
+    </div></section>
+    <div>
+      <section>
+        <h2>Seks punkter, inden I går i gang</h2>
+        <div>
+          <article>
+            <h3>Vælg bygning og typer af henvendelser</h3>
+            <p>Gennemgå nyere sager. Vælg to eller tre typer med nok eksempler til at teste, f.eks. gæsteparkering, utilstrækkelig køling og behov for varme, ventilation eller køling uden for normal driftstid. Notér bygningen, tidsrummene, typerne og den ansvarlige for afprøvningen.</p>
+          </article>
+          <article>
+            <h3>Aftal, hvilke svar og beslutninger der skal gennemgås</h3>
+            <p>Notér det godkendte afsnit i driftsvejledningen for rutinespørgsmål, og hvem der opdaterer det. Kontrollér ét svar mod den nyeste vejledning. Hvis en medarbejder skal ud og se på sagen, registreres placering og problem. Sager, der kræver godkendelse, gennemgås og afgøres af medarbejdere med den rette bemyndigelse.</p>
+          </article>
+          <article>
+            <h3>Udpeg en ansvarlig på hver vagt</h3>
+            <p>Aftal, hvem der gennemgår nye sager, fordeler opgaver og håndterer sager uden for afprøvningen. Gennemgå en sag uden ansvarlig ved vagtskiftet, så det er klart, hvem der overtager.</p>
+          </article>
+          <article>
+            <h3>Overdrag åbne sager med samme sagsregistrering</h3>
+            <p>Notér sagsnummer, placering, problem, tildeling, status, næste skridt og tidspunktet for næste kontrol. Bed næste vagt notere, hvornår sagen er gennemgået.</p>
+          </article>
+          <article>
+            <h3>Vælg det system, den officielle sag skal ligge i</h3>
+            <p>Aftal, hvilket system der skal være hovedkilden. Afklar, hvilke integrationer afprøvningen kan bruge til telefon, mail og arbejdsordrer. Test et problem, der meldes to gange, og se, hvordan medarbejderne afstemmer registreringerne.</p>
+          </article>
+          <article>
+            <h3>Aftal adgang og opbevaring</h3>
+            <p>Aftal, hvem der må se eller redigere lejeroplysninger. Beslut, hvornår kontaktoplysninger eller fotos er nødvendige, hvor længe de opbevares, og hvem der står for sletning. Brug fiktive sager eller sager med følsomme oplysninger maskeret ved gennemgangen.</p>
+          </article>
+        </div>
+        <p>Følg bygningens fastlagte kontaktveje og beredskabsprocedurer i en nødsituation.</p>
+      </section>
+      <section>
+        <h2>Fiktiv fejlmelding om køling ved vagtskifte</h2>
+        <dl>
+          <div><dt>Registrering</dt><dd>DEMO-012. Den 5. oktober kl. 20:35 lokal tid melder en lejer, at kølingen er for svag i det fælles mødelokale på 5. sal i bygning A.</dd></div>
+          <div><dt>Driftslederens gennemgang</dt><dd>Driftslederen gennemgår placeringen og problemet, tildeler sagen til driftsteknikeren på morgenvagten og markerer sagen som i gang.</dd></div>
+          <div><dt>Næste vagt</dt><dd>Kl. 07:00 næste morgen bekræfter morgenvagten tildelingen og registrerer, at driftsteknikeren skal kontrollere lokalet kl. 07:30.</dd></div>
+        </dl>
+        <p><a href="https://bigplanner.co.kr/fire-safety-ai/da/demo-video/">Se demoen på 27 sekunder med danske undertekster</a></p>
+        <p>Den viste brugerflade er på koreansk.</p>
+      </section>
+      <section>
+        <h2>Sammenlign et lille udsnit før og under afprøvningen</h2>
+        <p>Aftal på forhånd, hvilke resultater der taler for at fortsætte. Sammenlign f.eks. fem arbejdsdage før afprøvningen med fem under den. Brug de samme ugedage, tidsrum for dag- og nattevagter og typer af henvendelser. Tæl en dublet én gang ved at sammenholde sagsnummer eller tidspunkt, placering og problem.</p>
+        <ul>
+          <li><strong>Fuldstændige sagsregistreringer.</strong> Find alle sager i afprøvningen, der krævede kontrol på stedet. Del antallet med registreret placering, problem og tildelingsstatus med det samlede antal af disse sager.</li>
+          <li><strong>Bekræftet overdragelse.</strong> Tæl de åbne sager, hvor første overdragelse omfatter en kontrol af status og næste skridt med et registreret tidspunkt. Del med antallet af åbne sager, der skulle overdrages.</li>
+        </ul>
+        <p>Notér tæller og nævner for hvert mål. Hvis ingen sager opfylder kriterierne, noterer I 0 af 0 og lader andelen stå tom. Gennemgå manglende registreringer og forsinkede tildelinger med begge vagter, før I afgør, om afprøvningen skal udvides.</p>
+        <p>Læs mere om at planlægge afprøvningen og afgrænse helpdeskens opgaver. Den britiske regerings standard for facility management (engelsk)</p>
+      </section>
+      <section>
+        <h2>Pris og demo</h2>
+        <p>BigPlanner Partners giver et individuelt tilbud på opsætning og løbende driftsstøtte ud fra antal bygninger, driftsvejledninger, integrationer og behovet for støtte. Medbring to eksempler på arbejdsgange til onlinedemoen. Fiktive eksempler er tilstrækkelige.</p>
+        <div>
+          <a href="https://bigplanner.co.kr/fire-safety-ai/da/request/?utm_source=adoption_guide&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=da">Bestil en online demo</a>
+        </div>
+      </section>
+      <section>
+        <h2>Ressourcer til bygningsdrift</h2>
+        <ul>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/da/shift-handover/">Tjekliste til vagtskifte og Excel-log</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/en/faq-manual/" hreflang="en">Vejledning til ofte stillede spørgsmål og arbejdsark (engelsk)</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/da/workload-calculator/">Beregn tidsforbruget på tilbagevendende lejerhenvendelser</a></li>
+          <li><a href="https://bigplanner.co.kr/fire-safety-ai/da/resources/">Alle ressourcer til bygningsdrift</a></li>
+        </ul>
+      </section>
+    </div>]]></description>
+    </item>
+    <item>
       <title>Ressourcer til bygningsdrift | BigPlanner Partners</title>
       <link>https://bigplanner.co.kr/fire-safety-ai/da/resources/</link>
       <guid isPermaLink="true">https://bigplanner.co.kr/fire-safety-ai/da/resources/</guid>
@@ -45,6 +127,11 @@
         <li><article>
           <h3><a href="https://bigplanner.co.kr/fire-safety-ai/da/demo-video/">En fejlmelding om køling på 27 sekunder</a></h3>
           <p>AI registrerer lejerens kølefejl. Driftslederen tildeler sagen til en medarbejder, og næste vagt læser samme sag. Fiktiv sag på 27 sekunder med koreansk brugerflade og danske undertekster.</p>
+          
+        </article></li>
+        <li><article>
+          <h3><a href="https://bigplanner.co.kr/fire-safety-ai/da/adoption-guide/">Tjekliste til afprøvning af AI i bygningsdriften</a></h3>
+          <p>Planlæg en afprøvning i én bygning. Vælg, hvilke lejerhenvendelser der skal håndteres, aftal gennemgang og vagtskifte, og sammenlign sagsregistreringer før og under forsøget.</p>
           
         </article></li>
       </ul>
