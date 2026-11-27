@@ -1,9 +1,10 @@
 import { readFileSync } from 'node:fs';
 import { fireSafetyLanguages, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
-import { escapeHtml } from './sharing.js';
+import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
+import { readWorkloadCopy } from './workload-calculator.js';
 
 const downloadName = 'maintenance-request-form.txt';
-const languages = new Set(['ko', 'en', 'de', 'fr', 'nb', 'pt']);
+const languages = new Set(['ko', 'en', 'de', 'fr', 'ja', 'zh-Hant', 'nb', 'pt']);
 export const maintenanceRequestLanguages = fireSafetyLanguages
   .filter(({ code }) => languages.has(code))
   .map(language => ({ ...language, maintenancePath: `${language.path}maintenance-request-form/` }));
@@ -38,7 +39,7 @@ const styles = `
 `;
 
 function readCopy(code) {
-  const copy = JSON.parse(readFileSync(new URL(`./maintenance-intake/${code}.json`, import.meta.url), 'utf8'));
+  const copy = JSON.parse(readFileSync(new URL(`./maintenance-intake/${code.toLowerCase()}.json`, import.meta.url), 'utf8'));
   if (!Array.isArray(copy.fields) || copy.fields.length !== 8 ||
       copy.fields.some(field => !Array.isArray(field) || field.length !== 2 || field.some(value => typeof value !== 'string' || !value.trim()))) {
     throw new Error(`Invalid maintenance request fields for ${code}`);
@@ -61,6 +62,7 @@ export function maintenanceRequestResource(code) {
 function renderPage(language, copy, baseStyles) {
   const { code, label, locale, maintenancePath, resourcesPath, handoverPath, adoptionPath, videoPath, feedPath } = language;
   const canonical = siteOrigin + maintenancePath;
+  const share = readWorkloadCopy(code).share;
   const english = maintenanceRequestLanguages.find(item => item.code === 'en').maintenancePath;
   const linkTags = [...maintenanceRequestLanguages, { code: 'x-default', maintenancePath: english }]
     .map(item => `  <link rel="alternate" hreflang="${item.code}" href="${siteOrigin + item.maintenancePath}">`).join('\n');
@@ -87,6 +89,7 @@ ${linkTags}
   <meta property="og:description" content="${description}">
   <meta property="og:image" content="${siteOrigin}/images/fire-safety-organic-og.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  ${shareAssets}
   <style>${baseStyles}${styles}</style>
 </head>
 <body>
@@ -107,9 +110,12 @@ ${linkTags}
       <h2 id="fields-title">${escapeHtml(copy.fieldsTitle)}</h2>
       <p>${escapeHtml(copy.intro)}</p>
       <p class="intake-notice">${escapeHtml(copy.emergency)}</p>
-      <div class="links intake-actions">
-        <a class="button" href="${maintenancePath + downloadName}" download>${escapeHtml(copy.download)}</a>
-        <button type="button" class="intake-print" hidden>${escapeHtml(copy.print)}</button>
+      <div class="intake-actions">
+        <div class="links">
+          <a class="button" href="${maintenancePath + downloadName}" download>${escapeHtml(copy.download)}</a>
+          <button type="button" class="intake-print" hidden>${escapeHtml(copy.print)}</button>
+        </div>
+        ${renderPageShare(code, copy.title, canonical, share.email, share)}
       </div>
       <dl class="intake-fields intake-blank">
         ${renderFields(true)}

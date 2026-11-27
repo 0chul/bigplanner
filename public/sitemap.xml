@@ -291,6 +291,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/ja/maintenance-request-form/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bigplanner.co.kr/fire-safety-ai/zh-hant/maintenance-request-form/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bigplanner.co.kr/fire-safety-ai/nb/maintenance-request-form/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
