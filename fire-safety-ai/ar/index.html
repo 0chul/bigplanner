@@ -69,6 +69,14 @@ h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
 .scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
 .scenes li + li { margin-block-start: .6rem; }
 video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
 .faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
 .faq details { border-block-end: 1px solid var(--rule); }
 .faq details:first-child { border-block-start: 1px solid var(--rule); }
@@ -79,11 +87,14 @@ video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-rati
 .contact-band .button:hover { background: #dcebe4; }
 .contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
 .contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
 .email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
 footer { color: var(--muted); font-size: .9rem; }
 @media (max-width: 48rem) {
   .header-content { gap: .45rem; }
-  .hero-content, .demo-section, .faq { grid-template-columns: minmax(0, 1fr); }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
   .building { aspect-ratio: 16 / 9; }
   .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
 }
@@ -147,6 +158,20 @@ footer { color: var(--muted); font-size: .9rem; }
         </video>
       </div>
     </section>
+    <section class="wrap section case-study" id="case-study" aria-labelledby="case-title">
+      <div>
+        <h2 id="case-title">تجربة لإثبات المفهوم لدى شركة لإدارة المباني</h2>
+        <p class="case-summary">كانت الشركة تسجّل البلاغات الواردة عبر الهاتف وتطبيقات المراسلة يدوياً وتحيلها إلى الأقسام المعنية. وفي هذه التجربة، اختبرت تقديم الإرشادات من دليل المبنى واستقبال البلاغات عبر مساعد يعمل على الويب والأجهزة المحمولة، مع متابعة إحالتها إلى المسؤولين من لوحة الإدارة.</p>
+        <a class="resource-link" href="/fire-safety-ai/#case-study" hreflang="ko">تفاصيل الحالة باللغة الكورية</a>
+      </div>
+      <div class="case-evidence">
+        <dl class="case-stats">
+          <div><dt>طلبات مسجّلة ضمن التشغيل الداخلي</dt><dd>59</dd></div>
+          <div><dt>حالات إغفال إحالة الطلب إلى المسؤول المكلّف ضمن العينة</dt><dd>0</dd></div>
+        </dl>
+        <p class="case-scope">من 23 سبتمبر إلى 22 أكتوبر 2026. تقتصر النتائج على عينة تشغيل داخلية ضمن تجربة إثبات المفهوم، شملت طلبات لاختبار الوظائف.</p>
+      </div>
+    </section>
     <section class="wrap section faq" aria-labelledby="faq-title">
       <h2 id="faq-title">الأسئلة الشائعة</h2>
       <div>
@@ -159,6 +184,10 @@ footer { color: var(--muted); font-size: .9rem; }
       <div class="wrap section">
         <h2 id="contact-title">اطلبوا عرضاً توضيحياً عبر الإنترنت</h2>
         <p>أرسلوا إلينا عبر البريد الإلكتروني اسم المؤسسة والبلد ووصفاً موجزاً للطريقة التي تستقبلون بها البلاغات وتتابعونها. لا حاجة إلى إرسال أدلة المبنى أو سجلات المستأجرين الفعلية.</p>
+        <div class="quote-details">
+          <h3>عرض سعر حسب نطاق المشروع</h3>
+          <p>نقدّم عرض سعر مخصّصاً للإعداد والدعم التشغيلي بعد مراجعة عدد المباني والأدلة المتاحة ومتطلبات الربط بالأنظمة ونطاق الدعم المطلوب.</p>
+        </div>
         <div class="links">
           <a class="button" href="mailto:bigplanner0799@gmail.com?subject=%5BAR%5D%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D9%88%D8%B6%D9%8A%D8%AD%D9%8A%20%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D9%81%D9%82">طلب العرض عبر البريد الإلكتروني</a>
           <a href="/fire-safety-ai/en/request/?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=ar" hreflang="en">طلب عرض توضيحي (النموذج باللغة الإنجليزية)</a>

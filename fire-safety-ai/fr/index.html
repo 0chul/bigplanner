@@ -69,6 +69,14 @@ h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
 .scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
 .scenes li + li { margin-block-start: .6rem; }
 video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
 .faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
 .faq details { border-block-end: 1px solid var(--rule); }
 .faq details:first-child { border-block-start: 1px solid var(--rule); }
@@ -79,11 +87,14 @@ video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-rati
 .contact-band .button:hover { background: #dcebe4; }
 .contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
 .contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
 .email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
 footer { color: var(--muted); font-size: .9rem; }
 @media (max-width: 48rem) {
   .header-content { gap: .45rem; }
-  .hero-content, .demo-section, .faq { grid-template-columns: minmax(0, 1fr); }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
   .building { aspect-ratio: 16 / 9; }
   .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
 }
@@ -147,6 +158,20 @@ footer { color: var(--muted); font-size: .9rem; }
         </video>
       </div>
     </section>
+    <section class="wrap section case-study" id="case-study" aria-labelledby="case-title">
+      <div>
+        <h2 id="case-title">Essai de faisabilité chez un prestataire de gestion d’immeubles</h2>
+        <p class="case-summary">L’équipe consignait à la main les demandes reçues par téléphone et par messagerie, puis les transmettait à d’autres services. Pour cet essai, nous avons relié à une interface de gestion un chatbot web et mobile qui répond à partir des guides de l’immeuble et enregistre les signalements.</p>
+        <a class="resource-link" href="/fire-safety-ai/#case-study" hreflang="ko">Lire la présentation du cas en coréen</a>
+      </div>
+      <div class="case-evidence">
+        <dl class="case-stats">
+          <div><dt>signalements enregistrés pendant les opérations internes</dt><dd>59</dd></div>
+          <div><dt>omissions de transmission à la personne responsable dans cet échantillon</dt><dd>0</dd></div>
+        </dl>
+        <p class="case-scope">Les chiffres portent uniquement sur l’échantillon issu des opérations internes du 23 septembre au 22 octobre 2026. Cet échantillon comprend aussi des signalements utilisés pour vérifier les fonctionnalités lors de l’essai de faisabilité.</p>
+      </div>
+    </section>
     <section class="wrap section faq" aria-labelledby="faq-title">
       <h2 id="faq-title">Questions fréquentes</h2>
       <div>
@@ -159,6 +184,10 @@ footer { color: var(--muted); font-size: .9rem; }
       <div class="wrap section">
         <h2 id="contact-title">Demander une démonstration en ligne</h2>
         <p>Envoyez-nous un courriel en indiquant le nom de votre organisation et le pays concerné. Décrivez brièvement comment votre équipe traite aujourd’hui les demandes et les incidents. Pour ce premier échange, vous n’avez besoin ni des guides de l’immeuble ni de dossiers réels de locataires.</p>
+        <div class="quote-details">
+          <h3>Devis personnalisé pour la mise en place et l’assistance à l’exploitation</h3>
+          <p>Le devis tient compte du nombre de sites, de vos guides d’immeuble, des intégrations nécessaires et de l’assistance dont vous aurez besoin pour exploiter le service.</p>
+        </div>
         <div class="links">
           <a class="button" href="mailto:bigplanner0799@gmail.com?subject=%5BFR%5D%20D%C3%A9monstration%20de%20l%E2%80%99assistant%20IA%20pour%20immeubles">Demander une démo par courriel</a>
           <a href="/fire-safety-ai/en/request/?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=fr" hreflang="en">Demander une démo (formulaire en anglais)</a>

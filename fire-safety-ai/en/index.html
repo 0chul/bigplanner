@@ -69,6 +69,14 @@ h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
 .scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
 .scenes li + li { margin-block-start: .6rem; }
 video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
 .faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
 .faq details { border-block-end: 1px solid var(--rule); }
 .faq details:first-child { border-block-start: 1px solid var(--rule); }
@@ -79,11 +87,14 @@ video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-rati
 .contact-band .button:hover { background: #dcebe4; }
 .contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
 .contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
 .email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
 footer { color: var(--muted); font-size: .9rem; }
 @media (max-width: 48rem) {
   .header-content { gap: .45rem; }
-  .hero-content, .demo-section, .faq { grid-template-columns: minmax(0, 1fr); }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
   .building { aspect-ratio: 16 / 9; }
   .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
 }
@@ -147,6 +158,20 @@ footer { color: var(--muted); font-size: .9rem; }
         </video>
       </div>
     </section>
+    <section class="wrap section case-study" id="case-study" aria-labelledby="case-title">
+      <div>
+        <h2 id="case-title">Tenant request intake at a building management company</h2>
+        <p class="case-summary">The management team had logged requests from calls and messages by hand. In this proof of concept, it tested a web and mobile chatbot for building-manual guidance and request intake, plus an admin screen for passing requests to staff.</p>
+        <a class="resource-link" href="/fire-safety-ai/#case-study" hreflang="ko">Read the case summary in Korean</a>
+      </div>
+      <div class="case-evidence">
+        <dl class="case-stats">
+          <div><dt>Requests in the internal sample</dt><dd>59</dd></div>
+          <div><dt>Missed transfers to responsible staff in this sample</dt><dd>0</dd></div>
+        </dl>
+        <p class="case-scope">The completion report covers 23 September to 22 October 2026. The figures describe the internal proof-of-concept sample, including requests raised for feature checks.</p>
+      </div>
+    </section>
     <section class="wrap section faq" aria-labelledby="faq-title">
       <h2 id="faq-title">Questions before a pilot</h2>
       <div>
@@ -159,6 +184,10 @@ footer { color: var(--muted); font-size: .9rem; }
       <div class="wrap section">
         <h2 id="contact-title">Request an online demo</h2>
         <p>Tell us which building workflow you want to review. We’ll arrange the online demo by email.</p>
+        <div class="quote-details">
+          <h3>How we prepare a quote</h3>
+          <p>We quote setup and ongoing support per project after reviewing the number of buildings, their operating manuals, integration requirements and support scope.</p>
+        </div>
         <div class="links">
           <a class="button" href="/fire-safety-ai/en/request/?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=en">Request a demo online</a>
           <a href="mailto:bigplanner0799@gmail.com?subject=%5BEN%5D%20BigPlanner%20tenant%20service%20desk%20demo">Request a demo by email</a>

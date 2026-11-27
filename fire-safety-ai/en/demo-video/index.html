@@ -65,6 +65,14 @@ h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
 .scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
 .scenes li + li { margin-block-start: .6rem; }
 video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
 .faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
 .faq details { border-block-end: 1px solid var(--rule); }
 .faq details:first-child { border-block-start: 1px solid var(--rule); }
@@ -75,11 +83,14 @@ video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-rati
 .contact-band .button:hover { background: #dcebe4; }
 .contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
 .contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
 .email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
 footer { color: var(--muted); font-size: .9rem; }
 @media (max-width: 48rem) {
   .header-content { gap: .45rem; }
-  .hero-content, .demo-section, .faq { grid-template-columns: minmax(0, 1fr); }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
   .building { aspect-ratio: 16 / 9; }
   .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
 }
