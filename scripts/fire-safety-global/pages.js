@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyEnglishAfterHoursPath, fireSafetyEnglishFaqPath, fireSafetyEnglishOverviewPdf, fireSafetyEnglishPilotKitPath, fireSafetyEnglishResourcesPath, fireSafetyHandoverAlternates, fireSafetyKoreanFaqPath, fireSafetyKoreanResourcesPath, fireSafetyLanguages, fireSafetyPath, fireSafetyTranslations, fireSafetyVideoAlternates, siteOrigin } from '../../src/utils/fireSafetyLocales.js';
 import { fireSafetyProductStructuredData } from '../../src/utils/fireSafetyStructuredData.js';
 import { renderFaqManualPages } from './faq-authoring.js';
 import { renderFacilitiesIndex } from './facilities-index.js';
@@ -111,7 +111,7 @@ ${alternates}
       </ul>
       <a class="resource-link" href="${handoverPath}">${escapeHtml(handover.landingLink)}</a>
       <div class="links">
-        ${code === 'en' ? `<a href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a><a href="${fireSafetyEnglishFaqPath}">Building FAQ worksheet</a>` : ''}
+        ${code === 'en' ? `<a href="${fireSafetyEnglishAfterHoursPath}">After-hours HVAC request form</a><a href="${fireSafetyEnglishFaqPath}">Building FAQ worksheet</a><a href="${fireSafetyEnglishPilotKitPath}" download>Facilities AI pilot starter kit (ZIP)</a>` : ''}
         <a href="${workloadPath}">${escapeHtml(workloadLabel)}</a>
       </div>
     </section>

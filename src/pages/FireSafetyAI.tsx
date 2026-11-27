@@ -8,7 +8,7 @@ import FireSafetyScrollStory from '../components/FireSafetyScrollStory';
 import FireSafetyDemoRequestForm from '../components/FireSafetyDemoRequestForm';
 import { trackFireSafetyEvent } from '../utils/fireSafetyAnalytics';
 import { fireSafetyCanonicalUrl } from '../utils/fireSafetyLanding';
-import { fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanFeedPath, fireSafetyKoreanOverviewPdf, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
+import { fireSafetyAlternates, fireSafetyChecklistPath, fireSafetyKoreanAfterHoursPath, fireSafetyKoreanFaqPath, fireSafetyKoreanFeedPath, fireSafetyKoreanOverviewPdf, fireSafetyKoreanPilotKitPath, fireSafetyKoreanResourcesPath, fireSafetyKoreanVideoPath, fireSafetyKoreanWorkloadPath, fireSafetyTranslations, siteOrigin } from '../utils/fireSafetyLocales.js';
 import { fireSafetyProductStructuredData } from '../utils/fireSafetyStructuredData.js';
 import './fire-safety-ai.css';
 
@@ -206,6 +206,7 @@ export default function FireSafetyAI() {
                 <a className="fa-text-link" href={fireSafetyKoreanAfterHoursPath}>야간·휴일 냉난방 연장 운전 신청서 <ArrowRight size={16} aria-hidden="true" /></a>
                 <a className="fa-text-link" href={fireSafetyKoreanFaqPath}>시설관리 FAQ 작성 가이드와 엑셀 <ArrowRight size={16} aria-hidden="true" /></a>
                 <a className="fa-text-link" href={fireSafetyKoreanWorkloadPath}>반복 문의 응대 업무량 계산기 <ArrowRight size={16} aria-hidden="true" /></a>
+                <a className="fa-text-link" href={fireSafetyKoreanPilotKitPath} download>시설관리 AI 도입 검토 자료 묶음 (ZIP) <ArrowRight size={16} aria-hidden="true" /></a>
                 <a className="fa-text-link" href="https://blog.naver.com/bigplannerpartners" hrefLang="ko">네이버 블로그의 시설관리 실무 글 <ArrowUpRight size={16} aria-hidden="true" /></a>
               </div>
             </div><div className="fa-faq-list">{faqs.map((faq, index) => <details key={faq.q} open={index === 0 ? true : undefined}><summary><span>{faq.q}</span><ChevronDown size={19} /></summary><p>{faq.a}</p></details>)}</div></div></section>

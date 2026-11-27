@@ -18,6 +18,7 @@ import {
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
 import { escapeHtml } from './sharing.js';
+import { pilotKits } from './pilot-kits.js';
 import { readLocalizedProduct } from './video.js';
 import { readWorkloadCopy } from './workload-calculator.js';
 
@@ -198,6 +199,14 @@ export async function writeResourceFeeds(browser, distPath) {
         body: `<div lang="${feed.language}" dir="${direction}"><p>${escapeHtml(copy.description)}</p><p><a href="${url}">${escapeHtml(copy.open)}</a></p></div>`,
       };
       const items = [calculator, ...articles];
+      const kit = pilotKits[feed.language];
+      if (kit) {
+        items.unshift({
+          title: kit.title,
+          url: `${siteOrigin}${kit.libraryPath}#pilot-kit`,
+          body: `<p>${escapeHtml(kit.description)}</p><p><a href="${siteOrigin + kit.path}">${escapeHtml(kit.download)}</a></p>`,
+        });
+      }
       const xml = renderFeed(feed, items);
       const valid = await page.evaluate((content, count) => {
         const document = new DOMParser().parseFromString(content, 'application/xml');

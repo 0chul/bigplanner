@@ -23,6 +23,7 @@ import {
   siteOrigin,
 } from '../../src/utils/fireSafetyLocales.js';
 import { faqWorksheetName } from './faq-authoring.js';
+import { pilotKits } from './pilot-kits.js';
 import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 
 const artworkPath = '/images/fire-safety-building.webp';
@@ -100,6 +101,11 @@ const libraryStyles = `
 .library-card h3 { font-size: 1.13rem; }
 .library-card p { margin-block: .48rem 0; color: var(--muted); }
 .library-card a[download] { display: inline-flex; align-items: center; min-height: 2.75rem; margin-block-start: .15rem; font-size: .94rem; }
+.library-pilot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .9rem 1.5rem; padding: clamp(1rem, 3vw, 1.65rem); border: 1px solid var(--rule); border-radius: .6rem; background: var(--paper); }
+.library-pilot > div { flex: 1 1 24rem; min-width: 0; }
+.library-pilot h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
+.library-pilot p { max-width: 58ch; margin-block-start: .4rem; color: var(--muted); }
+.library-pilot .button { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 650; }
 .library-languages { gap: 0 1.3rem; }
 .library-language { padding-block: .75rem .5rem; border-block-start: 1px solid var(--rule); }
 .library-language h3 { font-size: 1.08rem; }
@@ -150,6 +156,7 @@ function renderLibrary(copy, styles, requests) {
     `  <link rel="alternate" hreflang="${code}" href="${siteOrigin}${route}">`).join('\n');
   const cards = copy.resources.map(renderResource).join('\n        ');
   const languages = fireSafetyLanguages.map((language) => renderLanguage(language, copy.languageLinks, requests)).join('\n        ');
+  const kit = pilotKits[copy.code];
 
   return `<!doctype html>
 <html lang="${copy.code}" dir="ltr">
@@ -188,6 +195,15 @@ ${alternates}
           ${renderPageShare(copy.code, copy.title, canonical, copy.emailShare, copy.shareCopy)}
         </div>
         <img class="library-lead-image" src="${artworkPath}" width="1672" height="941" alt="">
+      </div>
+    </section>
+    <section id="pilot-kit" class="wrap library-section" aria-labelledby="pilot-kit-title">
+      <div class="library-pilot">
+        <div>
+          <h2 id="pilot-kit-title">${escapeHtml(kit.title)}</h2>
+          <p>${escapeHtml(kit.description)}</p>
+        </div>
+        <a class="button" href="${kit.path}" download>${escapeHtml(kit.download)}</a>
       </div>
     </section>
     <section class="wrap library-section" aria-labelledby="library-files">

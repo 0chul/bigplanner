@@ -3,10 +3,12 @@ import {
   fireSafetyEnglishAfterHoursPath,
   fireSafetyEnglishFaqPath,
   fireSafetyEnglishOverviewPdf,
+  fireSafetyEnglishPilotKitPath,
   fireSafetyEnglishResourcesPath,
   fireSafetyKoreanAfterHoursPath,
   fireSafetyKoreanFaqPath,
   fireSafetyKoreanOverviewPdf,
+  fireSafetyKoreanPilotKitPath,
   fireSafetyKoreanResourcesPath,
   fireSafetyLanguages,
   siteOrigin,
@@ -50,6 +52,8 @@ ${languageLinks}
 
 ## Facilities templates and product briefs
 
+${officialLink('시설관리 AI 도입 검토 자료 묶음 (ZIP)', fireSafetyKoreanPilotKitPath)}
+${officialLink('Facilities AI pilot starter kit (ZIP)', fireSafetyEnglishPilotKitPath)}
 ${officialLink('시설관리 FAQ 매뉴얼 작성 양식', fireSafetyKoreanFaqPath)}
 ${officialLink('Building FAQ guide and Excel template', fireSafetyEnglishFaqPath)}
 ${officialLink('냉난방 연장 운전 신청서', fireSafetyKoreanAfterHoursPath)}
