@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="sv" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI för felanmälan och hyresgästservice i kommersiella fastigheter | BigPlanner Partners</title>
+  <meta name="description" content="Besvara hyresgästfrågor, registrera felanmälningar om kyla och ventilation och låt driftpersonalen följa samma ärende från mottagning till skiftöverlämning.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/sv/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/">
+  <link rel="alternate" hreflang="de" href="https://bigplanner.co.kr/fire-safety-ai/de/">
+  <link rel="alternate" hreflang="fr" href="https://bigplanner.co.kr/fire-safety-ai/fr/">
+  <link rel="alternate" hreflang="ja" href="https://bigplanner.co.kr/fire-safety-ai/ja/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://bigplanner.co.kr/fire-safety-ai/zh-hant/">
+  <link rel="alternate" hreflang="ar" href="https://bigplanner.co.kr/fire-safety-ai/ar/">
+  <link rel="alternate" hreflang="nb" href="https://bigplanner.co.kr/fire-safety-ai/nb/">
+  <link rel="alternate" hreflang="da" href="https://bigplanner.co.kr/fire-safety-ai/da/">
+  <link rel="alternate" hreflang="nl" href="https://bigplanner.co.kr/fire-safety-ai/nl/">
+  <link rel="alternate" hreflang="sv" href="https://bigplanner.co.kr/fire-safety-ai/sv/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:title" content="AI för felanmälan och hyresgästservice i kommersiella fastigheter | BigPlanner Partners">
+  <meta property="og:description" content="Besvara hyresgästfrågor, registrera felanmälningar om kyla och ventilation och låt driftpersonalen följa samma ärende från mottagning till skiftöverlämning.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/sv/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-building.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>:root {
+  color-scheme: light;
+  --ink: #17302a;
+  --green: #1b5648;
+  --muted: #455c55;
+  --rule: #cdd9d2;
+  --paper: #f3f7f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
+.wrap { width: min(71rem, 100% - 2.5rem); margin-inline: auto; }
+.site-header { border-block-end: 1px solid var(--rule); }
+.header-content, footer .wrap { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: .85rem; }
+.brand { color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.brand span { font-weight: 500; }
+.languages { display: flex; gap: .2rem; flex-wrap: wrap; }
+.languages a { padding: .34rem .55rem; border-radius: .38rem; color: var(--muted); font-size: .875rem; text-decoration: none; }
+.languages a[aria-current="page"], .languages a:hover { background: #e9f0ec; color: var(--green); }
+a { color: var(--green); text-underline-offset: .17em; }
+a:focus-visible, summary:focus-visible, video:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { line-height: 1.22; }
+h1 { font-size: clamp(2.15rem, 4.5vw, 4.2rem); text-wrap: balance; }
+h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
+[dir="ltr"] :is(h1, h2) { letter-spacing: -.035em; }
+:is(:lang(ja), :lang(zh-Hant)) :is(h1, h2) { letter-spacing: 0; }
+[dir="rtl"] :is(h1, h2, h3) { line-height: 1.4; }
+.hero { background: var(--paper); }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.6rem); padding-block: clamp(2.5rem, 6vw, 5.8rem); }
+.intro { max-width: 53ch; margin-block: 1.12rem .75rem; font-size: clamp(1.04rem, 1.75vw, 1.25rem); }
+.audience { color: var(--muted); }
+.building { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: .75rem; }
+.links { display: flex; flex-wrap: wrap; gap: .7rem 1.35rem; align-items: center; margin-block-start: 1.3rem; font-weight: 650; }
+.button { padding: .72rem 1.12rem; border-radius: .4rem; background: var(--green); color: white; text-decoration: none; }
+.button:hover { background: var(--ink); }
+.section { padding-block: clamp(2.45rem, 5.5vw, 4.8rem); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.steps li { padding-block: 1rem; border-block-start: 2px solid var(--green); }
+.steps h3 { font-size: 1.18rem; margin-block-end: .55rem; }
+.steps p, .demo-note, .faq details p { color: var(--muted); }
+.resource-link { display: inline-block; margin-block-start: .65rem; font-weight: 650; }
+.demo-band { background: #e8f1ed; }
+.demo-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); align-items: center; gap: clamp(1.5rem, 6vw, 6rem); }
+.demo-note { margin-block-start: .6rem; }
+.scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
+.scenes li + li { margin-block-start: .6rem; }
+video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
+.faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
+.faq details { border-block-end: 1px solid var(--rule); }
+.faq details:first-child { border-block-start: 1px solid var(--rule); }
+.faq summary { cursor: pointer; padding-block: .8rem; font-weight: 650; }
+.faq details p { margin-block-end: .9rem; }
+.contact-band { background: #173930; color: #fff; }
+.contact-band .button { background: #fff; color: var(--ink); }
+.contact-band .button:hover { background: #dcebe4; }
+.contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
+.contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
+.email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
+footer { color: var(--muted); font-size: .9rem; }
+@media (max-width: 48rem) {
+  .header-content { gap: .45rem; }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
+  .building { aspect-ratio: 16 / 9; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
+}
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-content">
+      <a class="brand" href="/" lang="en">BigPlanner <span>Partners</span></a>
+      <nav class="languages" aria-label="Välj språk">
+        <a href="/fire-safety-ai/" lang="ko" hreflang="ko" dir="auto">한국어</a>
+        <a href="/fire-safety-ai/en/" lang="en" hreflang="en" dir="auto">English</a>
+        <a href="/fire-safety-ai/de/" lang="de" hreflang="de" dir="auto">Deutsch</a>
+        <a href="/fire-safety-ai/fr/" lang="fr" hreflang="fr" dir="auto">Français</a>
+        <a href="/fire-safety-ai/ja/" lang="ja" hreflang="ja" dir="auto">日本語</a>
+        <a href="/fire-safety-ai/zh-hant/" lang="zh-Hant" hreflang="zh-Hant" dir="auto">繁體中文</a>
+        <a href="/fire-safety-ai/ar/" lang="ar" hreflang="ar" dir="auto">العربية</a>
+        <a href="/fire-safety-ai/nb/" lang="nb" hreflang="nb" dir="auto">Norsk bokmål</a>
+        <a href="/fire-safety-ai/da/" lang="da" hreflang="da" dir="auto">Dansk</a>
+        <a href="/fire-safety-ai/nl/" lang="nl" hreflang="nl" dir="auto">Nederlands</a>
+        <a href="/fire-safety-ai/sv/" lang="sv" hreflang="sv" dir="auto" aria-current="page">Svenska</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="wrap hero-content">
+        <div class="hero-copy">
+          <h1 id="page-title">AI för hyresgästfrågor och felanmälningar</h1>
+          <p class="intro">Besvara vanliga frågor med hjälp av fastighetens driftinstruktioner. När ett ärende kräver ett besök på plats registreras vad som hänt och var, så att nästa skift kan arbeta vidare i samma ärende.</p>
+          <p class="audience">För fastighetsförvaltare, driftteam och externa förvaltningsbolag.</p>
+          <div class="links">
+            <a class="button" href="#contact">Boka en demo online</a>
+            <a href="#demo">En felanmälan om kyla på 27 sekunder</a>
+          </div>
+        </div>
+        <img class="building" src="/images/fire-safety-building.webp" width="1672" height="941" alt="" fetchpriority="high">
+      </div>
+    </section>
+    <section class="wrap section" aria-labelledby="workflow-title">
+      <h2 id="workflow-title">Från hyresgästfråga till skiftöverlämning</h2>
+      <ul class="steps">
+        <li><h3>Besvara vanliga frågor</h3><p>Chattboten använder fastighetens driftinstruktioner för att svara på frågor om till exempel besöksparkering och andra tjänster som beskrivs där.</p></li>
+        <li><h3>Registrera och tilldela ett ärende</h3><p>Om en hyresgäst till exempel anmäler otillräcklig kyla registrerar AI platsen och vad som hänt. En arbetsledare granskar ärendet och utser den som ska följa upp det.</p></li>
+        <li><h3>Lämna över samma ärende</h3><p>Nästa skift ser vad som anmälts, vilka besked som lämnats och vem som ansvarar för ärendet. Behörig personal bekräftar tider och fattar beslut om godkännande.</p></li>
+      </ul>
+      <a class="resource-link" href="/fire-safety-ai/sv/shift-handover/">Hämta checklistan och en gratis Excel-mall för skiftöverlämning</a>
+    </section>
+    <section class="demo-band" id="demo" aria-labelledby="demo-title">
+      <div class="wrap section demo-section">
+        <div>
+          <h2 id="demo-title">En felanmälan om kyla på 27 sekunder</h2>
+          <p class="demo-note" id="demo-note">Demonstrationen visar ett fiktivt ärende med koreanskt gränssnitt och svensk textning.</p>
+          <ol class="scenes">
+          <li>En hyresgäst anmäler dålig kyla i det gemensamma mötesrummet på plan 5.</li>
+          <li>AI registrerar platsen och felbeskrivningen.</li>
+          <li>En arbetsledare granskar DEMO-012 och tilldelar ärendet.</li>
+          <li>Nästa skift ser anteckningar och ansvarig i samma ärende.</li>
+          </ol>
+          
+        </div>
+        <video controls playsinline preload="none" width="1080" height="1920" aria-labelledby="demo-title" aria-describedby="demo-note" src="/fire-safety-ai/handoff-checklist/handoff-demo.mp4" poster="/fire-safety-ai/handoff-checklist/handoff-demo-cover.jpg">
+          <track kind="captions" src="/fire-safety-ai/sv/demo.vtt" srclang="sv" label="Svenska" default>
+          <a href="/fire-safety-ai/handoff-checklist/handoff-demo.mp4">Öppna demovideon</a>
+        </video>
+      </div>
+    </section>
+    <section class="wrap section case-study" id="case-study" aria-labelledby="case-title">
+      <div>
+        <h2 id="case-title">Pilot för hyresgästärenden hos ett fastighetsbolag</h2>
+        <p class="case-summary">Förvaltningen registrerade tidigare ärenden från telefonsamtal och meddelanden manuellt. I en pilot testade teamet en chattbot för webb och mobil som svarade utifrån driftinstruktionerna och tog emot felanmälningar. Via ett administratörsgränssnitt kunde ärenden lämnas vidare till ansvarig personal.</p>
+        <a class="resource-link" href="/fire-safety-ai/#case-study" hreflang="ko">Läs sammanfattningen på koreanska</a>
+      </div>
+      <div class="case-evidence">
+        <dl class="case-stats">
+          <div><dt>Ärenden i det interna urvalet</dt><dd>59</dd></div>
+          <div><dt>Missade överlämningar till ansvarig personal i urvalet</dt><dd>0</dd></div>
+        </dl>
+        <p class="case-scope">Slutrapporten omfattar perioden 23 september–22 oktober 2026. Uppgifterna gäller pilotens interna urval, där även ärenden som skapats för att testa funktioner ingår.</p>
+      </div>
+    </section>
+    <section class="wrap section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frågor inför en pilot</h2>
+      <div>
+        <details><summary>Kan lösningen användas på våra språk?</summary><p>Den publika demon har ett koreanskt gränssnitt. Beskriv vilka språk hyresgäster och personal använder, så går vi igenom vad som krävs för en pilot.</p></details>
+        <details><summary>Kan vi behålla telefonnumret eller vårt arbetsordersystem?</summary><p>Ni kan fortsätta att ta emot samtal. Inför en pilot går vi igenom era kanaler, vilka uppgifter som behöver registreras och vilka system som behöver kopplas samman.</p></details>
+        <details><summary>Vad gör vi i en nödsituation?</summary><p>Vid brand, säkerhetsincidenter eller andra akuta situationer följer ni fastighetens ordinarie larmvägar och rutiner.</p></details>
+      </div>
+    </section>
+    <section class="contact-band" id="contact" aria-labelledby="contact-title">
+      <div class="wrap section">
+        <h2 id="contact-title">Boka en demo online</h2>
+        <p>Berätta vilket arbetsflöde i fastighetsdriften ni vill gå igenom. Vi bokar demon via e-post.</p>
+        <div class="quote-details">
+          <h3>Så tar vi fram en offert</h3>
+          <p>Vi lämnar en offert för införande och löpande stöd efter att ha gått igenom antal byggnader, driftinstruktioner, integrationsbehov och omfattningen av driftsstödet.</p>
+        </div>
+        <div class="links">
+          <a class="button" href="mailto:bigplanner0799@gmail.com?subject=%5BSV%5D%20Demo%20av%20BigPlanner%20f%C3%B6r%20hyresg%C3%A4st%C3%A4renden">Boka en demo via e-post</a>
+          <a href="/fire-safety-ai/en/request/?utm_source=international&amp;utm_medium=referral&amp;utm_campaign=fire_safety_global&amp;utm_content=sv" hreflang="en">Öppna bokningsformuläret på engelska</a>
+        </div>
+        <p class="email" dir="ltr">bigplanner0799@gmail.com</p>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><span lang="en">BigPlanner Partners</span><a href="/privacy/" hreflang="ko">Integritetspolicy på koreanska</a></div></footer>
+</body>
+</html>
