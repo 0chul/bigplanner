@@ -1,0 +1,28 @@
+{
+  "title": "Modulo di richiesta di manutenzione per locatari di immobili commerciali",
+  "description": "Un modello gratuito per segnalare problemi ordinari di climatizzazione, illuminazione o impianti idraulici in un immobile commerciale. Indica il punto esatto, che cosa hai notato e quando il personale può effettuare una verifica.",
+  "intro": "Scarica o stampa il modulo, compilalo e invialo tramite il canale di manutenzione previsto dall’edificio. Indica la fascia oraria disponibile e se serve un accompagnatore per accedere al locale.",
+  "emergency": "In caso di incendio o pericolo immediato, segui le procedure di emergenza dell’edificio e usa i recapiti designati per le emergenze.",
+  "fieldsTitle": "Modulo di richiesta di manutenzione da compilare",
+  "download": "Scarica il modulo da compilare (TXT)",
+  "print": "Stampa il modulo da compilare",
+  "exampleTitle": "Esempio compilato",
+  "exampleNote": "L’esempio descrive un problema di raffrescamento in una sala riunioni condivisa di fantasia.",
+  "nextTitle": "Passa le richieste aperte al turno successivo",
+  "nextText": "Il personale addetto alla gestione dell’immobile può registrare il numero della richiesta, la squadra incaricata e il prossimo controllo. Usa lo stesso numero nel passaggio di consegne, così il turno successivo ritrova il luogo esatto e lo stato della richiesta.",
+  "handover": "Scarica la scheda per il passaggio di consegne",
+  "pilot": "Consulta la lista di controllo per la prova pilota di IA nella gestione degli immobili",
+  "library": "Risorse per la gestione degli immobili",
+  "demo": "Guarda la demo di 27 secondi sulla segnalazione di un problema di raffrescamento",
+  "languageLabel": "Scegli la lingua del modulo",
+  "fields": [
+    ["Complesso ed edificio", "Centro direzionale Tiglio, edificio A"],
+    ["Piano, unità o locale e posizione esatta", "Quinto piano, sala riunioni condivisa A-5.12 accanto agli ascensori"],
+    ["Categoria della richiesta", "Riscaldamento, ventilazione e climatizzazione"],
+    ["Problema osservato e conseguenze sull’uso del locale", "La climatizzazione è accesa, ma la sala rimane calda. Il gruppo ha spostato la riunione in un’altra sala."],
+    ["Data e ora locale in cui è stato rilevato il problema", "5 ottobre 2026, ore 20:35"],
+    ["Fascia oraria e condizioni di accesso", "6 ottobre, dalle 07:15 alle 08:00, con accompagnamento da parte della reception"],
+    ["Gruppo del locatario e canale autorizzato per la risposta", "Gruppo operativo del locatario al quinto piano. Rispondere tramite il canale di assistenza previsto dall’edificio."],
+    ["Numero della richiesta, squadra incaricata e prossima azione (a cura del personale addetto alla gestione dell’immobile)", "DEMO-012. La squadra di manutenzione del turno del mattino controlla il raffrescamento della sala alle 07:30."]
+  ]
+}

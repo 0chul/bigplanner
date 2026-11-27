@@ -1,0 +1,28 @@
+{
+  "title": "Beiðni leigutaka um viðhald í atvinnuhúsnæði",
+  "description": "Ókeypis eyðublað til að tilkynna um almenn vandamál í hita- og loftræstikerfum, lýsingu eða lögnum í atvinnuhúsnæði. Skráðu nákvæma staðsetningu, hvað þú tókst eftir og hvenær starfsfólk kemst að.",
+  "intro": "Sæktu eða prentaðu eyðublaðið, fylltu það út og sendu það eftir þeirri leið sem húsið hefur samþykkt fyrir viðhaldsbeiðnir. Taktu fram hvenær hægt er að komast að og hvort fylgd þurfi.",
+  "emergency": "Ef eldur kemur upp eða hætta er yfirvofandi skaltu fylgja neyðarferlum hússins og nota þar til gerðar neyðarsamskiptaleiðir.",
+  "fieldsTitle": "Óútfyllt eyðublað fyrir viðhaldsbeiðni",
+  "download": "Sækja óútfyllt eyðublað (TXT)",
+  "print": "Prenta óútfyllt eyðublað",
+  "exampleTitle": "Dæmi um útfyllta beiðni",
+  "exampleNote": "Dæmið er tilbúið og fjallar um ófullnægjandi kælingu í sameiginlegu fundarherbergi.",
+  "nextTitle": "Afhentu næstu vakt ólokið mál",
+  "nextText": "Starfsfólk skráir málsnúmer, hvaða teymi sinnir beiðninni og næstu athugun. Notaðu sama málsnúmer við vaktaskipti svo næsta vakt finni nákvæma staðsetningu og stöðu málsins.",
+  "handover": "Sjá gátlista og Excel-sniðmát fyrir vaktaskipti",
+  "pilot": "Sjá gátlista fyrir prófun gervigreindar í fasteignarekstri",
+  "library": "Verkfæri og sniðmát fyrir fasteignarekstur",
+  "demo": "Sjá 27 sekúndna sýnidæmi um tilkynningu vegna ófullnægjandi kælingar",
+  "languageLabel": "Veldu tungumál eyðublaðsins",
+  "fields": [
+    ["Starfsstöð og bygging", "Viðskiptamiðstöðin Lind, hús A"],
+    ["Hæð, rými eða herbergi og nákvæm staðsetning", "5. hæð, sameiginlegt fundarherbergi A-5.12 við lyfturnar"],
+    ["Flokkur beiðni", "Hitun, loftræsting og kæling"],
+    ["Vandamál og áhrif á notkun húsnæðisins", "Kælingin er í gangi en herbergið er enn of heitt. Fundurinn var færður í annað herbergi."],
+    ["Dagsetning og staðartími þegar fyrst varð vart við vandann", "5. október 2026 kl. 20:35"],
+    ["Tími og skilyrði fyrir aðgangi", "6. október kl. 07:15–08:00. Starfsfólk móttöku vísar viðhaldsteyminu til vegar."],
+    ["Teymi leigutaka og samþykkt samskiptaleið fyrir svar", "Rekstrarteymi leigutaka á 5. hæð. Svarið berist eftir samþykktri þjónustuleið hússins."],
+    ["Málsnúmer, ábyrgt teymi og næsta skref (starfsfólk í fasteignarekstri fyllir út)", "DEMO-012. Viðhaldsteymi morgunvaktar athugar kælingu fundarherbergisins kl. 07:30."]
+  ]
+}

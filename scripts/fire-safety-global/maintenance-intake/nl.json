@@ -1,0 +1,52 @@
+{
+  "title": "Formulier voor onderhoudsmeldingen van huurders in bedrijfsgebouwen",
+  "description": "Gratis formulier om gewone storingen aan verwarming, ventilatie, koeling, verlichting of sanitair in een bedrijfsgebouw te melden. Noteer de precieze locatie, wat u opmerkte en wanneer het facilitaire team kan komen kijken.",
+  "intro": "Download of print het formulier, vul het in en stuur het in via het goedgekeurde meldkanaal van uw gebouw. Geef aan wanneer de ruimte toegankelijk is en wie het facilitaire team kan begeleiden.",
+  "emergency": "Volg bij brand of direct gevaar de noodprocedures van het gebouw en gebruik de daarvoor aangewezen noodcontacten.",
+  "fieldsTitle": "Blanco formulier voor onderhoudsmeldingen",
+  "download": "Download het blanco formulier (TXT)",
+  "print": "Print het blanco formulier",
+  "exampleTitle": "Ingevuld voorbeeld",
+  "exampleNote": "Dit voorbeeld gaat over een fictieve gedeelde vergaderruimte die onvoldoende wordt gekoeld.",
+  "nextTitle": "Draag openstaande meldingen over aan de volgende dienst",
+  "nextText": "Het facilitaire team kan het meldingsnummer, het verantwoordelijke team en de volgende controle vastleggen. Gebruik bij de dienstoverdracht hetzelfde meldingsnummer, zodat de volgende dienst de precieze locatie en de actuele status kan terugvinden.",
+  "handover": "Download het werkblad voor de dienstoverdracht",
+  "pilot": "Open de checklist voor een facilitaire AI-pilot",
+  "library": "Praktische hulpmiddelen voor facilitair beheer",
+  "demo": "Bekijk de demo van een melding over koeling (27 seconden)",
+  "languageLabel": "Kies de taal van het formulier",
+  "fields": [
+    [
+      "Locatie en gebouw",
+      "Linden Bedrijvencentrum, gebouw A"
+    ],
+    [
+      "Verdieping, ruimte en precieze locatie",
+      "Vijfde verdieping, gedeelde vergaderruimte A-5.12 naast de liften"
+    ],
+    [
+      "Type onderhoudsmelding",
+      "Verwarming, ventilatie en airconditioning"
+    ],
+    [
+      "Waargenomen storing en gevolgen voor het gebruik",
+      "De koeling staat aan, maar de ruimte blijft warm. Het team heeft de vergadering naar een andere ruimte verplaatst."
+    ],
+    [
+      "Datum en lokale tijd waarop u het probleem voor het eerst opmerkte",
+      "5 oktober 2026, 20:35"
+    ],
+    [
+      "Toegangstijden en toegangsvoorwaarden",
+      "6 oktober, 07:15–08:00, onder begeleiding van de receptie"
+    ],
+    [
+      "Team van de huurder en goedgekeurd antwoordkanaal",
+      "Het operationele team van de huurder op de vijfde verdieping. Reageer via het goedgekeurde meldkanaal van het gebouw."
+    ],
+    [
+      "Alleen voor het facilitaire team. Meldingsnummer, toegewezen team en volgende actie",
+      "DEMO-012. Het onderhoudsteam van de ochtenddienst controleert om 07:30 de koeling in de ruimte."
+    ]
+  ]
+}

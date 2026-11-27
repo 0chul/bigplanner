@@ -1,0 +1,52 @@
+{
+  "title": "Blankett för hyresgästers felanmälan i kommersiella fastigheter",
+  "description": "En gratis mall för att anmäla vanliga fel på värme, ventilation, kyla, belysning eller VVS i en kommersiell fastighet. Ange exakt plats, vad du har märkt och när driftpersonalen kan undersöka felet.",
+  "intro": "Ladda ner eller skriv ut blanketten, fyll i den och skicka den via fastighetens godkända kanal för felanmälan. Ange när lokalen är tillgänglig och vem som kan följa med driftpersonalen.",
+  "emergency": "Vid brand eller omedelbar fara ska du följa fastighetens nödrutiner och använda de kontaktvägar som gäller vid nödläge.",
+  "fieldsTitle": "Tom blankett för felanmälan",
+  "download": "Ladda ner den tomma blanketten (TXT)",
+  "print": "Skriv ut den tomma blanketten",
+  "exampleTitle": "Ifyllt exempel",
+  "exampleNote": "Exemplet gäller ett fiktivt gemensamt mötesrum där kylningen är otillräcklig.",
+  "nextTitle": "Lämna över öppna ärenden till nästa skift",
+  "nextText": "Driftpersonalen kan notera ärendenummer, ansvarigt team och när nästa kontroll ska göras. Använd samma ärendenummer vid skiftöverlämningen så att nästa skift hittar exakt plats och aktuell status.",
+  "handover": "Hämta mallen för skiftöverlämning",
+  "pilot": "Öppna checklistan för AI-piloten i fastighetsdrift",
+  "library": "Resurser för fastighetsdrift",
+  "demo": "Se demon om en felanmälan för kyla (27 sekunder)",
+  "languageLabel": "Välj språk för blanketten",
+  "fields": [
+    [
+      "Fastighet och byggnad",
+      "Företagscentret Linden, byggnad A"
+    ],
+    [
+      "Våning, rum och exakt plats",
+      "Våning 5, gemensamt mötesrum A-5.12 vid hissarna"
+    ],
+    [
+      "Typ av felanmälan",
+      "Värme, ventilation och luftkonditionering"
+    ],
+    [
+      "Observerat fel och påverkan på hur lokalen används",
+      "Kylningen är igång, men rummet förblir varmt. Teamet flyttade mötet till ett annat rum."
+    ],
+    [
+      "Datum och lokal tid då du först märkte felet",
+      "5 oktober 2026 kl. 20.35"
+    ],
+    [
+      "Tillträdestid och villkor",
+      "6 oktober kl. 07.15–08.00, med ledsagning från receptionen"
+    ],
+    [
+      "Hyresgästens team och godkänd svarskanal",
+      "Hyresgästens driftteam på våning 5. Svara via fastighetens godkända kanal för felanmälan."
+    ],
+    [
+      "Endast för driftpersonalen. Ärendenummer, ansvarigt team och nästa åtgärd",
+      "DEMO-012. Underhållsteamet på morgonskiftet kontrollerar kylningen i rummet kl. 07.30."
+    ]
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "title": "Fejlmeldingsblanket til lejere i erhvervsejendomme",
+  "description": "En gratis skabelon til at melde almindelige fejl på varme, ventilation, køling, belysning eller VVS i en erhvervsejendom. Notér det nøjagtige sted, hvad du har bemærket, og hvornår driftspersonalet kan se på det.",
+  "intro": "Download eller print blanketten, udfyld den, og send den via ejendommens godkendte kanal til fejlmeldinger. Angiv, hvornår der er adgang, og hvem der kan ledsage driftspersonalet.",
+  "emergency": "Ved brand eller akut fare skal du følge ejendommens beredskabsprocedurer og bruge dens anviste nødkontakter.",
+  "fieldsTitle": "Tom fejlmeldingsblanket",
+  "download": "Download den tomme blanket (TXT)",
+  "print": "Print den tomme blanket",
+  "exampleTitle": "Udfyldt eksempel",
+  "exampleNote": "Eksemplet viser et fiktivt, fælles mødelokale med utilstrækkelig køling.",
+  "nextTitle": "Overdrag åbne sager til næste vagt",
+  "nextText": "Driftspersonalet kan notere sagsnummeret, det ansvarlige team og næste kontrol. Brug samme sagsnummer ved vagtskiftet, så næste vagt kan finde det nøjagtige sted og den aktuelle status.",
+  "handover": "Hent skabelonen til vagtskifte",
+  "pilot": "Åbn tjeklisten til afprøvning af AI i ejendomsdrift",
+  "library": "Ressourcer til ejendomsdrift",
+  "demo": "Se videoen om en fejlmelding vedrørende køling (27 sekunder)",
+  "languageLabel": "Vælg sprog for blanketten",
+  "fields": [
+    [
+      "Ejendom og bygning",
+      "Linden Erhvervscenter, bygning A"
+    ],
+    [
+      "Etage, lokale og nøjagtig placering",
+      "5. etage, fælles mødelokale A-5.12 ved elevatorerne"
+    ],
+    [
+      "Type af fejlmelding",
+      "Varme, ventilation og køling"
+    ],
+    [
+      "Observeret fejl og betydning for brugen af bygningen",
+      "Kølingen er i gang, men lokalet er stadig varmt. Teamet flyttede mødet til et andet lokale."
+    ],
+    [
+      "Dato og lokalt klokkeslæt for første observation",
+      "5. oktober 2026 kl. 20:35"
+    ],
+    [
+      "Adgangstid og adgangsbetingelser",
+      "6. oktober kl. 07:15–08:00, med ledsagelse fra receptionen"
+    ],
+    [
+      "Lejerens team og godkendt svarkanal",
+      "Lejerens driftsteam på 5. etage. Svar via ejendommens godkendte kanal til fejlmeldinger."
+    ],
+    [
+      "Kun til driftspersonalet. Sagsnummer, ansvarligt team og næste skridt",
+      "DEMO-012. Vedligeholdelsesteamet på morgenvagten kontrollerer kølingen i lokalet kl. 07:30."
+    ]
+  ]
+}

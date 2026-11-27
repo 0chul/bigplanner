@@ -1,0 +1,28 @@
+{
+  "title": "Liikekiinteistön vuokralaisen vikailmoituslomake",
+  "description": "Maksuton lomake liikekiinteistön tavanomaisten LVI- tai valaistusvikojen ilmoittamiseen. Kirjaa tarkka sijainti, havaitsemasi ongelma ja aika, jolloin huolto pääsee tarkastamaan tilan.",
+  "intro": "Lataa tai tulosta lomake, täytä se ja lähetä se kiinteistön hyväksytyn huoltokanavan kautta. Ilmoita, milloin huolto pääsee tilaan ja miten saattaminen on järjestetty.",
+  "emergency": "Tulipalon tai välittömän vaaran sattuessa noudata kiinteistön hätätilanneohjeita ja käytä niissä annettuja yhteystietoja.",
+  "fieldsTitle": "Tyhjä vikailmoituslomake",
+  "download": "Lataa tyhjä lomake (TXT)",
+  "print": "Tulosta tyhjä lomake",
+  "exampleTitle": "Täyttöesimerkki",
+  "exampleNote": "Kuvitteellinen esimerkki yhteiskäyttöisestä neuvotteluhuoneesta, jonka jäähdytys ei riitä.",
+  "nextTitle": "Siirrä avoin vikailmoitus seuraavalle vuorolle",
+  "nextText": "Kiinteistön huolto voi kirjata ilmoituksen tunnuksen, vastuutiimin ja seuraavan tarkastuksen. Käytä vuoronvaihdossa samaa tunnusta, jotta seuraava vuoro löytää tarkan sijainnin ja näkee, missä vaiheessa asian käsittely on.",
+  "handover": "Lataa vuoronvaihdon lomakepohja",
+  "pilot": "Avaa kiinteistön ylläpidon tekoälypilotin tarkistuslista",
+  "library": "Kiinteistön ylläpidon materiaalit",
+  "demo": "Katso 27 sekunnin esittely jäähdytysilmoituksesta (koreankielinen käyttöliittymä, suomenkielinen tekstitys)",
+  "languageLabel": "Valitse lomakkeen kieli",
+  "fields": [
+    ["Kohde ja rakennus", "Linden Business Centre, rakennus A"],
+    ["Kerros, tila tai huone ja tarkka sijainti", "5. kerros, yhteiskäyttöinen neuvotteluhuone A-5.12 hissien vieressä"],
+    ["Vikaluokka", "Lämmitys, ilmanvaihto ja ilmastointi"],
+    ["Havaittu vika ja vaikutus tilan käyttöön", "Jäähdytys on päällä, mutta huone pysyy lämpimänä. Tiimi siirsi kokouksen toiseen huoneeseen."],
+    ["Ensimmäisen havainnon päivämäärä ja kellonaika paikallista aikaa", "5.10.2026 klo 20.35"],
+    ["Tilaan pääsyn ajankohta ja ehdot", "6.10. klo 7.15–8.00, aulan vastaanoton työntekijä saattaa tilaan"],
+    ["Vuokralaisen tiimi ja hyväksytty vastauskanava", "5. kerroksen vuokralaisen toiminnasta vastaava tiimi. Vastaa kiinteistön hyväksytyn palvelukanavan kautta."],
+    ["Vain kiinteistön huollolle — ilmoituksen tunnus, vastuutiimi ja seuraava toimenpide", "DEMO-012. Aamuvuoron huoltotiimi tarkastaa neuvotteluhuoneen jäähdytyksen klo 7.30."]
+  ]
+}

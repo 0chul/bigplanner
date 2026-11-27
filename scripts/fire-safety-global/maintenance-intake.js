@@ -4,10 +4,10 @@ import { escapeHtml, renderPageShare, shareAssets } from './sharing.js';
 import { readWorkloadCopy } from './workload-calculator.js';
 
 const downloadName = 'maintenance-request-form.txt';
-const languages = new Set(['ko', 'en', 'de', 'fr', 'ja', 'zh-Hant', 'nb', 'pt']);
-export const maintenanceRequestLanguages = fireSafetyLanguages
-  .filter(({ code }) => languages.has(code))
-  .map(language => ({ ...language, maintenancePath: `${language.path}maintenance-request-form/` }));
+export const maintenanceRequestLanguages = fireSafetyLanguages.map(language => ({
+  ...language,
+  maintenancePath: `${language.path}maintenance-request-form/`,
+}));
 
 const styles = `
 .intake-page { width: min(54rem, 100% - 2rem); margin-inline: auto; }
@@ -60,20 +60,24 @@ export function maintenanceRequestResource(code) {
 }
 
 function renderPage(language, copy, baseStyles) {
-  const { code, label, locale, maintenancePath, resourcesPath, handoverPath, adoptionPath, videoPath, feedPath } = language;
+  const { code, label, locale, direction = 'ltr', path, maintenancePath, resourcesPath, handoverPath, adoptionPath, videoPath, feedPath } = language;
   const canonical = siteOrigin + maintenancePath;
-  const share = readWorkloadCopy(code).share;
+  const { share, request } = readWorkloadCopy(code);
+  const requestPath = code === 'ko' ? path : `${path}request/`;
+  const campaign = code === 'ko' ? 'fire_safety_launch' : 'fire_safety_global';
+  const fragment = code === 'ko' ? '#demo-request' : '';
+  const demoRequestUrl = `${requestPath}?utm_source=maintenance_request_form&utm_medium=referral&utm_campaign=${campaign}&utm_content=${code.toLowerCase()}${fragment}`;
   const english = maintenanceRequestLanguages.find(item => item.code === 'en').maintenancePath;
   const linkTags = [...maintenanceRequestLanguages, { code: 'x-default', maintenancePath: english }]
     .map(item => `  <link rel="alternate" hreflang="${item.code}" href="${siteOrigin + item.maintenancePath}">`).join('\n');
   const navigation = maintenanceRequestLanguages.map(item =>
-    `<a href="${item.maintenancePath}" lang="${item.code}" hreflang="${item.code}"${item.code === code ? ' aria-current="page"' : ''}>${escapeHtml(item.label)}</a>`).join('\n        ');
+    `<a href="${item.maintenancePath}" lang="${item.code}" hreflang="${item.code}" dir="auto"${item.code === code ? ' aria-current="page"' : ''}>${escapeHtml(item.label)}</a>`).join('\n        ');
   const renderFields = blank => copy.fields.map(([field, value]) =>
     `<div><dt>${escapeHtml(field)}</dt><dd${blank ? ' aria-hidden="true"' : ''}>${blank ? '' : escapeHtml(value)}</dd></div>`).join('\n        ');
   const title = escapeHtml(copy.title);
   const description = escapeHtml(copy.description);
   return `<!doctype html>
-<html lang="${code}" dir="ltr">
+<html lang="${code}" dir="${direction}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -95,7 +99,7 @@ ${linkTags}
 <body>
   <header class="site-header">
     <div class="wrap header-content">
-      <a class="brand" href="${resourcesPath}" lang="en">BigPlanner <span>Partners</span></a>
+      <a class="brand" href="${resourcesPath}" lang="en" dir="ltr">BigPlanner <span>Partners</span></a>
       <nav class="languages" aria-label="${escapeHtml(copy.languageLabel)}">
         ${navigation}
       </nav>
@@ -135,11 +139,12 @@ ${linkTags}
         <a href="${handoverPath}">${escapeHtml(copy.handover)}</a>
         <a href="${adoptionPath}">${escapeHtml(copy.pilot)}</a>
         <a href="${videoPath}">${escapeHtml(copy.demo)}</a>
+        <a href="${escapeHtml(demoRequestUrl)}">${escapeHtml(request)}</a>
       </div>
     </section>
   </main>
   <footer><div class="wrap">
-    <span lang="en">BigPlanner Partners</span><a href="${resourcesPath}">${escapeHtml(copy.library)}</a>
+    <span lang="en" dir="ltr">BigPlanner Partners</span><a href="${resourcesPath}">${escapeHtml(copy.library)}</a>
   </div></footer>
   <script>
     const button = document.querySelector('.intake-print');

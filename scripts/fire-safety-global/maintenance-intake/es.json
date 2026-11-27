@@ -1,0 +1,28 @@
+{
+  "title": "Formulario de solicitud de mantenimiento para inquilinos de edificios comerciales",
+  "description": "Plantilla gratuita para comunicar incidencias habituales de climatización, iluminación o tuberías en un edificio comercial. Registra la ubicación exacta, lo que has observado y cuándo puede revisarlo el personal.",
+  "intro": "Descarga o imprime el formulario, complétalo y envíalo por el canal de mantenimiento autorizado del edificio. Indica el horario de acceso al lugar y si alguien debe acompañar al personal.",
+  "emergency": "En caso de incendio o peligro inmediato, sigue los procedimientos de emergencia del edificio y utiliza sus contactos de emergencia designados.",
+  "fieldsTitle": "Formulario de solicitud de mantenimiento en blanco",
+  "download": "Descargar el formulario en blanco (TXT)",
+  "print": "Imprimir el formulario en blanco",
+  "exampleTitle": "Ejemplo de formulario completado",
+  "exampleNote": "Este ejemplo ficticio muestra un problema con el aire acondicionado en una sala de reuniones compartida.",
+  "nextTitle": "Entrega las solicitudes pendientes al siguiente turno",
+  "nextText": "El personal de instalaciones puede anotar la referencia de la solicitud, el equipo asignado y la próxima revisión. Usa la misma referencia durante el relevo de turno para que el personal entrante encuentre la ubicación exacta y el estado de la solicitud.",
+  "handover": "Descargar la plantilla para el relevo de turno",
+  "pilot": "Consultar la lista de comprobación para la prueba piloto de IA en instalaciones",
+  "library": "Recursos para la gestión de instalaciones",
+  "demo": "Ver la demostración de 27 segundos sobre una incidencia de climatización",
+  "languageLabel": "Elige el idioma del formulario",
+  "fields": [
+    ["Complejo y edificio", "Centro Empresarial Tilo, edificio A"],
+    ["Piso, oficina o sala y ubicación exacta", "Quinto piso, sala de reuniones compartida A-5.12, junto a los ascensores"],
+    ["Categoría de la solicitud", "Calefacción, ventilación y aire acondicionado"],
+    ["Problema observado y efecto en el uso del espacio", "El aire acondicionado está encendido, pero la sala sigue caliente. El equipo trasladó la reunión a otra sala."],
+    ["Fecha y hora local en que se detectó por primera vez", "5 de octubre de 2026, 20:35"],
+    ["Horario y condiciones de acceso", "6 de octubre, de 07:15 a 08:00, con acompañamiento del personal de recepción"],
+    ["Equipo del inquilino y canal autorizado para responder", "Equipo de operaciones del inquilino del quinto piso. Responder a través del canal de atención autorizado del edificio."],
+    ["Referencia de la solicitud, equipo asignado y próxima acción (solo para el personal de instalaciones)", "DEMO-012. El equipo de mantenimiento del turno de mañana revisará la climatización de la sala a las 07:30."]
+  ]
+}
