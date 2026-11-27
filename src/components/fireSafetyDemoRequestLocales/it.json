@@ -1,0 +1,68 @@
+{
+  "page": {
+    "title": "Richiedi una demo dell’help desk IA per immobili | BigPlanner Partners",
+    "description": "Richiedi una demo online dell’help desk IA di BigPlanner Partners per gestire le segnalazioni dei locatari negli immobili commerciali.",
+    "back": "Guarda la demo del prodotto",
+    "heading": "Guarda come funziona l’help desk IA",
+    "intro": "Scopri come le segnalazioni dei locatari passano da un turno all’altro e parlaci di come lavora il tuo team. La demo pubblica mostra l’interfaccia in coreano con sottotitoli in italiano."
+  },
+  "form": {
+    "heading": "Richiedi una demo online",
+    "required": "Campi obbligatori",
+    "introduction": "Dopo l’invio della richiesta, ti contatteremo via e-mail per concordare la demo online.",
+    "legend": "Dettagli della richiesta di demo",
+    "company": "Azienda o organizzazione",
+    "companyPlaceholder": "Nome dell’azienda o dell’edificio",
+    "name": "Nome del referente",
+    "namePlaceholder": "Il tuo nome",
+    "role": "Ruolo",
+    "rolePlaceholder": "Seleziona il tuo ruolo",
+    "roles": {
+      "head-office": "Sede centrale della società di gestione immobiliare",
+      "site": "Gestione in loco o team tecnico",
+      "other": "Altro"
+    },
+    "email": "Indirizzo e-mail",
+    "emailPlaceholder": "nome@example.com",
+    "buildingCount": "Numero di edifici gestiti",
+    "buildingCountPlaceholder": "Per esempio, 3",
+    "interests": "Cosa vuoi vedere durante la demo?",
+    "interestsPlaceholder": "Per esempio, segnalazioni di guasti al climatizzatore, parcheggi per visitatori o passaggio di consegne",
+    "interestsHint": "Ometti i dati personali, come i recapiti dei locatari, e i documenti interni.",
+    "optional": "Facoltativo",
+    "website": "Sito web",
+    "consent": "Acconsento alla raccolta e all’uso dei miei dati personali per gestire la mia richiesta di demo.",
+    "consentRequired": "(Obbligatorio)",
+    "submit": "Invia la richiesta di demo",
+    "submitting": "Invio della richiesta in corso",
+    "afterSubmit": "Puoi richiedere una demo senza fornire manuali o schede di segnalazioni reali dei locatari.",
+    "validationSummary": "Controlla i campi evidenziati e riprova.",
+    "invalidRequest": "Non è stato possibile inviare la richiesta. Controlla i dati e riprova.",
+    "failedRequest": "Non è stato possibile inviare la richiesta. I dati inseriti sono ancora nel modulo. Riprova tra poco o scrivici all’indirizzo e-mail qui sotto.",
+    "successLabel": "Richiesta ricevuta",
+    "successTitle": "Abbiamo ricevuto la tua richiesta di demo.",
+    "successText": "Ti scriveremo all’indirizzo e-mail che hai indicato per concordare la demo.",
+    "emailLabel": "Contatti",
+    "reset": "Avvia un’altra richiesta",
+    "privacy": {
+      "title": "Come raccogliamo e usiamo i tuoi dati personali",
+      "rows": [
+        ["Chi raccoglie e usa i dati", "BigPlanner Partners"],
+        ["Perché usiamo i dati", "Per gestire le richieste di demo, valutare con te l’introduzione del servizio e organizzare le demo online."],
+        ["Quali dati raccogliamo", "Nome dell’azienda o dell’organizzazione, nome del referente, indirizzo e-mail e ruolo. Raccogliamo il numero di edifici gestiti e i flussi di lavoro che ti interessano solo se li indichi."],
+        ["Per quanto tempo conserviamo i dati", "Fino a 90 giorni dalla data di ricezione della richiesta. Puoi chiederne la cancellazione scrivendo all’indirizzo e-mail qui sotto."],
+        ["La tua scelta", "Puoi rifiutare il consenso. Il consenso è necessario per inviare una richiesta di demo online."]
+      ],
+      "contact": "Domande e richieste di cancellazione"
+    }
+  },
+  "errors": {
+    "company": "Inserisci il nome dell’azienda o dell’organizzazione in un massimo di 120 caratteri.",
+    "name": "Inserisci il nome del referente in un massimo di 80 caratteri.",
+    "email": "Verifica che l’indirizzo e-mail sia valido.",
+    "role": "Seleziona il tuo ruolo.",
+    "buildingCount": "Inserisci un numero intero da 1 a 100.000.",
+    "interests": "Descrivi cosa vuoi vedere usando al massimo 1.000 caratteri.",
+    "consent": "Acconsenti alla raccolta e all’uso dei dati personali per gestire la tua richiesta di demo."
+  }
+}

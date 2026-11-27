@@ -1,0 +1,48 @@
+{
+  "title": "Help desk IA per le richieste dei locatari negli immobili commerciali",
+  "description": "Rispondi ai locatari, registra le segnalazioni di guasti agli impianti e le richieste di manutenzione e usa la stessa scheda fino al passaggio di consegne.",
+  "heading": "Un help desk IA per le segnalazioni dei locatari",
+  "intro": "Rispondi alle domande ricorrenti dei locatari consultando il manuale dell’edificio. Quando serve un sopralluogo, registra il problema e il luogo preciso, così chi subentra può ripartire dalla stessa scheda.",
+  "audience": "Per gestori di immobili commerciali, team tecnici e società di amministrazione immobiliare.",
+  "workflowTitle": "Dalla domanda del locatario al passaggio di consegne",
+  "steps": [
+    ["Rispondi alle domande ricorrenti", "Il chatbot usa il manuale operativo dell’edificio per rispondere alle domande sui parcheggi per visitatori e sugli altri servizi descritti nel manuale."],
+    ["Registra e assegna una segnalazione", "Se il raffrescamento è insufficiente, per esempio, l’IA registra il punto esatto e i dettagli. Un responsabile esamina la segnalazione e la assegna a un addetto."],
+    ["Trasmetti la stessa scheda al turno successivo", "Chi subentra può vedere cosa è stato segnalato, quali indicazioni sono state date e a chi è stato assegnato l’intervento. Il personale autorizzato conferma la pianificazione e le approvazioni."]
+  ],
+  "demoTitle": "Una segnalazione sul raffrescamento in 27 secondi",
+  "demoNote": "Il caso è simulato e mostra l’interfaccia in coreano con sottotitoli in italiano.",
+  "watch": {
+    "title": "Demo IA per immobili commerciali, dalla segnalazione al cambio turno",
+    "description": "In 27 secondi, l’IA registra una segnalazione simulata sul raffrescamento, il responsabile la assegna e chi subentra consulta la stessa scheda. Interfaccia in coreano e sottotitoli in italiano.",
+    "timelineTitle": "Dalla segnalazione al passaggio di consegne"
+  },
+  "subtitles": [
+    "Un locatario segnala scarso raffrescamento nella sala riunioni comune al 5° piano.",
+    "L’IA registra il luogo e i dettagli della segnalazione.",
+    "Il responsabile esamina DEMO-012 e affida il caso a un addetto.",
+    "Chi subentra legge le note e il nome dell’addetto nella stessa scheda.",
+    "BigPlanner Partners. Richiedi una demo online."
+  ],
+  "caseTitle": "Segnalazioni dei locatari presso una società di gestione immobiliare",
+  "caseSummary": "Il team registrava a mano le segnalazioni ricevute per telefono o via messaggio. In una prova di fattibilità ha testato un chatbot per web e dispositivi mobili per consultare le istruzioni dell’edificio e registrare le segnalazioni. Da un pannello di gestione, il team poteva inoltrarle al personale.",
+  "caseLabels": ["Segnalazioni nel campione interno", "Segnalazioni non inoltrate all’addetto responsabile nel campione"],
+  "caseScope": "Il rapporto finale copre il periodo dal 23 settembre al 22 ottobre 2026. I dati riguardano il campione interno della prova di fattibilità, comprese le segnalazioni inserite per verificare le funzionalità.",
+  "caseLink": "Leggi la sintesi del caso in coreano",
+  "faqTitle": "Domande prima di avviare un progetto pilota",
+  "faq": [
+    ["Può funzionare nella nostra lingua?", "La demo pubblica mostra l’interfaccia in coreano. Indicaci le lingue usate dai locatari e dal personale per valutare i requisiti di un progetto pilota."],
+    ["Possiamo mantenere la linea telefonica o il sistema di gestione degli interventi?", "Puoi continuare a ricevere chiamate. Nel definire il progetto pilota, esaminiamo i canali attuali, i campi delle schede e le integrazioni necessarie."],
+    ["Come si gestiscono le emergenze?", "In caso di incendio, di incidenti legati alla sicurezza o di altre urgenze, segui le procedure dell’edificio e usa i contatti di emergenza previsti."]
+  ],
+  "contactTitle": "Richiedi una demo online",
+  "contactText": "Indicaci quale flusso di lavoro del tuo edificio vuoi esaminare. Ti contatteremo via e-mail per concordare la demo online.",
+  "quoteTitle": "Come prepariamo il preventivo",
+  "quoteText": "Prepariamo un preventivo per la configurazione e l’assistenza continuativa in base al progetto. Valutiamo il numero di edifici, i manuali operativi, le integrazioni necessarie e l’assistenza richiesta.",
+  "contactAction": "Richiedi una demo via e-mail",
+  "formAction": "Richiedi una demo online",
+  "privacy": "Informativa sulla privacy (in coreano)",
+  "navLabel": "Scegli la lingua",
+  "videoFallback": "Apri il file video della demo",
+  "subject": "[IT] Demo help desk BigPlanner per i locatari"
+}

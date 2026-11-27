@@ -1,0 +1,69 @@
+{
+  "title": "Tekoälyavusteinen palvelupyyntökanava toimitiloihin",
+  "description": "Kiinteistön ylläpito voi vastata vuokralaisten tavallisiin kysymyksiin, kirjata LVI- ja huoltopyynnöt ja seurata samaa pyyntöä vastaanotosta vuoronvaihtoon.",
+  "heading": "Tekoälyavusteinen palvelukanava vuokralaisille",
+  "intro": "Vastaa vuokralaisten tavallisiin kysymyksiin kiinteistön ohjeiden perusteella. Kun palvelupyyntö vaatii käynnin paikan päällä, kirjaa tapahtuma ja sijainti, jotta seuraava vuoro voi jatkaa saman pyynnön käsittelyä.",
+  "audience": "Toimitilojen kiinteistöpäälliköille, ylläpitotiimeille ja kiinteistöjen hallinnointia hoitaville yrityksille.",
+  "workflowTitle": "Vuokralaisen kysymyksestä vuoronvaihtoon",
+  "steps": [
+    [
+      "Vastaa tavallisiin kysymyksiin",
+      "Chatbot käyttää kiinteistön ohjeita vastatessaan esimerkiksi vieraspysäköintiä ja muita kiinteistön palveluja koskeviin kysymyksiin."
+    ],
+    [
+      "Kirjaa palvelupyyntö ja nimeä vastuuhenkilö",
+      "Kun vuokralainen ilmoittaa esimerkiksi jäähdytysongelmasta, tekoäly kirjaa sijainnin ja pyynnön tiedot. Vuorovastaava tarkistaa pyynnön ja nimeää vastuuhenkilön."
+    ],
+    [
+      "Jatka saman pyynnön käsittelyä seuraavassa vuorossa",
+      "Seuraava vuoro näkee, mitä ilmoitettiin, mitä ohjeita annettiin ja kenelle pyyntö osoitettiin. Aikataulut ja hyväksynnät vahvistaa työntekijä, jolla on siihen valtuudet."
+    ]
+  ],
+  "demoTitle": "Jäähdytysongelman käsittely 27 sekunnissa",
+  "demoNote": "Kuvitteellisen esimerkin käyttöliittymä on koreankielinen ja tekstitys suomeksi.",
+  "watch": {
+    "title": "Tekoälyavusteinen palvelupyyntö ja vuoronvaihto",
+    "description": "Katso 27 sekunnin kuvitteellinen esimerkki jäähdytysongelman ilmoittamisesta, vastuuhenkilön nimeämisestä ja pyynnön siirtämisestä seuraavalle vuorolle. Koreankielinen käyttöliittymä ja suomenkielinen tekstitys.",
+    "timelineTitle": "Mitä demossa tapahtuu"
+  },
+  "subtitles": [
+    "Vuokralainen ilmoittaa 5. kerroksen yhteisen kokoustilan jäähdytysongelmasta.",
+    "Tekoäly kirjaa sijainnin ja pyynnön tiedot.",
+    "Vuorovastaava tarkistaa pyynnön DEMO-012 ja nimeää vastuuhenkilön.",
+    "Seuraava vuoro näkee kirjaukset ja vastuuhenkilön samasta pyynnöstä.",
+    "BigPlanner Partners. Pyydä etäesittelyä."
+  ],
+  "caseTitle": "Vuokralaisten palvelupyyntöjen vastaanotto kiinteistöalan yrityksessä",
+  "caseSummary": "Kiinteistön ylläpito kirjasi aiemmin puhelimitse ja viesteillä tulleet pyynnöt käsin. Rajatussa toimivuuskokeilussa testattiin verkossa ja mobiililaitteilla toimivaa chatbotia, joka vastasi kysymyksiin kiinteistön ohjeiden perusteella ja kirjasi pyynnöt. Pyyntöjen välittämistä työntekijöille kokeiltiin hallintanäkymässä.",
+  "caseLabels": [
+    "Palvelupyyntöjä sisäisessä otoksessa",
+    "Otoksen pyynnöt, joita ei välitetty vastuuhenkilölle"
+  ],
+  "caseScope": "Loppuraportti kattaa ajanjakson 23. syyskuuta – 22. lokakuuta 2026. Luvut koskevat sisäisen toimivuuskokeilun otosta, joka sisältää myös toimintojen testausta varten tehtyjä palvelupyyntöjä.",
+  "caseLink": "Lue tapauskuvaus koreaksi",
+  "faqTitle": "Kysymyksiä ennen kokeilua",
+  "faq": [
+    [
+      "Voiko ratkaisua käyttää omalla kielellämme?",
+      "Julkisessa esittelyssä näkyvä käyttöliittymä on koreankielinen. Kerro, mitä kieliä tilojen käyttäjät ja työntekijät käyttävät, jotta voimme arvioida, mitä kokeilu edellyttäisi."
+    ],
+    [
+      "Voimmeko säilyttää nykyisen puhelinpalvelun tai työnohjausjärjestelmän?",
+      "Voitte edelleen vastaanottaa puheluita. Kokeilua suunnitellessa käymme läpi nykyiset kanavat, kirjattavat tiedot ja järjestelmien liitäntätarpeet."
+    ],
+    [
+      "Miten toimimme hätätilanteessa?",
+      "Noudata kiinteistön vakiintuneita yhteydenotto- ja toimintaohjeita tulipalossa, turvallisuuspoikkeamassa tai muussa kiireellisessä tilanteessa."
+    ]
+  ],
+  "contactTitle": "Pyydä etäesittelyä",
+  "contactText": "Kerro, minkä kiinteistösi työprosessin haluat käydä läpi. Sovimme etäesittelyn ajankohdan sähköpostitse.",
+  "quoteTitle": "Miten tarjous laaditaan",
+  "quoteText": "Annamme hankekohtaisen tarjouksen käyttöönotosta ja jatkuvasta tuesta. Otamme huomioon rakennusten määrän, niiden käyttö- ja ylläpito-ohjeet, tarvittavat järjestelmäliitännät ja tuen laajuuden.",
+  "contactAction": "Pyydä esittelyä sähköpostitse",
+  "formAction": "Lähetä esittelypyyntö verkossa",
+  "privacy": "Tietosuojaseloste (koreaksi)",
+  "navLabel": "Valitse kieli",
+  "videoFallback": "Avaa demovideo",
+  "subject": "[FI] Esittelypyyntö BigPlannerin palvelupyyntökanavasta"
+}

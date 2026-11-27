@@ -2,7 +2,9 @@ import { demoRequestCopy, englishDemoFieldErrors, type DemoRequestFormTranslatio
 import ar from '../components/fireSafetyDemoRequestLocales/ar.json';
 import da from '../components/fireSafetyDemoRequestLocales/da.json';
 import de from '../components/fireSafetyDemoRequestLocales/de.json';
+import fi from '../components/fireSafetyDemoRequestLocales/fi.json';
 import fr from '../components/fireSafetyDemoRequestLocales/fr.json';
+import it from '../components/fireSafetyDemoRequestLocales/it.json';
 import ja from '../components/fireSafetyDemoRequestLocales/ja.json';
 import nb from '../components/fireSafetyDemoRequestLocales/nb.json';
 import nl from '../components/fireSafetyDemoRequestLocales/nl.json';
@@ -25,5 +27,5 @@ export const internationalDemoRequestCopy: Readonly<Record<string, DemoRequestTr
     form: demoRequestCopy.en,
     errors: englishDemoFieldErrors,
   },
-  ar, da, de, fr, ja, nb, nl, sv, 'zh-Hant': zhHant,
+  ar, da, de, fi, fr, it, ja, nb, nl, sv, 'zh-Hant': zhHant,
 };

@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "Pyydä kiinteistön ylläpidon tekoälyesittelyä | BigPlanner Partners",
+    "description": "Pyydä BigPlanner Partnersin tekoälyavusteisen palvelukanavan etäesittelyä. Kanava on tarkoitettu toimitilojen vuokralaisten palvelupyyntöjen käsittelyyn.",
+    "back": "Katso tuotedemo",
+    "heading": "Katso, miten tekoälyavusteinen palvelukanava toimii",
+    "intro": "Katso, miten vuokralaisten palvelupyynnöt etenevät vuorojen välillä, ja keskustele kanssamme kiinteistösi käytännöistä. Julkisessa demossa on koreankielinen käyttöliittymä ja suomenkielinen tekstitys."
+  },
+  "form": {
+    "heading": "Pyydä etäesittelyä",
+    "required": "Pakolliset kentät",
+    "introduction": "Kun olet lähettänyt pyynnön, otamme yhteyttä sähköpostitse ja sovimme etäesittelyn ajankohdan.",
+    "legend": "Esittelypyynnön tiedot",
+    "company": "Yritys tai organisaatio",
+    "companyPlaceholder": "Yrityksen tai rakennuksen nimi",
+    "name": "Yhteyshenkilön nimi",
+    "namePlaceholder": "Nimesi",
+    "role": "Tehtävä",
+    "rolePlaceholder": "Valitse tehtäväsi",
+    "roles": {
+      "head-office": "Kiinteistönhallintayrityksen pääkonttori",
+      "site": "Kohteen hallinto tai kiinteistön ylläpito",
+      "other": "Muu"
+    },
+    "email": "Sähköpostiosoite",
+    "emailPlaceholder": "nimi@example.com",
+    "buildingCount": "Hallinnoitavien rakennusten määrä",
+    "buildingCountPlaceholder": "Esim. 3",
+    "interests": "Mitä haluat nähdä esittelyssä?",
+    "interestsPlaceholder": "Esim. jäähdytysongelmien kirjaaminen, vieraspysäköinnin ohjeistus tai vuoronvaihto",
+    "interestsHint": "Jätä pois henkilötiedot, kuten vuokralaisten todelliset yhteystiedot, sekä sisäinen aineisto.",
+    "optional": "Valinnainen",
+    "website": "Verkkosivusto",
+    "consent": "Suostun henkilötietojeni keräämiseen ja käyttöön esittelypyyntöni käsittelyä varten.",
+    "consentRequired": "(Pakollinen)",
+    "submit": "Lähetä esittelypyyntö",
+    "submitting": "Lähetetään esittelypyyntöä",
+    "afterSubmit": "Voit pyytää esittelyä toimittamatta kiinteistön ohjeita tai vuokralaisten todellisia palvelupyyntöjä.",
+    "validationSummary": "Tarkista merkityt kentät ja yritä uudelleen.",
+    "invalidRequest": "Pyyntöä ei voitu lähettää. Tarkista tiedot ja yritä uudelleen.",
+    "failedRequest": "Pyyntöä ei voitu lähettää. Syöttämäsi tiedot ovat edelleen lomakkeella. Yritä hetken kuluttua uudelleen tai kirjoita alla olevaan sähköpostiosoitteeseen.",
+    "successLabel": "Pyyntö vastaanotettu",
+    "successTitle": "Esittelypyyntösi on vastaanotettu.",
+    "successText": "Otamme yhteyttä ilmoittamaasi sähköpostiosoitteeseen sopiaksemme esittelyn ajankohdan.",
+    "emailLabel": "Yhteydenotot",
+    "reset": "Tee uusi pyyntö",
+    "privacy": {
+      "title": "Näin keräämme ja käytämme henkilötietojasi",
+      "rows": [
+        [
+          "Kuka kerää ja käyttää henkilötietoja?",
+          "BigPlanner Partners"
+        ],
+        [
+          "Mihin käytämme henkilötietoja?",
+          "Käsittelemme esittelypyyntöjä, keskustelemme käyttöönotosta ja sovimme etäesittelyjen ajankohdista."
+        ],
+        [
+          "Mitä tietoja keräämme?",
+          "Yrityksen tai organisaation nimen, yhteyshenkilön nimen, sähköpostiosoitteen ja tehtävän. Keräämme hallinnoimiesi rakennusten määrän ja tiedot sinua kiinnostavista työprosesseista vain, jos ilmoitat ne."
+        ],
+        [
+          "Kuinka kauan säilytämme tietoja?",
+          "Säilytämme tietoja enintään 90 päivää pyynnön vastaanottamisesta. Voit pyytää tietojen poistamista kirjoittamalla alla olevaan sähköpostiosoitteeseen."
+        ],
+        [
+          "Oma valintasi",
+          "Voit kieltäytyä antamasta suostumusta. Suostumus tarvitaan etäesittelypyynnön lähettämiseen."
+        ]
+      ],
+      "contact": "Kysymykset ja tietojen poistopyynnöt"
+    }
+  },
+  "errors": {
+    "company": "Anna yrityksen tai organisaation nimi, enintään 120 merkkiä.",
+    "name": "Anna yhteyshenkilön nimi, enintään 80 merkkiä.",
+    "email": "Tarkista, että sähköpostiosoite on kelvollinen.",
+    "role": "Valitse tehtäväsi.",
+    "buildingCount": "Anna kokonaisluku väliltä 1–100 000.",
+    "interests": "Kerro enintään 1 000 merkillä, mitä haluat nähdä esittelyssä.",
+    "consent": "Anna suostumuksesi henkilötietojen keräämiseen ja käyttöön esittelypyyntösi käsittelyä varten."
+  }
+}

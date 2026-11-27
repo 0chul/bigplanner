@@ -1,0 +1,48 @@
+{
+  "title": "Vuoronvaihdon tarkistuslista ja maksuton Excel-pohja",
+  "description": "Lataa kiinteistön ylläpidon maksuton Excel-pohja vuoronvaihtoon. Tarkistuslista ja jäähdytysesimerkki auttavat siirtämään avoimet palvelupyynnöt seuraavalle vuorolle.",
+  "productLabel": "Tekoälyavusteinen palvelukanava vuokralaisille",
+  "h1": "Kiinteistön ylläpidon tarkistuslista vuoronvaihtoon",
+  "intro": "Välitä avoimet palvelupyynnöt seuraavalle vuorolle. Kerro tarkka sijainti, nykyinen vastuuhenkilö ja seuraavan tarkistuksen ajankohta. Excel-tiedosto sisältää tyhjän pohjan ja täytetyn esimerkin toimitilakiinteistöstä.",
+  "download": "Lataa maksuton Excel-pohja",
+  "print": "Tulosta tarkistuslista",
+  "share": "Jaa sähköpostitse",
+  "languageLabel": "Tarkistuslistan kielet",
+  "checklistTitle": "Ennen työvuoron päättymistä",
+  "checklist": [
+    "Käytä yhtä tunnusta kullekin palvelupyynnölle. Kirjaa saapumisaika paikallista aikaa ja merkitse rakennus, kerros ja tila.",
+    "Tiivistä vuokralaisen ilmoitus ja kirjaa jo tehdyt tarkistukset ja toimenpiteet.",
+    "Nimeä vastuuhenkilö tai -tiimi. Merkitse nykyinen tila, seuraava toimenpide sekä määräaika tai seuraavan tarkistuksen ajankohta.",
+    "Käy avoimet palvelupyynnöt läpi seuraavan vuoron kanssa ja varmista, kuka niitä seuraa."
+  ],
+  "note": "Noudata hätätilanteissa kiinteistön vakiintuneita yhteydenotto- ja toimintaohjeita.",
+  "exampleTitle": "Esimerkki vuoronvaihdon kirjauksesta",
+  "exampleIntro": "Rakennus ja palvelupyyntö ovat kuvitteellisia. Kellonajat ovat kohteen paikallista aikaa.",
+  "example": [
+    [
+      "Pyyntö ja kellonaika",
+      "DEMO-012, 5.10.2026 klo 20.35"
+    ],
+    [
+      "Sijainti",
+      "Rakennus A, 5. kerros, yhteinen kokoustila"
+    ],
+    [
+      "Vikailmoitus",
+      "Vuokralainen ilmoitti, että jäähdytys on liian heikko."
+    ],
+    [
+      "Vastuuhenkilö ja tila",
+      "Aamuvuoron kiinteistönhoitaja. Käsittelyssä."
+    ],
+    [
+      "Seuraava tarkistus",
+      "6.10. klo 7.30. Tarkasta suodatin ja tarkista ilmavirta."
+    ]
+  ],
+  "demoTitle": "Katso, miten sama palvelupyyntö siirtyy seuraavalle vuorolle",
+  "demoText": "27 sekunnin videossa tekoäly kirjaa tiedot, vuorovastaava nimeää vastuuhenkilön ja seuraava vuoro näkee saman pyynnön. Käyttöliittymä on koreankielinen ja tekstitys suomeksi.",
+  "demoAction": "Katso demo suomenkielisellä tekstityksellä",
+  "privacy": "Tietosuojaseloste (koreaksi)",
+  "landingLink": "Lataa maksuton Excel-pohja vuoronvaihtoon"
+}

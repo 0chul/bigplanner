@@ -1,0 +1,33 @@
+{
+  "title": "Checklist per il passaggio di consegne e registro Excel gratuito",
+  "description": "Scarica il registro Excel gratuito per il passaggio di consegne nella gestione degli immobili commerciali. Usa la checklist e l’esempio sul raffrescamento per trasmettere al turno successivo le segnalazioni dei locatari ancora aperte.",
+  "productLabel": "Help desk IA per i locatari",
+  "h1": "Checklist per il passaggio di consegne nella gestione degli immobili",
+  "intro": "Trasmetti al turno successivo le segnalazioni ancora aperte, indicando il luogo preciso, l’addetto responsabile e l’orario della prossima verifica. Il file Excel include un registro vuoto e un esempio compilato per un immobile commerciale.",
+  "download": "Scarica il registro Excel gratuito",
+  "print": "Stampa la checklist",
+  "share": "Condividi via e-mail",
+  "languageLabel": "Lingue della checklist per il passaggio di consegne",
+  "checklistTitle": "Prima della fine del turno",
+  "checklist": [
+    "Usa un solo numero identificativo per ogni segnalazione. Registra l’ora di ricezione nel fuso orario dell’edificio e indica l’edificio, il piano e il locale.",
+    "Riassumi quanto segnalato dal locatario e annota le verifiche e gli interventi già completati.",
+    "Indica la persona o la squadra responsabile. Aggiungi lo stato, la prossima azione e la scadenza o l’ora della verifica.",
+    "Rivedi le segnalazioni aperte con chi subentra e conferma chi seguirà ciascuna segnalazione."
+  ],
+  "note": "In caso di emergenza, usa i contatti e segui le procedure previste dall’edificio.",
+  "exampleTitle": "Esempio di una scheda per il passaggio di consegne",
+  "exampleIntro": "L’edificio e la segnalazione dell’esempio sono fittizi. Gli orari sono locali.",
+  "example": [
+    ["Numero e ora della segnalazione", "DEMO-012 · 5 ottobre 2026, 20:35"],
+    ["Posizione", "Edificio A, quinto piano, sala riunioni comune"],
+    ["Problema", "Un locatario segnala che il raffrescamento è insufficiente."],
+    ["Responsabile e stato", "Tecnico del turno del mattino · In corso"],
+    ["Prossima verifica", "6 ottobre, 07:30. Ispezionare il filtro e verificare il flusso d’aria."]
+  ],
+  "demoTitle": "Segui la stessa scheda al cambio di turno",
+  "demoText": "In 27 secondi vedrai come l’IA raccoglie i dettagli, un responsabile assegna la segnalazione e chi subentra consulta la stessa scheda. L’interfaccia è in coreano con sottotitoli in italiano.",
+  "demoAction": "Guarda la demo con sottotitoli in italiano",
+  "privacy": "Informativa sulla privacy (in coreano)",
+  "landingLink": "Scarica il modello gratuito per il passaggio di consegne"
+}

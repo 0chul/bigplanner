@@ -39,6 +39,14 @@ const copyByLanguage = {
     summary: 'Dela länken', address: 'Sidans webbadress', native: 'Dela via en app', copy: 'Kopiera länken',
     copied: 'Länken har kopierats.', manual: 'Markera och kopiera webbadressen ovan.',
   },
+  fi: {
+    summary: 'Jaa linkki', address: 'Sivun osoite', native: 'Jaa sovelluksessa', copy: 'Kopioi linkki',
+    copied: 'Linkki kopioitiin.', manual: 'Valitse ja kopioi yllä oleva sivun osoite.',
+  },
+  it: {
+    summary: 'Condividi il link', address: 'Indirizzo della pagina', native: 'Condividi tramite un’app', copy: 'Copia il link',
+    copied: 'Link copiato.', manual: 'Seleziona e copia l’indirizzo della pagina qui sopra.',
+  },
 };
 
 export const shareAssets = `<link rel="stylesheet" href="/fire-safety-ai/share.css">
