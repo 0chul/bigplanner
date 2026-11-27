@@ -1,0 +1,48 @@
+{
+  "title": "Lista de verificação para a passagem de turno e registo Excel gratuito",
+  "description": "Descarregue um registo Excel gratuito para a passagem de turno em edifícios comerciais. Use a lista de verificação e o exemplo de climatização para transmitir os pedidos em aberto à equipa seguinte.",
+  "productLabel": "Assistente de IA para pedidos dos arrendatários",
+  "h1": "Lista de verificação para a passagem de turno em instalações",
+  "intro": "Passe os pedidos em aberto à equipa seguinte, com a localização exata, o responsável e a próxima verificação. O ficheiro Excel inclui um registo em branco e um exemplo preenchido para um edifício comercial.",
+  "download": "Descarregar o registo Excel gratuito",
+  "print": "Imprimir a lista de verificação",
+  "share": "Partilhar por e-mail",
+  "languageLabel": "Idiomas da lista de passagem de turno",
+  "checklistTitle": "Antes de terminar o turno",
+  "checklist": [
+    "Use um identificador por pedido. Registe a hora em que foi recebido, na hora local do edifício, e indique o edifício, o piso e a sala.",
+    "Resuma o que o arrendatário comunicou e registe as verificações e as intervenções já efetuadas.",
+    "Indique a pessoa ou equipa responsável, o estado atual, a próxima ação e a hora-limite ou a hora da próxima verificação.",
+    "Reveja os pedidos em aberto com a equipa que entra e confirme quem dará seguimento a cada pedido."
+  ],
+  "note": "Em caso de emergência, siga os procedimentos do edifício e use os contactos indicados para esse fim.",
+  "exampleTitle": "Exemplo de registo para a passagem de turno",
+  "exampleIntro": "O edifício e o pedido são fictícios. Todas as horas são locais.",
+  "example": [
+    [
+      "Identificador e hora",
+      "DEMO-012, 5 de outubro de 2026 às 20:35"
+    ],
+    [
+      "Localização",
+      "Edifício A, 5.º piso, sala de reuniões comum"
+    ],
+    [
+      "Ocorrência",
+      "Um arrendatário comunicou que o ar condicionado arrefecia pouco."
+    ],
+    [
+      "Responsável e estado",
+      "Técnico de manutenção do turno da manhã. Em curso."
+    ],
+    [
+      "Próxima verificação",
+      "6 de outubro às 07:30. Inspecionar o filtro e verificar o caudal de ar."
+    ]
+  ],
+  "demoTitle": "O mesmo pedido de um turno para o outro",
+  "demoText": "O vídeo de 27 segundos mostra como a IA recolhe os dados, um supervisor atribui o pedido e a equipa do turno seguinte consulta o mesmo registo. A interface está em coreano e as legendas estão em português.",
+  "demoAction": "Ver a demonstração com legendas em português",
+  "privacy": "Política de privacidade (em coreano)",
+  "landingLink": "Descarregar o modelo gratuito para a passagem de turno"
+}

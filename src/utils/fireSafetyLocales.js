@@ -40,6 +40,7 @@ export const fireSafetyLanguages = [
   { code: 'he', label: 'עברית', path: `${fireSafetyPath}he/`, locale: 'he_IL', direction: 'rtl' },
   { code: 'es', label: 'Español', path: `${fireSafetyPath}es/`, locale: 'es_ES' },
   { code: 'is', label: 'Íslenska', path: `${fireSafetyPath}is/`, locale: 'is_IS' },
+  { code: 'pt', label: 'Português', path: `${fireSafetyPath}pt/`, locale: 'pt_PT' },
 ].map((language) => ({
   ...language,
   handoverPath: language.code === 'ko' ? fireSafetyChecklistPath : `${language.path}shift-handover/`,

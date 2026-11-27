@@ -1,0 +1,90 @@
+{
+  "title": "Lista de verificação para testar um assistente de IA na gestão de edifícios",
+  "description": "Planeie um teste-piloto num edifício. Escolha os pedidos de assistência dos ocupantes a tratar, combine como os rever e passar ao turno seguinte e compare os registos.",
+  "shareDescription": "Escolha os pedidos a tratar, quem os retoma na passagem de turno e o que medir num teste-piloto num edifício.",
+  "heading": "Teste um serviço de assistência aos ocupantes com IA num edifício",
+  "intro": "Escolha um edifício comercial com registos de pedidos recentes e com pessoal dos dois turnos disponível para participar. Peça ao responsável pela exploração do edifício que acorde o âmbito do teste com quem responde às consultas, atribui as intervenções e recebe os pedidos em aberto.",
+  "open": "Abrir a lista de verificação",
+  "print": "Imprimir a lista de verificação",
+  "share": {
+    "summary": "Partilhar esta lista de verificação",
+    "address": "Endereço da página",
+    "native": "Partilhar numa aplicação",
+    "copy": "Copiar a ligação",
+    "email": "Partilhar por correio eletrónico",
+    "copied": "Ligação copiada.",
+    "manual": "Selecione e copie o endereço da página acima."
+  },
+  "scopeHeading": "Seis verificações antes de começar",
+  "scope": [
+    {
+      "heading": "Escolha o edifício e os tipos de pedido",
+      "text": "Consulte os registos recentes. Escolha dois ou três tipos de pedido com exemplos suficientes para testar, como o estacionamento de visitantes, o arrefecimento insuficiente ou a climatização fora do horário normal. Registe o edifício, os horários, os tipos de pedido e a pessoa responsável pelo teste."
+    },
+    {
+      "heading": "Combine que respostas e decisões precisam de revisão",
+      "text": "Para as consultas de rotina, registe a secção aprovada do manual de exploração do edifício e quem a mantém atualizada. Verifique uma resposta com base na redação em vigor. Quando for necessária uma verificação no local, registe a localização e o problema. O pessoal autorizado analisa e decide os pedidos que exigem aprovação."
+    },
+    {
+      "heading": "Designe uma pessoa responsável em cada turno",
+      "text": "Defina quem analisa os novos pedidos, atribui o seguimento e trata dos casos fora do âmbito do teste. Simule a passagem de turno com um pedido ainda sem responsável e confirme quem fica encarregado."
+    },
+    {
+      "heading": "Passe os pedidos em aberto no mesmo registo",
+      "text": "Registe o número do pedido, a localização, o problema, a atribuição, o estado, a ação seguinte e a hora da próxima verificação. Peça à equipa que entra para registar quando reviu o pedido."
+    },
+    {
+      "heading": "Defina qual é o sistema de registo oficial",
+      "text": "Escolha o sistema de referência para o registo. Confirme que integrações com telefone, correio eletrónico e ordens de trabalho serão usadas no teste. Simule um problema comunicado duas vezes para ver como a equipa compara e consolida os registos."
+    },
+    {
+      "heading": "Confirme o acesso e os prazos de conservação",
+      "text": "Combine quem pode consultar ou alterar os dados dos ocupantes. Decida quando são precisos contactos ou fotografias, quanto tempo devem ser conservados e quem os elimina. Use registos fictícios no exercício ou oculte os dados sensíveis."
+    }
+  ],
+  "safety": "Em caso de emergência, use os contactos e siga os procedimentos de resposta definidos para o edifício.",
+  "exampleHeading": "Pedido fictício de climatização na passagem de turno",
+  "example": [
+    {
+      "label": "Receção do pedido",
+      "value": "DEMO-012. A 5 de outubro, às 20:35, hora local, um ocupante comunica que o arrefecimento é insuficiente na sala de reuniões partilhada no quinto piso do edifício A."
+    },
+    {
+      "label": "Revisão pelo responsável do turno",
+      "value": "O responsável pelo turno verifica a localização e o problema, atribui o pedido ao técnico de manutenção do turno da manhã e altera o estado para «Em curso»."
+    },
+    {
+      "label": "Equipa que entra",
+      "value": "Na manhã seguinte, às 07:00, a equipa que entra confirma a atribuição e regista que o técnico verificará a sala às 07:30."
+    }
+  ],
+  "watch": "Ver a demonstração de 27 segundos com legendas em português",
+  "interfaceNote": "A interface apresentada está em coreano.",
+  "pilotHeading": "Compare os registos antes e durante o teste",
+  "baseline": "Defina antecipadamente que resultados justificariam a continuação do teste. Por exemplo, compare cinco dias úteis antes do início com cinco dias úteis durante o teste. Use os mesmos dias da semana, os mesmos horários dos turnos diurno e noturno e os mesmos tipos de pedido. Conte cada ocorrência apenas uma vez. Para identificar duplicados, compare o número do pedido ou a hora, a localização e o problema.",
+  "metrics": [
+    {
+      "title": "Registos completos",
+      "text": "Entre os pedidos abrangidos pelo teste que exigiram uma verificação no local, conte os que têm a localização, o problema e o estado da atribuição registados. Divida esse número pelo total de pedidos abrangidos que exigiram essa verificação."
+    },
+    {
+      "title": "Passagens de turno confirmadas",
+      "text": "Entre os pedidos em aberto que tinham de passar ao turno seguinte, conte aqueles em que, na primeira passagem, ficou registada a data e a hora em que a equipa que entrou verificou o estado e a ação seguinte. Divida esse número pelo total de pedidos em aberto que tinham de passar ao turno seguinte."
+    }
+  ],
+  "review": "Registe o numerador e o denominador de cada indicador. Se o denominador for zero, registe «0 de 0» e deixe a taxa em branco. Analise com os dois turnos os registos em falta e as atribuições tardias antes de decidir se alarga o teste.",
+  "referenceIntro": "Mais informações para planear o teste e definir o âmbito do serviço de assistência.",
+  "referenceLabel": "Norma de gestão de instalações do Governo britânico (em inglês)",
+  "pricingHeading": "Proposta e demonstração",
+  "pricing": "A BigPlanner Partners apresenta uma proposta de implementação e apoio contínuo para cada projeto, em função do número de edifícios, dos manuais de exploração, das integrações e do apoio necessário. Leve dois exemplos de procedimentos de trabalho para a demonstração em linha. Podem ser exemplos fictícios.",
+  "demoLabel": "Pedir uma demonstração em linha",
+  "resourcesHeading": "Recursos para a gestão de edifícios",
+  "materials": [
+    "Lista de verificação e registo Excel para a passagem de turno",
+    "Guia e folha de trabalho para as perguntas frequentes do edifício (em inglês)",
+    "Calculadora da carga de trabalho das consultas de rotina",
+    "Todos os recursos em português para a gestão de edifícios"
+  ],
+  "rss": "RSS de recursos para a gestão de edifícios",
+  "privacy": "Política de privacidade (em coreano)"
+}

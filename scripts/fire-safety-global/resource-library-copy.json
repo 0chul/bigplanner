@@ -77,6 +77,12 @@
     "resourcesHeading": "Recursos disponibles",
     "languagesHeading": "Recursos en otros idiomas"
   },
+  "pt": {
+    "title": "Recursos para a gestão de instalações",
+    "intro": "Descarregue o registo Excel para a passagem de turno, estime o tempo dedicado aos pedidos recorrentes dos arrendatários e veja a demonstração com legendas em português.",
+    "resourcesHeading": "Recursos disponíveis",
+    "languagesHeading": "Recursos noutros idiomas"
+  },
   "is": {
     "title": "Verkfæri fyrir fasteignarekstur",
     "intro": "Sæktu Excel-sniðmát fyrir vaktaskipti, áætlaðu tímann sem fer í að svara algengum fyrirspurnum leigutaka og horfðu á kynningarmyndbandið með íslenskum texta.",

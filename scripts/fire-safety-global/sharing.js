@@ -59,6 +59,10 @@ const copyByLanguage = {
     summary: 'Deila hlekk', address: 'Vefslóð síðunnar', native: 'Deila í forriti', copy: 'Afrita hlekk',
     copied: 'Hlekkurinn var afritaður.', manual: 'Veldu og afritaðu vefslóðina hér að ofan.',
   },
+  pt: {
+    summary: 'Partilhar ligação', address: 'Endereço da página', native: 'Partilhar numa aplicação', copy: 'Copiar ligação',
+    copied: 'Ligação copiada.', manual: 'Selecione e copie o endereço da página acima.',
+  },
 };
 
 export const shareAssets = `<link rel="stylesheet" href="/fire-safety-ai/share.css">

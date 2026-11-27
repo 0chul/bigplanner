@@ -1,0 +1,69 @@
+{
+  "title": "Assistente de IA para pedidos de ocupantes de edifícios comerciais",
+  "description": "Ajude a equipa de gestão e manutenção do edifício a responder a perguntas frequentes, registar pedidos de intervenção e manter um registo comum durante a passagem de turno.",
+  "heading": "Assistente de IA para os pedidos dos ocupantes",
+  "intro": "Responda a perguntas frequentes com base no manual de operação do edifício. Quando um pedido exige uma intervenção no local, fica registado o que aconteceu e onde, para que a equipa do turno seguinte possa dar seguimento.",
+  "audience": "Para gestores de imóveis comerciais, equipas de gestão e manutenção de edifícios e empresas de facility management.",
+  "workflowTitle": "Do pedido do ocupante à passagem de turno",
+  "steps": [
+    [
+      "Responder a perguntas frequentes",
+      "O assistente consulta o manual do edifício para responder a perguntas sobre o estacionamento de visitantes e outros serviços nele descritos."
+    ],
+    [
+      "Registar e encaminhar um pedido de intervenção",
+      "Se o ar condicionado arrefecer pouco, o assistente regista a localização e os detalhes. Um supervisor analisa o pedido e designa a pessoa responsável pelo seguimento."
+    ],
+    [
+      "Passar o mesmo registo à equipa seguinte",
+      "A equipa que entra ao serviço pode consultar o que foi comunicado, as orientações dadas e a pessoa responsável. Os horários e as autorizações são confirmados pelo pessoal habilitado."
+    ]
+  ],
+  "demoTitle": "Um pedido sobre climatização em 27 segundos",
+  "demoNote": "Este caso simulado é apresentado numa interface em coreano com legendas em português.",
+  "watch": {
+    "title": "Demonstração de IA para pedidos de climatização e passagem de turno",
+    "description": "Veja em 27 segundos como um pedido simulado de climatização é registado, encaminhado e passado à equipa seguinte. A interface está em coreano e as legendas estão em português.",
+    "timelineTitle": "O que acontece na demonstração"
+  },
+  "subtitles": [
+    "Um ocupante comunica que a sala de reuniões comum do 5.º piso não arrefece o suficiente.",
+    "O assistente regista a localização e os detalhes do pedido.",
+    "Um supervisor analisa o pedido DEMO-012 e designa um responsável.",
+    "A equipa do turno seguinte consulta as notas e o responsável no mesmo registo.",
+    "BigPlanner Partners. Peça uma demonstração online."
+  ],
+  "caseTitle": "Registo de pedidos numa empresa de gestão de edifícios",
+  "caseSummary": "A equipa de gestão registava manualmente os pedidos recebidos por telefone e por mensagem. Numa prova de conceito, foram testados um assistente para a web e para dispositivos móveis, que prestava informações a partir do manual e registava pedidos, e um painel de gestão para os encaminhar para a equipa responsável.",
+  "caseLabels": [
+    "Pedidos incluídos na amostra interna",
+    "Omissões no encaminhamento para a equipa responsável nesta amostra"
+  ],
+  "caseScope": "O relatório final cobre o período de 23 de setembro a 22 de outubro de 2026. Os dados referem-se à amostra interna da prova de conceito, que inclui pedidos criados para testar as funcionalidades.",
+  "caseLink": "Ler o resumo do caso em coreano",
+  "faqTitle": "Perguntas antes de um projeto-piloto",
+  "faq": [
+    [
+      "O serviço pode funcionar na nossa língua?",
+      "A demonstração pública mostra o produto em coreano. Indique as línguas que os ocupantes e as equipas utilizam para podermos avaliar os requisitos de um projeto-piloto."
+    ],
+    [
+      "Podemos manter a nossa linha telefónica ou o sistema de ordens de trabalho?",
+      "A equipa pode continuar a atender chamadas. Ao definir o projeto-piloto, analisamos os canais em uso, os campos dos registos e as integrações necessárias."
+    ],
+    [
+      "Como devemos atuar numa emergência?",
+      "Em caso de incêndio, incidente de segurança ou outra emergência, siga os procedimentos do edifício e utilize os contactos de emergência estabelecidos."
+    ]
+  ],
+  "contactTitle": "Peça uma demonstração online",
+  "contactText": "Diga-nos que processo pretende rever no seu edifício. Entraremos em contacto por correio eletrónico para agendar a demonstração.",
+  "quoteTitle": "Como é preparado o orçamento",
+  "quoteText": "O orçamento de implementação e apoio contínuo é preparado para cada projeto, tendo em conta o número de edifícios, os manuais de operação, as integrações necessárias e o âmbito do apoio.",
+  "contactAction": "Pedir uma demonstração por correio eletrónico",
+  "formAction": "Pedir uma demonstração online",
+  "privacy": "Política de privacidade (em coreano)",
+  "navLabel": "Escolher idioma",
+  "videoFallback": "Abrir o ficheiro de vídeo",
+  "subject": "[PT] Demonstração do assistente de IA da BigPlanner para pedidos dos ocupantes"
+}

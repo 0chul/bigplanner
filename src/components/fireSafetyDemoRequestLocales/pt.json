@@ -1,0 +1,83 @@
+{
+  "page": {
+    "title": "Peça uma demonstração de IA para gestão de edifícios | BigPlanner Partners",
+    "description": "Peça uma demonstração online do assistente de IA da BigPlanner Partners para gerir os pedidos dos ocupantes de edifícios comerciais.",
+    "back": "Ver a demonstração do produto",
+    "heading": "Veja o assistente de IA em ação",
+    "intro": "Veja como é dado seguimento aos pedidos dos ocupantes na passagem de turno e diga-nos como trabalha a sua equipa. A demonstração pública apresenta a interface em coreano com legendas em português."
+  },
+  "form": {
+    "heading": "Peça uma demonstração online",
+    "required": "Campos obrigatórios",
+    "introduction": "Depois de recebermos o pedido, entraremos em contacto por correio eletrónico para agendar a demonstração online.",
+    "legend": "Dados do pedido de demonstração",
+    "company": "Empresa ou organização",
+    "companyPlaceholder": "Nome da empresa ou do edifício",
+    "name": "Nome da pessoa de contacto",
+    "namePlaceholder": "O seu nome",
+    "role": "Função",
+    "rolePlaceholder": "Selecione a sua função",
+    "roles": {
+      "head-office": "Sede da empresa de gestão",
+      "site": "Gestão do edifício ou equipa de manutenção",
+      "other": "Outra"
+    },
+    "email": "Correio eletrónico",
+    "emailPlaceholder": "nome@example.com",
+    "buildingCount": "Número de edifícios que gere",
+    "buildingCountPlaceholder": "Por exemplo, 3",
+    "interests": "O que pretende ver na demonstração?",
+    "interestsPlaceholder": "Por exemplo, registo de avarias de climatização, estacionamento de visitantes ou passagem de turno",
+    "interestsHint": "Evite incluir dados pessoais, como contactos reais de ocupantes, e documentos internos.",
+    "optional": "Opcional",
+    "website": "Sítio web",
+    "consent": "Autorizo a recolha e a utilização dos meus dados pessoais para o tratamento do meu pedido de demonstração.",
+    "consentRequired": "(Obrigatório)",
+    "submit": "Enviar pedido de demonstração",
+    "submitting": "A enviar o pedido",
+    "afterSubmit": "Pode pedir uma demonstração sem enviar manuais ou registos reais de pedidos dos ocupantes.",
+    "validationSummary": "Verifique os campos assinalados e tente novamente.",
+    "invalidRequest": "Não foi possível enviar o pedido. Verifique os dados e tente novamente.",
+    "failedRequest": "Não foi possível enviar o pedido. Os dados continuam no formulário. Tente novamente dentro de instantes ou escreva-nos para o endereço abaixo.",
+    "successLabel": "Pedido recebido",
+    "successTitle": "Recebemos o seu pedido de demonstração.",
+    "successText": "Escreveremos para o endereço de correio eletrónico que indicou para agendar a demonstração.",
+    "emailLabel": "Contacto",
+    "reset": "Iniciar outro pedido",
+    "privacy": {
+      "title": "Como recolhemos e utilizamos os seus dados pessoais",
+      "rows": [
+        [
+          "Quem recolhe e utiliza os dados",
+          "BigPlanner Partners"
+        ],
+        [
+          "Para que utilizamos os dados",
+          "Para tratar pedidos de demonstração, conversar sobre a implementação do serviço e agendar demonstrações online."
+        ],
+        [
+          "Que dados recolhemos",
+          "Nome da empresa ou organização, nome da pessoa de contacto, endereço de correio eletrónico e função. Só recolhemos o número de edifícios que gere e os processos do seu interesse se os indicar."
+        ],
+        [
+          "Durante quanto tempo conservamos os dados",
+          "Até 90 dias após a receção do pedido. Pode pedir a eliminação dos seus dados através do endereço de correio eletrónico abaixo."
+        ],
+        [
+          "A sua escolha",
+          "Pode recusar o consentimento. O consentimento é necessário para enviar um pedido de demonstração online."
+        ]
+      ],
+      "contact": "Questões e pedidos de eliminação de dados"
+    }
+  },
+  "errors": {
+    "company": "Indique o nome da empresa ou organização, até 120 caracteres.",
+    "name": "Indique o nome da pessoa de contacto, até 80 caracteres.",
+    "email": "Indique um endereço de correio eletrónico válido.",
+    "role": "Selecione a sua função.",
+    "buildingCount": "Introduza um número inteiro entre 1 e 100 000.",
+    "interests": "Descreva em até 1000 caracteres o que pretende ver na demonstração.",
+    "consent": "Dê o seu consentimento para a recolha e utilização dos seus dados pessoais para tratar o pedido de demonstração."
+  }
+}

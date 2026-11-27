@@ -1,0 +1,48 @@
+{
+  "pageTitle": "Calculadora da carga de trabalho na gestão de edifícios",
+  "heading": "Estime a carga de trabalho das consultas de rotina dos ocupantes",
+  "description": "Estime o tempo mensal gasto a responder às consultas de rotina dos ocupantes e a parte dessa carga de trabalho atual a avaliar num teste-piloto do serviço de assistência do edifício.",
+  "intro": "Estime o tempo que a sua equipa dedica atualmente, em cada mês, a responder a consultas de rotina. Escolha a percentagem de consultas a avaliar no teste-piloto. Os valores introduzidos ficam neste navegador.",
+  "languageLabel": "Idiomas da calculadora",
+  "example": "Com 20 consultas de rotina por dia de funcionamento, 2 minutos por consulta e 22 dias de funcionamento por mês, a carga de trabalho mensal é de cerca de 14,7 horas. Avaliar 60 % dessas consultas abrange 264 consultas e cerca de 8,8 horas do trabalho atual.",
+  "inputsHeading": "Dados para calcular a carga de trabalho mensal",
+  "resultsHeading": "Estimativa da carga de trabalho mensal",
+  "fields": {
+    "requests": "Consultas de rotina por dia de funcionamento",
+    "minutes": "Tempo médio por consulta de rotina (minutos)",
+    "days": "Dias de funcionamento por mês",
+    "eligible": "Percentagem de consultas de rotina a avaliar (%)"
+  },
+  "result": {
+    "baseline": "Tempo atual de resposta às consultas de rotina",
+    "review": "Tempo atual gasto nas consultas a avaliar",
+    "requests": "Consultas mensais a avaliar",
+    "hours": "horas",
+    "cases": "consultas",
+    "share": "Percentagem de consultas de rotina a avaliar"
+  },
+  "invalid": "Introduza um número dentro do intervalo indicado em cada campo.",
+  "reset": "Repor os valores do exemplo",
+  "methodHeading": "Como escolher os dados para o teste-piloto",
+  "method": [
+    "Registe o número de consultas e os tempos de resposta em períodos normais e de maior atividade. Use os valores observados para obter um número diário representativo e um tempo médio de resposta.",
+    "Separe as consultas de rotina dos pedidos excecionais, das ocorrências urgentes e dos pedidos que exigem aprovação. Continue a usar os canais existentes no edifício para esses casos.",
+    "Ao planear o teste-piloto, conte com o tempo da equipa para rever as respostas, atualizar as orientações aprovadas e prestar apoio contínuo."
+  ],
+  "request": "Pedir uma demonstração em linha",
+  "readGuide": "Ver a lista de verificação para a passagem de turno",
+  "watch": "Ver a demonstração de 27 segundos",
+  "share": {
+    "summary": "Partilhar a ligação",
+    "address": "Endereço da página",
+    "native": "Partilhar numa aplicação",
+    "copy": "Copiar a ligação",
+    "email": "Partilhar por correio eletrónico",
+    "copied": "Ligação copiada.",
+    "manual": "Selecione e copie o endereço da página acima."
+  },
+  "open": "Abrir a calculadora da carga de trabalho",
+  "rssLabel": "Canal RSS",
+  "privacy": "Política de privacidade (em coreano)",
+  "enableScripts": "Ative o JavaScript no navegador para usar a calculadora. O exemplo desta página pode ser consultado com o JavaScript desativado."
+}

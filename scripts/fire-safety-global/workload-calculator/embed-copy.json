@@ -59,6 +59,10 @@
     "label": "Inserta esta calculadora",
     "instruction": "Pega este código HTML en una página que admita iframes."
   },
+  "pt": {
+    "label": "Incorporar esta calculadora",
+    "instruction": "Cole este código HTML numa página que aceite elementos iframe."
+  },
   "is": {
     "label": "Fella þessa reiknivél inn",
     "instruction": "Límdu þennan HTML-kóða inn á síðu sem styður iframe-ramma."
