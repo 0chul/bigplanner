@@ -34,6 +34,7 @@ export default function Home() {
                 "name": "${language === 'ko' ? '빅플래너파트너스' : 'BIGPLANNER PARTNERS'}",
                 "url": "https://bigplanner.co.kr",
                 "logo": "https://injrbniytgtubemniaps.supabase.co/storage/v1/object/public/bigplanner/logo.png",
+                "sameAs": ["https://blog.naver.com/bigplannerpartners"],
                 "description": "${language === 'ko' ? '부동산과 공간 가치를 높이는 프롭테크 기업, 빅플래너파트너스입니다.' : 'BIGPLANNER PARTNERS, a proptech company that enhances real estate and space value.'}"
               },
               {

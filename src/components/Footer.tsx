@@ -36,6 +36,13 @@ export default function Footer() {
             >
               {language === 'ko' ? '개인정보처리방침 변경 공지' : 'Privacy policy change notice'}
             </a>
+            <a
+              href="https://blog.naver.com/bigplannerpartners"
+              hrefLang="ko"
+              className="font-medium text-white underline underline-offset-4 hover:text-gray-200"
+            >
+              {language === 'ko' ? '네이버 공식 블로그' : 'Official Naver Blog (Korean)'}
+            </a>
           </div>
 
           {/* Info */}
