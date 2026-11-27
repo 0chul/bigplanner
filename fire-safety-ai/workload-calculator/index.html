@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>시설관리 반복 문의 응대 업무량 계산기 | BigPlanner Partners</title>
+  <meta name="description" content="일평균 문의 건수와 건당 응대 시간으로 월간 현재 업무량을 계산합니다. 그중 FAQ 매뉴얼 답변 적용을 검토할 범위를 확인하세요.">
+  <link rel="canonical" href="https://bigplanner.co.kr/fire-safety-ai/workload-calculator/">
+  <link rel="alternate" hreflang="ko" href="https://bigplanner.co.kr/fire-safety-ai/workload-calculator/">
+  <link rel="alternate" hreflang="en" href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://bigplanner.co.kr/fire-safety-ai/en/workload-calculator/">
+  <link rel="alternate" type="application/rss+xml" title="시설관리 자료 RSS" href="https://bigplanner.co.kr/fire-safety-ai/rss.xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigPlanner Partners">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="시설관리 반복 문의 응대 업무량 계산기 | BigPlanner Partners">
+  <meta property="og:description" content="일평균 문의 건수와 건당 응대 시간으로 월간 현재 업무량을 계산합니다. 그중 FAQ 매뉴얼 답변 적용을 검토할 범위를 확인하세요.">
+  <meta property="og:url" content="https://bigplanner.co.kr/fire-safety-ai/workload-calculator/">
+  <meta property="og:image" content="https://bigplanner.co.kr/images/fire-safety-organic-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/fire-safety-ai/share.css">
+  <script defer src="/fire-safety-ai/share.js"></script>
+  <script defer src="/fire-safety-ai/workload-calculator.js"></script>
+  <style>:root {
+  color-scheme: light;
+  --ink: #17302a;
+  --green: #1b5648;
+  --muted: #455c55;
+  --rule: #cdd9d2;
+  --paper: #f3f7f4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
+.wrap { width: min(71rem, 100% - 2.5rem); margin-inline: auto; }
+.site-header { border-block-end: 1px solid var(--rule); }
+.header-content, footer .wrap { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: .85rem; }
+.brand { color: var(--ink); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.brand span { font-weight: 500; }
+.languages { display: flex; gap: .2rem; flex-wrap: wrap; }
+.languages a { padding: .34rem .55rem; border-radius: .38rem; color: var(--muted); font-size: .875rem; text-decoration: none; }
+.languages a[aria-current="page"], .languages a:hover { background: #e9f0ec; color: var(--green); }
+a { color: var(--green); text-underline-offset: .17em; }
+a:focus-visible, summary:focus-visible, video:focus-visible { outline: 3px solid #367e71; outline-offset: 4px; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { line-height: 1.22; }
+h1 { font-size: clamp(2.15rem, 4.5vw, 4.2rem); text-wrap: balance; }
+h2 { font-size: clamp(1.65rem, 3vw, 2.65rem); text-wrap: balance; }
+[dir="ltr"] :is(h1, h2) { letter-spacing: -.035em; }
+:is(:lang(ja), :lang(zh-Hant)) :is(h1, h2) { letter-spacing: 0; }
+[dir="rtl"] :is(h1, h2, h3) { line-height: 1.4; }
+.hero { background: var(--paper); }
+.hero-content { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.6rem); padding-block: clamp(2.5rem, 6vw, 5.8rem); }
+.intro { max-width: 53ch; margin-block: 1.12rem .75rem; font-size: clamp(1.04rem, 1.75vw, 1.25rem); }
+.audience { color: var(--muted); }
+.building { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 60% center; border-radius: .75rem; }
+.links { display: flex; flex-wrap: wrap; gap: .7rem 1.35rem; align-items: center; margin-block-start: 1.3rem; font-weight: 650; }
+.button { padding: .72rem 1.12rem; border-radius: .4rem; background: var(--green); color: white; text-decoration: none; }
+.button:hover { background: var(--ink); }
+.section { padding-block: clamp(2.45rem, 5.5vw, 4.8rem); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.steps li { padding-block: 1rem; border-block-start: 2px solid var(--green); }
+.steps h3 { font-size: 1.18rem; margin-block-end: .55rem; }
+.steps p, .demo-note, .faq details p { color: var(--muted); }
+.resource-link { display: inline-block; margin-block-start: .65rem; font-weight: 650; }
+.demo-band { background: #e8f1ed; }
+.demo-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem); align-items: center; gap: clamp(1.5rem, 6vw, 6rem); }
+.demo-note { margin-block-start: .6rem; }
+.scenes { margin-block: 1.2rem 0; padding-inline-start: 1.5rem; max-width: 53ch; }
+.scenes li + li { margin-block-start: .6rem; }
+video { display: block; width: 100%; max-width: 17rem; height: auto; aspect-ratio: 9 / 16; background: #13261f; border-radius: .6rem; justify-self: center; }
+.case-study { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(1.35rem, 5vw, 3.75rem); border-block-end: 1px solid var(--rule); }
+.case-summary { margin-block-start: .7rem; color: var(--muted); }
+.case-evidence { padding: clamp(.95rem, 3vw, 1.5rem); border: 1px solid var(--rule); border-radius: .65rem; background: var(--paper); }
+.case-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 0; }
+.case-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; }
+.case-stats dt { font-size: .92rem; color: var(--muted); }
+.case-stats dd { margin: 0; color: var(--green); font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 750; line-height: 1; }
+.case-scope { border-block-start: 1px solid var(--rule); margin-block-start: 1rem; padding-block-start: .75rem; color: var(--muted); font-size: .9rem; }
+.faq { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 1.1rem 3rem; }
+.faq details { border-block-end: 1px solid var(--rule); }
+.faq details:first-child { border-block-start: 1px solid var(--rule); }
+.faq summary { cursor: pointer; padding-block: .8rem; font-weight: 650; }
+.faq details p { margin-block-end: .9rem; }
+.contact-band { background: #173930; color: #fff; }
+.contact-band .button { background: #fff; color: var(--ink); }
+.contact-band .button:hover { background: #dcebe4; }
+.contact-band :not(.button):is(a, .email) { color: #d6ebe0; }
+.contact-band p { margin-block-start: .7rem; max-width: 59ch; }
+.quote-details { margin-block-start: 1.15rem; padding-inline-start: .85rem; border-inline-start: 2px solid #91baaa; }
+.quote-details h3 { font-size: 1.12rem; }
+.contact-band .quote-details p { margin-block-start: .35rem; color: #d6ebe0; }
+.email { unicode-bidi: isolate; width: fit-content; font-size: .9rem; }
+footer { color: var(--muted); font-size: .9rem; }
+@media (max-width: 48rem) {
+  .header-content { gap: .45rem; }
+  .hero-content, .demo-section, .case-study, .faq { grid-template-columns: minmax(0, 1fr); }
+  .building { aspect-ratio: 16 / 9; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: .22rem; }
+}
+
+    .calculator-wrap { width: min(64rem, 100% - 2rem); margin-inline: auto; }
+    html[lang="ko"] .calculator-wrap { word-break: keep-all; }
+    .calculator-head { padding-block: clamp(1.9rem, 4vw, 3.6rem) 1.8rem; }
+    .calculator-head h1 { max-width: 25ch; font-size: clamp(2rem, 4.8vw, 3.65rem); }
+    .calculator-head .intro { max-width: 65ch; margin-block-end: 0; }
+    .calculator-body { padding-block: 1.4rem 2.5rem; }
+    .calculator-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+    .calculator-panel { min-width: 0; border: 1px solid var(--rule); border-radius: .75rem; padding: clamp(1rem, 2.6vw, 1.65rem); }
+    .calculator-panel fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
+    .calculator-panel legend, .calculator-panel h2 { margin: 0; padding: 0; font-size: 1.26rem; font-weight: 750; line-height: 1.3; }
+    .calculator-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1rem; margin-block: 1.05rem; }
+    .calculator-fields label { display: grid; grid-template-rows: 1fr auto auto; gap: .25rem; align-items: end; font-weight: 650; line-height: 1.4; }
+    .calculator-fields small { font-size: .81rem; font-weight: 450; color: var(--muted); }
+    .calculator-fields input { width: 100%; min-height: 2.8rem; border: 1px solid #839b90; border-radius: .38rem; padding: .45rem .62rem; color: var(--ink); background: #fff; font: inherit; font-variant-numeric: tabular-nums; }
+    .calculator-fields input:focus-visible, .calculator-reset:focus-visible { outline: 3px solid #367e71; outline-offset: 2px; }
+    .calculator-fields input:invalid { border-color: #a32727; }
+    .calculator-fields input:disabled { background: var(--paper); }
+    .calculator-reset { min-height: 2.75rem; border: 1px solid #839b90; border-radius: .38rem; padding: .35rem .75rem; background: #fff; color: var(--green); font: inherit; font-weight: 650; cursor: pointer; }
+    .calculator-reset:hover { background: var(--paper); }
+    .calculator-reset:disabled { color: var(--muted); cursor: default; }
+    .calculator-invalid { color: #8e2626; margin-block: .65rem 0; }
+    .calculator-results { background: var(--paper); }
+    .calculator-results dl { margin: .7rem 0 .8rem; }
+    .calculator-results dl > div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .05rem .75rem; padding: .5rem 0; border-block-end: 1px solid var(--rule); }
+    .calculator-results dt { font-size: .95rem; }
+    .calculator-results dd { color: var(--green); margin: 0; }
+    .calculator-results strong { font-size: 1.55rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
+    .calculator-share-label { display: block; font-size: .85rem; color: var(--muted); }
+    .calculator-results progress { display: block; width: 100%; margin-block-start: .25rem; accent-color: var(--green); }
+    .calculator-example { color: var(--muted); font-size: .93rem; margin: .85rem 0 1.5rem; }
+    .calculator-method { border-block-start: 1px solid var(--rule); padding-block-start: 1.5rem; }
+    .calculator-method h2 { font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
+    .calculator-method ol { margin-block: .65rem; padding-inline-start: 1.4rem; max-width: 72ch; }
+    .calculator-method li + li { margin-block-start: .42rem; }
+    footer { border-block-start: 1px solid var(--rule); }
+    @media (max-width: 46rem) {
+      .calculator-grid { grid-template-columns: 1fr; gap: .9rem; }
+    }
+    @media (max-width: 25rem) {
+      .calculator-fields { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="calculator-wrap header-content">
+      <a class="brand" href="/fire-safety-ai/" lang="en">BigPlanner <span>Partners</span></a>
+      <nav class="languages" aria-label="업무량 계산기 언어"><a href="/fire-safety-ai/en/workload-calculator/" lang="en" hreflang="en">English</a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="calculator-title">
+      <div class="calculator-wrap calculator-head">
+        <h1 id="calculator-title">시설관리 반복 문의 응대 업무량 계산기</h1>
+        <p class="intro">반복 문의에 한 달 동안 쓰는 응대 시간과 그중 매뉴얼 답변 적용을 검토할 범위를 계산합니다. 입력값은 이 브라우저에서만 계산에 사용합니다.</p>
+      </div>
+    </section>
+    <div class="calculator-wrap calculator-body">
+      <div class="calculator-grid">
+        <form class="calculator-panel" data-workload-form novalidate>
+          <fieldset data-workload-fields disabled>
+            <legend>우리 건물의 응대 현황</legend>
+            <div class="calculator-fields">
+              <label>
+                <span>일평균 반복 문의 건수</span>
+                <input type="number" inputmode="numeric" name="requests" min="0" max="100000" step="1" value="20" required aria-describedby="requests-range">
+                <small id="requests-range">0–100,000</small>
+              </label>
+              <label>
+                <span>건당 평균 응대 시간(분)</span>
+                <input type="number" inputmode="decimal" name="minutes" min="0" max="1440" step="0.1" value="2" required aria-describedby="minutes-range">
+                <small id="minutes-range">0–1,440</small>
+              </label>
+              <label>
+                <span>월간 운영일 수</span>
+                <input type="number" inputmode="numeric" name="days" min="0" max="31" step="1" value="22" required aria-describedby="days-range">
+                <small id="days-range">0–31</small>
+              </label>
+              <label>
+                <span>반복 문의 중 적용 검토 대상 비율(%)</span>
+                <input type="number" inputmode="numeric" name="eligible" min="0" max="100" step="1" value="60" required aria-describedby="eligible-range">
+                <small id="eligible-range">0–100</small>
+              </label>
+            </div>
+            <button class="calculator-reset" type="button" data-workload-reset>예시 값으로 되돌리기</button>
+          </fieldset>
+          <p class="calculator-invalid" data-workload-invalid role="status" hidden>입력한 숫자가 각 항목의 범위에 맞는지 확인해 주세요.</p>
+          <noscript><p>값을 바꿔 계산하려면 자바스크립트를 켜 주세요.</p></noscript>
+        </form>
+        <section class="calculator-panel calculator-results" aria-labelledby="results-title">
+          <h2 id="results-title">월간 응대 업무량 추산</h2>
+          <div aria-live="polite" aria-atomic="true">
+            <dl>
+              <div>
+                <dt>월간 현재 응대 시간</dt>
+                <dd><strong data-workload-result="baseline">14.7</strong> 시간</dd>
+              </div>
+              <div>
+                <dt>그중 적용 검토 대상 응대 시간</dt>
+                <dd><strong data-workload-result="review">8.8</strong> 시간</dd>
+              </div>
+              <div>
+                <dt>월간 적용 검토 대상 문의</dt>
+                <dd><strong data-workload-result="requests">264</strong> 건</dd>
+              </div>
+            </dl>
+          </div>
+          <span class="calculator-share-label" id="review-share">반복 문의 중 적용 검토 대상 비율</span>
+          <progress data-workload-share aria-labelledby="review-share" value="60" max="100"></progress>
+        </section>
+      </div>
+      <p class="calculator-example">일평균 반복 문의 20건, 건당 응대 2분, 월 22일, 검토 대상 60%라면 월간 현재 응대 시간은 약 14.7시간입니다. 그중 적용 검토 대상은 8.8시간에 해당하는 264건입니다.</p>
+      <section class="calculator-method" aria-labelledby="method-title">
+        <h2 id="method-title">현장에서 입력값을 정하는 방법</h2>
+        <ol>
+          <li>평소와 비슷한 여러 근무일에 반복 문의 건수와 건별 응대 시간을 기록해 평균을 구합니다.</li>
+          <li>매뉴얼로 답할 수 있는 문의를 검토 대상으로 잡습니다. 긴급 문의, 매뉴얼에 없는 예외, 별도 승인이 필요한 건은 제외합니다.</li>
+          <li>표시된 시간은 현재 응대 업무량의 추산치입니다. 검토 대상 문의도 현장 담당자의 확인과 후속 지원을 이어갑니다.</li>
+        </ol>
+        <div class="links">
+          <a class="button" href="/fire-safety-ai/?utm_source=workload_calculator&amp;utm_medium=referral&amp;utm_campaign=fire_safety_launch&amp;utm_content=ko#demo-request">온라인 시연 신청</a>
+          <a href="/fire-safety-ai/faq-manual/">FAQ 매뉴얼 작성 가이드 보기</a>
+          <a href="/fire-safety-ai/demo-video/">27초 시연 영상 보기</a>
+        </div>
+        <details class="fs-share share" data-fs-share>
+    <summary>링크 공유</summary>
+    <div class="fs-share-panel">
+      <label class="fs-share-address">페이지 주소<input data-fs-share-url dir="ltr" type="url" readonly value="https://bigplanner.co.kr/fire-safety-ai/workload-calculator/"></label>
+      <div class="fs-share-actions">
+        <button data-fs-share-native type="button" hidden>앱으로 공유</button>
+        <button data-fs-share-copy type="button" hidden>링크 복사</button>
+        <a href="mailto:?subject=%EC%8B%9C%EC%84%A4%EA%B4%80%EB%A6%AC%20%EB%B0%98%EB%B3%B5%20%EB%AC%B8%EC%9D%98%20%EC%9D%91%EB%8C%80%20%EC%97%85%EB%AC%B4%EB%9F%89%20%EA%B3%84%EC%82%B0%EA%B8%B0&amp;body=https%3A%2F%2Fbigplanner.co.kr%2Ffire-safety-ai%2Fworkload-calculator%2F">이메일로 공유</a>
+      </div>
+      <p class="fs-share-status" data-fs-share-status role="status" data-copied="링크를 복사했습니다." data-manual="위 주소를 선택해 복사해 주세요."></p>
+    </div>
+  </details>
+      </section>
+    </div>
+  </main>
+  <footer><div class="calculator-wrap header-content"><span lang="en">BigPlanner Partners</span><a href="/fire-safety-ai/rss.xml" type="application/rss+xml">시설관리 자료 RSS</a><a href="/privacy/" hreflang="ko">개인정보처리방침</a></div></footer>
+</body>
+</html>
